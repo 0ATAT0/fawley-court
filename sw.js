@@ -1,4 +1,4 @@
-const CACHE = 'fawley-court-v1';
+const CACHE = 'fawley-court-v2';
 
 // Shell: everything needed to open the memorandum and read every chapter
 // offline. Full-size photography is warmed by the page after load, not on
