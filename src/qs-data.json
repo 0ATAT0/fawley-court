@@ -1,0 +1,1569 @@
+{
+ "source": "Research/vendor-qs-crosscheck-20260816.md",
+ "preamble": "",
+ "halves": [
+  {
+   "title": "Qs for Fawley Court",
+   "sections": [
+    {
+     "name": "Historic Construction Costs",
+     "items": [
+      {
+       "n": "1",
+       "q": "Confirmation that all these works have been undertaken?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** Greenway characterises the works as done: it \"reviewed the extent of works done to",
+       "body": [
+        "**PARTIAL.** Greenway characterises the works as done: it \"reviewed the extent of works done to\nthe Grade-I-listed Main House\", comparing \"the condition of the building before the works were\ncarried out and the condition of the building as of today\", and prices \"transforming the\nbuilding to its current state of repair\" (Greenway p. 5). That is an estimate of works already\nreflected in the building, not a record of expenditure — there are no invoices, contracts,\ncontractor name, dates, completion certificates or warranties, and the report is priced at\nQ2 2026 rates rather than at the time of the works (Greenway pp. 5–6).",
+        "Scope is narrower than the question assumes. The figures cover the **Main House only** and\nexclude expenditure over the same period on the Riding School, the courtyard, the chapel, the\ngate house buildings, other building or perimeter/security elements, the waterway, the\nCapability Brown landscape conservation works, and the demolition of non-listed elements\nalready removed (Greenway p. 5).",
+        "*Ask:* invoices/contracts substantiating the £40.26m, and the equivalent record for the\nbuildings Greenway excludes."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "1a",
+       "q": "Are any of these works still to be done?",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** No cost-to-complete, no snagging list, no defects register, no completion",
+       "body": [
+        "**NOT IN ROOM.** No cost-to-complete, no snagging list, no defects register, no completion\ncertificates. Greenway excludes risk, contingency and inflation entirely (Greenway p. 6), so\nthe document cannot answer a residual-works question either way."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "2",
+       "q": "Can we have a breakdown of the MEP work that has been undertaken?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** There is a quantum but no breakdown. MEP appears as a single line: \"MEP Adaptations",
+       "body": [
+        "**PARTIAL.** There is a quantum but no breakdown. MEP appears as a single line: \"MEP Adaptations\nAllowance, 3,855 m², £1,450/m², £135/sq ft, **£5,589,750**\", 13.9% of construction cost\n(Greenway p. 8). No system-level split (heating, cooling, ventilation, electrical, public\nhealth, controls, life safety, IT), no drawings, no commissioning records, no O&M manuals."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "2a",
+       "q": "Is there any MEP work still to be done?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** Nothing in Greenway. But JSA records the position as at 2021: the buildings \"make",
+       "body": [
+        "**PARTIAL.** Nothing in Greenway. But JSA records the position as at 2021: the buildings \"make\nuse of oil heating which has recently been totally upgraded\", and \"permission has also been\ngranted and **part implemented** for a water based heating pump system to serve the main\nbuildings on the estate\" (JSA §3.5). Part implemented means at least one MEP workstream was\nincomplete; nothing in the room states whether it has since been finished. An *Energy Report*\nby Ecovision is named (JSA §3.5) but is not in the room."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "3",
+       "q": "Has the asbestos work/removal been done?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** Two separate pieces of evidence, neither conclusive.",
+       "body": [
+        "**PARTIAL.** Two separate pieces of evidence, neither conclusive.",
+        "- Main House: \"Asbestos Removal, 3,855 m², £52/m², **£200,000**\" sits within Enabling works in\n  the historic cost estimate (Greenway p. 8) — i.e. removal is priced as part of the works\n  already reflected in the building's current condition.\n- Courtyards: the 2021 application \"is also accompanied by a **Type 3 Asbestos Survey**. The\n  survey suggests no major asbestos deposits to the courtyards site\" (JSA §14.9).",
+        "Neither the survey, nor any clearance certificate, air test, or asbestos register, is in the\nroom."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "4",
+       "q": "Is there a current demolition survey available or at least a management survey",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** One survey is evidenced to exist — the Type 3 asbestos survey accompanying the 2021",
+       "body": [
+        "**PARTIAL.** One survey is evidenced to exist — the Type 3 asbestos survey accompanying the 2021\ncourtyards application (JSA §14.9). A Type 3 survey is the pre-demolition/major-refurbishment\ntype, so this is close to what is being asked for, but: it is five years old, it covers the\n**courtyards only**, and it is not in the room. No management survey, and nothing at all for\nthe Main House."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "5",
+       "q": "What about fire stopping, fire alarm panel, directional EM signage, EM lighting and sprinklers?",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** No fire-systems documentation of any kind. These sit inside Greenway's",
+       "body": [
+        "**NOT IN ROOM.** No fire-systems documentation of any kind. These sit inside Greenway's\nundifferentiated MEP allowance and cannot be extracted from it."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "6",
+       "q": "Is there a Fire strategy in place? Proposal was signed off by the council but was it executed on?",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** No fire strategy, no building control documentation, no completion or",
+       "body": [
+        "**NOT IN ROOM.** No fire strategy, no building control documentation, no completion or\nfinal certificates. The only fire-related material anywhere in the room is incidental to the\n2021 courtyard design: fire brigade access to the North Courtyard through the vehicle gates at\nthe south-west corner (JSA §8.8), and new entrances and stairs designed to Approved Documents\nK and M (JSA §12.1.4). Neither evidences a strategy, nor a council sign-off, nor its execution."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "7",
+       "q": "Are the fireplaces live and flues in good order?",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** No flue survey, no chimney condition report, no schedule of fireplaces. The",
+       "body": [
+        "**NOT IN ROOM.** No flue survey, no chimney condition report, no schedule of fireplaces. The\ninternal photography (`2.4.1.1`) shows fireplaces in the principal rooms but is catalogued by\nfilename only."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "8",
+       "q": "Condition of fire doors generally?",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** No fire door survey or schedule.",
+       "body": [
+        "**NOT IN ROOM.** No fire door survey or schedule."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "9",
+       "q": "Condition of windows generally – do they all open and are they in good order?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** Cost evidence only, and only for works already done: \"External Windows & Doors,",
+       "body": [
+        "**PARTIAL.** Cost evidence only, and only for works already done: \"External Windows & Doors,\n3,855 m², £233/m², **£900,000**\" within Envelope & Roof (Greenway p. 8). For the courtyard\nbuildings JSA records condition directly — the Riding School's \"external brickwork walls,\ntimber roof structure, and window/door joinery are all in poor condition\" (JSA §3.2), the\nlaundry/WC block's \"existing windows are generally in poor order\" (§2.3.6), the water tower\ncarries a uPVC window to be removed (§14.3.3). Nothing on the Main House windows: no schedule,\nno condition survey, nothing on operability."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "10",
+       "q": "Any issue with the roof?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** Cost evidence for the Main House — \"Roof Works, 3,855 m², £311/m², **£1,200,000**\"",
+       "body": [
+        "**PARTIAL.** Cost evidence for the Main House — \"Roof Works, 3,855 m², £311/m², **£1,200,000**\"\n(Greenway p. 8) — and condition evidence for the outbuildings only. JSA's most recent\nstructural survey at 2021 indicated the Riding School roof \"is likely to involve the\nreplacement of at least one or two roof trusses and approximately 30% of the timber rafters,\npurlins and ridge boards\", plus plywood sarking for bracing and slates carefully removed and\nrelaid (JSA §6.4–6.5); the Old Stable Block's \"existing slate roof is in poor condition, and\nthe slates will need to be removed and replaced\" (§10.6); the water tower's glazed roof is in\npoor condition (§9.6). No current roof condition survey for the Main House."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "11",
+       "q": "Any CCTV in place currently? Is this monitored, what is the age of the system?",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** Nothing on CCTV. The only security evidence is JSA's 2021 statement that \"there",
+       "body": [
+        "**NOT IN ROOM.** Nothing on CCTV. The only security evidence is JSA's 2021 statement that \"there\nis no specific security office, and very little in the way of gates, doors, etc. to guarantee\nsafety in and around the service yard … a number of thefts occurring over the years\" (JSA\n§3.7); the 2021 scheme adds security accommodation in the South Courtyard (§5.1, §7.1) and a\nbasement \"Security & Goods In\" is labelled in the Main House (Key Plans p. 8)."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "12",
+       "q": "Acoustics between rooms, corridors and floors?",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** No acoustic testing or assessment of any kind — internal or external. This",
+       "body": [
+        "**NOT IN ROOM.** No acoustic testing or assessment of any kind — internal or external. This\nmatters twice over: the same gap defeats the residential road-noise question below."
+       ],
+       "sub": null,
+       "header": false
+      }
+     ],
+     "count": {
+      "label": "Historic Construction Costs",
+      "items": 14,
+      "counts": {
+       "ANSWERED": 0,
+       "PARTIAL": 7,
+       "NOT IN ROOM": 7
+      }
+     },
+     "intro": [
+      "---"
+     ]
+    },
+    {
+     "name": "Hotel Development",
+     "items": [
+      {
+       "n": "1",
+       "q": "There is reference to the flood plain and specifically the area changing, hence relocating some of the houses. Are there details for this?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL — and the two sources in the room point in opposite directions.**",
+       "body": [
+        "**PARTIAL — and the two sources in the room point in opposite directions.**",
+        "The claim the question refers to is Savills': \"Construction in the Meadows will not be impeded\nby the existing floodplain. We have been informed that **the existing masterplan is incorrect\nand the floodplains are far smaller than is currently shown. This is currently being updated by\nthe environment agency**\" (Savills p. 47). It recurs as an assumption behind the unit\npositioning: \"These recommendations are based on the assumption that the floodplain in the\nsouthwestern corner of the meadows has no material impact on the areas of the site which are\nsuitable for construction. We understand that the environment agency are in the process of\nupdating these flood zones\" (Savills p. 50). At plot level: Meadows North contains \"a small\npond in this area which also falls within a flood area, reducing the area for development,\nhowever these flood maps are being updated, and the pond may be removed\"; Riverside North /\nWoodlands is \"restricted by the density of woodlands, listed monuments and the floodplain\";\nRiverside South \"is relatively clear and is not restricted by trees or floodplains\"\n(Savills p. 11).",
+        "Against that, the only primary flood evidence in the room is older and harder: the *Flood Risk\nAssessment and Drainage Strategy* prepared by **RAB in February 2021**, quoted verbatim in JSA\n§2.7 — \"The proposed development at Fawley Court, Henley-on-Thames, RG9 3AE is located in\n**Flood Zone 3**, as defined in the NPPF … the site is shown to have a **medium-high groundwater\nvulnerability** … To mitigate the risk of fluvial flooding during the 1% AEP + 35% climate\nchange event, it is proposed to raise the finished floor level … (a minimum of **33.22 mAOD**) …\nThe proposed development must incorporate SuDS as described in Section 5.4.\"",
+        "What is missing: the RAB report itself, any Environment Agency correspondence, any revised flood\nmap or modelling, and any dated confirmation that the zones have in fact been updated. Note\nalso that EPR's own constraints drawing lists only two site-wide constraints — the Grade II*\nRegistered Park and Garden and the Fawley Court Conservation Area — and **does not map a\nfloodplain at all** (Site Plan p. 1). Align's own annotation on Masterplan CK reads \"Check for\nflood plain\" against the south-eastern strip of the housing zone.",
+        "*Ask, precisely:* the RAB FRA, and the EA evidence for the re-mapping — a date, a reference, or\na copy of the revised zone plan. Savills' entire 12-unit positioning rests on it."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "2",
+       "q": "Are there more detailed plans and cost assessments for the new areas, such as the spa, to allow us to do a more detailed assessment?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** Plans: concept level only. The spa/wellness is the Concert Hall (the deconsecrated",
+       "body": [
+        "**PARTIAL.** Plans: concept level only. The spa/wellness is the Concert Hall (the deconsecrated\nchurch, described in the room as the Pavilion), and the room gives its area split — \"Concert\nHall - Wellness + 50sqm mezzanine 471 sqm\" plus \"**New Concert Hall 2-storey Extension 529\nsqm**\", totalling 1,000 sqm / 10,763.90 sq ft (Area Schedule rows 58–61) — and one preliminary\nperspective sketch, \"Preliminary designs for addition to Pavilion at Fawley Court\"\n(Brochure p. 11). There is no plan, no section, no schedule of accommodation for the spa.\nCosts: none, for the spa or for any other new area. See also New Development item 1d."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "3",
+       "q": "In terms of working on the extensions that are part of existing building, is there access to structural assessments to ensure that these work?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL — assessments exist and are named; none is in the room.** JSA cites, for the courtyard",
+       "body": [
+        "**PARTIAL — assessments exist and are named; none is in the room.** JSA cites, for the courtyard\ngroup: \"*Courtyard Buildings and Gatehouse: Structural Engineering Appraisal of the Existing\nStructure with Comments on the Implications of the Proposed Alterations and Associated\nDrawings*\" by **Alan Baxter and Associates** (JSA §2.6); \"*Buildings Survey Report*\" by\n**William Martin & Partners LLP** for current building conditions (§2.5); and \"*A Historic\nBuilding Survey of Service Buildings at Fawley Court*\" by **Kirsty Rodwell** plus \"*Fawley Court\nConservation Plan Vols. 1-3*\" by **Dr Sarah Rutherford** (§2.4, §1.5). JSA §6.4 reports the\nstructural survey's conclusions for the Riding School roof. Historic England's 2010 letter\nconfirms the same appraisal was live then: \"English Heritage will need to be satisfied that the\nstability of the structure as a whole is not compromised by this restoration and I am encouraged\nto hear that Baxters are investigating this issue\" (JSA Appendix II, p. 24).",
+        "The consent itself makes structural detail a pre-commencement gate: before any works to the\nRiding School, a method statement for the structural reinforcement process \"with regard to the\nmovement within the Riding School\", a copy of the timber specialist's report, and the\nmethodology for the reinforcing ply diaphragm including eaves and fixing details, must be\napproved (LBC condition 3, p. 2); and before works to the historic courtyard walls and laundry\nbuilding, an internal-reinforcement methodology (condition 6, p. 3).",
+        "Nothing whatever exists for the Main House, its basement, or the **Proposed South Wing** — the\nextension \"part of existing building\" the question is most likely aimed at."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "4",
+       "q": "Utilities - power, gas, water, Wi-Fi, drainage - local capacity and infrastructure details would be useful (particularly to allow for extension plans)",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL, and thin.** What the room gives:",
+       "body": [
+        "**PARTIAL, and thin.** What the room gives:",
+        "- **Foul drainage:** \"There are no public sewers on site. At present foul drainage is discharged\n  to various cess pits across the estate and is periodically collected and taken off site to be\n  disposed of at a sewage treatment facility. There is no proposed change to the current foul\n  sewage drainage system\" (JSA §2.8).\n- **Surface water:** SuDS required per the RAB strategy; an underground water storage tank is\n  indicated on drawings PL306 and PL320 (JSA §2.7).\n- **Heat:** oil heating \"recently been totally upgraded\"; a water-based heat pump system to serve\n  the main buildings has permission and is part implemented; the courtyard scheme proposes a\n  geothermal heat pump (JSA §3.5). Savills understands \"the existing house is sustainable in\n  terms of both heating and water, by harnessing the energy from the River Thames\"\n  (Savills p. 10).\n- **Water conservation:** dual-flush and self-closing taps, grey water harvested from roofs for\n  irrigation (JSA §13.6).",
+        "What is missing: everything the question actually asks for. No capacity statements from any\nutility, no incoming supply records, no metering data, no gas position, no potable water\ninfrastructure, no telecoms or Wi-Fi provision, no drainage survey (JSA §6.15 only proposes that\n\"an investigation of below ground drainage will be carried out\"). Align's own Masterplan CK\nmark-up posits two new sub-stations and two power-supply routes — that is Align's hypothesis,\nnot vendor evidence."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "5",
+       "q": "Has any work been carried out on possible usage of utilities upon completion of the works?",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** No demand study, no load assessment, no energy model for the completed hotel.",
+       "body": [
+        "**NOT IN ROOM.** No demand study, no load assessment, no energy model for the completed hotel.\nThe Ecovision *Energy Report* named at JSA §3.5 relates to the 2021 courtyard scheme and is not\nin the room in any event."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "6",
+       "q": "MEP infrastructure – any survey of existing systems?",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** No condition or capacity survey of existing MEP systems. Greenway's single-line",
+       "body": [
+        "**NOT IN ROOM.** No condition or capacity survey of existing MEP systems. Greenway's single-line\nMEP allowance (p. 8) is a cost, not a survey; the named Ecovision report is an energy report,\nnot a survey of existing systems."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "7",
+       "q": "Fire risk assessment will need to be carried out. Measures were agreed by Building Control, were they followed out?",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** No fire risk assessment, no building control correspondence, no evidence of",
+       "body": [
+        "**NOT IN ROOM.** No fire risk assessment, no building control correspondence, no evidence of\nagreed measures or their execution. As with Historic Construction Costs item 6, the premise\n(\"measures were agreed by Building Control\") is not corroborated by anything in the room."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "8",
+       "q": "Fire exits – have these been signed off by the architects as adequate?",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** No egress strategy, no architect's sign-off. JSA states an intention only — the",
+       "body": [
+        "**NOT IN ROOM.** No egress strategy, no architect's sign-off. JSA states an intention only — the\nrestoration and courtyards \"provides the opportunity to make these areas fully accessible, allow\nthem to function safely and independently in terms of accessibility and emergency egress\"\n(JSA §12.1.1). An intention in a 2021 design statement is not a sign-off, and it does not cover\nthe Main House."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "9",
+       "q": "Sewage Capacity – SuDs and cess pits combination, have these been sized by an engineer? What about for the new accommodation?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** The arrangement is confirmed and it is a cess-pit-and-tanker system with no mains",
+       "body": [
+        "**PARTIAL.** The arrangement is confirmed and it is a cess-pit-and-tanker system with no mains\nconnection: \"There are no public sewers on site … foul drainage is discharged to various cess\npits across the estate and is periodically collected and taken off site … **There is no proposed\nchange to the current foul sewage drainage system**\" (JSA §2.8). SuDS were sized by an engineer\nfor the 2021 courtyard scheme — \"The proposed development must incorporate SuDS as described in\nSection 5.4 of this report\" (RAB, quoted at JSA §2.7) — but Section 5.4 and the report itself\nare not in the room, and the sizing was for a scheme of staff flats, estate offices, a pool and\n15 guest rooms, not 60 keys plus 12 houses plus events.",
+        "Nothing in the room sizes foul capacity, tankering frequency or treatment for the proposed\nscheme. Given \"no proposed change to the current foul sewage drainage system\" is the position of\nrecord, this is a material and under-appreciated cost and consent risk."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "10",
+       "q": "Reference to rooms going from 13 to 17 (1 on st floor, 2 on second floor) - does this having LBC?",
+       "status": "ANSWERED",
+       "statusLine": "**ANSWERED — no, and the room is unambiguous.** The only listed building consent in the room is",
+       "body": [
+        "**ANSWERED — no, and the room is unambiguous.** The only listed building consent in the room is\n23/07590/LBC, granted 6 December 2024, and its consented description is confined to the\ncourtyard group: \"Restoration of grade II listed riding school, restoration of grade II listed\nchapel, dairy and service courtyards, restoration of clock and water tower, construction of new\nestate office, staff and guest accommodation and demolition of existing derelict structures\"\n(LBC p. 1). It does not touch the Main House. Its FUL companion **23/07589/FUL is not in the\ndata room at all** — the single largest consent gap. Savills confirms the wider position:\n\"An application has not yet been submitted to add an additional wing to the main house\"\n(Savills p. 7).",
+        "Two corrections to the question itself, both from the room:",
+        "- The count is **four** new rooms, not three. EPR's own annotation on the Main House key sheet\n  reads \"**was 13**\" against the 17-key schedule, with \"**1 new on 1st; 3 on 2nd**\" and\n  \"Additional room\" / \"Additional rooms\" arrows to the specific rooms (Key Plans p. 9). The\n  question's \"(1 on st floor, 2 on second floor)\" understates the plan by one room.\n- The two Main House schedules in the room do not agree. The brochure schedule (rev B,\n  10/07/2025) totals the Main House at **1,815 sqm** with a single 135 sqm Principal Suite on the\n  first floor (Brochure p. 12); the standalone spreadsheet totals **2,202 sqm**, shows\n  \"2 x 135sqm Principal Suite\" on the first floor and adds a 127 sqm \"New wing F&B Ballroom /\n  lounge\" (Area Schedule rows 12, 20, 33). Both still print 17 keys."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "11",
+       "q": "Pool now a distance from the hotel, as is gym",
+       "status": "ANSWERED",
+       "statusLine": "**ANSWERED as to fact and reason; the distance itself is not stated anywhere.** Both are in the",
+       "body": [
+        "**ANSWERED as to fact and reason; the distance itself is not stated anywhere.** Both are in the\nSouth Courtyard, in the service-courtyard group north-west of the Main House, and the reason is\nexplicit: \"Functional spaces required for a building of this type, which preferably would not be\nincorporated into a Grade I listed historic structure such as a swimming pool\" (JSA §1.6.3), and\n\"The incorporation of the gym and sauna in the South Courtyard means that the Grade I listed\nMain Building need not be altered to accommodate them\" (JSA §7.7).",
+        "Detail: \"The South Courtyard will provide space for pool, gym and spa facilities, estate\nsecurity, office space and 15 guest rooms\" (JSA §7.1); the Pool House to the north is \"a double\nheight space with an indoor swimming and plunge pools with spa areas included in the east\nrange\", with a small brick extension at the eastern end housing pool plant (§7.3); the gym is\n\"a double height gym with access to the sauna at ground floor level\" in the eastern range\n(§7.7). The Masterplan annotation marks \"gym\", \"Pool\" and \"spa\" over the Consented South\nCourtyard (Masterplan p. 1).",
+        "Note the 2025 scheme moves the spa away again — to the Concert Hall/Pavilion at the far south of\nthe estate (Area Schedule rows 58–61; Brochure p. 10) — so pool, gym and spa are now proposed in\ntwo different locations, both remote from the Main House. Savills records the same lack of\nresolution: the Concert Hall is for \"either a spa or restaurant use\" and the old riding\nschool/stables for \"a spa or other amenity / ancillary use\" (Savills p. 9)."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "12",
+       "q": "Staff accommodation and staff canteen now moved to the gate houses",
+       "status": "ANSWERED",
+       "statusLine": "**ANSWERED — and the room exposes a three-way conflict worth raising on the call.**",
+       "body": [
+        "**ANSWERED — and the room exposes a three-way conflict worth raising on the call.**",
+        "- **The 2025 EPR scheme** does put staff in the lodges and gatehouses: \"LODGES (STAFF FACILITIES\n  + BOH)\" totalling **709 sqm / 7,631.61 sq ft** — North Lodge 139, North Lodge Extension 75,\n  New North Gatehouses (2 × 90) 180, New South Gatehouses (2 × 90) 180, Existing South Lodge 75,\n  New South Lodge 60 (Area Schedule rows 62–69). Masterplan CK labels \"Staff accommodation\" at\n  both the North Lodge and the southern gatehouses.\n- **The staff canteen is not in the gatehouses.** It is drawn in the Stables: \"Prep kitchen\" and\n  \"Staff canteen/wc\" inside the 184 sqm Back of House building immediately north of the Riding\n  School restaurant (Key Plans p. 11; Area Schedule row 72).\n- **The consented position is different again.** Under the 2024 LBC scheme, staff accommodation,\n  storage and staff dining sit in the **North Courtyard** and the Old Stable Block: \"Staff\n  accommodation space and storage areas are to be relocated in the new North Courtyard to the\n  east\" (JSA §6.2); \"The northern building incorporates a full range of staff flats with a first\n  floor accessed via an external stair\" and \"the rest of the east wing and the entirety of the\n  west range are made up of staff accommodation\" (§8.2–8.3); the Old Stable Block \"will be\n  renovated to provide kitchen, laundry, staff dining facilities and WCs\" (§10.1). Those are\n  precisely the buildings the 2025 scheme converts to guest rooms.",
+        "EPR flags the same problem on its own drawing, in capitals: \"**WHERE DOES STAFF ACCOMMODATION &\nSTORAGE GO NOW BEDROOMS IN NORTH COURTYARD?**\" (Key Plans p. 11). Masterplan CK annotates the\nNorth Courtyard \"20 Guest rooms - new build\" and the South Courtyard \"23 Guest rooms - amend\nexisting build\".",
+        "The consequence for consent is the substantive point: the courtyards are labelled \"Consented\" on\nthe masterplan, but what is consented there is staff flats, storage and estate offices — not 43\nguest rooms."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "13",
+       "q": "Is the pavilion used for the regatta subject to a temporary licence? Has a discussion on a more permanent licence been considered?",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** There is no licence, licensing correspondence, premises licence, or event",
+       "body": [
+        "**NOT IN ROOM.** There is no licence, licensing correspondence, premises licence, or event\nconsent of any kind in the data room. The statement in the question traces to Align's own\nannotation on Masterplan CK — \"Pavillion - weddings and private events - **currently only temp\nlicence**\" — not to a vendor document.",
+        "What the room does show: the scheme itself treats the Regatta structure as temporary —\n\"Regatta Temporary Pavilion (200-500 pax)\", 500 sqm (Area Schedule row 75) — alongside a 75 sqm\n\"Riverside Floating Restaurant\" (row 74) and, in the brochure revision, \"various events\nmarquees — tbc\" (Brochure p. 12). The 2017 River Club brochure evidences a five-day Regatta\nhospitality operation (Wednesday 28 June – Sunday 2 July 2017) with a restaurant, lounge viewing\ndecks and the floating \"Long Water Bar\", but states no capacities, no pricing and no licensing\nbasis (`2.5.1`, cluster index E). Separately, Henley Royal Regatta owns the land immediately in\nfront of the site (Savills p. 10) and holds a 999-year lease of Temple Island granted in 1986\n(`2.6.1` History, p. 93).",
+        "*Ask:* the current premises licence(s), any temporary event notices used to date, and the\nlicensing history — this underpins a revenue line and is currently unevidenced."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "14",
+       "q": "Spa at 1,000m2 is a little small, would want to nudge up by 20%, and possibly add external garden area if possible.",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL — the 1,000 sqm is confirmed and, importantly, over half of it is already new build.**",
+       "body": [
+        "**PARTIAL — the 1,000 sqm is confirmed and, importantly, over half of it is already new build.**\nThe split is \"Concert Hall - Wellness + 50sqm mezzanine **471 sqm**\" plus \"New Concert Hall\n2-storey Extension **529 sqm**\" = 1,000 sqm / 10,763.90 sq ft (Area Schedule rows 58–61). A 20%\nuplift is therefore a 200 sqm enlargement of a new-build extension attached to a building within\na Grade II* Registered Park and Conservation Area, not a fit-out variation — a consent question\nbefore it is a cost question. Masterplan CK carries the same instruction: \"Spa - needs to be\n200m2 bigger\" and \"Ideally to include spa garden\".",
+        "**No external spa garden appears anywhere** in the area schedule or on any masterplan. The\nnearest adjacencies drawn are \"Reinstate loggia\" and \"Reinstate South Pleasure Gardens\", with\nAlign's own \"Yoga deck?\" annotation over the loggia (Masterplan CK). And the vendor's own\nadvisers had not fixed which building the spa occupies — Concert Hall for \"either a spa or\nrestaurant use\", old riding school/stables for \"a spa or other amenity\" (Savills p. 9)."
+       ],
+       "sub": null,
+       "header": false
+      }
+     ],
+     "count": {
+      "label": "Hotel Development",
+      "items": 14,
+      "counts": {
+       "ANSWERED": 3,
+       "PARTIAL": 6,
+       "NOT IN ROOM": 5
+      }
+     },
+     "intro": [
+      "---"
+     ]
+    },
+    {
+     "name": "New Development",
+     "items": [
+      {
+       "n": "1",
+       "q": "Are there more detailed design plans and cost assessments for:",
+       "status": null,
+       "statusLine": null,
+       "body": [
+        "*No cost assessment exists for any of the five. There is no forward cost plan of any kind in the\ndata room — see \"Hotel Development\" item 4 in the second half. The design position differs by\nbuilding:*"
+       ],
+       "sub": null,
+       "header": true
+      },
+      {
+       "n": "1a",
+       "q": "…the new bedroom wing",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** The \"Proposed South Wing\" appears only as a coloured footprint on the masterplan",
+       "body": [
+        "**NOT IN ROOM.** The \"Proposed South Wing\" appears only as a coloured footprint on the masterplan\n(Masterplan p. 1; Brochure p. 7), with Align's own annotation \"9 bedrooms\" (Masterplan CK). The\narea schedule carries a single related line, \"New wing F&B Ballroom / lounge 127 sqm\"\n(Area Schedule row 12) — and that line is absent from the earlier brochure revision\n(Brochure p. 12), so even the use is unsettled. No plan, no elevation, no section, no schedule\nof accommodation. Consent position: \"An application has not yet been submitted to add an\nadditional wing to the main house\" (Savills p. 7).",
+        "Note the key-count consequence: 17 Main House + 43 Stables = 60 keys (Key Plans pp. 6, 10;\nArea Schedule A1). If the South Wing carries nine bedrooms, the scheme is 69, not 60. Savills\ndescribes it as adding \"further hotel keys based on the preferences of the chosen operator\"\n(Savills p. 9) and gives the whole as a 65-key hotel (p. 9) — a third figure. The room contains\nno reconciled key count."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "1b",
+       "q": "…the Courtyard",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** The consented design exists and is identified drawing by drawing, but the drawings",
+       "body": [
+        "**PARTIAL.** The consented design exists and is identified drawing by drawing, but the drawings\nare not in the room. LBC condition 2 lists the approved set: \"21-01/A; PL300D; PL301C; PL302C;\nPL303B; PL304B; PL305D; PL306C; PL320C; PL321C; PL322B; PV300B … PV340; SL10C; SL11B; SL12B;\nSL326A; SL327; SL328; SL329; and SL330\" (LBC p. 2). The 2021 Design & Access Statement describes\nthe scheme building by building (JSA §§5.1–5.4, 7.1–7.11, 8.1–8.8) and reproduces South Courtyard\nand Riding School elevations, original and adjusted (JSA pp. 27–28). The 2025 re-use as 43 guest\nrooms is drawn only at concept level (Key Plans pp. 11–12).",
+        "*Ask:* the approved drawing set named in condition 2."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "1c",
+       "q": "…the Riding School",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** Same consented set. JSA describes the restoration in detail — interior returned to a",
+       "body": [
+        "**PARTIAL.** Same consented set. JSA describes the restoration in detail — interior returned to a\nsingle two-storey space with all internal partitions, stairs, lath and plaster ceilings and the\nfirst-floor structure removed (§6.3); exposed timber truss roof restored as a functioning\nstructural element (§6.4); slates removed and relaid with insulation between rafters (§6.5);\nlean-to laundry and WC block and the glazed roof between the buildings removed (§6.6); cast\naluminium rainwater goods with additional downpipes (§6.7); Wyatt fenestration and lunettes\nreinstated (§6.9–6.13); lime mortar repointing (§6.14). For the 2025 use, the room gives\n\"Riding House Restaurant + 230sqm Mezzanine, 641 sqm / 6,899.66 sq ft\" (Area Schedule row 71) and\na single-line plan showing a 411 sqm restaurant with a finishing/show kitchen at the apsidal end\nand guest WCs at the west end (Key Plans p. 11). Covers are printed as \"**x covers**\" — left\nblank."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "1d",
+       "q": "…the Spa – Concert Hall",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** Area split only (471 sqm existing + 529 sqm new two-storey extension = 1,000 sqm,",
+       "body": [
+        "**PARTIAL.** Area split only (471 sqm existing + 529 sqm new two-storey extension = 1,000 sqm,\nArea Schedule rows 58–61), one preliminary perspective sketch (Brochure p. 11), and a reference\nimagery page (Brochure p. 10). No plan, no section, no schedule of spa accommodation."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "1e",
+       "q": "…the new houses",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** Confirmed by the room itself — see Residential Development item 1. Savills gives",
+       "body": [
+        "**NOT IN ROOM.** Confirmed by the room itself — see Residential Development item 1. Savills gives\nquantum, bedroom counts, GIA, plot sizes, indicative positions and a specification brief, and\nstates no design. EPR shows only an \"Indicative location for low density housing in replacement\nfor floorspace sacrificed elsewhere on estate\" (Brochure p. 7)."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "2",
+       "q": "We will also need infrastructure costs for road access, and utilities (incl. drainage)",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** No infrastructure cost of any kind. The consented new access (15/07051/FUL, 23",
+       "body": [
+        "**NOT IN ROOM.** No infrastructure cost of any kind. The consented new access (15/07051/FUL, 23\nSeptember 2015) is a decision notice only, with no cost and a commencement deadline that passed\non 23 September 2018 (cluster index B, vision mop-up). Savills notes \"An application has already\nbeen approved for a new entrance to the site by the North Lodge, meaning that the current\nentrance could be utilised as a private resident's access point\" (Savills p. 7) — a use\nproposition, not a cost."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "3",
+       "q": "Need cost for landscaping, including pools",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** Greenway's only external line, \"Localised Landscaping & External Works,",
+       "body": [
+        "**NOT IN ROOM.** Greenway's only external line, \"Localised Landscaping & External Works,\n1 item, **£2,000,000**\" (Greenway p. 8), is historic, Main-House-adjacent and unbroken down; it\nis not a forward landscape cost. The masterplan sets out substantial landscape scope with no\ncosts attached — reinstate North and South Pleasure Gardens, reinstate parkland, reinstate the\nlandscaping avenue, new loggia/pergola, reinstate loggia, \"Long water banks to be strengthened\",\n\"Wartime buildings PDL removed\" (Masterplan p. 1; Brochure p. 7)."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "4",
+       "q": "M&E costs to include renewables",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** No forward M&E cost. The renewables position is described but not priced: a",
+       "body": [
+        "**NOT IN ROOM.** No forward M&E cost. The renewables position is described but not priced: a\nwater-based heat pump system with permission, part implemented; a geothermal heat pump proposed\nfor the courtyard buildings; an *Energy Report* by **Ecovision** named but not supplied\n(JSA §3.5). Greenway's historic MEP figure is a single undifferentiated allowance\n(Greenway p. 8)."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "5",
+       "q": "External lighting proposals",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** Principle and process only: \"Lights will be incorporated at all entrances and",
+       "body": [
+        "**PARTIAL.** Principle and process only: \"Lights will be incorporated at all entrances and\nexternal steps to ensure safe levels of visibility. Details of lighting will be submitted for\napproval to the Wycombe District Council for approval at the appropriate stages. These will be\ndesigned to keep light pollution to a minimum and maintain the character of a country house\nestate\" (JSA §13.9). No lighting design, no drawings, no cost. Note the lighting condition would\nsit on the FUL, which is absent."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "6",
+       "q": "External signage proposals",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** Nothing on signage anywhere — no strategy, no drawings, no advertisement consent.",
+       "body": [
+        "**NOT IN ROOM.** Nothing on signage anywhere — no strategy, no drawings, no advertisement consent.\nFor a Grade I building in a Conservation Area within a Grade II* Registered Park, signage will\nneed listed building consent and, for anything illuminated or off-building, advertisement\nconsent."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "7",
+       "q": "River wall assessment",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM — but there is a strong pointer the vendor can be asked to produce.** The masterplan",
+       "body": [
+        "**NOT IN ROOM — but there is a strong pointer the vendor can be asked to produce.** The masterplan\nannotates \"**Long water banks to be strengthened**\" (Masterplan p. 1; Brochure p. 7), and the\ntitle registers record 2km of Thames frontage. No river wall or bank condition assessment is in\nthe room.",
+        "Outside the room, the public planning record carries **21/05417/FUL**, described as \"works to 650\nmetres of riverbank to prevent further erosion\" (`Research/planning-file-and-precedents.md`,\nPart 1 application table). That application is not in the data room and its status is unverified.",
+        "*Ask:* 21/05417/FUL and any riverbank/river wall condition report, plus the Environment Agency\npermitting position for works to the bank."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "8",
+       "q": "Need for dredging",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** Nothing on dredging, silt levels, the Long Water, the inlet, or navigation. The",
+       "body": [
+        "**NOT IN ROOM.** Nothing on dredging, silt levels, the Long Water, the inlet, or navigation. The\nroom records that the site \"benefits from river frontage and an inlet to the Thames, enabling\ndirect access for boats\" (Savills p. 7) and proposes a floating restaurant of 75 sqm\n(Area Schedule row 74), both of which imply a depth requirement nobody has evidenced."
+       ],
+       "sub": null,
+       "header": false
+      }
+     ],
+     "count": {
+      "label": "New Development",
+      "items": 12,
+      "counts": {
+       "ANSWERED": 0,
+       "PARTIAL": 4,
+       "NOT IN ROOM": 8
+      }
+     },
+     "intro": [
+      "---"
+     ]
+    },
+    {
+     "name": "Residential Development",
+     "items": [
+      {
+       "n": "1",
+       "q": "There is no design for the houses, only the sizes",
+       "status": "ANSWERED",
+       "statusLine": "**ANSWERED — the observation is correct, and the room is more specific than \"sizes\".** What",
+       "body": [
+        "**ANSWERED — the observation is correct, and the room is more specific than \"sizes\".** What\nexists (all Savills, October 2025, non-Red-Book and expressly \"not a formal valuation\",\npp. 2, 58):",
+        "- Quantum and mix: \"a maximum of **12 new branded residences**. The unit mix comprises **5-bed\n  and 6-bed houses only**\" (p. 57) — five 5-bed in the Meadows, three 6-bed Riverside\n  North/Woodlands, four 6-bed Riverside South (pp. 5, 51).\n- Sizes: \"the 5-bed units have a GIA of **5,200 sq ft** while the 6-beds are **5,700 sq ft**\"\n  (p. 51); 65,900 sq ft in total.\n- Plots: \"a private plot of a minimum 1-1.5 acres\" (pp. 5, 50).\n- Positions: twelve numbered positions across three zones on a masterplan extract (p. 50), with\n  zone areas — Meadows North ~4.5 acres, Meadows ~8 acres, Riverside North/Woodlands ~3 acres,\n  Riverside South ~5 acres (p. 11).\n- A design brief, but not a design: minimum 3m ceiling heights, lockable storage, all bedrooms\n  en-suite, a wine room, prep-kitchen and multi-functional gym/study space, service access to the\n  back kitchen \"thus avoiding the main entrance\", air-conditioning, underfloor heating and smart\n  home control, traditional/historic exterior with locally sourced materials and a modern\n  internal layout (p. 55).\n- Tenure: **\"The properties will all be sold on long leasehold titles (999 years) with a private\n  garden allocated to each unit\"** (p. 47). This sits against the deal's freehold assumption and\n  remains an open structuring ruling.",
+        "EPR shows only an indicative housing zone (Brochure p. 7); Align's own Masterplan CK marks twelve\nhouse positions as blue dots. No architect is appointed for the houses — Savills assumes\n\"Architecture, interior design, exterior design and landscaping will all be carried out by\ninternationally recognised professionals of the highest calibre\" (p. 47)."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "2",
+       "q": "Can we build an outline cost assessment on this basis?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** The room supplies unit count, GIA per unit, total GIA, plot sizes, indicative",
+       "body": [
+        "**PARTIAL.** The room supplies unit count, GIA per unit, total GIA, plot sizes, indicative\npositions, specification requirements and a sustainability target (\"aimed to be net zero …\nsustainable heating and water harnessed from the Thames\", p. 55), plus Savills' amenity split\nbetween private and shared (p. 56, including covered garage parking private to each house and a\nprivate outdoor pool per house, p. 54).",
+        "It supplies none of: a design, levels or cut-and-fill, ground conditions (the only ground\ndocument is a named but unsupplied **Phase 1 Contamination Assessment**, JSA §13.5 — a desk study,\nnot a ground investigation), tree constraints at plot level, flood levels for the Meadows,\nacoustic mitigation design, infrastructure routes, or a build programme. Savills' own\nqualification: \"All of the recommended buildable area is above ground\" (p. 47)."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "3",
+       "q": "Need costs for road access, and utilities (incl drainage)",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** No costs. Note the drainage starting point is adverse — no mains sewer, cess",
+       "body": [
+        "**NOT IN ROOM.** No costs. Note the drainage starting point is adverse — no mains sewer, cess\npits, tankered off site, \"no proposed change\" (JSA §2.8) — and the houses sit at the far south of\nthe estate, remote from the existing arrangement."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "4",
+       "q": "Need cost for landscaping, including pools",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** Scope is specified without cost: each house on a 1–1.5 acre plot with \"a",
+       "body": [
+        "**NOT IN ROOM.** Scope is specified without cost: each house on a 1–1.5 acre plot with \"a\nlandscaped private garden, allocated directly outside the Property … completely private space for\noutside dining and entertainment as well as **their own private swimming pool**\", natural\nshielding, south or south-west facing where possible, mature trees \"used to minimise the growth\ntime\", landscaping by \"an internationally regarded professional\" (Savills p. 54)."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "5",
+       "q": "M&E costs to include renewables",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** No cost. Savills' assumption is net-zero houses with heating and water harnessed",
+       "body": [
+        "**NOT IN ROOM.** No cost. Savills' assumption is net-zero houses with heating and water harnessed\nfrom the Thames (pp. 10, 55) — a river-source scheme that has never been costed, permitted or\ncapacity-tested in any document in the room."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "6",
+       "q": "Need for sound protection/fencing given the noisy road",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL — the problem is well evidenced; the mitigation is assumed, not designed.**",
+       "body": [
+        "**PARTIAL — the problem is well evidenced; the mitigation is assumed, not designed.**",
+        "Evidence of the problem: \"The site experiences road noise from the A4155, particularly in the\nsouthern part of the site where the residences are proposed to be built. There is also often\nheavy traffic on this road which, at certain times of day, can back up outside the main entrance\nto Fawley Court\" (Savills p. 10). Three of the four development zones are affected: Meadows\nNorth, Meadows and Meadows South each \"on the western edge of the site, backing onto the Marlow\nRoad (A4155) and subject to significant road noise\" (p. 11). \"The road noise is a key threat and\ndisturbance to the site, significantly impeding on the sense of peace and tranquillity expected\nin a rural property\" (p. 47).",
+        "Mitigation: an assumption — \"Following extensive acoustic tests and noise cancellation\nstrategies, road noise in the Meadows area will be significantly reduced\" (p. 47) — and an\nexpectation — \"Noise mitigation strategies are expected to include planting additional trees,\nhedge laying, water features and **building a wall on the site boundary**. Extra consideration\nshould be made for seasonal changes, when there may be less privacy and increased road noise due\nto deciduous trees shedding their leaves\" (p. 54).",
+        "**No acoustic test, survey or assessment exists in the room** — for the residences or for the\nhotel. This is the same gap as Historic Construction Costs item 12."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "7",
+       "q": "Need power supply as cannot have oil fired. Drainage if not on mains sewer?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL — the drainage limb is answered definitively; the power limb is not.**",
+       "body": [
+        "**PARTIAL — the drainage limb is answered definitively; the power limb is not.**",
+        "*Drainage — answered:* there is **no mains sewer**. \"There are no public sewers on site. At\npresent foul drainage is discharged to various cess pits across the estate and is periodically\ncollected and taken off site to be disposed of at a sewage treatment facility. There is no\nproposed change to the current foul sewage drainage system\" (JSA §2.8). Any residential scheme\nneeds either a package treatment plant with a discharge consent, a new mains connection, or an\nextension of the tankering arrangement — none of which is addressed anywhere in the room.",
+        "*Power — not answered:* the current position is that estate buildings ran on oil, \"recently been\ntotally upgraded\", with a water-based heat pump system permitted and part implemented, and a\ngeothermal heat pump proposed for the courtyards (JSA §3.5). Savills assumes Thames-sourced\nheating and water for the houses (pp. 10, 55). There is no grid capacity statement, no DNO\ncorrespondence, no connection agreement and no load assessment. Align's own Masterplan CK\nmark-up posits two sub-stations and two supply routes — a hypothesis, not evidence."
+       ],
+       "sub": null,
+       "header": false
+      }
+     ],
+     "count": {
+      "label": "Residential Development",
+      "items": 7,
+      "counts": {
+       "ANSWERED": 1,
+       "PARTIAL": 3,
+       "NOT IN ROOM": 3
+      }
+     },
+     "intro": [
+      "---"
+     ]
+    },
+    {
+     "name": "Planning",
+     "items": [
+      {
+       "n": "1",
+       "q": "There doesn't appear to be too many difficult conditions other than materials and sign off by heritage.",
+       "status": "ANSWERED",
+       "statusLine": "**ANSWERED for the consent that is in the room — but that consent is half the picture.**",
+       "body": [
+        "**ANSWERED for the consent that is in the room — but that consent is half the picture.**",
+        "The reading is correct for 23/07590/LBC. All seven conditions are in the room verbatim\n(LBC pp. 1–3):",
+        "1. Works to begin within three years of the consent date — i.e. **by 6 December 2027**.\n2. Build in accordance with the approved application and the listed drawings (set out in full at\n   LBC p. 2), unless otherwise agreed in writing.\n3. **Pre-commencement (Riding School):** method statement for the structural reinforcement\n   process \"with regard to the movement within the Riding School\"; the timber specialist's report\n   on timbers requiring replacement; methodology for the reinforcing ply diaphragm to the\n   internal roof, including eaves details and fixing methods.\n4. **Pre-external-finish:** schedule and/or samples of materials and finishes including rainwater\n   goods, mortar and pointing. For the avoidance of doubt — black cast aluminium rainwater goods;\n   slate roof coverings as existing with existing slates reused where possible; new brickwork\n   matching existing in tone, dimensions, colour and bond; traditional lime mortar and pointing;\n   **a sample panel of brickwork and mortar constructed on site and retained for the duration of\n   the works**; no paint removal from external historic brickwork without an approved methodology\n   statement.\n5. **Pre-installation (joinery):** full door and window schedule with 1:20 and 1:5 sectional\n   drawings showing profiles and depths of glazing bars, sills, reveals and glazing; all windows\n   and doors timber; ironmongery details; casements vertically hung, flush fitting, without\n   quarter light openings or trickle vents; window units installed with lime mortar — \"spray foam\n   is unacceptable\".\n6. **Pre-commencement (historic courtyard walls and laundry building):** internal reinforcement\n   methodology and materials.\n7. **Pre-commencement (internal works, including insulation):** schedule/details of all works;\n   all internal walls of existing and restored historic structures to be lime plastered unless\n   otherwise agreed.",
+        "**No section 106, no CIL, no ecology, no highways, no parking, no drainage, no landscape and no\nhours-of-use condition** appears on this notice. Three of the seven are pre-commencement gates,\nand nothing in the room evidences that any has been discharged or that works have commenced.",
+        "The qualification: this is the **listed building consent only**. Its companion **23/07589/FUL is\nnot in the data room**, and the FUL is where ecology, highways, drainage, landscape, materials\nfor non-listed elements and operational conditions normally sit. The masterplan labels the\ncourtyards \"Consented\" (Masterplan p. 2), but on the strength of the LBC alone that label cannot\nbe verified for the FUL, and nothing establishes a lawful hotel use."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "2",
+       "q": "Is there any paperwork regarding the pre-app discussions?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL — one pre-app response is in the room in full; nothing for the current schemes.**",
+       "body": [
+        "**PARTIAL — one pre-app response is in the room in full; nothing for the current schemes.**",
+        "Reproduced verbatim at JSA Appendix II (pp. 24–26): the English Heritage pre-application advice\nletter, our ref **PA00013192**, dated **5 July 2010**, from **Richard Peats**, Historic Buildings\nand Areas Adviser, to **Mr John Phillips of Phillips Planning Services Ltd**, copied to\n**Martin Andrew, Conservation Officer, Wycombe District Council**, following a site meeting on\n24 June 2010 with the client and Marcus Binney. JSA records two pre-app submissions: one across\nthe Fawley Court Estate in **August 2009** (response ref EH/PA00010803, §4.1) and one in\n**June 2010** on more detailed drawings (§3.2). The adjusted elevations produced in response are\nat JSA pp. 27–28.",
+        "What is missing: any pre-app paperwork for the **2023 applications** (23/07589/FUL and\n23/07590/LBC), for the **2025 EPR 60-key scheme**, or for the **residential**. On the residential\nSavills reports only hearsay: \"Pre-application discussions have taken place for the development\nof residences in the grounds, and we understand that these have been, so far, well-received\nhowever, an application has yet to be made\" (Savills p. 7). No note, letter, minute or officer\nresponse sits behind that sentence anywhere in the room — and it is load-bearing for the entire\nenabling-development case."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "3",
+       "q": "Are there any particular designs for the new build / specific direction the planners want?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL — for the courtyard group the direction is in the room in detail; for everything else",
+       "body": [
+        "**PARTIAL — for the courtyard group the direction is in the room in detail; for everything else\nthere is none.**",
+        "Historic England's 2010 letter (JSA pp. 24–26) gives specific direction: restoring the riding\nschool's original form is \"of greater value than retaining the later fabric\" and full restoration\nof the original window form \"is considered to be the best option\"; no objection in principle \"to\nthe principle of creating two courtyards of service buildings on the site of the current service\nbuilding courts\"; restoration of the chapel \"welcomed\"; the WWII-era and later buildings\nsouth-west of the house should be removed \"in due course… to allow the restoration of the\nlandscape\"; **\"Any application should therefore be accompanied by a master plan that places the\nneed for these buildings in the context of how the estate as a whole is to be managed. It should\nalso provide a clear rationale outlining why the level of accommodation provided is necessary\"**;\non materials, the exterior was \"bare brick laid in a Flemish bond with dark red stretchers and\nblue headers\", lime-washing may be the best way to a unified finish, and paint striping must be\ncarried out with extreme care; on design, the south elevation centrepiece \"does look a little\nodd\", the first floor window level \"looks a little uncomfortable\", a plat band or simple plinth\nwould be worth considering, the veranda's \"rather vernacular looking timber posts and arch\nbraces… do not work well with the classical buildings at the north and south ends\", and the lower\npart of the west wall of the dairy wing must be retained.",
+        "LBC conditions 4, 5 and 7 then codify materials, joinery and internal finishes (see item 1).\nJSA §5.6 states the resulting palette: Flemish bond brickwork, slate roofs, generally two storeys,\npainted timber sash windows, painted cast aluminium rainwater goods.",
+        "Nothing exists for the new houses, the South Wing, the Concert Hall extension or the gatehouses\nbeyond two preliminary sketches (Brochure p. 11)."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "4",
+       "q": "Any ecological requirements been mentioned in relation to planning? Set out in the conditions",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** **23/07590/LBC carries no ecological condition** (LBC pp. 1–3) — as would be normal",
+       "body": [
+        "**PARTIAL.** **23/07590/LBC carries no ecological condition** (LBC pp. 1–3) — as would be normal\nfor a listed building consent; ecology conditions would sit on the FUL, which is absent from the\nroom.",
+        "Ecological work exists and is named: \"An Ecological Survey has been carried out on the site.\nPlease refer to *Ecological Scoping Survey* prepared by **Aspect Ecology** and an updated report\nprepared by **Catherine Bickmore**\" (JSA §13.4). A BS5837 tree survey has also been carried out\n\"in accordance with the council requirements\" — \"there are no Grade A or veteran trees on site …\nnone of the important trees highlighted by Christopher Gallagher are affected by the proposals\nand tree removals are limited to shrubs and small self seeded trees\" (JSA §2.9, §3.4, §5.8.2).\nNone of these reports is in the room, and all predate the 2023 applications and the 2025 scheme.",
+        "No biodiversity net gain assessment or metric is in the room. Any fresh application for the\n60-key scheme or the residences would engage mandatory BNG, and the registered park, woodland\nand river corridor make that a live design and land-take constraint, not a form-filling exercise."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "5",
+       "q": "Any conditions available? Mainly heritage confirmation of materials",
+       "status": "ANSWERED",
+       "statusLine": "**ANSWERED.** Yes — the full decision notice for 23/07590/LBC is in the room with all seven",
+       "body": [
+        "**ANSWERED.** Yes — the full decision notice for 23/07590/LBC is in the room with all seven\nconditions and their reasons set out verbatim (LBC pp. 1–3; see item 1 above for the list).\nMaterials is indeed the operative external condition (condition 4), and heritage sign-off runs\nthrough conditions 3 to 7. Decision dated 6 December 2024, signed Eric Owens, Service Director of\nPlanning & Environment; Decision Making Officer Ray Martin, Case Officer Heather Smith; applicant\n**Cherrilow Limited**, agent Phillips Planning Services Limited (LBC pp. 1, 4).",
+        "No conditions are available for any other consent. The seven older minor-works notices\n(15/05907, 15/05908, 17/05210, 17/05211, 18/05598, 18/05599, 15/07051) are in the room as scanned\nnotices; all are permissions to Cherrilow Limited carrying standard three-year commencement\nconditions, and **all of their commencement deadlines have passed** — the latest on 26 April 2021\n(cluster index B, vision mop-up). And the FUL's conditions are unseen."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "6",
+       "q": "Has bat, soil, traffic surveys been commissioned?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL — two of the three were commissioned; none is in the room; the third has no trace.**",
+       "body": [
+        "**PARTIAL — two of the three were commissioned; none is in the room; the third has no trace.**",
+        "- **Soil:** yes, in part. \"A Land Contamination report has been carried out to identify issues\n  regarding land contamination on site. Please refer to the *Phase 1 Contamination Assessment*\n  prepared by **Opus Joynes Pike**\" (JSA §13.5). Not supplied. A Phase 1 is a desk study — there\n  is no ground investigation, no sampling, no geotechnical or bearing-capacity data anywhere in\n  the room, for the courtyards or for the housing zones.\n- **Bat:** an *Ecological Scoping Survey* by **Aspect Ecology** and an update by **Catherine\n  Bickmore** are named (JSA §13.4). Neither is supplied, and neither is stated to include bat\n  emergence or activity surveys. A Grade I house, a chapel, a derelict water tower and derelict\n  timber outbuildings would ordinarily require them, and their season (roughly May to September)\n  puts them on the critical path for any application.\n- **Traffic:** **no trace at all.** No transport assessment, no travel plan, no traffic survey, no\n  highways correspondence. Savills records that traffic on the A4155 \"at certain times of day, can\n  back up outside the main entrance to Fawley Court\" (p. 10). The 2015 access consent\n  15/07051/FUL carried access-first sequencing and visibility-splay conditions (cluster index B,\n  vision mop-up), whose discharge is unevidenced and whose commencement deadline passed on\n  23 September 2018."
+       ],
+       "sub": null,
+       "header": false
+      }
+     ],
+     "count": {
+      "label": "Planning",
+      "items": 6,
+      "counts": {
+       "ANSWERED": 2,
+       "PARTIAL": 4,
+       "NOT IN ROOM": 0
+      }
+     },
+     "intro": [
+      "**Vendor-facing half — running total (53 items): ANSWERED 6 · PARTIAL 24 · NOT IN ROOM 23**",
+      "---\n---"
+     ]
+    }
+   ],
+   "intro": ""
+  },
+  {
+   "title": "Qs for Align Partners Call on Friday",
+   "sections": [
+    {
+     "name": "Operations",
+     "items": [
+      {
+       "n": "1",
+       "q": "Do the floor plans work as a hotel? They appear to.",
+       "status": "JUDGMENT",
+       "statusLine": "**JUDGMENT** (operator and architect). What the room gives: existing Main House plans for",
+       "body": [
+        "**JUDGMENT** (operator and architect). What the room gives: existing Main House plans for\nbasement, ground, mezzanine, first and second floors (`2.3.1`–`2.3.5`) with whole-floor GIAs —\nbasement 1,475.2 sqm / 15,878.9 sq ft **including tunnels**, ground 877.2 sqm / 9,442.1 sq ft,\nmezzanine 54.4 sqm / 585.5 sq ft **excluding stairwells**, first 820.5 sqm / 8,831.7 sq ft,\nsecond 866.8 sqm / 9,330.8 sq ft **including eave space** — plus EPR's room-by-room key plans and\nthe area schedule.",
+        "Two health warnings that bear on any judgment made from them. First, the inclusion bases are\ninconsistent floor to floor, so the plans do not aggregate. Second, and more seriously, the\nexisting plans are not measured: the first and second floor drawings state that details are\n\"taken from proposed design drawings, were not measured on site and should be viewed as\napproximate\" (Floor Plans `2.3.4` p. 1, `2.3.5` p. 1), and EPR's own note says its areas are\n\"approximate based on a design stage model and may not reflect the final as-built areas\"\n(Key Plans p. 9). **There is no measured survey of any building on the estate in the room.**",
+        "The area bases also conflict: Main House GIA reads 2,202 sqm on the standalone schedule\n(Area Schedule row 33), 1,815 sqm on the brochure revision (Brochure p. 12), 3,855 sqm GIFA in the\ncost report (Greenway p. 8) and 44,800 sq ft ≈ 4,162 sqm in Savills' existing-buildings table\n(Savills p. 8). Any layout judgment should name which basis it is working on."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "2",
+       "q": "Is the kitchen sufficient? The Kitchen looks too small and in the wrong location, we also need to clarify the kitchen height",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** Location is answered, size and height are not.",
+       "body": [
+        "**PARTIAL.** Location is answered, size and height are not.",
+        "The main kitchen sits in the **basement** of the Main House, in the north-east range, with kitchen\nstores immediately east, private dining and a screening room adjacent, hotel stores to the north\nand the boiler room, staff facility, wine cellars and the Vaults nearby; a second kitchen area\nsits in the south-west annexe wing across the link corridor (Key Plans p. 8, key areas 1–11). The\nground-floor restaurant — Dining Room (3) and Print Room (4) — is directly above, with the lift\n(12) beside it and the Great Hall (1) serving as reception (Key Plans p. 7).",
+        "EPR has already written the criticism onto the drawing: \"**Very small kitchen — Relocate or\nextend to 1**\" against the basement kitchen (1 being the Back of House / current kitchen area),\n\"**Too far**\" against the run from the basement kitchen out to the annexe, and \"**Too small HK**\"\nagainst Housekeeping (Key Plans p. 8). The ground-floor annexe rooms carry \"Finishing kitchen?\"\n(p. 7).",
+        "Missing: kitchen areas (the basement plan gives only a whole-floor GIA including tunnels),\n**ceiling heights anywhere in any building**, equipment schedules, extract routes, and a measured\nsurvey. Height cannot be resolved from the room."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "3",
+       "q": "Is the lift sufficient? Yes for the number of rooms, need to look at size of lfit and quality of lift and communication portal in lift.",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** Count and position are answered; specification is not. The Main House has **one**",
+       "body": [
+        "**PARTIAL.** Count and position are answered; specification is not. The Main House has **one**\nlift, marked as key area (12) on the ground-floor plan beside the Dining Room and the annexe link\n(Key Plans p. 7). The courtyard accommodation has none designed — the Stables upper-ground plan\ncarries EPR's annotation \"**Need 1-2 lifts**\" (Key Plans p. 12), which matters because 21 of the\n43 courtyard keys are at upper-ground level (p. 12).",
+        "Nothing in the room states car size, capacity, speed, machine type, shaft dimensions, or any\ncommunications provision."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "4",
+       "q": "Storage capacity?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** Storage is located but nowhere quantified. Main House basement: Hotel stores,",
+       "body": [
+        "**PARTIAL.** Storage is located but nowhere quantified. Main House basement: Hotel stores,\nKitchen stores, Stores (6), wine cellars (10), the Vaults / wine tasting (8), and Housekeeping —\nthe last annotated \"Too small HK\" (Key Plans p. 8). Courtyard: the 2021 consented scheme provided\n\"a storage space at the northern end of the east range\" of the North Courtyard, deliberately\nplaced there to address overlooking of the adjacent Old Forge property (JSA §8.3), plus waste and\nrecycling storage in the north courtyard (§13.7).",
+        "The problem is that the 2025 scheme takes those ranges for guest rooms, which is exactly what\nEPR's own annotation asks: \"WHERE DOES STAFF ACCOMMODATION & STORAGE GO NOW BEDROOMS IN NORTH\nCOURTYARD?\" (Key Plans p. 11). **No storage areas appear anywhere in the area schedule.**"
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "5",
+       "q": "Back of house spaces?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL, and the scheduled quantum looks light.** What is scheduled: \"LODGES (STAFF FACILITIES",
+       "body": [
+        "**PARTIAL, and the scheduled quantum looks light.** What is scheduled: \"LODGES (STAFF FACILITIES\n+ BOH)\" 709 sqm / 7,631.61 sq ft (Area Schedule rows 62–69) plus \"The Stables BOH Building\"\n184 sqm / 1,980.56 sq ft (row 72) — **893 sqm / 9,612 sq ft in total**. Across 60 keys that is\nabout 160 sq ft per key, and it includes staff accommodation, not just working BOH.",
+        "Main House BOH is **not quantified at all**. The basement labels exist — Back of House (current\nkitchen), boiler room, housekeeping, security and goods in, staff facility, stores, kitchen areas,\nlower hall, washrooms (Key Plans p. 8) — but carry no areas, and the only figure available is the\nwhole-floor 1,475.2 sqm including tunnels. The Stables plan adds a prep kitchen, staff canteen/WC\nand the 184 sqm BOH building beside the Riding School (Key Plans p. 11)."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "6",
+       "q": "Clarity of Kitchen for Riding Stables, need to s be attached to Riding Area dining room and perhaps becomes the main production kitchen.",
+       "status": "ANSWERED",
+       "statusLine": "**ANSWERED as to what is drawn.** A kitchen attached to the Riding School dining room already",
+       "body": [
+        "**ANSWERED as to what is drawn.** A kitchen attached to the Riding School dining room already\nexists in the scheme, in two parts: a \"**Prep kitchen**\" together with the \"Staff canteen/wc\"\ninside the 184 sqm Back of House building immediately north of the restaurant, and a\n\"**Finishing/show kitchen**\" at the apsidal east end of the 411 sqm restaurant itself, with guest\nWCs at the west end (Key Plans p. 11).",
+        "The 2021 consented scheme is consistent: \"The building known as the Old Stable Block will be\nrenovated to provide kitchen, laundry, staff dining facilities and WCs to support the use of the\nrestored Riding School\" (JSA §10.1), the Old Stable Block being the range directly north of the\nRiding School apse (§2.3.2).",
+        "Whether that prep kitchen becomes the **main production kitchen** for the estate is the open\ncall — and it is the obvious answer to the Main House basement kitchen problem at item 2, since\nit sits beside the 43 courtyard keys and the 411 sqm restaurant. The room gives no kitchen areas\nor equipment schedules to size it."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "7",
+       "q": "The washrooms appear to be small in areas? Do we have more details?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** Locations only. Main House ground floor: washrooms (13) beside Back of House (10),",
+       "body": [
+        "**PARTIAL.** Locations only. Main House ground floor: washrooms (13) beside Back of House (10),\ncarrying EPR's annotation \"**Check size - wc look small**\" (Key Plans p. 7). Main House basement:\nwashrooms (11) (p. 8). Riding School: guest WCs at the west end of the restaurant (p. 11). The\n2021 consent provided new facilities in the Old Stable Block — \"toilet areas for men and women,\nas well as a unisex accessible WC. For further details of the facilities provided please see\nPL306\" (JSA §7.11), and the lean-to laundry and WC block east of the Riding School is to be\ndismantled with facilities relocated (§2.3.6).",
+        "**Drawing PL306 is not in the room** — it is named in LBC condition 2 as an approved drawing\n(LBC p. 2), so it exists and can be asked for. No washroom areas or fixture counts anywhere."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "8",
+       "q": "The walk to the Courtyard, what is this distance and flow of the walkway? This will need to be covered for the luxury brands.",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL — the route is identified, the distance is not stated anywhere, and the leg that",
+       "body": [
+        "**PARTIAL — the route is identified, the distance is not stated anywhere, and the leg that\nmatters is uncovered.**",
+        "The route: the Main House ground-floor plan marks \"**TO COURTYARDS**\" leading west off the annexe\nwing (Key Plans p. 7). The historic connection is \"by foot from the Main Building via a sunken\npathway leading from the west elevation of the Mackenzie Wing past the Dairy Range & Chapel to\nthe Riding School\" (JSA §2.2), and its current condition is poor — \"Access across the site, which\nis to all intent and purposes derelict, is via narrow paths. The redevelopment of the site\ncreates the opportunity to increase and improve accessibility and provide better circulation\"\n(JSA §3.6). Most existing paths are gravelled apart from the paved path to the Mackenzie wing;\nnew or widened paths within the courtyards are to be stone paving set in sand (§5.5).",
+        "Covered access exists **within** the courtyards only: segmental brick arcades along the east and\nwest wings of the South Courtyard (JSA §5.3, §7.4) and timber colonnades in the North Courtyard\n(§8.5). **Nothing covers the Main House-to-courtyard leg** — the one the question is about.",
+        "No dimension is available: every drawing in the room is marked \"do not scale\", the site plans are\nnot scaleable, and no measured survey exists. Distance should be taken off the CAD (`2.8`) or\nrequested from EPR."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "9",
+       "q": "Could the Media room and Study be Guest Rooms?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** Both are located and the question is already live on the drawing. Media Room (8) and",
+       "body": [
+        "**PARTIAL.** Both are located and the question is already live on the drawing. Media Room (8) and\nStudy (9) sit on the Main House ground floor in the south-west annexe wing, within the block\nmarked \"**POTENTIAL TO ANNEX WING FOR EXCLUSIVE USE**\"; EPR's annotation over them reads \"**Use?\nNot bedrooms?**\", with \"Finishing kitchen?\" beside (Key Plans p. 7).",
+        "The relevant fact the room supplies: the two floors above them are **already** guest rooms — first\nfloor rooms 5 (45 sqm), 6 (37 sqm) and 7 (41 sqm), and second floor 15 (45 sqm), 16 (36 sqm) and\n17 (41 sqm), all in the same annexe wing and all within the 17-key Main House count\n(Key Plans p. 9). So the wing is already part-bedroomed and its ground floor has been left open\ndeliberately, with the exclusive-use option described as \"a design/operational note, not a\nphasing commitment\" (cluster index C).",
+        "Neither room's area is given. And converting Main House rooms needs listed building consent that\ndoes not exist — see Hotel Development item 10."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "10",
+       "q": "How many car park spaces are allowed for in the drawings? Is car parking sufficient?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL — and this is the most consequential number in the section.**",
+       "body": [
+        "**PARTIAL — and this is the most consequential number in the section.**",
+        "The only counted parking anywhere in the data room belongs to the 2021 courtyard scheme:\n\"There is currently no formalised parking on site. Generally, the area beneath the glazed roof\ncanopy to the east of the Riding School is used for up to 4-5 cars. In total around 10 vehicles\ntypically need to be accommodated on site. The proposals will formalize parking provision, and\n**provide space for 11 vehicle spaces** ensuring that vehicle access is as sensitive as possible\nto the setting of the listed buildings\" (JSA §2.10). Plus \"secure storage space for **17\nbicycles** in line with Local Plan Policies\" (§13.8).",
+        "Eleven spaces was sized for a scheme of staff flats, estate offices, a pool and 15 guest rooms —\nnot a 60-key hotel with two restaurants, a 1,000 sqm spa, 12 houses and a 200–500 pax events\npavilion.",
+        "The 2025 scheme locates parking but **counts nothing**: a parking zone (2) north of the Riding\nSchool on both Stables plans (Key Plans pp. 11, 12); and on the brochure masterplan \"Staff\nParking\" at the North Lodge plus **two** \"Guest Parking\" areas, one north of the courtyards and\none beside the Concert Hall (Brochure p. 7). No space count appears in the area schedule or on\nany drawing. Savills adds covered garage parking private to each house (Savills p. 56).",
+        "*Ask:* a parking strategy with counts, and the FUL's parking condition (if any) — which is in the\nabsent 23/07589/FUL."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "11",
+       "q": "Designation and flow of public areas?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** Designation is answered; flow is not drawn.",
+       "body": [
+        "**PARTIAL.** Designation is answered; flow is not drawn.",
+        "Main House ground floor: Great Hall (1) as **Reception**; Gibbons Room (2) as **lounge**; Dining\nRoom (3) and Print Room (4) as **Restaurant**; Wyatt Room (5) and Library (6) as **Bar**; plus\nEast Terrace, Upper East Terrace, North Terrace and South Terrace (Key Plans p. 7). Basement:\nprivate dining, screening room, the Vaults / wine tasting, lower hall (p. 8).",
+        "Areas: Restaurant 122 sqm, Lounge 100 sqm, Bar 115 sqm, East / river view F&B terrace 138 sqm,\nSouth / parkland view F&B terrace 190 sqm, basement FOH private dining/events 175 sqm, new wing\nF&B ballroom / lounge 127 sqm (Area Schedule rows 5–12). Elsewhere: Riding House restaurant\n641 sqm including a 230 sqm mezzanine (row 71), Banquetting House loggia 100 sqm (row 77),\nriverside floating restaurant 75 sqm (row 74), Regatta temporary pavilion 500 sqm for 200–500 pax\n(row 75), and the Concert Hall's 300-seat hall recorded in the 2017 River Club brochure\n(cluster index E, p. 4).",
+        "**No circulation diagram, arrival sequence or flow drawing exists** in the room."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "12",
+       "q": "Designation and flow of public areas to BOH areas?",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** No back-of-house circulation, service route, goods flow or segregation drawing",
+       "body": [
+        "**NOT IN ROOM.** No back-of-house circulation, service route, goods flow or segregation drawing\nof any kind. The only two pointers are the basement \"Security & Goods In\" (4) and EPR's \"**Too\nfar**\" annotation across the basement service run (Key Plans p. 8) — which is a statement that\nthe flow does not currently work, not a description of it."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "13",
+       "q": "Detailed drawings of F&B areas such as Riding School and Concert Hall",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** Riding School: a single-line concept plan showing the restaurant at 411 sqm with a",
+       "body": [
+        "**PARTIAL.** Riding School: a single-line concept plan showing the restaurant at 411 sqm with a\nfinishing/show kitchen at the apse and guest WCs at the west end (Key Plans p. 11), plus the area\nline 641 sqm including a 230 sqm mezzanine (Area Schedule row 71). Covers are printed on the\ndrawing as \"**x covers**\" — deliberately blank. Concert Hall: **no plan at all** — only the area\nsplit (471 sqm plus a 529 sqm new two-storey extension, rows 58–61) and reference imagery\n(Brochure p. 10). No seating layouts, no cover counts, no sections, no detailed drawings for\neither."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "14",
+       "q": "Detailed drawings of Spa Area",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** There is no spa plan in the data room. What exists is the 1,000 sqm area split",
+       "body": [
+        "**NOT IN ROOM.** There is no spa plan in the data room. What exists is the 1,000 sqm area split\n(Area Schedule rows 58–61), a reference imagery page (Brochure p. 10) and one preliminary\nperspective sketch of the Pavilion addition (Brochure p. 11).",
+        "The 2021 consented pool/gym/spa in the South Courtyard is described in text — double-height pool\nhouse with indoor swimming and plunge pools, spa areas in the east range, patent glazing roof\nwith internal timber screen, pool plant in a small brick extension, double-height gym with sauna\naccess (JSA §7.1, §7.3, §7.7) — and drawn on PL301, PL306 and PV327–PV339, all named in LBC\ncondition 2 (LBC p. 2) and **none of them in the room**."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "15",
+       "q": "Scale of bar and covers versa number of bedrooms, the luxury brands require a space of 1.6sq metres per cover. So this should be ok",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL / JUDGMENT.** The area is in the room: Bar **115 sqm** (Area Schedule row 9), comprising",
+       "body": [
+        "**PARTIAL / JUDGMENT.** The area is in the room: Bar **115 sqm** (Area Schedule row 9), comprising\nthe Wyatt Room (5) and Library (6) (Key Plans p. 7). Applying the 1.6 sqm per cover standard the\nquestion states gives roughly **72 covers** against 60 keys. **No cover count is stated anywhere\nin the data room** for any space, so the conclusion is the consultant's arithmetic, not the\nvendor's evidence — but the input is sound and comes from a scheduled area."
+       ],
+       "sub": "Do these areas work?",
+       "header": false
+      },
+      {
+       "n": "16",
+       "q": "Scale of restaurant versus number of bedrooms, I estimate about 70 covers so this will be ok for the main house, if the Courtyard are full there may be an issue with breakfast capacity however, the adjoing room could be used.",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL / JUDGMENT — and the room supports both the estimate and the concern.**",
+       "body": [
+        "**PARTIAL / JUDGMENT — and the room supports both the estimate and the concern.**",
+        "Restaurant **122 sqm** (Area Schedule row 7) = Dining Room (3) plus Print Room (4)\n(Key Plans p. 7). At 1.6 sqm per cover that is about **76 covers**, close to the 70 estimated. The\n\"adjoining room\" is the Gibbons Room (2), scheduled as Lounge at **100 sqm** (row 8) and shown\ndirectly between the restaurant and the bar (Key Plans p. 7) — so the relief the question assumes\nis physically there, at roughly 62 further covers.",
+        "The breakfast exposure is real on the room's own numbers: 17 Main House keys against 43 courtyard\nkeys, so three quarters of the beds are 200-odd metres from the Main House restaurant. The\nstructural answer the drawings already offer is the Riding House restaurant, 411 sqm at ground\nlevel immediately beside the courtyard rooms (Key Plans p. 11) — but its covers are left blank on\nthe drawing, so nobody has sized it."
+       ],
+       "sub": "Do these areas work?",
+       "header": false
+      },
+      {
+       "n": "17",
+       "q": "Sufficiency of kitchen to serve these covers and proximity/access to the restaurant. Or should the upstairs guestrooms, need to explore options on Monday, but the current kitchen location is not ideal.",
+       "status": "JUDGMENT",
+       "statusLine": "**JUDGMENT** (catering consultant, who is not appointed — see Hotel Development item 6 below).",
+       "body": [
+        "**JUDGMENT** (catering consultant, who is not appointed — see Hotel Development item 6 below).\nRoom evidence as at item 2: the kitchen is in the basement, the restaurant on the ground floor\nabove with the single lift beside it, and EPR has already written \"Very small kitchen — Relocate\nor extend to 1\" and \"Too far\" onto the plan (Key Plans p. 8). No kitchen areas, no heights, no\nequipment schedule and no measured survey exist to resolve it. The Riding School prep kitchen\n(item 6) is the alternative the drawings already contain."
+       ],
+       "sub": "Do these areas work?",
+       "header": false
+      },
+      {
+       "n": "18",
+       "q": "Cellar needed for the bar presumably, not if we do not provide draught beer.",
+       "status": "ANSWERED",
+       "statusLine": "**ANSWERED as to whether one exists.** The Main House basement contains **wine cellars** (10) and",
+       "body": [
+        "**ANSWERED as to whether one exists.** The Main House basement contains **wine cellars** (10) and\n**the Vaults (wine tasting)** (8), directly below the ground-floor bar (Key Plans p. 8) — the\nVaults being the vaulted space shown in the estate photography (`2.4.1.1 Basement.jpg`;\nBrochure p. 2). Whether a beer cellar is additionally required is an operator decision. No areas\nare given."
+       ],
+       "sub": "Do these areas work?",
+       "header": false
+      },
+      {
+       "n": "19",
+       "q": "Sufficiency of one lift in the main building.",
+       "status": "JUDGMENT",
+       "statusLine": "**JUDGMENT.** The room confirms the premise: one lift only, position marked (12) on the ground",
+       "body": [
+        "**JUDGMENT.** The room confirms the premise: one lift only, position marked (12) on the ground\nfloor (Key Plans p. 7), serving basement kitchen, ground-floor public areas and 17 keys across\nfirst and second floors — with no service lift shown and no specification available. The\ncourtyard block separately needs \"1-2 lifts\" on EPR's own note (p. 12). Sufficiency for a\nluxury operation with basement kitchen and second-floor suites is the call."
+       ],
+       "sub": "Do these areas work?",
+       "header": false
+      },
+      {
+       "n": "20",
+       "q": "Storage capacity",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL** — duplicate of item 4. Located, never quantified, and the consented storage is being",
+       "body": [
+        "**PARTIAL** — duplicate of item 4. Located, never quantified, and the consented storage is being\nconverted to bedrooms."
+       ],
+       "sub": "Do these areas work?",
+       "header": false
+      },
+      {
+       "n": "21",
+       "q": "Location of offices and sufficiency of space",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** Estate office is answered; hotel administration is not. The **Estate Office (3)** is",
+       "body": [
+        "**PARTIAL.** Estate office is answered; hotel administration is not. The **Estate Office (3)** is\nshown east of the courtyard beside the Water Tower on both Stables plans (Key Plans pp. 11, 12);\nthe 2021 consent puts it in the Water Tower itself — \"The Water Tower will be retained and\nincorporated into the proposed master plan. It will be used to provide space for the Estate\nOffice\" (JSA §9.1) — and \"construction of new estate office\" is part of the consented description\non the decision notice (LBC p. 1). The South Courtyard also provides \"office space\" (JSA §7.1),\nand the North Courtyard \"estate offices\" (§5.1). Masterplan CK marks \"Management offices\" at the\nNorth Courtyard.",
+        "**No hotel administration offices are shown in the Main House, and no office area appears in the\narea schedule.** Sufficiency cannot be tested without an org chart, which the room does not\ncontain."
+       ],
+       "sub": "Do these areas work?",
+       "header": false
+      },
+      {
+       "n": "22",
+       "q": "Do we need staff accommodation on site, or could we have it located off site in the town somewhere?",
+       "status": "JUDGMENT",
+       "statusLine": "**JUDGMENT** — and an important one, because it is worth 709 sqm of new build in a Grade II*",
+       "body": [
+        "**JUDGMENT** — and an important one, because it is worth 709 sqm of new build in a Grade II*\nregistered park.",
+        "What is currently drawn on site: 709 sqm / 7,632 sq ft of staff facilities and BOH across the\nNorth Lodge and its extension, **four new gatehouses** (2 × 90 sqm north, 2 × 90 sqm south), the\nexisting South Lodge and a new South Lodge (Area Schedule rows 62–69). The 2021 consented\nalternative put \"a full range of staff flats\" in the North Courtyard's northern building, with\nthe east wing and the entirety of the west range also staff accommodation (JSA §8.2–8.3).",
+        "Two points the room adds. First, Historic England's stated test cuts directly at this: any\napplication must provide \"a clear rationale outlining why the level of accommodation provided is\nnecessary **and explaining the merits of providing it in the courtyards as opposed to within the\nhouse or in cottages/lodges scattered within the grounds**\" (JSA Appendix II, p. 25) — the\non-site/off-site question is a heritage-justification question, not only an operational one.\nSecond, four new-build gatehouses in a Grade II* registered park is a consent ask in its own\nright and none of them is consented.",
+        "There is no staffing model, headcount or live-in requirement anywhere in the room — it contains\nno employment or operator documents at all (`INDEX.md`)."
+       ],
+       "sub": "Do these areas work?",
+       "header": false
+      },
+      {
+       "n": "23",
+       "q": "Staff canteen, where is it in the new plans and how much space do we need?",
+       "status": "ANSWERED",
+       "statusLine": "**ANSWERED as to location; the space requirement is a judgment the room cannot support.**",
+       "body": [
+        "**ANSWERED as to location; the space requirement is a judgment the room cannot support.**",
+        "Location: \"**Staff canteen/wc**\" is drawn beside the \"Prep kitchen\" inside the Stables Back of\nHouse building, immediately north of the Riding School restaurant (Key Plans p. 11). That\nbuilding totals **184 sqm / 1,980.56 sq ft** (Area Schedule row 72); the canteen is one part of\nit and is not separately quantified. It is therefore **not** in the gate houses, contrary to the\npremise of the vendor-facing question at Hotel Development item 12.",
+        "The 2021 consented position placed staff dining in the Old Stable Block along with the kitchen,\nlaundry and WCs (JSA §2.3.2, §10.1), with new French doors to \"the staff dining/recreation area\"\n(§10.2).",
+        "How much space is needed depends on a headcount the room does not contain."
+       ],
+       "sub": "Do these areas work?",
+       "header": false
+      }
+     ],
+     "count": {
+      "label": "Operations",
+      "items": 23,
+      "counts": {
+       "ANSWERED": 3,
+       "PARTIAL": 14,
+       "NOT IN ROOM": 2,
+       "JUDGMENT": 4
+      }
+     },
+     "intro": [
+      "---"
+     ]
+    },
+    {
+     "name": "Branding",
+     "items": [
+      {
+       "n": "—",
+       "q": "Aman · Rosewood · Cheval Blanc · Mandarin Oriental · Ritz Carlton · Oberoi · Raffles · St Regis · Peninsular · Bulgari · Six Senses · One and Only",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL — a list rather than a question, but the room has a position on it and the list does",
+       "body": [
+        "**PARTIAL — a list rather than a question, but the room has a position on it and the list does\nnot match it.**",
+        "The vendor's own position, from Savills: the assumption is that \"a luxury 5-star brand will\noperate the hotel and residences, offering full servicing and amenities to the residences. The\nexpected brand tiering includes but is not limited to brands such as: **Belmond, Aman and Six\nSenses**\" (Savills p. 47). And on where discussions stand: \"We understand that the developer has\nbeen in preliminary discussions with several luxury hotel brands, regarding the opportunity to\nmanage the on-site hotel and associated branded residences. Many operators have expressed their\ninterest, and **Belmond is the preferred operator, however we understand that this has not yet\nbeen finalised**\" (Savills p. 47).",
+        "Two names appear in the room that are absent from the Align list:",
+        "- **Belmond** — the vendor's stated preferred operator (Savills pp. 47, 55), which also drives\n  Savills' 63% branded premium and its FF&E assumption (\"typically brands require the units to\n  have a mandated FF&E package… We have been advised that this is not the case with Belmond\",\n  p. 55).\n- **NoMad** — EPR's drawing title blocks name the project \"**Fawley Resort / NoMad Hotel**\"\n  across the masterplan sheets and the existing site plan (Masterplan pp. 1–2; Site Plan p. 1).\n  Whether that reflects a live conversation or a superseded working title is not stated anywhere,\n  but it is on the vendor's architect's title block and is worth asking about directly.",
+        "Brand choice is load-bearing on the numbers, not decoration: Savills' residential yield analysis\nruns off an \"Average Hotel Room ADR: **£2,000** (based on client projections)\" with 5-bed houses\nat 3× and 6-bed at 3.5× that rate (Savills p. 53), and it states that \"The choice of brand will\nhave a significant impact on the ADR for the hotel as well as the residences\" (p. 53).",
+        "**No operator agreement, HMA, term sheet, letter of intent or brand correspondence of any kind is\nin the data room** (`INDEX.md`).",
+        "---"
+       ],
+       "sub": null,
+       "header": false
+      }
+     ],
+     "count": {
+      "label": "Branding",
+      "items": 1,
+      "counts": {
+       "PARTIAL": 1
+      }
+     },
+     "intro": []
+    },
+    {
+     "name": "Hotel Development (Align Partners call)",
+     "items": [
+      {
+       "n": "1",
+       "q": "Do we have enough information on the schedule to build a cost assessment of the project?",
+       "status": "JUDGMENT",
+       "statusLine": "**JUDGMENT** (cost consultant) — but the room lets the judgment be made on facts rather than",
+       "body": [
+        "**JUDGMENT** (cost consultant) — but the room lets the judgment be made on facts rather than\nimpressions.",
+        "What \"the schedule\" is: an **area** schedule, GIA by space, dated 02/06/2025, rev B 10/07/2025\n(Brochure p. 12), also issued as a standalone spreadsheet (`3.3.2`) — 77 rows, static values, no\nformulas, no rates, no costs. Its own caveat: \"These areas represent a broad estimate of the use\nprogramme that may be possible to achieve on the project. They are subject to development of the\ndesign including the inputs and co-ordination with others; planning; listed building status etc.\nThe estimations have been made **utilising PDF information**, with a combination of drawn\ninformation provided to us and generated by us. Any decisions to be made on the basis of these\npredictions, whether as to the project viability, pre-letting, lease agreements or otherwise,\nshould include due allowance for the increases and decreases inherent in the design development\nand construction process\" (Brochure p. 12).",
+        "Three specific weaknesses to price around, all evidenced above: the two revisions of the schedule\n**disagree** on the Main House (1,815 sqm vs 2,202 sqm, with the 127 sqm new-wing ballroom\npresent in one and not the other); no BOH is scheduled for the Main House and total scheduled BOH\nis 9,612 sq ft across 60 keys; and nothing exists below concept level — no measured survey, no\nspecification, no ground investigation, no structural or MEP design, no infrastructure, no\nprogramme."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "2",
+       "q": "Need a clear design brief to start with (initial discussions with a brand)",
+       "status": "JUDGMENT",
+       "statusLine": "**JUDGMENT / NOT IN ROOM.** No design brief exists in the room, and the brand that would set the",
+       "body": [
+        "**JUDGMENT / NOT IN ROOM.** No design brief exists in the room, and the brand that would set the\nstandards is not fixed — \"Belmond is the preferred operator, however we understand that this has\nnot yet been finalised\" (Savills p. 47). Savills makes the same dependency explicit for the\nresidences: \"Any brand selected will have some additional brand standards that will need to be\nconsidered, especially when it comes to the design and finish of the units\" (p. 55), and the\nhotel amenity offering \"has not yet been confirmed as this will be agreed with the selected\noperator\" (p. 56)."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "3",
+       "q": "Is it clear what is new build and what is refurbishment/adaptation? What other information is required?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL — clearer than the question assumes at estate level, and unresolved at the level that",
+       "body": [
+        "**PARTIAL — clearer than the question assumes at estate level, and unresolved at the level that\nmatters.**",
+        "The masterplan is colour-coded **New Build / Existing / Consented** across the whole estate\n(Masterplan p. 1; Brochure p. 7). Reading it with the area schedule:",
+        "- **New build:** two north gatehouses and two south gatehouses (4 × 90 sqm = 360 sqm, rows\n  65–66); North Lodge Extension 75 sqm (row 64); New South Lodge 60 sqm (row 68); the **New\n  Concert Hall two-storey extension 529 sqm** (row 60); the Proposed South Wing; the new\n  loggia/pergola; plus temporary structures — Regatta pavilion 500 sqm (row 75), floating\n  restaurant 75 sqm (row 74), \"various events marquees — tbc\" (Brochure p. 12).\n- **Consented (23/07590/LBC):** North Courtyard, South Courtyard, and the driveway\n  (Masterplan pp. 1–2).\n- **Existing / refurbishment:** Main House, Riding House, Chapel, the Concert Hall shell\n  (471 sqm), North and South Lodges, the Stables.",
+        "What is **not** clear, and should be raised:",
+        "- The courtyards are labelled \"Consented\", but what is consented there is estate offices, staff\n  accommodation and storage (LBC p. 1; JSA §5.1, §8.2–8.3), while the 2025 scheme puts **43 guest\n  rooms** in them — \"20 Guest rooms - new build\" in the North Courtyard and \"23 Guest rooms -\n  amend existing build\" in the South (Masterplan CK). That is a change of use and, in the North\n  Courtyard, largely new build. The FUL that would govern it is absent.\n- The Concert Hall is more new build than refurbishment (529 sqm new against 471 sqm existing) —\n  material for both cost and consent.\n- The seven older \"Consented\" labels on the masterplan (South Buildings and New Access) describe\n  permissions whose **commencement deadlines have all passed** — the latest 26 April 2021\n  (cluster index B, vision mop-up). Unless lawfully implemented, they are lapsed, and nothing in\n  the room evidences implementation either way."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "4",
+       "q": "Can we use the excel cost schedule to build a cost plan? What Cost Schedule?",
+       "status": "ANSWERED",
+       "statusLine": "**ANSWERED — and the answer is that there is no cost schedule.**",
+       "body": [
+        "**ANSWERED — and the answer is that there is no cost schedule.**",
+        "The only Excel file in the entire data room is **`3.3.2 Fawley Court - Proposed Area Schedule.xlsx`**,\na single-worksheet **area** schedule: 77 rows, columns GIA (sqm) and GIA (sqft), static values,\nno rates, no costs, no formulas. Headline \"Fawley Court Masterplan - 60 Keys Area Schedule\"\n(Area Schedule A1).",
+        "The only cost document of any kind in the room is the Greenway **Historic** Cost Estimate — a PDF,\nRev 0, 20 May 2026, which prices **past** works to the **Main House only** and expressly excludes\nArt & Sculpture, Planning Application & Planning Conditions, Section 106, Community\nInfrastructure Levy, Insurances, Legal Fees, Site Purchase, Acquisition Costs, Risk Allowances &\nContingency and Inflation Allowances (Greenway p. 6).",
+        "**There is no forward cost plan, cost schedule, budget or elemental estimate for the proposed\nscheme in the data room.** The question mark the consultants put beside \"What Cost Schedule?\"\nthree times in this document is correctly placed, and the answer should be given plainly on the\ncall so nobody spends further time looking for it."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "5",
+       "q": "Interior design to be progressed – this will answer many questions",
+       "status": "JUDGMENT",
+       "statusLine": "**JUDGMENT / NOT IN ROOM.** No interior design package, concept or FF&E specification exists. The",
+       "body": [
+        "**JUDGMENT / NOT IN ROOM.** No interior design package, concept or FF&E specification exists. The\nbrochure carries reference imagery only, for the Courtyards, Riding House and Pavilion\n(Brochure pp. 8–10). For the residences Savills recommends \"providing set interior design\npackages which buyers can choose from, providing them with the convenience of a turn-key\nproperty\" and notes that off-plan buyers may want personalisation within a minimum standard\n(Savills p. 55)."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "6",
+       "q": "General consultants would be needed such as structural (already on board), catering, acoustic (including for road noise), fire (already on board), planning (already on board), landscape, architect (EPR – already on board), PDBR, building control, utilities (in and out), access roads, river wall, AV etc.",
+       "status": "ANSWERED",
+       "statusLine": "**ANSWERED — the room supports a consultant register, and it corrects the question in one place.**",
+       "body": [
+        "**ANSWERED — the room supports a consultant register, and it corrects the question in one place.**",
+        "Named in the data room as having worked on the estate:",
+        "| Discipline | Named in the room | Source |\n|---|---|---|\n| Architect (2025 scheme) | **EPR Architects** | Key Plans, Brochure, Masterplan title blocks |\n| Architect (2021 courtyard scheme) | **John Simpson Architects** (FAW1718/DOC.006) | JSA cover |\n| Planning | **Phillips Planning Services Limited** (agent, John Phillips) | LBC p. 1; JSA Appendix II p. 24 |\n| Structural | **Alan Baxter and Associates** | JSA §2.6; HE letter, JSA p. 24 |\n| Building surveying / condition | **William Martin & Partners LLP** (*Buildings Survey Report*) | JSA §2.5 |\n| Flood risk and drainage | **RAB** (*Flood Risk Assessment and Drainage Strategy*, Feb 2021) | JSA §2.7 |\n| Ecology | **Aspect Ecology** (*Ecological Scoping Survey*) and **Catherine Bickmore** (update) | JSA §13.4 |\n| Contamination | **Opus Joynes Pike** (*Phase 1 Contamination Assessment*) | JSA §13.5 |\n| Energy | **Ecovision** (*Energy Report*) | JSA §3.5 |\n| Heritage / conservation | **Dr Sarah Rutherford**, Historic Environment Ltd (*Fawley Court Conservation Plan* Vols 1–3); **Kirsty Rodwell** (*Historic Building Survey of Service Buildings*); **Marcus Binney and Associates** (Riding School justification) | JSA §1.3, §1.5, §2.4, Appendix I |\n| Landscape (historic) | **Todd Longstaffe-Gowan** (June 2012 landscape drawings, conditioned on 15/07051/FUL); **Christopher Gallagher** (important trees) | Cluster index B vision mop-up; JSA §2.9 |\n| Cost | **Greenway Associates** (historic cost estimate only) | Greenway p. 1 |\n| Residential consultancy | **Savills Global Residential Development Consultancy** (Rosie Tucker MRICS; Louis Keighley MRICS) | Savills pp. 1–3 |",
+        "**Not evidenced anywhere in the room:** catering, acoustic, **fire**, building control / approved\ninspector, utilities, access roads, river wall, AV, PDBR. Note that the question's parenthetical\n\"**fire (already on board)**\" is not corroborated by a single document in the data room — no fire\nengineer is named, no fire strategy exists, and no building control correspondence is present.\nWorth confirming on the call rather than assuming.",
+        "Also note: every one of the named reports above **exists but is not in the data room**. They are\na discrete, well-defined ask (see the outstanding register below), and several of them —\nstructural appraisal, buildings survey, FRA, ecology, contamination — are exactly the documents\nthat would otherwise have to be re-commissioned at the buyer's cost."
+       ],
+       "sub": null,
+       "header": false
+      }
+     ],
+     "count": {
+      "label": "Hotel Development, Align call",
+      "items": 6,
+      "counts": {
+       "ANSWERED": 2,
+       "PARTIAL": 1,
+       "JUDGMENT": 3
+      }
+     },
+     "intro": [
+      "---"
+     ]
+    },
+    {
+     "name": "FFE",
+     "items": [
+      {
+       "n": "1",
+       "q": "Is the current house sufficiently completed with FFE?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** The only quantified FF&E in the room is historic and modest: within Greenway's key",
+       "body": [
+        "**PARTIAL.** The only quantified FF&E in the room is historic and modest: within Greenway's key\nclient costs, **Furniture, Furnishings & Equipment £450,000** and **Operating Equipment\n£250,000**, with **Art & Sculpture EXCLUDED** (Greenway p. 6) — £450k across 3,855 sqm of Grade I\nMain House, priced as part of the works that brought the building to its current state. That is\na private-house allowance, not a hotel FF&E position.",
+        "The 25 internal photographs show the principal rooms furnished — Great Hall, Library (four\nimages), Gibbons Room (three), Wyatt Room (three), Dining Room, Marble, Persian, Venetian and\nChinese Rooms, the Grand Stair, Print Room, two bedrooms and the Alda Freeman Suite bathrooms —\nbut they are catalogued by filename only and were not reviewed against any list (cluster index E).",
+        "**No FF&E inventory, schedule, valuation, condition report or chattels list is in the room, and\nnothing states what would be included in a sale.** Given the house is presented furnished and\nthe vendor is a Jersey company holding a Grade I house with art and antiques, the chattels\nposition is a real commercial question, not a fit-out detail."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "2",
+       "q": "What else is needed - reception pods for example?",
+       "status": "JUDGMENT",
+       "statusLine": "**JUDGMENT / NOT IN ROOM.** The room fixes where reception happens — the Great Hall (1) is",
+       "body": [
+        "**JUDGMENT / NOT IN ROOM.** The room fixes where reception happens — the Great Hall (1) is\nlabelled \"Reception\" on the Main House ground floor (Key Plans p. 7) and a separate Reception (5)\nsits at the courtyard guest-room entrance in the Stables (p. 11) — and specifies nothing about\nhow it is furnished or fitted. No FF&E specification exists for any space."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "3",
+       "q": "What assumption should we make for the new bedrooms - is there sufficient in the cost schedule for this? What cost schedule? We can refer to our lux cost assessments for this?",
+       "status": "PARTIAL",
+       "statusLine": "**PARTIAL.** On \"what cost schedule\" — there is none; see Hotel Development item 4 above. So",
+       "body": [
+        "**PARTIAL.** On \"what cost schedule\" — there is none; see Hotel Development item 4 above. So\nthere is nothing in which an FF&E allowance for new bedrooms could be either present or absent.",
+        "What the room does give, and it is enough to apply a per-key or per-sqm allowance: the full room\nschedule and mix. Main House 17 keys — 1 Principal Suite (6%), 2 One Bed Suites (12%), 4 Junior\nSuites (23%), 10 Guestrooms (59%), ranging 36–135 sqm (Key Plans p. 9; Area Schedule rows 14–32).\nCourtyard/Stables 43 keys — 22 at ground level (20 guest rooms 45–50 sqm, 2 suites 60–80 sqm) and\n21 at upper ground (16 guest rooms, 5 suites), individual areas 45–72 sqm (Key Plans pp. 11–12;\nArea Schedule rows 37–54). Average key size is stated as \">55 sqm\" (Brochure p. 4)."
+       ],
+       "sub": null,
+       "header": false
+      },
+      {
+       "n": "4",
+       "q": "Is there FFE for the outside spaces as well in the cost schedule? What cost schedule?",
+       "status": "NOT IN ROOM",
+       "statusLine": "**NOT IN ROOM.** No cost schedule, and no external FF&E line anywhere. Greenway's only external",
+       "body": [
+        "**NOT IN ROOM.** No cost schedule, and no external FF&E line anywhere. Greenway's only external\nline is \"Localised Landscaping & External Works, 1 item, £2,000,000\" (Greenway p. 8) — historic,\nMain-House-adjacent, unbroken down, and not FF&E.",
+        "The room does identify the external spaces that will need it, with areas: East / river view F&B\nterrace 138 sqm, South / parkland view F&B terrace 190 sqm, Banquetting House loggia 100 sqm,\nriverside floating restaurant 75 sqm, Regatta temporary pavilion 500 sqm at 200–500 pax\n(Area Schedule rows 10, 11, 74, 75, 77), plus the new loggia/pergola and reinstated loggia\n(Masterplan p. 1) and \"various events marquees — tbc\" (Brochure p. 12)."
+       ],
+       "sub": null,
+       "header": false
+      }
+     ],
+     "count": {
+      "label": "FFE",
+      "items": 4,
+      "counts": {
+       "ANSWERED": 0,
+       "PARTIAL": 2,
+       "NOT IN ROOM": 1,
+       "JUDGMENT": 1
+      }
+     },
+     "intro": [
+      "---\n---"
+     ]
+    }
+   ],
+   "intro": "*Classified separately, per the second-half convention: **JUDGMENT** marks a question that is a\ndecision for Align, the operator or a consultant rather than a document request. The room\nevidence bearing on each is still set out, because most of these are answerable further than the\nquestion assumes.*\n\n**Before the section: almost every question here is answerable from one document.** The EPR key\nplans (`3.3.1`, 10 July 2025) locate the kitchen, the lift, back of house, storage, the\nwashrooms, the offices, the staff canteen, the courtyard walk, the media room and study, and the\nparking zone — and carry the consultant's own red annotations against most of them. The document\nis in the room and the mark-ups are already on it."
+  }
+ ],
+ "askIntro": "*Everything below is genuinely absent from the data room. Ordered by what unblocks the most work.\nItems marked **named** are documents the room proves exist, because a vendor-side document cites\nthem by title and author — those should be the easiest to obtain and the first to be asked for.*",
+ "askGroups": [
+  {
+   "key": "A",
+   "title": "Consent — the load-bearing gap",
+   "items": [
+    {
+     "n": 1,
+     "text": "**23/07589/FUL — the decision notice, conditions, plans list and any section 106.** The listed building consent is in the room; its full planning companion is not. Without it there is no evidence of a lawful hotel or guest-accommodation use, and the conditions that normally carry ecology, highways, parking, drainage, landscape and hours of operation are unseen."
+    },
+    {
+     "n": 2,
+     "text": "**The approved drawing set for 23/07590/LBC**, listed by number in condition 2: 21-01/A; PL300D–PL306C; PL320C–PL322B; PV300B–PV314; PV327–PV340; SL10C–SL12B; SL326A–SL330. PL306 alone answers the washroom question; PL301/PL306/PV327–339 answer the pool, gym and spa."
+    },
+    {
+     "n": 3,
+     "text": "**Evidence of commencement and condition discharge** for 23/07590/LBC — conditions 3, 6 and 7 are pre-commencement gates and the consent lapses **6 December 2027**."
+    },
+    {
+     "n": 4,
+     "text": "**Implementation evidence for the seven older consents** (15/05907, 15/05908, 17/05210, 17/05211, 18/05598, 18/05599, 15/07051), whose commencement deadlines have all passed. The masterplan labels them \"Consented\"; unless lawfully commenced they are lapsed."
+    },
+    {
+     "n": 5,
+     "text": "**21/05417/FUL** — riverbank erosion works, on the public record, not in the room."
+    },
+    {
+     "n": 6,
+     "text": "**Pre-application paperwork for the residential scheme.** Savills reports discussions \"so far, well-received\" (p. 7) with nothing behind it. This sentence carries the enabling-development case; it needs the officer's note or letter."
+    },
+    {
+     "n": 7,
+     "text": "**Pre-application paperwork for the 2023 applications and the 2025 EPR 60-key scheme.** The only pre-app document in the room is the Historic England letter of 5 July 2010."
+    }
+   ]
+  },
+  {
+   "key": "B",
+   "title": "The named reports — they exist, they are cited, they are not in the room",
+   "items": [
+    {
+     "n": 8,
+     "text": "**Structural Engineering Appraisal**, *Courtyard Buildings and Gatehouse*, **Alan Baxter and Associates** (named, JSA §2.6)."
+    },
+    {
+     "n": 9,
+     "text": "**Buildings Survey Report**, **William Martin & Partners LLP** (named, JSA §2.5)."
+    },
+    {
+     "n": 10,
+     "text": "**Flood Risk Assessment and Drainage Strategy**, **RAB**, February 2021 — including **Section 5.4** (the SuDS sizing) and **Section 4.1** (the 33.22 mAOD finished floor level) (named, JSA §2.7)."
+    },
+    {
+     "n": 11,
+     "text": "**Ecological Scoping Survey**, **Aspect Ecology**, and the update by **Catherine Bickmore** (named, JSA §13.4) — with confirmation of whether bat emergence/activity surveys were done."
+    },
+    {
+     "n": 12,
+     "text": "**Phase 1 Contamination Assessment**, **Opus Joynes Pike** (named, JSA §13.5)."
+    },
+    {
+     "n": 13,
+     "text": "**Energy Report**, **Ecovision** (named, JSA §3.5)."
+    },
+    {
+     "n": 14,
+     "text": "**Type 3 Asbestos Survey** for the courtyards (named, JSA §14.9), plus any Main House asbestos survey, register or clearance certificates."
+    },
+    {
+     "n": 15,
+     "text": "**BS5837 tree survey** (referred to, JSA §2.9, §3.4)."
+    },
+    {
+     "n": 16,
+     "text": "**Fawley Court Conservation Plan Vols 1–3** (Dr Sarah Rutherford) and the **Historic Building Survey of Service Buildings** (Kirsty Rodwell) (named, JSA §1.3, §2.4)."
+    }
+   ]
+  },
+  {
+   "key": "C",
+   "title": "The flood question — the single biggest unevidenced assumption",
+   "items": [
+    {
+     "n": 17,
+     "text": "**The Environment Agency evidence for the re-mapped flood zones.** Savills' 12-unit scheme assumes \"the existing masterplan is incorrect and the floodplains are far smaller than is currently shown… currently being updated by the environment agency\" (pp. 47, 50). The only primary evidence in the room says **Flood Zone 3** with a 33.22 mAOD floor-level requirement (RAB, quoted at JSA §2.7). A date, a reference or a revised zone plan is needed. Until it exists, the residential limb rests on hearsay."
+    }
+   ]
+  },
+  {
+   "key": "D",
+   "title": "Building condition and services — nothing exists",
+   "items": [
+    {
+     "n": 18,
+     "text": "Fire strategy, fire risk assessment, and the building control record with any completion certificates."
+    },
+    {
+     "n": 19,
+     "text": "Fire systems: fire stopping, alarm, emergency lighting and signage, sprinklers — specification and commissioning records."
+    },
+    {
+     "n": 20,
+     "text": "Fire door survey; window schedule and condition survey (Main House); roof condition survey (Main House); flue and fireplace survey."
+    },
+    {
+     "n": 21,
+     "text": "MEP survey of existing systems, with a breakdown of the £5.59m MEP allowance and any outstanding works — specifically whether the part-implemented water-source heat pump (JSA §3.5) has been completed."
+    },
+    {
+     "n": 22,
+     "text": "CCTV and security systems: extent, age, monitoring arrangement."
+    },
+    {
+     "n": 23,
+     "text": "**Acoustic testing** — internal (room-to-room, corridor, floor) and external (A4155 road noise at the Meadows). Neither exists, and both are assumed in the room: Savills' pricing depends on \"extensive acoustic tests and noise cancellation strategies\" already having reduced road noise (p. 47)."
+    },
+    {
+     "n": 24,
+     "text": "**Measured survey.** Every plan in the room is approximate, several are drawn from proposed rather than as-built information, and the Main House area basis varies from 1,815 sqm to 4,162 sqm across four documents. Nothing can be scaled."
+    }
+   ]
+  },
+  {
+   "key": "E",
+   "title": "Utilities, infrastructure and the estate edge",
+   "items": [
+    {
+     "n": 25,
+     "text": "Utility capacity statements and incoming supply records: power (DNO position and any connection agreement), gas, potable water, telecoms."
+    },
+    {
+     "n": 26,
+     "text": "Foul drainage: cess pit locations, capacities, tankering frequency and cost, discharge consents — and a position on capacity for 60 keys plus 12 houses plus events, given \"no proposed change to the current foul sewage drainage system\" (JSA §2.8)."
+    },
+    {
+     "n": 27,
+     "text": "**River wall and bank condition assessment**, and the EA permitting position for works to the bank. The masterplan states \"Long water banks to be strengthened\" with nothing behind it."
+    },
+    {
+     "n": 28,
+     "text": "Dredging: any survey of the Long Water, the inlet or the river frontage — a floating restaurant is scheduled at 75 sqm."
+    },
+    {
+     "n": 29,
+     "text": "Transport assessment / traffic survey. Nothing exists, and Savills records queuing on the A4155 outside the main entrance (p. 10)."
+    },
+    {
+     "n": 30,
+     "text": "**Parking strategy with space counts.** The only counted figure in the room is **11 spaces**, sized in 2021 for a scheme with 15 guest rooms."
+    }
+   ]
+  },
+  {
+   "key": "F",
+   "title": "Commercial and operational",
+   "items": [
+    {
+     "n": 31,
+     "text": "**Premises licence(s)**, temporary event notices used to date, and the licensing history for the Regatta pavilion, weddings and events. Nothing licensing-related is in the room."
+    },
+    {
+     "n": 32,
+     "text": "**Operator position:** confirmation of where the brand discussion stands, whether Belmond remains preferred, and what \"NoMad Hotel\" on the EPR title blocks refers to."
+    },
+    {
+     "n": 33,
+     "text": "**FF&E inventory / chattels list**, and what is included in a sale."
+    },
+    {
+     "n": 34,
+     "text": "**Reconciled key count.** The room prints 60 (EPR), 65 (Savills p. 9) and, with the South Wing's nine bedrooms, an implied 69. One number is needed before anything is costed."
+    },
+    {
+     "n": 35,
+     "text": "**Reconciled area schedule.** The two revisions disagree on the Main House by 387 sqm and on whether a 127 sqm new-wing ballroom exists."
+    },
+    {
+     "n": 36,
+     "text": "**A resolved staff accommodation and storage strategy** — the consented location is being converted to bedrooms, and EPR itself asks the question on its own drawing."
+    },
+    {
+     "n": 37,
+     "text": "Confirmation of the residential **tenure** basis: Savills assumes 999-year leaseholds (p. 47) against the deal's freehold assumption."
+    }
+   ]
+  },
+  {
+   "key": "G",
+   "title": "Cost — the whole category",
+   "items": [
+    {
+     "n": 38,
+     "text": "**There is no forward cost plan in the data room.** No elemental estimate, no budget, no cost schedule for the hotel, the new build, the infrastructure, the landscape, the M&E, the residences or the FF&E. The only cost document is Greenway's historic Main House estimate. Confirm on the call that none exists, so nobody keeps looking."
+    },
+    {
+     "n": 39,
+     "text": "Substantiation of the Greenway £45.79m: invoices, contracts, completion certificates and warranties — and the equivalent record for the buildings Greenway excludes (Riding School, courtyard, chapel, gate houses, perimeter and security, waterway, Capability Brown landscape, and the demolitions already carried out)."
+    }
+   ]
+  }
+ ],
+ "tables": {
+  "Vendor-facing questions": [
+   [
+    "Section",
+    "Items",
+    "Answered",
+    "Partial",
+    "Not in room"
+   ],
+   [
+    "Historic Construction Costs",
+    "14",
+    "0",
+    "7",
+    "7"
+   ],
+   [
+    "Hotel Development",
+    "14",
+    "3",
+    "6",
+    "5"
+   ],
+   [
+    "New Development",
+    "12",
+    "0",
+    "4",
+    "8"
+   ],
+   [
+    "Residential Development",
+    "7",
+    "1",
+    "3",
+    "3"
+   ],
+   [
+    "Planning",
+    "6",
+    "2",
+    "4",
+    "0"
+   ],
+   [
+    "**Subtotal**",
+    "**53**",
+    "**6**",
+    "**24**",
+    "**23**"
+   ]
+  ],
+  "Qs for Align Partners Call": [
+   [
+    "Section",
+    "Items",
+    "Answered",
+    "Partial",
+    "Not in room",
+    "Judgment"
+   ],
+   [
+    "Operations",
+    "23",
+    "3",
+    "14",
+    "2",
+    "4"
+   ],
+   [
+    "Branding",
+    "1",
+    "0",
+    "1",
+    "0",
+    "0"
+   ],
+   [
+    "Hotel Development",
+    "6",
+    "2",
+    "1",
+    "0",
+    "3"
+   ],
+   [
+    "FFE",
+    "4",
+    "0",
+    "2",
+    "1",
+    "1"
+   ],
+   [
+    "**Subtotal**",
+    "**34**",
+    "**5**",
+    "**18**",
+    "**3**",
+    "**8**"
+   ]
+  ],
+  "Both halves": [
+   [
+    "",
+    "Items",
+    "Answered",
+    "Partial",
+    "Not in room",
+    "Judgment"
+   ],
+   [
+    "**Total**",
+    "**87**",
+    "**11**",
+    "**42**",
+    "**26**",
+    "**8**"
+   ]
+  ]
+ },
+ "closing": "Read plainly: **13% of the list is settled by the room, 48% is part-settled, 30% is genuinely\noutstanding** and 9% is a decision rather than a document. The large partial category is the\nuseful finding — in most cases the room gives the location, the area or the named report, and\nwhat is missing is the measurement, the cost or the document itself.",
+ "footer": "Preliminary and based on the data room, the planning research file and public record. Subject\nto confirmatory due diligence. All page references are to the documents as filed in\n`Data Room/`; JSA paragraph numbers are the document's own.",
+ "docTitle": "Fawley Court — Development Consultants' Question List vs the Data Room",
+ "docIntro": "Cross-check run 16 August 2026. Source question list: `Qs for Fawley - Hotel Development.pdf`\n(4pp). Every question in that document is reproduced below in its original order and section\nstructure, and tagged against what the vendor's data room actually contains.\n\n**Tags**\n\n- **ANSWERED** — the room settles it, with the answer and a doc + page citation.\n- **PARTIAL** — the room gives part of it; what is given and what is missing are both stated.\n- **NOT IN ROOM** — genuinely outstanding; these form the ask list at the end.\n- **JUDGMENT** — used only in the second half (\"Qs for Align Partners Call\"). The question is\n  a decision for Align or a consultant, not a document request; the room evidence bearing on\n  it is set out, then the call is named as a call.\n\n**Two things to carry before reading**\n\n1. **Several of these \"questions\" are transcriptions of mark-ups already on documents inside\n   the data room.** `3.3.1 EPR Hotel Key Plans` and `Fawley Court - Masterplan CK version.pdf`\n   both carry red annotations — \"Very small kitchen — Relocate or extend to 1\", \"Too far\",\n   \"Too small HK\", \"Check size - wc look small\", \"Use? Not bedrooms?\", \"Need 1-2 lifts\",\n   \"Spa - needs to be 200m2 bigger\", \"Check for flood plain\", \"Pavillion … currently only temp\n   licence\". Where a question restates one of these, that is noted, because the annotation is\n   the question's origin, not vendor evidence answering it.\n2. **The data room is physical, planning, title and scheme material only.** It contains no\n   trading accounts, no operating or employment records, no operator or HMA documents, no\n   forward cost plan, and no measured survey (`Data Room/INDEX.md`).\n\n**Citation keys**\n\n| Key | Document |\n|---|---|\n| Greenway | `2.7.1 Fawley Court - Historical CapEx.pdf` — Greenway Associates, *Historic Cost Estimate*, Rev 0, 20 May 2026 |\n| JSA | `3.2.1.1.2 23_07590_LBC-AMENDED-4351459.pdf` — John Simpson Architects, *Design & Access Statement*, FAW1718/DOC.006, April 2021 (filed as a decision notice; it is not one) |\n| LBC | `3.2.1.1.1 23_07590_LBC--4463285.pdf` — Buckinghamshire Council decision notice 23/07590/LBC, granted 6 December 2024 |\n| Key Plans | `3.3.1 Fawley Court - EPR Hotel Key Plans.pdf`, EPR Architects, 10/07/2025 (annotated copy) |\n| Area Schedule | `3.3.2 Fawley Court - Proposed Area Schedule.xlsx`, sheet `Area Schedule ` |\n| Brochure | `3.1.2 Fawley Court - EPR Architects Scheme Overview Brochure.pdf`, *Luxury Hospitality 2025 Proposal* |\n| Masterplan | `3.1.1 Fawley Court - Masterplan.pdf`, EPR, *Proposed Masterplan – May 2025* (annotated) |\n| Masterplan CK | `Fawley Court - Masterplan CK version.pdf` (more heavily annotated copy of the same drawing) |\n| Site Plan | `2.2.1 Fawley Court - Existing Site Plan & Listed Status.pdf`, EPR, March 2025 |\n| Savills | `3.4.1 Fawley Court - Savills Residential Feasibility Report.pdf`, 9 October 2025 (PDF page numbers) |\n| Floor Plans | `2.3.1`–`2.3.5 Fawley Court - … Floor Plan.pdf` (existing Main House, approximate) |\n\n---",
+ "totalItems": 87
+}

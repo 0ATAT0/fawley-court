@@ -1,0 +1,4 @@
+# Render harness output — PNGs, kept on disk, never in the repo
+snaps/
+aud.txt
+src/_all.js
