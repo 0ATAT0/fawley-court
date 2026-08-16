@@ -18,7 +18,7 @@ are badged as such on the page, in the chapter bar and in the contents.
 | 04 | The Underwrite | The dial set · revenue engines · the margin frame · capital and cost to open · drawdown and return profile (equity waterfall) · residences, adopted product and sold evidence |
 | 05 | Returns & the Entry Ladder | Returns, cases and the floor · exit yield and value per key · the entry ladder (interactive) · single-lever sensitivities |
 | 06 | The IRR Bridge | The seven-lever walk from the Embassy base case to the Align underwrite, waterfall + table + reading + the caveats panel |
-| 07 | Diligence | The underwrite against the data room · diligence gates and the information register |
+| 07 | Diligence | The underwrite against the data room · diligence gates and the information register · the memorandum's closing statement and contact |
 | 08 | The Fawley Questions | **INTERNAL** — 87 questions filterable by status and section, collapsible detail, the 39-item ask list, the tags/keys/counts view |
 | 09 | The Cheat Sheet | **INTERNAL** — the one-page IC reference: hero tiles, summary P&L, cash-flow walk, sources and uses, returns, sensitivity grid, transaction comps, terms, watchpoints |
 
@@ -58,7 +58,7 @@ on HTTPS only, so offline behaviour is testable locally.
 ## The gates — run all four before shipping any content change
 
 ```
-node verify.mjs      # 2,299 checks against the four sources — must PASS
+node verify.mjs      # 2,300 checks against the four sources — must PASS
 python audit.py      # touch targets, contrast, overflow, type floor, console — must print "clean"
 python offline.py    # service worker takes control; every route renders offline
 python snap.py v     # renders every route at four widths into snaps/
