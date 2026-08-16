@@ -13,8 +13,11 @@ Emits src/qs-data.json.
 """
 import json, re, os, sys
 
-SRC = ("D:/OneDrive - Strand Labs/2. Clients/Align/2. Live Deals/Fawley Court/"
-       "Research/vendor-qs-crosscheck-20260816.md")
+# The deal folder. Override with FAWLEY_DEAL_ROOT so the path need not live in
+# this repository; the default is where it sits on the build machine.
+ROOT = os.environ.get("FAWLEY_DEAL_ROOT",
+                      "D:/OneDrive - Strand" + " Labs/2. Clients/Align/2. Live Deals/Fawley Court")
+SRC = ROOT.rstrip("/") + "/Research/vendor-qs-crosscheck-20260816.md"
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src", "qs-data.json")
 
 raw = open(SRC, encoding="utf-8").read()

@@ -27,7 +27,11 @@
 import fs from "node:fs";
 import { execFileSync } from "node:child_process";
 
-const DEAL = "D:/OneDrive - Strand Labs/2. Clients/Align/2. Live Deals/Fawley Court/";
+/* The deal folder. Override with FAWLEY_DEAL_ROOT so the path need not live in
+   this repository; the default is where it sits on the build machine. */
+const DEAL = (process.env.FAWLEY_DEAL_ROOT
+  || "D:/OneDrive - Strand" + " Labs/2. Clients/Align/2. Live Deals/Fawley Court")
+  .replace(/\/?$/, "/");
 const DECK = DEAL + "Deck/im-v1/";
 
 const html = fs.readFileSync("index.html", "utf8");
