@@ -1,7 +1,7 @@
 {
-  "name": "Fawley Court — Investment Memorandum",
+  "name": "Fawley Court — Deal Portal",
   "short_name": "Fawley Court",
-  "description": "Buy-side investment memorandum for the acquisition and conversion of Fawley Court, Henley-on-Thames. Align Partners, August 2026.",
+  "description": "The Fawley Court deal portal: the underwrite, the comparable evidence, the diligence register and the cheat sheet, answerable offline. Align Partners, August 2026.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

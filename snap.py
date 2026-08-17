@@ -5,6 +5,8 @@ Usage:  python snap.py [tag]      tag defaults to 'v'
 import sys, os, asyncio
 from playwright.async_api import async_playwright
 
+sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
 BASE = "http://127.0.0.1:8732/"
 TAG = sys.argv[1] if len(sys.argv) > 1 else "v"
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "snaps")
@@ -17,14 +19,27 @@ SIZES = {
     "desktop":   (1512, 950),
 }
 
-CHAPTERS = ["asset", "evidence", "underwrite", "returns", "bridge", "dd", "questions", "cheatsheet"]
+# every chapter and every view within it
+CHAPTERS = {
+    "summary": [""],
+    "asset": ["", "photography", "title", "planning", "scheme", "counterparty"],
+    "evidence": ["", "layers", "cohort-rate", "uk-rate", "seasonality", "cohort-ops", "uk-ops", "capex", "pnl"],
+    "underwrite": ["", "dial-set", "engines", "margin", "capital", "profile", "residences", "residences-evidence"],
+    "returns": ["", "cases", "sensitivities", "exit"],
+    "bridge": [""],
+    "dd": ["", "asks", "keys", "room", "gates", "closing"],
+    "cheatsheet": [""],
+}
 SLUGS = ["cliveden", "beaverbrook", "heckfield", "estelle", "grand-controle",
          "reschio", "passalacqua", "messardiere", "borgo-egnazia", "rosa-alpina"]
 
-ROUTES = ([("index", "#/")]
-          + [(c, "#/c/" + c) for c in CHAPTERS]
-          + [("questions-asks", "#/c/questions/asks"), ("questions-keys", "#/c/questions/keys")]
-          + [("case-" + s, "#/h/" + s) for s in SLUGS])
+ROUTES = [("index", "#/")]
+for c, views in CHAPTERS.items():
+    for v in views:
+        ROUTES.append((c + ("-" + v if v else ""), "#/c/" + c + ("/" + v if v else "")))
+for s in SLUGS:
+    ROUTES.append(("case-" + s, "#/h/" + s))
+    ROUTES.append(("pnl-" + s, "#/h/" + s + "/pnl"))
 
 ONLY = os.environ.get("ONLY", "")
 

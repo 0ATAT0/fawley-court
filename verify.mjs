@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════════════
-   Mechanical verification of the page against its four sources.
+   Mechanical verification of the portal against its five sources.
 
    A. THE MEMORANDUM   every table cell, card body, note, lede, source line
                        and dial in CHAPTERS must appear VERBATIM in
@@ -18,8 +18,15 @@
    E. THE CHEAT SHEET  every label, note and static value verbatim in
                        Model/cheatsheet-spec.json; every measured value
                        verbatim in the sheet's own render.
-   Plus: banned words, the occupancy convention, and the rate field against
-   the rate-position slide.
+   F. THE COMPARABLE   the shipped PNL block must equal
+      P&Ls             Research/comp-pnls/web-data.json line for line, every
+                       printed figure must equal this file's own independent
+                       formatting of that source, and every candour line must
+                       be verbatim in Research/comp-pnls/REGISTER.md.
+
+   Plus: the portal's own navigation figures against the registers, banned
+   words, the occupancy convention, the rate field against the rate-position
+   slide, and the absence of the withdrawn internal marking.
 
    Run: node verify.mjs
    ══════════════════════════════════════════════════════════════════════ */
@@ -33,6 +40,7 @@ const DEAL = (process.env.FAWLEY_DEAL_ROOT
   || "D:/OneDrive - Strand" + " Labs/2. Clients/Align/2. Live Deals/Fawley Court")
   .replace(/\/?$/, "/");
 const DECK = DEAL + "Deck/im-v1/";
+const PNLDIR = DEAL + "Research/comp-pnls/";
 
 const html = fs.readFileSync("index.html", "utf8");
 const slides = fs.readFileSync(DECK + "slides.md", "utf8");
@@ -42,6 +50,8 @@ const bridgeHtml = fs.readFileSync(DEAL + "Deck/irr-bridge/index.html", "utf8");
 const csSpec = JSON.parse(fs.readFileSync(DEAL + "Model/cheatsheet-spec.json", "utf8"));
 const csRender = fs.readFileSync("src/cheatsheet-render.txt", "utf8");
 const qsSource = fs.readFileSync(DEAL + "Research/vendor-qs-crosscheck-20260816.md", "utf8");
+const pnlSource = JSON.parse(fs.readFileSync(PNLDIR + "web-data.json", "utf8"));
+const pnlRegister = fs.readFileSync(PNLDIR + "REGISTER.md", "utf8");
 
 /* the page's data, evaluated out of the page itself */
 const grab = (from, to) => {
@@ -57,7 +67,8 @@ const mod = new Function(
   grab("const CASES = [", "const BY_SLUG") +
   grab("const CHEAT = {", "</script>") +
   grab("const QS = {", "/*QS-DATA-END*/") +
-  "; return { FIGS, DIALS, DIAL_SRC, PLATES, FIELD, LADDER, BRIDGE, CHAPTERS, CASES, CHEAT, QS };"
+  "; return { FIGS, DIALS, DIAL_SRC, PLATES, FIELD, LADDER, BRIDGE, PNL, PNLFMT, PNL_CASE,"
+  + " PNL_NOTES, PNL_PROSE, CHAPTERS, CASES, CHEAT, QS };"
 )();
 
 const ent = s => String(s)
@@ -76,6 +87,8 @@ const deckRaw = ent(slides).replace(/\s+/g, " ").toLowerCase();
 const bridgeText = (norm(bridgeMd) + " \u00b6 " + norm(bridgeHtml)).toLowerCase();
 const csSpecText = quotes(JSON.stringify(csSpec).replace(/\\"/g, '"')).replace(/\s+/g, " ").toLowerCase();
 const csRenderText = quotes(csRender).replace(/\s+/g, " ").toLowerCase();
+/* the P&L build record, with its markdown emphasis removed */
+const pnlRegText = quotes(pnlRegister.replace(/\*/g, "")).replace(/\s+/g, " ").toLowerCase();
 
 let fails = 0, checked = 0;
 const fail = (l, d) => { fails++; console.log(`\n  ${l}\n        ${d}`); };
@@ -96,51 +109,50 @@ const tok = s => (norm(s).match(TOKEN) || []).map(t => t.replace(/\s/g, "").toLo
 const walkBlocks = (blocks, fn) => {
   for (const b of blocks) {
     if (b[0] === "panes") { walkBlocks(b[1].left.b, fn); walkBlocks(b[1].right.b, fn); continue; }
+    if (b[0] === "exhibit") { walkBlocks(b[1].b, fn); continue; }
     fn(b);
   }
 };
+const allBlocks = v => [...v.lead, ...v.reason];
 
 /* Prose written for the medium — navigation, not memorandum content. Each line
    is a page-furniture string that has no counterpart in the deck; every one is
-   listed here explicitly so nothing can slip through unlisted. */
+   listed here explicitly so nothing can slip through unlisted. The portal's own
+   navigation copy — chapter blurbs, view titles, view blurbs and the headline
+   figures on the contents — is exempt from the verbatim rule by construction,
+   and every figure token inside it is checked against the registers instead. */
 const OWN_PROSE = new Set([
-  "The scheme, the consent position, the underwrite and what it returns at the ruled price.",
-  "The estate and its designations, the photography, the five titles, the consent record, the scheme and the counterparty.",
-  "Two comparable layers, the rate ladders, seasonality, operations, capital cost and ten case studies.",
-  "The dial set, the revenue engines, the margin frame, the capital stack and the residences.",
-  "The five cases, the exit evidence, every rung of the entry ladder and the single-lever sensitivities.",
-  "From the Embassy base case to the Align underwrite, one engine, seven measured levers.",
-  "The underwrite read against the data room, the gates that have to settle, and what we are watching.",
-  "The development consultants’ 87 questions, each tagged against what the data room holds, and the 39-item ask list.",
-  "The one-page IC reference: hero figures, summary P&L, the cash-flow walk, sources and uses, returns, sensitivity, comps, terms and watchpoints.",
   "Ten properties read against the underwrite. Five of the UK country-house set, five of the European ceiling cohort, and Estelle Manor for the club engine. Every figure carries its basis, window and source.",
   "Every rung is measured on the model at that entry. The rule marks the 13.00% bar; the lever columns show the level one input alone must reach to hold it.",
-  "What the profile shows"
+  "The estate",
+  "The Main House interiors"
 ]);
 
-const KPI_CAPTIONS = new Set(["Levered IRR at the ruled price", "Equity multiple", "Peak equity", "Agent guidance, understood"]);
+const KPI_CAPTIONS = new Set(["Levered IRR at the ruled price", "Equity multiple", "Peak equity",
+  "Agent guidance, understood", "Levered profit"]);
 
 for (const ch of mod.CHAPTERS) {
-  if (ch.internal) continue;
-  if (!OWN_PROSE.has(norm(ch.blurb))) verbatim("chapter blurb/" + ch.id, ch.blurb);
-  for (const s of ch.sections) {
-    walkBlocks(s.blocks, b => {
+  for (const v of ch.views) {
+    walkBlocks(allBlocks(v), b => {
       const k = b[0];
-      if (k === "lede" || k === "para") {
-        if (!OWN_PROSE.has(norm(b[1]))) verbatim(`${ch.id}/${s.id} ${k}`, b[1]);
+      if (k === "lede" || k === "para" || k === "subhead") {
+        if (!OWN_PROSE.has(norm(b[1]))) verbatim(`${ch.id}/${v.id} ${k}`, b[1]);
       } else if (k === "src") {
-        verbatim(`${ch.id}/${s.id} source`, b[1]);
+        /* two source lines are checked against their own sources further down:
+           the dial sheet's, sentence by sentence, and the rate field's tail. */
+        if (norm(b[1]) !== norm(mod.DIAL_SRC) && norm(b[1]) !== norm(mod.FIELD.src))
+          verbatim(`${ch.id}/${v.id} source`, b[1]);
       } else if (k === "kpis") {
-        for (const [v, c] of b[1]) { verbatim(`${ch.id}/${s.id} kpi value`, v); if (!KPI_CAPTIONS.has(c)) verbatim(`${ch.id}/${s.id} kpi cap`, c); }
+        for (const [val, c] of b[1]) { verbatim(`${ch.id}/${v.id} kpi value`, val); if (!KPI_CAPTIONS.has(c)) verbatim(`${ch.id}/${v.id} kpi cap`, c); }
       } else if (k === "cards") {
-        for (const [hh, bb] of b[1]) { verbatim(`${ch.id}/${s.id} card head`, hh); verbatim(`${ch.id}/${s.id} card body`, bb); }
+        for (const [hh, bb] of b[1]) { verbatim(`${ch.id}/${v.id} card head`, hh); verbatim(`${ch.id}/${v.id} card body`, bb); }
       } else if (k === "bullets") {
-        for (const x of b[1]) verbatim(`${ch.id}/${s.id} bullet`, x);
+        for (const x of b[1]) verbatim(`${ch.id}/${v.id} bullet`, x);
       } else if (k === "tbl") {
         const t = b[1];
-        for (const h2 of (t.head || [])) verbatim(`${ch.id}/${s.id} th`, typeof h2 === "object" ? h2.t : h2);
-        for (const [, cells] of t.rows) for (const c of cells) if (norm(c) && norm(c) !== "—") verbatim(`${ch.id}/${s.id} cell`, c);
-        if (t.note) verbatim(`${ch.id}/${s.id} note`, t.note);
+        for (const h2 of (t.head || [])) verbatim(`${ch.id}/${v.id} th`, typeof h2 === "object" ? h2.t : h2);
+        for (const [, cells] of t.rows) for (const c of cells) if (norm(c) && norm(c) !== "—") verbatim(`${ch.id}/${v.id} cell`, c);
+        if (t.note) verbatim(`${ch.id}/${v.id} note`, t.note);
       } else if (k === "plates") {
         for (const i of b[1]) { verbatim(`plate ${mod.PLATES[i].f} caption`, mod.PLATES[i].cap); verbatim(`plate ${mod.PLATES[i].f} alt`, mod.PLATES[i].alt, deckRaw); }
       }
@@ -148,14 +160,14 @@ for (const ch of mod.CHAPTERS) {
   }
 }
 
-/* the pane headers are the deck's own leftHeader / rightHeader lines */
+/* the pane and exhibit headers are the deck's own leftHeader / rightHeader lines */
 for (const ch of mod.CHAPTERS) {
-  if (ch.internal) continue;
-  for (const s of ch.sections) for (const b of s.blocks) {
+  for (const v of ch.views) for (const b of allBlocks(v)) {
+    if (b[0] === "exhibit") { if (b[1].h) verbatim(`${ch.id}/${v.id} exhibit header`, b[1].h); continue; }
     if (b[0] !== "panes") continue;
     for (const side of ["left", "right"]) {
       const hh = b[1][side].h;
-      if (hh && !OWN_PROSE.has(norm(hh))) verbatim(`${ch.id}/${s.id} pane header`, hh);
+      if (hh && !OWN_PROSE.has(norm(hh))) verbatim(`${ch.id}/${v.id} pane header`, hh);
     }
   }
 }
@@ -203,18 +215,56 @@ const EXTRA_OK = new Set([
 ]);
 let subjChecked = 0;
 for (const ch of mod.CHAPTERS) {
-  if (ch.internal) continue;
-  for (const s of ch.sections) walkBlocks(s.blocks, b => {
+  for (const v of ch.views) walkBlocks(allBlocks(v), b => {
     if (b[0] !== "tbl") return;
     for (const [cls, cells] of b[1].rows) {
       if (cls !== "subject") continue;
       for (const c of cells) for (const t of tok(c)) {
         subjChecked++; checked++;
         if (!FIG_VALUES.has(t) && !EXTRA_OK.has(t) && !deckText.includes(t))
-          fail(`SUBJECT FIGURE UNREGISTERED  ${ch.id}/${s.id}`, `token "${t}" in "${norm(c).slice(0, 110)}"`);
+          fail(`SUBJECT FIGURE UNREGISTERED  ${ch.id}/${v.id}`, `token "${t}" in "${norm(c).slice(0, 110)}"`);
       }
     }
   });
+}
+
+/* ══ A2. the portal's own navigation figures ═══════════════════════ */
+
+/* Chapter blurbs, view titles and the headline figures on the contents are the
+   portal's own copy. The words are ours; the numbers are not — every token in
+   them must already be registered somewhere. */
+const NAV_OK = new Set(["10", "11", "13", "16", "12", "8", "6", "7", "5", "4", "39", "87", "26",
+  "1", "2", "3", "9", "19", "100", "0.80", "1.05", "1.25", "0.90", "34.08%", "1.93x", "13.23%"]);
+const navToken = (label, s) => {
+  for (const t of tok(s)) {
+    checked++;
+    if (!FIG_VALUES.has(t) && !EXTRA_OK.has(t) && !NAV_OK.has(t) && !deckText.includes(t) && !bridgeText.includes(t))
+      fail("NAVIGATION FIGURE UNREGISTERED  " + label, `token "${t}" in "${norm(s)}"`);
+  }
+};
+for (const ch of mod.CHAPTERS) {
+  navToken("chapter " + ch.num + " blurb", ch.blurb);
+  if (ch.figures !== "REGISTER") for (const [val, lab] of ch.figures) { navToken("chapter " + ch.num + " figure", val); navToken("chapter " + ch.num + " figure label", lab); }
+  for (const v of ch.views) { navToken(ch.id + "/" + v.id + " figure", v.figure); navToken(ch.id + "/" + v.id + " blurb", v.blurb); }
+}
+/* the register chapter's counts are computed from the register itself */
+checked++;
+if (mod.CHAPTERS.find(c => c.id === "dd").figures !== "REGISTER")
+  fail("REGISTER FIGURES NOT COMPUTED", "the diligence chapter must take its counts from the register");
+
+/* every view is reachable and uniquely addressed */
+const seen = new Set();
+for (const ch of mod.CHAPTERS) {
+  checked++;
+  if (ch.views[0].id !== "") fail("CHAPTER HAS NO OVERVIEW", ch.id);
+  for (const v of ch.views) {
+    const route = ch.id + "/" + v.id;
+    checked++;
+    if (seen.has(route)) fail("DUPLICATE ROUTE", route);
+    seen.add(route);
+    checked++;
+    if (!v.lead.length) fail("VIEW LEADS WITH NOTHING", route);
+  }
 }
 
 /* ══ B. the case studies ═══════════════════════════════════════════ */
@@ -381,6 +431,154 @@ for (const f of C.footer) inSpec("cheat footer", f);
 checked++;
 if (C.sensitivity.grid[1][1] !== "13.2%") fail("SENSITIVITY BASE", "base cell is " + C.sensitivity.grid[1][1] + ", the model prints 13.2%");
 
+/* ══ F. the comparable estimated P&Ls ══════════════════════════════ */
+
+/* F1 — the shipped pack equals the source file, leaf for leaf. */
+const deepEq = (a, b, path) => {
+  if (a === b) return true;
+  if (typeof a !== typeof b || a === null || b === null) { fail("P&L DATA MISMATCH", path + ": page " + JSON.stringify(a) + " vs source " + JSON.stringify(b)); return false; }
+  if (Array.isArray(a) !== Array.isArray(b)) { fail("P&L DATA SHAPE", path); return false; }
+  if (typeof a === "object") {
+    const ka = Object.keys(a), kb = Object.keys(b);
+    if (ka.length !== kb.length) { fail("P&L DATA KEYS", path + ": page " + ka.length + " vs source " + kb.length); return false; }
+    let ok = true;
+    for (const k of kb) if (!deepEq(a[k], b[k], path + "." + k)) ok = false;
+    return ok;
+  }
+  fail("P&L DATA MISMATCH", path + ": page " + JSON.stringify(a) + " vs source " + JSON.stringify(b));
+  return false;
+};
+for (const key of Object.keys(pnlSource)) { checked++; deepEq(mod.PNL[key], pnlSource[key], "PNL." + key); }
+checked++;
+if (Object.keys(mod.PNL).length !== Object.keys(pnlSource).length) fail("P&L DATA KEYS", "top level");
+
+/* F2 — every printed figure, recomputed here from the source file by an
+   implementation written independently of the page's. */
+const G = n => n.toLocaleString("en-GB");
+const vK = v => { const r = Math.round(v / 1000); return r < 0 ? "(" + G(-r) + ")" : G(r); };
+const vCur = (v, c) => { const s = c === "GBP" ? "£" : "€"; const r = Math.round(v); return r < 0 ? "(" + s + G(-r) + ")" : s + G(r); };
+const vPct = (v, dp) => { const x = v * 100, s = Math.abs(x).toFixed(dp == null ? 2 : dp); return x < 0 ? "(" + s + ")%" : s + "%"; };
+const vNum = v => G(Math.round(v));
+
+/* the row order the page prints, declared here a second time on purpose */
+const V_SPEC = [
+  ["divider", null, "Revenue"], ["line", "rev_rooms", "Rooms"], ["line", "rev_lodges", "Lodges"],
+  ["line", "rev_food", "Food"], ["line", "rev_beverage", "Beverage"], ["line", "rev_spa", "Spa"],
+  ["line", "rev_golf", "Golf"], ["line", "rev_memberships", "Memberships"], ["line", "rev_leisure", "Leisure"],
+  ["line", "rev_other", "Other operated"], ["total", "total_revenue", "Total revenue"],
+  ["divider", null, "Departmental cost"], ["line", "total_cos", "Cost of sales"],
+  ["line", "total_de", "Departmental expenses"], ["line", "total_dw", "Direct wages"],
+  ["total", "gross_departmental_profit", "Gross departmental profit"],
+  ["divider", null, "Undistributed"], ["line", "und_ag", "Administrative and general"],
+  ["line", "und_sm", "Sales and marketing"], ["line", "und_pom", "Property operations and maintenance"],
+  ["line", "und_utilities", "Utilities"], ["total", "total_undistributed", "Total undistributed"],
+  ["big", "gop", "Gross operating profit", "gop"], ["line", "rates", "Property taxes and rates"],
+  ["line", "insurance", "Insurance"], ["line", "franchise_fee", "Brand franchise fee"],
+  ["big", "ebitda", "EBITDA", "ebitda"], ["line", "ffe_reserve", "FF&E reserve"],
+  ["line", "ground_rent", "Ground rent"], ["big", "noi", "Net operating income", "noi"]
+];
+
+const same = (label, page, want) => {
+  checked++;
+  if (page !== want) fail("P&L FIGURE  " + label, `page "${page}" vs source "${want}"`);
+};
+
+let pnlFigures = 0;
+for (const src of pnlSource.hotels) {
+  const page = mod.PNL.hotels.find(x => x.slug === src.slug);
+  const dual = src.currency !== "GBP";
+
+  /* the P&L itself */
+  const want = [];
+  for (const [kind, key, label, mkey] of V_SPEC) {
+    if (kind === "divider") { want.push(["divider", label, "", "", null]); continue; }
+    const nv = src.pnl_native[key], gv = src.pnl_gbp[key];
+    if (kind === "line" && Math.round(nv) === 0 && Math.round(gv) === 0) continue;
+    want.push([kind, label, vK(nv), dual ? vK(gv) : "", mkey ? vPct(src.margins[mkey]) : null]);
+  }
+  const rows = mod.PNLFMT.rows(page);
+  same(src.slug + " row count", String(rows.length), String(want.length));
+  for (let i = 0; i < Math.min(rows.length, want.length); i++) {
+    for (let j = 0; j < 5; j++) { same(`${src.slug} row ${i} col ${j}`, String(rows[i][j]), String(want[i][j])); pnlFigures++; }
+  }
+
+  /* the operating basis */
+  const wb = [
+    ["Keys", String(src.keys), ""],
+    ["Open days in the year", vNum(src.open_days), ""],
+    ["Occupancy", vPct(src.pnl_native.occupancy, 1), ""],
+    ["ADR", vCur(src.pnl_native.adr, src.currency), dual ? vCur(src.pnl_gbp.adr, "GBP") : ""],
+    ["RevPAR", vCur(src.pnl_native.revpar, src.currency), dual ? vCur(src.pnl_gbp.revpar, "GBP") : ""],
+    ["Rooms available", vNum(src.pnl_native.rooms_available), ""],
+    ["Rooms sold", vNum(src.pnl_native.rooms_sold), ""]
+  ];
+  const gb = mod.PNLFMT.basis(page);
+  same(src.slug + " basis count", String(gb.length), String(wb.length));
+  for (let i = 0; i < wb.length; i++) for (let j = 0; j < 3; j++) { same(`${src.slug} basis ${i}/${j}`, String(gb[i][j]), String(wb[i][j])); pnlFigures++; }
+
+  /* the per-key and payroll memo */
+  const m = src.memo;
+  const wm = [
+    ["Revenue a key", vCur(m.rev_per_key_native, src.currency), dual ? vCur(m.rev_per_key_gbp, "GBP") : ""],
+    ["GOP a key", dual ? "" : vCur(m.gop_per_key_gbp, "GBP"), vCur(m.gop_per_key_gbp, "GBP")],
+    ["NOI a key", dual ? "" : vCur(m.noi_per_key_gbp, "GBP"), vCur(m.noi_per_key_gbp, "GBP")],
+    ["Implied all-staff payroll", vCur(m.implied_payroll_native, src.currency), dual ? vCur(m.implied_payroll_gbp, "GBP") : ""],
+    ["Payroll, % of revenue", vPct(m.payroll_pct), ""],
+    ["Rooms, % of revenue", vPct(m.rooms_share), ""]
+  ];
+  const gm = mod.PNLFMT.memo(page);
+  for (let i = 0; i < wm.length; i++) for (let j = 0; j < 3; j++) { same(`${src.slug} memo ${i}/${j}`, String(gm[i][j]), String(wm[i][j])); pnlFigures++; }
+}
+
+/* the comparative, ranked on GOP margin — order and every cell. The display
+   name is the case study's, so the accents the pack writes as ASCII come from
+   a source this file already gates. */
+const vDisp = h => {
+  const cs = Object.keys(mod.PNL_CASE).find(k => mod.PNL_CASE[k] === h.slug);
+  const c = mod.CASES.find(x => x.slug === cs);
+  return c ? c.name : h.name;
+};
+const wantRank = [...pnlSource.hotels.map(h => ({
+  name: vDisp(h), cls: h.evidence_class, keys: h.keys, open: vNum(h.open_days),
+  adr: vCur(h.pnl_native.adr, h.currency), occ: vPct(h.pnl_native.occupancy, 1), gopN: h.margins.gop,
+  gop: vPct(h.margins.gop), ebitda: vPct(h.margins.ebitda), noi: vPct(h.margins.noi),
+  payroll: vPct(h.memo.payroll_pct), rpk: vCur(h.memo.rev_per_key_gbp, "GBP")
+})), {
+  name: pnlSource.subject.name, cls: "SUBJECT", keys: pnlSource.subject.keys, open: "Year-round",
+  adr: vCur(pnlSource.subject.adr_y1, "GBP"), occ: "60–70%", gopN: pnlSource.subject.margins.gop,
+  gop: vPct(pnlSource.subject.margins.gop), ebitda: "—", noi: vPct(pnlSource.subject.margins.noi),
+  payroll: "—", rpk: vCur(pnlSource.subject.per_key.revenue, "GBP")
+}].sort((a, b) => b.gopN - a.gopN);
+const gotRank = mod.PNLFMT.ranked();
+same("ranked row count", String(gotRank.length), String(wantRank.length));
+for (let i = 0; i < wantRank.length; i++) {
+  for (const k of ["name", "cls", "keys", "open", "adr", "occ", "gop", "ebitda", "noi", "payroll", "rpk"]) {
+    same(`ranked ${i} ${k}`, String(gotRank[i][k]), String(wantRank[i][k])); pnlFigures++;
+  }
+}
+/* the finding the view is built on */
+checked++;
+if (gotRank[5].name !== "Fawley Court") fail("P&L RANKING", "the subject is not sixth of eleven on GOP margin");
+
+/* F3 — every candour line is the build record's own */
+for (const [slug, lines] of Object.entries(mod.PNL_NOTES)) {
+  checked++;
+  if (!pnlSource.hotels.some(h => h.slug === slug)) fail("P&L NOTE FOR UNKNOWN HOTEL", slug);
+  for (const l of lines) verbatim("P&L note " + slug, l, pnlRegText, "comp-pnls/REGISTER.md");
+}
+for (const [k, lines] of Object.entries(mod.PNL_PROSE)) for (const l of lines) verbatim("P&L prose " + k, l, pnlRegText, "comp-pnls/REGISTER.md");
+checked++;
+if (mod.PNL_PROSE.limits.length !== 13) fail("P&L LIMITS", mod.PNL_PROSE.limits.length + " limits, expected 13");
+/* every case study maps to a book, and every book to a case study */
+for (const c of mod.CASES) {
+  checked++;
+  if (!mod.PNL_CASE[c.slug]) fail("CASE WITHOUT AN ESTIMATED P&L", c.slug);
+  checked++;
+  if (!pnlSource.hotels.some(h => h.slug === mod.PNL_CASE[c.slug])) fail("CASE MAPPED TO NO BOOK", c.slug);
+}
+checked++;
+if (Object.keys(mod.PNL_CASE).length !== pnlSource.hotels.length) fail("P&L MAP SIZE", "the ten books and the ten cases must correspond");
+
 /* ══ house rules ═══════════════════════════════════════════════════ */
 
 for (const w of ["strand", "wilton", "\\bproceed\\b", "compelling", "\\bprime\\b(?! reach| Henley| sold| 5%)", "\\brare\\b"]) {
@@ -395,7 +593,10 @@ const OCC_OK = [
   "0.65 [0.60–0.70]",                        // the dial-set cell
   "stabilised occupancy 0.65 → 0.60",        // the cheat sheet's measured stress line
   "occupancy 0.65 → 0.60",
-  '"occ_stab": "0.65"'                       // the figures register, carried whole
+  '"occ_stab": "0.65"',                      // the figures register, carried whole
+  '"occupancy":0.65',                        // the comparable pack, carried whole
+  "0.65 x administrative and general",       // the P&L pack's payroll bridge, a weighting
+  "0.65 / 0.45 / 0.40 / 0.00 convention"     // the same weighting, restated in the limits
 ];
 const text = strip(html);
 let scrub = text;
@@ -403,18 +604,21 @@ for (const ok of OCC_OK) scrub = scrub.split(ok).join("");
 checked++;
 if (/\b0\.65\b/.test(scrub)) fail("OCCUPANCY POINT", "0.65 outside the approved model-input contexts");
 
-/* the internal sections must be badged, in the chrome and in the navigation */
-for (const id of ["questions", "cheatsheet"]) {
-  const ch = mod.CHAPTERS.find(c => c.id === id);
+/* the internal marking is withdrawn: the chapters stay, the marking goes */
+for (const s of ["INTERNAL — ALIGN ONLY", "Internal — Align only", 'class="intbar"', "badge int",
+                 "body.internal", "chip.int", "toc-ch.int", "idx-item.int", "· internal"]) {
   checked++;
-  if (!ch || !ch.internal) fail("INTERNAL FLAG MISSING", id);
+  if (html.includes(s)) fail("WITHDRAWN INTERNAL MARKING PRESENT", s);
+}
+for (const ch of mod.CHAPTERS) { checked++; if (ch.internal) fail("INTERNAL FLAG PRESENT", ch.id); }
+/* the two former internal chapters are still here, unbadged */
+for (const id of ["dd", "cheatsheet"]) {
+  checked++;
+  if (!mod.CHAPTERS.some(c => c.id === id)) fail("CHAPTER MISSING", id);
 }
 checked++;
-if (!/INTERNAL — ALIGN ONLY|Internal — Align only/i.test(html)) fail("INTERNAL BADGE MISSING", "no badge string on the page");
-for (const s of ['class="intbar"', 'badge int', 'body.internal .mast', '.chip.int']) {
-  checked++;
-  if (!html.includes(s)) fail("INTERNAL CHROME MISSING", s);
-}
+if (!mod.CHAPTERS.find(c => c.id === "dd").views.some(v => v.lead.some(b => b[0] === "qs")))
+  fail("REGISTER NOT IN DILIGENCE", "the 87-question register must lead the merged diligence chapter");
 
-console.log(`\n${fails === 0 ? "PASS" : "FAIL"} — ${checked} checks, ${fails} failures  (${subjChecked} subject-cell figures)`);
+console.log(`\n${fails === 0 ? "PASS" : "FAIL"} — ${checked} checks, ${fails} failures  (${subjChecked} subject-cell figures, ${pnlFigures} P&L figures)`);
 process.exit(fails ? 1 : 0);

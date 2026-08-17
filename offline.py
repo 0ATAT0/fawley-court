@@ -2,10 +2,15 @@
 every route still renders from the cache."""
 import asyncio
 from playwright.async_api import async_playwright
+import sys
+
+sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 BASE = "http://127.0.0.1:8732/"
-ROUTES = ["#/", "#/c/asset", "#/c/evidence", "#/c/underwrite", "#/c/returns",
-          "#/c/bridge", "#/c/dd", "#/c/questions", "#/c/cheatsheet", "#/h/cliveden"]
+ROUTES = ["#/", "#/c/summary", "#/c/asset", "#/c/asset/title", "#/c/evidence",
+          "#/c/evidence/pnl", "#/c/underwrite", "#/c/underwrite/profile", "#/c/returns",
+          "#/c/bridge", "#/c/dd", "#/c/dd/asks", "#/c/cheatsheet",
+          "#/h/cliveden", "#/h/cliveden/pnl", "#/h/passalacqua/pnl"]
 
 
 async def main():
@@ -22,7 +27,7 @@ async def main():
         # let the page warm the full-size plates
         await page.wait_for_timeout(9000)
         keys = await page.evaluate(
-            "caches.open('fawley-court-v1').then(c => c.keys().then(k => k.map(r => new URL(r.url).pathname)))")
+            "caches.open('fawley-court-v3').then(c => c.keys().then(k => k.map(r => new URL(r.url).pathname)))")
         print("cached entries:", len(keys))
         for k in sorted(keys):
             print("   ", k)

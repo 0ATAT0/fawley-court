@@ -1,46 +1,67 @@
-# Fawley Court — Investment Memorandum
+# Fawley Court — the deal portal
 
-The whole memorandum as an installable, offline-capable web document: nine
-chapters, ten case studies, the IRR bridge, the vendor-question register and the
-investor cheat sheet, readable one-handed on an iPad in a meeting.
+Everything needed to be the expert on the deal, the underwrite and the
+competitive environment, in one installable, offline-capable page. It is judged
+by how fast it answers a question you arrive with, so every surface leads with
+the thing itself — table, ladder, chart, register — and the argument folds
+behind a "reasoning & basis" rule beneath it.
 
-Align-branded. Strictly private and confidential. Two chapters are internal and
-are badged as such on the page, in the chapter bar and in the contents.
+Align-branded. Strictly private and confidential.
 
-## The section map
+## How it is arranged
 
-| # | Chapter | What it holds |
+- **The landing page is the contents, and the contents is the summary.** Eight
+  chapter rows, each with its one-line description and its headline figures.
+- **A chapter is a hub.** It opens with its lead exhibit, carries a tab strip of
+  its views, and — where it has more than one — an index of them with a figure
+  each.
+- **A view is one screen.** The exhibit leads; the ledes, cards, bullets and
+  source lines that argue it sit inside a disclosure under it. Nothing is
+  deleted, so the verbatim text stays in the DOM and every gate still reads it.
+- **Prose composes beside its exhibit.** Two-track grids hold body prose at
+  about 70ch and give the second track to the sources, the headline figures or
+  the second table, so no paragraph is left as a ribbon beside dead space.
+- **A site-wide finder** (`/`, ⌘K, or the masthead ⌕) searches the 87 questions,
+  the 39 asks, the ten case studies and their estimated P&Ls, every section's
+  own table content, the sixteen dials, the entry ladder, the bridge levers and
+  the watchpoints — and lands on the answer, opening the question it found.
+
+## The map
+
+| # | Chapter | Views |
 |---|---|---|
-| 01 | Executive Summary | The landing view: cover, the four headline figures, the summary table and the contents |
-| 02 | The Asset | The estate and its designations · photography (two plates pages, lightbox) · title and ownership · planning and consents · the scheme · counterparty and the price question |
-| 03 | Evidence & Comparables | The comparable architecture · cohort rate ladder · UK rate evidence · rate positioning (interactive field) · seasonality · cohort operations · UK operational evidence · conversion capex · the ten case studies |
-| — | Case study, ×10 | `#/h/<slug>` — the property record, what it evidences, and a line-by-line read against the underwrite |
-| 04 | The Underwrite | The dial set · revenue engines · the margin frame · capital and cost to open · drawdown and return profile (equity waterfall) · residences, adopted product and sold evidence |
-| 05 | Returns & the Entry Ladder | Returns, cases and the floor · exit yield and value per key · the entry ladder (interactive) · single-lever sensitivities |
-| 06 | The IRR Bridge | The seven-lever walk from the Embassy base case to the Align underwrite, waterfall + table + reading + the caveats panel |
-| 07 | Diligence | The underwrite against the data room · diligence gates and the information register · the memorandum's closing statement and contact |
-| 08 | The Fawley Questions | **INTERNAL** — 87 questions filterable by status and section, collapsible detail, the 39-item ask list, the tags/keys/counts view |
-| 09 | The Cheat Sheet | **INTERNAL** — the one-page IC reference: hero tiles, summary P&L, cash-flow walk, sources and uses, returns, sensitivity grid, transaction comps, terms, watchpoints |
+| 01 | Executive Summary | one view: the four headline figures and the eight-row summary |
+| 02 | The Asset | estate card (photo strip + key facts) · photography · title & ownership · planning & consents · the scheme · counterparty & the price question |
+| 03 | Evidence & Comparables | rate positioning + the ten-case grid · the two layers · cohort rate · UK rate · seasonality · cohort operations · UK operational evidence · conversion capex · **estimated P&Ls** |
+| 04 | The Underwrite | the sixteen dials · the dial set · revenue engines · the margin frame · capital & cost to open · drawdown & return profile · residences, adopted product · residences, sold evidence |
+| 05 | Returns & the Entry Ladder | returns strip + the interactive ladder · the five cases · single-lever sensitivities · exit yield & value per key |
+| 06 | The IRR Bridge | one view: the seven-lever walk, its table, and the reading and limits folded under it |
+| 07 | Diligence | the 87-question register · the 39-item ask list · tags, keys & counts · the underwrite against the data room · diligence gates · in closing |
+| 08 | The Cheat Sheet | one view: the one-page IC reference |
+| — | Case study, ×10 | `#/h/<slug>` — the record and the read-against, and `#/h/<slug>/pnl`, its estimated P&L |
 
-Navigation: a fixed masthead, a chapter bar pinned to the bottom (chapter chips,
-a Contents sheet and a Dials sheet), a sticky section rail on wide screens and a
-scrolling jump row on narrow ones, and prev/next pagers on every chapter.
+Routes are `#/`, `#/c/<chapter>[/<view>]` and `#/h/<slug>[/pnl]`. Navigation is
+a fixed masthead with the finder, a chapter bar pinned to the bottom (chapter
+chips, a Contents sheet and a Dials sheet), a sticky tab strip per chapter and
+prev/next pagers.
 
 ## Files
 
 | File | What it is |
 |---|---|
-| `index.html` | The whole document — inline CSS and JS, hash-routed, no build step |
-| `manifest.json`, `sw.js` | PWA: installable, network-first for the page, cache-first for assets (`fawley-court-v1`) |
+| `index.html` | The whole portal — inline CSS and JS, hash-routed, no build step |
+| `manifest.json`, `sw.js` | PWA: installable, network-first for the page, cache-first for assets (`fawley-court-v3`) |
 | `align-mark.png` | Align wordmark, strapline cropped |
 | `icon-192/512.png`, `apple-touch-icon.png` | Home-screen icons |
 | `img/*.jpg` | Vendor data-room photography, resized (`-t` = 640px thumb, plain = 1200px) |
 | `verify.mjs` | The content gate — every figure on the page against its source |
 | `tools/parse-qs.py` | Parses the vendor-question register markdown into `src/qs-data.json` |
 | `tools/inline-qs.py` | Splices that JSON into `index.html` between the `QS-DATA` markers |
-| `src/cheatsheet-render.txt` | Text extract of the cheat sheet's own PDF render — the source of every measured value on chapter 09 |
+| `tools/inline-pnl.py` | Splices the comparable-P&L pack in between the `PNL-DATA` markers, and caches it at `src/pnl-data.json` |
+| `src/cheatsheet-render.txt` | Text extract of the cheat sheet's own PDF render — the source of every measured value on chapter 08 |
 | `snap.py`, `audit.py`, `offline.py` | Render, polish-audit and offline harnesses |
 | `snaps/` | Rendered screenshots, four viewports, every route (gitignored) |
+| `DECISIONS.md` | The structural rulings this arrangement rests on |
 
 Every reference in the page is relative (`./`), so it serves correctly from a
 repository sub-path such as `/fawley-court/`.
@@ -58,33 +79,40 @@ on HTTPS only, so offline behaviour is testable locally.
 ## The gates — run all four before shipping any content change
 
 ```
-node verify.mjs      # 2,300 checks against the four sources — must PASS
-python audit.py      # touch targets, contrast, overflow, type floor, console — must print "clean"
+node verify.mjs      # 4,324 checks against the six sources — must PASS
+python audit.py      # touch targets, contrast, overflow, type floor, the finder,
+                     #   the filters, the ladder, the ranking, the lightbox — must print "clean"
 python offline.py    # service worker takes control; every route renders offline
 python snap.py v     # renders every route at four widths into snaps/
 ```
 
+`audit.py` forces every disclosure open before it measures, so the folded
+argument is audited as hard as the exhibit above it.
+
 ## Sources of record
 
 Nothing on this page is re-derived, re-rounded or updated. Every figure is
-carried verbatim from one of five files, and `verify.mjs` gates each of them:
+carried verbatim from one of six sources, and `verify.mjs` gates each of them:
 
 | Section | Source |
 |---|---|
 | Chapters 01–07, the case studies | `Deck/im-v1/slides.md` and `Deck/im-v1/figures.json`, governed by `Deck/im-v1/INTENT.md` |
 | Chapter 06, the bridge | `Model/docs/embassy-bridge-20260816.md`, with the standing bridge page's prose |
-| Chapter 08, the register | `Research/vendor-qs-crosscheck-20260816.md` |
-| Chapter 09, the cheat sheet | `Model/cheatsheet-spec.json` for every label and note; the sheet's own render for every measured value |
+| Chapter 07, the register | `Research/vendor-qs-crosscheck-20260816.md` |
+| Chapter 08, the cheat sheet | `Model/cheatsheet-spec.json` for every label and note; the sheet's own render for every measured value |
+| The estimated P&Ls | `Research/comp-pnls/web-data.json`, carried whole, with the candour lines verbatim from `Research/comp-pnls/REGISTER.md` |
+| The portal's own navigation copy | written for the medium; the words are ours, and every figure token inside them is checked against the registers above |
 
 If the underwrite moves, the deck and the model records move first and this page
 follows. No workbook is opened by anything in this repository.
 
-### Regenerating the register
+### Regenerating the register and the P&L pack
 
 ```
 python tools/parse-qs.py     # re-parse the markdown; prints the per-section tie-out
 python tools/inline-qs.py    # splice it into index.html
-node verify.mjs              # confirms the page block equals a fresh parse
+python tools/inline-pnl.py   # splice the comparable-P&L pack in
+node verify.mjs              # confirms both blocks equal their sources
 ```
 
 ## House rules the page keeps
@@ -93,7 +121,8 @@ node verify.mjs              # confirms the page block equals a fresh parse
   no verdict labels, no promotional adjectives.
 - Occupancy is narrated as the 60–70% interval; 0.65 appears only as the model
   input, and the verifier fails on any other use.
-- The internal chapters are present, not hidden, and are badged in three places:
-  the masthead rule, the chapter chip and a bar at the top of the chapter.
+- The estimated P&Ls are estimates of other people's businesses. Every one
+  carries its evidence class, what is fact and what is inference, and the build
+  record's own caveat lines; the comparative view carries all thirteen limits.
 - The price-logic candour of the memorandum is carried in full: the ruled £50m,
   the entry ladder, the backsolves and the sensitivities.

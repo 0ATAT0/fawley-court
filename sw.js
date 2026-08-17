@@ -1,6 +1,6 @@
-const CACHE = 'fawley-court-v2';
+const CACHE = 'fawley-court-v3';
 
-// Shell: everything needed to open the memorandum and read every chapter
+// Shell: everything needed to open the portal and read every chapter
 // offline. Full-size photography is warmed by the page after load, not on
 // install, so a first visit on slow wifi is not held up by 1.1MB of plates.
 const ASSETS = [

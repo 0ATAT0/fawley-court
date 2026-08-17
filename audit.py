@@ -1,14 +1,31 @@
 """Mechanical polish audit across every route and breakpoint: touch targets,
 contrast, horizontal overflow, text-size floor, image alt text, console errors.
-Also exercises the register's filters, the ladder and the lightbox."""
+Also exercises the finder, the register's filters, the disclosures, the ladder,
+the tab strips and the lightbox."""
 import asyncio, json
 from playwright.async_api import async_playwright
+import sys
+
+sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 BASE = "http://127.0.0.1:8732/"
 SIZES = {"ipad-land": (1180, 820), "ipad-port": (820, 1180), "phone": (390, 844), "desktop": (1512, 950)}
-ROUTES = ["#/", "#/c/asset", "#/c/evidence", "#/c/underwrite", "#/c/returns", "#/c/bridge",
-          "#/c/dd", "#/c/questions", "#/c/questions/asks", "#/c/questions/keys", "#/c/cheatsheet",
-          "#/h/cliveden", "#/h/estelle", "#/h/rosa-alpina"]
+
+CHAPTERS = {
+    "summary": [""],
+    "asset": ["", "photography", "title", "planning", "scheme", "counterparty"],
+    "evidence": ["", "layers", "cohort-rate", "uk-rate", "seasonality", "cohort-ops", "uk-ops", "capex", "pnl"],
+    "underwrite": ["", "dial-set", "engines", "margin", "capital", "profile", "residences", "residences-evidence"],
+    "returns": ["", "cases", "sensitivities", "exit"],
+    "bridge": [""],
+    "dd": ["", "asks", "keys", "room", "gates", "closing"],
+    "cheatsheet": [""],
+}
+ROUTES = ["#/"]
+for _c, _vs in CHAPTERS.items():
+    ROUTES += ["#/c/" + _c + ("/" + _v if _v else "") for _v in _vs]
+ROUTES += ["#/h/cliveden", "#/h/cliveden/pnl", "#/h/estelle", "#/h/rosa-alpina/pnl",
+           "#/h/grand-controle/pnl", "#/h/borgo-egnazia/pnl"]
 
 JS = r"""
 () => {
@@ -22,7 +39,7 @@ JS = r"""
       if (c && !/rgba\(0, 0, 0, 0\)|transparent/.test(c)) return rgb(c);
       n = n.parentElement; } return [252,252,251]; };
 
-  for (const el of document.querySelectorAll('button, a, input, [tabindex="0"]')) {
+  for (const el of document.querySelectorAll('button, a, input, summary, [tabindex="0"]')) {
     const r = el.getBoundingClientRect();
     if (r.width === 0 || r.height === 0) continue;
     if (el.closest('svg')) continue;
@@ -75,7 +92,10 @@ async def main():
             page.on("requestfailed", lambda r: errs.append("REQFAIL " + r.url))
             for route in ROUTES:
                 await page.goto(BASE + route, wait_until="networkidle")
-                await page.wait_for_timeout(420)
+                await page.wait_for_timeout(400)
+                # open every disclosure on the route: the argument must audit too
+                n_open = await page.evaluate("() => { const d=[...document.querySelectorAll('details.reason')]; d.forEach(x=>x.open=true); return d.length; }")
+                await page.wait_for_timeout(200)
                 r = await page.evaluate(JS)
                 for k, v in r.items():
                     if k == "docScroll":
@@ -85,8 +105,31 @@ async def main():
                     for item in v:
                         findings.setdefault(k, set()).add(json.dumps([sname, route.replace('#/', '') or 'index'] + list(item)))
 
-            # interaction states: the contents sheet, the dials sheet, a filter, a rung, a plate
-            await page.goto(BASE + "#/c/questions", wait_until="networkidle")
+            # the finder: open it, type, land on a question
+            await page.goto(BASE + "#/", wait_until="networkidle")
+            await page.click("#findbtn"); await page.wait_for_timeout(350)
+            await page.fill("#findinput", "parking"); await page.wait_for_timeout(350)
+            hits = await page.locator(".hit").count()
+            if hits == 0:
+                findings.setdefault("finder", []).append([sname, "searching 'parking' returned nothing"])
+            elif await page.locator(".hit[data-qkey]").count() == 0:
+                findings.setdefault("finder", []).append([sname, "searching 'parking' found no register question"])
+            else:
+                await page.locator(".hit[data-qkey]").first.click()
+                await page.wait_for_timeout(600)
+                if "#/c/dd" not in page.url:
+                    findings.setdefault("finder", []).append([sname, "a question hit did not land on the register: " + page.url])
+                elif await page.locator(".q.open").count() == 0:
+                    findings.setdefault("finder", []).append([sname, "the question did not open"])
+            await page.goto(BASE + "#/", wait_until="networkidle")
+            await page.click("#findbtn"); await page.wait_for_timeout(300)
+            await page.fill("#findinput", "Reschio"); await page.wait_for_timeout(350)
+            await page.locator(".hit").first.click(); await page.wait_for_timeout(500)
+            if "reschio" not in page.url:
+                findings.setdefault("finder", []).append([sname, "a hotel hit did not land on its case: " + page.url])
+
+            # the sheets, the register filters, a rung, a plate
+            await page.goto(BASE + "#/c/dd", wait_until="networkidle")
             await page.click("#tocbtn"); await page.wait_for_timeout(500)
             await page.click("#dialbtn"); await page.wait_for_timeout(500)
             await page.click("#dialbtn"); await page.wait_for_timeout(300)
@@ -97,14 +140,21 @@ async def main():
             await page.click(".q-h"); await page.wait_for_timeout(400)
             await page.click('[data-qstatus=""]'); await page.wait_for_timeout(300)
             await page.fill("#qsearch", "asbestos"); await page.wait_for_timeout(500)
-            n2 = await page.locator(".q").count()
-            if n2 == 0:
+            if await page.locator(".q").count() == 0:
                 findings.setdefault("search", []).append([sname, "asbestos search returned nothing"])
+
             await page.goto(BASE + "#/c/returns", wait_until="networkidle")
             await page.click('[data-lad="4"]'); await page.wait_for_timeout(300)
             txt = await page.locator("#laddetail").inner_text()
             if "8.91%" not in txt:
                 findings.setdefault("ladder", []).append([sname, "rung detail did not update: " + txt[:60]])
+
+            # the comparative ranking opens the hotel's own estimated P&L
+            await page.goto(BASE + "#/c/evidence/pnl", wait_until="networkidle")
+            await page.click(".rankrow.link"); await page.wait_for_timeout(500)
+            if "/pnl" not in page.url:
+                findings.setdefault("ranking", []).append([sname, "a ranking row did not open its P&L: " + page.url])
+
             await page.goto(BASE + "#/c/asset", wait_until="networkidle")
             await page.click('[data-plate="0"]'); await page.wait_for_timeout(600)
             if not await page.locator(".lb.on").count():
