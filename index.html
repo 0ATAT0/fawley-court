@@ -507,7 +507,10 @@ ol.read li::before {
 
 /* ─────────────────────────  the view index (chapter hubs)  ───────────────────────── */
 
-.vidx { border-top: 1px solid var(--line-strong); }
+/* the index is always the first <section> in a view, so .sec:first-of-type
+   zeroes its margin; it carries its own instead. Its heading's rule is the
+   only rule it needs — the old border-top bracketed the title twice. */
+.vidx { margin-top: clamp(34px, 4.4vw, 60px); }
 .vidx-h { display: flex; align-items: baseline; gap: 12px; padding: 4px 0 9px; border-bottom: 1px solid var(--line-strong); margin-bottom: 4px; }
 .vidx-h .t { font-size: var(--fs-h2); font-weight: 700; letter-spacing: -.006em; color: var(--ink); }
 .vrow {
