@@ -38,7 +38,8 @@ ROUTES += ["#/m/" + h["slug"] for h in _MKT
 CARDS = ["ledger", "calendar", "plate"]
 # the subject rides at the head of both tabs, so a tab is its hotels plus one
 _COH = [h for h in _MKT if h.get("in_cohort")]
-MKT_CARDS = {"eu": 29, "uk": 9}
+MKT_CARDS = {"eu": sum(1 for h in _COH if h["country"] != "UK") + 1,
+             "uk": sum(1 for h in _COH if h["country"] == "UK") + 1}
 
 JS = r"""
 () => {
