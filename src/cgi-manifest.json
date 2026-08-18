@@ -1,0 +1,181 @@
+{
+  "meta": {
+    "source": "Fawley Court/CGIs",
+    "count": 17,
+    "generated": "2026-08-18"
+  },
+  "areas": [
+    {
+      "key": "hall",
+      "label": "The Main House",
+      "images": [
+        {
+          "full": "img/cgi/hall-1.jpg",
+          "thumb": "img/cgi/hall-1-t.jpg",
+          "w": 1200,
+          "h": 800,
+          "bytes": 196175,
+          "src": "ChatGPT Image Aug 18, 2026, 08_14_23 PM.png"
+        },
+        {
+          "full": "img/cgi/hall-2.jpg",
+          "thumb": "img/cgi/hall-2-t.jpg",
+          "w": 1200,
+          "h": 800,
+          "bytes": 194587,
+          "src": "ChatGPT Image Aug 18, 2026, 08_24_05 PM.png"
+        },
+        {
+          "full": "img/cgi/hall-3.jpg",
+          "thumb": "img/cgi/hall-3-t.jpg",
+          "w": 1200,
+          "h": 800,
+          "bytes": 196195,
+          "src": "ChatGPT Image Aug 18, 2026, 08_33_05 PM.png"
+        },
+        {
+          "full": "img/cgi/hall-4.jpg",
+          "thumb": "img/cgi/hall-4-t.jpg",
+          "w": 1200,
+          "h": 800,
+          "bytes": 199724,
+          "src": "ChatGPT Image Aug 18, 2026, 08_36_34 PM.png"
+        }
+      ]
+    },
+    {
+      "key": "courtyard",
+      "label": "The Courtyards",
+      "images": [
+        {
+          "full": "img/cgi/courtyard-1.jpg",
+          "thumb": "img/cgi/courtyard-1-t.jpg",
+          "w": 1200,
+          "h": 800,
+          "bytes": 198468,
+          "src": "ChatGPT Image Aug 18, 2026, 07_45_44 PM.png"
+        },
+        {
+          "full": "img/cgi/courtyard-2.jpg",
+          "thumb": "img/cgi/courtyard-2-t.jpg",
+          "w": 1200,
+          "h": 900,
+          "bytes": 197068,
+          "src": "ChatGPT Image Aug 18, 2026, 08_37_49 PM.png"
+        }
+      ]
+    },
+    {
+      "key": "riding",
+      "label": "The Riding School",
+      "images": [
+        {
+          "full": "img/cgi/riding-1.jpg",
+          "thumb": "img/cgi/riding-1-t.jpg",
+          "w": 1200,
+          "h": 800,
+          "bytes": 199497,
+          "src": "ChatGPT Image Aug 18, 2026, 08_42_54 PM.png"
+        },
+        {
+          "full": "img/cgi/riding-2.jpg",
+          "thumb": "img/cgi/riding-2-t.jpg",
+          "w": 1200,
+          "h": 900,
+          "bytes": 195410,
+          "src": "courtyard or riding.png"
+        }
+      ]
+    },
+    {
+      "key": "spa",
+      "label": "The Spa",
+      "images": [
+        {
+          "full": "img/cgi/spa-1.jpg",
+          "thumb": "img/cgi/spa-1-t.jpg",
+          "w": 1200,
+          "h": 801,
+          "bytes": 196998,
+          "src": "ChatGPT Image Aug 18, 2026, 05_33_59 PM.png"
+        },
+        {
+          "full": "img/cgi/spa-2.jpg",
+          "thumb": "img/cgi/spa-2-t.jpg",
+          "w": 1200,
+          "h": 900,
+          "bytes": 196575,
+          "src": "ChatGPT Image Aug 18, 2026, 05_36_29 PM.png"
+        },
+        {
+          "full": "img/cgi/spa-3.jpg",
+          "thumb": "img/cgi/spa-3-t.jpg",
+          "w": 1200,
+          "h": 900,
+          "bytes": 196998,
+          "src": "ChatGPT Image Aug 18, 2026, 05_37_44 PM.png"
+        },
+        {
+          "full": "img/cgi/spa-4.jpg",
+          "thumb": "img/cgi/spa-4-t.jpg",
+          "w": 1200,
+          "h": 800,
+          "bytes": 191890,
+          "src": "Gemini_Generated_Image_5z747m5z747m5z74 (1).jpg"
+        }
+      ]
+    },
+    {
+      "key": "riverclub",
+      "label": "The River Club",
+      "images": [
+        {
+          "full": "img/cgi/riverclub-1.jpg",
+          "thumb": "img/cgi/riverclub-1-t.jpg",
+          "w": 1200,
+          "h": 675,
+          "bytes": 197333,
+          "src": "ChatGPT Image Aug 18, 2026, 06_08_50 PM.png"
+        },
+        {
+          "full": "img/cgi/riverclub-2.jpg",
+          "thumb": "img/cgi/riverclub-2-t.jpg",
+          "w": 1200,
+          "h": 675,
+          "bytes": 197878,
+          "src": "ChatGPT Image Aug 18, 2026, 07_39_51 PM.png"
+        }
+      ]
+    },
+    {
+      "key": "residences",
+      "label": "The Residences",
+      "images": [
+        {
+          "full": "img/cgi/residences-1.jpg",
+          "thumb": "img/cgi/residences-1-t.jpg",
+          "w": 1200,
+          "h": 800,
+          "bytes": 197559,
+          "src": "ChatGPT Image Aug 18, 2026, 08_14_59 PM.png"
+        },
+        {
+          "full": "img/cgi/residences-2.jpg",
+          "thumb": "img/cgi/residences-2-t.jpg",
+          "w": 1200,
+          "h": 800,
+          "bytes": 199473,
+          "src": "ChatGPT Image Aug 18, 2026, 08_21_49 PM.png"
+        },
+        {
+          "full": "img/cgi/residences-3.jpg",
+          "thumb": "img/cgi/residences-3-t.jpg",
+          "w": 1200,
+          "h": 800,
+          "bytes": 197985,
+          "src": "ChatGPT Image Aug 18, 2026, 08_32_53 PM.png"
+        }
+      ]
+    }
+  ]
+}

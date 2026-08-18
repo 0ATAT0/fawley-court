@@ -479,3 +479,23 @@ place is what the filter is for, so it no longer heads the grid as well. Cards s
 content rather than stretching to the tallest in the row, which was leaving a dead foot under
 every short card. The gate now checks the grid's order directly — every tab's cards, in rate
 order, against the pack's own sort.
+
+## Season, motion, and the fold removed (19 August 2026, late)
+
+**The card's first row is the hotel's season, not our own month count.** Angus caught the defect
+on Pitrizza, which read "2 of 12 months" because the collection window ran in August: its
+published 2026 season is 29 May to 28 September. All 34 now carry a season — eight from the
+cohort research, eighteen from a season sweep run for this, and eight year-round on our own
+evidence, each with its basis and evidence class. Splendido is the one that could not be pinned:
+two current listings disagree by more than a month at both ends, and the card says so rather
+than picking one.
+
+**The fold is gone.** A card shows four rows and no control; everything else is on the hotel's
+page, which is where the basis for each figure already lives.
+
+**Motion, three moments.** The portal already staggered its sections in. Leaving a view now
+fades before the next is written, so a route change reads as one movement; a filter change fades
+the grid rather than swapping it under the eye, and the cards stagger back in; and the rate line
+draws itself once, left to right, with the median arriving after it. Transform, opacity and
+stroke only — nothing that lays out — and the whole layer is off under prefers-reduced-motion.
+The line uses `pathLength="1"`, so the draw needs no measurement in script.

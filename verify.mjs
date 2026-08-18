@@ -910,7 +910,8 @@ for (const h of mkCohort) {
   const where = h.name;
   mkHas(where + " name", hay, ">" + h.name + "<");
   mkHas(where + " place", hay, h.region + " · " + MK_CTRY[h.country]);
-  mkHas(where + " calendar", hay, h.months_bookable + " of 12 months");
+  if (h.season) mkHas(where + " season on the card", hay, h.season.v);
+  else mkHas(where + " calendar", hay, h.months_bookable + " of 12 months");
   if (h.median) {
     mkHas(where + " median", hay, mkGbp(h.median) + "</span>");
     mkHas(where + " net of VAT", hay, mkGbp(h.median_net_vat) + " net of VAT");
@@ -921,34 +922,34 @@ for (const h of mkCohort) {
 
   /* G7 — the headline figures, on the card and with their basis on the page */
   const page = mod.mktCaseEvidenceHTML(h);
+  if (h.season) mkHas(where + " season basis on the page", page, h.season.basis);
   /* the caveats came off the cards by ruling; they print on the hotel's page */
   if (h.caveat) mkHas(where + " caveat on the page", page, h.caveat);
   /* the achieved rate and the season are off the card by ruling; every other
      figure prints on it, and every figure's basis prints on the hotel's page */
   for (const f of h.figures || []) {
-    if (f.k !== "adr" && f.k !== "season") {
+    /* the card shows the first three figures; the rest print on the page only */
+    const onCard = (h.figures || []).filter(x => x.k !== "adr" && x.k !== "season").slice(0, 3);
+    if (onCard.includes(f)) {
       mkHas(where + " " + f.k + " on the card", hay, f.v);
-      mkHas(where + " " + f.k + " class", hay, '<span class="cl ' + f.cls + '"> ' + f.cls + "</span>");
       mktFigures += 1;
     }
     mkHas(where + " " + f.k + " basis on the page", page, f.basis);
     mkHas(where + " " + f.k + " label", page, "<th>" + f.label + "</th>");
     mktFigures += 2;
   }
-  /* a card shows four rows; anything past the fourth folds behind its own control */
+  /* a card shows four rows and no control: everything else is on the page */
   {
-    const shown = 1 + (h.figures || []).filter(f => f.k !== "adr" && f.k !== "season").length;
     checked++;
     const card = hay.slice(hay.indexOf('data-mkcard="' + h.slug + '"'));
-    const end = card.indexOf("</div><span class=\"mk-go\"");
+    const end = card.indexOf('<span class="mk-go"');
     const body = card.slice(0, end < 0 ? 4000 : end);
-    const visible = (body.split('class="mk-rest"')[0].match(/class="mk-row"/g) || []).length;
+    const visible = (body.match(/class="mk-row"/g) || []).length;
     if (visible > 4) fail("MARKET CARD SHOWS MORE THAN FOUR ROWS", h.slug + ": " + visible);
-    if (shown > 4) mkHas(where + " fold", body, 'data-n="' + (shown - 4) + '"');
   }
   if (!(h.figures || []).length) {
     mkHas(where + " states the blank", hay, "Nothing published beyond a rate.");
-    mkHas(where + " states the blank on its page", page, "publishes nothing beyond a rate and a calendar");
+    mkHas(where + " states the blank on its page", page, "this property publishes nothing, and nothing was found in the registries");
   }
 
   /* G8 — the photograph, if the page names one */

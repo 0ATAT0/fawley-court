@@ -66,6 +66,11 @@
      "cls": "press"
     }
    ],
+   "season": {
+    "v": "30 April to 11 October",
+    "basis": "The official 2026 listing, about five and a half months, the shortest confirmed season in the set",
+    "cls": "official"
+   },
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -103,6 +108,11 @@
    "case_slug": null,
    "in_cohort": true,
    "figures": [],
+   "season": {
+    "v": "29 May to 28 September",
+    "basis": "The confirmed 2026 season, about four months; the pool, spa and bar close from 30 March",
+    "cls": "official"
+   },
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -162,6 +172,11 @@
      "cls": "press"
     }
    ],
+   "season": {
+    "v": "Late March to early January",
+    "basis": "The estate's own dates, about nine and a half months",
+    "cls": "official"
+   },
    "engine": "rosewood-crs (synxis lead-avail proxy)",
    "window": [
     "2026-08-18",
@@ -231,6 +246,11 @@
      "cls": "filed"
     }
    ],
+   "season": {
+    "v": "Not established: sources conflict",
+    "basis": "One 2026 booking page states 8 June to 29 September, another that the hotel closes on 2 November; the two disagree by more than a month at both ends",
+    "cls": "press"
+   },
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -297,6 +317,11 @@
      "cls": "press"
     }
    ],
+   "season": {
+    "v": "Year-round",
+    "basis": "No closure found, and Airelles markets a winter programme at the hotel",
+    "cls": "press"
+   },
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -350,6 +375,11 @@
      "cls": "modelled"
     }
    ],
+   "season": {
+    "v": "Mid-March to early January",
+    "basis": "Closed 3 January and reopened 16 March in 2024; the estate's own houses stay rentable through the closure",
+    "cls": "press"
+   },
    "engine": "travelclick",
    "window": [
     "2026-08-18",
@@ -418,6 +448,11 @@
      "cls": "press"
     }
    ],
+   "season": {
+    "v": "Late March to mid-October",
+    "basis": "About six and a half months, from trade listings for the current year",
+    "cls": "press"
+   },
    "engine": "belmond bbe (own CRS proxy)",
    "window": [
     "2026-08-18",
@@ -460,6 +495,11 @@
    "case_slug": null,
    "in_cohort": true,
    "figures": [],
+   "season": {
+    "v": "1 May to 11 October",
+    "basis": "About five and a half months, the shortest season in the French set after Messardiere",
+    "cls": "press"
+   },
    "engine": "bookwize",
    "window": [
     "2026-08-18",
@@ -518,15 +558,13 @@
      "v": "€431k a key",
      "basis": "96 keys, FY2024 turnover €41.33m",
      "cls": "filed"
-    },
-    {
-     "k": "season",
-     "label": "Open",
-     "v": "about 172 days",
-     "basis": "derived from a stated closure window",
-     "cls": "derived"
     }
    ],
+   "season": {
+    "v": "Late March to early November",
+    "basis": "About seven months; the pool runs mid-March to early November with the hotel",
+    "cls": "press"
+   },
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -595,6 +633,11 @@
      "cls": "filed"
     }
    ],
+   "season": {
+    "v": "1 April to mid-November",
+    "basis": "About seven and a half months",
+    "cls": "press"
+   },
    "engine": "azds",
    "window": [
     "2026-08-18",
@@ -646,6 +689,11 @@
      "cls": "modelled"
     }
    ],
+   "season": {
+    "v": "Two seasons: December to April, June to November",
+    "basis": "Winter 4 December to 6 April and summer 4 June to 1 November in 2025-26, closed between them - the only property in the set with two distinct seasons",
+    "cls": "press"
+   },
    "engine": "azds",
    "window": [
     "2026-08-18",
@@ -690,6 +738,7 @@
    "case_slug": null,
    "in_cohort": false,
    "figures": [],
+   "season": null,
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -752,6 +801,11 @@
      "cls": "press"
     }
    ],
+   "season": {
+    "v": "Late April to autumn",
+    "basis": "Reopening 28 April 2026 after an eighteen-month renovation, so 2026 is not a normal year; the pre-closure pattern was an April-to-autumn season",
+    "cls": "press"
+   },
    "engine": "belmond bbe (own CRS proxy)",
    "window": [
     "2026-08-18",
@@ -806,6 +860,11 @@
      "cls": "press"
     }
    ],
+   "season": {
+    "v": "Late April to late October",
+    "basis": "Open 23 April to 25 October on the current-year listing, about six months",
+    "cls": "press"
+   },
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -844,6 +903,11 @@
    "case_slug": null,
    "in_cohort": true,
    "figures": [],
+   "season": {
+    "v": "Late March to late October",
+    "basis": "About seven months, from trade listings for the current year",
+    "cls": "press"
+   },
    "engine": "azds",
    "window": [
     "2026-08-18",
@@ -895,6 +959,11 @@
      "cls": "press"
     }
    ],
+   "season": {
+    "v": "Mid-March to early January",
+    "basis": "About nine and a half months",
+    "cls": "press"
+   },
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -963,6 +1032,11 @@
      "cls": "filed"
     }
    ],
+   "season": {
+    "v": "Late March to late November",
+    "basis": "About eight months; sources give the close as either 16 or 29 November",
+    "cls": "press"
+   },
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -1007,6 +1081,11 @@
    "case_slug": null,
    "in_cohort": true,
    "figures": [],
+   "season": {
+    "v": "20 April to 18 October",
+    "basis": "About six months, from trade listings for the current season",
+    "cls": "press"
+   },
    "engine": "azds",
    "window": [
     "2026-08-18",
@@ -1044,6 +1123,11 @@
    "case_slug": null,
    "in_cohort": true,
    "figures": [],
+   "season": {
+    "v": "2 April to 26 October",
+    "basis": "The hotel's own dates for the current season, about six and a half months",
+    "cls": "official"
+   },
    "engine": "azds",
    "window": [
     "2026-08-18",
@@ -1106,15 +1190,13 @@
      "v": "€402k a key",
      "basis": "31 keys, FY2024",
      "cls": "filed"
-    },
-    {
-     "k": "season",
-     "label": "Open",
-     "v": "about 308 days",
-     "basis": "derived from a stated closure window",
-     "cls": "derived"
     }
    ],
+   "season": {
+    "v": "Early March to early January",
+    "basis": "Closed roughly 4 January to 6 March each year, about ten months open",
+    "cls": "press"
+   },
    "engine": "travelclick",
    "window": [
     "2026-08-18",
@@ -1172,15 +1254,13 @@
      "v": "€637k a key",
      "basis": "57 keys, FY2024 turnover €36.31m",
      "cls": "filed"
-    },
-    {
-     "k": "season",
-     "label": "Open",
-     "v": "about 214 days",
-     "basis": "derived from a stated closure window",
-     "cls": "derived"
     }
    ],
+   "season": {
+    "v": "Late March to late October",
+    "basis": "The hotel's own dates, about seven months",
+    "cls": "official"
+   },
    "engine": "azds",
    "window": [
     "2026-08-18",
@@ -1230,6 +1310,11 @@
      "cls": "note"
     }
    ],
+   "season": {
+    "v": "Year-round",
+    "basis": "Press and the hotel's own festive programme; our own collection found inventory in every month",
+    "cls": "press"
+   },
    "engine": "avvio",
    "window": [
     "2026-08-18",
@@ -1277,6 +1362,7 @@
    "case_slug": null,
    "in_cohort": false,
    "figures": [],
+   "season": null,
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -1338,6 +1424,11 @@
      "cls": "press"
     }
    ],
+   "season": {
+    "v": "Year-round",
+    "basis": "The resort does not close, though individual facilities run seasonally",
+    "cls": "press"
+   },
    "engine": "ermes/blastness",
    "window": [
     "2026-08-18",
@@ -1411,15 +1502,13 @@
      "v": "50.5% of revenue",
      "basis": "FY2024",
      "cls": "filed"
-    },
-    {
-     "k": "season",
-     "label": "Open",
-     "v": "about 344 days",
-     "basis": "stated closure window",
-     "cls": "press"
     }
    ],
+   "season": {
+    "v": "Year-round, about 344 days",
+    "basis": "A stated closure window of about three weeks; bookable in every month of our own forward year",
+    "cls": "press"
+   },
    "engine": "netaffinity",
    "window": [
     "2026-08-18",
@@ -1482,6 +1571,11 @@
      "cls": "press"
     }
    ],
+   "season": {
+    "v": "Mid-March to early January",
+    "basis": "Closed 5 January and reopened 21 March in 2025; a second source puts the reopening in mid-March and the close in mid-November, so the tail is not pinned",
+    "cls": "press"
+   },
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -1550,15 +1644,13 @@
      "v": "£912k a key",
      "basis": "hotel and a 1,500 sqm spa, 2015-18",
      "cls": "press"
-    },
-    {
-     "k": "season",
-     "label": "Open",
-     "v": "365 days",
-     "basis": "the only year-round single-hotel filer in the set",
-     "cls": "filed"
     }
    ],
+   "season": {
+    "v": "Year-round",
+    "basis": "365 open days on the filed accounts, and bookable in every month of our own forward year - the only year-round single-hotel filer in the set",
+    "cls": "filed"
+   },
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -1621,6 +1713,11 @@
      "cls": "filed"
     }
    ],
+   "season": {
+    "v": "Year-round",
+    "basis": "Bookable in every month of our own forward year",
+    "cls": "derived"
+   },
    "engine": "desk rate_calendar",
    "window": [
     "2026-08-12",
@@ -1676,6 +1773,11 @@
      "cls": "press"
     }
    ],
+   "season": {
+    "v": "21 March to 15 November",
+    "basis": "The hotel's own dates, about seven and a half months",
+    "cls": "official"
+   },
    "engine": "azds",
    "window": [
     "2026-08-18",
@@ -1728,6 +1830,11 @@
      "cls": "press"
     }
    ],
+   "season": {
+    "v": "Year-round",
+    "basis": "The hotel's own festive programme and our own collection, which found inventory in every month; one uncorroborated review mentions a winter closure and is carried as a caveat rather than a fact",
+    "cls": "official"
+   },
    "engine": "rosewood-crs (synxis lead-avail proxy)",
    "window": [
     "2026-08-18",
@@ -1789,6 +1896,11 @@
      "cls": "modelled"
     }
    ],
+   "season": {
+    "v": "Year-round",
+    "basis": "Bookable in every month of our own forward year",
+    "cls": "derived"
+   },
    "engine": "desk rate_calendar",
    "window": [
     "2026-08-19",
@@ -1851,6 +1963,11 @@
      "cls": "press"
     }
    ],
+   "season": {
+    "v": "Year-round",
+    "basis": "The hotel's own published position",
+    "cls": "official"
+   },
    "engine": "desk rate_calendar",
    "window": [
     "2026-08-12",
@@ -1897,6 +2014,11 @@
    "case_slug": null,
    "in_cohort": true,
    "figures": [],
+   "season": {
+    "v": "Year-round",
+    "basis": "Bookable in every month of our own forward year",
+    "cls": "derived"
+   },
    "engine": "desk rate_calendar",
    "window": [
     "2026-08-12",
@@ -1952,6 +2074,11 @@
      "cls": "filed"
     }
    ],
+   "season": {
+    "v": "Year-round",
+    "basis": "Bookable in every month of our own forward year",
+    "cls": "derived"
+   },
    "engine": "desk rate_calendar",
    "window": [
     "2026-08-06",
@@ -2021,6 +2148,11 @@
      "cls": "press"
     }
    ],
+   "season": {
+    "v": "Year-round",
+    "basis": "Bookable in every month of our own forward year",
+    "cls": "derived"
+   },
    "engine": "desk rate_calendar",
    "window": [
     "2026-08-07",
@@ -2090,6 +2222,11 @@
      "cls": "press"
     }
    ],
+   "season": {
+    "v": "Year-round",
+    "basis": "Bookable in every month of our own forward year",
+    "cls": "derived"
+   },
    "engine": "desk rate_calendar",
    "window": [
     "2026-08-14",
@@ -2137,6 +2274,7 @@
    "case_slug": null,
    "in_cohort": false,
    "figures": [],
+   "season": null,
    "engine": "synxis",
    "window": [
     "2026-08-18",
