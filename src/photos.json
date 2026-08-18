@@ -66,17 +66,17 @@
   },
   "belmond-villa-san-michele": {
    "file": "belmond-villa-san-michele.jpg",
-   "credit": "Jay Cross (Flickr user jaycross)",
+   "credit": "Jay Cross, via Flickr (Wikimedia Commons)",
    "licence": "CC BY 2.0",
-   "source": "https://commons.wikimedia.org/wiki/File:Villa_san_michele_fiesole_02.jpg",
-   "note": "Front facade of the former Franciscan monastery, the loggia and pediment attributed to Michelozzo, taken at golden hour. A few parked cars and two guests are visible at the entrance but the building is the clear subject."
+   "source": "https://commons.wikimedia.org/wiki/File:Villa_san_michele_fiesole_13.jpg",
+   "note": "the loggia colonnade and terraced garden along the cliff edge in golden-hour light, no cars"
   },
   "borgo-egnazia": {
    "file": "borgo-egnazia.jpg",
-   "credit": "Borgo Egnazia (hotel website)",
-   "licence": "hotel website, rights not cleared for republication",
-   "source": "https://www.borgoegnazia.com/en",
-   "note": "Golden-hour aerial of the white borgo's rooftops, bell tower and clock tower; replaces a low-resolution 1200x600 Wayback-cache crop."
+   "credit": "Borgo Egnazia press room (Egnazia S.r.l.)",
+   "licence": "hotel press-room image, editorial/press use (not CC-licensed)",
+   "source": "https://egnazia-press.vercel.app/it",
+   "note": "the clock and bell tower of La Corte piazza at golden hour — the resort's own identifiable landmark, not a generic rooftop aerial"
   },
   "castello-di-reschio": {
    "file": "castello-di-reschio.jpg",
@@ -120,20 +120,6 @@
    "source": "https://www.dorchestercollection.com/en/ascot/coworth-park/",
    "note": "Twilight/winter exterior of the main Georgian mansion house, lit up, no people. The only Wikimedia Commons Coworth Park exterior image found (geograph 6385472, 'Building in Coworth Park') was rejected: its own caption says it 'might be the estate offices' near the north gate, i.e. not confidently the main house, so it fails the 'unmistakably that hotel' bar."
   },
-  "danesfield-house": {
-   "file": "danesfield-house.jpg",
-   "credit": "Danesfield House Hotel & Spa (hotel's own website, homepage banner image)",
-   "licence": "hotel website, rights not cleared",
-   "source": "https://danesfieldhouse.co.uk/",
-   "note": "The hotel's own homepage hero image: the white Tudor-revival house seen across the lawn through trees, framed by clipped hedges. Wikimedia Commons only holds an 1880 historic engraving of the house, not a photograph, so the hotel's own site was used."
-  },
-  "domaine-des-etangs": {
-   "file": "domaine-des-etangs.jpg",
-   "credit": "Auberge Resorts Collection",
-   "licence": "hotel group's own website imagery, rights not cleared for republication",
-   "source": "https://fr.auberge.com/domaine-des-etangs/ (og:image; page itself blocks direct automated fetch, image CDN does not)",
-   "note": "Aerial of the turreted château on its island within the estate's lakes, pool and tennis court visible; no people. No Wikimedia Commons coverage found for this property."
-  },
   "estelle-manor": {
    "file": "estelle-manor.jpg",
    "credit": "Rob Brewer (Bristol, England), via Flickr",
@@ -157,10 +143,10 @@
   },
   "hotel-du-cap-eden-roc": {
    "file": "hotel-du-cap-eden-roc.jpg",
-   "credit": "John Jason Junior, via Wikimedia Commons",
-   "licence": "CC BY-SA 3.0",
-   "source": "https://commons.wikimedia.org/wiki/File:Meerwasserschwimmbad_mit_Pavillon_Eden_Roc.jpg",
-   "note": "The Eden-Roc pavilion and its sea-cut infinity pool cut into the rock, with the Cap d'Antibes coastline and yachts beyond; replaces a flatter up-the-drive view of the main château with a more characteristic and distinctive image, per a Creative Commons source."
+   "credit": "avu-edm, via Panoramio (Wikimedia Commons)",
+   "licence": "CC BY 3.0",
+   "source": "https://commons.wikimedia.org/wiki/File:Cap_d%C2%B4_Antibes_-_panoramio_(1).jpg",
+   "note": "shot from the sea showing both the Eden-Roc pavilion and pool terrace on the rocks and the main white hotel set in the pines above, clear blue sky"
   },
   "hotel-pitrizza": {
    "file": "hotel-pitrizza.jpg",
@@ -199,10 +185,10 @@
   },
   "le-grand-controle": {
    "file": "le-grand-controle.jpg",
-   "credit": "Lionel Allorge, via Wikimedia Commons",
-   "licence": "CC BY-SA 3.0",
-   "source": "https://commons.wikimedia.org/wiki/File:H%C3%B4tel_du_Grand_Contr%C3%B4le_%C3%A0_Versailles_vu_du_Parterre_de_l%27Orangerie_le_11_septembre_2015.jpg",
-   "note": "This is the Hôtel du Grand Contrôle building itself (not the main Château de Versailles palace), photographed from the Orangerie parterre garden it overlooks, per the brief. Photo dates from 2015, before the 2016-2021 Airelles restoration, so some weathering/patched render is visible on the facade; it is the correct and only building, just not post-renovation. A closer 2007 Commons photo of the same building (street-facade, run-down, parked car) was rejected in favour of this cleaner garden view."
+   "credit": "Align comparables deck",
+   "licence": "carried from Align's own deck",
+   "source": "Align - Fawley Court comparables deck.html (this deal's own deck, 29 July 2026)",
+   "note": "Le Grand Contrôle on the Orangerie terrace — the plate Align's own comparables deck uses"
   },
   "le-sirenuse": {
    "file": "le-sirenuse.jpg",
@@ -220,10 +206,10 @@
   },
   "rosewood-schloss-fuschl": {
    "file": "rosewood-schloss-fuschl.jpg",
-   "credit": "A,Ocram (Wikimedia Commons user)",
-   "licence": "Public domain (CC0 / author release)",
-   "source": "https://commons.wikimedia.org/wiki/File:Schloss_Fuschl.jpg",
-   "note": "Aerial view of the castle on its wooded peninsula on Lake Fuschl. Clean public-domain licence."
+   "credit": "Андрей Романенко (Andrey Romanenko), Wikimedia Commons",
+   "licence": "CC BY-SA 4.0",
+   "source": "https://commons.wikimedia.org/wiki/File:Schloss_Fuschl_2025.jpg",
+   "note": "the schloss itself close and clearly readable on its lakeside point, shot from the water with the lakeside terrace, boathouse and turquoise lake in front, taken Aug 2025"
   },
   "royal-champagne": {
    "file": "royal-champagne.jpg",

@@ -918,19 +918,36 @@ for (const h of mkCohort) {
   } else {
     mkHas(where + " no inventory", hay, "No bookable inventory");
   }
-  if (h.caveat) mkHas(where + " caveat", hay, h.caveat);
 
   /* G7 — the headline figures, on the card and with their basis on the page */
   const page = mod.mktCaseEvidenceHTML(h);
+  /* the caveats came off the cards by ruling; they print on the hotel's page */
+  if (h.caveat) mkHas(where + " caveat on the page", page, h.caveat);
+  /* the achieved rate and the season are off the card by ruling; every other
+     figure prints on it, and every figure's basis prints on the hotel's page */
   for (const f of h.figures || []) {
-    mkHas(where + " " + f.k + " on the card", hay, f.v);
-    mkHas(where + " " + f.k + " class", hay, '<span class="cl ' + f.cls + '"> ' + f.cls + "</span>");
+    if (f.k !== "adr" && f.k !== "season") {
+      mkHas(where + " " + f.k + " on the card", hay, f.v);
+      mkHas(where + " " + f.k + " class", hay, '<span class="cl ' + f.cls + '"> ' + f.cls + "</span>");
+      mktFigures += 1;
+    }
     mkHas(where + " " + f.k + " basis on the page", page, f.basis);
     mkHas(where + " " + f.k + " label", page, "<th>" + f.label + "</th>");
-    mktFigures += 3;
+    mktFigures += 2;
+  }
+  /* a card shows four rows; anything past the fourth folds behind its own control */
+  {
+    const shown = 1 + (h.figures || []).filter(f => f.k !== "adr" && f.k !== "season").length;
+    checked++;
+    const card = hay.slice(hay.indexOf('data-mkcard="' + h.slug + '"'));
+    const end = card.indexOf("</div><span class=\"mk-go\"");
+    const body = card.slice(0, end < 0 ? 4000 : end);
+    const visible = (body.split('class="mk-rest"')[0].match(/class="mk-row"/g) || []).length;
+    if (visible > 4) fail("MARKET CARD SHOWS MORE THAN FOUR ROWS", h.slug + ": " + visible);
+    if (shown > 4) mkHas(where + " fold", body, 'data-n="' + (shown - 4) + '"');
   }
   if (!(h.figures || []).length) {
-    mkHas(where + " states the blank", hay, "Nothing beyond a rate and a calendar is published");
+    mkHas(where + " states the blank", hay, "Nothing published beyond a rate.");
     mkHas(where + " states the blank on its page", page, "publishes nothing beyond a rate and a calendar");
   }
 
@@ -1022,10 +1039,17 @@ checked++;
     fail("MARKET CASE MAP", "pack: " + mapped.join(", ") + "  |  portal: " + written.join(", "));
 }
 
-/* G5 — the basis prose is the pack's own */
-for (const [k, v] of [["basis", mktSource.basis], ["vat_note", mktSource.vat_note],
-                      ["type_basis", mktSource.type_basis], ["figures_basis", mktSource.figures_basis]]) {
-  mkHas("chapter " + k, mkEuHtml, v);
+/* G5 — the basis prose is the pack's own. The chapter's own source note was cut
+   by ruling, so the basis is checked where it now lives: on a hotel's page. */
+{
+  const page = mod.mktCaseEvidenceHTML(mkCohort.find(h => h.median));
+  for (const [k, v] of [["basis", mktSource.basis], ["vat_note", mktSource.vat_note],
+                        ["figures_basis", mktSource.figures_basis]]) {
+    mkHas("hotel page " + k, page, v);
+  }
+  /* the grouping's own basis travels with the type labels it explains */
+  checked++;
+  if (!mktSource.type_basis) fail("TYPE BASIS MISSING FROM THE PACK", "type_basis");
 }
 
 /* G6 — the ten rate records print the source's series */

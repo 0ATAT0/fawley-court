@@ -221,7 +221,7 @@ async def main():
             # a card leads to its property page
             await page.goto(BASE + "#/c/market", wait_until="networkidle")
             await page.wait_for_timeout(300)
-            await page.click('.mk[data-hash^="#/m/"]')
+            await page.click('.mk-hit[data-hash^="#/m/"]')
             await page.wait_for_timeout(500)
             if "#/m/" not in page.url:
                 findings.setdefault("market card", []).append([sname, "a card did not open its page: " + page.url])

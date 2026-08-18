@@ -443,3 +443,33 @@ own line beneath, where it appears only on Europe. One deviation from "30% small
 rather than silently applied: the count would land at 8.4px, under the portal's own 11.5px type
 floor, so it holds at the floor while the label shrinks. The narrow "All" tab also carries a
 46px minimum width, because at seven tenths it measured 31–39px against the 40px touch minimum.
+
+## The set shrinks to 34, and the chapter tightens (19 August 2026, night)
+
+**Two hotels are out of the comparable set by ruling.** Danesfield House is no longer a
+comparable. Domaine des Étangs prices at £522 — checked before cutting, and the figure is real:
+147 bookable nights over six months, the cheapest in the set by a distance and well below the
+band this cohort exists to bracket. The set is 34: Europe 27, the United Kingdom 7, ten bookable
+in all twelve months. Their photographs and records went with them.
+
+**The set always sorts by rate now**, not by calendar then rate. The bands remain.
+
+**The card carries four rows and no more.** The achieved rate and the season come off it, the
+caveats come off it, and anything past the fourth row folds behind a control on the card itself.
+That forced a structural change: a card is a div with a stretched navigation button underneath
+and the fold control above it, because a button inside a button is not valid HTML and does not
+work.
+
+**The chapter's source note is cut.** The basis, the VAT note and the evidence-class definitions
+print on each hotel's own page, where the figures they describe are, and the gate checks them
+there.
+
+**The kind-of-place and country filters are the same object now**: small tabs at seven tenths
+the region tabs' size, bottom-aligned to the same baseline, 76px wide with the label wrapping and
+the count trailing its last line, right-aligned. Countries appear only on Europe, on their own
+hairline beneath.
+
+**Five more photographs.** Le Grand Contrôle now uses the plate from Align's own comparables
+deck. Villa San Michele, Hôtel du Cap-Eden-Roc and Rosewood Schloss Fuschl found clean Creative
+Commons replacements; Borgo Egnazia is the clock tower of La Corte from the resort's own press
+room, because Commons holds nothing of the hotel.
