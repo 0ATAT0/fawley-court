@@ -62,6 +62,9 @@ const pnlRegister = fs.readFileSync(PNLDIR + "REGISTER.md", "utf8");
 /* the ultra-luxury market pack, and the run record behind it */
 const MKTDIR = DEAL + "Research/cohort-2026-08/";
 const mktSource = JSON.parse(fs.readFileSync(MKTDIR + "market-web-data.json", "utf8"));
+/* the written hotel layer, where it has been built */
+const hpSource = fs.existsSync(MKTDIR + "hotel-pages.json")
+  ? JSON.parse(fs.readFileSync(MKTDIR + "hotel-pages.json", "utf8")) : {};
 const mktRecord = ["RATES.md", "RATES-round2.md", "RATES-new-candidates.md", "FINDINGS.md"]
   .map(f => fs.readFileSync(MKTDIR + f, "utf8")).join(String.fromCharCode(10));
 
@@ -83,7 +86,7 @@ const mod = new Function(
   "; return { FIGS, V16, CAPEX, DIALS, DIAL_SRC, PLATES, FIELD, LADDER, BRIDGE, PNL, PNLFMT, PNL_CASE,"
   + " PNL_NOTES, PNL_PROSE, CHAPTERS, CASES, CHEAT, QS, MARKET, MKT_ALL, MKT_BY_SLUG,"
   + " MKT_BY_CASE, MKSTATE, PHOTOS, marketIndexHTML, mktGridInner, mktRateHTML, mktFiguresHTML, hotelPageHTML,"
-  + " mktCaseEvidenceHTML, mktControlsInner, mktTab,"
+  + " mktCaseEvidenceHTML, mktControlsInner, mktTab, HOTELPAGE,"
   + " mktPhotoHTML, mktGbp };"
 )();
 
@@ -973,6 +976,27 @@ for (const slug of Object.keys(mod.PHOTOS)) {
 for (const hay of [mkEuHtml, mkUkHtml]) {
   checked++;
   if (hay.includes("Fawley Court")) fail("SUBJECT IN THE MARKET INDEX", "the subject was ruled out of this chapter");
+}
+
+/* G9 — the written layer: what a page says of its own, and its photography */
+checked++;
+mkPath(mod.HOTELPAGE, hpSource, "HOTELPAGE");
+for (const [slug, w] of Object.entries(hpSource)) {
+  const h = mkCohort.find(x => x.slug === slug);
+  checked++;
+  if (!h) { fail("A WRITTEN PAGE FOR A HOTEL OUTSIDE THE SET", slug); continue; }
+  const page = mod.hotelPageHTML(h);
+  mkHas(h.name + " intro", page, w.intro);
+  for (const im of w.images || []) {
+    checked++;
+    if (!fs.existsSync("img/comps/" + im.file)) fail("PAGE IMAGE NOT ON DISK", slug + " -> " + im.file);
+    checked++;
+    if (!im.file.startsWith(slug + "-")) fail("PAGE IMAGE NAMED FOR ANOTHER HOTEL", slug + " -> " + im.file);
+    mkHas(h.name + " image credit", page, im.credit);
+    mkHas(h.name + " image licence", page, im.licence);
+  }
+  for (const row of w.record || []) mkHas(h.name + " record row", page, row[0]);
+  for (const c of w.cards || []) mkHas(h.name + " card", page, c[1]);
 }
 
 /* G3 — the counts are the source's */
