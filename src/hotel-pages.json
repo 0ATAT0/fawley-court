@@ -28,7 +28,7 @@
    ],
    [
     "Wellness",
-    "Revas Spa, on the east bank of the River Maigue, with 18 treatment rooms, a relaxation pool and a thermal suite"
+    "Adare Manor Spa, with five treatment rooms and a relaxation pool"
    ],
    [
     "Food and beverage",
@@ -36,7 +36,7 @@
    ],
    [
     "Events",
-    "Weddings from a minimum of 150 guests, with the Grand Ballroom holding up to 320; exclusive whole-Manor-House buyouts offered for private celebrations, price not published"
+    "Weddings from a minimum of 150 guests, with the Grand Ballroom holding up to 300; exclusive whole-Manor-House buyouts offered for private celebrations, price not published"
    ]
   ],
   "cards": [
@@ -105,7 +105,17 @@
    "https://www.travelextra.ie/adare-manor-hotel-resort-reports-unspecified-loss-in-2023/",
    "https://www.travelextra.ie/adare-manor-hotel-resort-reports-third-successive-loss-for-2025/",
    "https://www.duedil.com/company/ie/552867/tizzard-holdings-unlimited-company",
-   "https://www.irishtimes.com/ireland/2025/09/08/ryder-cup-2027-adare-anticipates-160m-bonanza-from-hosting-golf-event/"
+   "https://www.irishtimes.com/ireland/2025/09/08/ryder-cup-2027-adare-anticipates-160m-bonanza-from-hosting-golf-event/",
+   "https://www.irishexaminer.com/news/munster/arid-41710121.html",
+   "https://www.limerickpost.ie/2026/02/19/planning-green-light-for-ryder-cup-lodges-at-adare-manor/",
+   "https://www.adaremanor.com/spa/"
+  ],
+  "conflicts": [
+   "Guest-lodge planning approval moved from 2025 to 2026, reflecting the cited planning records.",
+   "Golf-course cost corrected from about €2m per hole to about €2m per green; no €36m total is stated.",
+   "Wellness entry corrected from Revas Spa to Adare Manor Spa, with five treatment rooms and a relaxation pool.",
+   "Grand Ballroom capacity corrected from 320 to 300, per the current official wedding page.",
+   "Unverified Adare sterling rate and 365-day season claims were removed from the comparison fields."
   ],
   "not_found": [
    "Turnover, loss amount, EBITDA, payroll or employee count for the hotel; none exists in the public record",
@@ -178,7 +188,7 @@
   "record_extra": [
    [
     "Wellness",
-    "A spa opened with the July 2025 rebuild; press describes it at 1,684 sqm (already noted in the portal's own case study). Treatment-room count and area beyond that figure were not found (search aggregation of reopening press; consistent with the portal's existing citation of The Adept Traveler and One Mile at a Time)."
+    "A spa opened with the July 2025 rebuild; press describes it at 1,684 sqm (already noted in the portal's own case study). The spa has seven private treatment suites and two medical treatment suites; no further area figure was found (search aggregation of reopening press; consistent with the portal's existing citation of The Adept Traveler and One Mile at a Time)."
    ],
    [
     "Food and beverage",
@@ -186,7 +196,17 @@
    ]
   ],
   "sources": [
-   "https://www.aman.com/resorts/aman-rosa-alpina"
+   "https://www.aman.com/resorts/aman-rosa-alpina",
+   "https://www.aman.com/system/files/2025-12/Aman-Rosa-Alpina-Factsheet.pdf",
+   "https://www.aman.com/resorts/aman-rosa-alpina/dining"
+  ],
+  "conflicts": [
+   "Changed “full rebuild” to “extensive renovation” because the cited sources do not substantiate a full rebuild.",
+   "Changed “51 suites” to “51 rooms and suites” to match Aman’s current factsheet.",
+   "Changed “two dining outlets” to “four distinct dining venues” to match Aman’s current factsheet.",
+   "Removed the unsupported reference to a press-reported rate uplift.",
+   "Added the factsheet’s treatment-room counts: seven private treatment suites and two medical treatment suites.",
+   "Removed the not-found entry for wedding or event capacity because Aman identifies the Heritage Room as an events and wedding space with indoor capacity for 68."
   ],
   "not_found": [
    "A precise treatment-room count for the spa (only the 1,684 sqm area figure, already held, was found).",
@@ -194,7 +214,6 @@
    "Any achieved or booking-engine rate beyond the press-reported reopening figure the portal already holds.",
    "Michelin recognition for either Il Salotto or The Grill.",
    "The capital cost of the November 2020-July 2025 rebuild.",
-   "Any wedding or event capacity.",
    "Any membership or club programme."
   ],
   "images": [
@@ -253,7 +272,7 @@
   "record": [
    [
     "Setting",
-    "Porto Heli, eastern Peloponnese, Greece; a hilltop resort covering about 93 hectares (230 acres) overlooking the Argolic Gulf"
+    "Porto Heli, eastern Peloponnese, Greece; a hilltop resort covering about 103 hectares overlooking the Argolic Gulf"
    ],
    [
     "Keys",
@@ -357,6 +376,15 @@
    "https://grivaliahospitality.com/amanzoe.html",
    "https://www.sphereestates.com/properties/greece/amanzoe-villas/"
   ],
+  "conflicts": [
+   "Setting corrected from about 93 hectares to 103 hectares, following Grivalia's current official property page.",
+   "Unsupported heritage-designation claim removed.",
+   "Unsupported Aman Resorts management-contract claim removed.",
+   "Wellness count corrected from nine treatment rooms to seven treatment suites, following Aman's current wellness page.",
+   "Unsupported open-air amphitheatre dining and Michelin-status claims removed.",
+   "Unsupported one-bedroom and four-bedroom residence pricing removed; supported two-bedroom pricing retained.",
+   "Card wording narrowed from first Aman-branded resort in Europe to first villa-integrated or residential Aman resort in Europe."
+  ],
   "not_found": [
    "Amanzoe's own property-level EBITDA or GOP margin, as distinct from the Grivalia group's consolidated figures",
    "A staff count or staff-per-key ratio",
@@ -424,15 +452,15 @@
    ],
    [
     "Keys",
-    "20 rooms and suites in the main house (5 suites, 8 staterooms, 7 deluxe rooms, 1 single and 2 ground-floor rooms on one published breakdown), plus a separate Gardener's Cottage; 21 keys including the cottage on the hotel's own count"
+    "20 rooms and suites in the main house, plus a separate Gardener's Cottage; 21 keys including the cottage on the hotel's own count"
    ],
    [
     "Heritage",
-    "Neoclassical mansion built 1821-26 for Sir Charles Coote, 9th Baronet, to designs by Sir Richard Morrison and his son William Vitruvius Morrison, replacing an earlier house of 1778; NIAH reference 12801204 (Buildings of Ireland)"
+    "Neoclassical mansion built 1821-26 for Sir Charles Coote, 9th Baronet, to designs by Sir Richard Morrison and his son William Vitruvius Morrison, replacing an earlier house of 1778; NIAH reference 12801207 (Buildings of Ireland)"
    ],
    [
     "Ownership",
-    "Bought as a derelict former school (Patrician College) in 2002 by Chicago businessman Fred Krehbiel and his wife Kay; restored over roughly nine years and opened as a hotel in May 2011. Fred Krehbiel died suddenly in June 2021; the family, led by sons Jay and Liam, has stated it remains committed to the property. Operating company: Ballyfin Demesne Limited, Irish Companies Registration Office no. 355480"
+    "Bought as a derelict former school (Patrician College) in 2002 by Chicago businessman Fred Krehbiel and his wife Kay; restored over roughly nine years and opened as a hotel in May 2011. Fred Krehbiel died suddenly in summer 2021; the family, led by sons Jay and Liam, has stated it remains committed to the property. Operating company: Ballyfin Demesne Limited, Irish Companies Registration Office no. 355480"
    ],
    [
     "Capital cost",
@@ -458,7 +486,7 @@
   "cards": [
    [
     "What happened",
-    "Fred and Kay Krehbiel bought the estate derelict in 2002, then the former Patrician College boys' school, itself a repurposing of the neoclassical Regency mansion the Morrisons built in 1821-26 for Sir Charles Coote. They spent roughly nine years and a reported $50m restoring it, working with historians, conservators and Irish landscape designer Jim Reynolds, before opening as a 20-suite hotel in May 2011. Fred Krehbiel died in 2021; his sons have said the family remains committed to the property, which continues to trade under its original restoration ownership rather than having changed hands."
+    "Fred and Kay Krehbiel bought the estate derelict in 2002, then the former Patrician College boys' school, itself a repurposing of the neoclassical Regency mansion the Morrisons built in 1821-26 for Sir Charles Coote. They spent roughly nine years restoring it, working with historians, conservators and Irish landscape designer Jim Reynolds, before opening as a 20-room hotel in May 2011. Fred Krehbiel died in 2021; his sons have said the family remains committed to the property."
    ],
    [
     "What it earns",
@@ -490,7 +518,7 @@
    ],
    [
     "Trading basis",
-    "Loss after tax €389,281 on €6.61m turnover, FY2024 filed; payroll 50.5% of revenue",
+    "Loss after tax €389,281 on €6.61m turnover, FY2024 filed; payroll 52.9% of revenue",
     "33.96% GOP margin, year 7",
     "Ballyfin's is a bottom-line loss after tax on total revenue; Fawley's is a gross operating margin. The two are not on the same basis and are not directly comparable without restating."
    ],
@@ -513,7 +541,7 @@
     "Ballyfin's ratio is computed from a total filed headcount that is not broken down by department or season."
    ]
   ],
-  "gap": "No confirmation was found of how the reported $50m restoration cost splits between acquisition, structural works and fit-out, or of what currency-and-era adjustment would make it comparable to Fawley's 2026 works budget. The achieved-rate and staffing figures used against Fawley are themselves derived or computed from filed totals rather than disclosed directly, and should be read as such.",
+  "gap": "No verified restoration-cost figure or split between acquisition, structural works and fit-out was found, or of what currency-and-era adjustment would make it comparable to Fawley's 2026 works budget. The achieved-rate and staffing figures used against Fawley are themselves derived or computed from filed totals rather than disclosed directly, and should be read as such.",
   "sources": [
    "https://www.ballyfin.com/gallery",
    "https://commons.wikimedia.org/wiki/File:Ballyfin_House_1.jpg",
@@ -526,11 +554,21 @@
    "https://www.ballyfin.com/dining/the-restaurant",
    "https://www.ballyfin.com/other/WeddingsEnquiryForm.aspx"
   ],
+  "conflicts": [
+   "Removed the unsupported room-category breakdown because it totals 23 rooms against the supported 20-room main-house total.",
+   "Corrected the main-house NIAH reference from 12801204 to 12801207; 12801204 is a separate gate lodge.",
+   "Changed Fred Krehbiel's death date from June 2021 to summer 2021 because June was not established.",
+   "Removed the unverified $50m restoration-cost figure and related per-key calculation.",
+   "Removed unsupported dining-location wording beyond the confirmed State Dining Room.",
+   "Corrected 20-suite hotel to 20-room hotel and removed the unsupported claim that ownership had never changed.",
+   "Removed unsupported 344-day trading wording and marked season and occupancy as not established in the cited sources.",
+   "Corrected payroll from 50.5% to approximately 52.9% of revenue."
+  ],
   "not_found": [
    "Treatment-room count and spa size",
    "Exclusive-use or buyout pricing",
-   "A split of the $50m restoration cost between acquisition, structural works and fit-out, or between the main house and later additions such as the Gardener's Cottage",
-   "A precise date for the $50m restoration-cost figure beyond 'by the 2011 opening'"
+   "A verified restoration-cost figure and any split between acquisition, structural works and fit-out, or between the main house and later additions such as the Gardener's Cottage",
+   "A precise date for any restoration-cost figure beyond 'by the 2011 opening'"
   ],
   "images": [
    {
@@ -604,7 +642,7 @@
    ],
    [
     "Heritage and history",
-    "Built 1866–1870 for the wool manufacturer Abraham Dixon; bought by Max Aitken (later Lord Beaverbrook) in 1910 for £30,000, who spent a further £10,000 in 1911 on electricity, heating, a swimming pool and one of Britain's first home cinemas; his widow held the estate until her death in 1994; it reopened to the public in 2007 after restoration, before Longshot's 2011 acquisition"
+    "Built 1866–1870 for the wool manufacturer Abraham Dixon; bought by Max Aitken (later Lord Beaverbrook) in 1910 for £30,000 according to Beaverbrook's history page, while The Caterer gives 1911; he spent a further £10,000 in 1911 on electricity, heating, a swimming pool and one of Britain's first home cinemas; his widow held the estate until her death in 1994; it reopened to the public in 2007 after restoration, before Longshot's 2011 acquisition"
    ],
    [
     "What happened, in sequence",
@@ -619,21 +657,28 @@
    "https://beaverbrook.co.uk/eat-drink/",
    "https://beaverbrook.co.uk/wellness/the-spa/",
    "https://www.thecaterer.com/news/first-phase-of-luxury-hotel-beaverbrook-now-open",
+   "https://www.thecaterer.com/news/beaverbrook-opens-the-house-with-japanese-restaurant?redirected=1",
    "https://www.forbes.com/sites/joanneshurvell/2018/11/14/lord-beaverbrooks-former-mansion-now-the-uks-top-country-house-hotel/",
    "https://thebusinessmagazine.co.uk/corporate-finance/beaverbrook-estate-in-surrey-hills-secures-52m-loan-from-oaknorth/",
+   "https://oaknorth.co.uk/press/oaknorth-52m-loan-to-beaverbrook-the-quintessentially-english-country-house-estate-nestled-in-the-heart-of-the-surrey-hills/",
    "https://find-and-update.company-information.service.gov.uk/company/07457718"
   ],
   "conflicts": [
-   "The existing case-study record states 'No property-level filed accounts located; the trading entity files within a group.' Beaverbrook Holdings Limited (company 07457718, formerly Longshot Cherkley Court Ltd) does file standalone accounts: the year to 31 March 2025 shows turnover £28.85m, adjusted EBITDA £3.60m (12.5% margin) and payroll at 45.6% of revenue on 462 average employees — already carried in the portal's own held figures panel for this property (margin, payroll, capex), but not reflected in the case-study text.",
+   "The financing description has been corrected: OakNorth announced a £52m loan in January 2024, but Companies House records earlier charges and OakNorth says the facility refinanced existing facilities. It is therefore not treated as the estate's only disclosed facility.",
+   "The unsupported statement that the freehold was held via Longshot Cherkley Court Ltd has been removed. Companies House confirms the company and its former name but not freehold ownership.",
+   "The existing case-study record states 'No property-level filed accounts located; the trading entity files within a group.' Beaverbrook Holdings Limited's 2025 filing is group accounts, not standalone accounts. The exact operating figures remain in the portal's own held figures panel but are not substantiated by the accessible Companies House record, so they have been removed from the case-study text.",
+   "Sources give 1910 and 1911 for Max Aitken's acquisition: Beaverbrook's history page gives 1910, while The Caterer gives 1911. Both dates are stated.",
+   "The record previously said the £52m OakNorth facility funded The Village. OakNorth describes the loan as supporting refinancing and future growth but does not specifically attribute it to The Village, so that attribution has been removed.",
    "The existing case-study record states the hotel 'opened in phases from August 2017.' The first phase, the 11-room Garden House with its restaurant and cookery school, opened in October 2016 — about ten months earlier. The Grade II-listed main House followed in 2017, which is presumably the date the existing text refers to.",
-   "A 2024 press report on the OakNorth facility (The Business Magazine) describes Beaverbrook as a '57-room hotel' at that date, one more than the 56 keys (house 18, garden 11, coach house 6, village 21) already held. This may be a rounding or snapshot difference; it is noted, not resolved."
+   "OakNorth describes Beaverbrook as a 57-room hotel in January 2024, while the component counts held by the portal total 56: 18 House, 11 Garden House, 6 Coach House and 21 Village. The difference remains unresolved.",
+   "The Caterer names Andy Murray and Tim Henman among Longshot's shareholders. The earlier note that this was a single Forbes mention and could not be corroborated elsewhere has been corrected; no second independent source was found."
   ],
   "not_found": [
    "No independent trading, margin, payroll or occupancy figure was found for any year other than FY2025 (already held).",
    "No published capacity or price for weddings or exclusive-use buyouts.",
    "No spa treatment-room count or pool dimensions on the current site.",
    "No occupancy figure, filed or press-reported, for any year.",
-   "A single press mention (Forbes, Nov 2018) names Andy Murray and Tim Henman among Longshot's shareholders; this could not be corroborated elsewhere and is not carried into record_extra on that basis."
+   "The Caterer names Andy Murray and Tim Henman among Longshot's shareholders; no second independent source was found."
   ],
   "images": [
    {
@@ -735,7 +780,7 @@
    ],
    [
     "Food and beverage",
-    "Current outlets: Ristorante Il Pantaleone, Adagio (A Caruso Bar), Pool Grill and La Piscina (A Caruso Pool Club). An earlier Belmond factsheet also names Ristorante Belvedere, Bar Caruso, Caruso Grill and a Krug table for private dining. No on-site restaurant currently holds a Michelin star; the hotel itself holds One MICHELIN Key. Ravello's Michelin-starred restaurants (Il Flauto di Pan at Villa Cimbrone, Rossellinis at Palazzo Avino) are at neighbouring hotels, not Caruso."
+    "Current outlets on Belmond's own dining page: Ristorante Il Pantaleone, Caruso Grill and Adagio (A Caruso Bar), with La Piscina identified as the pool club in Belmond's 2026 release. No outlet called Pool Grill is currently listed. An earlier Belmond factsheet also names Ristorante Belvedere, Bar Caruso, Caruso Grill and a Krug table for private dining. No on-site restaurant currently holds a Michelin star; the hotel itself holds One MICHELIN Key. Ravello's Michelin-starred restaurants (Il Flauto di Pan at Villa Cimbrone, Rossellinis at Palazzo Avino) are at neighbouring hotels, not Caruso."
    ],
    [
     "Events",
@@ -824,7 +869,8 @@
   "conflicts": [
    "Acquisition date: Orient-Express Hotels' own 1999 SEC filing states June 1999; Belmond's later press kit states 2000 - both are primary sources and neither has been reconciled.",
    "The FY2024 EBITDA margin of 26.5% (Xray Finance, a commercial aggregator) is not corroborated by Belmond's own filed accounts and should not be read as equivalent to the model's GOP measure.",
-   "'Former bishop's palace' is sometimes used loosely to describe Caruso, but this research found that description belongs properly to the neighbouring Villa Episcopio, the historic bishop's residence, not to Caruso's own Palazzo d'Afflitto - worth flagging if it appears elsewhere in the evidence base."
+   "'Former bishop's palace' is sometimes used loosely to describe Caruso, but this research found that description belongs properly to the neighbouring Villa Episcopio, the historic bishop's residence, not to Caruso's own Palazzo d'Afflitto - worth flagging if it appears elsewhere in the evidence base.",
+   "Outlets corrected against Belmond's own current dining page: Caruso Grill is listed and Pool Grill is not, and La Piscina is the pool club named in the 2026 release."
   ],
   "not_found": [
    "Current legal property-owning entity or title holder (the last confirmed reference, an older SEC filing, names OEH Italia).",
@@ -890,7 +936,7 @@
   "record": [
    [
     "Setting",
-    "A hilltop estate of roughly 1,450 to 1,500 hectares near Casole d'Elsa, Siena province, Tuscany"
+    "A hilltop estate near Casole d'Elsa, Siena province, Tuscany; sources give 1,300 and approximately 1,700 hectares"
    ],
    [
     "Keys",
@@ -948,7 +994,7 @@
    ],
    [
     "Season",
-    "Late March to late November, roughly eight months",
+    "Mid-March through October, closed from early November to mid-March",
     "365 days",
     ""
    ],
@@ -990,10 +1036,16 @@
    "https://www.belmond.com/hotels/europe/italy/tuscany/belmond-castello-di-casole/suites",
    "https://www.belmond.com/hotels/europe/italy/tuscany/belmond-castello-di-casole/junior-suites",
    "https://www.belmond.com/hotels/europe/italy/tuscany/belmond-castello-di-casole/accommodation",
-   "https://www.belmond.com/hotels/europe/italy/tuscany/belmond-castello-di-casole/spa"
+   "https://www.belmond.com/hotels/europe/italy/tuscany/belmond-castello-di-casole/spa",
+   "https://guide.michelin.com/us/en/hotels-stays/casole-d-Elsa/castello-di-casole-a-belmond-hotel-tuscany-6433"
   ],
   "conflicts": [
-   "No conflict with the portal's held figures. The FY2024 turnover (€14.55m), filed payroll ratio (32.5%) and 2018 last-trade price (€40.2m) are each corroborated independently in the sources above."
+   "No conflict with the portal's held figures. The FY2024 turnover (€14.55m), filed payroll ratio (32.5%) and 2018 last-trade price (€40.2m) are each corroborated independently in the sources above.",
+   "Estate size corrected to state the conflicting source figures of 1,300 and approximately 1,700 hectares.",
+   "Unsupported wording about the company's broader corporate objects was removed.",
+   "The EBITDA statement was qualified because the cited company-summary sources do not establish whether EBITDA is disclosed.",
+   "The season was corrected from late March to late November to mid-March through October, based on the Michelin Guide.",
+   "The unverified £1,412 Casole lead-in rate was removed and marked as not verified in the cited sources."
   ],
   "not_found": [
    "A total original restoration or conversion cost for the hotel; only a fragmentary figure of over €12m for one 2010–12 work scope was found, not an all-in figure",
@@ -1055,7 +1107,7 @@
   ]
  },
  "belmond-hotel-cipriani": {
-  "intro": "Belmond Hotel Cipriani occupies the eastern tip of Giudecca, an island with no natural footfall of its own, reachable from Venice only by the hotel's private launch across the lagoon. Giuseppe Cipriani, of Harry's Bar, opened it in 1958 and it has passed through three ownership eras since: a family sale in 1967, a corporate purchase in 1976 that became Orient-Express Hotels and then Belmond, and LVMH's 2019 acquisition of the whole Belmond portfolio. It sits in this comparable set at the top of the rate ladder, the highest lead-in rate held anywhere in the cohort, and it is the evidence for how lean payroll can run at that end of the market.",
+  "intro": "Belmond Hotel Cipriani occupies the eastern tip of Giudecca, an island with no natural footfall of its own, reachable from Venice by the hotel's private launch or by public vaporetto to San Zaccaria followed by a hotel transfer. Giuseppe Cipriani, of Harry's Bar, opened it in 1958 and it has passed through three ownership eras since: a family sale in 1967, a corporate purchase in 1976 that became Orient-Express Hotels and then Belmond, and LVMH's 2019 acquisition of the whole Belmond portfolio. It sits in this comparable set at the top of the rate ladder, the highest lead-in rate held anywhere in the cohort, and it is the evidence for how lean payroll can run at that end of the market.",
   "record": [
    [
     "Keys",
@@ -1140,7 +1192,7 @@
     "The 1976 price is not inflation-adjusted and covers only the operating company, not a freehold; illustrative of scale only, not a comparable transaction"
    ]
   ],
-  "gap": "No achieved rate, occupancy or RevPAR has been disclosed for Cipriani since Belmond delisted from public markets in 2019; the only trading evidence beyond the portal's held filed figures predates that date by several years.",
+  "gap": "No post-2019 property-level achieved rate, occupancy or RevPAR was established in the cited material; the only trading evidence beyond the portal's held filed figures predates that date by several years.",
   "sources": [
    "https://pub-mediabox-storage.rxweb-prd.com/exhibitor/products/exh-6ee14a15-a3df-469b-8c9a-7d267a4ad83b/product-documents/pro-cc4ce7c3-1473-451c-888a-14314db1e2a7/b87be499-1cc4-40ae-b42b-20b4006fdb6b.pdf",
    "https://pdfs.belmond.com/ocip_wedding_factsheet.pdf",
@@ -1166,10 +1218,17 @@
    "https://www.annualreports.com/HostedData/AnnualReportArchive/b/NYSE_BEL_2001.pdf",
    "https://www.hotelnewsresource.com/article89124.html",
    "https://www.belmond.com/hotels/europe/italy/venice/belmond-hotel-cipriani/gallery",
-   "https://www.belmond.com/hotels/europe/italy/venice/belmond-hotel-cipriani/spa"
+   "https://www.belmond.com/hotels/europe/italy/venice/belmond-hotel-cipriani/spa",
+   "https://www.belmond.com/en/hotels/europe/italy/hotel-cipriani-venice/faqs",
+   "https://www.belmond.com/en/hotels/europe/italy/hotel-cipriani-venice/restaurants-and-bars"
   ],
   "conflicts": [
-   "No conflict with the portal's held figures. Revenue a key (€431k), payroll (18.1%) and the 2011 occupancy figure (73%) are each corroborated by the sources above; the historical RevPAR figures found sit alongside them, not against them."
+   "No conflict with the portal's held figures. Revenue a key (€431k), payroll (18.1%) and the 2011 occupancy figure (73%) are each corroborated by the sources above; the historical RevPAR figures found sit alongside them, not against them.",
+   "Access wording changed to include the public vaporetto and hotel-transfer route identified by Belmond.",
+   "Unsupported 63/16 key split, dated 96-key reference and heritage-designation conclusion removed.",
+   "Unsupported post-2019 disclosure conclusion, pool width, current residence-programme conclusion and seasonal operating-period statements removed or qualified.",
+   "Food-and-beverage count corrected from five to six outlets to include Ristorante San Giorgio.",
+   "Unsupported freehold exclusion removed from the historical acquisition comparison."
   ],
   "not_found": [
    "Any achieved rate, occupancy or RevPAR disclosed since Belmond's 2019 delisting from public markets",
@@ -1344,12 +1403,15 @@
    "https://commons.wikimedia.org/wiki/File:Belmond_Hotel_Splendido,_Portofino,_Italy.jpg"
   ],
   "conflicts": [
-   "The portal held the season as 'not established: sources conflict', citing one 2026 booking page stating 8 June to 29 September and another stating the hotel closes 2 November. This desk's own SynXis booking-engine collection (18 Aug 2026, rates-synxis3.csv) resolves it directly: the hotel is bookable continuously, aside from individual sold-out nights, from before the collection window through 1 November 2026, then shows no availability from 2 November 2026 to 4 March 2027, reopening 5 March 2027. That is a season of roughly nine months (early March to early November) -- it confirms the '2 November' close and contradicts the '8 June to 29 September' window, which understates the season by more than five months at the front end alone."
+   "The portal held the season as 'not established: sources conflict', citing one 2026 booking page stating 8 June to 29 September and another stating the hotel closes 2 November. This desk's own SynXis booking-engine collection (18 Aug 2026, rates-synxis3.csv) resolves it directly: the hotel is bookable continuously, aside from individual sold-out nights, from before the collection window through 1 November 2026, then shows no availability from 2 November 2026 to 4 March 2027, reopening 5 March 2027. That is a season of roughly nine months (early March to early November) -- it confirms the '2 November' close and contradicts the '8 June to 29 September' window, which understates the season by more than five months at the front end alone.",
+   "Belmond's reopening materials support four Dior Spa treatment cabins and a dedicated relaxation space on a roof terrace, so the treatment-room count was corrected from not found.",
+   "The cited reopening announcement confirms a redesigned lobby and rooms but not the specific 2024 timing, so that year was removed.",
+   "Belmond's press release dates Villa Beatrice's unveiling to 29 June 2025, not July, so the launch date was corrected.",
+   "The cited Belmond sources confirm Villa Beatrice's 29 June 2025 debut but do not verify a 2 November closing date, so the specific 2025 season was removed."
   ],
   "not_found": [
    "Total cost of the 2023-2025 Martin Brudnizki renovation",
    "Occupancy (no figure found anywhere in the free evidence base)",
-   "Dior Spa treatment-room count",
    "Wedding/exclusive-use buyout price for the main hotel",
    "Reconciled employee headcount (50-99 vs 175 vs 330 across sources)",
    "Reconciled key count (54 per Belmond's own site vs 61 per an unverified free registry profile)",
@@ -1432,7 +1494,7 @@
    ],
    [
     "Food and beverage",
-    "A new restaurant, Antesi, opened with the 2026 reopening; no Michelin recognition was found, and no second outlet or bar was identified in this research (lvmh.com press release)."
+    "A new restaurant, Antesi, opened with the 2026 reopening; Belmond also lists San Michele Restaurant, San Michele Grill and the newly renovated Bar Doccia (lvmh.com press release)."
    ],
    [
     "Events",
@@ -1446,7 +1508,7 @@
    ],
    [
     "What it earns",
-    "The only filed trading year available, FY2024, shows turnover of EUR 14.368m and a net loss of EUR 7.453m - a bottom-line result, not an EBITDA or GOP figure, and one earned in a year that included part of the run-up to an eighteen-month closure. The turnover series behind it (EUR 1.7m in 2020 rising to EUR 14.4m in 2024) reads as a hotel still recovering scale after the pandemic, not a stabilised trading year; no post-reopening figures exist yet."
+    "Filed trading data available for FY2020-24 show turnover rising from EUR 1.7m in 2020 to EUR 14.4m in 2024. FY2024 shows turnover of EUR 14.368m and a net loss of EUR 7.453m - a bottom-line result, not an EBITDA or GOP figure, and one earned in a year that included part of the run-up to an eighteen-month closure. The turnover series reads as a hotel still recovering scale after the pandemic, not a stabilised trading year; no post-reopening figures exist yet."
    ],
    [
     "What it evidences for Fawley",
@@ -1479,7 +1541,7 @@
     "Down from a larger pre-renovation count (sources vary, commonly cited around 45); the two figures are on different renovation eras"
    ]
   ],
-  "gap": "No Michelin recognition, spa treatment-room count, post-reopening occupancy or achieved rate, or filed EBITDA/GOP margin was found. The one filed trading year available, FY2024, predates the full eighteen-month closure, so there is no post-renovation year to test against Fawley's stabilised figures, and the pre-renovation net loss is a bottom-line result that cannot be restated to GOP without a cost breakdown that was not found.",
+  "gap": "No Michelin recognition, post-reopening occupancy or achieved rate, or filed EBITDA/GOP margin was found. The one filed trading year available, FY2024, predates the full eighteen-month closure, so there is no post-renovation year to test against Fawley's stabilised figures, and the pre-renovation net loss is a bottom-line result that cannot be restated to GOP without a cost breakdown that was not found. The spa has three treatment rooms including a double suite, and 14 employees are reported for 2026.",
   "sources": [
    "https://www.lvmh.com/en/news-lvmh/belmond-opens-a-new-chapter-for-villa-san-michele",
    "https://mediahub.belmond.com/villa-san-michele-a-belmond-hotel-florence-reopens-the-legendary-renaissance-retreat-returns-ushering-in-a-new-era-of-slow-luxury-and-mindful-living/",
@@ -1492,20 +1554,26 @@
    "https://willowandoakevents.com/destination-weddings-in-italy/wedding-venues-tuscany/belmond-villa-san-michele/",
    "https://www.rustourismnews.com/2025/11/03/belmonds-villa-san-michele-to-reopen-in-2026-after-lavish-renaissance-inspired-transformation/",
    "https://commons.wikimedia.org/wiki/File:Villa_san_michele,_refettorio_01.JPG",
-   "https://commons.wikimedia.org/wiki/File:Villa_san_michele,_fiesole,_facciata,_loggetta_00.JPG"
+   "https://commons.wikimedia.org/wiki/File:Villa_san_michele,_fiesole,_facciata,_loggetta_00.JPG",
+   "https://www.unpotpourri.it/2023/10/06/villa-san-michele-a-fiesole/"
   ],
   "conflicts": [
-   "Not a conflict with what the portal holds directly (occupancy 62%, margin loss EUR 7.45m and capex about GBP 660,000 a key are all confirmed by this research), but a conflict inside the wider evidence base: LVMH's own 2026 press material describes the reopened hotel as 39 rooms and suites, while the deal's earlier research (FINDINGS.md) computed turnover a key both at 39 keys (EUR 368,422) and at a legacy 'brief's c.45-key' count (EUR 319,299), flagging the older figure as superseded rather than resolving it. The 39-key figure should now be treated as current."
+   "Not a conflict with what the portal holds directly (occupancy 62%, margin loss EUR 7.45m and capex about GBP 660,000 a key are all confirmed by this research), but a conflict inside the wider evidence base: LVMH's own 2026 press material describes the reopened hotel as 39 rooms and suites, while the deal's earlier research (FINDINGS.md) computed turnover a key both at 39 keys (EUR 368,422) and at a legacy 'brief's c.45-key' count (EUR 319,299), flagging the older figure as superseded rather than resolving it. The 39-key figure should now be treated as current.",
+   "The hotel was established before Orient-Express's 1982 acquisition: sources place hotel operations in the 1950s, so the record now distinguishes the hotel's trading history from the acquisition date.",
+   "The official reopening material describes gardens of over 10,000 square metres, but does not confirm the previously cited approximately 16-hectare estate acreage.",
+   "The 2026 company data reports 14 employees; the record no longer says that filed headcount is undisclosed, although EBITDA, GOP and staff cost remain undisclosed.",
+   "The new Guerlain spa has three treatment rooms, including a double suite, so the treatment-room count is no longer treated as not found.",
+   "The current Belmond material identifies San Michele Restaurant, San Michele Grill and Bar Doccia alongside Antesi, so the record no longer says that no second outlet or bar was identified.",
+   "The event capacities supplied by the events listing were not independently confirmed in this check and have been removed from the record."
   ],
   "not_found": [
    "Michelin recognition (Key or Guide listing) for the reopened hotel.",
-   "Spa treatment-room count or area for the new Guerlain spa.",
    "Any occupancy or achieved-rate figure since the 28 April 2026 reopening.",
-   "Filed EBITDA, GOP, staff cost or FTE headcount at Villa San Michele S.p.A. for any year.",
+   "Filed EBITDA, GOP or staff cost at Villa San Michele S.p.A. for any year.",
    "A precise, independently verified estate acreage.",
    "A specific heritage-protection decree or register number for the building.",
    "The 1982 acquisition price and seller.",
-   "A second restaurant, bar, or Michelin-recognised outlet beyond Antesi."
+   "Independently confirmed capacities for the advertised wedding and event spaces."
   ],
   "images": [
    {
@@ -1584,10 +1652,12 @@
    "https://egnazia-press.vercel.app/it"
   ],
   "conflicts": [
-   "The operator's own 2026 factsheet gives 64 rooms and suites in La Corte, one more than the 63 already held; the 92 Il Borgo rooms/casette and the villa count (27 private villas plus one Villa Padronale, i.e. 28) match what is already held, and the factsheet's own total (64 + 92 + 27 + 1 = 184) still reconciles to the 184 keys already carried in the record."
+   "The operator's own 2026 factsheet gives 64 rooms and suites in La Corte, one more than the 63 already held; the 92 Il Borgo rooms/casette and the villa count (27 private villas plus one Villa Padronale, i.e. 28) match what is already held, and the factsheet's own total (64 + 92 + 27 + 1 = 184) still reconciles to the 184 keys already carried in the record.",
+   "The factsheet spells the fourth further restaurant name “A Pizzerì”, correcting “A Pizzere”.",
+   "The operator's event brochure gives 11 meeting rooms and event spaces for 11 to 500 people; no buyout price is given."
   ],
   "not_found": [
-   "Wedding or event capacity and any buyout price - not covered anywhere in the operator's own factsheet, which has no events or weddings section.",
+   "Wedding or event capacity and any buyout price - the operator's event brochure gives 11 meeting rooms and event spaces for 11 to 500 people, but no buyout price: https://www.borgoegnazia.com/images/pdf/mice_2018.pdf",
    "Any club or membership structure, or a joining fee.",
    "Spa treatment-room count or floor area for Vair Spa.",
    "An achieved rate or ADR distinct from the lead-in already held."
@@ -1648,7 +1718,7 @@
    ],
    [
     "Villas to rent",
-    "Eight former-farmhouse casali are currently listed as rentable estate villas: Palmieri, Cercoschene, Bell'Aria, Spinaltermine, Tisciano, Barco, Piantaverna and Arrighi, separate from the roughly 36-key hotel and from the wider stock of over 50 restored farmhouses on the estate"
+    "Eight former-farmhouse casali are currently listed as rentable estate villas: Palmieri, Cercoschene, Bell'Aria, Spinaltermine, Tisciano, Barco, Piantaverna and Arrighi, separate from the roughly 36-key hotel and from the wider stock of over 50 farmhouses, many of which have been restored, on the estate"
    ],
    [
     "Residences",
@@ -1684,13 +1754,18 @@
    "https://content.knightfrank.com/research/1002/documents/en/inside-view-italy-2016-3565.pdf",
    "https://www.reschio.com/it/celebrazioni",
    "https://www.reschio.com/it/attivita",
-   "https://www.reschio.com/assets/pdf/SECRET-STAYS-2024-low_compressed.pdf"
+   "https://www.reschio.com/assets/pdf/SECRET-STAYS-2024-low_compressed.pdf",
+   "https://fatturatoaziende.com/reschio-05230420480"
   ],
   "conflicts": [
-   "No conflict found with the portal's held margin estimate (39.0% GOP, explicitly modelled, not a hotel disclosure). No filed or publicly disclosed Reschio trading figure was found to compare it against."
+   "No conflict found with the portal's held margin estimate (39.0% GOP, explicitly modelled, not a hotel disclosure). Historical turnover, profit, employees and personnel-cost figures for Reschio Srl are published by a company-information source.",
+   "The intro now describes a heritage hotel conversion rather than a listed-heritage hotel conversion because no specific listing decree or catalogue reference was found.",
+   "The villa card now says the estate has over 50 farmhouses, many of which have been restored, correcting the unsupported implication that all over 50 are restored.",
+   "The membership card now records only that Knight Frank describes Reschio as not a club using fractional-ownership concepts; the broader absence claim was unsupported.",
+   "The Michelin card no longer states that neither restaurant has Michelin-star recognition because the cited sources did not establish that absence.",
+   "The not_found list no longer says that no public trading figure was found, because historical company-information figures are published for Reschio Srl."
   ],
   "not_found": [
-   "Any filed or publicly disclosed trading or financial figure for the Reschio hotel operating entity: turnover, margin, payroll or employees",
    "A specific decree or catalogue register number for the castle's heritage listing; only a funding-programme entry naming it was found",
    "A hotel-only conversion cost a key; the only capex figure found is a funding-scheme total covering wider estate restoration",
    "Published wedding or event capacity, tariff or buyout price",
@@ -1929,7 +2004,7 @@
   ]
  },
  "chateau-de-la-messardiere": {
-  "intro": "Chateau de la Messardiere stands on a wooded rise above Saint-Tropez, with views over the bay to the old town. LOV Hotel Collection bought it in 2019 and reopened it as an Airelles house in July 2021 after a two-year renovation. It sits at the top of the wider comparable set on price and margin at once: the highest lead-in rate found in this research and one of only two properties in the whole cohort with a filed EBITDA margin above 35%, on a season of about five and a half months, the shortest confirmed in the set.",
+  "intro": "Chateau de la Messardiere stands on a wooded rise above Saint-Tropez, with views toward Pampelonne Bay. LOV Hotel Collection bought it in 2019 and reopened it as an Airelles house in July 2021 after a renovation described by sources as two or three years. It sits at the top of the wider comparable set on price and margin at once: the highest lead-in rate found in this research and one of only two properties in the whole cohort with a filed EBITDA margin above 35%, on a season of about five and a half months, the shortest confirmed in the set.",
   "record_extra": [
    [
     "Keys (unsettled)",
@@ -1967,13 +2042,19 @@
    "https://airelles.com/en/destination/chateau-de-la-messardiere-hotel/suites"
   ],
   "conflicts": [
-   "The held capex basis (GBP 1.42m a key all-in, on the EUR 154m acquisition plus EUR 40m renovation over 117 keys, 2019-21) uses the pre-renovation key count. Post-renovation the operating key count is reported inconsistently: the chateau's own site states 103 chambers and suites; French Wikipedia implies 99 (28 rooms plus 71 suites); a 2021 trade article states 108; other press repeats the original 117. No single count was confirmed as authoritative. If the true operating count is closer to 103, capex a key is nearer GBP 1.88m rather than GBP 1.42m; at 99, nearer GBP 1.96m. This does not overturn the held figure, which is explicit about its 117-key basis, but the post-renovation denominator is unsettled."
+   "The held capex basis (GBP 1.42m a key all-in, on the EUR 154m acquisition plus EUR 40m renovation over 117 keys, 2019-21) uses the pre-renovation key count. Post-renovation the operating key count is reported inconsistently: the current official Airelles site states 86 rooms and suites; an earlier source/version stated 103 chambers and suites; French Wikipedia implies 99 (28 rooms plus 71 suites); a 2021 trade article states 108; other press repeats the original 117. No single count was confirmed as authoritative. If the true operating count is closer to 86, capex a key is nearer GBP 2.25m rather than GBP 1.42m; at 99, nearer GBP 1.96m. This does not overturn the held figure, which is explicit about its 117-key basis, but the post-renovation denominator is unsettled.",
+   "The introduction now refers to views toward Pampelonne Bay; the cited evidence did not support views to the old town.",
+   "The introduction now describes the renovation as two or three years because credible sources disagree on its duration.",
+   "The post-renovation key-count wording now records the current official figure of 86 alongside the earlier figure of 103, and removes the unsupported 57-suite and 60-room breakdown of the original 117 rooms.",
+   "The heritage wording was corrected to identify Gabriel Dupuy d'Angeac as Louise Dupuy's father and to state the connection with her marriage to Henry Brisson de la Messardière.",
+   "The unsupported statement that no monument-historique listing was found for the building itself was removed.",
+   "The setting wording now records the 12.5-hectare and 25-acre figures without attributing the difference to rounding.",
+   "The trading-history note was corrected because Pappers lists filed annual accounts for 2024, 2023, 2022 and 2019, alongside multi-year financial data."
   ],
   "not_found": [
    "A single confirmed post-renovation key count (see conflicts).",
    "A published buyout or exclusive-use price for weddings or events.",
-   "A membership or club product.",
-   "Any filed multi-year trading history beyond the single FY2024 figures already held; the operating entity's accounts were not located on the free registries searched."
+   "A membership or club product."
   ],
   "images": [
    {
@@ -2114,6 +2195,7 @@
   "sources": [
    "https://en.wikipedia.org/wiki/Chewton_Glen",
    "https://find-and-update.company-information.service.gov.uk/company/00864881",
+   "https://find-and-update.company-information.service.gov.uk/company/00864881/persons-with-significant-control",
    "https://find-and-update.company-information.service.gov.uk/company/00864881/filing-history",
    "https://find-and-update.company-information.service.gov.uk/company/00864881/filing-history/MzQ4NTkyNDYwNWFkaXF6a2N4/document?format=pdf&download=0 (Chewton Glen Hotels Limited, Annual Report and Financial Statements for the year ended 31 December 2024, filed 22 October 2025, read in full)",
    "https://www.chewtonglen.com/rooms-and-suites/",
@@ -2130,11 +2212,15 @@
    "WebSearch: \"Chewton Glen weddings exclusive use buyout capacity marquee\" (accessed 18 Aug 2026), citing chewtonglen.com/meetings-events/exclusive-use/",
    "WebSearch: \"Ian Livingstone Chewton Glen 2006 acquisition price Skan sold\" (accessed 18 Aug 2026) — the primary press articles (Estates Gazette / EGI) could not be opened (certificate error / 403); the acquisition date and buyer are corroborated by Wikipedia and the FY2024 accounts' controlling-party note, the price is not independently confirmed"
   ],
+  "conflicts": [
+   "Corrected the ownership entity from London and Regional Group Hotels Ltd to London And Regional Group Hotel Holdings Ltd, which Companies House identifies as the active person with significant control holding 75% or more of the shares and votes.",
+   "Removed the unsupported Historic England non-listing claim.",
+   "Removed the unsupported Michelin Guide status claim."
+  ],
   "not_found": [
    "The current total key count is not settled: sources range from 70 to 72 keys in total, and the treehouse count is given as 12 in some sources (including the treehouse builder's own project page) and 14 in others (including current third-party booking sites).",
    "No occupancy, ADR or RevPAR figure is filed or published for the property.",
    "No confirmed purchase price for the 2006 Skan-to-Livingstone sale; press mentions a rumoured figure but I could not verify it from a source I could open.",
-   "No Michelin Guide recognition (star or Key) could be confirmed either way; the Michelin Guide's own page for the property returned an access error.",
    "No membership club, branded-residence programme, or exact original construction/opening date for the main house was found.",
    "No confirmed count of Coach House suites specifically (as distinct from main-house rooms and treehouse suites)."
   ],
@@ -2210,15 +2296,15 @@
    ],
    [
     "Capital cost (detail)",
-    "Spring Cottage, the estate's 3-bedroom river cottage now counted within the room total, was restored at a reported cost of around £750,000 before reopening in 1998"
+    "Spring Cottage, the estate's 3-bedroom river cottage, was restored at a reported cost of around £750,000 before reopening in 1998"
    ],
    [
     "Keys (detail)",
-    "Reported as 47 rooms and suites including Spring Cottage on the river; some press material counts '48 bedrooms and suites', depending on whether Spring Cottage's three bedrooms are counted individually or as one unit"
+    "Reported as 47 rooms and suites in the main mansion plus Spring Cottage; some press material counts '48 bedrooms and suites', depending on whether Spring Cottage's three bedrooms are counted individually or as one unit"
    ],
    [
     "Membership",
-    "Runs a 'Cliveden Club' membership programme (referenced on the hotel's own site); no joining fee or annual dues were found"
+    "Runs a 'Cliveden Club' membership programme (referenced on the hotel's own site); annual membership prices and joining fees are published, including £5,500 annual single membership and a £1,050 joining fee"
    ],
    [
     "Public access",
@@ -2231,12 +2317,20 @@
    "https://www.clivedenhouse.co.uk/media/cjhob522/ch_fact-sheet_2024.pdf (PDF encoding prevented text extraction; not relied on for any figure)",
    "https://www.clivedenhouse.co.uk/media/ididhwek/cliveden-house-press-release-michelin-keys-award-041024.pdf",
    "https://www.clivedenhouse.co.uk/dine-with-us/the-astor-grill/",
+   "https://www.clivedenhouse.co.uk/media/lcfme4q1/cliveden_club-membership-brochure-october-2023.pdf",
    "WebSearch: \"Cliveden House hotel National Trust lease 100 years grounds acreage spa restaurant Michelin\" (accessed 18 Aug 2026)",
    "WebSearch: \"Cliveden House\" \"Two MICHELIN Keys\" OR \"MICHELIN Key\" hotel guide (accessed 18 Aug 2026), citing michelinkeyhotels.com/hotels/cliveden-house and the Michelin Guide's own listing"
   ],
+  "conflicts": [
+   "Removed the unsupported same-reach and eight-mile downstream description.",
+   "Removed the unsupported characterization of the filed accounts as a mature audited trading history.",
+   "Removed the statement that Spring Cottage is counted within the room total.",
+   "Corrected the room count to 47 rooms and suites in the main mansion plus Spring Cottage, while retaining the separately reported 48-bedroom figure.",
+   "Replaced the unsupported statement about membership fees with published annual membership and joining-fee figures.",
+   "Removed the membership-fee item from not_found because official figures were found."
+  ],
   "not_found": [
    "No exact figure was confirmed for the February 2012 lease purchase price (press coverage of that price is already noted in the portal's own source line).",
-   "No joining fee or annual dues figure for the 'Cliveden Club' membership programme.",
    "No total, current room-count breakdown by category (main house rooms, suites, Spring Cottage) — the hotel's own fact-sheet PDF could not be parsed and press sources give either 47 or 48 depending on how Spring Cottage is counted.",
    "No confirmation of a food-focused Michelin star or Bib Gourmand for either The Dining Room or The Astor Grill, as distinct from the property's Two MICHELIN Keys stay rating.",
    "No wedding or exclusive-use buyout price."
@@ -2329,7 +2423,7 @@
    ],
    [
     "Trading",
-    "FY2024 filed revenue £21.615m (Rooms £10.3m, Food & Beverage £7.8m, other £3.5m), an operating loss of £3.181m and a net loss of £3.663m; FY2023 revenue £21.107m and a net loss of £3.191m. Net liabilities of £59.466m at 31 December 2024, with the going-concern basis resting explicitly on continuing support from the ultimate parent, the Brunei Investment Agency"
+    "FY2024 filed revenue £21.615m (Rooms £10.3m, Food & Beverage £7.8m, other £3.5m), an operating loss of £3.181m and a net loss of £3.663m; FY2023 revenue £21.107m and a net loss of £3.191m. Net liabilities of about £59.47m at 31 December 2024, derived from total liabilities of about £80.27m against total assets of £20.8m rather than taken from a stated net-liability line, with the going-concern basis resting explicitly on continuing support from the ultimate parent, the Brunei Investment Agency"
    ],
    [
     "Payroll",
@@ -2429,7 +2523,8 @@
    "https://businesstraveller.com/news/2010/09/22/dorchester-collection-to-open-coworth-park-property/"
   ],
   "conflicts": [
-   "No conflict with the portal's held lead-in rate (£650 gross, £542 net). That figure is a lowest-bookable-night median; the £676.0 filed average found here is a full-year blended rate from statutory accounts, and both are stated on their own basis, not merged."
+   "No conflict with the portal's held lead-in rate (£650 gross, £542 net). That figure is a lowest-bookable-night median; the £676.0 filed average found here is a full-year blended rate from statutory accounts, and both are stated on their own basis, not merged.",
+   "The net-liability figure is stated as derived: the accounts give total liabilities and total assets, and the net figure follows from them rather than appearing as its own line."
   ],
   "not_found": [
    "Any hotel-level valuation or transaction price for Coworth Park itself; the entity has not changed hands since its 1995 incorporation under a related name",
@@ -2515,6 +2610,7 @@
   ],
   "sources": [
    "https://estellemanor.com/about-us/",
+   "https://estellemanor.com/the-small-print/",
    "https://estellemanor.com/stay/bedrooms/",
    "https://estellemanor.com/wellness/",
    "https://estellemanor.com/eat-drink/",
@@ -2527,14 +2623,14 @@
   ],
   "conflicts": [
    "The property traded as a 135-bedroom hotel (Eynsham Hall) before the 2018 sale, not a private house being converted to hospitality use for the first time — worth noting given the framing of a 'club anchor' comparable. This does not contradict anything explicit in the portal's existing record, but sits alongside it as context.",
-   "The operating room count found (108, from the hotel's own site) is well below the 126 the portal's own record carries as consented. These may be different bases (built versus consented) and are not reconciled here."
+   "The operating room count found (108, from the hotel's own site) is well below the 126 the portal's own record carries as consented. These may be different bases (built versus consented) and are not reconciled here.",
+   "The current official site describes an 85-acre estate, replacing the previously stated 60 acres; it also describes over 3,000 acres of surrounding parkland.",
+   "The current official membership terms list Full Membership at £3,750 a year with a £1,000 joining fee, and Under-33 membership at £1,900 a year with a £500 fee, replacing the previously stated membership cost.",
+   "The current official dining page lists six outlets, not five, adding the Airstream and Redwood Lodge to the previously listed venues.",
+   "Unsupported claims about membership numbers or waiting-list figures, property-level accounts, a residential sales component and Michelin recognition have been removed from not_found."
   ],
   "not_found": [
-   "No confirmed final purchase price for the 2018 Eynsham Hall sale — press reports it at 'up to £10m' but I could not verify that figure from a primary source I could open directly; the £8.25m figure confirmed here is the asking price, not the agreed price.",
-   "No membership numbers or waiting-list figure beyond the single press mention already carried in the portal's own record.",
-   "No filed property-level accounts isolating Estelle Manor itself, as distinct from the FY2025 figures already held by the portal (their filing basis was not re-verified here).",
-   "No residential/branded-residence sales component was identified, consistent with the portal's existing record.",
-   "No Michelin Guide recognition (star or Key) confirmed for any of the five food and beverage outlets."
+   "No confirmed final purchase price for the 2018 Eynsham Hall sale — press reports it at 'up to £10m' but I could not verify that figure from a primary source I could open directly; the £8.25m figure confirmed here is the asking price, not the agreed price."
   ],
   "images": [
    {
@@ -2616,7 +2712,7 @@
    ],
    [
     "Country pursuits",
-    "The British School of Falconry, founded 1982 and relocated to the estate in 1992; the Gleneagles Equestrian School, a 50-acre British Horse Society-accredited site with 26 horses and ponies; gun dog training and shooting instruction; off-road driving"
+    "Falconry; the Gleneagles Equestrian School, opened in 1987, with 30 horses and ponies and 80 acres of cross-country fields; gun dog training and shooting instruction; off-road driving"
    ],
    [
     "Food and beverage",
@@ -2624,7 +2720,7 @@
    ],
    [
     "Events",
-    "A ballroom and multiple function rooms; weddings are resident-only, so all guests stay on the estate; no maximum capacity is published"
+    "A ballroom and multiple function rooms; weddings are resident-only, so all guests stay on the estate; Henry Hall has capacity for 300 theatre-style and 450 cocktails"
    ],
    [
     "Membership",
@@ -2699,9 +2795,21 @@
    "https://www.boutiquehotelier.com/turnover-at-gleneagles-soars-to-51-2m-as-multimillion-pound-refurbishment-pays-off/",
    "https://www.boutiquehotelier.com/gleneagles-sees-operating-profit-rise-1m-as-multi-million-pound-renovation-proves-lucrative/",
    "https://www.hospitalitynet.org/announcement/41008118/33-key-gleneagles-townhouse-opens-in-edinburgh-scotland",
+   "https://www.bhs.org.uk/directories/riding-centres/gleneagles-equestrian-school/",
    "https://commons.wikimedia.org/wiki/File:Gleneagles_Hotel_-_geograph.org.uk_-_5600920.jpg",
    "https://commons.wikimedia.org/wiki/File:PGA_Centenary_Course_at_Gleneagles.jpg",
    "https://commons.wikimedia.org/wiki/File:Barbour_Discovery_at_Gleneagles_(52383578959).jpg"
+  ],
+  "conflicts": [
+   "Removed the unsupported claim that all 27 suites are in the Main House.",
+   "Replaced the unsupported precise 1984–2015 Diageo ownership interval with ownership until 2015.",
+   "Removed unsupported spa pool and hydrotherapy counts.",
+   "Replaced unsupported falconry dates and corrected the equestrian school's acreage, opening date and horse count using the British Horse Society source.",
+   "Replaced the contradicted statement that no event capacity is published with Henry Hall's published capacities.",
+   "Removed the unsupported £150m–£180m acquisition-price range.",
+   "Removed the unsupported £750 gross lead-in rate from the Fawley comparison.",
+   "Removed the unsupported 5.50% acquisition yield from the acquisition comparison.",
+   "Replaced the unsupported 67%–71% occupancy interval with an unresolved-source statement."
   ],
   "not_found": [
    "No absolute figure for Ennismore's post-2015 refurbishment spend, despite repeated 'multi-million pound' press description.",
@@ -2778,19 +2886,19 @@
   ]
  },
  "heckfield-place": {
-  "intro": "Heckfield Place is the slowest, least commercial UK conversion in this set: Gerald Chan, a Boston-based investor, bought the Grade II manor in 2002 and spent close to a decade rebuilding it around a working farm rather than a fixed opening date, welcoming guests only in September 2018. No ownership structure isolates a property-level profit and loss account, so the payroll figure the portal already carries is modelled rather than filed, the only unfiled figure among the UK comparables in this set. Its two farm-fed restaurants and its 17,000 sq ft spa show what a patient, estate-led conversion looks like once it is finally open and trading.",
+  "intro": "Heckfield Place is the slowest, least commercial UK conversion in this set: Gerald Chan, a Boston-based investor, is reported to have bought the Grade II manor in 2002, while Heckfield's current FAQ says the estate was purchased in 2009; he spent close to a decade rebuilding it around a working farm rather than a fixed opening date, welcoming guests only in September 2018. No ownership structure isolates a property-level profit and loss account, so the payroll figure the portal already carries is modelled rather than filed, the only unfiled figure among the UK comparables in this set. Its two farm-fed restaurants and its 17,000 sq ft spa show what a patient, estate-led conversion looks like once it is finally open and trading.",
   "record_extra": [
    [
     "Setting (detail)",
-    "A 438-acre estate including a working biodynamic Home Farm, dairy, Market Garden and ancient woodland (the portal's own record does not currently carry an acreage figure)"
+    "A 438-acre estate including a working organic Home Farm, dairy, biodynamic Market Garden and ancient woodland (the portal's own record does not currently carry an acreage figure)"
    ],
    [
     "Ownership (detail)",
-    "Bought by Boston-based investor Gerald Chan in 2002. An initial eight-month renovation plan stretched into a restoration running close to a decade, with a planned 2012 reopening pushed back after Chan ordered a fresh start; guests were first welcomed in September 2018"
+    "Bought by Boston-based investor Gerald Chan in 2002 according to some press accounts, while Heckfield's current FAQ says the estate was purchased in 2009. The restoration ran close to a decade, with a planned 2012 reopening pushed back after Chan ordered a fresh start; guests were first welcomed in September 2018"
    ],
    [
     "Wellness",
-    "The Bothy: a 17,000 sq ft subterranean spa with three treatment rooms (including one for couples) and an infinity pool"
+    "The Bothy: a 17,000 sq ft subterranean spa with six treatment rooms and an indoor swimming pool and outdoor hydrotherapy pool"
    ],
    [
     "Food and beverage",
@@ -2815,14 +2923,17 @@
    "WebSearch: \"Heckfield Place\" \"Heckfield Estate\" OR \"Heckfield Hotel\" Companies House accounts turnover (accessed 18 Aug 2026) — no filed property-level accounts located, consistent with the portal's existing record"
   ],
   "conflicts": [
-   "Room count: several 2018/2019-vintage press sources (including Robb Report's opening coverage) give 44 guest suites at opening; the portal's own record carries 46 bedrooms across the main house, the corridors range and a cottage. Not resolved — could reflect rooms added after opening, or a different counting convention (e.g. whether the private lodge is included)."
+   "Room count: several 2018/2019-vintage press sources (including Robb Report's opening coverage) give 44 guest suites at opening; the portal's own record carries 46 bedrooms across the main house, the corridors range and a cottage. Not resolved — could reflect rooms added after opening, or a different counting convention (e.g. whether the private lodge is included).",
+   "Purchase date: press accounts give 2002, while Heckfield's current FAQ gives 2009; both are retained.",
+   "The Home Farm is described as organic and the Market Garden as biodynamic; the setting detail was corrected.",
+   "Current Heckfield materials describe six treatment rooms, an indoor swimming pool and an outdoor hydrotherapy pool, replacing the former three-room and infinity-pool description.",
+   "Unsupported claims about an initial eight-month renovation plan, total capital cost, further occupancy figures and absence of wedding or event pricing were removed.",
+   "Marle holds a Green Michelin Star; the previous unconfirmed Michelin entry was corrected."
   ],
   "not_found": [
-   "No total capital cost figure for the roughly decade-long restoration — widely described in press as running to 'hundreds of permits and millions of dollars' without a stated total.",
    "No post-opening occupancy figure beyond the single management target already noted in the portal's own record.",
    "No filed property-level turnover, margin or payroll figure — consistent with the portal's existing finding that the payroll figure it carries is modelled, not filed.",
-   "No wedding, events or buyout pricing.",
-   "No Michelin Guide recognition (star or Key) confirmed."
+   "Michelin Guide recognition confirmed: Marle holds a Green Michelin Star."
   ],
   "images": [
    {
@@ -2880,7 +2991,7 @@
    ],
    [
     "Heritage",
-    "Built in 1869 as the private Villa Soleil for Hippolyte de Villemessant, founder of Le Figaro; bought and renovated by hotelier Antoine Sella, who reopened it as the Grand Hotel du Cap in January 1889; the Eden Roc pavilion, about 400 yards from the main house, was added in 1914. No formal heritage listing or monument protection was found for the buildings (en.wikipedia.org; oetkerhotels.com history page)."
+    "The Villa Soleil was envisioned in 1865 as a private residence for Hippolyte de Villemessant, founder of Le Figaro; bought and renovated by hotelier Antoine Sella, who reopened it as the Grand Hotel du Cap in January 1889; the Eden Roc pavilion, about 400 yards from the main house, was added in 1914. (en.wikipedia.org; oetkerhotels.com history page)."
    ],
    [
     "Season",
@@ -2959,7 +3070,7 @@
     "Eden-Roc's true annual spread is almost certainly wider than this, since the collection never reached peak summer pricing; shown to illustrate that even a thin sample carries more rate variation than Fawley's flat annual assumption"
    ]
   ],
-  "gap": "No trading, margin, payroll, occupancy or capital-cost figure exists for Eden-Roc from any filed or primary source; every capex figure found is press-grade and the three available numbers conflict with one another. The rate evidence itself is the thinnest in the whole comparable set - 20 bookable nights, none of them in the actual summer peak - so even the one figure that is measured should be treated with real caution.",
+  "gap": "No reliable capital-cost figure exists for Eden-Roc from a filed or primary source; the available press figures are incomplete and not directly comparable. The rate evidence itself is the thinnest in the whole comparable set - 20 bookable nights, none of them in the actual summer peak - so even the one figure that is measured should be treated with real caution.",
   "sources": [
    "https://www.oetkerhotels.com/hotels/hotel-du-cap-eden-roc/the-hotel/",
    "https://www.oetkerhotels.com/hotels/hotel-du-cap-eden-roc/accommodations/rooms-suites/",
@@ -2971,13 +3082,22 @@
    "https://blog.capvillas.com/blog/hotel-du-cap-eden-roc/",
    "https://commons.wikimedia.org/wiki/Category:H%C3%B4tel_du_Cap-Eden-Roc"
   ],
+  "conflicts": [
+   "Setting corrected to the supported nine-hectare figure; the unsupported 22-acre gardens figure was removed.",
+   "Heritage history corrected from construction in 1869 to the official 1865 Villa Soleil vision; the unsupported heritage-listing absence was removed.",
+   "Unsupported USD 67m and over-EUR-60m renovation figures, and the unsupported plumbing and electrical detail, were removed; the supported EUR 45m and seven-year accounts remain.",
+   "Unsupported trading, filing and property-level disclosure claims were removed.",
+   "Unsupported claim that no residences are for sale was removed; the supported rental-accommodation description remains.",
+   "Unsupported earnings claims were removed from the card.",
+   "Gap wording was corrected to remove unsupported trading claims and the unsupported three-figure capital-cost conflict.",
+   "Not-found entries were limited to the unresolved single capital-cost figure, the official park-size figure, and the portal's own rate collection."
+  ],
   "not_found": [
-   "Any trading, margin, payroll or occupancy figure - no filing was located and Oetker Collection discloses no property-level results.",
-   "A reliable, single capital-cost figure - three press figures conflict (USD 67m/2011, EUR 45m/2008-15, over EUR 60m/2013 programme) and none is filed.",
+   "A single capital-cost figure from a filed or primary source - the accessible sources give a EUR 45m restoration report and a seven-year restoration account, but no primary cost figure.",
    "An acquisition price for the Oetker family's 1969 purchase.",
    "Wedding, meeting or buyout event capacity.",
    "A reconciled room count (111 per the hotel's own site against 117-118 in press sources).",
-   "Estate/park size beyond conflicting nine-hectare and 22-acre figures.",
+   "Estate/park size beyond the official nine-hectare figure.",
    "Rate evidence beyond a 20-night, cheapest-week sample - the true summer peak was never loaded for sale in our collection window."
   ],
   "images": [
@@ -3040,7 +3160,7 @@
    ],
    [
     "Keys",
-    "66 rooms, suites and villas, several with private pools (destinationcostasmeralda.com; travellermade.com). The operator's own 2026 renovation announcement targets 65 rooms and suites including 16 private-pool villas once the Cheval Blanc conversion completes (govonilaw.com)."
+    "65 rooms, suites and villas, several with private pools (destinationcostasmeralda.com; travellermade.com). The operator's own 2026 renovation announcement targets 65 rooms and suites including 16 private-pool villas once the Cheval Blanc conversion completes (govonilaw.com)."
    ],
    [
     "Heritage",
@@ -3096,7 +3216,7 @@
    ],
    [
     "Keys",
-    "66 rooms, suites and villas, several with private pools",
+    "65 rooms, suites and villas, several with private pools",
     "60",
     "Pitrizza's count includes multi-bedroom private-pool villas let nightly, not directly comparable room-for-room with Fawley's guest-room count"
    ],
@@ -3107,7 +3227,7 @@
     "No comparison is possible beyond rate and season; the Qatar-owned operating entity most likely to cover Pitrizza appears to span multiple hotels, so no property-level figure could be isolated"
    ]
   ],
-  "gap": "No wellness scale beyond a single treatment room, no food-and-beverage outlet count beyond two identified names, no event or wedding capacity, and no property-level trading entity was established, so beyond rate and season this comparable evidences almost nothing that can be set against Fawley's revenue density or margin.",
+  "gap": "No wellness scale beyond the spa and fitness centre, no food-and-beverage outlet count beyond two identified names, no event or wedding capacity, and no property-level trading entity was established, so beyond rate and season this comparable evidences almost nothing that can be set against Fawley's revenue density or margin.",
   "sources": [
    "https://www.destinationcostasmeralda.com/en/stay/hotel-pitrizza/",
    "https://travellermade.com/hotel-partners-europe/hotel-pitrizza-italy/",
@@ -3125,7 +3245,18 @@
    "https://www.ufficiocamerale.it/5570/sardegna-resorts-srl",
    "https://www.aziende.it/sardegna-resorts-s-r-l",
    "https://www.fatturatoitalia.it/sardegna_resorts_srl-03873060960",
-   "https://www.reportaziende.it/sardegna_resorts_srl_ss_03873060960"
+   "https://www.reportaziende.it/sardegna_resorts_srl_ss_03873060960",
+   "https://www.costasmeralda.it/articolo/la-storia-di-una-porzione-di-terra-diventata-Mito/",
+   "https://rsgroup.travel/en/news/lvmh-opens-cheval-blanc-in-sardinia-the-legendary-pitrizza-hotel-will-be-the-jewel-of-the-costa-smeralda/"
+  ],
+  "conflicts": [
+   "Removed the unsupported description of Pitrizza as one of the Consorzio Costa Smeralda's founding hotels.",
+   "Removed the unsupported statement that no heritage listing or designation was found.",
+   "Changed the current key count from 66 to 65, reflecting the official site's 49 rooms and suites plus 16 villas.",
+   "Changed the planned May 2027 relaunch to the reported May 2026 reopening under the Cheval Blanc identity.",
+   "Removed the unsupported one-treatment-room spa configuration and retained only the spa and fitness centre confirmed by the official site.",
+   "Changed Restaurant Pitrizza to The Grill to match the current official site.",
+   "Removed the unresolved current-count discrepancy from not_found because the current official source gives 65 units."
   ],
   "not_found": [
    "Any property-level filed turnover, margin, payroll or occupancy figure for Hotel Pitrizza specifically.",
@@ -3133,8 +3264,7 @@
    "The consideration Qatar Holding paid Colony Capital for the four-hotel group in 2012 (reported as undisclosed).",
    "Any wedding, buyout or event capacity and pricing.",
    "Any membership or club programme.",
-   "Spa area or number of treatment rooms beyond 'one' as described in a single press source.",
-   "A definitive, currently correct room/suite/villa count: sources range from 65 to 66 depending on date and whether the 2027 post-renovation target is being described."
+   "Spa area or number of treatment rooms beyond 'one' as described in a single press source."
   ],
   "images": [
    {
@@ -3184,7 +3314,7 @@
   "record": [
    [
     "Setting",
-    "Porto Ercole, on the Monte Argentario promontory, Tuscany; a private cove with pine-forest grounds and sea access by private lift and stone paths; c.140km (roughly 90 minutes) from Rome. Estate acreage not found"
+    "Porto Ercole, on the Monte Argentario promontory, Tuscany; a private cove with pine-forest grounds and sea access by private lift and stone paths; c.150km (roughly 90 minutes) from Rome. Estate acreage not found"
    ],
    [
     "Keys",
@@ -3220,7 +3350,7 @@
    ],
    [
     "Food and beverage",
-    "Ristorante Il Pellicano: one Michelin star, awarded 2018 and held continuously since, chef Michelino Gioia since 2018. Pelligrill: the informal poolside/beach dining option"
+    "Ristorante Il Pellicano: one Michelin star, listed in Michelin's 2017 guide and held currently, chef Michelino Gioia since 2018. Pelligrill: the informal poolside/beach dining option"
    ],
    [
     "Events",
@@ -3275,7 +3405,7 @@
     "Group figure across three hotels, not Il Pellicano alone -- not a like-for-like comparison, included for context only"
    ]
   ],
-  "gap": "No single-hotel financial evidence exists for Il Pellicano itself: everything filed publicly is either group-level (Pellicano Hotels Group, three hotels combined) or sits inside a property entity that appears to have been restructured into a landlord role after the 2023 Aermont Capital investment. The hotel's own margin, payroll and occupancy are all unknown.",
+  "gap": "No single-hotel financial evidence exists for Il Pellicano itself: everything filed publicly is either group-level (Pellicano Hotels Group, three hotels combined) or sits inside a property entity whose relationship to the 2023 Aermont Capital investment is not established. The hotel's own margin, payroll and occupancy are all unknown.",
   "sources": [
    "https://www.pellicanohotels.com/en/hotels/hotel-il-pellicano/",
    "https://www.pellicanohotels.com/en/hotels/hotel-il-pellicano/rooms-suites.html",
@@ -3292,7 +3422,19 @@
    "https://www.travelagentcentral.com/hotels/pellicano-hotels-aermont-capital-announce-strategic-partnership",
    "https://www.fatturatoitalia.it/il-pellicano-spa-00081020539",
    "https://www.reportaziende.it/pellicano_propco_srl_gr_00081020539",
-   "https://www.hotelowner.co.uk/215938-pellicano-hotels-to-reopen-three-italian-sites-following-refurbs/"
+   "https://www.hotelowner.co.uk/215938-pellicano-hotels-to-reopen-three-italian-sites-following-refurbs/",
+   "https://www.northstarmeetingsgroup.com/Meeting-Event-Venues/Porto-Ercole-Italy/Convention-Hotel/Il-Pellicano-Hotel-p52684765",
+   "https://www.aziende.it/il-pellicano-spa",
+   "https://www.marinadipuntala.com/sites/default/files/LR_MDPA_ESTATE2017.pdf"
+  ],
+  "conflicts": [
+   "Corrected the intro to distinguish Il Pellicano's One MICHELIN Key from its restaurant's one MICHELIN Star, and removed the unsupported rate comparison.",
+   "Corrected the Rome distance from c.140km to approximately 150km.",
+   "Changed ownership wording to say the group operates or manages La Posta Vecchia and Mezzatorre, as ownership was not established.",
+   "Corrected Pellicano Propco Srl's registration or activity date from 1965 to 1980.",
+   "Removed the unsupported inference that the Aermont partnership restructured the property entity into a landlord role.",
+   "Corrected the restaurant star history to reflect that Michelin listed it with one star in 2017, rather than first awarding it in 2018.",
+   "Corrected the comparable description from a single-Michelin-star hotel to a hotel with a one-star restaurant."
   ],
   "not_found": [
    "A single-hotel filed revenue, EBITDA, GOP or payroll figure for Il Pellicano specifically (only group-level and, separately, a property-rental entity's figures were found)",
@@ -3357,7 +3499,7 @@
    ],
    [
     "Keys",
-    "55 rooms on the general manager's own count in an October 2025 interview ('today we have 202 people for 55 rooms'). Other sources give 48 (CNN, 2018), 56 (The Week, 2026) or 57 (Wikipedia infobox, the count the portal's own revenue-a-key figure already uses) - a live, unresolved conflict."
+    "55 rooms on the general manager's own count in an October 2025 interview ('today we have 202 people for 55 rooms'). Other sources give 48 (CNN, 2017), 56 (The Week, 2026) or 57 (Wikipedia infobox, the count the portal's own revenue-a-key figure already uses) - a live, unresolved conflict."
    ],
    [
     "Heritage",
@@ -3369,7 +3511,7 @@
    ],
    [
     "Capital cost",
-    "Not found. The 1962 land purchase and 1970 construction cost are not published, and no later renovation figure was found."
+    "A hospitality case study reports a EUR 3 million 2016 kitchen reconstruction project lasting nine months. The 1962 land purchase and 1970 construction cost are not published."
    ],
    [
     "Trading",
@@ -3389,7 +3531,7 @@
    ],
    [
     "Events",
-    "Not found. No published wedding capacity, exclusive-use terms or buyout price were located on the hotel's own site or in press coverage."
+    "The hotel's FAQ says it hosts weddings and private events and that buy-outs may be considered; no buyout price was found."
    ]
   ],
   "cards": [
@@ -3459,7 +3601,12 @@
   "conflicts": [
    "Key count: the general manager's own October 2025 interview gives 55 rooms; the portal's held revenue-a-key figure is computed on 57 (Wikipedia infobox, widely syndicated); other press gives 48 (2018) or 56 (2026). None is a current first-party total count from the hotel's own site.",
    "Occupancy denominator: the held 97% figure comes from a single interview stating 'last year we finished with 97% occupancy, as always' with no season, calendar-year or room-night qualifier stated. A 2022 Cornell case study separately records 99.9% specifically for June 2022, with the property 'full for the rest of the summer' - consistent with a seasonal-peak reading, but not proof the 97% figure uses the same convention or period.",
-   "Employee and staff-cost figures for FY2024 conflict across free-accounts aggregators: 127 staff and EUR 3.178m personnel cost in one source against a 50-99 staff band and EUR 5.184m in another. Neither is reconciled to a filed document."
+   "Employee and staff-cost figures for FY2024 conflict across free-accounts aggregators: 127 staff and EUR 3.178m personnel cost in one source against a 50-99 staff band and EUR 5.184m in another. Neither is reconciled to a filed document.",
+   "The CNN-sourced 48-room article was published in 2017, not 2018.",
+   "The unsupported 1962 headland-purchase and statutory-heritage-listing statements were removed.",
+   "A hospitality case study reports a EUR 3 million 2016 kitchen reconstruction project lasting nine months, so the statement that no later renovation figure was found was corrected.",
+   "The hotel's FAQ says it hosts weddings and private events and that buy-outs may be considered, so the events statement was corrected; no buyout price was found.",
+   "The Cornell case study reports an average room rate of EUR 1,882 per night for 2022, so the statement that no achieved rate or ADR was found was corrected."
   ],
   "not_found": [
    "Spa treatment-room count or floor area.",
@@ -3467,7 +3614,7 @@
    "EBITDA, GOP or any margin figure.",
    "The precise denominator (room-nights, season length or calendar convention) behind the 97% occupancy figure.",
    "Original 1962 land-purchase price or 1970 construction cost.",
-   "An achieved rate or ADR distinct from the booking-engine lead-in already held.",
+   "Average room rate of EUR 1,882 per night for 2022.",
    "Exact 2025 or 2026 closing date (only the 1 April 2025 opening date was found)."
   ],
   "images": [
@@ -3522,7 +3669,7 @@
   ]
  },
  "la-bastide-de-gordes": {
-  "intro": "La Bastide de Gordes occupies an eighteenth-century residence built into the rock face at the top of the hilltop village of Gordes, in the Luberon. LOV Hotel Collection bought it in 2014 and reopened it in 2015 as an Airelles house after a nine-month restoration. It sits in the set as a small, refurbished village hotel rather than a ground-up estate conversion, and its filed accounts are the clearest test in the four-hotel set of what a premium rate does and does not buy at forty keys.",
+  "intro": "La Bastide de Gordes occupies a sixteenth-century residence built into the rock face at the top of the hilltop village of Gordes, in the Luberon. LOV Hotel Collection bought it in 2014 and reopened it in 2015 as an Airelles house after a major restoration lasting several months. It sits in the set as a small, refurbished village hotel rather than a ground-up estate conversion, and its filed accounts are the clearest test in the four-hotel set of what a premium rate does and does not buy at forty keys.",
   "record": [
    [
     "Setting",
@@ -3530,7 +3677,7 @@
    ],
    [
     "Keys",
-    "40 rooms and suites (34 rooms, 6 suites), plus La Maison de Constance, a separate five-bedroom private house let alongside the hotel (airelles.com; elitetraveler.com)."
+    "40 rooms and suites (34 rooms, 6 suites), plus La Maison de Constance, a separate four-bedroom private house let alongside the hotel (airelles.com; elitetraveler.com)."
    ],
    [
     "Ownership",
@@ -3550,11 +3697,11 @@
    ],
    [
     "Wellness",
-    "A roughly 17,000 sq ft spa run with Maison Sisley, with hammam, sauna and indoor and outdoor treatment areas, plus multiple pools on the terraced grounds (forbestravelguide.com; luxewellnessclub.com)."
+    "A roughly 17,000 sq ft spa run with Airelles Spa by Guerlain, with hammam, sauna and indoor and outdoor treatment areas, plus multiple pools on the terraced grounds (forbestravelguide.com; luxewellnessclub.com)."
    ],
    [
     "Events",
-    "Partial privatisation (up to 50 guests, ceremony, cocktail and dinner) is quoted from around EUR 45,000 in high season; full-hotel buyout, covering all 40 rooms and suites plus La Maison de Constance, is priced on request with a minimum spend based on 100 adults (katerinameyvial.com; bridesvenues.com)."
+    "Partial wedding packages for up to 120 guests are quoted from around EUR 160,000; full-hotel buyout, covering all 40 rooms and suites plus La Maison de Constance, has indicative rates from EUR 280,000 to EUR 550,000 for up to 120 guests (bridesvenues.com)."
    ],
    [
     "Season",
@@ -3564,7 +3711,7 @@
   "cards": [
    [
     "What happened",
-    "The building is an eighteenth-century bastide carved into the rock at the top of Gordes; artists including Victor Vasarely and Marc Chagall spent summers in the village from the late 1940s. LOV Hotel Collection, Stephane Courbit's group, bought the property from the Rosier agency in 2014 and closed it for a nine-month restoration under architect Christophe Tollemer, working with over 150 artisans and sourcing antique furniture and more than 2,000 pieces of period art. It reopened as an Airelles house in July 2015 with 40 rooms and suites, a spa, four restaurants and a separate five-bedroom villa, La Maison de Constance."
+    "The building is a sixteenth-century bastide carved into the rock at the top of Gordes. LOV Hotel Collection, Stephane Courbit's group, bought the property from the Rosier agency in 2014 and closed it for a major restoration lasting several months under architect Christophe Tollemer, working with over 150 artisans and sourcing antique furniture and more than 2,000 pieces of period art. It reopened as an Airelles house on 24 June 2015 with 40 rooms and suites, a spa, four restaurants and a separate four-bedroom villa, La Maison de Constance."
    ],
    [
     "What it earns",
@@ -3613,6 +3760,7 @@
    "https://www.forbestravelguide.com/hotels/french-riviera-france/airelles-gordes-la-bastide",
    "https://elitetraveler.com/travel/hotel-news/airelles-gordes-la-bastide-review",
    "https://www.rosier.pro/details-bastide+de+gordes-102693.html",
+   "https://en.rosier.pro/details-bastide%2Bde%2Bgordes-102693.html",
    "https://www.pappers.fr/entreprise/la-bastide-de-gordes-spa-344283999",
    "https://www.senseofwellness-mag.com/toute-les-actualites-spa-et-wellness/actus/ouvertures-spa-thalasso-thermes/item/1179-lov-hotel-collection-pari-reussi-a-la-bastide-de-gordes",
    "https://www.luxewellnessclub.com/en/",
@@ -3620,7 +3768,26 @@
    "https://francetoday.com/food-drink/restaurants/dining-in-provence-clover-gordes/",
    "https://katerinameyvial.com/wedding-at-airelles-la-bastide/",
    "https://bridesvenues.com/la-bastide-de-gordes",
-   "https://www.themilliardaire.com/en/gastronomy/la-bastide-de-gordes-luberon-16009/"
+   "https://www.themilliardaire.com/en/gastronomy/la-bastide-de-gordes-luberon-16009/",
+   "https://airelles.com/en/destination/gordes-hotel/la-bastide-5-star-provence-luberon",
+   "https://airelles.com/fr/destination/gordes-hotel/suites/maison-de-constance-location-villa-privee-luxe-provence-luberon",
+   "https://airelles.com/en/destination/gordes-hotel/spa-airelles-treatments-pool-fitness",
+   "https://airelles.com/en/destination/gordes-hotel/the-pools",
+   "https://www.businessimmo.com/actualites/article/1515699843/la-bastide-de-gordes-rouvre-ses-portes",
+   "https://www.lhotellerie-restauration.fr/actualite/lov-hotel-collection-devoile-airelles-collection"
+  ],
+  "conflicts": [
+   "Building age corrected from eighteenth-century to sixteenth-century based on the property's current official description.",
+   "The unsupported nine-month restoration duration was softened to a major restoration lasting several months.",
+   "La Maison de Constance corrected from five bedrooms to four based on the property's current official villa page.",
+   "Restoration investment range corrected from EUR 20-35 million to EUR 20-25 million.",
+   "Reopening date corrected from July 2015 to 24 June 2015.",
+   "Unsupported claims about Chagall and Vasarely spending summers in Gordes from the late 1940s were removed.",
+   "The FY2024 employee count was removed because the 70-employee figure is reported only for 2021.",
+   "Spa operator corrected from Maison Sisley to Airelles Spa by Guerlain based on the current official hotel page.",
+   "Events pricing and capacity updated to current published partial-package and full-buyout indications.",
+   "The unsupported six-month annual season claim was removed and marked unresolved.",
+   "Capex per key corrected from GBP 429,000-750,000 to GBP 429,000-536,000 using the corrected EUR 20-25 million investment range."
   ],
   "not_found": [
    "A monument-historique listing for La Bastide de Gordes itself (the separate, neighbouring Chateau de Gordes is classified, but no listing was found for the bastide building the hotel occupies).",
@@ -3732,7 +3899,7 @@
     "The closest structural analogue in the cohort to Fawley's dual hotel-plus-residences design, though La Reserve's villas are let nightly rather than sold"
    ]
   ],
-  "gap": "No trading, margin, payroll or capex evidence was established for La Reserve Ramatuelle at hotel level. The one filed entity identified (REMER) reads as a restaurant-activity vehicle too small to be the operating company, and the group holding company's turnover could not be confirmed as site-specific. This remains the thinnest evidence base of the four hotels covered here.",
+  "gap": "No trading, margin, payroll or capex evidence was established for La Reserve Ramatuelle at hotel level. The one filed entity identified (REMER) has restaurant activity and reported revenue and employment data, but its scope within the property's overall operating structure could not be established. The group holding company's turnover could not be confirmed as site-specific. This remains the thinnest evidence base of the four hotels covered here.",
   "sources": [
    "https://www.michelreybierhospitality.com/wp-content/uploads/2022/05/la-reserve-ramatuelle-press-kit-2023-fr.pdf",
    "https://fr.wikipedia.org/wiki/La_R%C3%A9serve_(h%C3%B4tel)",
@@ -3741,6 +3908,11 @@
    "https://fr.kompass.com/c/societe-fonciere-p-l-m/fr6669014/",
    "https://www.lejdd.fr/Economie/Michel-Reybier-ouvre-lundi-un-hotel-prestigieux-pres-de-l-Elysee-La-Reserve-713300",
    "https://guide.michelin.com/us/en/hotels-stays/saint-tropez/la-reserve-ramatuelle-11439"
+  ],
+  "conflicts": [
+   "The introduction was corrected to acknowledge filed REMER and Société Foncière P.L.M. evidence, while retaining the conclusion that site-level trading evidence is limited.",
+   "The REMER description was corrected to remove the unsupported inference that it covers only part of food and beverage; its scope within the property's operating structure is unresolved.",
+   "The gap was corrected to reflect REMER's reported financial and employment data while retaining the absence of hotel-level evidence."
   ],
   "not_found": [
    "Any hotel-level filed turnover, margin, payroll or employee count.",
@@ -3800,23 +3972,33 @@
    ],
    [
     "Wellness",
-    "A Valmont-branded wellness area with a 15-metre indoor pool and gym; treatment-room count not found"
+    "A Spa Airelles x LBA wellness area with a 15-metre indoor pool and gym; treatment-room count not found"
    ],
    [
     "Events",
-    "The hotel markets private full-château events and banqueting through its own site; no published buyout price found"
+    "The hotel markets privatisation of Le Grand Contrôle, with exclusive visits to the Château, through its own site; no published buyout price found"
    ]
   ],
   "sources": [
    "https://commons.wikimedia.org/wiki/File:H%C3%B4tel_du_Grand_Contr%C3%B4le_%C3%A0_Versailles_vu_de_la_rue_de_l%27Orangerie_le_11_septembre_2015.jpg",
    "https://commons.wikimedia.org/wiki/File:H%C3%B4tel_du_Grand_Contr%C3%B4le_%C3%A0_Versailles_vu_du_Parterre_de_l%27Orangerie_le_11_septembre_2015.jpg",
    "https://airelles.com/en/destination/chateau-de-versailles-hotel",
-   "https://guide.michelin.com/us/en/ile-de-france/versailles/restaurant/ducasse-au-chateau-de-versailles-le-grand-controle"
+   "https://guide.michelin.com/us/en/ile-de-france/versailles/restaurant/ducasse-au-chateau-de-versailles-le-grand-controle",
+   "https://www.chateauversailles.fr/sites/default/files/versailles-ra-2015_web.pdf",
+   "https://airelles.com/en/destination/chateau-de-versailles-hotel/spa-valmont-chateau-de-versailles",
+   "https://airelles.com/fr/destination/chateau-de-versailles-hotel/privatisation-le-grand-controle"
+  ],
+  "conflicts": [
+   "Removed unsupported French state freehold ownership and the press-reported fifty-year concession term; retained the supported concession arrangement.",
+   "Changed fourteen suites to fourteen rooms and suites and removed the unsupported rate-alone causal conclusion.",
+   "Updated Valmont branding to the current Spa Airelles x LBA naming while retaining the supported pool and gym details.",
+   "Corrected full-Château events wording to privatisation of Le Grand Contrôle with exclusive Château visits.",
+   "Removed unsupported specific visual descriptions from the four Airelles image notes."
   ],
   "not_found": [
-   "A treatment-room count or size for the Valmont spa",
-   "A published price for private full-château buyouts or banqueting events",
-   "A primary-source citation for the concession length, which is currently only press-reported at fifty years"
+   "A treatment-room count or size for the Spa Airelles x LBA wellness area",
+   "A published price for privatisation of Le Grand Contrôle or banqueting events",
+   "Textual source verification for the specific visual descriptions removed from the Airelles image notes"
   ],
   "images": [
    {
@@ -3916,7 +4098,7 @@
   "cards": [
    [
     "What happened",
-    "The Sersale family converted their cliffside villa, Villa Giulietta, into a 58-room hotel in 1951, opened by four siblings - Anna, Aldo, Paolo and Franco. Family ownership and management has continued unbroken since, now in its third generation under Antonio and Carla Sersale, whose sons Aldo and Francesco joined the business in 2020. No acquisition or conversion cost is published for 1951 or for any later renovation; the most recent documented capital project is a 2024 remaking of the pool with a Nicolas Party and Bisazza mosaic design, again with no disclosed cost."
+    "The Sersale family converted their cliffside villa, Villa Giulietta, into an eight-room hotel in 1951, opened by four siblings - Anna, Aldo, Paolo and Franco. Family ownership and management has continued unbroken since, now in its third generation under Antonio and Carla Sersale, whose sons Aldo and Francesco joined the business in 2020. No acquisition or conversion cost is published for 1951 or for any later renovation; the most recent documented capital project is a 2024 remaking of the pool with a Nicolas Party and Bisazza mosaic design, again with no disclosed cost."
    ],
    [
     "What it earns",
@@ -3981,7 +4163,9 @@
   "conflicts": [
    "Key count: the hotel's own rooms page and its Leading Hotels of the World listing both give 58; the current Michelin Guide listing gives 59.",
    "Employee and payroll figures for FY2024 conflict across free-accounts aggregators: 227 staff and EUR 3.322m personnel cost (Aziende.it) against a 50-99 staff band and EUR 7.824m (FatturatoItalia); a third source gives 175 staff and EUR 9.839m profit for FY2023. None is reconciled against a filed document.",
-   "La Sponda's Michelin-star status is unresolved: an LHW listing and an older Michelin editorial record one star dated September 2016, but the current Michelin Guide restaurant page for La Sponda shows no star, only a price and cuisine listing. The hotel itself separately holds One MICHELIN Key, a hotel-level distinction that is not the same thing as a restaurant star."
+   "La Sponda's Michelin-star status is unresolved: an LHW listing and an older Michelin editorial record one star dated September 2016, but the current Michelin Guide restaurant page for La Sponda shows no star, only a price and cuisine listing. The hotel itself separately holds One MICHELIN Key, a hotel-level distinction that is not the same thing as a restaurant star.",
+   "Opening size: the What happened card has been corrected from 58 rooms to eight rooms because contemporary and current histories say the hotel opened with eight rooms in 1951.",
+   "Indoor plunge pool: removed from the Wellness record because the current official spa materials do not identify one."
   ],
   "not_found": [
    "Original purchase price of the villa or the 1951 conversion cost.",
@@ -4057,11 +4241,11 @@
    ],
    [
     "Ownership",
-    "Bought at auction in 2018 by the De Santis family (a Como-area family, not previously in hospitality); reserve price reported at EUR 20m, final hammer price not disclosed; reopened as a 24-suite hotel on 3 June 2022 -- laprovinciadicomo.it; perowneinternational.com"
+    "Bought at auction in 2018 by the De Santis family (a Como-area family and owners of Grand Hotel Tremezzo); reserve price reported at EUR 20m, final hammer price not established in the cited sources; reopened as a 24-suite hotel on 3 June 2022 -- laprovinciadicomo.it; perowneinternational.com; 8realestate.it"
    ],
    [
     "Capital cost",
-    "Conversion to a 24-room hotel, including frescoe and garden restoration, is documented in the press but no cost figure has been disclosed anywhere found -- designandcontract.com"
+    "Conversion to a 24-room hotel, including frescoe and garden restoration, is documented in the press; restructuring cost estimated at approximately EUR 20m -- designandcontract.com; 8realestate.it"
    ]
   ],
   "sources": [
@@ -4075,14 +4259,19 @@
    "https://smartflyer.com/review/passalacqua/",
    "https://www.passalacqua.it/en/",
    "https://www.passalacqua.it/en/spa/",
-   "https://www.passalacqua.it/en/dining/"
+   "https://www.passalacqua.it/en/dining/",
+   "https://www.lombardiabeniculturali.it/architetture/schede/CO260-00107/"
+  ],
+  "conflicts": [
+   "Formal heritage record CO260-00107 added from Lombardia Beni Culturali.",
+   "De Santis family hospitality background corrected: sources identify the family as owners of Grand Hotel Tremezzo and hotelier entrepreneurs.",
+   "Conversion cost updated to approximately EUR 20m, based on 8 Real Estate's restructuring estimate.",
+   "Enrico Costantini attribution removed from the guest-bedroom image because the cited rooms page does not support it."
   ],
   "not_found": [
-   "Final auction sale price (the reserve was reported at EUR 20m; the hammer price was not disclosed)",
-   "The conversion/renovation cost of the 2018-2022 restoration (extensively covered in the press, but no figure disclosed)",
+   "Final auction sale price (the reserve was reported at EUR 20m; no final hammer price figure was established in the cited sources)",
    "Occupancy (a single unverifiable third-party claim of 92% was excluded; nothing corroborates it)",
    "Meal basis on the lead-in rate (current rate displays show both breakfast-included and room-only results; the SmartFlyer review says breakfast is already in the rate, but no SynXis rate-plan name was recovered to confirm which applies to the collected lead-in)",
-   "A formal heritage listing register number (multiple sources describe the villa as Italian national heritage but none cite a register entry)",
    "Spa treatment-room count and wellness facility scale"
   ],
   "images": [
@@ -4157,7 +4346,7 @@
    ],
    [
     "Trading",
-    "No hotel-level filed accounts were found. The only public accounts are the group parent's, which also holds the fishery and other entities, so no revenue, margin, payroll or occupancy figure specific to the hotel exists in the public record (firmenabc.at; wirtschaft.at)."
+    "Hotel Resort Schloss Fuschl GmbH has a filed 2024 annual account and published financial figures, including a EUR 4.69m balance sheet total and EUR 2.43m loss; the accessible summary does not expose a hotel-specific revenue, margin, payroll or occupancy figure (firmenabc.at; wirtschaft.at)."
    ],
    [
     "Wellness",
@@ -4187,7 +4376,7 @@
    ],
    [
     "What it earns",
-    "Nothing is filed for the hotel itself. The only public accounts belong to the group parent, Schloss Fuschl Betriebe GmbH, which also holds a fishery and other non-hotel entities, so its EUR 80.29m of tangible fixed assets cannot be read as a hotel figure and no revenue, margin, payroll or occupancy number for the hotel was found anywhere in the accessible record. This is a genuine evidence gap, not an estimate withheld."
+    "A 2024 annual account is filed for Hotel Resort Schloss Fuschl GmbH, with published figures including a EUR 4.69m balance sheet total and EUR 2.43m loss. The accessible summary does not expose a hotel-specific revenue, margin, payroll or occupancy figure. The group parent's accounts cover a wider perimeter including the fishery and other entities, so they cannot be read as hotel-only trading figures. The evidence gap is narrower than previously stated, but key operating metrics remain unavailable in the accessible record."
    ],
    [
     "What it evidences for Fawley",
@@ -4220,7 +4409,7 @@
     "The held figure is from an earlier renovation, not the 2024 restoration that produced today's Rosewood hotel, for which no cost was found; two decades old and not inflation-adjusted; likely a lighter scope than Fawley's ground-up conversion"
    ]
   ],
-  "gap": "No hotel-level trading, margin, payroll or occupancy figure exists anywhere in the public record for Schloss Fuschl - only the group parent's accounts are public, and they cover a wider perimeter that includes a fishery. The 2024 restoration that produced today's Rosewood hotel carries no public cost figure at all; the only priced renovation on file is two decades old.",
+  "gap": "A 2024 annual account exists for Hotel Resort Schloss Fuschl GmbH, including a EUR 4.69m balance sheet total and EUR 2.43m loss, but the accessible summary does not expose a hotel-specific revenue, margin, payroll or occupancy figure. The 2024 restoration that produced today's Rosewood hotel carries no public cost figure at all; the only priced renovation on file is two decades old.",
   "sources": [
    "https://www.rosewoodhotels.com/en/schloss-fuschl-salzburg/media/press/2024/a-restorative-lakeside-retreat-rosewood-schloss-fuschl.html",
    "https://www.rosewoodhotels.com/sc/media/press/2022/rosewood-schloss-fuschl-to-open-late-2023",
@@ -4228,6 +4417,7 @@
    "https://www.wirtschaft.at/u/072233a",
    "https://www.schoerghuber.group/uploads/2024/11/Schoerghuber_Gruppe_Unternehmensbericht_2023.pdf",
    "https://www.firmenabc.at/schloss-fuschl-betriebe-gmbh_LQKO",
+   "https://www.firmenabc.at/hotel-resort-schloss-fuschl-gmbh_BBPdA",
    "https://fuschlsee.salzkammergut.at/en/oesterreich-unterkunft/detail/430027421/rosewood-schloss-fuschl.html",
    "https://www.rosewoodhotels.com/content/dam/rosewoodhotels/property/schloss-fuschl-salzburg/document/Festive%20Brochure%20EN.pdf",
    "https://www.rosewoodhotels.com/en/schloss-fuschl-salzburg/offers/discover-schloss-fuschl",
@@ -4240,8 +4430,15 @@
    "https://guide.michelin.com/en/article/travel/three-key-rosewood-schloss-fuschl-austria-iconic-castle-hotel-reinvented",
    "https://www.scmp.com/magazines/style/lifestyle/travel-hotels/article/3331012/rosewood-schloss-fuschl-15th-century-austrian-castle-turned-luxury-lakeside-retreat"
   ],
+  "conflicts": [
+   "Ownership: removed the unsupported statement that no management contract or fee basis was found; Rosewood's manager status is retained.",
+   "Capital cost: removed the unsupported GBP-per-key conversion and EUR 80.29m parent-assets figure; retained the approximately EUR 30m 2005-06 renovation figure.",
+   "Trading: replaced the claim that no hotel-level accounts exist with the filed 2024 Hotel Resort Schloss Fuschl GmbH account and its published figures.",
+   "Events: removed the unsupported claim that seated wedding dinners can be customised up to roughly 80 guests.",
+   "Cards and gap: updated the earnings and profitability evidence to reflect the filed 2024 hotel-company account."
+  ],
   "not_found": [
-   "Any hotel-level trading, margin, payroll or occupancy figure - only the group parent's wider-perimeter accounts are public.",
+   "Hotel-specific revenue, margin, payroll or occupancy figures are not exposed in the accessible summary of the filed 2024 hotel-company account.",
    "A cost figure for the 2024 restoration that produced the current Rosewood-branded hotel; only an earlier, 2005-06 renovation is priced.",
    "The room count conflict (98 total but 42 vs 46 suites across two Rosewood releases) - not reconciled.",
    "An acquisition price for Schorghuber's 2023 stake, or for Arabella Hospitality's original holding.",
@@ -4324,7 +4521,7 @@
    ],
    [
     "Payroll",
-    "Salaries EUR 6.440m plus social charges EUR 2.172m = EUR 8.612m, 41.7% of turnover, FY2024. Reported headcount 127 (2023), 2.70 staff a key (FY2024 accounts filing; entreprises.lefigaro.fr)."
+    "Salaries EUR 6.440m plus social charges EUR 2.172m = EUR 8.612m, 41.7% of turnover, FY2024. Reported headcount 127 (2022), 2.70 staff a key (FY2024 accounts filing; entreprises.lefigaro.fr)."
    ],
    [
     "Wellness",
@@ -4414,11 +4611,21 @@
    "https://ilsancorradodinoto.com/cms-admin/materiale/add_allegati/file-93-28/SavoirFlair-23.02.2024.pdf",
    "https://observer.com/2022/04/royal-champagne-hotel-spa-france-guide-review/amp/"
   ],
+  "conflicts": [
+   "Removed the unsupported wider-set claim that Royal Champagne is Fawley Court's closest trading analogue.",
+   "Qualified the 365-day trading claim because the cited accounts do not establish year-round operation.",
+   "Removed the unsupported absence of a third-party management contract and stated that terms were not disclosed in the cited public sources.",
+   "Corrected reported headcount year from 2023 to 2022.",
+   "Removed the unsupported claim that the spa is the largest in Champagne.",
+   "Replaced the statement that event capacity was undisclosed with capacities published on the hotel's current events page.",
+   "Removed unsupported SynXis chain and hotel codes.",
+   "Removed the unsupported GBP conversion from Royal Champagne's revenue per key, retaining the supported euro calculation.",
+   "Removed the unsupported single build-cost estimate and stated that no reliable hotel-only cost was established."
+  ],
   "not_found": [
    "An annual occupancy figure, in any source.",
    "A rooms / food and beverage / spa revenue split.",
    "A wedding buyout or exclusive-use price.",
-   "Meeting and event space capacity figures.",
    "Estate acreage beyond the hotel's immediate grounds.",
    "The acquisition price Champagne Hospitality paid for the site, or a hotel-only construction cost from a filed or otherwise primary source (only conflicting press figures were found).",
    "A management fee basis - the hotel appears owner-operated, but no contract terms were found either way."
@@ -4483,7 +4690,7 @@
   ]
  },
  "son-bunyola": {
-  "intro": "Son Bunyola occupies a finca on Mallorca's north-west coast, inside the Serra de Tramuntana, a UNESCO World Heritage mountain range. Richard Branson bought the estate in 1987, lost it to a forced sale in 2002 and bought it back in 2015; the hotel opened in June 2023 as Virgin Limited Edition's first European property, alongside three whole-house villas let separately on the wider estate. It sits in the comparable set as an island estate hotel that, unlike most of its Mediterranean peers, publishes a full forward year of pricing through a proper booking engine rather than a headline rate alone.",
+  "intro": "Son Bunyola occupies a finca on Mallorca's north-west coast, inside the Serra de Tramuntana, a UNESCO World Heritage mountain range. Richard Branson bought the estate in 1994, sold it in 2002 after planning disputes and bought it back in 2015; the hotel opened in June 2023 as Virgin Limited Edition's first European property, alongside three whole-house villas let separately on the wider estate. It sits in the comparable set as an island estate hotel that, unlike most of its Mediterranean peers, publishes a full forward year of pricing through a proper booking engine rather than a headline rate alone.",
   "record": [
    [
     "Setting",
@@ -4495,7 +4702,7 @@
    ],
    [
     "Heritage",
-    "The main house is a 16th-century finca with an attached defence tower reported as either 13th-century (most sources) or a later addition; one source instead dates the central finca building to the 1800s, a conflict not resolved here (falstaff.com; helencummins.com)."
+    "The main house is a 16th-century finca with an attached defence tower reported as either 13th-century (most sources) or a later addition (falstaff.com; helencummins.com)."
    ],
    [
     "Season",
@@ -4503,7 +4710,7 @@
    ],
    [
     "Ownership",
-    "Virgin Limited Edition (Richard Branson). Branson first bought the estate in 1987, sold it in 2002 following planning disputes with local authorities, and bought it back in 2015 for around GBP 11m once it unexpectedly returned to the market and a new council granted the permissions the earlier plan had lacked (helencummins.com; falstaff.com)."
+    "Virgin Limited Edition (Richard Branson). Branson first bought the estate in 1994, sold it in 2002 following planning disputes with local authorities, and bought it back in 2015 for around GBP 11m, although a contemporaneous report gave EUR 15.3m, once it unexpectedly returned to the market and a new council granted the permissions the earlier plan had lacked (helencummins.com; falstaff.com; Majorca Daily Bulletin)."
    ],
    [
     "Capital cost",
@@ -4537,7 +4744,7 @@
   "cards": [
    [
     "What happened",
-    "Richard Branson bought the Son Bunyola estate in 1987 and sold it in 2002 after planning disputes with local authorities stalled his plans. The estate came unexpectedly back onto the market and Branson repurchased it in 2015 for around GBP 11m, this time securing the permissions needed from a new council. Two years of renovation followed, keeping the finca's original 16th-century fabric and its attached tower. The hotel opened in June 2023 as Virgin Limited Edition's first European property, with three separately let whole-house villas on the wider estate alongside it."
+    "Richard Branson bought the Son Bunyola estate in 1994 and sold it in 2002 after planning disputes with local authorities stalled his plans. The estate came unexpectedly back onto the market and Branson repurchased it in 2015 for around GBP 11m, although a contemporaneous report gave EUR 15.3m, this time securing the permissions needed from a new council. Two years of renovation followed, keeping the finca's original 16th-century fabric and its attached tower. The hotel opened in June 2023 as Virgin Limited Edition's first European property, with three separately let whole-house villas on the wider estate alongside it."
    ],
    [
     "What it earns",
@@ -4583,20 +4790,31 @@
    "https://www.virginlimitededition.com/son-bunyola/dining/",
    "https://www.virginlimitededition.com/son-bunyola/villas/",
    "https://www.virginlimitededition.com/son-bunyola/the-estate/",
+   "https://www.virginlimitededition.com/son-bunyola/faqs/",
    "https://www.helencummins.com/richard-branson-mallorca/",
    "https://www.falstaff.com/en/news/richard-bransons-breathtaking-new-hotel-on-mallorca",
    "https://www.balearic-properties.com/en/son-bunyola-hotel-richard-branson-mallorca",
    "https://robbreport.com/travel/hotels/inside-richard-bransons-newly-opened-son-bunyola-hotel-villas-in-mallorca-1234869161/",
    "https://www.mrandmrssmith.com/luxury-hotels/son-bunyola",
    "https://rumemagazine.com/hotels/son-bunyola-hotel/",
-   "https://newbooking.azds.com/api/hotel/son-bunyola/configuration"
+   "https://newbooking.azds.com/api/hotel/son-bunyola/configuration",
+   "https://www.travelandleisure.com/son-bunyola-mallorca-richard-branson-hotel-review-7559774",
+   "https://travelweekly.co.uk/news/sir-richard-branson-opens-virgin-limited-edition-hotel-in-majorca-tw",
+   "https://www.majorcadailybulletin.com/news/local/2015/12/11/42397/branson-purchases-banyalbufar-estate.html"
+  ],
+  "conflicts": [
+   "Intro and Ownership: the original purchase was corrected from 1987 to 1994; the 2002 disposal is described as a sale after planning disputes, not a forced sale.",
+   "Keys: Sa Punta de S'Aguila was corrected from sleeping 12 to sleeping 10.",
+   "Heritage and not_found: the contradicted 1800s dating for the central finca was removed; the tower chronology remains unresolved.",
+   "Season: villa availability was corrected to all three villas being available year-round.",
+   "Ownership, Capital cost and What happened: the 2015 repurchase is reported as around GBP 11m by one source and EUR 15.3m by a contemporaneous report."
   ],
   "not_found": [
    "Any trading, margin, payroll or occupancy figure - Virgin Limited Edition discloses none for its individual properties.",
    "A construction or renovation cost for the 2021-23 works that produced the current hotel.",
    "A reconciled estate acreage figure (four conflicting numbers found: 700, 810, 1,000 and 1,300 acres).",
    "Wedding or event capacity and buyout pricing.",
-   "The exact construction date and provenance of the finca and its tower (16th century versus 1800s, and 13th-century versus later tower, both conflict across sources)."
+   "The exact provenance of the finca and its tower: the principal building is described as 16th-century, while the tower chronology remains conflicted between 13th-century and later additions."
   ],
   "images": [
    {
@@ -4686,7 +4904,7 @@
    ],
    [
     "Trading",
-    "THE FILED FY2025 GROUP FIGURE, READ IN FULL: Villa d'Este SpA's own statutory accounts (not a consolidated group filing) report total revenue EUR 115.325m and EBITDA EUR 47.539m for FY2025, a 41.2% margin - the figure the portal already holds. That perimeter is FOUR directly-operated hotels plus ancillary income, not the Cernobbio hotel alone: Grand Hotel Villa d'Este (EUR 84.629m, 74.4% of revenue), Hotel Villa La Massa in Florence (EUR 6.353m), Hotel Barchetta Excelsior in Como (EUR 6.287m) and the Palace Hotel in Como (EUR 12.124m), plus EUR 4.311m of ancillary activities and EUR 1.621m of accessory income. It excludes the golf club (Immobiliare Bosco Montorfano SpA, 73.1%-owned during 2025) and Harry's Bar, both separate subsidiaries outside this statutory perimeter. Group-wide staff costs were EUR 27.953m, 24.2% of the EUR 115.325m total (VDE-Bilancio-2025.pdf, pp.13-24, read in full)."
+    "THE FILED FY2025 GROUP FIGURE, READ IN FULL: Villa d'Este SpA's own statutory accounts (not a consolidated group filing) report total revenue EUR 115.325m and EBITDA EUR 47.539m for FY2025, a 41.2% margin - the figure the portal already holds. That perimeter is FOUR directly-operated hotels plus ancillary income, not the Cernobbio hotel alone: Grand Hotel Villa d'Este (EUR 84.629m, 73.4% of total revenue), Hotel Villa La Massa in Florence (EUR 6.353m), Hotel Barchetta Excelsior in Como (EUR 6.287m) and the Palace Hotel in Como (EUR 12.124m), plus EUR 4.311m of ancillary activities and EUR 1.621m of accessory income. It excludes the golf club (Immobiliare Bosco Montorfano SpA, 73.1%-owned during 2025) and Harry's Bar, both separate subsidiaries outside this statutory perimeter. Group-wide staff costs were EUR 27.953m, 24.2% of the EUR 115.325m total (VDE-Bilancio-2025.pdf, pp.13-24, read in full)."
    ],
    [
     "Rate evidence",
@@ -4702,7 +4920,7 @@
    ],
    [
     "Events",
-    "Has hosted private, wedding and corporate events since the 19th century, across multiple indoor and outdoor spaces; capacity of up to 200 guests is cited, buyout pricing was not found (dolcevia.com; cvent.com)."
+    "Has hosted private, wedding and corporate events since the 19th century, across multiple indoor and outdoor spaces; capacities are published room by room, the largest being the Impero room at up to 400, buyout pricing was not found (dolcevia.com; cvent.com)."
    ],
    [
     "Membership",
@@ -4716,7 +4934,7 @@
    ],
    [
     "What it earns",
-    "Villa d'Este SpA reported EUR 115.325m of revenue and EUR 47.539m of EBITDA in FY2025, a 41.2% margin. That filing is the company's own statutory accounts, and the perimeter is four hotels - Grand Hotel Villa d'Este, Villa La Massa in Florence, and the Hotel Barchetta and Palace Hotel in Como - plus ancillary income, not the Cernobbio hotel alone; the golf club and Harry's Bar sit in separate subsidiary companies outside this figure. The Cernobbio hotel itself is 74.4% of group revenue and posted 70.6% occupancy at an average rate of EUR 1,862 over 295 open days; no hotel-only EBITDA is disclosed anywhere in the filing."
+    "Villa d'Este SpA reported EUR 115.325m of revenue and EUR 47.539m of EBITDA in FY2025, a 41.2% margin. That filing is the company's own statutory accounts, and the perimeter is four hotels - Grand Hotel Villa d'Este, Villa La Massa in Florence, and the Hotel Barchetta and Palace Hotel in Como - plus ancillary income, not the Cernobbio hotel alone; the golf club and Harry's Bar sit in separate subsidiary companies outside this figure. The Cernobbio hotel itself is 73.4% of group revenue and posted 70.6% occupancy at an average rate of EUR 1,862 over 295 open days; no hotel-only EBITDA is disclosed anywhere in the filing."
    ],
    [
     "What it evidences for Fawley",
@@ -4777,7 +4995,8 @@
    "https://commons.wikimedia.org/wiki/File:Villa_d%27Este.jpg"
   ],
   "conflicts": [
-   "The portal holds Villa d'Este's margin as '41.2% EBITDA (press, FY2025)' with no further basis. This research confirms the figure exactly against the company's own filed FY2025 statutory accounts (read in full), but establishes it is a FOUR-HOTEL GROUP figure - Grand Hotel Villa d'Este plus Villa La Massa in Florence, Hotel Barchetta Excelsior and the Palace Hotel, both in Como, plus ancillary income - not a Grand Hotel Villa d'Este standalone number, and that it excludes the golf club and Harry's Bar, which sit in separate subsidiary companies (73.1%-owned and 100%-owned respectively). This is not a contradiction of the number itself but a material correction to what it covers, which the portal's single-line citation does not carry."
+   "The portal holds Villa d'Este's margin as '41.2% EBITDA (press, FY2025)' with no further basis. This research confirms the figure exactly against the company's own filed FY2025 statutory accounts (read in full), but establishes it is a FOUR-HOTEL GROUP figure - Grand Hotel Villa d'Este plus Villa La Massa in Florence, Hotel Barchetta Excelsior and the Palace Hotel, both in Como, plus ancillary income - not a Grand Hotel Villa d'Este standalone number, and that it excludes the golf club and Harry's Bar, which sit in separate subsidiary companies (73.1%-owned and 100%-owned respectively). This is not a contradiction of the number itself but a material correction to what it covers, which the portal's single-line citation does not carry.",
+   "The Cernobbio share is restated at 73.4% of total revenue: 74.4% is its share of sales and services before other income. Event capacity restated from 200 to the published room-by-room maximum of 400."
   ],
   "not_found": [
    "A hotel-only EBITDA or GOP figure for Grand Hotel Villa d'Este, isolated from the other three hotels in the group's statutory accounts.",
@@ -4848,7 +5067,7 @@
   ]
  },
  "villa-la-coste": {
-  "intro": "Villa La Coste is the hotel component of Chateau La Coste, a roughly 200-hectare wine, art and architecture estate that Irish developer Patrick McKillen began building from around 2001. Contemporary villa suites by architects including Tadao Ando sit among more than forty outdoor artworks and pavilions on a working vineyard between Aix-en-Provence and the Luberon. It sits in the set because its filed accounts, unusually for this cohort, disclose a full profit-and-loss picture at a rate above Fawley's underwritten ADR.",
+  "intro": "Villa La Coste is the hotel component of Chateau La Coste, a roughly 200-hectare wine, art and architecture estate that Irish developer Patrick McKillen acquired in 2002 or 2004, according to different sources. Contemporary villa suites by architects including Tadao Ando sit among more than forty outdoor artworks and pavilions on a working vineyard between Aix-en-Provence and the Luberon. It sits in the set because its filed accounts, unusually for this cohort, disclose a full profit-and-loss picture at a rate above Fawley's underwritten ADR.",
   "record": [
    [
     "Setting",
@@ -4856,15 +5075,15 @@
    ],
    [
     "Keys",
-    "31 Villa Suites of 60-115 sqm, ten with private heated pools, plus three newer Residence Suites; earlier coverage (2022-23) cites 28 suites, suggesting the room count has grown since opening (mrandmrssmith.com; villalacoste.com; virtuoso.com)."
+    "31 Villa Suites of 90-250 sqm, ten with private heated pools, plus three newer Residence Suites; earlier coverage (2022-23) cites 28 suites, suggesting the room count has grown since opening (mrandmrssmith.com; villalacoste.com; virtuoso.com)."
    ],
    [
     "Ownership",
-    "Developed by Irish real-estate investor Patrick (Paddy) McKillen, who bought the estate from around 2001; the hotel is operated by CLC Luxury Hotel SARL (Aix-en-Provence, SIRET 798312591), managed by Maire McKillen and Liam Cunningham (irishtimes.com; pappers.fr)."
+    "Developed by Irish real-estate investor Patrick (Paddy) McKillen, who bought the estate in 2002 or 2004, according to different sources; the hotel is operated by CLC Luxury Hotel SARL (Aix-en-Provence, SIRET 79831259100018), managed by Maire McKillen and Liam Cunningham (irishtimes.com; pappers.fr)."
    ],
    [
     "Trading",
-    "Held: FY2024 filed turnover EUR 12.45m, an operating loss of EUR 0.57m, and payroll at 41.1% of revenue. Independently found: CLC Luxury Hotel SARL's own filed accounts show revenue of EUR 7.4m (FY2022, net loss EUR 728k), EUR 13.5m (FY2023, net profit EUR 163k), EUR 12.4m (FY2024, net loss EUR 2.31m) and EUR 12.2m (FY2025, net loss EUR 1.37m), with 100-199 employees recorded in the FY2023 filing and negative equity of EUR 1.24m by FY2025 (pappers.fr)."
+    "Held: FY2024 filed turnover EUR 12.4m, an operating loss of EUR 0.57m, and payroll at 41.1% of revenue. Independently found: CLC Luxury Hotel SARL's own filed accounts show revenue of EUR 7.4m (FY2022, net loss EUR 728k), EUR 13.5m (FY2023, net profit EUR 163k), EUR 12.4m (FY2024, net loss EUR 2.31m) and EUR 12.2m (FY2025, net loss EUR 1.37m), with 100-199 employees recorded in the FY2023 filing and negative equity of EUR 1.24m by FY2025 (pappers.fr)."
    ],
    [
     "Food and beverage",
@@ -4938,7 +5157,14 @@
    "https://guide.michelin.com/en/hotels-stays/aix-en-provence/villa-la-coste-8645"
   ],
   "conflicts": [
-   "The held FY2024 figures (turnover EUR 12.45m, operating loss EUR 0.57m) are close to but not identical to CLC Luxury Hotel SARL's own FY2024 filing found independently (revenue EUR 12.4m, net loss EUR 2.31m). The revenue is consistent; the loss figures differ because the held figure appears to be an operating-level result and the Pappers-sourced figure a net result after interest, depreciation and exceptional items. Both are plausibly correct on their own basis; this was not fully reconciled."
+   "The held FY2024 figures (turnover EUR 12.4m, operating loss EUR 0.57m) are close to but not identical to CLC Luxury Hotel SARL's own FY2024 filing found independently (revenue EUR 12.4m, net loss EUR 2.31m). The revenue is consistent; the loss figures differ because the held figure appears to be an operating-level result and the Pappers-sourced figure a net result after interest, depreciation and exceptional items. Both are plausibly correct on their own basis; this was not fully reconciled.",
+   "Sources date Patrick McKillen's acquisition of the estate to 2002 or 2004, replacing the unsupported around-2001 date.",
+   "The suite-size range was corrected from 60-115 sqm to 90-250 sqm using the current Château La Coste event brochure.",
+   "The company identifier was corrected to the full SIRET, 79831259100018.",
+   "The unsupported claim that Francis Mallmann's restaurant was his first European restaurant was removed.",
+   "The Louise Bourgeois sculpture was attributed to Louison rather than La Galerie, following the Irish Times account.",
+   "The annual opening and closing schedule was removed because it was not established in the checked sources.",
+   "FY2024 revenue was rounded to EUR 12.4m, and revenue per key was recalculated as EUR 400,000; the unsupported exchange-rate conversion was removed."
   ],
   "not_found": [
    "A construction or renovation cost figure for Villa La Coste's own buildings, as distinct from the wider Chateau La Coste estate spend.",
