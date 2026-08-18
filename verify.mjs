@@ -875,7 +875,13 @@ else {
     checked++;
     if (!manifest || JSON.stringify(manifest.images) !== JSON.stringify(a.images)) fail("AREA CGI MANIFEST DRIFT", a.key);
     const page = areaWindow.AreasChapter.render(a.key);
-    for (const text of [a.label, a.what, a.works, a.earns, a.watch, arm2(a.loaded), arm2(a.net), apct(a.share_of_works),
+    /* the area's own name and its loaded cost head the view, which the chapter
+       renderer builds from AreasChapter.area(); the body carries the rest */
+    checked++;
+    const head = areaWindow.AreasChapter.area(a.key);
+    if (!head || head.label !== a.label || head.loaded !== a.loaded)
+      fail("AREA HEADER SOURCE MISSING  " + a.key, a.label);
+    for (const text of [a.what, a.works, a.earns, a.watch, arm2(a.loaded), arm2(a.net), apct(a.share_of_works),
                         `Q${a.start_q}`, `Q${a.end_q}`]) {
       checked++;
       if (!areaHas(page, text)) fail("AREA VALUE NOT RENDERED  " + a.key, text);

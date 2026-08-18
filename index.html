@@ -2258,6 +2258,12 @@ const CHAPTERS = [
       ["capexzones"],
     ],
     reason: [] },
+  { id: "areas", title: "Estate Areas", kicker: "Estate areas",
+    figure: "Six areas", blurb: "One page per place you can see: its CGI, the works behind it, when it is built and what it earns.",
+    lead: [
+      ["areas"],
+    ],
+    reason: [] },
   { id: "phasing", title: "Programme", kicker: "Programme",
     figure: "Q" + CAPEX.phasing.quarters.find(q => q > 0) + "–Q" + CAPEX.phasing.quarters.at(-1), blurb: "When each part of the estate is built, and when the money goes out.",
     lead: [
@@ -3691,6 +3697,16 @@ function dials16HTML() {
 
 function blockHTML(b) {
   const k = b[0];
+  /* the estate areas are an advanced bolt-on: their code and pack are fetched
+     only when this tab is opened, never on the shell's parse path */
+  if (k === "areas") {
+    const key = (location.hash.split("/")[4] || "");
+    if (window.AreasChapter && window.AreasChapter.ready()) return window.AreasChapter.render(key);
+    loadAreas().then(() => { if (location.hash.includes("/capital/areas")) route(); })
+      .catch(() => { if (location.hash.includes("/capital/areas"))
+        paintView('<article class="view wrap"><div class="areas-status"><p>The estate areas could not be loaded.</p></div></article>'); });
+    return '<div class="areas-status"><p>Loading estate areas…</p></div>';
+  }
   if (k === "lede") return '<p class="lede">' + b[1] + "</p>";
   if (k === "para") return '<p class="para">' + b[1] + "</p>";
   if (k === "subhead") return '<p class="pane-h">' + b[1] + "</p>";
@@ -5513,11 +5529,7 @@ function viewChapter(ch, v) {
     /* the chapter line introduces the hub; a single-view chapter has its own standfirst */
     + (overview && multi && !ch.noLede ? '<p class="lede hub-lede" style="margin-top:12px">' + ch.blurb + "</p>" : "") + "</header>";
 
-  const boltOn = ch.id === "asset" && overview
-    ? '<button class="findbar st" data-areas-route style="margin-top:24px"><span class="gl" aria-hidden="true">↗</span>'
-      + '<span class="t">Explore the six CGI-backed estate areas</span></button>'
-    : "";
-  const body = '<div class="stack-lg">' + v.lead.map(blockHTML).join("") + "</div>" + viewReason(v) + boltOn;
+  const body = '<div class="stack-lg">' + v.lead.map(blockHTML).join("") + "</div>" + viewReason(v);
 
   /* the register and the cheat sheet fill their own view; their tab strip is
      the index, and a list under 1,500 nodes of register would never be read */
@@ -5817,20 +5829,9 @@ function route() {
   const parts = h.split("/").filter(Boolean);
   let html, eyebrow, back = null, backHash = "#/", chapId = null;
 
-  if (parts[0] === "areas") {
-    const key = parts[1] || "";
-    chapId = "asset";
-    eyebrow = "Estate areas" + (key ? " · CGI and works schedule" : " · advanced exhibit");
-    back = key ? "Estate areas" : "The Asset";
-    backHash = key ? "#/areas" : "#/c/asset";
-    if (window.AreasChapter && window.AreasChapter.ready()) {
-      html = window.AreasChapter.render(key);
-    } else {
-      html = '<article class="view wrap"><div class="areas-status"><p>Loading estate areas…</p></div></article>';
-      loadAreas().then(() => { if (location.hash.startsWith("#/areas")) route(); })
-        .catch(() => { if (location.hash.startsWith("#/areas")) paintView('<article class="view wrap"><div class="areas-status"><p>The estate areas could not be loaded.</p></div></article>'); });
-    }
-    document.title = "Estate areas — Fawley Court";
+  if (parts[0] === "areas") {                       /* the tab's old home */
+    location.replace("#/c/capital/areas" + (parts[1] ? "/" + parts[1] : ""));
+    return;
   } else if (parts[0] === "h" && BY_SLUG[parts[1]]) {
     const c = BY_SLUG[parts[1]];
     const tab = parts[2] === "pnl" ? "pnl" : "";   /* /rate is an alias of the page now */
@@ -5847,7 +5848,13 @@ function route() {
     document.title = h.name + " — Fawley Court";
   } else if (parts[0] === "c" && CH_BY_ID[parts[1]]) {
     const ch = CH_BY_ID[parts[1]];
-    const v = viewOf(ch, parts[2]);
+    let v = viewOf(ch, parts[2]);
+    /* an area is a page inside the tab, so it titles the view itself */
+    if (v.id === "areas" && parts[3] && window.AreasChapter && window.AreasChapter.ready()) {
+      const a = window.AreasChapter.area(parts[3]);
+      if (a) v = Object.assign({}, v, { title: a.label,
+        figure: "£" + (a.loaded / 1e6).toFixed(2) + "m loaded" });
+    }
     chapId = ch.id;
     html = viewChapter(ch, v);
     eyebrow = "Chapter " + ch.num + " · " + plain(ch.title) + (v.id ? " · " + plain(v.title) : "");
@@ -5937,7 +5944,6 @@ document.addEventListener("click", e => {
   const eg = t.closest("[data-eg]");
   if (eg) { findInput.value = eg.dataset.eg; findRender(findInput.value); findInput.focus(); return; }
   if (t.closest("#findbar")) { openFind(""); return; }
-  if (t.closest("[data-areas-route]")) { go("#/areas"); return; }
 
   const chEl = t.closest("[data-ch]");
   if (chEl) { go("#/c/" + chEl.dataset.ch + (chEl.dataset.view ? "/" + chEl.dataset.view : "")); return; }

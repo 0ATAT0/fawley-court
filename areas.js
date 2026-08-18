@@ -2,6 +2,7 @@
 (() => {
   "use strict";
 
+  const AREA_ROUTE = "#/c/capital/areas";   /* the chapter-05 tab */
   let pack = null, loadPromise = null, warmed = false;
   const $ = s => document.querySelector(s);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
@@ -101,17 +102,16 @@
     return `<div class="area-programme"><div class="area-qaxis" aria-hidden="true">${q}</div><div class="area-qbar" aria-label="Programme Q${a.start_q} to Q${a.end_q}"><span class="fill" style="grid-column:${a.start_q} / ${a.end_q + 1}"></span></div><p class="area-qnote">Built from Q${a.start_q} to Q${a.end_q}.</p></div>`;
   }
 
-  function foot() { return `<footer class="foot"><span class="t">Align Partners</span><span class="d">Preliminary — subject to confirmatory DD</span><img src="align-mark.png" alt="Align Partners"></footer>`; }
 
   function page(a) {
     const extra = a.images.slice(1).map((im, i) => image(a, im, i + 1, false)).join("");
     const gallery = extra ? `<div class="area-strip" aria-label="More CGI views">${extra}</div>` : "";
-    return `<article class="view wrap"><header class="st" style="--i:0"><p class="eyebrow">Estate areas · CGI and works schedule</p><div class="vhead"><h1 class="h-display">${esc(a.label)}</h1><span class="fig">${money(a.loaded)} loaded</span></div></header>${image(a, a.images[0], 0, true)}${gallery}<section class="area-section st" style="--i:2"><h2>What it is</h2><p class="area-copy">${esc(a.what)}</p></section><section class="area-section st" style="--i:3"><h2>Its number</h2>${numbers(a)}</section><section class="area-section st" style="--i:4"><h2>The works</h2><p class="area-copy" style="margin-bottom:18px">${esc(a.works)}</p>${lines(a)}</section><section class="area-section st" style="--i:5"><h2>When it is built</h2>${programme(a)}</section><section class="area-section area-earns st" style="--i:6"><h2>What it earns</h2><p>${esc(a.earns)}</p></section><section class="area-section area-watch st" style="--i:7"><h2>What to watch</h2><p>${esc(a.watch)}</p></section><p class="src">Source: area pack derived from the 162-line capital-cost schedule. ${esc(pack.meta.note)}</p><nav class="pager"><button data-area="${a.key}" data-area-step="-1"><span class="pg-l">‹ Previous</span><span class="nm">Previous area</span></button><button class="r" data-area="${a.key}" data-area-step="1"><span class="pg-l">Next ›</span><span class="nm">Next area</span></button></nav>${foot()}</article>`;
+    return `${image(a, a.images[0], 0, true)}${gallery}<section class="area-section st" style="--i:2"><h2>What it is</h2><p class="area-copy">${esc(a.what)}</p></section><section class="area-section st" style="--i:3"><h2>Its number</h2>${numbers(a)}</section><section class="area-section st" style="--i:4"><h2>The works</h2><p class="area-copy" style="margin-bottom:18px">${esc(a.works)}</p>${lines(a)}</section><section class="area-section st" style="--i:5"><h2>When it is built</h2>${programme(a)}</section><section class="area-section area-earns st" style="--i:6"><h2>What it earns</h2><p>${esc(a.earns)}</p></section><section class="area-section area-watch st" style="--i:7"><h2>What to watch</h2><p>${esc(a.watch)}</p></section><p class="src">Source: area pack derived from the 162-line capital-cost schedule. ${esc(pack.meta.note)}</p><nav class="pager"><button data-area="${a.key}" data-area-step="-1"><span class="pg-l">‹ Previous</span><span class="nm">Previous area</span></button><button class="r" data-area="${a.key}" data-area-step="1"><span class="pg-l">Next ›</span><span class="nm">Next area</span></button></nav>`;
   }
 
   function hub() {
     const p = pack.meta;
-    return `<article class="view wrap"><header class="st" style="--i:0"><p class="eyebrow">Estate areas · advanced exhibit</p><div class="vhead"><h1 class="h-display">The places you can see</h1><span class="fig">${money(p.covered)} of works</span></div></header><section class="area-hub-intro st" style="--i:1"><p>Six CGI-backed areas account for ${money(p.covered)} of ${money(p.works_total)} of works — ${pct(p.covered / p.works_total)}. Open an area for its lead CGI, the works behind it, when it is built, what it earns and what remains exposed.</p><p class="area-split">The other ${pct(p.uncovered / p.works_total)} (${money(p.uncovered)}) has no imagery: the chapel and towers, staff accommodation, estate and public realm, infrastructure, OS&amp;E and statutory. Chapter 05’s works budget remains the home for the rest.</p></section><section class="area-grid st" style="--i:2">${pack.areas.map(a => `<article class="area-card"><button data-area="${a.key}"><span class="im"><img src="${esc(a.images[0].thumb)}" alt="${esc(a.label)} CGI" loading="lazy" width="${a.images[0].w}" height="${a.images[0].h}"></span><h2>${esc(a.label)}</h2><p class="d">${esc(a.what)}</p><p class="f">${money(a.loaded)} loaded · ${a.images.length} CGI view${a.images.length === 1 ? "" : "s"} <span aria-hidden="true">›</span></p></button></article>`).join("")}</section>${foot()}</article>`;
+    return `<p class="lede st" style="--i:1">The places you can see.</p><section class="area-hub-intro st" style="--i:2"><p>Six CGI-backed areas account for ${money(p.covered)} of ${money(p.works_total)} of works — ${pct(p.covered / p.works_total)}. Open an area for its lead CGI, the works behind it, when it is built, what it earns and what remains exposed.</p><p class="area-split">The other ${pct(p.uncovered / p.works_total)} (${money(p.uncovered)}) has no imagery: the chapel and towers, staff accommodation, estate and public realm, infrastructure, OS&amp;E and statutory. Chapter 05’s works budget remains the home for the rest.</p></section><section class="area-grid st" style="--i:3">${pack.areas.map(a => `<article class="area-card"><button data-area="${a.key}"><span class="im"><img src="${esc(a.images[0].thumb)}" alt="${esc(a.label)} CGI" loading="lazy" width="${a.images[0].w}" height="${a.images[0].h}"></span><h2>${esc(a.label)}</h2><p class="d">${esc(a.what)}</p><p class="f">${money(a.loaded)} loaded · ${a.images.length} CGI view${a.images.length === 1 ? "" : "s"} <span aria-hidden="true">›</span></p></button></article>`).join("")}</section>`;
   }
 
   function warm() {
@@ -132,7 +132,7 @@
   }
 
   function render(key) {
-    if (!pack) return `<article class="view wrap"><div class="areas-status"><p>Loading estate areas…</p></div></article>`;
+    if (!pack) return `<div class="areas-status"><p>Loading estate areas…</p></div>`;
     const a = pack.areas.find(x => x.key === key);
     return a ? page(a) : hub();
   }
@@ -151,8 +151,10 @@
     if (!area || !pack) return;
     const i = pack.areas.findIndex(a => a.key === area.dataset.area);
     const next = area.dataset.areaStep ? pack.areas[(i + +area.dataset.areaStep + pack.areas.length) % pack.areas.length] : pack.areas[i];
-    if (next) location.hash = "#/areas/" + next.key;
+    if (next) location.hash = AREA_ROUTE + "/" + next.key;
   });
 
-  window.AreasChapter = { load, render, ready: () => !!pack, warm };
+  window.AreasChapter = { load, render, ready: () => !!pack, warm,
+    area: k => pack ? pack.areas.find(a => a.key === k) : null,
+    meta: () => pack ? pack.meta : null };
 })();
