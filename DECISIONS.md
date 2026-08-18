@@ -174,7 +174,7 @@ surface that should cost nothing until it is asked for.
 
 ## The gates that hold this
 
-- `verify.mjs` — 5,442 checks, 0 failures. Adds section F: the shipped P&L pack
+- `verify.mjs` — 5,432 checks, 0 failures. Adds section F: the shipped P&L pack
   must equal `Research/comp-pnls/web-data.json` leaf for leaf; every printed
   P&L figure (1,741 of them) must equal this file's own independent formatting
   of that source; every candour line must be verbatim in `REGISTER.md`. It also

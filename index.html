@@ -826,6 +826,17 @@ ol.read li::before {
 .sub-h b { font-size: var(--fs-h2); color: var(--accent); letter-spacing: -.006em; }
 .sub-h span { font-size: var(--fs-sm); color: var(--muted); }
 
+/* the build-up ledger leads its view, so it is set to be read rather than
+   referenced: the figures at body size, the note beside them a step down */
+.cxbuild { font-size: var(--fs-body); }
+.cxbuild td, .cxbuild th { padding-top: 15px; padding-bottom: 15px; }
+.cxbuild td:first-child { font-weight: 700; }
+.cxbuild tbody td:last-child {
+  font-size: var(--fs-sm); color: var(--muted-2); line-height: var(--lh-relaxed); font-weight: 400;
+}
+.cxbuild tr.total td { font-size: calc(var(--fs-body) * 1.1); }
+.cxbuild tr.total .emph { font-size: calc(var(--fs-body) * 1.2); }
+
 /* the works budget's column header, and the sort it carries */
 .cxhead {
   display: grid; grid-template-columns: 40px 1fr auto auto; gap: 0 14px;
@@ -2001,8 +2012,6 @@ const CHAPTERS = [
   { id: "", title: "The Budget", kicker: "Capital cost",
     figure: "£168.0m of works", blurb: "What the scheme costs to build, and how the total is made up.",
     lead: [
-      ["kpis", [["£2.06m", "A hotel key, all in"], ["£3.70m", "A residence, all in"],
-                ["146", "Lines in the budget"], ["43.3%", "Of it set as an allowance", "q"]]],
       ["capexstack"],
     ],
     reason: [] },
@@ -4000,15 +4009,11 @@ function cxStackBar(s) {
    the graphic it describes. */
 function capexStackHTML() {
   const S = CAPEX.summary;
-  const side = (label, s, per) => '<div><p class="sub-h">' + label + "<b>" + CX.m1(s.total)
-    + '</b><span>' + per + "</span></p>" + cxStackBar(s) + "</div>";
-  return '<section class="blk"><h2 class="blk-h">How the ' + CX.m1(S.works_total)
-    + ' is built up<span class="n">net construction, then the three loadings</span></h2>'
-    + '<div class="duo" style="--duo:minmax(0,50fr) minmax(0,50fr)">'
-    + side("The hotel, " + S.keys + " keys", S.hotel, CX.m2(S.hotel.per_key) + " a key")
-    + side("The residences, " + S.units + " units", S.resi, CX.m2(S.resi.per_unit) + " a unit")
-    + "</div>"
-    + '<div class="tbl-scroll wide" style="margin-top:clamp(26px,3.4vw,42px)"><table class="tbl num">'
+  const allow = CX_ON.filter(l => l.source === "ALLOWANCE").reduce((a, l) => a + l.live, 0);
+
+  const ledger = '<div class="tbl-scroll wide"><table class="tbl num cxbuild">'
+    + '<colgroup><col style="width:25%"><col style="width:12%"><col style="width:13%">'
+    + '<col style="width:12%"><col style="width:38%"></colgroup>'
     + "<thead><tr><th>Component</th><th class='r'>Hotel</th><th class='r'>Residences</th>"
     + "<th class='r'>Both</th><th>What it is</th></tr></thead><tbody>"
     + [["Net construction", "net", "the 146 lines at quantity \u00d7 rate, hotel share applied"],
@@ -4027,7 +4032,21 @@ function capexStackHTML() {
     + '<tr><td>Per key \u00b7 per unit</td><td class="r">' + CX.m2(S.hotel.per_key)
     + '</td><td class="r">' + CX.m2(S.resi.per_unit) + '</td><td class="r">\u2014</td>'
     + "<td>60 keys and 12 houses</td></tr>"
-    + "</tbody></table></div></section>";
+    + "</tbody></table></div>";
+
+  const side = (label, s, per) => '<div><p class="sub-h">' + label + "<b>" + CX.m1(s.total)
+    + '</b><span>' + per + "</span></p>" + cxStackBar(s) + "</div>";
+
+  return '<section class="blk"><h2 class="blk-h">How the ' + CX.m1(S.works_total)
+    + ' is built up<span class="n">' + CAPEX.lines.length + " lines \u00b7 "
+    + CX.pct1(allow / CX_NET_ON) + ' of the construction set as an allowance</span></h2>'
+    + ledger + "</section>"
+    + '<section class="blk"><h2 class="blk-h">The two sides, in proportion'
+    + '<span class="n">each bar is that side\u2019s own total</span></h2>'
+    + '<div class="duo" style="--duo:minmax(0,50fr) minmax(0,50fr)">'
+    + side("The hotel, " + S.keys + " keys", S.hotel, CX.m2(S.hotel.per_key) + " a key")
+    + side("The residences, " + S.units + " units", S.resi, CX.m2(S.resi.per_unit) + " a unit")
+    + "</div></section>";
 }
 
 /* ─────────────  the schedule  ───────────── */
