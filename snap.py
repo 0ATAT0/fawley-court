@@ -2,7 +2,7 @@
 Usage:  python snap.py [tag]      tag defaults to 'v'
         ONLY=phone python snap.py     filters by route or size name
 """
-import sys, os, asyncio
+import sys, os, json, asyncio
 from playwright.async_api import async_playwright
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -32,6 +32,7 @@ CHAPTERS = {
     "cheatsheet": [""],
     "market": [""],
 }
+MKT = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "src", "market-data.json"), encoding="utf-8"))["hotels"]
 SLUGS = ["cliveden", "beaverbrook", "heckfield", "estelle", "grand-controle",
          "reschio", "passalacqua", "messardiere", "borgo-egnazia", "rosa-alpina"]
 
@@ -42,6 +43,10 @@ for c, views in CHAPTERS.items():
 for s in SLUGS:
     ROUTES.append(("case-" + s, "#/h/" + s))
     ROUTES.append(("pnl-" + s, "#/h/" + s + "/pnl"))
+    ROUTES.append(("rate-" + s, "#/h/" + s + "/rate"))
+for h in MKT:
+    if h.get("in_cohort") and not h.get("case_slug"):
+        ROUTES.append(("mkt-" + h["slug"], "#/m/" + h["slug"]))
 
 ONLY = os.environ.get("ONLY", "")
 

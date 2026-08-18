@@ -238,3 +238,73 @@ between the MARKET-DATA markers and caches `src/market-data.json`. Same shape as
 P&L pack. Routes were added to `snap.py` and `audit.py`, which both carry their own hardcoded
 route lists.
 
+
+## Chapter 10 becomes a card grid (19 August 2026)
+
+Angus's steer, built. The grouped list is gone; the chapter is now a card grid under two tabs,
+and every card leads somewhere.
+
+**Two tabs, Europe first — 27 hotels against 8 and the subject.** Europe opens first so the
+reader meets the rate ceiling before the British set that sits well below it. Fawley Court is
+pinned to the head of its band in **both** tabs, never sorted into them, so the subject is
+present whichever tab is open.
+
+**Level two is what kind of place each property is**, not its calendar: country estate, coast
+and island, palace town and village, lakeside, alpine. The grouping is the portal's own reading
+of the setting each research pack records, and the source note says so on its face. It carries a
+finding the old list could not: **every British comparable is a country estate, and the European
+set falls into five kinds of place** — so the Amalfi and Costa Smeralda hotels, whose economics
+are a different business, no longer sit in the same run of rows as the estates Fawley is one of.
+Inside each band the ruled order holds: months open, then rate.
+
+**Ordering had to survive the form.** A grid reads in rows and states its order far less
+strongly than a list. The bands are what carries it — a labelled band of eight estates ordered
+by rate says what an unlabelled column of thirty-five cannot. A sort control was considered and
+rejected: a sortable grid reads as a league table, and the calendar order is the argument.
+
+**Three card treatments, one DOM, chosen by `html[data-mkcard]`.** Ledger, four across, the
+index as a ruled sheet. Calendar, three across, the twelve-month strip as the largest object on
+the card. Plate, three across, the rate set large as the card's first object with the calendar
+as a twelve-mark meter. The switcher is gated behind `?variants=1`, persisted, cleared by
+`?variants=0`, and URL-addressable as `?variants=1&card=plate`. **When the treatment is chosen
+the other two are deleted, the harness comes out, and this entry records which and why.**
+
+**No expansion, by ruling.** The old rows opened in place onto their rate detail. Angus ruled
+the cards link out instead: ten to their written case study, twenty-five to a property page of
+their own. The consequence was named and accepted — **the rate evidence for those twenty-five
+comes off the portal** until their pages are written, because he ruled those pages a true
+placeholder: name, place, months bookable, median gross and net of VAT, and a line saying the
+case study is not yet written. Writing the twenty-five out properly is the follow-on.
+
+**The ten case pages gained a third tab, "Rate record"** — the collected series, the quartiles,
+the range, peak to trough, the bookable nights, the longest unbookable run, the meal basis, and
+which engine it came from and when. Every destination now reads the same way. Nothing gated in
+those pages was touched: the new tab is rendered from the market pack, and gated against it.
+
+**The pack now carries the grouping.** `build_market_pack.py` emits `slug`, `type`, `case_slug`,
+`type_labels` and `type_basis` alongside the rate layer, so the page invents nothing. The names
+also gained their accents — Château de la Messardière, Le Grand Contrôle, Domaine des Étangs —
+which the case studies already carried and the pack did not.
+
+**The pack is now actually gated.** The 18 August entry said `verify.mjs` checked the shipped
+block against its source; it did not — there was no market section in the file at all. Section G
+is now there: the shipped pack equals the source leaf for leaf, every figure on every card is
+`verify.mjs`'s own independent formatting of that source checked against the rendered HTML of
+both tabs, the index, tab and band counts are the source's counts, every card leads to a route
+that resolves, the basis prose is the pack's own wording, and the ten rate records print the
+source's series. 5,908 checks, 0 failures, 292 of them market figures. The gate was
+negative-tested: a single digit changed in the shipped median fails it twice.
+
+**A second session was in the repo during this build.** The Son Bunyola collection landed
+while the grid was being audited, and the pack was rebuilt and re-inlined mid-run: the audit's
+first three viewports counted 28 cards on the Europe tab and its last counted 29. Nothing was
+lost — the renderer was untouched and both packs agreed — but the counts in `verify.mjs` and
+`audit.py` are now **derived from the pack** rather than written as literals, so a hotel joining
+the set cannot leave a stale number in a gate. The set is 36 hotels: Son Bunyola is in it, and
+the pack carries a villas layer that nothing renders yet.
+
+**Four dead CSS tokens found and removed.** The old chapter styled itself with `--rule`,
+`--rule-2`, `--sp-3` and `--sp-6`, none of which exist in this file, so those rules never
+applied. The new block uses `--line`, `--line-mid` and the real spacing. A new token, `--ochre`
+at `#8a5f13`, carries the caveat lines at 5.5:1 on paper and 4.97:1 on the subject's tinted
+ground; the old inline `#9a6b16` was 4.57:1, inside AA but with nothing to spare.

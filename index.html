@@ -49,6 +49,7 @@
   --chart-muted: #828f9e;
   --chart-2: #5a7896;
   --chart-3: #93a6b8;
+  --ochre: #8a5f13;
   --neg: #b3402e;
   --neg-tint: #f7edeb;
   --charcoal: #2b2b2b;
@@ -1182,54 +1183,193 @@ body.lb-open { overflow: hidden; }
   details > .reason-b { display: grid !important; }
   details::details-content { content-visibility: visible !important; block-size: auto !important; }
 }
-/* ── the ultra-luxury market index ── */
-.mkt-grp + .mkt-grp { margin-top: var(--sp-6); }
-.mkt-rows { border-top: 1px solid var(--rule); }
-.mkt-h .nm { font-weight: 600; color: var(--ink); letter-spacing: -.005em; }
-.mkt-h .mt { display: block; font-size: var(--fs-micro); color: var(--muted-2); margin-top: .18rem; }
-.mkt-h .mt .sep { margin: 0 .38rem; color: var(--rule-2); }
-.mkt-h .yr { color: var(--accent); font-weight: 600; }
-.mkt-h .cav { color: var(--ochre, #9a6b16); }
-.mkt-rows > .mkt:not(:first-child) .mkt-axis { display: none; }
-@media (max-width: 560px) { .mkt-h { grid-template-columns: minmax(0,1fr) 6.2rem; } }
-.mkt-fig { text-align: right; font-variant-numeric: tabular-nums; }
-.mkt-fig .v { font-weight: 600; color: var(--ink); }
-.mkt-fig .u { display: block; font-size: var(--fs-micro); color: var(--muted-2); margin-top: .18rem; }
-.mkt-strip { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2px;
-  align-items: end; height: 26px; margin-top: .5rem; }
-.mkt-strip i { display: block; background: var(--accent); opacity: .82; min-height: 2px; border-radius: .5px; }
-.mkt-strip i.off { background: none; border-bottom: 1px solid var(--rule-2); height: 0; min-height: 0; }
-.mkt-note { font-size: var(--fs-micro); color: var(--muted-2); margin-top: .3rem; }
-.mkt-axis { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2px; margin-top: .22rem; }
-.mkt-axis span { font-size: var(--fs-micro); letter-spacing: .04em; color: var(--muted-2); text-align: center; }
+/* ── the ultra-luxury market index ──────────────────────────────────────
+   A card grid under two tabs, Europe and the United Kingdom, banded by what
+   kind of property each is. Three card treatments share one DOM and are
+   selected by html[data-mkcard]; the switcher that changes them is gated
+   behind ?variants=1 and is invisible to anyone without that link.        */
 
-.mkt { border-bottom: 1px solid var(--rule); }
-.mkt-h { display: grid; grid-template-columns: minmax(0,1fr) 8.5rem; gap: var(--sp-3);
-  align-items: start; width: 100%; text-align: left; padding: .78rem 0; background: none;
-  transition: background .22s var(--ease-out); }
-.mkt-h:hover, .mkt-h:focus-visible { background: var(--accent-tint); }
-.mkt-h[aria-expanded="true"] .nm { font-weight: 700; }
-.mkt.subject { background: var(--accent-tint); position: relative; }
-.mkt.subject::before { content: ''; position: absolute; inset: 0 auto 0 0; width: 3px; background: var(--accent); }
-.mkt.subject .mkt-h { padding-left: 11px; }
-/* the tinted subject ground drops --muted-2 to 4.45:1; --muted clears AA at 5.07:1 */
-.mkt.subject .mt, .mkt.subject .mkt-fig .u, .mkt.subject .mkt-note,
-.mkt.subject .mkt-axis span { color: var(--muted); }
-.mkt-b { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .4s var(--ease); }
-.mkt.open .mkt-b { grid-template-rows: 1fr; }
-.mkt-b > div { overflow: hidden; }
-.mkt-b .inner { padding: 2px 0 18px; }
-.mkt-strip i.mod { background: none; border: 1px solid var(--accent); opacity: .55; }
-.mkt-mm { width: 100%; border-collapse: collapse; margin: 0 0 .7rem; font-variant-numeric: tabular-nums; }
-.mkt-mm th { font-size: var(--fs-micro); letter-spacing: .05em; color: var(--muted-2); font-weight: 400; text-align: right; padding: 0 .3rem .18rem 0; }
-.mkt-mm td { font-size: var(--fs-micro); text-align: right; padding: .18rem .3rem .18rem 0; border-top: 1px solid var(--rule); }
-.mkt-kv { width: 100%; border-collapse: collapse; }
-.mkt-kv th { text-align: left; font-weight: 400; color: var(--muted); font-size: var(--fs-micro);
-  padding: .22rem 1rem .22rem 0; white-space: nowrap; vertical-align: top; }
-.mkt-kv td { font-size: var(--fs-micro); padding: .22rem 0; font-variant-numeric: tabular-nums; }
+.mkt-tabs { display: flex; gap: clamp(20px, 3vw, 34px); border-bottom: 1px solid var(--line-strong); }
+.mkt-tab {
+  display: flex; align-items: baseline; gap: 9px; padding: 11px 1px 12px; min-height: 46px;
+  color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -1px;
+  transition: color .22s var(--ease-out), border-color .22s var(--ease-out);
+}
+.mkt-tab .t { font-size: var(--fs-h2); letter-spacing: -.014em; }
+.mkt-tab .c { font-size: var(--fs-cap); color: var(--muted-2); font-variant-numeric: tabular-nums; }
+.mkt-tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+.mkt-tab[aria-selected="true"] .c { color: var(--accent); }
+.mkt-tab:hover, .mkt-tab:focus-visible { color: var(--accent); }
+
+.mkt-lede { font-size: var(--fs-sm); color: var(--muted); line-height: var(--lh-relaxed); max-width: 74ch; margin-top: 16px; }
+
+.mkt-band { margin-top: clamp(26px, 3.2vw, 42px); }
+.mkt-band-h {
+  display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+  padding-bottom: 8px; border-bottom: 1px solid var(--line-strong);
+}
+.mkt-band-h .t { font-size: var(--fs-h3); font-weight: 700; letter-spacing: -.006em; }
+.mkt-band-h .c { font-size: var(--fs-cap); color: var(--muted); margin-left: auto; font-variant-numeric: tabular-nums; }
+
+.mkt-grid { display: grid; grid-template-columns: repeat(var(--mk-cols, 3), minmax(0, 1fr)); }
+
+/* ── the card, one DOM for all three treatments ── */
+.mk {
+  position: relative; display: grid; width: 100%; text-align: left; align-content: start;
+  transition: background .2s var(--ease-out), border-color .2s var(--ease-out);
+}
+.mk-nm { grid-area: nm; font-size: 1rem; line-height: 1.2; letter-spacing: -.014em; color: var(--ink); }
+.mk:hover .mk-nm, .mk:focus-visible .mk-nm { color: var(--accent); }
+.mk-rg { grid-area: rg; font-size: var(--fs-micro); color: var(--muted-2); }
+.mk-fig { grid-area: fig; font-variant-numeric: tabular-nums; }
+.mk-fig .v { font-weight: 600; color: var(--ink); letter-spacing: -.01em; }
+.mk-fig .u { display: block; font-size: var(--fs-micro); color: var(--muted-2); margin-top: .1rem; }
+.mk-cal { grid-area: cal; }
+.mk-bars { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2px; align-items: end; height: 34px; }
+.mk-bars i { display: block; background: var(--accent); opacity: .8; min-height: 2px; }
+.mk-bars i.off { background: none; border-bottom: 1px solid var(--line-mid); height: 0; min-height: 0; }
+.mk-bars i.mod { background: none; border: 1px solid var(--accent); opacity: .6; }
+.mk-dots { display: none; grid-template-columns: repeat(12, 1fr); gap: 3px; }
+.mk-dots { gap: 4px; }
+.mk-dots i { display: block; height: 7px; background: var(--accent); opacity: .85; }
+.mk-dots i.off { background: none; border-bottom: 1px solid var(--line-mid); height: 7px; }
+.mk-dots i.mod { background: none; border: 1px solid var(--accent); opacity: .6; height: 7px; }
+.mk-mo { display: block; font-size: var(--fs-micro); color: var(--muted-2); margin-top: .3rem; }
+.mk-fl { grid-area: fl; display: flex; flex-wrap: wrap; gap: 2px 11px; font-size: var(--fs-micro); color: var(--muted-2); }
+.mk-fl .yr { color: var(--accent); font-weight: 600; }
+.mk-cav.sub { color: var(--muted); }
+.mk-cav { grid-area: cav; font-size: var(--fs-micro); color: var(--ochre); line-height: 1.45; }
+.mk-go { position: absolute; top: 0; right: 0; font-size: .78rem; color: var(--muted-2); opacity: 0; transition: opacity .22s var(--ease-out), transform .3s var(--ease); }
+.mk:hover .mk-go, .mk:focus-visible .mk-go { opacity: 1; transform: translateX(3px); color: var(--accent); }
+
+/* the subject carries the navy rule the tables already use */
+.mk.subject { background: var(--accent-tint); }
+.mk.subject::before { content: ''; position: absolute; inset: 0 auto 0 0; width: 3px; background: var(--accent); }
+/* the tinted ground drops --muted-2 to 4.45:1; --muted clears AA at 5.07:1 */
+.mk.subject .mk-rg, .mk.subject .mk-mo, .mk.subject .mk-fig .u, .mk.subject .mk-fl { color: var(--muted); }
+
+/* ── 1 · LEDGER: the index as a ruled sheet ── */
+html[data-mkcard="ledger"] .mkt-grid { --mk-cols: 4; column-gap: clamp(18px, 2.4vw, 34px); }
+html[data-mkcard="ledger"] .mk {
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "nm fig" "rg fig" "cal cal" "fl fl" "cav cav";
+  gap: 3px 12px; padding: 14px 2px 15px; border-bottom: 1px solid var(--line);
+}
+html[data-mkcard="ledger"] .mk:hover, html[data-mkcard="ledger"] .mk:focus-visible { background: var(--accent-tint); }
+html[data-mkcard="ledger"] .mk-nm { font-size: .95rem; }
+html[data-mkcard="ledger"] .mk-fig { text-align: right; }
+html[data-mkcard="ledger"] .mk-fig .v { font-size: .95rem; }
+html[data-mkcard="ledger"] .mk-bars { height: 15px; margin-top: 7px; }
+html[data-mkcard="ledger"] .mk-fl { margin-top: 5px; }
+html[data-mkcard="ledger"] .mk-cav { margin-top: 4px; }
+html[data-mkcard="ledger"] .mk.subject { padding-left: 11px; padding-right: 9px; }
+html[data-mkcard="ledger"] .mk-go { top: 13px; right: 0; }
+
+/* ── 2 · CALENDAR: the season leads ── */
+html[data-mkcard="calendar"] .mkt-grid { --mk-cols: 3; gap: 14px; margin-top: 16px; }
+html[data-mkcard="calendar"] .mk {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "nm" "rg" "cal" "fig" "fl" "cav";
+  gap: 3px; padding: 15px 16px 16px; border: 1px solid var(--line);
+}
+html[data-mkcard="calendar"] .mk:hover, html[data-mkcard="calendar"] .mk:focus-visible { border-color: var(--accent); background: var(--accent-tint); }
+html[data-mkcard="calendar"] .mk-cal { margin-top: 13px; }
+html[data-mkcard="calendar"] .mk-bars { height: 46px; }
+html[data-mkcard="calendar"] .mk-fig { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line); }
+html[data-mkcard="calendar"] .mk-fig .v { font-size: 1.16rem; }
+html[data-mkcard="calendar"] .mk-fl { margin-top: 8px; }
+html[data-mkcard="calendar"] .mk-cav { margin-top: 6px; }
+html[data-mkcard="calendar"] .mk.subject { border-color: var(--accent); padding-left: 19px; }
+html[data-mkcard="calendar"] .mk-go { top: 14px; right: 15px; }
+
+/* ── 3 · PLATE: the rate leads ── */
+html[data-mkcard="plate"] .mkt-grid { --mk-cols: 3; column-gap: clamp(20px, 3vw, 40px); row-gap: 30px; margin-top: 20px; }
+html[data-mkcard="plate"] .mk {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "fig" "nm" "rg" "cal" "fl" "cav";
+  gap: 3px; padding: 12px 3px 4px; border-top: 2px solid var(--line-strong);
+}
+html[data-mkcard="plate"] .mk:hover, html[data-mkcard="plate"] .mk:focus-visible { background: var(--accent-tint); }
+html[data-mkcard="plate"] .mk-fig .v { font-size: clamp(1.45rem, 1.2rem + .9vw, 1.85rem); line-height: 1.05; }
+html[data-mkcard="plate"] .mk-fig .u { margin-top: .22rem; }
+html[data-mkcard="plate"] .mk-nm { margin-top: 11px; font-size: 1.02rem; }
+html[data-mkcard="plate"] .mk-bars { display: none; }
+html[data-mkcard="plate"] .mk-dots { display: grid; }
+html[data-mkcard="plate"] .mk-cal { margin-top: 12px; }
+html[data-mkcard="plate"] .mk-fl { margin-top: 8px; }
+html[data-mkcard="plate"] .mk-cav { margin-top: 5px; }
+html[data-mkcard="plate"] .mk.subject { padding-left: 11px; padding-right: 9px; border-top-color: var(--accent); }
+html[data-mkcard="plate"] .mk-go { top: 12px; right: 2px; }
+
+@media (max-width: 1180px) { html[data-mkcard="ledger"] .mkt-grid { --mk-cols: 3; } }
+@media (max-width: 900px) {
+  html[data-mkcard="ledger"] .mkt-grid { --mk-cols: 2; }
+  html[data-mkcard="calendar"] .mkt-grid, html[data-mkcard="plate"] .mkt-grid { --mk-cols: 2; }
+}
+@media (max-width: 620px) {
+  .mkt-grid { --mk-cols: 1 !important; }
+  html[data-mkcard="plate"] .mk-fig .v { font-size: 1.5rem; }
+}
+
+/* ── the variant switcher, gated behind ?variants=1 ── */
+#mkvar { display: none; }
+html[data-variants="1"] #mkvar {
+  display: block; position: fixed; z-index: 60; left: max(14px, var(--safe-l));
+  bottom: calc(var(--bar-h) + var(--safe-b) + 14px); width: 234px;
+  background: var(--paper); border: 1px solid var(--line-strong); border-radius: var(--radius);
+  box-shadow: 0 6px 26px rgba(0,0,0,.13); padding: 11px 12px 12px;
+}
+#mkvar .h { font-size: var(--fs-micro); letter-spacing: .13em; text-transform: uppercase; color: var(--muted-2); }
+#mkvar button {
+  display: block; width: 100%; text-align: left; padding: 8px 9px; margin-top: 6px; min-height: 46px;
+  border: 1px solid var(--line); border-radius: 2px; transition: background .2s var(--ease-out), border-color .2s var(--ease-out);
+}
+#mkvar button .n { display: block; font-size: var(--fs-sm); color: var(--ink); }
+#mkvar button .i { display: block; font-size: var(--fs-micro); color: var(--muted); line-height: 1.4; margin-top: 2px; }
+#mkvar button:hover, #mkvar button:focus-visible { border-color: var(--accent); }
+#mkvar button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); }
+#mkvar button[aria-pressed="true"] .n { color: #fff; }
+#mkvar button[aria-pressed="true"] .i { color: rgba(255,255,255,.78); }
+@media (max-width: 620px) { html[data-variants="1"] #mkvar { width: calc(100vw - 28px); } }
+
+/* ── the rate record, on a case page and on a market page ── */
+.mkt-rec { margin-top: 4px; }
+.mkt-strip { display: grid; grid-template-columns: repeat(12, 1fr); gap: 3px; align-items: end; height: 46px; max-width: 860px; }
+.mkt-strip i { display: block; background: var(--accent); opacity: .82; min-height: 2px; }
+.mkt-strip i.off { background: none; border-bottom: 1px solid var(--line-mid); height: 0; min-height: 0; }
+.mkt-axis { display: grid; grid-template-columns: repeat(12, 1fr); gap: 3px; margin-top: .3rem; }
+.mkt-axis span { font-size: var(--fs-micro); letter-spacing: .04em; color: var(--muted-2); text-align: center; }
+.mkt-mm { width: 100%; max-width: 860px; border-collapse: collapse; margin: 6px 0 0; font-variant-numeric: tabular-nums; }
+.mkt-mm th { font-size: var(--fs-micro); letter-spacing: .05em; color: var(--muted-2); font-weight: 400; text-align: right; padding: 0 .3rem .2rem 0; }
+.mkt-mm td { font-size: var(--fs-cap); text-align: right; padding: .28rem .3rem; border-top: 1px solid var(--line); }
+.mkt-kv { width: 100%; max-width: 620px; border-collapse: collapse; margin-top: 22px; }
+.mkt-kv th { width: 44%; text-align: left; font-weight: 400; color: var(--muted); font-size: var(--fs-cap);
+  padding: .3rem 1rem .3rem 0; white-space: nowrap; vertical-align: top; border-top: 1px solid var(--line); }
+.mkt-kv td { font-size: var(--fs-cap); padding: .3rem 0; font-variant-numeric: tabular-nums; border-top: 1px solid var(--line); }
+.mkt-cav-p { font-size: var(--fs-sm); color: var(--ochre); margin-top: 16px; max-width: 70ch; line-height: var(--lh-relaxed); }
+.mkt-none { font-size: var(--fs-sm); color: var(--muted); margin-top: 14px; max-width: 70ch; line-height: var(--lh-relaxed); }
 @media (max-width: 620px) { .mkt-mm { display: none; } }
 
 </style>
+<script>
+/* The card-treatment harness for chapter 10. Three named treatments share one
+   DOM; which one renders is html[data-mkcard]. The switcher that changes it is
+   gated behind ?variants=1, persisted, and cleared by ?variants=0 — nobody
+   without that link ever sees it. Runs before paint so nothing flashes. */
+(function () {
+  var CARDS = ["ledger", "calendar", "plate"], d = document.documentElement;
+  var p = new URLSearchParams(location.search), q = p.get("variants");
+  try {
+    if (q === "0") localStorage.removeItem("mkvariants");
+    else if (q === "1") localStorage.setItem("mkvariants", "1");
+    var card = p.get("card") || localStorage.getItem("mkcard") || "calendar";
+    if (CARDS.indexOf(card) < 0) card = "calendar";
+    localStorage.setItem("mkcard", card);
+    d.dataset.mkcard = card;
+    if (localStorage.getItem("mkvariants") === "1") d.dataset.variants = "1";
+  } catch (e) { d.dataset.mkcard = "calendar"; }
+})();
+</script>
 </head>
 <body>
 
@@ -1269,6 +1409,13 @@ body.lb-open { overflow: hidden; }
     </div>
   </div>
   <div class="find-body"><div class="wrap" id="findresults"></div></div>
+</div>
+
+<div id="mkvar" aria-label="Card treatment">
+  <p class="h">Card treatment</p>
+  <button data-mkcard="ledger"><span class="n">Ledger</span><span class="i">The index as a ruled sheet, four across</span></button>
+  <button data-mkcard="calendar"><span class="n">Calendar</span><span class="i">The season leads; the strip is the card</span></button>
+  <button data-mkcard="plate"><span class="n">Plate</span><span class="i">The rate leads, set large</span></button>
 </div>
 
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photograph">
@@ -1569,7 +1716,7 @@ const CAPEX = {"meta":{"source":"Model/Fawley Court - Financial Model v16.xlsx, 
 /*CAPEX-DATA-END*/
 
 /*MARKET-DATA-START*/
-const MARKET = {"generated":"2026-08-18","basis":"Lowest publicly bookable room per night, two adults one room, gross of tax, collected direct from each hotel's own booking engine over a full forward year. Cleaned on the desk convention: nights above GBP10,000 dropped, then nights above 2.5x the property's own median dropped.","cautions":["A month with nothing bookable is not necessarily a closed month. Several seasonal hotels had not loaded next season's inventory when this was collected. The inference only runs the other way: a hotel bookable in all twelve months is demonstrably year-round.","Annual medians only compare between properties with similar bookable-night coverage. Passalacqua prices at 2.7 times Villa d'Este in August yet sits below it on the year, because it sells 85 nights weighted into its cheap months.","A flat month is usually season-band pricing, which is how these hotels sell, not a fault. The exception is a flat month far outside the property's own range.","These are lead-in rates, not achieved ADR. No property in this set publishes an achieved rate."],"vat_note":"Accommodation VAT differs by country: 20% United Kingdom, 10% France Italy Austria Spain, 13% Greece, 13.5% Ireland. The desk's divide-by-1.20 is a United Kingdom constant and does not hold outside it.","hotels":[{"name":"Chateau de la Messardiere","country":"FR","region":"St-Tropez","in_cohort":true,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":16,"months_bookable":2,"monthly_median":{"Sep":3311,"Oct":2435},"longest_closed_run_nights":311,"meal_basis":"package","caveat":"Bundled package including lunch. Season tail only; 2027 inventory not loaded","p25":2400,"median":3179,"p75":3281,"min":2237,"max":3416,"median_net_vat":2890,"peak_to_trough":1.36,"credible_annual_series":false,"year_round":false},{"name":"Hotel Pitrizza","country":"IT","region":"Costa Smeralda","in_cohort":true,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":17,"months_bookable":2,"monthly_median":{"Aug":7188,"Sep":2995},"longest_closed_run_nights":327,"meal_basis":"B&B","caveat":"Season tail only; 2027 inventory not loaded","p25":2246,"median":2995,"p75":3936,"min":1044,"max":7188,"median_net_vat":2723,"peak_to_trough":2.4,"credible_annual_series":false,"year_round":false},{"name":"Castiglion del Bosco","country":"IT","region":"Montalcino","in_cohort":true,"engine":"rosewood-crs (synxis lead-avail proxy)","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":337,"months_bookable":12,"monthly_median":{"Jan":2572,"Feb":2572,"Mar":2572,"Apr":1586,"May":2702,"Jun":2761,"Jul":2737,"Aug":2308,"Sep":3009,"Oct":2219,"Nov":1497,"Dec":849},"longest_closed_run_nights":3,"meal_basis":null,"caveat":"Lead-in the engine will not always sell: the calendar quotes rates on dates the booking page refuses for minimum stay, and it sells mostly suites and villas","p25":1603,"median":2572,"p75":2761,"min":815,"max":4802,"median_net_vat":2339,"peak_to_trough":3.54,"credible_annual_series":true,"year_round":true},{"name":"Belmond Hotel Splendido","country":"IT","region":"Portofino","in_cohort":true,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":225,"months_bookable":9,"monthly_median":{"Mar":1198,"Apr":1369,"May":2139,"Jun":4022,"Jul":4193,"Aug":4193,"Sep":4523,"Oct":1883,"Nov":1523},"longest_closed_run_nights":123,"meal_basis":"B&B","caveat":null,"p25":1818,"median":2396,"p75":4193,"min":1198,"max":6213,"median_net_vat":2178,"peak_to_trough":3.78,"credible_annual_series":true,"year_round":false},{"name":"Le Grand Controle","country":"FR","region":"Versailles","in_cohort":true,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":255,"months_bookable":10,"monthly_median":{"Jan":1966,"Feb":1966,"Mar":2137,"Apr":2308,"May":2308,"Aug":2565,"Sep":3762,"Oct":2479,"Nov":2308,"Dec":1966},"longest_closed_run_nights":80,"meal_basis":"package","caveat":"Bundled package, not a room rate: the standard room includes breakfast, afternoon tea, minibar, spa access and butler service","p25":1966,"median":2308,"p75":2394,"min":1966,"max":5557,"median_net_vat":2098,"peak_to_trough":1.91,"credible_annual_series":true,"year_round":false},{"name":"Castello di Reschio","country":"IT","region":"Umbria","in_cohort":true,"engine":"travelclick","window":["2026-08-18","2027-08-17"],"nights_in_window":291,"bookable":240,"months_bookable":11,"monthly_median":{"Jan":1423,"Mar":1395,"Apr":1914,"May":2263,"Jun":2263,"Jul":2263,"Aug":2263,"Sep":2449,"Oct":2197,"Nov":1688,"Dec":2028},"longest_closed_run_nights":30,"meal_basis":"B&B","caveat":null,"p25":1914,"median":2263,"p75":2263,"min":1395,"max":4032,"median_net_vat":2057,"peak_to_trough":1.76,"credible_annual_series":true,"year_round":false},{"name":"Belmond Caruso","country":"IT","region":"Ravello","in_cohort":true,"engine":"belmond bbe (own CRS proxy)","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":163,"months_bookable":7,"monthly_median":{"Apr":999,"May":1754,"Jun":2650,"Jul":2225,"Aug":1942,"Sep":2131,"Oct":2178},"longest_closed_run_nights":192,"meal_basis":"B&B","caveat":"Meal basis inferred, not verified","p25":1942,"median":2225,"p75":2650,"min":905,"max":3786,"median_net_vat":2023,"peak_to_trough":2.65,"credible_annual_series":false,"year_round":false},{"name":"La Reserve Ramatuelle","country":"FR","region":"Ramatuelle","in_cohort":true,"engine":"bookwize","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":39,"months_bookable":3,"monthly_median":{"Aug":3301,"Sep":2144,"Oct":1029},"longest_closed_run_nights":311,"meal_basis":"B&B","caveat":"Season tail only. Carries a branded-villa limb beside the hotel","p25":1458,"median":2058,"p75":3173,"min":943,"max":4759,"median_net_vat":1871,"peak_to_trough":3.21,"credible_annual_series":false,"year_round":false},{"name":"Belmond Hotel Cipriani","country":"IT","region":"Venice","in_cohort":true,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":101,"months_bookable":4,"monthly_median":{"Jun":2011,"Jul":1925,"Aug":1540,"Sep":2482},"longest_closed_run_nights":244,"meal_basis":"B&B","caveat":null,"p25":1540,"median":2011,"p75":2289,"min":1540,"max":3637,"median_net_vat":1828,"peak_to_trough":1.61,"credible_annual_series":false,"year_round":false},{"name":"Amanzoe","country":"GR","region":"Porto Heli","in_cohort":true,"engine":"azds","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":208,"months_bookable":8,"monthly_median":{"Apr":1814,"May":1814,"Jun":3226,"Jul":3226,"Aug":3275,"Sep":3324,"Oct":1518,"Nov":1075},"longest_closed_run_nights":137,"meal_basis":"B&B","caveat":null,"p25":1814,"median":1960,"p75":3226,"min":1075,"max":4006,"median_net_vat":1735,"peak_to_trough":3.09,"credible_annual_series":true,"year_round":false},{"name":"Aman Rosa Alpina","country":"IT","region":"Dolomites","in_cohort":true,"engine":"azds","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":224,"months_bookable":9,"monthly_median":{"Jan":1893,"Feb":1893,"Mar":1704,"Jun":2082,"Jul":2082,"Aug":2082,"Sep":1252,"Oct":1252,"Dec":1563},"longest_closed_run_nights":67,"meal_basis":"B&B","caveat":null,"p25":1563,"median":1893,"p75":2082,"min":1252,"max":2082,"median_net_vat":1721,"peak_to_trough":1.66,"credible_annual_series":true,"year_round":false},{"name":"Airelles Val d Isere","country":"FR","region":"Val d Isere","in_cohort":false,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":31,"months_bookable":5,"monthly_median":{"Jan":2137,"Feb":1795,"Mar":1795,"Apr":1795,"Dec":1539},"longest_closed_run_nights":138,"meal_basis":null,"caveat":"Not a cohort member; ski","p25":1795,"median":1795,"p75":1966,"min":1539,"max":2736,"median_net_vat":1632,"peak_to_trough":1.39,"credible_annual_series":false,"year_round":false},{"name":"Belmond Villa San Michele","country":"IT","region":"Fiesole","in_cohort":true,"engine":"belmond bbe (own CRS proxy)","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":274,"months_bookable":11,"monthly_median":{"Jan":1235,"Mar":1376,"Apr":1518,"May":1801,"Jun":2367,"Jul":2084,"Aug":1612,"Sep":1777,"Oct":1659,"Nov":1046,"Dec":1140},"longest_closed_run_nights":74,"meal_basis":"B&B","caveat":null,"p25":1376,"median":1659,"p75":2084,"min":980,"max":3734,"median_net_vat":1508,"peak_to_trough":2.26,"credible_annual_series":true,"year_round":false},{"name":"La Bastide de Gordes","country":"FR","region":"Provence","in_cohort":true,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":61,"months_bookable":3,"monthly_median":{"Aug":1736,"Sep":1787,"Oct":1026},"longest_closed_run_nights":297,"meal_basis":"B&B","caveat":null,"p25":1197,"median":1659,"p75":1881,"min":812,"max":3710,"median_net_vat":1508,"peak_to_trough":1.74,"credible_annual_series":false,"year_round":false},{"name":"Le Sirenuse","country":"IT","region":"Positano","in_cohort":true,"engine":"azds","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":177,"months_bookable":8,"monthly_median":{"Mar":830,"Apr":910,"May":1651,"Jun":1651,"Jul":1651,"Aug":2750,"Sep":3608,"Oct":1566},"longest_closed_run_nights":146,"meal_basis":"B&B","caveat":null,"p25":1538,"median":1651,"p75":1651,"min":623,"max":4037,"median_net_vat":1501,"peak_to_trough":4.35,"credible_annual_series":false,"year_round":false},{"name":"Villa d'Este","country":"IT","region":"Lake Como","in_cohort":true,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":247,"months_bookable":11,"monthly_median":{"Jan":1027,"Mar":856,"Apr":1215,"May":1480,"Jun":2174,"Jul":2148,"Aug":1797,"Sep":1797,"Oct":1455,"Nov":762,"Dec":993},"longest_closed_run_nights":70,"meal_basis":null,"caveat":null,"p25":1010,"median":1455,"p75":2139,"min":762,"max":3252,"median_net_vat":1323,"peak_to_trough":2.85,"credible_annual_series":true,"year_round":false},{"name":"Belmond Castello di Casole","country":"IT","region":"Tuscany","in_cohort":true,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":255,"months_bookable":9,"monthly_median":{"Mar":770,"Apr":770,"May":1112,"Jun":1540,"Jul":1540,"Aug":1412,"Sep":1857,"Oct":1403,"Nov":1155},"longest_closed_run_nights":102,"meal_basis":"B&B","caveat":null,"p25":1112,"median":1412,"p75":1540,"min":770,"max":2353,"median_net_vat":1284,"peak_to_trough":2.41,"credible_annual_series":true,"year_round":false},{"name":"Hotel du Cap-Eden-Roc","country":"FR","region":"Antibes","in_cohort":true,"engine":"azds","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":20,"months_bookable":2,"monthly_median":{"Sep":3096,"Oct":1329},"longest_closed_run_nights":304,"meal_basis":"B&B","caveat":"Twenty nights in a nineteen-day window, its cheapest weeks, with peak not on sale. Do not read the median as annual","p25":1243,"median":1329,"p75":1949,"min":978,"max":3096,"median_net_vat":1208,"peak_to_trough":2.33,"credible_annual_series":false,"year_round":false},{"name":"Il Pellicano","country":"IT","region":"Porto Ercole","in_cohort":true,"engine":"azds","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":179,"months_bookable":7,"monthly_median":{"Apr":643,"May":1080,"Jun":1375,"Jul":1353,"Aug":1353,"Sep":2039,"Oct":967},"longest_closed_run_nights":164,"meal_basis":"B&B","caveat":null,"p25":993,"median":1310,"p75":1422,"min":521,"max":3180,"median_net_vat":1191,"peak_to_trough":3.17,"credible_annual_series":false,"year_round":false},{"name":"Villa La Coste","country":"FR","region":"Provence","in_cohort":true,"engine":"travelclick","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":233,"months_bookable":9,"monthly_median":{"Jan":850,"Mar":945,"Apr":1155,"May":1470,"Aug":1585,"Sep":1590,"Oct":1200,"Nov":850,"Dec":850},"longest_closed_run_nights":61,"meal_basis":null,"caveat":"Meal basis unresolved: the official page says breakfast is included, a current rate display shows room-only","p25":900,"median":1200,"p75":1492,"min":850,"max":2640,"median_net_vat":1091,"peak_to_trough":1.87,"credible_annual_series":true,"year_round":false},{"name":"Il San Pietro di Positano","country":"IT","region":"Positano","in_cohort":true,"engine":"azds","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":106,"months_bookable":6,"monthly_median":{"Apr":1170,"May":1122,"Jun":1122,"Aug":2792,"Sep":3358,"Oct":764},"longest_closed_run_nights":159,"meal_basis":"B&B","caveat":null,"p25":1122,"median":1122,"p75":1707,"min":764,"max":2792,"median_net_vat":1020,"peak_to_trough":4.4,"credible_annual_series":false,"year_round":false},{"name":"Adare Manor","country":"IE","region":"Co. Limerick","in_cohort":true,"engine":"avvio","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":231,"months_bookable":12,"monthly_median":{"Jan":795,"Feb":795,"Mar":845,"Apr":1135,"May":7500,"Jun":7500,"Jul":7500,"Aug":1665,"Sep":1665,"Oct":1315,"Nov":850,"Dec":1045},"longest_closed_run_nights":9,"meal_basis":"B&B","caveat":null,"p25":845,"median":1095,"p75":1640,"min":775,"max":3125,"median_net_vat":965,"peak_to_trough":9.43,"credible_annual_series":true,"year_round":true},{"name":"Pan Dei Palais, St-Tropez","country":"FR","region":"St-Tropez","in_cohort":false,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":37,"months_bookable":4,"monthly_median":{"Aug":2944,"Sep":2071,"Oct":813,"Dec":505},"longest_closed_run_nights":232,"meal_basis":null,"caveat":"Not a cohort member","p25":548,"median":1070,"p75":1823,"min":505,"max":2542,"median_net_vat":972,"peak_to_trough":5.83,"credible_annual_series":false,"year_round":false},{"name":"Borgo Egnazia","country":"IT","region":"Puglia","in_cohort":true,"engine":"ermes/blastness","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":248,"months_bookable":11,"monthly_median":{"Jan":549,"Mar":454,"Apr":592,"May":862,"Jun":1278,"Jul":1183,"Aug":1535,"Sep":1338,"Oct":720,"Nov":377,"Dec":497},"longest_closed_run_nights":73,"meal_basis":"B&B","caveat":"The only purpose-built resort in the set","p25":617,"median":1020,"p75":1261,"min":262,"max":2272,"median_net_vat":928,"peak_to_trough":4.07,"credible_annual_series":true,"year_round":false},{"name":"Ballyfin Demesne","country":"IE","region":"Co. Laois","in_cohort":true,"engine":"netaffinity","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":301,"months_bookable":12,"monthly_median":{"Jan":789,"Feb":789,"Mar":858,"Apr":836,"May":858,"Jun":1170,"Jul":1170,"Aug":1278,"Sep":1312,"Oct":1063,"Nov":943,"Dec":909},"longest_closed_run_nights":9,"meal_basis":"B&B","caveat":null,"p25":858,"median":948,"p75":1170,"min":746,"max":2341,"median_net_vat":835,"peak_to_trough":1.66,"credible_annual_series":true,"year_round":true},{"name":"Passalacqua","country":"IT","region":"Lake Como","in_cohort":true,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":85,"months_bookable":6,"monthly_median":{"Jan":984,"Aug":5134,"Sep":2995,"Oct":1540,"Nov":941,"Dec":941},"longest_closed_run_nights":227,"meal_basis":null,"caveat":null,"p25":941,"median":941,"p75":1155,"min":941,"max":2567,"median_net_vat":856,"peak_to_trough":5.46,"credible_annual_series":false,"year_round":false},{"name":"Royal Champagne","country":"FR","region":"Champillon","in_cohort":true,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":268,"months_bookable":12,"monthly_median":{"Jan":706,"Feb":727,"Mar":865,"Apr":934,"May":1012,"Jun":1012,"Jul":934,"Aug":934,"Sep":1110,"Oct":927,"Nov":790,"Dec":742},"longest_closed_run_nights":12,"meal_basis":"B&B","caveat":null,"p25":777,"median":927,"p75":1012,"min":678,"max":1247,"median_net_vat":843,"peak_to_trough":1.57,"credible_annual_series":true,"year_round":true},{"name":"Estelle Manor","country":"UK","region":"Oxfordshire","in_cohort":true,"engine":"desk rate_calendar","window":["2026-08-12","2027-08-11"],"nights_in_window":365,"bookable":347,"months_bookable":12,"monthly_median":{"Jan":595,"Feb":700,"Mar":675,"Apr":695,"May":825,"Jun":950,"Jul":995,"Aug":1100,"Sep":1048,"Oct":895,"Nov":750,"Dec":985},"longest_closed_run_nights":4,"meal_basis":"B&B","caveat":null,"p25":695,"median":895,"p75":995,"min":595,"max":1995,"median_net_vat":746,"peak_to_trough":1.85,"credible_annual_series":true,"year_round":true},{"name":"Rosewood Schloss Fuschl","country":"AT","region":"Salzburg","in_cohort":true,"engine":"rosewood-crs (synxis lead-avail proxy)","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":292,"months_bookable":11,"monthly_median":{"Jan":510,"Mar":510,"Apr":620,"May":620,"Jun":1676,"Jul":1676,"Aug":1676,"Sep":1057,"Oct":802,"Nov":583,"Dec":802},"longest_closed_run_nights":36,"meal_basis":"room-only","caveat":null,"p25":620,"median":802,"p75":1676,"min":510,"max":1972,"median_net_vat":729,"peak_to_trough":3.29,"credible_annual_series":true,"year_round":false},{"name":"Heckfield Place","country":"UK","region":"Hampshire","in_cohort":true,"engine":"desk rate_calendar","window":["2026-08-19","2027-08-18"],"nights_in_window":365,"bookable":325,"months_bookable":12,"monthly_median":{"Jan":750,"Feb":750,"Mar":750,"Apr":750,"May":750,"Jun":750,"Jul":750,"Aug":750,"Sep":875,"Oct":850,"Nov":750,"Dec":750},"longest_closed_run_nights":3,"meal_basis":"B&B","caveat":null,"p25":750,"median":750,"p75":750,"min":650,"max":1705,"median_net_vat":625,"peak_to_trough":1.17,"credible_annual_series":true,"year_round":true},{"name":"Gleneagles","country":"UK","region":"Perthshire","in_cohort":true,"engine":"desk rate_calendar","window":["2026-08-12","2027-08-11"],"nights_in_window":365,"bookable":304,"months_bookable":11,"monthly_median":{"Jan":595,"Feb":550,"Mar":550,"Apr":672,"May":815,"Jun":820,"Aug":975,"Sep":950,"Oct":795,"Nov":670,"Dec":750},"longest_closed_run_nights":42,"meal_basis":"B&B","caveat":null,"p25":625,"median":750,"p75":865,"min":495,"max":1800,"median_net_vat":625,"peak_to_trough":1.77,"credible_annual_series":true,"year_round":false},{"name":"Coworth Park","country":"UK","region":"Ascot","in_cohort":true,"engine":"desk rate_calendar","window":["2026-08-12","2027-08-11"],"nights_in_window":365,"bookable":306,"months_bookable":12,"monthly_median":{"Jan":480,"Feb":490,"Mar":540,"Apr":540,"May":640,"Jun":740,"Jul":740,"Aug":680,"Sep":740,"Oct":840,"Nov":660,"Dec":720},"longest_closed_run_nights":9,"meal_basis":"B&B","caveat":"Desk breakfast flag is stale: the cheapest advance plan includes breakfast","p25":540,"median":650,"p75":760,"min":480,"max":1340,"median_net_vat":542,"peak_to_trough":1.75,"credible_annual_series":true,"year_round":true},{"name":"Chewton Glen","country":"UK","region":"Hampshire","in_cohort":true,"engine":"desk rate_calendar","window":["2026-08-06","2027-08-05"],"nights_in_window":365,"bookable":343,"months_bookable":12,"monthly_median":{"Jan":400,"Feb":500,"Mar":555,"Apr":665,"May":670,"Jun":670,"Jul":525,"Aug":732,"Sep":685,"Oct":560,"Nov":410,"Dec":620},"longest_closed_run_nights":3,"meal_basis":"B&B","caveat":null,"p25":505,"median":590,"p75":680,"min":400,"max":1305,"median_net_vat":492,"peak_to_trough":1.83,"credible_annual_series":true,"year_round":true},{"name":"Beaverbrook","country":"UK","region":"Surrey","in_cohort":true,"engine":"desk rate_calendar","window":["2026-08-07","2027-08-06"],"nights_in_window":365,"bookable":332,"months_bookable":12,"monthly_median":{"Jan":470,"Feb":478,"Mar":474,"Apr":534,"May":590,"Jun":654,"Jul":622,"Aug":669,"Sep":630,"Oct":522,"Nov":530,"Dec":566},"longest_closed_run_nights":3,"meal_basis":"B&B","caveat":null,"p25":494,"median":566,"p75":646,"min":422,"max":1190,"median_net_vat":472,"peak_to_trough":1.42,"credible_annual_series":true,"year_round":true},{"name":"Cliveden House","country":"UK","region":"Berkshire","in_cohort":true,"engine":"desk rate_calendar","window":["2026-08-14","2027-08-13"],"nights_in_window":365,"bookable":319,"months_bookable":12,"monthly_median":{"Jan":380,"Feb":380,"Mar":450,"Apr":415,"May":665,"Jun":700,"Jul":625,"Aug":630,"Sep":635,"Oct":570,"Nov":475,"Dec":570},"longest_closed_run_nights":4,"meal_basis":"B&B","caveat":null,"p25":450,"median":545,"p75":665,"min":380,"max":1320,"median_net_vat":454,"peak_to_trough":1.84,"credible_annual_series":true,"year_round":true},{"name":"Domaine des Etangs","country":"FR","region":"Charente","in_cohort":true,"engine":"synxis","window":["2026-08-18","2027-08-18"],"nights_in_window":366,"bookable":147,"months_bookable":6,"monthly_median":{"May":437,"Jun":514,"Jul":585,"Aug":596,"Sep":437,"Oct":320},"longest_closed_run_nights":181,"meal_basis":null,"caveat":null,"p25":405,"median":522,"p75":592,"min":296,"max":1185,"median_net_vat":475,"peak_to_trough":1.86,"credible_annual_series":false,"year_round":false},{"name":"Danesfield House","country":"UK","region":"Buckinghamshire","in_cohort":true,"engine":"desk rate_calendar","window":["2026-08-15","2027-08-14"],"nights_in_window":365,"bookable":351,"months_bookable":12,"monthly_median":{"Jan":249,"Feb":249,"Mar":249,"Apr":249,"May":249,"Jun":249,"Jul":249,"Aug":289,"Sep":339,"Oct":289,"Nov":259,"Dec":249},"longest_closed_run_nights":4,"meal_basis":"room-only","caveat":"A live Align deal in a sibling folder; evidence bases are kept separate","p25":249,"median":249,"p75":309,"min":249,"max":539,"median_net_vat":208,"peak_to_trough":1.36,"credible_annual_series":true,"year_round":true},{"name":"Les Airelles, Courchevel","country":"FR","region":"Courchevel","in_cohort":false,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":0,"months_bookable":0,"monthly_median":{},"longest_closed_run_nights":365,"meal_basis":null,"caveat":"Not a cohort member; ski","credible_annual_series":false,"year_round":false}]};
+const MARKET = {"generated":"2026-08-18","basis":"Lowest publicly bookable room per night, two adults one room, gross of tax, collected direct from each hotel's own booking engine over a full forward year. Cleaned on the desk convention: nights above GBP10,000 dropped, then nights above 2.5x the property's own median dropped.","cautions":["A month with nothing bookable is not necessarily a closed month. Several seasonal hotels had not loaded next season's inventory when this was collected. The inference only runs the other way: a hotel bookable in all twelve months is demonstrably year-round.","Annual medians only compare between properties with similar bookable-night coverage. Passalacqua prices at 2.7 times Villa d'Este in August yet sits below it on the year, because it sells 85 nights weighted into its cheap months.","A flat month is usually season-band pricing, which is how these hotels sell, not a fault. The exception is a flat month far outside the property's own range.","These are lead-in rates, not achieved ADR. No property in this set publishes an achieved rate."],"type_basis":"Each property is grouped by its setting: an inland estate or demesne, a sea coast or island, a lake shore, an alpine valley, or a palace, town or village. The grouping is the portal's own reading of the setting each research pack records, not a classification any of these hotels publishes.","type_labels":{"estate":"Country estate","coast":"Coast and island","lake":"Lakeside","alpine":"Alpine","town":"Palace, town and village"},"vat_note":"Accommodation VAT differs by country: 20% United Kingdom, 10% France Italy Austria Spain, 13% Greece, 13.5% Ireland. The desk's divide-by-1.20 is a United Kingdom constant and does not hold outside it.","hotels":[{"name":"Château de la Messardière","slug":"chateau-de-la-messardiere","country":"FR","region":"St-Tropez","type":"coast","case_slug":"messardiere","in_cohort":true,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":16,"months_bookable":2,"monthly_median":{"Sep":3311,"Oct":2435},"longest_closed_run_nights":311,"meal_basis":"package","caveat":"Bundled package including lunch. Season tail only; 2027 inventory not loaded","p25":2400,"median":3179,"p75":3281,"min":2237,"max":3416,"median_net_vat":2890,"peak_to_trough":1.36,"credible_annual_series":false,"year_round":false},{"name":"Hotel Pitrizza","slug":"hotel-pitrizza","country":"IT","region":"Costa Smeralda","type":"coast","case_slug":null,"in_cohort":true,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":17,"months_bookable":2,"monthly_median":{"Aug":7188,"Sep":2995},"longest_closed_run_nights":327,"meal_basis":"B&B","caveat":"Season tail only; 2027 inventory not loaded","p25":2246,"median":2995,"p75":3936,"min":1044,"max":7188,"median_net_vat":2723,"peak_to_trough":2.4,"credible_annual_series":false,"year_round":false},{"name":"Castiglion del Bosco","slug":"castiglion-del-bosco","country":"IT","region":"Montalcino","type":"estate","case_slug":null,"in_cohort":true,"engine":"rosewood-crs (synxis lead-avail proxy)","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":337,"months_bookable":12,"monthly_median":{"Jan":2572,"Feb":2572,"Mar":2572,"Apr":1586,"May":2702,"Jun":2761,"Jul":2737,"Aug":2308,"Sep":3009,"Oct":2219,"Nov":1497,"Dec":849},"longest_closed_run_nights":3,"meal_basis":null,"caveat":"Lead-in the engine will not always sell: the calendar quotes rates on dates the booking page refuses for minimum stay, and it sells mostly suites and villas","p25":1603,"median":2572,"p75":2761,"min":815,"max":4802,"median_net_vat":2339,"peak_to_trough":3.54,"credible_annual_series":true,"year_round":true},{"name":"Belmond Hotel Splendido","slug":"belmond-hotel-splendido","country":"IT","region":"Portofino","type":"coast","case_slug":null,"in_cohort":true,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":225,"months_bookable":9,"monthly_median":{"Mar":1198,"Apr":1369,"May":2139,"Jun":4022,"Jul":4193,"Aug":4193,"Sep":4523,"Oct":1883,"Nov":1523},"longest_closed_run_nights":123,"meal_basis":"B&B","caveat":null,"p25":1818,"median":2396,"p75":4193,"min":1198,"max":6213,"median_net_vat":2178,"peak_to_trough":3.78,"credible_annual_series":true,"year_round":false},{"name":"Le Grand Contrôle","slug":"le-grand-controle","country":"FR","region":"Versailles","type":"town","case_slug":"grand-controle","in_cohort":true,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":255,"months_bookable":10,"monthly_median":{"Jan":1966,"Feb":1966,"Mar":2137,"Apr":2308,"May":2308,"Aug":2565,"Sep":3762,"Oct":2479,"Nov":2308,"Dec":1966},"longest_closed_run_nights":80,"meal_basis":"package","caveat":"Bundled package, not a room rate: the standard room includes breakfast, afternoon tea, minibar, spa access and butler service","p25":1966,"median":2308,"p75":2394,"min":1966,"max":5557,"median_net_vat":2098,"peak_to_trough":1.91,"credible_annual_series":true,"year_round":false},{"name":"Castello di Reschio","slug":"castello-di-reschio","country":"IT","region":"Umbria","type":"estate","case_slug":"reschio","in_cohort":true,"engine":"travelclick","window":["2026-08-18","2027-08-17"],"nights_in_window":291,"bookable":240,"months_bookable":11,"monthly_median":{"Jan":1423,"Mar":1395,"Apr":1914,"May":2263,"Jun":2263,"Jul":2263,"Aug":2263,"Sep":2449,"Oct":2197,"Nov":1688,"Dec":2028},"longest_closed_run_nights":30,"meal_basis":"B&B","caveat":null,"p25":1914,"median":2263,"p75":2263,"min":1395,"max":4032,"median_net_vat":2057,"peak_to_trough":1.76,"credible_annual_series":true,"year_round":false},{"name":"Belmond Caruso","slug":"belmond-caruso","country":"IT","region":"Ravello","type":"coast","case_slug":null,"in_cohort":true,"engine":"belmond bbe (own CRS proxy)","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":163,"months_bookable":7,"monthly_median":{"Apr":999,"May":1754,"Jun":2650,"Jul":2225,"Aug":1942,"Sep":2131,"Oct":2178},"longest_closed_run_nights":192,"meal_basis":"B&B","caveat":"Meal basis inferred, not verified","p25":1942,"median":2225,"p75":2650,"min":905,"max":3786,"median_net_vat":2023,"peak_to_trough":2.65,"credible_annual_series":false,"year_round":false},{"name":"La Reserve Ramatuelle","slug":"la-reserve-ramatuelle","country":"FR","region":"Ramatuelle","type":"coast","case_slug":null,"in_cohort":true,"engine":"bookwize","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":39,"months_bookable":3,"monthly_median":{"Aug":3301,"Sep":2144,"Oct":1029},"longest_closed_run_nights":311,"meal_basis":"B&B","caveat":"Season tail only. Carries a branded-villa limb beside the hotel","p25":1458,"median":2058,"p75":3173,"min":943,"max":4759,"median_net_vat":1871,"peak_to_trough":3.21,"credible_annual_series":false,"year_round":false},{"name":"Belmond Hotel Cipriani","slug":"belmond-hotel-cipriani","country":"IT","region":"Venice","type":"town","case_slug":null,"in_cohort":true,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":101,"months_bookable":4,"monthly_median":{"Jun":2011,"Jul":1925,"Aug":1540,"Sep":2482},"longest_closed_run_nights":244,"meal_basis":"B&B","caveat":null,"p25":1540,"median":2011,"p75":2289,"min":1540,"max":3637,"median_net_vat":1828,"peak_to_trough":1.61,"credible_annual_series":false,"year_round":false},{"name":"Amanzoe","slug":"amanzoe","country":"GR","region":"Porto Heli","type":"coast","case_slug":null,"in_cohort":true,"engine":"azds","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":208,"months_bookable":8,"monthly_median":{"Apr":1814,"May":1814,"Jun":3226,"Jul":3226,"Aug":3275,"Sep":3324,"Oct":1518,"Nov":1075},"longest_closed_run_nights":137,"meal_basis":"B&B","caveat":null,"p25":1814,"median":1960,"p75":3226,"min":1075,"max":4006,"median_net_vat":1735,"peak_to_trough":3.09,"credible_annual_series":true,"year_round":false},{"name":"Aman Rosa Alpina","slug":"aman-rosa-alpina","country":"IT","region":"Dolomites","type":"alpine","case_slug":"rosa-alpina","in_cohort":true,"engine":"azds","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":224,"months_bookable":9,"monthly_median":{"Jan":1893,"Feb":1893,"Mar":1704,"Jun":2082,"Jul":2082,"Aug":2082,"Sep":1252,"Oct":1252,"Dec":1563},"longest_closed_run_nights":67,"meal_basis":"B&B","caveat":null,"p25":1563,"median":1893,"p75":2082,"min":1252,"max":2082,"median_net_vat":1721,"peak_to_trough":1.66,"credible_annual_series":true,"year_round":false},{"name":"Airelles Val d'Isère","slug":"airelles-val-d-isere","country":"FR","region":"Val d Isere","type":"alpine","case_slug":null,"in_cohort":false,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":31,"months_bookable":5,"monthly_median":{"Jan":2137,"Feb":1795,"Mar":1795,"Apr":1795,"Dec":1539},"longest_closed_run_nights":138,"meal_basis":null,"caveat":"Not a cohort member; ski","p25":1795,"median":1795,"p75":1966,"min":1539,"max":2736,"median_net_vat":1632,"peak_to_trough":1.39,"credible_annual_series":false,"year_round":false},{"name":"Belmond Villa San Michele","slug":"belmond-villa-san-michele","country":"IT","region":"Fiesole","type":"town","case_slug":null,"in_cohort":true,"engine":"belmond bbe (own CRS proxy)","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":274,"months_bookable":11,"monthly_median":{"Jan":1235,"Mar":1376,"Apr":1518,"May":1801,"Jun":2367,"Jul":2084,"Aug":1612,"Sep":1777,"Oct":1659,"Nov":1046,"Dec":1140},"longest_closed_run_nights":74,"meal_basis":"B&B","caveat":null,"p25":1376,"median":1659,"p75":2084,"min":980,"max":3734,"median_net_vat":1508,"peak_to_trough":2.26,"credible_annual_series":true,"year_round":false},{"name":"La Bastide de Gordes","slug":"la-bastide-de-gordes","country":"FR","region":"Provence","type":"town","case_slug":null,"in_cohort":true,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":61,"months_bookable":3,"monthly_median":{"Aug":1736,"Sep":1787,"Oct":1026},"longest_closed_run_nights":297,"meal_basis":"B&B","caveat":null,"p25":1197,"median":1659,"p75":1881,"min":812,"max":3710,"median_net_vat":1508,"peak_to_trough":1.74,"credible_annual_series":false,"year_round":false},{"name":"Le Sirenuse","slug":"le-sirenuse","country":"IT","region":"Positano","type":"coast","case_slug":null,"in_cohort":true,"engine":"azds","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":177,"months_bookable":8,"monthly_median":{"Mar":830,"Apr":910,"May":1651,"Jun":1651,"Jul":1651,"Aug":2750,"Sep":3608,"Oct":1566},"longest_closed_run_nights":146,"meal_basis":"B&B","caveat":null,"p25":1538,"median":1651,"p75":1651,"min":623,"max":4037,"median_net_vat":1501,"peak_to_trough":4.35,"credible_annual_series":false,"year_round":false},{"name":"Villa d'Este","slug":"villa-d-este","country":"IT","region":"Lake Como","type":"lake","case_slug":null,"in_cohort":true,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":247,"months_bookable":11,"monthly_median":{"Jan":1027,"Mar":856,"Apr":1215,"May":1480,"Jun":2174,"Jul":2148,"Aug":1797,"Sep":1797,"Oct":1455,"Nov":762,"Dec":993},"longest_closed_run_nights":70,"meal_basis":null,"caveat":null,"p25":1010,"median":1455,"p75":2139,"min":762,"max":3252,"median_net_vat":1323,"peak_to_trough":2.85,"credible_annual_series":true,"year_round":false},{"name":"Belmond Castello di Casole","slug":"belmond-castello-di-casole","country":"IT","region":"Tuscany","type":"estate","case_slug":null,"in_cohort":true,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":255,"months_bookable":9,"monthly_median":{"Mar":770,"Apr":770,"May":1112,"Jun":1540,"Jul":1540,"Aug":1412,"Sep":1857,"Oct":1403,"Nov":1155},"longest_closed_run_nights":102,"meal_basis":"B&B","caveat":null,"p25":1112,"median":1412,"p75":1540,"min":770,"max":2353,"median_net_vat":1284,"peak_to_trough":2.41,"credible_annual_series":true,"year_round":false},{"name":"Hotel du Cap-Eden-Roc","slug":"hotel-du-cap-eden-roc","country":"FR","region":"Antibes","type":"coast","case_slug":null,"in_cohort":true,"engine":"azds","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":20,"months_bookable":2,"monthly_median":{"Sep":3096,"Oct":1329},"longest_closed_run_nights":304,"meal_basis":"B&B","caveat":"Twenty nights in a nineteen-day window, its cheapest weeks, with peak not on sale. Do not read the median as annual","p25":1243,"median":1329,"p75":1949,"min":978,"max":3096,"median_net_vat":1208,"peak_to_trough":2.33,"credible_annual_series":false,"year_round":false},{"name":"Il Pellicano","slug":"il-pellicano","country":"IT","region":"Porto Ercole","type":"coast","case_slug":null,"in_cohort":true,"engine":"azds","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":179,"months_bookable":7,"monthly_median":{"Apr":643,"May":1080,"Jun":1375,"Jul":1353,"Aug":1353,"Sep":2039,"Oct":967},"longest_closed_run_nights":164,"meal_basis":"B&B","caveat":null,"p25":993,"median":1310,"p75":1422,"min":521,"max":3180,"median_net_vat":1191,"peak_to_trough":3.17,"credible_annual_series":false,"year_round":false},{"name":"Villa La Coste","slug":"villa-la-coste","country":"FR","region":"Provence","type":"estate","case_slug":null,"in_cohort":true,"engine":"travelclick","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":233,"months_bookable":9,"monthly_median":{"Jan":850,"Mar":945,"Apr":1155,"May":1470,"Aug":1585,"Sep":1590,"Oct":1200,"Nov":850,"Dec":850},"longest_closed_run_nights":61,"meal_basis":null,"caveat":"Meal basis unresolved: the official page says breakfast is included, a current rate display shows room-only","p25":900,"median":1200,"p75":1492,"min":850,"max":2640,"median_net_vat":1091,"peak_to_trough":1.87,"credible_annual_series":true,"year_round":false},{"name":"Il San Pietro di Positano","slug":"il-san-pietro-di-positano","country":"IT","region":"Positano","type":"coast","case_slug":null,"in_cohort":true,"engine":"azds","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":106,"months_bookable":6,"monthly_median":{"Apr":1170,"May":1122,"Jun":1122,"Aug":2792,"Sep":3358,"Oct":764},"longest_closed_run_nights":159,"meal_basis":"B&B","caveat":null,"p25":1122,"median":1122,"p75":1707,"min":764,"max":2792,"median_net_vat":1020,"peak_to_trough":4.4,"credible_annual_series":false,"year_round":false},{"name":"Adare Manor","slug":"adare-manor","country":"IE","region":"Co. Limerick","type":"estate","case_slug":null,"in_cohort":true,"engine":"avvio","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":231,"months_bookable":12,"monthly_median":{"Jan":795,"Feb":795,"Mar":845,"Apr":1135,"May":7500,"Jun":7500,"Jul":7500,"Aug":1665,"Sep":1665,"Oct":1315,"Nov":850,"Dec":1045},"longest_closed_run_nights":9,"meal_basis":"B&B","caveat":null,"p25":845,"median":1095,"p75":1640,"min":775,"max":3125,"median_net_vat":965,"peak_to_trough":9.43,"credible_annual_series":true,"year_round":true},{"name":"Pan Deï Palais, St-Tropez","slug":"pan-dei-palais-st-tropez","country":"FR","region":"St-Tropez","type":"coast","case_slug":null,"in_cohort":false,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":37,"months_bookable":4,"monthly_median":{"Aug":2944,"Sep":2071,"Oct":813,"Dec":505},"longest_closed_run_nights":232,"meal_basis":null,"caveat":"Not a cohort member","p25":548,"median":1070,"p75":1823,"min":505,"max":2542,"median_net_vat":972,"peak_to_trough":5.83,"credible_annual_series":false,"year_round":false},{"name":"Borgo Egnazia","slug":"borgo-egnazia","country":"IT","region":"Puglia","type":"coast","case_slug":"borgo-egnazia","in_cohort":true,"engine":"ermes/blastness","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":248,"months_bookable":11,"monthly_median":{"Jan":549,"Mar":454,"Apr":592,"May":862,"Jun":1278,"Jul":1183,"Aug":1535,"Sep":1338,"Oct":720,"Nov":377,"Dec":497},"longest_closed_run_nights":73,"meal_basis":"B&B","caveat":"The only purpose-built resort in the set","p25":617,"median":1020,"p75":1261,"min":262,"max":2272,"median_net_vat":928,"peak_to_trough":4.07,"credible_annual_series":true,"year_round":false},{"name":"Ballyfin Demesne","slug":"ballyfin-demesne","country":"IE","region":"Co. Laois","type":"estate","case_slug":null,"in_cohort":true,"engine":"netaffinity","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":301,"months_bookable":12,"monthly_median":{"Jan":789,"Feb":789,"Mar":858,"Apr":836,"May":858,"Jun":1170,"Jul":1170,"Aug":1278,"Sep":1312,"Oct":1063,"Nov":943,"Dec":909},"longest_closed_run_nights":9,"meal_basis":"B&B","caveat":null,"p25":858,"median":948,"p75":1170,"min":746,"max":2341,"median_net_vat":835,"peak_to_trough":1.66,"credible_annual_series":true,"year_round":true},{"name":"Passalacqua","slug":"passalacqua","country":"IT","region":"Lake Como","type":"lake","case_slug":"passalacqua","in_cohort":true,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":85,"months_bookable":6,"monthly_median":{"Jan":984,"Aug":5134,"Sep":2995,"Oct":1540,"Nov":941,"Dec":941},"longest_closed_run_nights":227,"meal_basis":null,"caveat":null,"p25":941,"median":941,"p75":1155,"min":941,"max":2567,"median_net_vat":856,"peak_to_trough":5.46,"credible_annual_series":false,"year_round":false},{"name":"Royal Champagne","slug":"royal-champagne","country":"FR","region":"Champillon","type":"estate","case_slug":null,"in_cohort":true,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":268,"months_bookable":12,"monthly_median":{"Jan":706,"Feb":727,"Mar":865,"Apr":934,"May":1012,"Jun":1012,"Jul":934,"Aug":934,"Sep":1110,"Oct":927,"Nov":790,"Dec":742},"longest_closed_run_nights":12,"meal_basis":"B&B","caveat":null,"p25":777,"median":927,"p75":1012,"min":678,"max":1247,"median_net_vat":843,"peak_to_trough":1.57,"credible_annual_series":true,"year_round":true},{"name":"Estelle Manor","slug":"estelle-manor","country":"UK","region":"Oxfordshire","type":"estate","case_slug":"estelle","in_cohort":true,"engine":"desk rate_calendar","window":["2026-08-12","2027-08-11"],"nights_in_window":365,"bookable":347,"months_bookable":12,"monthly_median":{"Jan":595,"Feb":700,"Mar":675,"Apr":695,"May":825,"Jun":950,"Jul":995,"Aug":1100,"Sep":1048,"Oct":895,"Nov":750,"Dec":985},"longest_closed_run_nights":4,"meal_basis":"B&B","caveat":null,"p25":695,"median":895,"p75":995,"min":595,"max":1995,"median_net_vat":746,"peak_to_trough":1.85,"credible_annual_series":true,"year_round":true},{"name":"Son Bunyola","slug":"son-bunyola","country":"ES","region":"Mallorca","type":"estate","case_slug":null,"in_cohort":true,"engine":"azds","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":219,"months_bookable":9,"monthly_median":{"Mar":589,"Apr":713,"May":875,"Jun":1441,"Jul":1441,"Aug":1441,"Sep":1188,"Oct":858,"Nov":540},"longest_closed_run_nights":117,"meal_basis":"B&B","caveat":"Rates are the room step, not the calendar: this engine's calendar prints 0.97x the bookable rate on 199 of 220 nights. The 2027 season is loaded as flat bands below what the hotel achieved in summer 2026, so the full-year median mixes a yield-managed near window with an unopened next season","p25":732,"median":875,"p75":1441,"min":480,"max":1929,"median_net_vat":795,"peak_to_trough":2.67,"credible_annual_series":true,"year_round":false},{"name":"Rosewood Schloss Fuschl","slug":"rosewood-schloss-fuschl","country":"AT","region":"Salzburg","type":"lake","case_slug":null,"in_cohort":true,"engine":"rosewood-crs (synxis lead-avail proxy)","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":292,"months_bookable":11,"monthly_median":{"Jan":510,"Mar":510,"Apr":620,"May":620,"Jun":1676,"Jul":1676,"Aug":1676,"Sep":1057,"Oct":802,"Nov":583,"Dec":802},"longest_closed_run_nights":36,"meal_basis":"room-only","caveat":null,"p25":620,"median":802,"p75":1676,"min":510,"max":1972,"median_net_vat":729,"peak_to_trough":3.29,"credible_annual_series":true,"year_round":false},{"name":"Heckfield Place","slug":"heckfield-place","country":"UK","region":"Hampshire","type":"estate","case_slug":"heckfield","in_cohort":true,"engine":"desk rate_calendar","window":["2026-08-19","2027-08-18"],"nights_in_window":365,"bookable":325,"months_bookable":12,"monthly_median":{"Jan":750,"Feb":750,"Mar":750,"Apr":750,"May":750,"Jun":750,"Jul":750,"Aug":750,"Sep":875,"Oct":850,"Nov":750,"Dec":750},"longest_closed_run_nights":3,"meal_basis":"B&B","caveat":null,"p25":750,"median":750,"p75":750,"min":650,"max":1705,"median_net_vat":625,"peak_to_trough":1.17,"credible_annual_series":true,"year_round":true},{"name":"Gleneagles","slug":"gleneagles","country":"UK","region":"Perthshire","type":"estate","case_slug":null,"in_cohort":true,"engine":"desk rate_calendar","window":["2026-08-12","2027-08-11"],"nights_in_window":365,"bookable":304,"months_bookable":11,"monthly_median":{"Jan":595,"Feb":550,"Mar":550,"Apr":672,"May":815,"Jun":820,"Aug":975,"Sep":950,"Oct":795,"Nov":670,"Dec":750},"longest_closed_run_nights":42,"meal_basis":"B&B","caveat":null,"p25":625,"median":750,"p75":865,"min":495,"max":1800,"median_net_vat":625,"peak_to_trough":1.77,"credible_annual_series":true,"year_round":false},{"name":"Coworth Park","slug":"coworth-park","country":"UK","region":"Ascot","type":"estate","case_slug":null,"in_cohort":true,"engine":"desk rate_calendar","window":["2026-08-12","2027-08-11"],"nights_in_window":365,"bookable":306,"months_bookable":12,"monthly_median":{"Jan":480,"Feb":490,"Mar":540,"Apr":540,"May":640,"Jun":740,"Jul":740,"Aug":680,"Sep":740,"Oct":840,"Nov":660,"Dec":720},"longest_closed_run_nights":9,"meal_basis":"B&B","caveat":"Desk breakfast flag is stale: the cheapest advance plan includes breakfast","p25":540,"median":650,"p75":760,"min":480,"max":1340,"median_net_vat":542,"peak_to_trough":1.75,"credible_annual_series":true,"year_round":true},{"name":"Chewton Glen","slug":"chewton-glen","country":"UK","region":"Hampshire","type":"estate","case_slug":null,"in_cohort":true,"engine":"desk rate_calendar","window":["2026-08-06","2027-08-05"],"nights_in_window":365,"bookable":343,"months_bookable":12,"monthly_median":{"Jan":400,"Feb":500,"Mar":555,"Apr":665,"May":670,"Jun":670,"Jul":525,"Aug":732,"Sep":685,"Oct":560,"Nov":410,"Dec":620},"longest_closed_run_nights":3,"meal_basis":"B&B","caveat":null,"p25":505,"median":590,"p75":680,"min":400,"max":1305,"median_net_vat":492,"peak_to_trough":1.83,"credible_annual_series":true,"year_round":true},{"name":"Beaverbrook","slug":"beaverbrook","country":"UK","region":"Surrey","type":"estate","case_slug":"beaverbrook","in_cohort":true,"engine":"desk rate_calendar","window":["2026-08-07","2027-08-06"],"nights_in_window":365,"bookable":332,"months_bookable":12,"monthly_median":{"Jan":470,"Feb":478,"Mar":474,"Apr":534,"May":590,"Jun":654,"Jul":622,"Aug":669,"Sep":630,"Oct":522,"Nov":530,"Dec":566},"longest_closed_run_nights":3,"meal_basis":"B&B","caveat":null,"p25":494,"median":566,"p75":646,"min":422,"max":1190,"median_net_vat":472,"peak_to_trough":1.42,"credible_annual_series":true,"year_round":true},{"name":"Cliveden House","slug":"cliveden-house","country":"UK","region":"Berkshire","type":"estate","case_slug":"cliveden","in_cohort":true,"engine":"desk rate_calendar","window":["2026-08-14","2027-08-13"],"nights_in_window":365,"bookable":319,"months_bookable":12,"monthly_median":{"Jan":380,"Feb":380,"Mar":450,"Apr":415,"May":665,"Jun":700,"Jul":625,"Aug":630,"Sep":635,"Oct":570,"Nov":475,"Dec":570},"longest_closed_run_nights":4,"meal_basis":"B&B","caveat":null,"p25":450,"median":545,"p75":665,"min":380,"max":1320,"median_net_vat":454,"peak_to_trough":1.84,"credible_annual_series":true,"year_round":true},{"name":"Domaine des Étangs","slug":"domaine-des-etangs","country":"FR","region":"Charente","type":"estate","case_slug":null,"in_cohort":true,"engine":"synxis","window":["2026-08-18","2027-08-18"],"nights_in_window":366,"bookable":147,"months_bookable":6,"monthly_median":{"May":437,"Jun":514,"Jul":585,"Aug":596,"Sep":437,"Oct":320},"longest_closed_run_nights":181,"meal_basis":null,"caveat":null,"p25":405,"median":522,"p75":592,"min":296,"max":1185,"median_net_vat":475,"peak_to_trough":1.86,"credible_annual_series":false,"year_round":false},{"name":"Danesfield House","slug":"danesfield-house","country":"UK","region":"Buckinghamshire","type":"estate","case_slug":null,"in_cohort":true,"engine":"desk rate_calendar","window":["2026-08-15","2027-08-14"],"nights_in_window":365,"bookable":351,"months_bookable":12,"monthly_median":{"Jan":249,"Feb":249,"Mar":249,"Apr":249,"May":249,"Jun":249,"Jul":249,"Aug":289,"Sep":339,"Oct":289,"Nov":259,"Dec":249},"longest_closed_run_nights":4,"meal_basis":"room-only","caveat":"A live Align deal in a sibling folder; evidence bases are kept separate","p25":249,"median":249,"p75":309,"min":249,"max":539,"median_net_vat":208,"peak_to_trough":1.36,"credible_annual_series":true,"year_round":true},{"name":"Les Airelles, Courchevel","slug":"les-airelles-courchevel","country":"FR","region":"Courchevel","type":"alpine","case_slug":null,"in_cohort":false,"engine":"synxis","window":["2026-08-18","2027-08-17"],"nights_in_window":365,"bookable":0,"months_bookable":0,"monthly_median":{},"longest_closed_run_nights":365,"meal_basis":null,"caveat":"Not a cohort member; ski","credible_annual_series":false,"year_round":false}],"villas":[{"name":"Sa Punta de S'Aguila (5 bed)","estate":"Son Bunyola","country":"ES","bedrooms":5,"sellable_nights":302,"nights_in_window":365,"currency":"EUR","min":2900,"median":6400,"max":9000,"median_gbp":5488,"median_per_bedroom":1280},{"name":"Sa Terra Rotja (5 bed)","estate":"Son Bunyola","country":"ES","bedrooms":5,"sellable_nights":328,"nights_in_window":365,"currency":"EUR","min":2900,"median":6400,"max":9000,"median_gbp":5488,"median_per_bedroom":1280},{"name":"Son Balagueret (4 bed)","estate":"Son Bunyola","country":"ES","bedrooms":4,"sellable_nights":180,"nights_in_window":365,"currency":"EUR","min":1900,"median":3600,"max":6000,"median_gbp":3087,"median_per_bedroom":900}],"villas_basis":"Whole-house self-catering lets on the Son Bunyola estate, sold per night with a minimum stay of three nights in the shoulder and four in peak, and no meals. They are not comparable to a nightly room rate and are kept out of the hotel index. They matter here because a hotel with separately-sold houses beside it is the shape of the subject. They clear EUR900 to EUR1,280 a bedroom against a hotel median of EUR1,020 a room, so the house limb earns on space and length of stay rather than on a rate premium — and the four-bedroom house clears least per bedroom of the three."};
 /*MARKET-DATA-END*/
 
 /* ══════════════════════════════════════════════════════════════════════
@@ -2226,10 +2373,10 @@ const CHAPTERS = [
 {
   id: "market", num: "10", eyebrow: "Ultra Luxury Market", title: "The Ultra Luxury Market",
   blurb: "Every comparable hotel we hold a rate series for, European and British, with what each charges and how long it opens.",
-  figures: [["35","Hotels with a forward-year series"],["11","Bookable in all twelve months"]],
+  figures: [["36","Hotels with a forward-year series"],["11","Bookable in all twelve months"]],
   views: [
   { id: "", title: "The Index", kicker: "Market",
-    figure: "35 hotels", blurb: "The competitive set, by rate and by calendar.",
+    figure: "36 hotels", blurb: "The competitive set, by rate and by calendar.",
     lead: [
       ["market"],
     ],
@@ -3829,96 +3976,179 @@ function casesIndexHTML() {
     + '<p class="src">Estelle Manor sits outside both comparable layers and appears for the club engine only. Every case page carries the property record, what it evidences, a line-by-line read against the underwrite, its own source note and an estimated P&amp;L. The GOP margin on each row is the modelled margin from that estimated P&amp;L, not a filed figure.</p>';
 }
 
-/* ─────────────  the ultra-luxury market index  ───────────── */
+/* ─────────────  the ultra-luxury market index  ─────────────
+
+   Thirty-five hotels with a full forward year of collected rates, under two
+   tabs and banded by what kind of property each is. Every card leads to that
+   property's own page: ten have a written case study, the rest carry a page
+   holding what the market pack knows and saying plainly what is not written
+   yet. Nothing on a card is retyped — MARKET is the pack, spliced whole.     */
 
 const MKT_M = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const mktGbp = n => "£" + Math.round(n).toLocaleString("en-GB");
+const MKT_CTRY = { IT: "Italy", FR: "France", IE: "Ireland", GR: "Greece",
+                   AT: "Austria", ES: "Spain", UK: "United Kingdom" };
+/* the bands, in the order the chapter reads them: the subject's own type
+   first, then the rest by size */
+const MKT_BANDS = ["estate", "coast", "town", "lake", "alpine"];
 
 /* The subject sits in the index on its own terms: an underwritten rate on a
-   365-day calendar, drawn open so it never reads as a collected series. */
+   365-day calendar, drawn as outlines so it never reads as a collected series. */
 const MKT_SUBJECT = {
-  name: "Fawley Court", region: "Buckinghamshire", country: "UK", subject: true,
+  name: "Fawley Court", region: "Buckinghamshire", country: "UK", type: "estate", subject: true,
   months_bookable: 12, year_round: true, median: 1000, credible_annual_series: true,
+  hash: "#/c/underwrite/dial-set",
   note: "Underwritten, not collected: " + V16.fig.adr_y1 + " in year-one money rising to "
       + V16.fig.adr_y7 + " by year seven, at " + V16.fig.occ_stab + " stabilised occupancy across a full year."
 };
 
-function mktStrip(h) {
-  if (h.subject) return '<div class="mkt-strip sub" aria-hidden="true">'
-    + MKT_M.map(() => '<i class="mod" style="height:100%"></i>').join("") + "</div>"
-    + '<div class="mkt-axis" aria-hidden="true">' + MKT_M.map(x => "<span>" + x[0] + "</span>").join("") + "</div>";
-  const m = h.monthly_median || {};
-  const vals = Object.values(m);
-  if (!vals.length) return "";
+const MKT_ALL = (MARKET.hotels || []).filter(h => h.in_cohort !== false);
+const MKT_BY_SLUG = Object.fromEntries(MKT_ALL.map(h => [h.slug, h]));
+const MKT_BY_CASE = Object.fromEntries(MKT_ALL.filter(h => h.case_slug).map(h => [h.case_slug, h]));
+const mktHash = h => h.hash || (h.case_slug ? "#/h/" + h.case_slug : "#/m/" + h.slug);
+const mktOrder = (a, b) => (b.months_bookable - a.months_bookable) || ((b.median || 0) - (a.median || 0));
+const mktPlace = h => h.region + (MKT_CTRY[h.country] ? " · " + MKT_CTRY[h.country] : "");
+
+/* Bar height is the month's median against that hotel's own peak, so the strip
+   reads season shape and not rate; a hairline is a month with nothing bookable. */
+function mktBars(h) {
+  if (h.subject) return MKT_M.map(() => '<i class="mod" style="height:100%"></i>').join("");
+  const m = h.monthly_median || {}, vals = Object.values(m);
+  if (!vals.length) return MKT_M.map(() => '<i class="off"></i>').join("");
   const top = Math.max.apply(null, vals);
-  return '<div class="mkt-strip" aria-hidden="true">' + MKT_M.map(k => {
-    const v = m[k];
-    if (!v) return '<i class="off"></i>';
-    return '<i style="height:' + Math.max(8, Math.round((v / top) * 100)) + '%"></i>';
-  }).join("") + "</div>"
-   + '<div class="mkt-axis" aria-hidden="true">' + MKT_M.map(x => "<span>" + x[0] + "</span>").join("") + "</div>";
+  return MKT_M.map(k => m[k]
+    ? '<i style="height:' + Math.max(8, Math.round((m[k] / top) * 100)) + '%"></i>'
+    : '<i class="off"></i>').join("");
+}
+const mktDots = h => MKT_M.map(k => h.subject ? '<i class="mod"></i>'
+  : ((h.monthly_median || {})[k] ? "<i></i>" : '<i class="off"></i>')).join("");
+
+function mktFlags(h) {
+  const f = [];
+  if (h.year_round) f.push('<span class="yr">Year-round</span>');
+  if (!h.subject && !h.credible_annual_series && h.bookable) f.push("<span>Thin series</span>");
+  if (h.meal_basis === "package") f.push("<span>Bundled package</span>");
+  if (h.meal_basis === "B&amp;B" || h.meal_basis === "B&B") f.push("<span>Includes breakfast</span>");
+  if (h.meal_basis === "room-only") f.push("<span>Room only</span>");
+  return f.join("");
 }
 
-function mktMeta(h) {
-  const bits = [];
-  if (h.region) bits.push(h.region);
-  bits.push(h.months_bookable + " of 12 months");
-  if (h.year_round) bits.push('<span class="yr">year-round</span>');
-  if (!h.subject && !h.credible_annual_series && h.bookable) bits.push("thin series");
-  if (h.meal_basis === "package") bits.push("bundled package");
-  if (h.caveat) bits.push('<span class="cav">read the note</span>');
-  return bits.join('<span class="sep">·</span>');
+function mktCard(h) {
+  const fig = h.median
+    ? '<span class="v">' + mktGbp(h.median) + "</span>"
+      + (h.subject ? '<span class="u">underwritten</span>'
+                   : '<span class="u">' + mktGbp(h.median_net_vat) + " net of VAT</span>")
+    : '<span class="u">No bookable inventory</span>';
+  const label = h.name + ", " + mktPlace(h) + ". " + h.months_bookable + " of 12 months bookable. "
+    + (h.median ? mktGbp(h.median) + (h.subject ? " underwritten" : " median lead-in") : "no bookable inventory")
+    + ". " + (h.subject ? "Open the dial set." : h.case_slug ? "Open the case study." : "Open the property page.");
+  return '<button class="mk' + (h.subject ? " subject" : "") + '" data-hash="' + mktHash(h)
+    + '" aria-label="' + label + '">'
+    + '<span class="mk-nm">' + h.name + "</span>"
+    + '<span class="mk-rg">' + mktPlace(h) + "</span>"
+    + '<span class="mk-fig">' + fig + "</span>"
+    + '<span class="mk-cal"><span class="mk-bars" aria-hidden="true">' + mktBars(h) + "</span>"
+    + '<span class="mk-dots" aria-hidden="true">' + mktDots(h) + "</span>"
+    + '<span class="mk-mo">' + h.months_bookable + " of 12 months</span></span>"
+    + '<span class="mk-fl">' + mktFlags(h) + "</span>"
+    + (h.subject ? '<span class="mk-cav sub">' + h.note + "</span>"
+                 : h.caveat ? '<span class="mk-cav">' + h.caveat + "</span>" : "")
+    + '<span class="mk-go" aria-hidden="true">›</span></button>';
 }
 
-function mktBody(h) {
-  if (h.subject) return '<p class="mkt-note">' + h.note + "</p>";
+const MKSTATE = { tab: "eu" };
+
+function mktTabSet() {
+  const eu = MKT_ALL.filter(h => h.country !== "UK");
+  const uk = MKT_ALL.filter(h => h.country === "UK");
+  return { eu, uk };
+}
+
+function mktGridInner() {
+  const set = mktTabSet();
+  const rows = MKSTATE.tab === "uk" ? [MKT_SUBJECT].concat(set.uk) : [MKT_SUBJECT].concat(set.eu);
+  /* the subject is pinned to the head of its band, never sorted into it */
+  const bands = MKT_BANDS.map(t => [t, rows.filter(h => h.type === t && !h.subject).sort(mktOrder)])
+    .filter(x => x[1].length)
+    .map(([t, hs]) => [t, MKT_SUBJECT.type === t ? [MKT_SUBJECT].concat(hs) : hs]);
+  return bands.map(([t, hs]) => {
+    const subj = hs.some(h => h.subject);
+    const n = hs.length - (subj ? 1 : 0);
+    return '<section class="mkt-band"><div class="mkt-band-h">'
+      + '<span class="t">' + MARKET.type_labels[t] + "</span>"
+      + '<span class="c">' + n + (n === 1 ? " hotel" : " hotels") + (subj ? ", and the subject" : "") + "</span></div>"
+      + '<div class="mkt-grid">' + hs.map(mktCard).join("") + "</div></section>";
+  }).join("");
+}
+
+function marketIndexHTML() {
+  const set = mktTabSet();
+  const tab = (id, t, n) => '<button class="mkt-tab" role="tab" data-mktab="' + id + '" aria-selected="'
+    + (MKSTATE.tab === id ? "true" : "false") + '"><span class="t">' + t + '</span><span class="c">' + n + "</span></button>";
+  return '<div role="tablist" class="mkt-tabs" aria-label="Region">'
+    + tab("eu", "Europe", set.eu.length) + tab("uk", "The United Kingdom", set.uk.length + 1) + "</div>"
+    + '<p class="mkt-lede">Ordered inside each band by how much of the year the hotel opens, then by rate, because in this set the two run against each other: everything above £1,200 closes for two to seven months, and the properties bookable in all twelve sit at the bottom of the rate table. Every British comparable is a country estate; the European set falls into five kinds of place.</p>'
+    + '<div id="mktgrid">' + mktGridInner() + "</div>"
+    + '<p class="src">' + MARKET.basis
+    + " Bars are the month's median against that hotel's own peak, so they read season shape, not rate; a hairline is a month with nothing bookable. "
+    + MARKET.vat_note + " " + MARKET.type_basis
+    + " Fawley Court is drawn in outline because its rate is underwritten, not collected. Every card opens that property's own page.</p>";
+}
+
+/* ── the rate record, printed on a case page and on a market page ── */
+
+function mktRecordHTML(h) {
+  if (!h) return "";
   const m = h.monthly_median || {};
   const cells = MKT_M.map(k => "<td>" + (m[k] ? mktGbp(m[k]) : "—") + "</td>").join("");
   const rows = [
+    ["Median lead-in", h.median ? mktGbp(h.median) + " gross · " + mktGbp(h.median_net_vat) + " net of VAT" : "—"],
     ["Quartiles", h.p25 ? mktGbp(h.p25) + " · " + mktGbp(h.median) + " · " + mktGbp(h.p75) : "—"],
     ["Range", h.min ? mktGbp(h.min) + " to " + mktGbp(h.max) : "—"],
     ["Peak to trough", h.peak_to_trough ? h.peak_to_trough + "×" : "—"],
+    ["Months bookable", h.months_bookable + " of 12"],
     ["Bookable", h.bookable + " of " + h.nights_in_window + " nights"],
     ["Longest unbookable run", h.longest_closed_run_nights + " nights"],
     ["Cheapest rate includes", h.meal_basis || "not established"],
     ["Collected from", h.engine + (h.window ? ", " + h.window[0] + " to " + h.window[1] : "")]
   ];
-  return '<table class="mkt-mm"><tbody><tr>'
-    + MKT_M.map(x => "<th>" + x + "</th>").join("") + "</tr><tr>" + cells + "</tr></tbody></table>"
+  return '<div class="mkt-rec"><p class="pane-h">' + h.name + " · the collected rate series</p>"
+    + '<div class="mkt-strip" aria-hidden="true">' + mktBars(h) + "</div>"
+    + '<table class="mkt-mm"><tbody><tr>' + MKT_M.map(x => "<th>" + x + "</th>").join("")
+    + "</tr><tr>" + cells + "</tbody></table>"
     + '<table class="mkt-kv"><tbody>'
-    + rows.map(r => "<tr><th>" + r[0] + "</th><td>" + r[1] + "</td></tr>").join("")
-    + "</tbody></table>"
-    + (h.caveat ? '<p class="mkt-note">' + h.caveat + "</p>" : "");
+    + rows.map(r => "<tr><th>" + r[0] + "</th><td>" + r[1] + "</td></tr>").join("") + "</tbody></table>"
+    + (h.caveat ? '<p class="mkt-cav-p">' + h.caveat + "</p>" : "")
+    + '<p class="src">' + MARKET.basis + " " + MARKET.vat_note + "</p></div>";
 }
 
-function mktRow(h, i) {
-  const fig = h.median
-    ? '<span class="v">' + mktGbp(h.median) + "</span>"
-      + (h.subject ? '<span class="u">underwritten</span>'
-                   : '<span class="u">' + mktGbp(h.median_net_vat) + " net of VAT</span>")
-    : '<span class="u">no bookable inventory</span>';
-  return '<div class="mkt' + (h.subject ? " subject" : "") + '">'
-    + '<button class="mkt-h" aria-expanded="false">'
-    + '<span><span class="nm">' + h.name + "</span>"
-    + '<span class="mt">' + mktMeta(h) + "</span>" + mktStrip(h) + "</span>"
-    + '<span class="mkt-fig">' + fig + "</span></button>"
-    + '<div class="mkt-b"><div><div class="inner">' + mktBody(h) + "</div></div></div></div>";
-}
+/* ── a property page for the twenty-five with no case study written ── */
 
-function marketIndexHTML() {
-  const all = (MARKET.hotels || []).filter(h => h.in_cohort !== false);
-  const order = (a, b) => (b.months_bookable - a.months_bookable) || ((b.median || 0) - (a.median || 0));
-  const eu = all.filter(h => h.country !== "UK").sort(order);
-  const uk = all.filter(h => h.country === "UK").concat([MKT_SUBJECT]).sort(order);
-  const grp = (title, rows) => '<div class="mkt-grp"><p class="pane-h">' + title + '</p><div class="mkt-rows">'
-      + rows.map(mktRow).join("") + "</div></div>";
-  return grp("Europe — " + eu.length + " hotels", eu)
-    + grp("The United Kingdom — " + (uk.length - 1) + " hotels, and the subject", uk)
-    + '<p class="src">Ordered by how much of the year each opens, then by rate — because in this set the two run against each other. '
-    + MARKET.basis + " Bars are the month's median against that hotel's own peak, so they read season shape, not rate; a hairline is a month with nothing bookable. "
-    + MARKET.vat_note + " Fawley Court is drawn open because its rate is underwritten, not collected.</p>";
+function viewMarketHotel(h) {
+  const kpis = [[h.months_bookable + " of 12", "Months bookable"]];
+  if (h.median) kpis.push([mktGbp(h.median), "Median lead-in, gross"],
+                          [mktGbp(h.median_net_vat), "Net of VAT"]);
+  const set = mktTabSet();
+  const list = (h.country === "UK" ? set.uk : set.eu).filter(x => !x.case_slug).sort(mktOrder);
+  const i = list.findIndex(x => x.slug === h.slug);
+  const prev = list[i - 1], next = list[i + 1];
+  const btn = (x, right) => '<button' + (right ? ' class="r"' : "") + ' data-hash="#/m/' + x.slug + '">'
+    + '<span class="pg-l">' + (right ? "Next ›" : "‹ Previous") + '</span><span class="nm">' + x.name + "</span></button>";
+  return '<article class="view wrap"><header class="case-head st" style="--i:0"><div>'
+    + '<p class="case-num">The Ultra Luxury Market</p>'
+    + '<h1 class="h-display" style="margin-top:6px">' + h.name + "</h1></div>"
+    + '<span class="badge">' + MARKET.type_labels[h.type] + "</span></header>"
+    + '<div class="st" style="--i:2">'
+    + '<p class="pane-h">' + mktPlace(h) + "</p>"
+    + '<div class="kpis" style="margin-top:14px">' + kpis.map(([n, c]) =>
+        '<div class="kpi"><div class="num">' + n + '</div><div class="cap">' + c + "</div></div>").join("") + "</div>"
+    + '<p class="mkt-none">A case study for this property is not yet written. The portal holds its collected rate series, which the market index prints; the property record, the read against the underwrite and the estimated P&amp;L are still to be built.</p>'
+    + "</div>"
+    + '<nav class="pager">'
+    + (prev ? btn(prev, false) : '<button data-hash="#/c/market"><span class="pg-l">‹ Back</span><span class="nm">The Ultra Luxury Market</span></button>')
+    + (next ? btn(next, true) : '<button class="r" data-hash="#/c/market"><span class="pg-l">Back ›</span><span class="nm">The Ultra Luxury Market</span></button>')
+    + "</nav>" + footHTML() + "</article>";
 }
-
 </script>
 <script>
 /* ══════════════════════════════════════════════════════════════════════
@@ -4970,7 +5200,8 @@ function caseRecordHTML(c) {
     + '<p class="src">' + (hasPageRef(c) ? "<b>Page references above are to the Investment Memorandum, August 2026.</b><br>" : "") + c.src + "</p></div>";
 }
 
-const CASE_VIEWS = [{ id: "", title: "The record" }, { id: "pnl", title: "Estimated P&amp;L" }];
+const CASE_VIEWS = [{ id: "", title: "The record" }, { id: "rate", title: "Rate record" },
+                    { id: "pnl", title: "Estimated P&amp;L" }];
 
 function viewCase(c, tab) {
   const prev = CASES[c.n - 2], next = CASES[c.n];
@@ -4979,7 +5210,8 @@ function viewCase(c, tab) {
     + '<h1 class="h-display" style="margin-top:6px">' + c.name + "</h1></div>"
     + '<span class="badge">' + c.layer + "</span></header>"
     + tabsHTML(CASE_VIEWS, tab, x => "#/h/" + c.slug + (x.id ? "/" + x.id : ""))
-    + '<div class="st" style="--i:2">' + (tab === "pnl" ? pnlHotelHTML(c.slug) : caseRecordHTML(c)) + "</div>"
+    + '<div class="st" style="--i:2">' + (tab === "pnl" ? pnlHotelHTML(c.slug)
+        : tab === "rate" ? mktRecordHTML(MKT_BY_CASE[c.slug]) : caseRecordHTML(c)) + "</div>"
     + '<nav class="pager">'
     + (prev ? '<button data-slug="' + prev.slug + '"><span class="pg-l">‹ Previous</span><span class="nm">' + prev.name + "</span></button>"
             : '<button data-ch="evidence"><span class="pg-l">‹ Back</span><span class="nm">Evidence &amp; Comparables</span></button>')
@@ -5195,11 +5427,18 @@ function route() {
 
   if (parts[0] === "h" && BY_SLUG[parts[1]]) {
     const c = BY_SLUG[parts[1]];
-    const tab = parts[2] === "pnl" ? "pnl" : "";
+    const tab = parts[2] === "pnl" ? "pnl" : parts[2] === "rate" ? "rate" : "";
     html = viewCase(c, tab); chapId = "evidence";
-    eyebrow = "Case studies · " + c.name + (tab ? " · estimated P&L" : "");
+    eyebrow = "Case studies · " + c.name
+      + (tab === "pnl" ? " · estimated P&L" : tab === "rate" ? " · rate record" : "");
     back = "Comparables"; backHash = "#/c/evidence";
     document.title = c.name + " — Fawley Court";
+  } else if (parts[0] === "m" && MKT_BY_SLUG[parts[1]]) {
+    const h = MKT_BY_SLUG[parts[1]];
+    html = viewMarketHotel(h); chapId = "market";
+    eyebrow = "Chapter 10 · The Ultra Luxury Market · " + h.name;
+    back = "The Ultra Luxury Market"; backHash = "#/c/market";
+    document.title = h.name + " — Fawley Court";
   } else if (parts[0] === "c" && CH_BY_ID[parts[1]]) {
     const ch = CH_BY_ID[parts[1]];
     const v = viewOf(ch, parts[2]);
@@ -5353,12 +5592,23 @@ document.addEventListener("click", e => {
     CXSTATE.open[n] = open;
     return;
   }
-  const mh = t.closest(".mkt-h");
-  if (mh) {
-    const row = mh.parentElement;
-    const open = !row.classList.contains("open");
-    row.classList.toggle("open", open);
-    mh.setAttribute("aria-expanded", String(open));
+  const mt = t.closest("[data-mktab]");
+  if (mt) {
+    MKSTATE.tab = mt.dataset.mktab;
+    $$("[data-mktab]").forEach(x => x.setAttribute("aria-selected", String(x === mt)));
+    const g = $("#mktgrid");
+    if (g) g.innerHTML = mktGridInner();
+    return;
+  }
+  const mv = t.closest("[data-mkcard]");
+  if (mv) {
+    const card = mv.dataset.mkcard;
+    document.documentElement.dataset.mkcard = card;
+    try { localStorage.setItem("mkcard", card); } catch (e) {}
+    $$("#mkvar button").forEach(x => x.setAttribute("aria-pressed", String(x === mv)));
+    const u = new URL(location.href);
+    u.searchParams.set("variants", "1"); u.searchParams.set("card", card);
+    history.replaceState(null, "", u);
     return;
   }
   const qh = t.closest(".q-h");
@@ -5482,6 +5732,9 @@ document.addEventListener("keydown", e => {
 $("#back").addEventListener("click", e => go(e.currentTarget.dataset.hash || "#/"));
 
 buildChips();
+/* the switcher shows which treatment is live */
+$$("#mkvar button").forEach(b =>
+  b.setAttribute("aria-pressed", String(b.dataset.mkcard === document.documentElement.dataset.mkcard)));
 window.addEventListener("hashchange", route);
 route();
 

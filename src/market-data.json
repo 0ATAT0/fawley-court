@@ -7,12 +7,23 @@
   "A flat month is usually season-band pricing, which is how these hotels sell, not a fault. The exception is a flat month far outside the property's own range.",
   "These are lead-in rates, not achieved ADR. No property in this set publishes an achieved rate."
  ],
+ "type_basis": "Each property is grouped by its setting: an inland estate or demesne, a sea coast or island, a lake shore, an alpine valley, or a palace, town or village. The grouping is the portal's own reading of the setting each research pack records, not a classification any of these hotels publishes.",
+ "type_labels": {
+  "estate": "Country estate",
+  "coast": "Coast and island",
+  "lake": "Lakeside",
+  "alpine": "Alpine",
+  "town": "Palace, town and village"
+ },
  "vat_note": "Accommodation VAT differs by country: 20% United Kingdom, 10% France Italy Austria Spain, 13% Greece, 13.5% Ireland. The desk's divide-by-1.20 is a United Kingdom constant and does not hold outside it.",
  "hotels": [
   {
-   "name": "Chateau de la Messardiere",
+   "name": "Château de la Messardière",
+   "slug": "chateau-de-la-messardiere",
    "country": "FR",
    "region": "St-Tropez",
+   "type": "coast",
+   "case_slug": "messardiere",
    "in_cohort": true,
    "engine": "synxis",
    "window": [
@@ -41,8 +52,11 @@
   },
   {
    "name": "Hotel Pitrizza",
+   "slug": "hotel-pitrizza",
    "country": "IT",
    "region": "Costa Smeralda",
+   "type": "coast",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "synxis",
    "window": [
@@ -71,8 +85,11 @@
   },
   {
    "name": "Castiglion del Bosco",
+   "slug": "castiglion-del-bosco",
    "country": "IT",
    "region": "Montalcino",
+   "type": "estate",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "rosewood-crs (synxis lead-avail proxy)",
    "window": [
@@ -111,8 +128,11 @@
   },
   {
    "name": "Belmond Hotel Splendido",
+   "slug": "belmond-hotel-splendido",
    "country": "IT",
    "region": "Portofino",
+   "type": "coast",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "synxis",
    "window": [
@@ -147,9 +167,12 @@
    "year_round": false
   },
   {
-   "name": "Le Grand Controle",
+   "name": "Le Grand Contrôle",
+   "slug": "le-grand-controle",
    "country": "FR",
    "region": "Versailles",
+   "type": "town",
+   "case_slug": "grand-controle",
    "in_cohort": true,
    "engine": "synxis",
    "window": [
@@ -186,8 +209,11 @@
   },
   {
    "name": "Castello di Reschio",
+   "slug": "castello-di-reschio",
    "country": "IT",
    "region": "Umbria",
+   "type": "estate",
+   "case_slug": "reschio",
    "in_cohort": true,
    "engine": "travelclick",
    "window": [
@@ -225,8 +251,11 @@
   },
   {
    "name": "Belmond Caruso",
+   "slug": "belmond-caruso",
    "country": "IT",
    "region": "Ravello",
+   "type": "coast",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "belmond bbe (own CRS proxy)",
    "window": [
@@ -260,8 +289,11 @@
   },
   {
    "name": "La Reserve Ramatuelle",
+   "slug": "la-reserve-ramatuelle",
    "country": "FR",
    "region": "Ramatuelle",
+   "type": "coast",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "bookwize",
    "window": [
@@ -291,8 +323,11 @@
   },
   {
    "name": "Belmond Hotel Cipriani",
+   "slug": "belmond-hotel-cipriani",
    "country": "IT",
    "region": "Venice",
+   "type": "town",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "synxis",
    "window": [
@@ -323,8 +358,11 @@
   },
   {
    "name": "Amanzoe",
+   "slug": "amanzoe",
    "country": "GR",
    "region": "Porto Heli",
+   "type": "coast",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "azds",
    "window": [
@@ -359,8 +397,11 @@
   },
   {
    "name": "Aman Rosa Alpina",
+   "slug": "aman-rosa-alpina",
    "country": "IT",
    "region": "Dolomites",
+   "type": "alpine",
+   "case_slug": "rosa-alpina",
    "in_cohort": true,
    "engine": "azds",
    "window": [
@@ -395,9 +436,12 @@
    "year_round": false
   },
   {
-   "name": "Airelles Val d Isere",
+   "name": "Airelles Val d'Isère",
+   "slug": "airelles-val-d-isere",
    "country": "FR",
    "region": "Val d Isere",
+   "type": "alpine",
+   "case_slug": null,
    "in_cohort": false,
    "engine": "synxis",
    "window": [
@@ -429,8 +473,11 @@
   },
   {
    "name": "Belmond Villa San Michele",
+   "slug": "belmond-villa-san-michele",
    "country": "IT",
    "region": "Fiesole",
+   "type": "town",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "belmond bbe (own CRS proxy)",
    "window": [
@@ -468,8 +515,11 @@
   },
   {
    "name": "La Bastide de Gordes",
+   "slug": "la-bastide-de-gordes",
    "country": "FR",
    "region": "Provence",
+   "type": "town",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "synxis",
    "window": [
@@ -499,8 +549,11 @@
   },
   {
    "name": "Le Sirenuse",
+   "slug": "le-sirenuse",
    "country": "IT",
    "region": "Positano",
+   "type": "coast",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "azds",
    "window": [
@@ -535,8 +588,11 @@
   },
   {
    "name": "Villa d'Este",
+   "slug": "villa-d-este",
    "country": "IT",
    "region": "Lake Como",
+   "type": "lake",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "synxis",
    "window": [
@@ -574,8 +630,11 @@
   },
   {
    "name": "Belmond Castello di Casole",
+   "slug": "belmond-castello-di-casole",
    "country": "IT",
    "region": "Tuscany",
+   "type": "estate",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "synxis",
    "window": [
@@ -611,8 +670,11 @@
   },
   {
    "name": "Hotel du Cap-Eden-Roc",
+   "slug": "hotel-du-cap-eden-roc",
    "country": "FR",
    "region": "Antibes",
+   "type": "coast",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "azds",
    "window": [
@@ -641,8 +703,11 @@
   },
   {
    "name": "Il Pellicano",
+   "slug": "il-pellicano",
    "country": "IT",
    "region": "Porto Ercole",
+   "type": "coast",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "azds",
    "window": [
@@ -676,8 +741,11 @@
   },
   {
    "name": "Villa La Coste",
+   "slug": "villa-la-coste",
    "country": "FR",
    "region": "Provence",
+   "type": "estate",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "travelclick",
    "window": [
@@ -713,8 +781,11 @@
   },
   {
    "name": "Il San Pietro di Positano",
+   "slug": "il-san-pietro-di-positano",
    "country": "IT",
    "region": "Positano",
+   "type": "coast",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "azds",
    "window": [
@@ -747,8 +818,11 @@
   },
   {
    "name": "Adare Manor",
+   "slug": "adare-manor",
    "country": "IE",
    "region": "Co. Limerick",
+   "type": "estate",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "avvio",
    "window": [
@@ -786,9 +860,12 @@
    "year_round": true
   },
   {
-   "name": "Pan Dei Palais, St-Tropez",
+   "name": "Pan Deï Palais, St-Tropez",
+   "slug": "pan-dei-palais-st-tropez",
    "country": "FR",
    "region": "St-Tropez",
+   "type": "coast",
+   "case_slug": null,
    "in_cohort": false,
    "engine": "synxis",
    "window": [
@@ -819,8 +896,11 @@
   },
   {
    "name": "Borgo Egnazia",
+   "slug": "borgo-egnazia",
    "country": "IT",
    "region": "Puglia",
+   "type": "coast",
+   "case_slug": "borgo-egnazia",
    "in_cohort": true,
    "engine": "ermes/blastness",
    "window": [
@@ -858,8 +938,11 @@
   },
   {
    "name": "Ballyfin Demesne",
+   "slug": "ballyfin-demesne",
    "country": "IE",
    "region": "Co. Laois",
+   "type": "estate",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "netaffinity",
    "window": [
@@ -898,8 +981,11 @@
   },
   {
    "name": "Passalacqua",
+   "slug": "passalacqua",
    "country": "IT",
    "region": "Lake Como",
+   "type": "lake",
+   "case_slug": "passalacqua",
    "in_cohort": true,
    "engine": "synxis",
    "window": [
@@ -932,8 +1018,11 @@
   },
   {
    "name": "Royal Champagne",
+   "slug": "royal-champagne",
    "country": "FR",
    "region": "Champillon",
+   "type": "estate",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "synxis",
    "window": [
@@ -972,8 +1061,11 @@
   },
   {
    "name": "Estelle Manor",
+   "slug": "estelle-manor",
    "country": "UK",
    "region": "Oxfordshire",
+   "type": "estate",
+   "case_slug": "estelle",
    "in_cohort": true,
    "engine": "desk rate_calendar",
    "window": [
@@ -1011,9 +1103,52 @@
    "year_round": true
   },
   {
+   "name": "Son Bunyola",
+   "slug": "son-bunyola",
+   "country": "ES",
+   "region": "Mallorca",
+   "type": "estate",
+   "case_slug": null,
+   "in_cohort": true,
+   "engine": "azds",
+   "window": [
+    "2026-08-18",
+    "2027-08-17"
+   ],
+   "nights_in_window": 365,
+   "bookable": 219,
+   "months_bookable": 9,
+   "monthly_median": {
+    "Mar": 589,
+    "Apr": 713,
+    "May": 875,
+    "Jun": 1441,
+    "Jul": 1441,
+    "Aug": 1441,
+    "Sep": 1188,
+    "Oct": 858,
+    "Nov": 540
+   },
+   "longest_closed_run_nights": 117,
+   "meal_basis": "B&B",
+   "caveat": "Rates are the room step, not the calendar: this engine's calendar prints 0.97x the bookable rate on 199 of 220 nights. The 2027 season is loaded as flat bands below what the hotel achieved in summer 2026, so the full-year median mixes a yield-managed near window with an unopened next season",
+   "p25": 732,
+   "median": 875,
+   "p75": 1441,
+   "min": 480,
+   "max": 1929,
+   "median_net_vat": 795,
+   "peak_to_trough": 2.67,
+   "credible_annual_series": true,
+   "year_round": false
+  },
+  {
    "name": "Rosewood Schloss Fuschl",
+   "slug": "rosewood-schloss-fuschl",
    "country": "AT",
    "region": "Salzburg",
+   "type": "lake",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "rosewood-crs (synxis lead-avail proxy)",
    "window": [
@@ -1051,8 +1186,11 @@
   },
   {
    "name": "Heckfield Place",
+   "slug": "heckfield-place",
    "country": "UK",
    "region": "Hampshire",
+   "type": "estate",
+   "case_slug": "heckfield",
    "in_cohort": true,
    "engine": "desk rate_calendar",
    "window": [
@@ -1091,8 +1229,11 @@
   },
   {
    "name": "Gleneagles",
+   "slug": "gleneagles",
    "country": "UK",
    "region": "Perthshire",
+   "type": "estate",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "desk rate_calendar",
    "window": [
@@ -1130,8 +1271,11 @@
   },
   {
    "name": "Coworth Park",
+   "slug": "coworth-park",
    "country": "UK",
    "region": "Ascot",
+   "type": "estate",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "desk rate_calendar",
    "window": [
@@ -1170,8 +1314,11 @@
   },
   {
    "name": "Chewton Glen",
+   "slug": "chewton-glen",
    "country": "UK",
    "region": "Hampshire",
+   "type": "estate",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "desk rate_calendar",
    "window": [
@@ -1210,8 +1357,11 @@
   },
   {
    "name": "Beaverbrook",
+   "slug": "beaverbrook",
    "country": "UK",
    "region": "Surrey",
+   "type": "estate",
+   "case_slug": "beaverbrook",
    "in_cohort": true,
    "engine": "desk rate_calendar",
    "window": [
@@ -1250,8 +1400,11 @@
   },
   {
    "name": "Cliveden House",
+   "slug": "cliveden-house",
    "country": "UK",
    "region": "Berkshire",
+   "type": "estate",
+   "case_slug": "cliveden",
    "in_cohort": true,
    "engine": "desk rate_calendar",
    "window": [
@@ -1289,9 +1442,12 @@
    "year_round": true
   },
   {
-   "name": "Domaine des Etangs",
+   "name": "Domaine des Étangs",
+   "slug": "domaine-des-etangs",
    "country": "FR",
    "region": "Charente",
+   "type": "estate",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "synxis",
    "window": [
@@ -1324,8 +1480,11 @@
   },
   {
    "name": "Danesfield House",
+   "slug": "danesfield-house",
    "country": "UK",
    "region": "Buckinghamshire",
+   "type": "estate",
+   "case_slug": null,
    "in_cohort": true,
    "engine": "desk rate_calendar",
    "window": [
@@ -1364,8 +1523,11 @@
   },
   {
    "name": "Les Airelles, Courchevel",
+   "slug": "les-airelles-courchevel",
    "country": "FR",
    "region": "Courchevel",
+   "type": "alpine",
+   "case_slug": null,
    "in_cohort": false,
    "engine": "synxis",
    "window": [
@@ -1382,5 +1544,50 @@
    "credible_annual_series": false,
    "year_round": false
   }
- ]
+ ],
+ "villas": [
+  {
+   "name": "Sa Punta de S'Aguila (5 bed)",
+   "estate": "Son Bunyola",
+   "country": "ES",
+   "bedrooms": 5,
+   "sellable_nights": 302,
+   "nights_in_window": 365,
+   "currency": "EUR",
+   "min": 2900,
+   "median": 6400,
+   "max": 9000,
+   "median_gbp": 5488,
+   "median_per_bedroom": 1280
+  },
+  {
+   "name": "Sa Terra Rotja (5 bed)",
+   "estate": "Son Bunyola",
+   "country": "ES",
+   "bedrooms": 5,
+   "sellable_nights": 328,
+   "nights_in_window": 365,
+   "currency": "EUR",
+   "min": 2900,
+   "median": 6400,
+   "max": 9000,
+   "median_gbp": 5488,
+   "median_per_bedroom": 1280
+  },
+  {
+   "name": "Son Balagueret (4 bed)",
+   "estate": "Son Bunyola",
+   "country": "ES",
+   "bedrooms": 4,
+   "sellable_nights": 180,
+   "nights_in_window": 365,
+   "currency": "EUR",
+   "min": 1900,
+   "median": 3600,
+   "max": 6000,
+   "median_gbp": 3087,
+   "median_per_bedroom": 900
+  }
+ ],
+ "villas_basis": "Whole-house self-catering lets on the Son Bunyola estate, sold per night with a minimum stay of three nights in the shoulder and four in peak, and no meals. They are not comparable to a nightly room rate and are kept out of the hotel index. They matter here because a hotel with separately-sold houses beside it is the shape of the subject. They clear EUR900 to EUR1,280 a bedroom against a hotel median of EUR1,020 a room, so the house limb earns on space and length of stay rather than on a rate premium — and the four-bedroom house clears least per bedroom of the three."
 }

@@ -11,7 +11,8 @@ ROUTES = ["#/", "#/c/summary", "#/c/asset", "#/c/asset/title", "#/c/evidence",
           "#/c/evidence/pnl", "#/c/underwrite", "#/c/underwrite/profile",
           "#/c/capital", "#/c/capital/schedule", "#/c/capital/phasing", "#/c/returns",
           "#/c/bridge", "#/c/dd", "#/c/dd/asks", "#/c/cheatsheet",
-          "#/h/cliveden", "#/h/cliveden/pnl", "#/h/passalacqua/pnl"]
+          "#/h/cliveden", "#/h/cliveden/pnl", "#/h/passalacqua/pnl",
+          "#/c/market", "#/h/reschio/rate", "#/m/royal-champagne", "#/m/adare-manor"]
 
 
 async def main():
@@ -28,7 +29,7 @@ async def main():
         # let the page warm the full-size plates
         await page.wait_for_timeout(9000)
         keys = await page.evaluate(
-            "caches.open('fawley-court-v3').then(c => c.keys().then(k => k.map(r => new URL(r.url).pathname)))")
+            "caches.open('fawley-court-v4').then(c => c.keys().then(k => k.map(r => new URL(r.url).pathname)))")
         print("cached entries:", len(keys))
         for k in sorted(keys):
             print("   ", k)

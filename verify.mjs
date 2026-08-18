@@ -59,6 +59,11 @@ const restrikeMd = fs.readFileSync(DEAL + "Model/docs/v16-restrike-20260818.md",
 const qsSource = fs.readFileSync(DEAL + "Research/vendor-qs-crosscheck-20260816.md", "utf8");
 const pnlSource = JSON.parse(fs.readFileSync(PNLDIR + "web-data.json", "utf8"));
 const pnlRegister = fs.readFileSync(PNLDIR + "REGISTER.md", "utf8");
+/* the ultra-luxury market pack, and the run record behind it */
+const MKTDIR = DEAL + "Research/cohort-2026-08/";
+const mktSource = JSON.parse(fs.readFileSync(MKTDIR + "market-web-data.json", "utf8"));
+const mktRecord = ["RATES.md", "RATES-round2.md", "RATES-new-candidates.md", "FINDINGS.md"]
+  .map(f => fs.readFileSync(MKTDIR + f, "utf8")).join(String.fromCharCode(10));
 
 /* the page's data, evaluated out of the page itself */
 const grab = (from, to) => {
@@ -73,9 +78,11 @@ const mod = new Function(
   grab("const CHAPTERS = [", "</script>") +
   grab("const CASES = [", "const BY_SLUG") +
   grab("const CHEAT = {", "</script>") +
-  grab("const QS = {", "/*QS-DATA-END*/") +
+  grab("const QS = {", "/*QS-DATA-END*/") + ";" +
+  grab("const MKT_M =", "/* ── a property page") +
   "; return { FIGS, V16, CAPEX, DIALS, DIAL_SRC, PLATES, FIELD, LADDER, BRIDGE, PNL, PNLFMT, PNL_CASE,"
-  + " PNL_NOTES, PNL_PROSE, CHAPTERS, CASES, CHEAT, QS };"
+  + " PNL_NOTES, PNL_PROSE, CHAPTERS, CASES, CHEAT, QS, MARKET, MKT_ALL, MKT_SUBJECT, MKT_BY_SLUG,"
+  + " MKT_BY_CASE, MKSTATE, marketIndexHTML, mktGridInner, mktRecordHTML, mktGbp };"
 )();
 
 const ent = s => String(s)
@@ -98,6 +105,9 @@ const csSpecText = quotes(JSON.stringify(csSpec).replace(/\\"/g, '"')).replace(/
 const csRenderText = quotes(csRender.replace(/ \| /g, " ")).replace(/\s+/g, " ").toLowerCase();
 /* the P&L build record, with its markdown emphasis removed */
 const pnlRegText = quotes(pnlRegister.replace(/\*/g, "")).replace(/\s+/g, " ").toLowerCase();
+/* the market pack and its run record, as one haystack for figure registration */
+const mktText = quotes(JSON.stringify(mktSource) + " " + mktRecord.replace(/\*/g, ""))
+  .replace(/\s+/g, " ").toLowerCase();
 
 let fails = 0, checked = 0;
 const fail = (l, d) => { fails++; console.log(`\n  ${l}\n        ${d}`); };
@@ -216,7 +226,7 @@ const FIG_OK_EXTRA = new Set();
 const registered = t => REGISTERED.has(t) || CAPEX_VALUES.has(t) || FIG_OK_EXTRA.has(t)
   || deckText.includes(t) || bridgeText.includes(t) || restrikeText.includes(t)
   || csRenderText.includes(t) || csSpecText.includes(t) || pnlRegText.includes(t)
-  || capexRegText.includes(t) || qsSource.toLowerCase().includes(t);
+  || capexRegText.includes(t) || qsSource.toLowerCase().includes(t) || mktText.includes(t);
 const prose = (label, text, hay = deckText, hayName = "slides.md") => {
   const t = norm(text).toLowerCase();
   if (!t) return;
@@ -831,5 +841,189 @@ checked++;
 if (!mod.CHAPTERS.find(c => c.id === "dd").views.some(v => v.lead.some(b => b[0] === "qs")))
   fail("REGISTER NOT IN DILIGENCE", "the 87-question register must lead the merged diligence chapter");
 
-console.log(`\n${fails === 0 ? "PASS" : "FAIL"} — ${checked} checks, ${fails} failures  (${subjChecked} subject-cell figures, ${pnlFigures} P&L figures, ${ownProse} portal-authored lines figure-checked)`);
+/* ══ G · THE ULTRA-LUXURY MARKET ═══════════════════════════════════════
+
+   The market chapter prints thirty-five collected rate series. Nothing in it
+   is typed into the page: the pack is spliced whole and the cards are rendered
+   from it. So the gate is the same shape as the P&L pack's —
+
+   G1  the shipped block equals Research/cohort-2026-08/market-web-data.json,
+       leaf for leaf;
+   G2  every figure on every card is this file's own independent formatting of
+       that source, checked against the chapter's rendered HTML;
+   G3  the index, tab and band counts are the source's own counts;
+   G4  every card leads to a route that exists;
+   G5  the basis, VAT and grouping prose is the pack's own wording;
+   G6  the ten rate records print the source's own series.
+   ══════════════════════════════════════════════════════════════════════ */
+
+const mkPath = (a, b, path) => {
+  if (a === b) return;
+  const ta = a === null ? "null" : Array.isArray(a) ? "array" : typeof a;
+  const tb = b === null ? "null" : Array.isArray(b) ? "array" : typeof b;
+  if (ta !== tb) { fail("MARKET PACK DRIFT", path + ": shipped " + ta + ", source " + tb); return; }
+  if (ta === "object") {
+    const ka = Object.keys(a), kb = Object.keys(b);
+    for (const k of new Set([...ka, ...kb])) {
+      if (!(k in a)) { fail("MARKET PACK DRIFT", path + "." + k + " missing from the shipped block"); continue; }
+      if (!(k in b)) { fail("MARKET PACK DRIFT", path + "." + k + " is in the page and not in the source"); continue; }
+      mkPath(a[k], b[k], path + "." + k);
+    }
+    return;
+  }
+  if (ta === "array") {
+    if (a.length !== b.length) { fail("MARKET PACK DRIFT", path + ": length " + a.length + " vs " + b.length); return; }
+    a.forEach((x, i) => mkPath(x, b[i], path + "[" + i + "]"));
+    return;
+  }
+  fail("MARKET PACK DRIFT", path + ': shipped "' + a + '", source "' + b + '"');
+};
+checked++;
+mkPath(mod.MARKET, mktSource, "MARKET");
+
+/* this file's own formatting, never the page's */
+const mkGbp = n => "£" + Math.round(n).toLocaleString("en-GB");
+const MK_CTRY = { IT: "Italy", FR: "France", IE: "Ireland", GR: "Greece",
+                  AT: "Austria", ES: "Spain", UK: "United Kingdom" };
+const mkCohort = mktSource.hotels.filter(h => h.in_cohort !== false);
+const mkEu = mkCohort.filter(h => h.country !== "UK");
+const mkUk = mkCohort.filter(h => h.country === "UK");
+
+mod.MKSTATE.tab = "eu"; const mkEuHtml = mod.marketIndexHTML();
+mod.MKSTATE.tab = "uk"; const mkUkHtml = mod.marketIndexHTML();
+mod.MKSTATE.tab = "eu";
+const mkHas = (label, hay, needle) => {
+  checked++;
+  if (!hay.includes(needle)) fail("MARKET FIGURE NOT PRINTED  " + label, '"' + needle + '"');
+};
+
+let mktFigures = 0;
+for (const h of mkCohort) {
+  const hay = h.country === "UK" ? mkUkHtml : mkEuHtml;
+  const where = h.name;
+  mkHas(where + " name", hay, ">" + h.name + "<");
+  mkHas(where + " place", hay, h.region + " · " + MK_CTRY[h.country]);
+  mkHas(where + " calendar", hay, h.months_bookable + " of 12 months");
+  if (h.median) {
+    mkHas(where + " median", hay, mkGbp(h.median) + "</span>");
+    mkHas(where + " net of VAT", hay, mkGbp(h.median_net_vat) + " net of VAT");
+    mktFigures += 2;
+  } else {
+    mkHas(where + " no inventory", hay, "No bookable inventory");
+  }
+  if (h.caveat) mkHas(where + " caveat", hay, h.caveat);
+  /* the flags are the source's own fields, not a reading of them */
+  if (h.year_round) mkHas(where + " year-round", hay, ">Year-round<");
+  if (!h.credible_annual_series && h.bookable) mkHas(where + " thin series", hay, "Thin series");
+  if (h.meal_basis === "package") mkHas(where + " meal basis", hay, "Bundled package");
+  mktFigures += 1;
+}
+
+/* the subject is in both tabs, on its own terms */
+for (const [t, hay] of [["Europe", mkEuHtml], ["the United Kingdom", mkUkHtml]]) {
+  mkHas("subject on " + t, hay, ">Fawley Court<");
+  mkHas("subject rate on " + t, hay, mkGbp(1000) + "</span><span class=\"u\">underwritten");
+}
+/* and the subject card carries the underwrite's own ADR and occupancy, printed,
+   from the measured record — the card says why its bars are drawn in outline */
+for (const [t, hay] of [["Europe", mkEuHtml], ["the United Kingdom", mkUkHtml]]) {
+  mkHas("subject note on " + t, hay, mod.MKT_SUBJECT.note);
+}
+for (const k of ["adr_y1", "adr_y7", "occ_stab"]) {
+  checked++;
+  if (!mod.MKT_SUBJECT.note.includes(v16Src.fig[k]))
+    fail("SUBJECT NOTE OFF THE MEASURED RECORD", k + " = " + v16Src.fig[k]);
+  mkHas("subject " + k, mkEuHtml, v16Src.fig[k]);
+}
+
+/* G3 — the counts are the source's */
+mkHas("Europe tab count", mkEuHtml, "Europe</span><span class=\"c\">" + mkEu.length);
+mkHas("United Kingdom tab count", mkEuHtml, "The United Kingdom</span><span class=\"c\">" + (mkUk.length + 1));
+/* the figures the contents prints for this chapter are the pack's own counts —
+   read off CHAPTERS rather than written here, so a hotel joining the set cannot
+   leave a stale literal behind in this file */
+{
+  const ch = mod.CHAPTERS.find(c => c.id === "market");
+  checked++;
+  if (+ch.figures[0][0] !== mkCohort.length)
+    fail("MARKET COHORT SIZE", "the contents states " + ch.figures[0][0] + " hotels; the pack holds " + mkCohort.length);
+  checked++;
+  if (+ch.figures[1][0] !== mkCohort.filter(h => h.year_round).length)
+    fail("MARKET YEAR-ROUND COUNT", "the contents states " + ch.figures[1][0] + "; the pack holds "
+      + mkCohort.filter(h => h.year_round).length);
+  checked++;
+  if (ch.views[0].figure !== mkCohort.length + " hotels")
+    fail("MARKET VIEW FIGURE", ch.views[0].figure + " against a pack of " + mkCohort.length);
+}
+for (const [tab, hay, rows] of [["eu", mkEuHtml, mkEu], ["uk", mkUkHtml, mkUk]]) {
+  for (const t of Object.keys(mktSource.type_labels)) {
+    const n = rows.filter(h => h.type === t).length;
+    if (!n) continue;
+    const subj = mod.MKT_SUBJECT.type === t;
+    mkHas("band " + t + " on " + tab, hay,
+      '<span class="t">' + mktSource.type_labels[t] + '</span><span class="c">'
+      + n + (n === 1 ? " hotel" : " hotels") + (subj ? ", and the subject" : "") + "</span>");
+  }
+  /* every card in the tab, and no card twice */
+  const cards = (hay.match(/class="mk[ "]/g) || []).length;
+  checked++;
+  if (cards !== rows.length + 1) fail("MARKET CARD COUNT", tab + ": " + cards + " cards for " + rows.length + " hotels and the subject");
+}
+
+/* G4 — every card leads somewhere that resolves */
+const caseSlugs = new Set(mod.CASES.map(c => c.slug));
+for (const hay of [mkEuHtml, mkUkHtml]) {
+  for (const m of hay.matchAll(/data-hash="([^"]+)"/g)) {
+    const hash = m[1];
+    checked++;
+    if (hash.startsWith("#/h/")) {
+      if (!caseSlugs.has(hash.slice(4))) fail("MARKET CARD TO A MISSING CASE", hash);
+    } else if (hash.startsWith("#/m/")) {
+      if (!mktSource.hotels.some(h => h.slug === hash.slice(4))) fail("MARKET CARD TO A MISSING PROPERTY", hash);
+    } else if (hash !== "#/c/underwrite/dial-set") {
+      fail("MARKET CARD TO AN UNKNOWN ROUTE", hash);
+    }
+  }
+}
+/* and the ten written case studies are the ten the pack names */
+checked++;
+{
+  const mapped = mktSource.hotels.filter(h => h.case_slug).map(h => h.case_slug).sort();
+  const written = [...caseSlugs].sort();
+  if (mapped.join("|") !== written.join("|"))
+    fail("MARKET CASE MAP", "pack: " + mapped.join(", ") + "  |  portal: " + written.join(", "));
+}
+
+/* G5 — the basis prose is the pack's own */
+for (const [k, v] of [["basis", mktSource.basis], ["vat_note", mktSource.vat_note],
+                      ["type_basis", mktSource.type_basis]]) {
+  mkHas("chapter " + k, mkEuHtml, v);
+}
+
+/* G6 — the ten rate records print the source's series */
+for (const c of mod.CASES) {
+  const h = mktSource.hotels.find(x => x.case_slug === c.slug);
+  checked++;
+  if (!h) { fail("RATE RECORD WITHOUT A SERIES", c.slug); continue; }
+  const rec = mod.mktRecordHTML(mod.MKT_BY_CASE[c.slug]);
+  const want = [
+    h.name + " · the collected rate series",
+    mkGbp(h.median) + " gross · " + mkGbp(h.median_net_vat) + " net of VAT",
+    mkGbp(h.p25) + " · " + mkGbp(h.median) + " · " + mkGbp(h.p75),
+    mkGbp(h.min) + " to " + mkGbp(h.max),
+    h.peak_to_trough + "×",
+    h.months_bookable + " of 12",
+    h.bookable + " of " + h.nights_in_window + " nights",
+    h.longest_closed_run_nights + " nights",
+    h.engine + ", " + h.window[0] + " to " + h.window[1]
+  ];
+  for (const w of want) { mkHas("rate record " + c.slug, rec, w); mktFigures++; }
+  for (const [m, v] of Object.entries(h.monthly_median)) {
+    mkHas("rate record " + c.slug + " " + m, rec, "<td>" + mkGbp(v) + "</td>");
+    mktFigures++;
+  }
+}
+
+
+console.log(`\n${fails === 0 ? "PASS" : "FAIL"} — ${checked} checks, ${fails} failures  (${subjChecked} subject-cell figures, ${pnlFigures} P&L figures, ${mktFigures} market figures, ${ownProse} portal-authored lines figure-checked)`);
 process.exit(fails ? 1 : 0);
