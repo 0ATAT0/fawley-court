@@ -1002,17 +1002,18 @@ mkHas("United Kingdom tab count", mkEuHtml, "The United Kingdom</span><span clas
   /* the counts block was cut by ruling; the chapter's own figures are checked above */
   mkHas("All tab count", mkAllHtml, 'All</span><span class="c">' + mkCohort.length);
 }
-for (const [tab, hay, rows] of [["eu", mkEuHtml, mkEu], ["uk", mkUkHtml, mkUk]]) {
-  for (const t of Object.keys(mktSource.type_labels)) {
-    const n = rows.filter(h => h.type === t).length;
-    if (!n) continue;
-    mkHas("band " + t + " on " + tab, hay,
-      '<span class="t">' + mktSource.type_labels[t] + '</span><span class="c">'
-      + n + (n === 1 ? " hotel" : " hotels") + "</span>");
-  }
-  const cards = (hay.match(/class="mk"/g) || []).length;
+/* the bands were cut by ruling: one grid, ordered by rate. So the check is the
+   card count and the order itself. */
+for (const [tab, hay, rows] of [["eu", mkEuHtml, mkEu], ["uk", mkUkHtml, mkUk], ["all", mkAllHtml, mkCohort]]) {
+  const cards = (hay.match(/class="mk" data-mkcard/g) || []).length;
   checked++;
   if (cards !== rows.length) fail("MARKET CARD COUNT", tab + ": " + cards + " cards for " + rows.length + " hotels");
+  const order = [...hay.matchAll(/data-mkcard="([^"]+)"/g)].map(m => m[1]);
+  const want = rows.slice().sort((x, y) => ((y.median || 0) - (x.median || 0))
+    || (y.months_bookable - x.months_bookable)).map(h => h.slug);
+  checked++;
+  if (order.join("|") !== want.join("|"))
+    fail("MARKET GRID NOT IN RATE ORDER", tab + ": " + order.slice(0, 4).join(", ") + " against " + want.slice(0, 4).join(", "));
 }
 
 /* G4 — every card leads somewhere that resolves */

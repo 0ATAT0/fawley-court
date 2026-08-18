@@ -1241,7 +1241,7 @@ body.lb-open { overflow: hidden; }
 .mkt-band-h .c { font-size: var(--fs-cap); color: var(--muted); margin-left: auto; font-variant-numeric: tabular-nums; }
 .mkt-empty { font-size: var(--fs-sm); color: var(--muted); margin-top: 22px; }
 
-.mkt-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 14px; }
+.mkt-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 22px; align-items: start; }
 
 /* ── the card ── */
 .mk {
@@ -4072,14 +4072,9 @@ function mktTypeTabsHTML() {
 }
 
 function mktGridInner() {
-  const rows = mktRows();
+  const rows = mktRows().slice().sort(mktOrder);
   if (!rows.length) return '<p class="mkt-empty">Nothing in the set matches that pair of filters.</p>';
-  const bands = MKT_BANDS.map(t => [t, rows.filter(h => h.type === t).sort(mktOrder)]).filter(x => x[1].length);
-  return bands.map(([t, hs]) =>
-    '<section class="mkt-band"><div class="mkt-band-h">'
-    + '<span class="t">' + MARKET.type_labels[t] + "</span>"
-    + '<span class="c">' + hs.length + (hs.length === 1 ? " hotel" : " hotels") + "</span></div>"
-    + '<div class="mkt-grid">' + hs.map(mktCard).join("") + "</div></section>").join("");
+  return '<div class="mkt-grid">' + rows.map(mktCard).join("") + "</div>";
 }
 
 function mktHeadInner() {

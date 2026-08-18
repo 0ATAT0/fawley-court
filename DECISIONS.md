@@ -473,3 +473,9 @@ hairline beneath.
 deck. Villa San Michele, Hôtel du Cap-Eden-Roc and Rosewood Schloss Fuschl found clean Creative
 Commons replacements; Borgo Egnazia is the clock tower of La Corte from the resort's own press
 room, because Commons holds nothing of the hotel.
+
+**The bands are gone and the grid is one rate-ordered list** (19 August, night): the kind of
+place is what the filter is for, so it no longer heads the grid as well. Cards size to their own
+content rather than stretching to the tallest in the row, which was leaving a dead foot under
+every short card. The gate now checks the grid's order directly — every tab's cards, in rate
+order, against the pack's own sort.
