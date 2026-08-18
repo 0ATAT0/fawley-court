@@ -4009,7 +4009,6 @@ function cxStackBar(s) {
    the graphic it describes. */
 function capexStackHTML() {
   const S = CAPEX.summary;
-  const allow = CX_ON.filter(l => l.source === "ALLOWANCE").reduce((a, l) => a + l.live, 0);
 
   const ledger = '<div class="tbl-scroll wide"><table class="tbl num cxbuild">'
     + '<colgroup><col style="width:25%"><col style="width:12%"><col style="width:13%">'
@@ -4037,10 +4036,7 @@ function capexStackHTML() {
   const side = (label, s, per) => '<div><p class="sub-h">' + label + "<b>" + CX.m1(s.total)
     + '</b><span>' + per + "</span></p>" + cxStackBar(s) + "</div>";
 
-  return '<section class="blk"><h2 class="blk-h">How the ' + CX.m1(S.works_total)
-    + ' is built up<span class="n">' + CAPEX.lines.length + " lines \u00b7 "
-    + CX.pct1(allow / CX_NET_ON) + ' of the construction set as an allowance</span></h2>'
-    + ledger + "</section>"
+  return '<section class="blk">' + ledger + "</section>"
     + '<section class="blk"><h2 class="blk-h">The two sides, in proportion'
     + '<span class="n">each bar is that side\u2019s own total</span></h2>'
     + '<div class="duo" style="--duo:minmax(0,50fr) minmax(0,50fr)">'
@@ -4090,8 +4086,12 @@ function cxSchedInner() {
   const shown = CAPEX.lines.filter(cxMatch);
   const net = shown.filter(l => l.on).reduce((a, l) => a + l.live, 0);
   const gross = shown.reduce((a, l) => a + l.net, 0);
+  /* the allowance share is of what is on screen, so it answers to the filters
+     rather than quoting the whole budget back at a subset of it */
+  const allow = shown.filter(l => l.on && l.source === "ALLOWANCE").reduce((a, l) => a + l.live, 0);
   h += '<p class="qcount" aria-live="polite"><b>' + shown.length + "</b> of " + CAPEX.lines.length
     + " lines · net construction <b>" + CX.m1(net) + "</b>"
+    + (net > 0 ? " · <b>" + CX.pct1(allow / net) + "</b> of it set as an allowance" : "")
     + (CXSTATE.showOff ? " · " + CX.m1(gross - net) + " priced and switched off" : "")
     + (net < CX_NET_ON - 1 ? " · " + CX.pct1(net / CX_NET_ON) + " of the schedule" : "")
     + (CXSTATE.limb || CXSTATE.zone || CXSTATE.q || CXSTATE.showOff
