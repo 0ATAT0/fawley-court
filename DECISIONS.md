@@ -194,3 +194,47 @@ surface that should cost nothing until it is asked for.
 - The contents page keeps air between the description column and the figure
   rail. That white space is the index convention, not the ribbon defect: the
   right rail carries the headline figures.
+
+## Chapter 10, The Ultra Luxury Market (18 August 2026)
+
+Added as a chapter of its own rather than inside Evidence & Comparables, so the form can be
+experimented with without disturbing a settled chapter.
+
+**Ordered by months open, then rate.** This is the whole argument of the page. In this set the
+two run against each other — everything above £1,200 closes for two to seven months, and the
+four properties that trade all twelve months sit at the bottom of the rate table. Sorting by
+rate would have buried that; sorting by calendar makes the page state it structurally.
+
+**Fawley Court sits in the index as the subject**, in the United Kingdom group, on the navy
+subject rule the tables already use. Its twelve bars are drawn as outlines rather than filled,
+because its rate is underwritten and every other row is collected. That distinction had to be
+visible rather than written.
+
+**The strips read season shape, not rate.** Bar height is each month's median against that
+hotel's own peak, so a tall bar on Domaine des Etangs at £522 is the same height as one on
+Messardière at £3,179. The alternative — one shared scale, so height means rate — was rejected
+because it would have flattened the cheap end into slivers and lost the shape, which is the
+finding. The source note says so explicitly, because the chart is otherwise readable as a rate
+comparison.
+
+**Caveats are marked on the row, not only in the disclosure.** Sorting by calendar put Castiglion
+del Bosco at the head of the whole index on a lead-in its own engine refuses for minimum stay.
+An unopened row would have led the page with a figure we know is not sellable, so rows carrying
+a caveat show "read the note" in ochre.
+
+**Two gate failures, both fixed rather than shipped past.** The subject row's tinted ground drops
+`--muted-2` to 4.45:1 against the 4.5 AA threshold — it uses `--muted` at 5.07:1. And the strip
+labels were 9px against a site that has nothing below 11.5px; all eighty `audit.py` findings were
+this chapter's, and they now use the site's own micro size.
+
+**Angus's steer on the form, not yet built:** a card grid with tabs for the United Kingdom and
+Europe, rather than the current grouped list. The data pack is form-agnostic — `MARKET` carries
+the hotels and `marketIndexHTML()` is the only thing that would change — so this is a swap, not
+a rebuild.
+
+**The pack cannot drift.** `Research/cohort-2026-08/build_market_pack.py` produces
+`market-web-data.json` deal-side from the collected series; `tools/inline-market.py` splices it
+between the MARKET-DATA markers and caches `src/market-data.json`. Same shape as capex and the
+P&L pack. Routes were added to `snap.py` and `audit.py`, which both carry their own hardcoded
+route lists.
+
