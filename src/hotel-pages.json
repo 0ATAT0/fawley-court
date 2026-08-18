@@ -173,6 +173,81 @@
    }
   ]
  },
+ "aman-rosa-alpina": {
+  "intro": "Aman Rosa Alpina occupies a village site in San Cassiano, in the Alta Badia valley of the Dolomites, at just over 1,500 metres. A family-run hotel since 1939, it closed for a full rebuild under an Aman partnership agreed in November 2020 and reopened in July 2025 with 51 suites, a new spa and two dining outlets. It sits in the comparable set on the strength of a press-reported rate uplift after that rebuild, testing Fawley Court's underwritten cost base and margin against a comparably scaled European mountain property.",
+  "record_extra": [
+   [
+    "Wellness",
+    "A spa opened with the July 2025 rebuild; press describes it at 1,684 sqm (already noted in the portal's own case study). Treatment-room count and area beyond that figure were not found (search aggregation of reopening press; consistent with the portal's existing citation of The Adept Traveler and One Mile at a Time)."
+   ],
+   [
+    "Food and beverage",
+    "Two outlets identified from the hotel's own current imagery: Il Salotto, a lounge and bar, and The Grill; no Michelin recognition was found for either (aman.com)."
+   ]
+  ],
+  "sources": [
+   "https://www.aman.com/resorts/aman-rosa-alpina"
+  ],
+  "not_found": [
+   "A precise treatment-room count for the spa (only the 1,684 sqm area figure, already held, was found).",
+   "Any occupancy figure.",
+   "Any achieved or booking-engine rate beyond the press-reported reopening figure the portal already holds.",
+   "Michelin recognition for either Il Salotto or The Grill.",
+   "The capital cost of the November 2020-July 2025 rebuild.",
+   "Any wedding or event capacity.",
+   "Any membership or club programme."
+  ],
+  "images": [
+   {
+    "file": "aman-rosa-alpina-2.jpg",
+    "alt": "The timber-clad hotel building against the Dolomites at sunset",
+    "note": "A second exterior angle of the rebuilt timber-and-stone hotel, terraced across the hillside with the Dolomite peaks catching evening light behind it.",
+    "credit": "Aman (hotel's own website)",
+    "licence": "hotel website, rights not cleared for republication",
+    "source_page": "https://www.aman.com/resorts/aman-rosa-alpina"
+   },
+   {
+    "file": "aman-rosa-alpina-3.jpg",
+    "alt": "A suite living area with a central wood-burning stove and a balcony view of the village and mountains",
+    "note": "A suite's living area, glazed on two sides around a freestanding wood-burning stove, with the village of San Cassiano and the Dolomites visible through the open doors.",
+    "credit": "Aman (hotel's own website)",
+    "licence": "hotel website, rights not cleared for republication",
+    "source_page": "https://www.aman.com/resorts/aman-rosa-alpina"
+   },
+   {
+    "file": "aman-rosa-alpina-4.jpg",
+    "alt": "A suite's private timber terrace looking onto the surrounding forest",
+    "note": "A private terrace off one of the suites, two wooden armchairs set on decking, with the forested hillside behind and mountain fencing along the boundary.",
+    "credit": "Aman (hotel's own website)",
+    "licence": "hotel website, rights not cleared for republication",
+    "source_page": "https://www.aman.com/resorts/aman-rosa-alpina"
+   },
+   {
+    "file": "aman-rosa-alpina-5.jpg",
+    "alt": "The outdoor spa pool set into the forest",
+    "note": "The spa's outdoor infinity pool, edged in dark stone with green umbrellas at one corner, set directly against the surrounding pine forest.",
+    "credit": "Aman (hotel's own website)",
+    "licence": "hotel website, rights not cleared for republication",
+    "source_page": "https://www.aman.com/resorts/aman-rosa-alpina"
+   },
+   {
+    "file": "aman-rosa-alpina-6.jpg",
+    "alt": "Il Salotto, the hotel's double-height lounge and bar",
+    "note": "Il Salotto, the double-height lounge and bar, dark timber columns and floor-to-ceiling glazing looking straight onto the pine forest beyond a rear terrace.",
+    "credit": "Aman (hotel's own website)",
+    "licence": "hotel website, rights not cleared for republication",
+    "source_page": "https://www.aman.com/resorts/aman-rosa-alpina"
+   },
+   {
+    "file": "aman-rosa-alpina-7.jpg",
+    "alt": "The village of San Cassiano seen from the hillside above",
+    "note": "A wide view down onto the village of San Cassiano and the surrounding valley floor from the hotel's hillside setting.",
+    "credit": "Aman (hotel's own website)",
+    "licence": "hotel website, rights not cleared for republication",
+    "source_page": "https://www.aman.com/resorts/aman-rosa-alpina"
+   }
+  ]
+ },
  "amanzoe": {
   "intro": "Amanzoe sits on a hilltop above Porto Heli in the eastern Peloponnese, built from nothing as a purpose-designed Aman resort rather than a restoration of an existing house. It is the comparable set's clearest case of a rate this high running alongside a substantial branded-villa programme sold to owners who also draw on the hotel's own facilities, the same hospitality-plus-residences shape Fawley proposes to build. It carries no heritage designation and no conversion story; what it tests is whether resort scale, brand and a defined summer season can sustain ultra-luxury rates without a country-house history behind them.",
   "record": [
@@ -627,6 +702,350 @@
    }
   ]
  },
+ "belmond-castello-di-casole": {
+  "intro": "Castello di Casole sits on a large hilltop estate in the Tuscan countryside near Siena, developed from 2005 as a combined hotel and residential project before Belmond bought it in 2018. The filed Italian company behind it is registered for dealing in its own real estate, not as a pure hotel operator, because the estate still carries an active programme of restored farmhouses and villas sold to private buyers alongside the hotel. It belongs in this set because it tests a question Fawley Court's own structure raises directly: what a country-house hotel conversion looks like once a residential-sales limb is layered onto it, and what happens to that limb when it does not sell out on the hotel's own timeline.",
+  "record": [
+   [
+    "Setting",
+    "A hilltop estate of roughly 1,450 to 1,500 hectares near Casole d'Elsa, Siena province, Tuscany"
+   ],
+   [
+    "Keys",
+    "41 suites at the hotel's 2012 opening; 39 suites currently marketed, plus two private hotel villas, Villa Thesan and Villa Usil, opened for the 2024 season"
+   ],
+   [
+    "Ownership",
+    "Developed from 2005 by Timbers Resorts with SV Capital and the Antonello family; the hotel opened 1 July 2012; Belmond (now LVMH) bought the estate in February 2018 for total consideration of €40.2m, a share purchase of the two Italian companies that owned it"
+   ],
+   [
+    "Corporate structure",
+    "Filed as Castello di Casole S.p.A., classified under Italy's ATECO code for dealing in own real estate, not as a pure hotel company; its stated corporate objects cover construction, renovation and sale of buildings alongside hotel and agricultural activity"
+   ],
+   [
+    "Trading",
+    "FY2024 filed turnover €14.549m and a net loss of €3.510m; FY2023 turnover €12.645m and a net loss of €192k; no EBITDA is disclosed"
+   ],
+   [
+    "Last trade",
+    "€40.2m, February 2018: €38.287m cash plus €1.003m contingent consideration (later lapsed) plus €0.903m acquisition costs; purchase accounting allocated roughly €22.6m to hotel land and buildings and roughly €22.6m to unsold residential land"
+   ],
+   [
+    "Residences",
+    "Originally a 48-plot residential programme of restored and newly built casali and villas; 15 to 16 plots remained unsold at Belmond's 2018 acquisition; the balance is still marketed today as “Casali di Casole” by the original developer, separately from the hotel, with 31 residences cited at a 2019 relaunch"
+   ],
+   [
+    "Wellness",
+    "Essere Spa, set in a former wine cellar: sauna, steam room and a hydro-massage pool, open daily 10:00 to 19:00"
+   ],
+   [
+    "Food and beverage",
+    "Four outlets: Tosca, Castello Grill, Emporio del Castello and Bar Visconti, alongside a historic wine cellar used for tastings and private dining"
+   ]
+  ],
+  "cards": [
+   [
+    "What happened",
+    "The estate was developed from 2005 by Timbers Resorts, in partnership with SV Capital and the Antonello family, as a mixed hotel and residential project: restored and newly built casali and villas for sale, alongside a conversion of the medieval castle into a boutique hotel. The hotel opened on 1 July 2012 as a 41-suite property, later than early marketing had suggested. Belmond bought the estate in February 2018 for total consideration of €40.2m, structured as a share purchase of the two Italian companies that owned it. Purchase accounting split that price roughly evenly: about €22.6m to the hotel's land and buildings, and about €22.6m to unsold residential land, confirming the deal bought a residential land bank as much as it bought a hotel."
+   ],
+   [
+    "What it earns",
+    "The filed entity, Castello di Casole S.p.A., is not a hotel-only profit and loss account. It is registered for dealing in its own real estate, and its corporate objects span construction, renovation and sale of buildings as well as hotel and agricultural activity. FY2024 turnover was €14.5m, close to FY2023's €12.6m, and the entity made a net loss in both years: €3.5m in 2024, €0.2m in 2023. No EBITDA is disclosed. Because the entity carries residential-plot activity alongside hotel operations, this turnover figure cannot be read as a hotel revenue comparator without an adjustment that no public source supports."
+   ],
+   [
+    "What it evidences for Fawley",
+    "The transferable point is scope, not rate. Casole shows a country-house hotel conversion that did not stand alone commercially: the vendor built out a 48-unit residential programme alongside the hotel, and 15 to 16 of those units were still unsold when Belmond bought the estate, six years after the hotel opened, with the remainder still being marketed by a separate developer in 2026. Fawley's own case pairs a 60-key hotel with twelve branded residences on comparable logic, residential sales supporting a return the hotel alone may not carry, with the residential limb running on its own execution timeline. Casole's filed accounts cannot supply a hotel margin or revenue-a-key comparator against Fawley's £756k Year 7 revenue a key or 33.96% GOP, because the entity mixes hotel and property-dealing income; that gap should travel with any citation of the Casole figures."
+   ]
+  ],
+  "against": [
+   [
+    "Rate (lead-in, gross, per night)",
+    "£1,412",
+    "£1,000",
+    "Casole's figure is a lead-in bookable-night rate on an approximately eight-month season; Fawley's is a Year 1 underwritten rate on a 365-day calendar"
+   ],
+   [
+    "Season",
+    "Late March to late November, roughly eight months",
+    "365 days",
+    ""
+   ],
+   [
+    "Filed turnover, entity-wide (FY2024)",
+    "€14.5m",
+    "£45.33m Year 7 revenue (£756k a key)",
+    "Casole's filed entity mixes hotel operations with residential-plot dealing under a single profit and loss account; not a hotel-only figure and not on the same basis as Fawley's per-key revenue"
+   ],
+   [
+    "Acquisition consideration",
+    "€40.2m (February 2018, share purchase of hotel plus residential land)",
+    "£50m ruled entry (asset purchase, hotel; residences separate)",
+    "Currency, date and transaction structure all differ; illustrative of scale only, not a comparable price"
+   ]
+  ],
+  "gap": "No hotel-only trading figures exist for Casole: the filed entity mixes hotel operations with residential-plot dealing, and the historical second owning company, Castello Resort Villas S.p.A., no longer appears in the 2024 consolidation without a traceable public instrument explaining how it left.",
+  "sources": [
+   "https://www.vanslingerlandt.com/wp-content/uploads/2025/03/LVMH-Comptes-consolides-2024-VA-1.pdf",
+   "https://www.ufficiocamerale.it/3082/castello-di-casole-spa",
+   "https://atoka.io/public/it/azienda/castello-di-casole-spa/54179adc270d",
+   "https://www.sec.gov/Archives/edgar/data/1115836/000111583619000004/subsidiaryreport.htm",
+   "https://www.comuneweb.it/egov/CasoleElsa/ammTrasparente/Provvedimenti/Provvedimenti_organi_indirizzo_politico/dettaglio/allegatoFirmato.22688.2022.0.pdf",
+   "https://it.scribd.com/document/271735868/Sole-24-Ore-20150716",
+   "https://www.sec.gov/Archives/edgar/data/1115836/000111583618000029/bel-20180930x10q.htm",
+   "https://www.sec.gov/Archives/edgar/data/1115836/000111583619000004/bel-20181231x10k.htm",
+   "https://mediahub.belmond.com/castello-di-casole-a-belmond-hotel-tuscany-expands-its-offering-with-the-opening-of-two-new-private-villas/",
+   "https://www.timbersresorts.com/resorts/casali-di-casole/",
+   "https://www.prweb.com/releases/Timbers_Resorts_Introduces_Casali_di_Casole_Formerly_Incorporated_into_Castello_di_Casale_Meticulously_Restored_Residences_Feature_Unmatched_Luxury_in_Heart_of_Tuscany/prweb16530364.htm",
+   "https://www.hotelexecutive.com/newswire/5435/timbers-company-launches-castello-di-casole-luxury-resort-and-residence-in-tuscany",
+   "https://www.thecaterer.com/news/international-openings-hotel-castello-di-casole-tuscany-italy",
+   "https://www.hospitalitynet.org/news/4056739/timbers-resorts-announces-grand-opening-of-hotel-castello-di-casole",
+   "https://www.open-resources.it/progetti/castello-di-casole",
+   "https://www.sec.gov/Archives/edgar/data/1115836/000111583618000002/bel-ex99_20180207x8k.htm",
+   "https://registroaziende.it/azienda/castello-di-casole-spa-casole-delsa",
+   "https://www.reportaziende.it/castello_di_casole_spa_si_00051280527",
+   "https://www.belmond.com/hotels/europe/italy/tuscany/belmond-castello-di-casole/about",
+   "https://www.belmond.com/hotels/europe/italy/tuscany/belmond-castello-di-casole/gallery",
+   "https://www.belmond.com/hotels/europe/italy/tuscany/belmond-castello-di-casole/suites",
+   "https://www.belmond.com/hotels/europe/italy/tuscany/belmond-castello-di-casole/junior-suites",
+   "https://www.belmond.com/hotels/europe/italy/tuscany/belmond-castello-di-casole/accommodation",
+   "https://www.belmond.com/hotels/europe/italy/tuscany/belmond-castello-di-casole/spa"
+  ],
+  "conflicts": [
+   "No conflict with the portal's held figures. The FY2024 turnover (€14.55m), filed payroll ratio (32.5%) and 2018 last-trade price (€40.2m) are each corroborated independently in the sources above."
+  ],
+  "not_found": [
+   "A total original restoration or conversion cost for the hotel; only a fragmentary figure of over €12m for one 2010–12 work scope was found, not an all-in figure",
+   "A hotel-only trading margin or EBITDA, as distinct from the filed entity-wide result",
+   "A reliable current (2026) count of unsold developer residential plots",
+   "The legal instrument by which Castello Resort Villas S.p.A., the estate's second historical owning company, left the 2024 consolidation, whether by merger, transfer or dissolution",
+   "A verifiable current employee headcount; third-party sources conflict (98 against 140) and neither is confirmed against primary filed accounts",
+   "The heritage or listing status of the castle building under Italian law"
+  ],
+  "images": [
+   {
+    "file": "belmond-castello-di-casole-2.jpg",
+    "alt": "Castello di Casole seen across the Tuscan hills, a wide landscape view of the hilltop estate",
+    "note": "Second exterior angle, wide landscape view of the castle and its hillside setting",
+    "credit": "Belmond",
+    "licence": "hotel's own website imagery, rights not cleared for republication",
+    "source_page": "https://www.belmond.com/hotels/europe/italy/tuscany/belmond-castello-di-casole/gallery"
+   },
+   {
+    "file": "belmond-castello-di-casole-3.jpg",
+    "alt": "Castello di Casole's stone architecture and tower, a closer exterior view",
+    "note": "Third exterior angle, closer on the castle's stone architecture",
+    "credit": "Belmond",
+    "licence": "hotel's own website imagery, rights not cleared for republication",
+    "source_page": "https://www.belmond.com/hotels/europe/italy/tuscany/belmond-castello-di-casole/gallery"
+   },
+   {
+    "file": "belmond-castello-di-casole-4.jpg",
+    "alt": "The gardens at Castello di Casole",
+    "note": "Grounds and gardens",
+    "credit": "Belmond",
+    "licence": "hotel's own website imagery, rights not cleared for republication",
+    "source_page": "https://www.belmond.com/hotels/europe/italy/tuscany/belmond-castello-di-casole/gallery"
+   },
+   {
+    "file": "belmond-castello-di-casole-5.jpg",
+    "alt": "A Castello di Casole Suite bedroom, with exposed stone archway framing the bed",
+    "note": "Castello di Casole Suite bedroom",
+    "credit": "Belmond",
+    "licence": "hotel's own website imagery, rights not cleared for republication",
+    "source_page": "https://www.belmond.com/hotels/europe/italy/tuscany/belmond-castello-di-casole/accommodation"
+   },
+   {
+    "file": "belmond-castello-di-casole-6.jpg",
+    "alt": "The Essere Spa's hot tub, set in a vaulted stone former wine cellar",
+    "note": "Essere Spa, set in the estate's former wine cellar",
+    "credit": "Belmond",
+    "licence": "hotel's own website imagery, rights not cleared for republication",
+    "source_page": "https://www.belmond.com/hotels/europe/italy/tuscany/belmond-castello-di-casole/spa"
+   },
+   {
+    "file": "belmond-castello-di-casole-7.jpg",
+    "alt": "Emporio del Castello restaurant terrace, with tables set for dinner and hills beyond",
+    "note": "Emporio del Castello restaurant",
+    "credit": "Belmond",
+    "licence": "hotel's own website imagery, rights not cleared for republication",
+    "source_page": "https://www.belmond.com/hotels/europe/italy/tuscany/belmond-castello-di-casole/gallery"
+   }
+  ]
+ },
+ "belmond-hotel-cipriani": {
+  "intro": "Belmond Hotel Cipriani occupies the eastern tip of Giudecca, an island with no natural footfall of its own, reachable from Venice only by the hotel's private launch across the lagoon. Giuseppe Cipriani, of Harry's Bar, opened it in 1958 and it has passed through three ownership eras since: a family sale in 1967, a corporate purchase in 1976 that became Orient-Express Hotels and then Belmond, and LVMH's 2019 acquisition of the whole Belmond portfolio. It sits in this comparable set at the top of the rate ladder, the highest lead-in rate held anywhere in the cohort, and it is the evidence for how lean payroll can run at that end of the market.",
+  "record": [
+   [
+    "Keys",
+    "79 rooms and suites: 63 in the main Cipriani building, 16 in the adjoining 15th-century Palazzo Vendramin. The count has fallen from 102 keys in 2001; an older, widely repeated figure of 96 keys is dated and should not be used without a vintage qualifier"
+   ],
+   [
+    "Heritage",
+    "Palazzo Vendramin is described by the hotel as 15th-century; the main Cipriani building was constructed 1956–58. No individually confirmed cultural-heritage designation was established for either building under Italy's Codice dei beni culturali, a diligence gap rather than evidence of no protection"
+   ],
+   [
+    "Ownership",
+    "Initiated in 1956 by Giuseppe Cipriani in collaboration with Lord Iveagh and the Guinness family, opened 1958; Cipriani sold his interest in 1967; a Sea Containers group company bought Hotel Cipriani SRL in 1976 for £900,000; the business became Orient-Express Hotels, rebranded Belmond in 2014; LVMH completed its acquisition of Belmond on 17 April 2019 for a $3.2bn enterprise value across 45 properties, with no Cipriani-specific price disclosed"
+   ],
+   [
+    "Capital cost",
+    "A documented $3m programme upgraded 16 rooms in the San Giorgio and Redentore wings, November 2007 to March 2008, the only disclosed refurbishment cost. A current Peter Marino-led renovation opened its first phase, a new lobby and 13 redesigned rooms, in May 2025, with a new Dior Spa following in July 2026; no budget has been published for either phase"
+   ],
+   [
+    "Rate evidence",
+    "FY2001 RevPAR of US$592 (on 102 keys then); FY2007 RevPAR growth of 18%; a Q1 2016 RevPAR swing of +58% year on year, driven by the Easter calendar rather than underlying demand. No property-level achieved rate or occupancy has been disclosed since Belmond delisted from public markets in 2019"
+   ],
+   [
+    "Wellness",
+    "The former Casanova Wellness Centre offered three treatment rooms plus one couples room, a hair salon, a Technogym fitness room, sauna and steam room; no floor area was published. It has since been superseded by the Dior Spa Hotel Cipriani, opened July 2026, across two floors with five treatment rooms including one double. The hotel's separate outdoor seawater pool is heated and filtered, 33m by 13.5m"
+   ],
+   [
+    "Food and beverage",
+    "Five outlets: Oro, holding one Michelin star, with Head Chef Vania Ghedini and Massimo Bottura as Culinary Creative Director; Cip's Club, led by chef Roberto Gatto; Il Porticciolo; Gabbiano Bar; and Bacaro Dior"
+   ],
+   [
+    "Events",
+    "Two ballrooms seat up to 340 guests combined; ceremony sites include Casanova Garden (250 guests) and Antique Garden (120 guests). Full exclusive-use hire is offered but no whole-hotel buyout price is published. Published venue hire runs from €5,000 (San Giorgio Terrace, Antique Garden) to €22,000 for both ballrooms together, VAT included, setups extra"
+   ],
+   [
+    "Residences",
+    "None currently marketed. A private apartment historically available to a former owner is not evidence of an ongoing residence programme"
+   ]
+  ],
+  "cards": [
+   [
+    "What happened",
+    "Giuseppe Cipriani, of Harry's Bar, opened the hotel in 1958 on Giudecca, an island the hotel itself had to make reachable with a private launch service across the lagoon, then and now part of the guest experience. Cipriani sold his interest in 1967; Sea Containers bought the operating company in 1976 for £900,000 and folded it into what became Orient-Express Hotels, renamed Belmond in 2014. LVMH bought Belmond in April 2019 for $3.2bn across the whole 45-property portfolio, with no price disclosed for Cipriani individually. The hotel has been refurbished in phases rather than once: a documented $3m programme in 2007–08, further unpriced work through the 2000s, and a current Peter Marino-led renovation whose first phase, a new lobby and 13 rooms, opened in May 2025, with a new Dior Spa following in 2026."
+   ],
+   [
+    "What it earns",
+    "The filed basis already held for this hotel, €431k revenue a key and 18.1% payroll, the lowest payroll ratio in this set, describes a small, expensive-to-run hotel operating at scale rates few comparables reach. The only additional achieved-performance evidence found predates Belmond's 2019 delisting: RevPAR of $592 in FY2001, on 102 keys then; +18% RevPAR growth in FY2007; and a +58% RevPAR swing in Q1 2016, driven by the Easter calendar rather than underlying demand. No property-level rate or occupancy has been disclosed publicly since Belmond left public markets."
+   ],
+   [
+    "What it evidences for Fawley",
+    "Cipriani's 18.1% filed payroll ratio, the lowest in the whole comparable set, sits well below the 22.4% direct-departmental-wages figure the Fawley model carries; but Cipriani's keys count has fallen from 102 in 2001 to 79 today, and an ultra-small, ultra-high-rate operation can run lean on payroll in a way a 60-key hotel with twelve residences and Fawley's fuller amenity programme may not replicate. The lead-in rate held for Cipriani, £2,011 gross, sits roughly double Fawley's £1,000 underwrite, but Cipriani earns that on a season of roughly seven and a half months against Fawley's 365-day calendar. The comparison is a ceiling on achievable rate, not a benchmark for annual revenue a key."
+   ]
+  ],
+  "against": [
+   [
+    "Rate (lead-in, gross, per night)",
+    "£2,011",
+    "£1,000",
+    "Cipriani's season is roughly seven and a half months; Fawley underwrites 365 days"
+   ],
+   [
+    "Season",
+    "Late March to early November, roughly seven and a half months",
+    "365 days",
+    ""
+   ],
+   [
+    "Revenue a key (filed)",
+    "€431k",
+    "£756k (Year 7)",
+    "Currency and season length both differ; Cipriani's figure is a filed hotel figure on a part-year season, Fawley's a full-year modelled figure"
+   ],
+   [
+    "Keys",
+    "79 (63 in the main building, 16 in Palazzo Vendramin)",
+    "60",
+    ""
+   ],
+   [
+    "Historical acquisition price",
+    "£900,000 (1976, purchase of the operating company)",
+    "£50m ruled entry",
+    "The 1976 price is not inflation-adjusted and covers only the operating company, not a freehold; illustrative of scale only, not a comparable transaction"
+   ]
+  ],
+  "gap": "No achieved rate, occupancy or RevPAR has been disclosed for Cipriani since Belmond delisted from public markets in 2019; the only trading evidence beyond the portal's held filed figures predates that date by several years.",
+  "sources": [
+   "https://pub-mediabox-storage.rxweb-prd.com/exhibitor/products/exh-6ee14a15-a3df-469b-8c9a-7d267a4ad83b/product-documents/pro-cc4ce7c3-1473-451c-888a-14314db1e2a7/b87be499-1cc4-40ae-b42b-20b4006fdb6b.pdf",
+   "https://pdfs.belmond.com/ocip_wedding_factsheet.pdf",
+   "https://www.belmond.com/hotels/europe/italy/venice/belmond-hotel-cipriani/about",
+   "https://www.prnewswire.com/news-releases/hotel-cipriani-srl-and-cipriani-grosvenor-street-ltd-85203602.html",
+   "https://static.hospitalityinside.com/image/convert/hos/2023/06/14/article-3-the-belmond-story-sept-2016-648a1770e43b8839724544.pdf",
+   "https://www.sec.gov/Archives/edgar/data/1115836/000111583619000004/bel-20181231x10k.htm",
+   "https://www.lvmh.com/en/publications/lvmh-completes-the-agreement-with-belmond/",
+   "https://www.annualreports.com/HostedData/AnnualReportArchive/b/NYSE_BEL_2007.pdf",
+   "https://www.annualreports.com/HostedData/AnnualReportArchive/b/NYSE_BEL_2003.pdf",
+   "https://www.ilturista.info/news/hotel-orient-express-italia-via-stagione-2009/",
+   "https://mediahub.belmond.com/chapter-one-announcement/?lang=en",
+   "https://mediahub.belmond.com/belmond-unveils-reimagined-slow-luxury-icons-crafting-contemporaty-heritage/?lang=en",
+   "https://www.vincoliinrete.beniculturali.it/VincoliInRete/vir/vincolo/ricercavincolo",
+   "https://www.belmond.com/it/hotels/europe/italy/venice/belmond-hotel-cipriani/spa",
+   "https://www.dior.com/en_gb/beauty/page/teasing-dior-spa-hotel-cipriani.html",
+   "https://www.wallpaper.com/travel/hotels/hotel-cipriani-venice-review",
+   "https://www.belmond.com/en/stories/belmond-hotel-cipriani",
+   "https://www.belmond.com/hotels/europe/italy/venice/belmond-hotel-cipriani/dining",
+   "https://www.belmond.com/hotels/europe/italy/venice/belmond-hotel-cipriani/oro-restaurant",
+   "https://guide.michelin.com/ca/en/veneto/venezia/restaurant/oro-restaurant",
+   "https://www.belmond.com/stories/hotel-cipriani-and-the-venice-film-festival",
+   "https://www.annualreports.com/HostedData/AnnualReportArchive/b/NYSE_BEL_2001.pdf",
+   "https://www.hotelnewsresource.com/article89124.html",
+   "https://www.belmond.com/hotels/europe/italy/venice/belmond-hotel-cipriani/gallery",
+   "https://www.belmond.com/hotels/europe/italy/venice/belmond-hotel-cipriani/spa"
+  ],
+  "conflicts": [
+   "No conflict with the portal's held figures. Revenue a key (€431k), payroll (18.1%) and the 2011 occupancy figure (73%) are each corroborated by the sources above; the historical RevPAR figures found sit alongside them, not against them."
+  ],
+  "not_found": [
+   "Any achieved rate, occupancy or RevPAR disclosed since Belmond's 2019 delisting from public markets",
+   "An individual cultural-heritage designation for the Cipriani building or Palazzo Vendramin under Italian heritage law",
+   "A whole-hotel exclusive-use or buyout price, offered but not published",
+   "A Cipriani-specific price allocation within LVMH's $3.2bn Belmond acquisition",
+   "A total budget for the current Peter Marino renovation programme"
+  ],
+  "images": [
+   {
+    "file": "belmond-hotel-cipriani-2.jpg",
+    "alt": "Belmond Hotel Cipriani's waterfront facade seen from the lagoon",
+    "note": "Exterior, waterfront facade from the lagoon",
+    "credit": "Belmond",
+    "licence": "hotel's own website imagery, rights not cleared for republication",
+    "source_page": "https://www.belmond.com/hotels/europe/italy/venice/belmond-hotel-cipriani/gallery"
+   },
+   {
+    "file": "belmond-hotel-cipriani-3.jpg",
+    "alt": "A second exterior view of Belmond Hotel Cipriani's grounds",
+    "note": "Second exterior angle, grounds",
+    "credit": "Belmond",
+    "licence": "hotel's own website imagery, rights not cleared for republication",
+    "source_page": "https://www.belmond.com/hotels/europe/italy/venice/belmond-hotel-cipriani/gallery"
+   },
+   {
+    "file": "belmond-hotel-cipriani-4.jpg",
+    "alt": "The Dogaressa suite bedroom at Belmond Hotel Cipriani",
+    "note": "Dogaressa suite bedroom",
+    "credit": "Belmond",
+    "licence": "hotel's own website imagery, rights not cleared for republication",
+    "source_page": "https://www.belmond.com/hotels/europe/italy/venice/belmond-hotel-cipriani/gallery"
+   },
+   {
+    "file": "belmond-hotel-cipriani-5.jpg",
+    "alt": "The Dior Spa at Belmond Hotel Cipriani, with chandelier reflected in a mirror above a fireplace",
+    "note": "Dior Spa reception, opened July 2026",
+    "credit": "Belmond",
+    "licence": "hotel's own website imagery, rights not cleared for republication",
+    "source_page": "https://www.belmond.com/hotels/europe/italy/venice/belmond-hotel-cipriani/spa"
+   },
+   {
+    "file": "belmond-hotel-cipriani-6.jpg",
+    "alt": "Oro restaurant at Belmond Hotel Cipriani",
+    "note": "Oro restaurant, one Michelin star",
+    "credit": "Belmond",
+    "licence": "hotel's own website imagery, rights not cleared for republication",
+    "source_page": "https://www.belmond.com/hotels/europe/italy/venice/belmond-hotel-cipriani/gallery"
+   },
+   {
+    "file": "belmond-hotel-cipriani-7.jpg",
+    "alt": "The outdoor pool at Belmond Hotel Cipriani",
+    "note": "Outdoor seawater pool, 33m by 13.5m",
+    "credit": "Belmond",
+    "licence": "hotel's own website imagery, rights not cleared for republication",
+    "source_page": "https://www.belmond.com/hotels/europe/italy/venice/belmond-hotel-cipriani/gallery"
+   }
+  ]
+ },
  "belmond-hotel-splendido": {
   "intro": "Splendido occupies a hillside above Portofino harbour, built as a Benedictine monastery in the sixteenth century before becoming a private summer residence and later a hotel, now owned by LVMH within the Belmond collection. It reopened in June 2025 after a phased, multi-year renovation, and it sits in this set as one of the highest-rate coastal comparables Fawley is bracketed against -- with a season question the portal's own research had left open, and which this page settles.",
   "record": [
@@ -953,6 +1372,119 @@
     "credit": "Sailko, via Wikimedia Commons",
     "licence": "CC BY-SA 3.0 / GFDL 1.2+",
     "source_page": "https://commons.wikimedia.org/wiki/File:Villa_san_michele,_fiesole,_facciata,_loggetta_00.JPG"
+   }
+  ]
+ },
+ "castello-di-reschio": {
+  "intro": "Castello di Reschio occupies a large private estate in the hills of Umbria, close to the Tuscan border, where a ruined medieval castle has been restored into a hotel by the family that has owned and been rebuilding the wider estate for three decades. The restoration paired the castle conversion with a parallel programme of restoring outlying farmhouses for freehold sale, a residential-sales limb run alongside the hotel rather than through it. It sits in this comparable set because it brackets Fawley Court on both counts: a listed-heritage hotel conversion on an estate large enough to carry its own residential programme, within the same European ceiling cohort against which Fawley's rate and capital cost are being tested.",
+  "record_extra": [
+   [
+    "Heritage",
+    "Listed under Italy's Cultural Heritage and Landscape Code: the castle appears as beneficiary \"Bolza Antonius Benedikt\" in the Ministry of Culture's 2019 funding programme for protected heritage assets, and the restoration contractor classifies the work as OG2, the category for restoration of protected immovable heritage. No specific decree or catalogue register number was found"
+   ],
+   [
+    "Capital cost",
+    "The 2019 Ministry funding programme discloses €8,855,681.33 of total works for Castello di Reschio, with a proposed 15% public contribution of €1,328,352.20. This is a funding-scheme figure covering the wider 2015–2020 restoration, about 10,500 sqm across the castle, spa, restaurant, church, pool and stables, not a hotel-only conversion cost, so no defensible cost a key can be drawn from it"
+   ],
+   [
+    "Villas to rent",
+    "Eight former-farmhouse casali are currently listed as rentable estate villas: Palmieri, Cercoschene, Bell'Aria, Spinaltermine, Tisciano, Barco, Piantaverna and Arrighi, separate from the roughly 36-key hotel and from the wider stock of over 50 restored farmhouses on the estate"
+   ],
+   [
+    "Residences",
+    "The residential model is freehold whole-house sale, not a club or fractional interest. A 2023 interview with Benedikt Bolza put 28 of 50 houses as restored and sold, at prices that had moved from an indicative €4m–€7m in 2016 to around €10m by 2023, both dated indications rather than a current price list"
+   ],
+   [
+    "Membership",
+    "No club, membership programme or joining fee was found. Riding, dressage and tennis are offered as estate services to hotel and villa guests rather than through a member-owned club"
+   ],
+   [
+    "Michelin",
+    "The hotel holds Three MICHELIN Keys, the guide's hotel-quality award, not a restaurant star. No Michelin-star recognition was found for either of its two restaurants, Ristorante al Castello and Ristorante alle Scuderie"
+   ]
+  ],
+  "sources": [
+   "https://www.reschio.com/",
+   "https://www.reschio.com/it/ville",
+   "https://guide.michelin.com/en/hotels-stays/lisciano-niccone/reschio-hotel-12069",
+   "https://www.froschhotels.com/hotels/112326/castello-di-reschio",
+   "https://www.reschio.com/the-rooms",
+   "https://www.reschio.com/villas-to-rent",
+   "https://media.beniculturali.it/mibac/files/boards/be78e33bc8ca0c99bff70aa174035096/PDF/DDG%20Rep.2648%2C%20allegato%20programma.pdf",
+   "https://www.garc.it/restauro-castello-di-reschio/",
+   "https://www.reschio.com/reschio-dna",
+   "https://www.reschio.com/the-castle",
+   "https://www.repubblica.it/dossier/door/2023/05/02/news/matrimonio_andrea_agnelli_deniz_akalin_lisciano_niccone_perugia-398416185/",
+   "https://www.reschio.com/it/whats-on/door-la-repubblica-in-the-castle-of-crossed-destinies",
+   "https://www.houseandgarden.co.uk/gallery/castello-di-reschio",
+   "https://www.reschio.com/bathhouse-sports/the-bathhouse",
+   "https://galleria.ducotravelsummit.com/wp-content/uploads/2020/12/Castello-di-Reschio-hotel-july-2020-release.pdf",
+   "https://www.reschio.com/it/eat-and-drink",
+   "https://www.reschio.com/eat-and-drink",
+   "https://content.knightfrank.com/research/1002/documents/en/inside-view-italy-2016-3565.pdf",
+   "https://www.reschio.com/it/celebrazioni",
+   "https://www.reschio.com/it/attivita",
+   "https://www.reschio.com/assets/pdf/SECRET-STAYS-2024-low_compressed.pdf"
+  ],
+  "conflicts": [
+   "No conflict found with the portal's held margin estimate (39.0% GOP, explicitly modelled, not a hotel disclosure). No filed or publicly disclosed Reschio trading figure was found to compare it against."
+  ],
+  "not_found": [
+   "Any filed or publicly disclosed trading or financial figure for the Reschio hotel operating entity: turnover, margin, payroll or employees",
+   "A specific decree or catalogue register number for the castle's heritage listing; only a funding-programme entry naming it was found",
+   "A hotel-only conversion cost a key; the only capex figure found is a funding-scheme total covering wider estate restoration",
+   "Published wedding or event capacity, tariff or buyout price",
+   "A reconciled current estate acreage: Reschio's own English-language site states roughly 3,700 acres (about 1,500 ha), its Italian villa page states 1,560 ha, and the two are not reconciled",
+   "An exact construction start date for the castle: Reschio's own materials give both around AD 900 and 1050"
+  ],
+  "images": [
+   {
+    "file": "castello-di-reschio-2.jpg",
+    "alt": "Castello di Reschio's stone buildings and courtyard, seen from the estate",
+    "note": "Second building angle, the castle complex and its courtyard buildings",
+    "credit": "Reschio",
+    "licence": "hotel's own website imagery, rights not cleared for republication",
+    "source_page": "https://www.reschio.com/the-castle"
+   },
+   {
+    "file": "castello-di-reschio-3.jpg",
+    "alt": "The courtyard at Castello di Reschio at dusk, with a glass conservatory and outdoor seating",
+    "note": "Courtyard, with the glass conservatory, at dusk",
+    "credit": "Reschio",
+    "licence": "hotel's own website imagery, rights not cleared for republication",
+    "source_page": "https://www.reschio.com/the-castle"
+   },
+   {
+    "file": "castello-di-reschio-4.jpg",
+    "alt": "A Suite Castello bedroom at Castello di Reschio",
+    "note": "Suite Castello, a room interior",
+    "credit": "Reschio",
+    "licence": "hotel's own website imagery, rights not cleared for republication",
+    "source_page": "https://www.reschio.com/the-rooms"
+   },
+   {
+    "file": "castello-di-reschio-5.jpg",
+    "alt": "The Bathhouse at Castello di Reschio, a vaulted stone spa room with a fireplace and a staff member preparing towels",
+    "note": "The Bathhouse, the estate's spa, set in the castle's former wine cellars",
+    "credit": "Reschio",
+    "licence": "hotel's own website imagery, rights not cleared for republication",
+    "source_page": "https://www.reschio.com/bathhouse-sports/the-bathhouse"
+   },
+   {
+    "file": "castello-di-reschio-6.jpg",
+    "alt": "The terrace at Ristorante al Castello, set for dinner with hills beyond",
+    "note": "Ristorante al Castello, the terrace",
+    "credit": "Reschio",
+    "licence": "hotel's own website imagery, rights not cleared for republication",
+    "source_page": "https://www.reschio.com/eat-and-drink"
+   },
+   {
+    "file": "castello-di-reschio-7.jpg",
+    "alt": "Arrighi, one of the estate's rentable former-farmhouse villas",
+    "note": "Arrighi, a rentable estate villa, exterior and courtyard",
+    "credit": "Reschio",
+    "licence": "hotel's own website imagery, rights not cleared for republication",
+    "source_page": "https://www.reschio.com/villas-to-rent"
    }
   ]
  },
@@ -1505,6 +2037,195 @@
     "credit": "Cliveden House (hotel's own website)",
     "licence": "hotel website imagery, rights not cleared for republication",
     "source_page": "https://www.clivedenhouse.co.uk/dine-with-us/the-astor-grill/"
+   }
+  ]
+ },
+ "coworth-park": {
+  "intro": "Coworth Park occupies a Georgian estate outside Ascot, one of ten Dorchester Collection hotels owned through the Brunei Investment Agency, and the only one of the group's properties with its own polo grounds. It is a Dorchester Collection filing within a wider group, so what is publicly disclosed sits at the level of its own UK operating company rather than the group above it: full statutory accounts, filed and audited, name the exact trading result. It belongs in this set as the closest UK trading analogue to Fawley on structure, a converted country house with an equestrian offer and a Michelin-starred restaurant, and it is the one hotel in the whole cohort whose filed accounts show a loss rather than a profit.",
+  "record": [
+   [
+    "Setting",
+    "240 acres of parkland in Ascot, Berkshire, Dorchester Collection's own stated figure; Michelin's own listing gives 246 acres, so the precise surveyed extent is not independently established. The grounds include a wildflower meadow, the Lime Grove, rose gardens, a croquet lawn, woodland trails, a lake and two professional polo fields"
+   ],
+   [
+    "Keys",
+    "71 rooms and suites (49 rooms, 22 suites): 30 in the Mansion House, 30 in the converted Stables, 9 in the Cottages, plus two separately named signature suites, the Dower House and North Lodge. An earlier Dorchester factsheet states 70 rooms and suites plus two signature suites, a minor inconsistency in the operator's own material rather than a portal conflict"
+   ],
+   [
+    "Heritage",
+    "The Dower House (1755) and North Lodge are each Grade II listed; the main house dates to 1776, built for the East India merchant William Shepheard"
+   ],
+   [
+    "Ownership",
+    "Prince Jefri acquired the estate in 1995 and it transferred to the Brunei Investment Agency in 2001. Restoration into a hotel began in 2008; the property opened in September 2010 as Dorchester Collection's eighth hotel. Conversion architect EPR Architects, interior design Fox Linton Associates, spa designed by Purcell"
+   ],
+   [
+    "Capital cost",
+    "£23m, the only disclosed development-cost figure, stated by the project's structural engineer rather than by Dorchester Collection or the Brunei Investment Agency; a project-source estimate, not an audited owner disclosure"
+   ],
+   [
+    "Rate evidence",
+    "Filed average room rate of £676.0 in FY2024, down £41 (-6%) on FY2023, alongside filed occupancy of 62.4%, up 3.8 percentage points year on year. This is a filed annual average, on a different basis from the portal's held lead-in bookable rate of £650 gross, £542 net"
+   ],
+   [
+    "Trading",
+    "FY2024 filed revenue £21.615m (Rooms £10.3m, Food & Beverage £7.8m, other £3.5m), an operating loss of £3.181m and a net loss of £3.663m; FY2023 revenue £21.107m and a net loss of £3.191m. Net liabilities of £59.466m at 31 December 2024, with the going-concern basis resting explicitly on continuing support from the ultimate parent, the Brunei Investment Agency"
+   ],
+   [
+    "Payroll",
+    "Average 229 employees in FY2024 (210 operations, 19 administration); aggregate payroll cost £8.693m, 40.2% of revenue"
+   ],
+   [
+    "Equestrian",
+    "An on-site equestrian centre offers riding, private lessons and hacks. Guards Polo Club manages Coworth Park's two polo fields and runs the on-site Guards Polo Academy. 40 stables were specified at the 2010 launch; no current published count was found"
+   ],
+   [
+    "Wellness",
+    "The Spa at Coworth Park: eight treatment rooms, a heated indoor pool, sauna, steam room and gym. Floor area reported as 1,300 sqm across two floors in a 2015 trade profile, not confirmed by the current operator"
+   ],
+   [
+    "Food and beverage",
+    "Woven by Adam Smith holds one Michelin star, awarded in 2023, succeeding Restaurant Coworth Park's 2018 star. Other outlets are The Barn, the Drawing Room, The Bar, the Spa Café and the seasonal terrace TIDE. The hotel separately holds two Michelin Keys, a distinct award from the restaurant star"
+   ],
+   [
+    "Events",
+    "Four spaces: Oval Room, Garden Room, Oak Room and Tower House, with a largest published seated dinner capacity of 100. Exclusive-use hire is offered with pricing on request; no rate is published"
+   ]
+  ],
+  "cards": [
+   [
+    "What happened",
+    "Coworth House dates to 1776, built for the East India merchant William Shepheard, and passed through a series of owners including the Earl of Derby before Selfridges and Fortnum & Mason's owner Galen Weston bought the estate in the mid-1980s and built its first polo ground. Prince Jefri acquired it in 1995 and it transferred to the Brunei Investment Agency in 2001. Restoration into a hotel began in 2008 and the property opened in September 2010 as Dorchester Collection's eighth hotel, with EPR Architects converting the buildings and Fox Linton Associates designing the interiors. The only disclosed development cost, £23m, comes from the project's structural engineer rather than from Dorchester Collection itself, so it should be read as a project-source estimate rather than an audited figure."
+   ],
+   [
+    "What it earns",
+    "Coworth Park is the only hotel in this comparable set with full, filed, audited UK statutory accounts, and they show a hotel trading at a loss. FY2024 revenue was £21.615m against an average room rate of £676 and 62.4% occupancy; the company made an operating loss of £3.181m and a net loss of £3.663m, a continuation of the prior year's loss. Payroll averaged 229 employees and cost £8.693m, 40.2% of revenue. Net liabilities stood at £59.466m at the 2024 year end, and the auditors' going-concern opinion rests explicitly on continuing support from the ultimate parent, the Brunei Investment Agency."
+   ],
+   [
+    "What it evidences for Fawley",
+    "Coworth Park is the closest UK trading analogue to Fawley on structure: a converted Georgian country house with a polo and equestrian offer, a Michelin-starred restaurant, and year-round trading, and it is losing money at an occupancy of 62.4%, close to Fawley's own 65% stabilised assumption. Its 40.2% payroll ratio, on a fully loaded filed basis that includes administration, sits well above the 22.4% direct-departmental-wages figure the Fawley model carries; the two are not on the same basis, but the gap is a caution on how much cost a comparable property carries outside departmental lines. A UK country-house hotel of comparable ambition running at a loss, fourteen years into trading, is the sharpest single data point this cohort holds against Fawley's underwritten margin."
+   ]
+  ],
+  "against": [
+   [
+    "Rate (filed average room rate, FY2024)",
+    "£676.0",
+    "£1,000",
+    "Coworth's is a filed annual blended average, ex-VAT; the portal's own held lead-in for Coworth is £650 gross, £542 net, a different basis again, a single lowest-bookable-night median rather than an annual average"
+   ],
+   [
+    "Revenue a key (FY2024 filed, computed)",
+    "£21.615m total, £304k a key (computed: £21.615m ÷ 71 keys)",
+    "£756k a key (£45.33m Year 7)",
+    "Coworth's figure is computed from filed revenue and the published key count, not itself a filed per-key figure; the two hotels sit at very different rate and revenue positioning"
+   ],
+   [
+    "Operating margin (FY2024 filed, computed)",
+    "Operating loss of £3.181m, -14.7% of revenue (computed: £3.181m ÷ £21.615m)",
+    "33.96% GOP",
+    "Coworth's is a bottom-line UK GAAP operating result after all administration and lease costs, not a GOP figure on the same USALI basis as Fawley's; the two measures are structurally different, but the sign, a loss against an underwritten profit, is the useful fact"
+   ],
+   [
+    "Capital cost a key (computed)",
+    "£23m over 71 keys, £324k a key (computed), a 2008–10 restoration, unaudited project-source estimate",
+    "£2.06m a key",
+    "Coworth's figure restores an already-standing Georgian house; Fawley's is a ground-up conversion basis. The gap is large and directional, not a precise benchmark"
+   ],
+   [
+    "Keys",
+    "71",
+    "60",
+    ""
+   ]
+  ],
+  "gap": "Coworth Park is the only hotel in this set with full filed UK statutory accounts, but that completeness only sharpens the open question it raises: a comparable country-house hotel, fourteen years into trading, is loss-making at an occupancy and rate close to Fawley's own assumptions, and no public source explains why beyond the accounts' own note that all staff, administration and lease costs are fully loaded onto the trading entity.",
+  "sources": [
+   "https://media.dorchestercollection.com/wp-content/uploads/2025/08/79ff8a04f138e1fe330af7412a23f971.pdf",
+   "https://web-api.dorchestercollection.com/media/rxgl2tsz/coworth-park-group-brochure-2023.pdf",
+   "https://cms.dorchestercollection.com/media/orkm2pzw/coworth-park_factsheet.pdf",
+   "https://www.dorchestercollection.com/ascot/coworth-park/about",
+   "https://www.dorchestercollection.com/ascot/coworth-park/the-grounds",
+   "https://guide.michelin.com/us/en/hotels-stays/berkshire/coworth-park-5939",
+   "https://www.dorchestercollection.com/ascot/coworth-park/rooms-suites",
+   "https://www.dorchestercollection.com/ascot/coworth-park/rooms-suites/north-lodge",
+   "https://media.dorchestercollection.com/coworth-parks-signature-dower-house-reopens-following-renovation/?lang=eng",
+   "https://www.aksward.com/projects/coworth-park-ascot/",
+   "https://www.purcelluk.com/projects/coworth-park-spa/",
+   "https://www.dorchestercollection.com/ascot/coworth-park/equestrian",
+   "https://www.thecaterer.com/indepth/coworth-park-opens-with-luxury-green-credentials",
+   "https://www.dorchestercollection.com/ascot/coworth-park/guards-polo-academy",
+   "https://www.dorchestercollection.com/ascot/coworth-park/spa-wellness",
+   "https://professionalbeauty.co.uk/site/newsdetails/parks-and-recreation",
+   "https://media.dorchestercollection.com/woven-by-adam-smith-achieves-one-michelin-star-within-six-months/",
+   "https://www.thecaterer.com/news/hotel-cateys-2023-hotel-restaurant-team-woven-adam-smith",
+   "https://guide.michelin.com/us/en/windsor-and-maidenhead/ascot/restaurant/coworth-park",
+   "https://guide.michelin.com/us/en/article/michelin-guide-ceremony/every-michelin-star-restaurant-in-great-britain-ireland",
+   "https://www.dorchestercollection.com/ascot/coworth-park/dining/spa-cafe",
+   "https://www.dorchestercollection.com/ascot/coworth-park/dining/tide",
+   "https://find-and-update.company-information.service.gov.uk/company/03121666",
+   "https://find-and-update.company-information.service.gov.uk/company/03121666/filing-history",
+   "https://find-and-update.company-information.service.gov.uk/company/03121666/persons-with-significant-control",
+   "https://find-and-update.company-information.service.gov.uk/company/01823605/persons-with-significant-control",
+   "https://businesstraveller.com/news/2010/09/22/dorchester-collection-to-open-coworth-park-property/"
+  ],
+  "conflicts": [
+   "No conflict with the portal's held lead-in rate (£650 gross, £542 net). That figure is a lowest-bookable-night median; the £676.0 filed average found here is a full-year blended rate from statutory accounts, and both are stated on their own basis, not merged."
+  ],
+  "not_found": [
+   "Any hotel-level valuation or transaction price for Coworth Park itself; the entity has not changed hands since its 1995 incorporation under a related name",
+   "A current published stable count; only the 2010 launch figure of 40 is available",
+   "Confirmed current branding of the spa as \"ESPA\"; current spa-brand disclosure (ishga, Natura Bissé, Made for Life Organics, Wildsmith, HydraFacial) suggests the branding has moved on since older third-party material",
+   "A published whole-hotel exclusive-use or buyout price",
+   "Per-type unit counts within the nine cottages (Farmer's Cottage Suite, Gardener's East Cottage Suite, Gardener's West Cottage Suite)"
+  ],
+  "images": [
+   {
+    "file": "coworth-park-2.jpg",
+    "alt": "Coworth Park's Mansion House seen across a wildflower meadow",
+    "note": "Exterior, the Mansion House across the wildflower meadow, a second angle from the portal's held lead photograph",
+    "credit": "Dorchester Collection",
+    "licence": "group's own press material, rights not cleared for republication",
+    "source_page": "https://web-api.dorchestercollection.com/media/rxgl2tsz/coworth-park-group-brochure-2023.pdf"
+   },
+   {
+    "file": "coworth-park-3.jpg",
+    "alt": "A Mansion House Junior Suite bedroom and sitting area at Coworth Park",
+    "note": "Mansion House Junior Suite",
+    "credit": "Dorchester Collection",
+    "licence": "group's own press material, rights not cleared for republication",
+    "source_page": "https://web-api.dorchestercollection.com/media/rxgl2tsz/coworth-park-group-brochure-2023.pdf"
+   },
+   {
+    "file": "coworth-park-4.jpg",
+    "alt": "A Stable Superior Room bedroom at Coworth Park, with equestrian photography on the wall",
+    "note": "Stable Superior Room, a second room type",
+    "credit": "Dorchester Collection",
+    "licence": "group's own press material, rights not cleared for republication",
+    "source_page": "https://web-api.dorchestercollection.com/media/rxgl2tsz/coworth-park-group-brochure-2023.pdf"
+   },
+   {
+    "file": "coworth-park-5.jpg",
+    "alt": "A dining space at Woven by Adam Smith, Coworth Park's Michelin-starred restaurant",
+    "note": "Woven by Adam Smith, one Michelin star",
+    "credit": "Dorchester Collection",
+    "licence": "group's own press material, rights not cleared for republication",
+    "source_page": "https://web-api.dorchestercollection.com/media/rxgl2tsz/coworth-park-group-brochure-2023.pdf"
+   },
+   {
+    "file": "coworth-park-6.jpg",
+    "alt": "The Oak Room event space at Coworth Park, set for a meeting",
+    "note": "The Oak Room, one of four event spaces",
+    "credit": "Dorchester Collection",
+    "licence": "group's own press material, rights not cleared for republication",
+    "source_page": "https://web-api.dorchestercollection.com/media/rxgl2tsz/coworth-park-group-brochure-2023.pdf"
+   },
+   {
+    "file": "coworth-park-7.jpg",
+    "alt": "The Oval Room event space at Coworth Park, set for a formal dinner",
+    "note": "The Oval Room, a second event space",
+    "credit": "Dorchester Collection",
+    "licence": "group's own press material, rights not cleared for republication",
+    "source_page": "https://web-api.dorchestercollection.com/media/rxgl2tsz/coworth-park-group-brochure-2023.pdf"
    }
   ]
  },

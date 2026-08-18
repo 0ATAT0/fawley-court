@@ -954,9 +954,9 @@
     {
      "k": "margin",
      "label": "Margin",
-     "v": "41.2% EBITDA",
-     "basis": "FY2025, a record and the highest of any Italian group tracked; FY2024 39.5%",
-     "cls": "press"
+     "v": "41.2% EBITDA, four hotels",
+     "basis": "Villa d'Este SpA's own FY2025 statutory accounts: €47.5m on €115.3m across four directly operated hotels plus ancillary income, excluding the golf club and Harry's Bar, which sit in separate companies. It is not a Cernobbio-only margin",
+     "cls": "filed"
     }
    ],
    "season": {
@@ -2013,7 +2013,36 @@
    "type": "estate",
    "case_slug": null,
    "in_cohort": true,
-   "figures": [],
+   "figures": [
+    {
+     "k": "adr",
+     "label": "Achieved rate",
+     "v": "£676 achieved",
+     "basis": "the filed average room rate for FY2024, down 6% on FY2023, on a different basis from the lead-in",
+     "cls": "filed"
+    },
+    {
+     "k": "occ",
+     "label": "Occupancy",
+     "v": "62.4%",
+     "basis": "filed for FY2024, up 3.8 points on FY2023",
+     "cls": "filed"
+    },
+    {
+     "k": "margin",
+     "label": "Margin",
+     "v": "(14.7)% operating",
+     "basis": "an operating loss of £3.18m on £21.62m of revenue, FY2024; net liabilities of £59.5m, with going concern resting on the parent",
+     "cls": "filed"
+    },
+    {
+     "k": "revkey",
+     "label": "Revenue a key",
+     "v": "£304k a key",
+     "basis": "£21.62m over 71 keys, FY2024 filed",
+     "cls": "filed"
+    }
+   ],
    "season": {
     "v": "Year-round",
     "basis": "Bookable in every month of our own forward year",
