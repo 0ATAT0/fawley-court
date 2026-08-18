@@ -30,6 +30,7 @@ CHAPTERS = {
     "bridge": [""],
     "dd": ["", "asks", "keys", "room", "gates", "closing"],
     "cheatsheet": [""],
+    "market": [""],
 }
 SLUGS = ["cliveden", "beaverbrook", "heckfield", "estelle", "grand-controle",
          "reschio", "passalacqua", "messardiere", "borgo-egnazia", "rosa-alpina"]

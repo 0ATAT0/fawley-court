@@ -21,6 +21,7 @@ CHAPTERS = {
     "bridge": [""],
     "dd": ["", "asks", "keys", "room", "gates", "closing"],
     "cheatsheet": [""],
+    "market": [""],
 }
 ROUTES = ["#/"]
 for _c, _vs in CHAPTERS.items():
