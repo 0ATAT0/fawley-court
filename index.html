@@ -1200,6 +1200,13 @@ body.lb-open { overflow: hidden; }
 .mkt-tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
 .mkt-tab[aria-selected="true"] .c { color: var(--accent); }
 .mkt-tab:hover, .mkt-tab:focus-visible { color: var(--accent); }
+.mkt-tabs .types { display: flex; gap: clamp(12px, 1.6vw, 22px); margin-left: auto; flex-wrap: wrap; justify-content: flex-end; }
+.mkt-tab.sm { padding-top: 13px; min-width: 46px; justify-content: center; }
+.mkt-tab.sm .t { font-size: calc(var(--fs-h2) * .7); letter-spacing: -.008em; }
+/* 30% of the count size would be 8.4px, under the portal's 11.5px floor: it holds at the floor */
+.mkt-tab.sm .c { font-size: 11.5px; }
+@media (max-width: 900px) { .mkt-tabs { flex-wrap: wrap; } .mkt-tabs .types { margin-left: 0; justify-content: flex-start; width: 100%; border-top: 1px solid var(--line); } }
+
 
 /* the filter line: countries on the left when Europe is open, types opposite */
 .mkt-fl { display: flex; align-items: center; gap: 14px 26px; flex-wrap: wrap; padding: 12px 0 2px; }
@@ -4009,30 +4016,32 @@ function mktCard(h) {
     + "</span><span class=\"mk-go\" aria-hidden=\"true\">›</span></button>";
 }
 
-/* the filter line: countries on the left once Europe is open, types opposite */
+/* the countries, once Europe is open; the kinds of place ride with the region
+   tabs above, in the same form at seven tenths the size */
 function mktControlsInner() {
-  const chip = (key, val, label, n, on) => '<button class="mkc" data-' + key + '="' + (val === null ? "" : val)
-    + '" aria-pressed="' + (on ? "true" : "false") + '">' + label
-    + (n === null ? "" : '<span class="n">' + n + "</span>") + "</button>";
+  if (MKSTATE.tab !== "eu") return "";
+  const base = mktTab("eu");
+  const counts = {};
+  for (const h of base) counts[h.country] = (counts[h.country] || 0) + 1;
+  const order = Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b));
+  const chip = (val, label, n, on) => '<button class="mkc" data-mkcountry="' + (val === null ? "" : val)
+    + '" aria-pressed="' + (on ? "true" : "false") + '">' + label + '<span class="n">' + n + "</span></button>";
+  return '<div class="grp"><span class="fl-l">Country</span>'
+    + chip(null, "All", base.length, !MKSTATE.country)
+    + order.map(c => chip(c, MKT_CTRY[c] || c, counts[c], MKSTATE.country === c)).join("") + "</div>";
+}
+
+function mktTypeTabsHTML() {
   const base = mktTab(MKSTATE.tab);
-  let left = "";
-  if (MKSTATE.tab === "eu") {
-    const counts = {};
-    for (const h of base) counts[h.country] = (counts[h.country] || 0) + 1;
-    const order = Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b));
-    left = '<div class="grp"><span class="fl-l">Country</span>'
-      + chip("mkcountry", null, "All", base.length, !MKSTATE.country)
-      + order.map(c => chip("mkcountry", c, MKT_CTRY[c] || c, counts[c], MKSTATE.country === c)).join("")
-      + "</div>";
-  }
   const scoped = MKSTATE.tab === "eu" && MKSTATE.country ? base.filter(h => h.country === MKSTATE.country) : base;
-  const tcount = t => scoped.filter(h => h.type === t).length;
-  const types = MKT_BANDS.filter(t => tcount(t));
-  const right = '<div class="grp' + (left ? " r split" : "") + '">'
-    + chip("mktype", null, "All", scoped.length, !MKSTATE.type)
-    + types.map(t => chip("mktype", t, MARKET.type_labels_short[t], tcount(t), MKSTATE.type === t)).join("")
+  const n = t => scoped.filter(h => h.type === t).length;
+  const tab = (val, label, count, on) => '<button class="mkt-tab sm" role="tab" data-mktype="'
+    + (val === null ? "" : val) + '" aria-selected="' + (on ? "true" : "false") + '"><span class="t">'
+    + label + '</span><span class="c">' + count + "</span></button>";
+  return '<div class="types" role="tablist" aria-label="Kind of place">'
+    + tab(null, "All", scoped.length, !MKSTATE.type)
+    + MKT_BANDS.filter(t => n(t)).map(t => tab(t, MARKET.type_labels[t], n(t), MKSTATE.type === t)).join("")
     + "</div>";
-  return left + right;
 }
 
 function mktGridInner() {
@@ -4046,15 +4055,19 @@ function mktGridInner() {
     + '<div class="mkt-grid">' + hs.map(mktCard).join("") + "</div></section>").join("");
 }
 
-function marketIndexHTML() {
+function mktHeadInner() {
   const tab = (id, t) => '<button class="mkt-tab" role="tab" data-mktab="' + id + '" aria-selected="'
     + (MKSTATE.tab === id ? "true" : "false") + '"><span class="t">' + t + '</span><span class="c">'
     + mktTab(id).length + "</span></button>";
-  const yr = MKT_ALL.filter(h => h.year_round).length;
-  const blank = MKT_ALL.filter(h => !(h.figures || []).length).length;
+  const countries = mktControlsInner();
   return '<div role="tablist" class="mkt-tabs" aria-label="Region">'
-    + tab("all", "All") + tab("eu", "Europe") + tab("uk", "The United Kingdom") + "</div>"
-    + '<div class="mkt-fl" id="mktctl">' + mktControlsInner() + "</div>"
+    + tab("all", "All") + tab("eu", "Europe") + tab("uk", "The United Kingdom")
+    + mktTypeTabsHTML() + "</div>"
+    + (countries ? '<div class="mkt-fl">' + countries + "</div>" : "");
+}
+
+function marketIndexHTML() {
+  return '<div id="mkthead">' + mktHeadInner() + "</div>"
     + '<div id="mktgrid">' + mktGridInner() + "</div>"
     + '<p class="src cols">Ordered inside each band by how much of the year the hotel opens, then by rate, because in this set the two run against each other: everything above £1,200 closes for two to seven months, and the properties bookable in all twelve sit at the bottom of the rate table. ' + MARKET.basis + " " + MARKET.vat_note + " " + MARKET.figures_basis + " "
     + MARKET.type_basis + " " + PHOTOS_BASIS + " Every card opens that property's own page, where each figure carries its basis.</p>";
@@ -5668,7 +5681,6 @@ document.addEventListener("click", e => {
   if (mt) {
     MKSTATE.tab = mt.dataset.mktab;
     MKSTATE.country = null;
-    $$("[data-mktab]").forEach(x => x.setAttribute("aria-selected", String(x === mt)));
     rerenderMkt();
     return;
   }
@@ -5688,10 +5700,10 @@ document.addEventListener("click", e => {
 });
 
 function rerenderMkt() {
-  const c = $("#mktctl"), g = $("#mktgrid");
-  if (!c || !g) return;
+  const h = $("#mkthead"), g = $("#mktgrid");
+  if (!h || !g) return;
   const y = window.scrollY;
-  c.innerHTML = mktControlsInner();
+  h.innerHTML = mktHeadInner();
   g.innerHTML = mktGridInner();
   window.scrollTo({ top: y, behavior: "instant" });
 }

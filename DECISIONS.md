@@ -435,3 +435,11 @@ picture: sixteen nights of line in September and October and eleven empty months
 
 The pack grows from 37KB to 92KB for the nightly data, which gzips well and is worth it: the
 chart is now drawn from what was collected rather than from a summary of it.
+
+**The kind-of-place filter takes the region tabs' own form** (19 August, later still): same
+underlined tab, same baseline, same line, at seven tenths the type size and right-aligned
+against the three region tabs. The chips are gone from it; the country filter keeps them on its
+own line beneath, where it appears only on Europe. One deviation from "30% smaller", stated
+rather than silently applied: the count would land at 8.4px, under the portal's own 11.5px type
+floor, so it holds at the floor while the label shrinks. The narrow "All" tab also carries a
+46px minimum width, because at seven tenths it measured 31–39px against the 40px touch minimum.
