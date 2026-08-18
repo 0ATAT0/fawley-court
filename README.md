@@ -95,6 +95,11 @@ python snap.py v     # renders every route at four widths into snaps/
 `audit.py` forces every disclosure open before it measures, so the folded
 argument is audited as hard as the exhibit above it.
 
+**Deploy with the commit** (Angus, 19 August 2026). This repository is the live
+deal portal, so a commit that passes the gates is pushed in the same turn rather
+than held for a separate instruction. Gates first, then commit, then push, then
+confirm the deployed page against the source.
+
 ## Sources of record
 
 Nothing on this page is re-derived, re-rounded or updated. Every figure is
