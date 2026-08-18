@@ -26,6 +26,27 @@ PACK = DEAL / "Research" / "cohort-2026-08" / "market-web-data.json"
 OUT = DEAL / "Research" / "cohort-2026-08" / "hotel-pages.json"
 IMG = HERE / "img" / "comps"
 
+BS = chr(92)
+LOCAL = ("d:/onedrive", "d:" + BS + "onedrive", "c:/users", "c:" + BS + "users", "strand")
+
+
+def scrub(v, slug, where, problems):
+    """A record may cite a URL or a document, never a path on this machine, and
+    never the word the client materials must not carry."""
+    if isinstance(v, str):
+        low = v.lower()
+        if any(x in low for x in LOCAL):
+            problems.append("%s: %s carries a local path or a banned word, dropped" % (slug, where))
+            return None
+        return v
+    if isinstance(v, list):
+        out = [scrub(x, slug, where, problems) for x in v]
+        return [x for x in out if x is not None]
+    if isinstance(v, dict):
+        return {k: scrub(x, slug, where + "." + k, problems) for k, x in v.items()}
+    return v
+
+
 pack = json.loads(PACK.read_text(encoding="utf-8"))
 known = {h["slug"] for h in pack["hotels"] if h["in_cohort"]}
 
@@ -43,6 +64,7 @@ for f in sorted(PAGES.glob("*.json")):
     if not (r.get("intro") or "").strip():
         problems.append("%s: no intro, and every page opens on one" % slug)
         continue
+    r = scrub(r, slug, "record", problems)
     keep = {"intro": r["intro"].strip()}
     for k in ("record", "record_extra", "cards", "against", "gap", "sources", "conflicts", "not_found"):
         if r.get(k):

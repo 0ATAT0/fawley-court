@@ -247,9 +247,9 @@
     }
    ],
    "season": {
-    "v": "Not established: sources conflict",
-    "basis": "One 2026 booking page states 8 June to 29 September, another that the hotel closes on 2 November; the two disagree by more than a month at both ends",
-    "cls": "press"
+    "v": "Early March to early November",
+    "basis": "Settled on our own collection rather than on listings that disagreed by five months: the engine sold every night to 1 November 2026, then one closure of 123 nights to 4 March 2027, and sold again after it. About nine months",
+    "cls": "derived"
    },
    "engine": "synxis",
    "window": [
