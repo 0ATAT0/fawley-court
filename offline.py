@@ -8,7 +8,8 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 BASE = "http://127.0.0.1:8732/"
 ROUTES = ["#/", "#/c/summary", "#/c/asset", "#/c/asset/title", "#/c/evidence",
-          "#/c/evidence/pnl", "#/c/underwrite", "#/c/underwrite/profile", "#/c/returns",
+          "#/c/evidence/pnl", "#/c/underwrite", "#/c/underwrite/profile",
+          "#/c/capital", "#/c/capital/schedule", "#/c/capital/reduction", "#/c/returns",
           "#/c/bridge", "#/c/dd", "#/c/dd/asks", "#/c/cheatsheet",
           "#/h/cliveden", "#/h/cliveden/pnl", "#/h/passalacqua/pnl"]
 

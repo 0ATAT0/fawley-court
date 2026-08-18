@@ -16,6 +16,7 @@ CHAPTERS = {
     "asset": ["", "photography", "title", "planning", "scheme", "counterparty"],
     "evidence": ["", "layers", "cohort-rate", "uk-rate", "seasonality", "cohort-ops", "uk-ops", "capex", "pnl"],
     "underwrite": ["", "dial-set", "engines", "margin", "capital", "profile", "residences", "residences-evidence"],
+    "capital": ["", "schedule", "zones", "evidence", "reduction", "phasing", "residences", "excluded"],
     "returns": ["", "cases", "sensitivities", "exit"],
     "bridge": [""],
     "dd": ["", "asks", "keys", "room", "gates", "closing"],
@@ -84,10 +85,12 @@ async def main():
     async with async_playwright() as p:
         br = await p.chromium.launch()
         for sname, (w, h) in SIZES.items():
-            ctx = await br.new_context(viewport={"width": w, "height": h})
+            ctx = await br.new_context(viewport={"width": w, "height": h}, service_workers="block")
             page = await ctx.new_page()
             errs = []
-            page.on("console", lambda m: errs.append(m.type + ": " + m.text) if m.type in ("error", "warning") else None)
+            page.on("console", lambda m: errs.append(m.type + ": " + m.text)
+                    if m.type in ("error", "warning")
+                    and "Service Worker registration blocked" not in m.text else None)
             page.on("pageerror", lambda e: errs.append("PAGEERROR " + str(e)))
             page.on("requestfailed", lambda r: errs.append("REQFAIL " + r.url))
             for route in ROUTES:
@@ -143,10 +146,25 @@ async def main():
             if await page.locator(".q").count() == 0:
                 findings.setdefault("search", []).append([sname, "asbestos search returned nothing"])
 
+            # the capital-cost schedule: a filter, a search and a line disclosure
+            await page.goto(BASE + "#/c/capital/schedule", wait_until="networkidle")
+            await page.click('[data-cxlimb="resi"]'); await page.wait_for_timeout(350)
+            if await page.locator(".cxl").count() != 8:
+                findings.setdefault("capex filter", []).append(
+                    [sname, "the residential limb showed %d lines, expected 8" % await page.locator(".cxl").count()])
+            await page.click('[data-cxlimb=""]'); await page.wait_for_timeout(300)
+            await page.fill("#cxsearch", "sewage"); await page.wait_for_timeout(500)
+            if await page.locator(".cxl").count() == 0:
+                findings.setdefault("capex search", []).append([sname, "sewage returned nothing"])
+            await page.click(".cxl-h"); await page.wait_for_timeout(400)
+            if not await page.locator(".cxl.open").count():
+                findings.setdefault("capex line", []).append([sname, "a line did not open"])
+            await page.fill("#cxsearch", ""); await page.wait_for_timeout(400)
+
             await page.goto(BASE + "#/c/returns", wait_until="networkidle")
             await page.click('[data-lad="4"]'); await page.wait_for_timeout(300)
             txt = await page.locator("#laddetail").inner_text()
-            if "8.91%" not in txt:
+            if "8.88%" not in txt:          # the £70m rung on the v16 ladder
                 findings.setdefault("ladder", []).append([sname, "rung detail did not update: " + txt[:60]])
 
             # the comparative ranking opens the hotel's own estimated P&L

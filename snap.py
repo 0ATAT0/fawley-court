@@ -25,6 +25,7 @@ CHAPTERS = {
     "asset": ["", "photography", "title", "planning", "scheme", "counterparty"],
     "evidence": ["", "layers", "cohort-rate", "uk-rate", "seasonality", "cohort-ops", "uk-ops", "capex", "pnl"],
     "underwrite": ["", "dial-set", "engines", "margin", "capital", "profile", "residences", "residences-evidence"],
+    "capital": ["", "schedule", "zones", "evidence", "reduction", "phasing", "residences", "excluded"],
     "returns": ["", "cases", "sensitivities", "exit"],
     "bridge": [""],
     "dd": ["", "asks", "keys", "room", "gates", "closing"],
@@ -48,7 +49,7 @@ async def main():
     async with async_playwright() as p:
         br = await p.chromium.launch()
         for sname, (w, h) in SIZES.items():
-            ctx = await br.new_context(viewport={"width": w, "height": h},
+            ctx = await br.new_context(viewport={"width": w, "height": h}, service_workers="block",
                                        device_scale_factor=2, reduced_motion="reduce")
             page = await ctx.new_page()
             errs = []

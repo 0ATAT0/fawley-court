@@ -47,8 +47,15 @@ const slides = fs.readFileSync(DECK + "slides.md", "utf8");
 const figs = JSON.parse(fs.readFileSync(DECK + "figures.json", "utf8"));
 const bridgeMd = fs.readFileSync(DEAL + "Model/docs/embassy-bridge-20260816.md", "utf8");
 const bridgeHtml = fs.readFileSync(DEAL + "Deck/irr-bridge/index.html", "utf8");
-const csSpec = JSON.parse(fs.readFileSync(DEAL + "Model/cheatsheet-spec.json", "utf8"));
-const csRender = fs.readFileSync("src/cheatsheet-render.txt", "utf8");
+const csSpec = JSON.parse(fs.readFileSync(DEAL + "Model/cheatsheet-spec-v16.json", "utf8"));
+const csRender = fs.readFileSync("src/cheatsheet-render-v16.txt", "utf8");
+/* the v16 sources of record: the measured figure set and the capital-cost pack */
+const v16Src = JSON.parse(fs.readFileSync(DEAL + "Model/docs/v16-figures.json", "utf8"));
+const capexSrc = JSON.parse(fs.readFileSync(DEAL + "Model/capex/capex-web-data.json", "utf8"));
+const bridgeMd16 = fs.readFileSync(DEAL + "Model/docs/embassy-bridge-v16-20260818.md", "utf8");
+const capexRegister = fs.readFileSync(DEAL + "Model/capex/REGISTER.md", "utf8")
+  + "\n" + fs.readFileSync(DEAL + "Model/capex/PROPOSAL.md", "utf8");
+const restrikeMd = fs.readFileSync(DEAL + "Model/docs/v16-restrike-20260818.md", "utf8");
 const qsSource = fs.readFileSync(DEAL + "Research/vendor-qs-crosscheck-20260816.md", "utf8");
 const pnlSource = JSON.parse(fs.readFileSync(PNLDIR + "web-data.json", "utf8"));
 const pnlRegister = fs.readFileSync(PNLDIR + "REGISTER.md", "utf8");
@@ -67,7 +74,7 @@ const mod = new Function(
   grab("const CASES = [", "const BY_SLUG") +
   grab("const CHEAT = {", "</script>") +
   grab("const QS = {", "/*QS-DATA-END*/") +
-  "; return { FIGS, DIALS, DIAL_SRC, PLATES, FIELD, LADDER, BRIDGE, PNL, PNLFMT, PNL_CASE,"
+  "; return { FIGS, V16, CAPEX, DIALS, DIAL_SRC, PLATES, FIELD, LADDER, BRIDGE, PNL, PNLFMT, PNL_CASE,"
   + " PNL_NOTES, PNL_PROSE, CHAPTERS, CASES, CHEAT, QS };"
 )();
 
@@ -84,9 +91,11 @@ const deckText = norm(slides).toLowerCase();
 const deckRaw = ent(slides).replace(/\s+/g, " ").toLowerCase();
 /* The bridge ships from two sources of record: the measured table and reading in
    the markdown, and the prose the standing bridge page already carries. */
-const bridgeText = (norm(bridgeMd) + " \u00b6 " + norm(bridgeHtml)).toLowerCase();
+const bridgeText = (norm(bridgeMd16) + " \u00b6 " + norm(bridgeMd) + " \u00b6 " + norm(bridgeHtml)).toLowerCase();
+const restrikeText = norm(restrikeMd).toLowerCase();
+const capexRegText = quotes(capexRegister.replace(/\*/g, "")).replace(/\s+/g, " ").toLowerCase();
 const csSpecText = quotes(JSON.stringify(csSpec).replace(/\\"/g, '"')).replace(/\s+/g, " ").toLowerCase();
-const csRenderText = quotes(csRender).replace(/\s+/g, " ").toLowerCase();
+const csRenderText = quotes(csRender.replace(/ \| /g, " ")).replace(/\s+/g, " ").toLowerCase();
 /* the P&L build record, with its markdown emphasis removed */
 const pnlRegText = quotes(pnlRegister.replace(/\*/g, "")).replace(/\s+/g, " ").toLowerCase();
 
@@ -102,7 +111,70 @@ const verbatim = (label, text, hay = deckText, hayName = "slides.md") => {
 
 /* every monetary / percentage / numeric token in a string */
 const TOKEN = /(?:[£€$]\s?[\d,]+(?:\.\d+)?(?:m|k|bn)?|\(\d+(?:\.\d+)?\)%|\d+(?:\.\d+)?%|\d[\d,]*(?:\.\d+)?(?:m|k|x|pp)?)/g;
-const tok = s => (norm(s).match(TOKEN) || []).map(t => t.replace(/\s/g, "").toLowerCase());
+const tok = s => (norm(s).match(TOKEN) || [])
+  .map(t => t.replace(/\s/g, "").replace(/[.,]+$/, "").toLowerCase())
+  .filter(Boolean);
+
+/* ══ the v16 sources of record ═════════════════════════════════════
+
+   Every figure the portal prints on the v16 basis has to appear in the
+   measured record or be derivable from the capital-cost pack. This collects
+   both into one set of display strings, and a second set of the tokens inside
+   them, so a figure can be recognised whole or in part. */
+
+const REGISTERED = new Set();
+const addReg = v => { if (v != null && String(v).trim()) REGISTERED.add(String(v).trim().toLowerCase()); };
+const walkReg = o => {
+  if (o == null) return;
+  if (Array.isArray(o)) { o.forEach(walkReg); return; }
+  if (typeof o === "object") { Object.values(o).forEach(walkReg); return; }
+  addReg(o);
+};
+walkReg(v16Src.fig); walkReg(v16Src.ladder); walkReg(v16Src.backsolve); walkReg(v16Src.sens);
+walkReg(v16Src.margin); walkReg(v16Src.cases); walkReg(v16Src.flows); walkReg(v16Src.flow_totals);
+walkReg(v16Src.pnl_years); walkReg(v16Src.bridge); walkReg(v16Src.bridge_meta);
+walkReg(v16Src.capex_chain); walkReg(v16Src.capex_groups); walkReg(v16Src.capex_loading);
+walkReg(v16Src.capex_inflation); walkReg(v16Src.extra); walkReg(v16Src.derived);
+
+/* the capital-cost pack, formatted the way the page formats it */
+const cxm0 = v => "£" + Math.round(v).toLocaleString("en-GB");
+const cxm1 = v => "£" + (v / 1e6).toFixed(1) + "m";
+const cxm2 = v => "£" + (v / 1e6).toFixed(2) + "m";
+const cxpct1 = v => (v * 100).toFixed(1) + "%";
+const cxpct0 = v => Math.round(v * 100) + "%";
+const cxqty = v => Number(v).toLocaleString("en-GB", { maximumFractionDigits: 2 });
+const CAPEX_VALUES = new Set();
+const addCx = v => { if (v != null && String(v).trim()) CAPEX_VALUES.add(String(v).trim().toLowerCase()); };
+for (const l of capexSrc.lines) {
+  [cxm0(l.live), cxm0(l.net), cxm0(l.rate), cxqty(l.qty), String(l.n), cxpct0(l.hotel_pct),
+   String(l.start), String(l.end), String(l.dur)].forEach(addCx);
+}
+for (const grp of [capexSrc.summary.hotel, capexSrc.summary.resi]) {
+  [cxm1(grp.net), cxm1(grp.prelims), cxm1(grp.fees), cxm1(grp.contingency), cxm1(grp.total),
+   cxm2(grp.per_key || grp.per_unit), cxpct0(grp.prelims_pct), cxpct1(grp.fees_pct),
+   cxpct0(grp.fees_pct), cxpct0(grp.cont_pct)].forEach(addCx);
+}
+addCx(cxm1(capexSrc.summary.works_total));
+for (const z of [...capexSrc.zones_hotel, ...capexSrc.zones_resi]) {
+  addCx(cxm1(z.total));
+  for (const e of Object.values(z.elements)) addCx(cxm1(e));
+}
+for (const v of Object.values(capexSrc.analysis.by_class)) { addCx(cxm1(v)); addCx(cxpct1(v / Object.values(capexSrc.analysis.by_class).reduce((a, b) => a + b, 0))); }
+for (const z of Object.values(capexSrc.analysis.class_by_zone)) addCx(cxm1(z.total));
+const sp = capexSrc.analysis.split;
+[cxm1(sp.buildings_loaded), cxm1(sp.estate_loaded), cxm2(sp.buildings_per_key), cxm2(sp.estate_per_key),
+ cxm1(sp.buildings_loaded + sp.estate_loaded)].forEach(addCx);
+for (const g of capexSrc.reduction.groups) { addCx(cxm1(g.capex_delta + g.resi_delta)); addCx(String(g.lines.length)); }
+for (const c of capexSrc.reduction.changed) { addCx(cxm0(Math.abs(c.net_delta))); addCx(String(c.n)); }
+for (const side of ["ground_up", "adopted"]) {
+  const r = capexSrc.reduction[side];
+  [cxm1(r.capex), cxm1(r.resi_cost), cxm1(r.capex + r.resi_cost), cxm1(r.peak_equity),
+   cxm1(r.cost_to_open), (r.irr * 100).toFixed(2) + "%"].forEach(addCx);
+}
+for (const q of capexSrc.phasing.total) addCx(cxm1(q));
+addCx(cxm1(capexSrc.phasing.total_spend));
+addCx(String(capexSrc.phasing.programme_q));
+addCx(String(capexSrc.lines.length));
 
 /* ══ A. the memorandum ══════════════════════════════════════════════ */
 
@@ -129,30 +201,57 @@ const OWN_PROSE = new Set([
 ]);
 
 const KPI_CAPTIONS = new Set(["Levered IRR at the ruled price", "Equity multiple", "Peak equity",
-  "Agent guidance, understood", "Levered profit"]);
+  "Agent guidance, understood", "Levered profit", "Hotel works, all in", "A key, against a £2.0m ceiling",
+  "The twelve residences", "Of it set as an allowance", "off the cost of works",
+  "of levered return, measured"]);
+
+/* The portal moved to the v16 model on 18 August 2026 while the printed
+   memorandum stayed on v15, so a line of prose is now one of two things: still
+   the deck's, word for word, or the portal's own. The first is checked
+   verbatim as before. The second is allowed, counted, and checked figure by
+   figure against the measured record — no sentence may carry a number that is
+   not in a source. */
+let ownProse = 0;
+const FIG_OK_EXTRA = new Set();
+const registered = t => REGISTERED.has(t) || CAPEX_VALUES.has(t) || FIG_OK_EXTRA.has(t)
+  || deckText.includes(t) || bridgeText.includes(t) || restrikeText.includes(t)
+  || csRenderText.includes(t) || csSpecText.includes(t) || pnlRegText.includes(t)
+  || capexRegText.includes(t) || qsSource.toLowerCase().includes(t);
+const prose = (label, text, hay = deckText, hayName = "slides.md") => {
+  const t = norm(text).toLowerCase();
+  if (!t) return;
+  checked++;
+  if (hay.includes(t)) return;              // unchanged: still the deck's own words
+  ownProse++;
+  for (const tk of tok(text)) {
+    checked++;
+    if (!registered(tk))
+      fail(`FIGURE UNREGISTERED  ${label}`, `token "${tk}" in "${norm(text).slice(0, 120)}"`);
+  }
+};
 
 for (const ch of mod.CHAPTERS) {
   for (const v of ch.views) {
     walkBlocks(allBlocks(v), b => {
       const k = b[0];
       if (k === "lede" || k === "para" || k === "subhead") {
-        if (!OWN_PROSE.has(norm(b[1]))) verbatim(`${ch.id}/${v.id} ${k}`, b[1]);
+        if (!OWN_PROSE.has(norm(b[1]))) prose(`${ch.id}/${v.id} ${k}`, b[1]);
       } else if (k === "src") {
         /* two source lines are checked against their own sources further down:
            the dial sheet's, sentence by sentence, and the rate field's tail. */
         if (norm(b[1]) !== norm(mod.DIAL_SRC) && norm(b[1]) !== norm(mod.FIELD.src))
-          verbatim(`${ch.id}/${v.id} source`, b[1]);
+          prose(`${ch.id}/${v.id} source`, b[1]);
       } else if (k === "kpis") {
-        for (const [val, c] of b[1]) { verbatim(`${ch.id}/${v.id} kpi value`, val); if (!KPI_CAPTIONS.has(c)) verbatim(`${ch.id}/${v.id} kpi cap`, c); }
+        for (const [val, c] of b[1]) { prose(`${ch.id}/${v.id} kpi value`, val); if (!KPI_CAPTIONS.has(c)) prose(`${ch.id}/${v.id} kpi cap`, c); }
       } else if (k === "cards") {
-        for (const [hh, bb] of b[1]) { verbatim(`${ch.id}/${v.id} card head`, hh); verbatim(`${ch.id}/${v.id} card body`, bb); }
+        for (const [hh, bb] of b[1]) { prose(`${ch.id}/${v.id} card head`, hh); prose(`${ch.id}/${v.id} card body`, bb); }
       } else if (k === "bullets") {
-        for (const x of b[1]) verbatim(`${ch.id}/${v.id} bullet`, x);
+        for (const x of b[1]) prose(`${ch.id}/${v.id} bullet`, x);
       } else if (k === "tbl") {
         const t = b[1];
-        for (const h2 of (t.head || [])) verbatim(`${ch.id}/${v.id} th`, typeof h2 === "object" ? h2.t : h2);
-        for (const [, cells] of t.rows) for (const c of cells) if (norm(c) && norm(c) !== "—") verbatim(`${ch.id}/${v.id} cell`, c);
-        if (t.note) verbatim(`${ch.id}/${v.id} note`, t.note);
+        for (const h2 of (t.head || [])) prose(`${ch.id}/${v.id} th`, typeof h2 === "object" ? h2.t : h2);
+        for (const [, cells] of t.rows) for (const c of cells) if (norm(c) && norm(c) !== "—") prose(`${ch.id}/${v.id} cell`, c);
+        if (t.note) prose(`${ch.id}/${v.id} note`, t.note);
       } else if (k === "plates") {
         for (const i of b[1]) { verbatim(`plate ${mod.PLATES[i].f} caption`, mod.PLATES[i].cap); verbatim(`plate ${mod.PLATES[i].f} alt`, mod.PLATES[i].alt, deckRaw); }
       }
@@ -163,11 +262,11 @@ for (const ch of mod.CHAPTERS) {
 /* the pane and exhibit headers are the deck's own leftHeader / rightHeader lines */
 for (const ch of mod.CHAPTERS) {
   for (const v of ch.views) for (const b of allBlocks(v)) {
-    if (b[0] === "exhibit") { if (b[1].h) verbatim(`${ch.id}/${v.id} exhibit header`, b[1].h); continue; }
+    if (b[0] === "exhibit") { if (b[1].h) prose(`${ch.id}/${v.id} exhibit header`, b[1].h); continue; }
     if (b[0] !== "panes") continue;
     for (const side of ["left", "right"]) {
       const hh = b[1][side].h;
-      if (hh && !OWN_PROSE.has(norm(hh))) verbatim(`${ch.id}/${v.id} pane header`, hh);
+      if (hh && !OWN_PROSE.has(norm(hh))) prose(`${ch.id}/${v.id} pane header`, hh);
     }
   }
 }
@@ -176,42 +275,69 @@ for (const ch of mod.CHAPTERS) {
 for (const [k, v] of mod.DIALS) { checked++; if (!norm(v)) fail("EMPTY DIAL", k); }
 const dialText = norm(mod.DIALS.map(d => d[1]).join(" "));
 for (const key of ["keys", "courtyard_keys", "adr_y1", "adr_y7", "rev_y7", "gop_y7", "gop_margin_y7",
-  "capex_works", "capex_per_key", "cost_to_open", "cost_to_open_key", "resi_units", "resi_psf",
-  "resi_sqft", "resi_absorption", "staff_index", "exit_yield", "purch_costs_pct", "capex_prog_q",
-  "entry", "irr", "em", "peak_equity", "fin_senior_ltc", "fin_refi_q", "refi_draw"]) {
+  "capex_hotel", "capex_hotel_per_key", "capex_resi", "capex_resi_per_unit", "capex_works_total",
+  "cost_to_open", "cost_to_open_key", "resi_units", "resi_psf", "resi_sqft", "resi_absorption",
+  "staff_index", "exit_yield", "purch_costs_pct", "capex_prog_q", "entry", "irr", "em",
+  "peak_equity", "fin_senior_ltc", "fin_refi_q", "refi_draw"]) {
   checked++;
-  if (!dialText.includes(figs[key])) fail("DIAL FIGURE MISSING  " + key, figs[key]);
+  if (!dialText.includes(v16Src.fig[key])) fail("DIAL FIGURE MISSING  " + key, v16Src.fig[key]);
 }
-for (const s of norm(mod.DIAL_SRC).split(/(?<=\.)\s+/)) verbatim("dial source sentence", s);
-verbatim("field text", mod.FIELD.text);
-verbatim("field source (tail)", mod.FIELD.src.split("Cohort rows")[1]);
+for (const s of norm(mod.DIAL_SRC).split(/(?<=\.)\s+/)) prose("dial source sentence", s);
+prose("field text", mod.FIELD.text);
+prose("field source (tail)", mod.FIELD.src.split("Cohort rows")[1]);
 
 const fieldBlock = slides.slice(slides.indexOf("id: rate-position"), slides.indexOf("id: seasonality"));
 for (const r of mod.FIELD.rows) {
+  if (r.subject) {                          // the subject's own rate is the model's
+    checked++;
+    if ("£" + r.min.toLocaleString("en-GB") !== v16Src.fig.adr_y1)
+      fail("FIELD SUBJECT RATE", r.min + " against the model's " + v16Src.fig.adr_y1);
+    continue;
+  }
   const want = `{ label: '${r.label.replace(/'/g, "\\'")}', min: ${r.min}, max: ${r.max}`;
   checked++;
   if (!fieldBlock.includes(want)) fail("FIELD ROW NOT IN SLIDE", want);
   if (r.mid != null) { checked++; if (!fieldBlock.includes(`mid: ${r.mid}`)) fail("FIELD MID NOT IN SLIDE", `${r.label} ${r.mid}`); }
 }
 
-/* the entry ladder, cell by cell, against the ladder slide */
-const ladderBlock = norm(slides.slice(slides.indexOf("id: ladder"), slides.indexOf("id: sensitivities"))).toLowerCase();
+/* the entry ladder, cell by cell, against the measured record */
+const LAD_SRC = Object.fromEntries(v16Src.ladder.map(r => [r.entry, r]));
 for (const r of mod.LADDER.rows) {
-  for (const v of [r.e, r.allin, r.irr, r.adr, r.exit, r.psf, r.note]) verbatim("ladder cell", v, ladderBlock, "slide ladder");
+  const src = LAD_SRC[r.e];
+  checked++;
+  if (!src) { fail("LADDER RUNG NOT MEASURED", r.e); continue; }
+  for (const [k, want] of [["allin", src.allin], ["irr", src.irr], ["adr", src.adr],
+                           ["exit", src.exit], ["psf", src.psf]]) {
+    checked++;
+    if (r[k] !== want) fail("LADDER CELL MISMATCH  " + r.e + "/" + k, `page "${r[k]}" vs record "${want}"`);
+  }
+  checked++;
+  if (Math.abs(r.irrN - src.irr_n) > 0.005) fail("LADDER BAR MISMATCH  " + r.e, `${r.irrN} vs ${src.irr_n}`);
+  prose("ladder note " + r.e, r.note);
 }
-for (const v of [mod.LADDER.underwritten.adr, mod.LADDER.underwritten.exit, mod.LADDER.underwritten.psf, mod.LADDER.underwritten.note])
-  verbatim("ladder underwritten", v, ladderBlock, "slide ladder");
-verbatim("ladder note", mod.LADDER.note, ladderBlock, "slide ladder");
-verbatim("ladder source", mod.LADDER.src, ladderBlock, "slide ladder");
+for (const [k, want] of [["adr", v16Src.fig.adr_y1], ["exit", v16Src.fig.exit_yield], ["psf", v16Src.fig.resi_psf]]) {
+  checked++;
+  if (mod.LADDER.underwritten[k] !== want)
+    fail("LADDER UNDERWRITTEN MISMATCH  " + k, `page "${mod.LADDER.underwritten[k]}" vs record "${want}"`);
+}
+prose("ladder underwritten note", mod.LADDER.underwritten.note);
+prose("ladder note", mod.LADDER.note);
+prose("ladder source", mod.LADDER.src);
 
 /* every subject-cell figure ties to the register */
-const FIG_VALUES = new Set(Object.values(figs).map(v => v.toLowerCase()));
+const FIG_VALUES = new Set([...Object.values(figs).map(v => String(v).toLowerCase()), ...REGISTERED]);
 const EXTRA_OK = new Set([
   "60", "45", "12", "17", "43", "24", "22", "21", "15", "13.3", "10.7", "8", "9", "2", "3.75", "1.20",
   "0.65", "0.80", "1.25", "1.05", "0.90", "60–70%", "£738k", "£16.08m", "£18.43m", "£9.77m", "36.3%",
   "41.6%", "22.1%", "£734", "£1.39m", "£5.62m", "£0.09m", "100%", "£2.90m", "£3.62m", "£250.9m",
   "£86.5m", "£34.35m", "£1.24m", "£1.11m", "£0.42m", "5.09%", "£255.3m", "1.068", "£72.5m", "£33.3m",
-  "£35.6m", "13.23%", "34.08%", "£15.09m", "£12.68m", "28.65%", "£44.27m"
+  "£35.6m", "£1.46m", "£0.75m", "146", "£2.0m", "£123.6m", "£194.2m", "£45.33m", "£15.39m",
+  "£10.74m", "33.96%", "23.69%", "£756k", "£16.49m", "£19.72m", "£9.12m", "36.4%", "43.5%",
+  "20.1%", "£753", "£4.13m", "£2.06m", "£3.24m", "£248.0m", "£10.59m", "£11.01m", "4.16%",
+  "£264.8m", "£95.9m", "£44.4m", "£46.7m", "£282.0m", "£232.8m", "£121.5m", "£116.9m", "£111.9m",
+  "£95.5m", "£2.50m", "£0.95m", "£16.40m", "£2.81m", "£0.42m", "5.0%", "3.0%", "£1,300", "5,500",
+  "£109.8m", "£92.5m", "12.99%", "1.84x", "£1,000", "£1,160", "1.3x", "4.00%", "£1.39m", "£5.62m",
+  "£0.09m", "100%"
 ]);
 let subjChecked = 0;
 for (const ch of mod.CHAPTERS) {
@@ -234,7 +360,10 @@ for (const ch of mod.CHAPTERS) {
    portal's own copy. The words are ours; the numbers are not — every token in
    them must already be registered somewhere. */
 const NAV_OK = new Set(["10", "11", "13", "16", "12", "8", "6", "7", "5", "4", "39", "87", "26",
-  "1", "2", "3", "9", "19", "100", "0.80", "1.05", "1.25", "0.90", "34.08%", "1.93x", "13.23%"]);
+  "1", "2", "3", "9", "19", "100", "0.80", "1.05", "1.25", "0.90", "33.96%", "1.84x", "12.99%",
+  "146", "14", "£8–12m", "£1.46m", "43.3%", "£23.7m", "3.79", "£2.06m", "£3.70m", "£123.6m",
+  "£44.4m", "£168.0m", "£194.2m", "£248.0m", "£45.33m", "£4.13m", "£49.97m", "£109.8m",
+  "−34.31%", "+12.99%", "+47.31pp", "9.07", "(9.07)%", "7.5pp", "12m", "£2.0m"]);
 const navToken = (label, s) => {
   for (const t of tok(s)) {
     checked++;
@@ -280,11 +409,11 @@ const BLOCK = Object.fromEntries(mod.CASES.map(c => [c.slug, blockFor(c.slug)]))
 for (const c of mod.CASES) {
   verbatim(`${c.slug} name`, c.name);
   for (const [k, v] of c.record) verbatim(`${c.slug} record/${k}`, v);
-  for (const [h, b] of c.cards) { verbatim(`${c.slug} card/${h}`, h); verbatim(`${c.slug} card body/${h}`, b); }
+  for (const [h, b] of c.cards) { verbatim(`${c.slug} card/${h}`, h); prose(`${c.slug} card body/${h}`, b); }
   verbatim(`${c.slug} source`, c.src);
   if (c.gap) for (const s of norm(c.gap).split(/(?<=\.)\s+/)) verbatim(`${c.slug} gap`, s);
   for (const [k, comp, subj, note] of c.against || []) {
-    if (note) for (const s of norm(note).split(/(?<=\.)\s+/)) verbatim(`${c.slug} note/${k}`, s);
+    if (note) for (const s of norm(note).split(/(?<=\.)\s+/)) prose(`${c.slug} note/${k}`, s);
     for (const t of tok(comp)) {
       checked++;
       if (!BLOCK[c.slug].includes(t)) fail(`FIGURE NOT IN SLIDE  ${c.slug} against/${k}`, `token "${t}"`);
@@ -295,19 +424,19 @@ for (const c of mod.CASES) {
 }
 function SUBJ_OK() {
   return new Set([
-    "£975 underwritten", "60", "twelve months",
-    "£738k · £44.27m, year 7", "34.08% gop · £15.09m, year 7", "34.08% gop · year 7",
-    "£1.79m a key works · £107.3m", "staff cost index 1.20; no headcount is modelled",
-    "not computable on a like basis", "12 at £1,100/sqft, 5,492 sqft average",
+    "£1,000 underwritten", "60", "twelve months",
+    "£756k · £45.33m, year 7", "33.96% gop · £15.39m, year 7", "33.96% gop · year 7",
+    "£2.06m a key works · £123.6m", "staff cost index 1.20; no headcount is modelled",
+    "not computable on a like basis", "12 at £1,300/sqft, 5,500 sqft average",
     "3.75 a year", "150 founder memberships at £7,500, then £3,500",
     "14 quarters of works, opening at t+3.5", "60: 17 main house, 43 stables and courtyard",
-    "£975 underwritten, across all twelve months", "£44.27m revenue, £15.09m gop, year 7"
+    "£1,000 underwritten, across all twelve months", "£45.33m revenue, £15.39m gop, year 7"
   ]);
 }
 
 /* ══ C. the bridge ═════════════════════════════════════════════════ */
 
-const bridgeTable = bridgeMd.slice(bridgeMd.indexOf("| # | Lever"), bridgeMd.indexOf("Net:"));
+const bridgeTable = bridgeMd16.slice(bridgeMd16.indexOf("| # | Lever"), bridgeMd16.indexOf("Net:"));
 for (const r of mod.BRIDGE.rows) {
   const line = bridgeTable.split("\n").find(l => l.trim().startsWith("| " + r.n + " |"));
   checked++;
@@ -324,17 +453,16 @@ for (const r of mod.BRIDGE.rows) {
     const srcD = cells[4];
     if (Math.abs(parseFloat(srcD.replace("−", "-")) - r.dN) > 1e-9)
       fail("BRIDGE DELTA MISMATCH  rung " + r.n, `page ${r.dN} vs source ${srcD}`);
-    const rounded = (r.dN > 0 ? "+" : "−") + Math.abs(r.dN).toFixed(1);
+    const rounded = (r.dN > 0 ? "+" : "−") + Math.abs(r.dN).toFixed(2);
     checked++;
     if (r.d !== rounded) fail("BRIDGE DELTA LABEL", `${r.d} is not ${rounded}`);
   }
 }
 verbatim("bridge stand", mod.BRIDGE.stand2.split("The final rung")[1].split(",")[0], bridgeText, "bridge md");
 for (const [n] of mod.BRIDGE.heads) { checked++; if (!bridgeText.includes(n.replace(/£/g, "£").toLowerCase()) && !bridgeText.includes(n.replace("→", "→").toLowerCase())) fail("BRIDGE HEADLINE NOT IN SOURCE", n); }
-const BRIDGE_FIG = ["23.1pp", "24% ebitda", "31.7% ebitda", "1.20", "£1,200", "£975", "2.4pp", "11.6pp",
-  "12-house", "savills, october 2025", "£1,934", "4.1pp", "9.13%", "£212.7m", "£171.0m", "£98.9m",
-  "55% ltc", "1.4x", "−12.7%", "0.44x", "£75m", "£40–60m", "£338.7m", "£135.45m", "£284.5m", "£179.6m",
-  "£350k", "8% gop", "1.5%", "2.5%"];
+const BRIDGE_FIG = ["24% ebitda", "1.20", "£1,200", "£1,000", "12-house", "savills, october 2025",
+  "£171.0m", "55% ltc", "1.3x", "−12.7%", "0.44x", "£75m", "£40–60m", "£338.7m", "£135.45m",
+  "£284.5m", "£194.2m", "7.34pp", "£3m", "£28m"];
 for (const f of BRIDGE_FIG) {
   checked++;
   const inPage = norm(mod.BRIDGE.read.join(" ") + mod.BRIDGE.caveats.join(" ")).toLowerCase().includes(f);
@@ -384,7 +512,11 @@ const csv = (label, text, hay, hayName) => {
   const t = quotes(String(text).replace(/&amp;/g, "&")).replace(/\s+/g, " ").trim().toLowerCase();
   if (!t || t === "-" || t === "—" || t === "") return;
   checked++;
-  if (!hay.includes(t)) fail("CHEAT NOT VERBATIM  " + label + "  (" + hayName + ")", `"${text}"`);
+  if (hay.includes(t) || csSpecText.includes(t) || csRenderText.includes(t)) return;
+  /* the sheet is struck at a moment; where the model has moved since, the portal
+     carries the correction and says so. Those lines are the portal's own, and
+     are checked figure by figure instead of verbatim. */
+  prose("cheat " + label, text);
 };
 const inSpec = (l, t) => csv(l, t, csSpecText, "cheatsheet-spec.json");
 const inRender = (l, t) => csv(l, t, csRenderText, "the sheet's own render");
@@ -429,7 +561,9 @@ for (const [s, t, c] of C.watchpoints) { inSpec("watch status", s); inSpec("watc
 for (const f of C.footer) inSpec("cheat footer", f);
 /* the sensitivity grid's own corners must tie the measured entry ladder */
 checked++;
-if (C.sensitivity.grid[1][1] !== "13.2%") fail("SENSITIVITY BASE", "base cell is " + C.sensitivity.grid[1][1] + ", the model prints 13.2%");
+const csBase = (parseFloat(v16Src.fig.irr) ).toFixed(1) + "%";
+if (C.sensitivity.grid[1][1] !== csBase)
+  fail("SENSITIVITY BASE", "base cell is " + C.sensitivity.grid[1][1] + ", the model prints " + csBase);
 
 /* ══ F. the comparable estimated P&Ls ══════════════════════════════ */
 
@@ -579,6 +713,63 @@ for (const c of mod.CASES) {
 checked++;
 if (Object.keys(mod.PNL_CASE).length !== pnlSource.hotels.length) fail("P&L MAP SIZE", "the ten books and the ten cases must correspond");
 
+/* ══ G. the two shipped packs equal their sources ══════════════════ */
+
+checked++;
+if (JSON.stringify(mod.V16) !== JSON.stringify(v16Src))
+  fail("V16 BLOCK OUT OF DATE", "the V16 block in index.html is not the record in Model/docs — run tools/inline-v16.py");
+checked++;
+if (JSON.stringify(mod.CAPEX) !== JSON.stringify(capexSrc))
+  fail("CAPEX BLOCK OUT OF DATE", "the CAPEX block in index.html is not the pack in Model/capex — run tools/inline-capex.py");
+
+/* the figure mirror on the page is the record's own map */
+checked++;
+if (JSON.stringify(figsOnPage()) !== JSON.stringify(v16Src.fig))
+  fail("FIGURE MIRROR OUT OF DATE", "the FIGS map in index.html is not v16-figures.json's fig block");
+function figsOnPage() { return mod.FIGS; }
+
+/* ══ H. the capital-cost chapter, re-derived from the pack ═════════ */
+
+/* Every figure the chapter prints is computed here from capex-web-data.json by
+   this file's own formatting, and compared with what the page renders. The
+   chapter's exhibits are built at run time, so this checks the pack rather than
+   the markup: if the two agree, the page cannot be printing a stale number. */
+const cap = capexSrc;
+const capChecks = [
+  ["hotel total", cxm1(cap.summary.hotel.total), v16Src.fig.capex_hotel],
+  ["hotel per key", cxm2(cap.summary.hotel.per_key), v16Src.fig.capex_hotel_per_key],
+  ["resi total", cxm1(cap.summary.resi.total), v16Src.fig.capex_resi],
+  ["resi per unit", cxm2(cap.summary.resi.per_unit), v16Src.fig.capex_resi_per_unit],
+  ["works total", cxm1(cap.summary.works_total), v16Src.fig.capex_works_total],
+  ["hotel net", cxm1(cap.summary.hotel.net), v16Src.fig.capex_hotel_net],
+  ["resi net", cxm1(cap.summary.resi.net), v16Src.fig.capex_resi_net],
+];
+for (const [label, fromPack, fromRecord] of capChecks) {
+  checked++;
+  if (fromPack !== fromRecord)
+    fail("CAPEX PACK DISAGREES WITH THE MODEL RECORD  " + label, `pack ${fromPack} vs record ${fromRecord}`);
+}
+/* the pack's own arithmetic */
+checked++;
+const netSum = cap.lines.filter(l => l.on).reduce((a, l) => a + l.live, 0);
+if (Math.abs(netSum - (cap.summary.hotel.net + cap.summary.resi.net)) > 1)
+  fail("CAPEX LINES DO NOT SUM", `${Math.round(netSum)} against ${Math.round(cap.summary.hotel.net + cap.summary.resi.net)}`);
+checked++;
+const phaseSum = cap.phasing.total.reduce((a, v) => a + v, 0);
+if (Math.abs(phaseSum - cap.summary.works_total) > 1)
+  fail("CAPEX PHASING DOES NOT TIE", `${Math.round(phaseSum)} against ${Math.round(cap.summary.works_total)}`);
+checked++;
+if (cap.lines.length !== 146) fail("CAPEX LINE COUNT", cap.lines.length + " lines, expected 146");
+checked++;
+if (cap.reduction.changed.length !== 43) fail("CAPEX CHANGE COUNT", cap.reduction.changed.length + " changed lines, expected 43");
+/* every line carries its basis and its evidence class */
+for (const l of cap.lines) {
+  checked++;
+  if (!l.basis || String(l.basis).trim().length < 20) fail("CAPEX LINE WITHOUT BASIS", "#" + l.n + " " + l.desc);
+  checked++;
+  if (!["MEASURED", "BENCHMARK", "ALLOWANCE"].includes(l.source)) fail("CAPEX LINE WITHOUT CLASS", "#" + l.n);
+}
+
 /* ══ house rules ═══════════════════════════════════════════════════ */
 
 for (const w of ["strand", "wilton", "\\bproceed\\b", "compelling", "\\bprime\\b(?! reach| Henley| sold| 5%)", "\\brare\\b"]) {
@@ -596,13 +787,32 @@ const OCC_OK = [
   '"occ_stab": "0.65"',                      // the figures register, carried whole
   '"occupancy":0.65',                        // the comparable pack, carried whole
   "0.65 x administrative and general",       // the P&L pack's payroll bridge, a weighting
-  "0.65 / 0.45 / 0.40 / 0.00 convention"     // the same weighting, restated in the limits
+  "0.65 / 0.45 / 0.40 / 0.00 convention",    // the same weighting, restated in the limits
+  "0.65 \u2192 12.99%",                        // the sensitivities table's underwritten cell
+  "occupancy 0.65, seasonality",             // the P&L pack's subject note
+  "0.65 is the model input",
+  "reaching 0.55",                           // the downside's own occupancy override
+  "(0.65 stabilised)"                        // the cheat sheet's own occupancy note
 ];
-const text = strip(html);
+/* the scan is of the page's own narrative: the data blocks it carries whole —
+   the figure record, the capital-cost pack, the comparable P&Ls, the register —
+   are sources, and their raw values are not narrative claims. */
+let narrative = html;
+for (const [a, b] of [["/*V16-DATA-START*/", "/*V16-DATA-END*/"],
+                      ["/*CAPEX-DATA-START*/", "/*CAPEX-DATA-END*/"],
+                      ["/*PNL-DATA-START*/", "/*PNL-DATA-END*/"],
+                      ["/*QS-DATA-START*/", "/*QS-DATA-END*/"]]) {
+  const i = narrative.indexOf(a), j = narrative.indexOf(b);
+  if (i >= 0 && j > i) narrative = narrative.slice(0, i) + narrative.slice(j);
+}
+const text = strip(narrative);
 let scrub = text;
 for (const ok of OCC_OK) scrub = scrub.split(ok).join("");
 checked++;
-if (/\b0\.65\b/.test(scrub)) fail("OCCUPANCY POINT", "0.65 outside the approved model-input contexts");
+{
+  const hit = scrub.match(/.{0,90}\b0\.65\b.{0,90}/);
+  if (hit) fail("OCCUPANCY POINT", "0.65 outside the approved contexts: \u2026" + hit[0].replace(/\s+/g, " ") + "\u2026");
+}
 
 /* the internal marking is withdrawn: the chapters stay, the marking goes */
 for (const s of ["INTERNAL — ALIGN ONLY", "Internal — Align only", 'class="intbar"', "badge int",
@@ -620,5 +830,5 @@ checked++;
 if (!mod.CHAPTERS.find(c => c.id === "dd").views.some(v => v.lead.some(b => b[0] === "qs")))
   fail("REGISTER NOT IN DILIGENCE", "the 87-question register must lead the merged diligence chapter");
 
-console.log(`\n${fails === 0 ? "PASS" : "FAIL"} — ${checked} checks, ${fails} failures  (${subjChecked} subject-cell figures, ${pnlFigures} P&L figures)`);
+console.log(`\n${fails === 0 ? "PASS" : "FAIL"} — ${checked} checks, ${fails} failures  (${subjChecked} subject-cell figures, ${pnlFigures} P&L figures, ${ownProse} portal-authored lines figure-checked)`);
 process.exit(fails ? 1 : 0);

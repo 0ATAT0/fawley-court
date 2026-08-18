@@ -56,17 +56,47 @@ Kept so a later revision knows what was deliberate.
   states 0.65 as the model input in the table note, keeping the house
   convention.
 
+## The v16 re-strike (18 August 2026)
+
+1. **The portal moved to Financial Model v16; the memorandum did not.** Angus
+   ruled the re-strike portal-only, so a new source of record was built for it —
+   `Model/docs/v16-figures.json`, measured on a scratch copy of the saved
+   workbook — and the deck's `slides.md` was left where it was. Every model
+   figure on the page now comes from that record, and `verify.mjs` gates against
+   it rather than against the deck.
+2. **Prose is now one of two things, and the gate says which.** A line that is
+   still the deck's word for word is checked verbatim as before. A line the
+   re-strike rewrote is the portal's own and is checked figure by figure against
+   the measured record. The tally is printed on every run — 329 portal-authored
+   lines at the time of writing — so the drift is visible rather than assumed.
+3. **The capital cost is its own chapter, not a dial.** The ground-up budget is
+   146 lines with a quantity, a rate, an evidence class and a sourcing sentence
+   each; a five-line summary could not carry that, and a PDF could not make it
+   searchable. The schedule is the chapter's centrepiece and the finder indexes
+   every line.
+4. **The reduction is shown, not smoothed.** The budget as first built, the
+   ruling that it was too expensive, all 43 line changes and what each group was
+   worth — including the four presentational trims, named as such.
+5. **The bridge was re-measured rather than relabelled.** Its capital-cost lever
+   fell from +7.34pp to +0.75pp because the ground-up budget lands within £3m of
+   Embassy's own. Keeping the old walk with a footnote would have kept a lever
+   the underwrite no longer has.
+6. **Two lineage cases were dropped from the table.** The floor case and the
+   flag-failure branch live on older books that cannot be reproduced on v16;
+   they are named in the note instead of being shown as if they were current.
+
 ## The gates that hold this
 
-- `verify.mjs` — 4,324 checks, 0 failures. Adds section F: the shipped P&L pack
+- `verify.mjs` — 5,552 checks, 0 failures. Adds section F: the shipped P&L pack
   must equal `Research/comp-pnls/web-data.json` leaf for leaf; every printed
   P&L figure (1,741 of them) must equal this file's own independent formatting
   of that source; every candour line must be verbatim in `REGISTER.md`. It also
   now checks the portal's own navigation figures against the registers, that
   every view leads with an exhibit, that no route is duplicated, and that the
   withdrawn internal marking has not returned.
-- `audit.py` — 45 routes × 4 viewports with every disclosure forced open, plus
-  the finder, the register filters, the ladder, the ranking and the lightbox.
+- `audit.py` — 57 routes × 4 viewports with every disclosure forced open, plus
+  the finder, the register filters, the capital-cost schedule's filters, the
+  ladder, the ranking and the lightbox.
 - `offline.py` — service worker `fawley-court-v3`, sampled routes offline.
 
 ## Known and deliberate

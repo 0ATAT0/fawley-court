@@ -1,0 +1,2276 @@
+{
+ "meta": {
+  "model": "Fawley Court - Financial Model v16.xlsx",
+  "snapshot_sha256": "bbab4f17f4e6185803998b478e7829d946c70f56ad6855cd2b326a6bd99fa6f5",
+  "measured": "2026-08-18",
+  "entry": "£50m",
+  "basis": "Every figure is measured on a scratch copy of the saved v16 workbook at the ruled £50m entry. Solved levels are bracketed by bisection with the achieved value read back through the model; the deal bans goal-seek. In v16 the operator base and incentive fees sit inside the P&L, so NOI and the NOI margin are after them — the v15 pre-fee convention does not apply here.",
+  "checks": "YES"
+ },
+ "fig": {
+  "keys": "60",
+  "courtyard_keys": "12",
+  "keys_during_works": "43",
+  "entry": "£50m",
+  "entry_all_in": "£52.5m",
+  "acq_costs_pct": "5%",
+  "hold_yrs": "8",
+  "price_per_key": "£833,333",
+  "irr": "12.99%",
+  "irr_4dp": "12.9930%",
+  "em": "1.84x",
+  "irr_unlev": "10.87%",
+  "em_unlev": "1.76x",
+  "levered_profit": "£92.5m",
+  "peak_equity": "£109.8m",
+  "total_equity": "£109.8m",
+  "total_equity_bare": "109.8",
+  "peak_debt": "£116.9m",
+  "exit_value": "£248.0m",
+  "exit_per_key": "£4.13m",
+  "exit_yield": "4.00%",
+  "exit_noi": "£11.01m",
+  "exit_adjnoi": "£10.59m",
+  "exit_gop": "£15.78m",
+  "purch_costs_pct": "6.8%",
+  "disposal_costs_pct": "1.5%",
+  "exit_q": "32",
+  "exit_gross": "£264.8m",
+  "exit_noi_on_gross": "4.16%",
+  "capex_hotel": "£123.6m",
+  "capex_hotel_per_key": "£2.06m",
+  "capex_resi": "£44.4m",
+  "capex_resi_per_unit": "£3.70m",
+  "capex_works_total": "£168.0m",
+  "capex_prog_q": "14",
+  "capex_prelims_pct": "20%",
+  "capex_fees_pct": "12.5%",
+  "capex_cont_pct": "15%",
+  "capex_resi_prelims_pct": "12%",
+  "capex_resi_fees_pct": "8%",
+  "capex_resi_cont_pct": "5%",
+  "capex_hotel_net": "£88.1m",
+  "capex_hotel_prelims": "£9.3m",
+  "capex_hotel_fees": "£11.6m",
+  "capex_hotel_cont": "£14.6m",
+  "capex_resi_net": "£38.8m",
+  "capex_resi_prelims": "£0.77m",
+  "capex_resi_fees": "£2.86m",
+  "capex_resi_cont": "£1.98m",
+  "cost_to_open": "£194.2m",
+  "cost_to_open_key": "£3.24m",
+  "all_in_to_exit": "£232.8m",
+  "co_acq": "£52.5m",
+  "co_capex": "£121.5m",
+  "co_arrfee": "£0.95m",
+  "co_interest": "£16.40m",
+  "co_shortfall": "£2.81m",
+  "open_q": "14",
+  "adr_y1": "£1,000",
+  "adr_y7": "£1,160",
+  "occ_stab": "0.65",
+  "staff_index": "1.20",
+  "fixedcost_scalar": "0.30",
+  "fixedcost_base_keys": "45",
+  "regatta_days": "10",
+  "regatta_covers": "400",
+  "regatta_spend": "£300",
+  "sleepers": "1.9",
+  "weddings_y7": "25",
+  "wedding_rev_y1": "£140,000",
+  "corp_y7": "15",
+  "corp_rev_y1": "£90,000",
+  "rev_y7": "£45.33m",
+  "gop_y7": "£15.39m",
+  "noi_y7": "£10.74m",
+  "ebitda_y7": "£12.10m",
+  "gdp_y7": "£23.46m",
+  "gop_margin_y7": "33.96%",
+  "noi_margin_y7": "23.69%",
+  "ebitda_margin_y7": "26.69%",
+  "rev_per_key_y7": "£755,507",
+  "revpar_y7": "£753",
+  "occ_y7_achieved": "64.9%",
+  "rooms_rev_y7": "£16.49m",
+  "fb_rev_y7": "£19.72m",
+  "other_rev_y7": "£9.12m",
+  "rooms_share_y7": "36.4%",
+  "fb_share_y7": "43.5%",
+  "other_share_y7": "20.1%",
+  "regatta_rev_y7": "£1.39m",
+  "resi_units": "12",
+  "resi_sqft": "5,500",
+  "resi_psf": "£1,300",
+  "resi_esc": "3.0%",
+  "resi_fee_pct": "5%",
+  "resi_absorption": "3.75",
+  "resi_gross": "£95.9m",
+  "resi_cost": "£44.4m",
+  "resi_net": "£46.7m",
+  "resi_sales_start_q": "9",
+  "resi_total_sqft": "66,000",
+  "resi_sales_fee": "£4.80m",
+  "resi_build_per_sqft": "£325",
+  "resi_fitout_per_unit": "£400,000",
+  "resi_roc": "2.05x",
+  "fin_senior_ltc": "55%",
+  "fin_capex_ltc": "55%",
+  "fin_refi_ltv": "55%",
+  "fin_refi_yield": "4.00%",
+  "fin_senior_margin": "3.5%",
+  "fin_refi_margin": "2.5%",
+  "fin_pik_q": "14",
+  "fin_refi_q": "26",
+  "refi_min_icr": "1.3x",
+  "base_rate": "4.0%",
+  "arr_fee_pct": "1%",
+  "refi_draw": "£116.9m",
+  "senior_peak": "£111.9m",
+  "fee_am": "£350,000",
+  "fee_incentive": "7%",
+  "fee_op_base": "2.5%",
+  "fee_franchise": "1.5%",
+  "promote_h1": "12%",
+  "promote_h2": "20%",
+  "promote_h3": "30%",
+  "tax_corp": "25%",
+  "tax_cgt": "0%",
+  "cash_floor": "£1m",
+  "cash_floor_pre": "£4m",
+  "exit_am_fee": "£0.42m",
+  "y8_rev": "£46.46m",
+  "y8_gop": "£15.78m",
+  "y8_noi": "£11.01m"
+ },
+ "raw": {
+  "keys": {
+   "v": 60,
+   "fmt": "{:,.0f}",
+   "scale": 1,
+   "src": "Deal_Rooms"
+  },
+  "courtyard_keys": {
+   "v": 12,
+   "fmt": "{:.0f}",
+   "scale": 1,
+   "src": "Op_CourtyardKeys"
+  },
+  "keys_during_works": {
+   "v": 43,
+   "fmt": "{:.0f}",
+   "scale": 1,
+   "src": "Op_KeysDuringWorks"
+  },
+  "entry": {
+   "v": 50000000,
+   "fmt": "£{:.0f}m",
+   "scale": 1e-06,
+   "src": "Deal_PurchasePrice"
+  },
+  "entry_all_in": {
+   "v": 52500000,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "Acq_Cost"
+  },
+  "acq_costs_pct": {
+   "v": 0.05,
+   "fmt": "{:.0f}%",
+   "scale": 100,
+   "src": "Deal_AcqCostsPct"
+  },
+  "hold_yrs": {
+   "v": 8,
+   "fmt": "{:.0f}",
+   "scale": 1,
+   "src": "Deal_HoldPeriodYrs"
+  },
+  "price_per_key": {
+   "v": 833333.3333333334,
+   "fmt": "£{:,.0f}",
+   "scale": 1,
+   "src": "KPI_PricePerKey"
+  },
+  "irr": {
+   "v": 0.12992997765541078,
+   "fmt": "{:.2f}%",
+   "scale": 100,
+   "src": "KPI_LeveredIRR"
+  },
+  "irr_4dp": {
+   "v": 0.12992997765541078,
+   "fmt": "{:.4f}%",
+   "scale": 100,
+   "src": "KPI_LeveredIRR"
+  },
+  "em": {
+   "v": 1.8429022776174808,
+   "fmt": "{:.2f}x",
+   "scale": 1,
+   "src": "KPI_EquityMultiple"
+  },
+  "irr_unlev": {
+   "v": 0.1087096989154816,
+   "fmt": "{:.2f}%",
+   "scale": 100,
+   "src": "KPI_UnleveredIRR"
+  },
+  "em_unlev": {
+   "v": 1.7603838747700074,
+   "fmt": "{:.2f}x",
+   "scale": 1,
+   "src": "Ret_UnleveredEM"
+  },
+  "levered_profit": {
+   "v": 92537919.76064575,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "KPI_LeveredProfit"
+  },
+  "peak_equity": {
+   "v": 109784873.30964427,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "KPI_PeakEquity"
+  },
+  "total_equity": {
+   "v": 109784873.30964427,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "KPI_TotalEquity"
+  },
+  "total_equity_bare": {
+   "v": 109784873.30964427,
+   "fmt": "{:.1f}",
+   "scale": 1e-06,
+   "src": "KPI_TotalEquity"
+  },
+  "peak_debt": {
+   "v": 116889415.75436245,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "KPI_TotalDebt"
+  },
+  "exit_value": {
+   "v": 247953505.32832256,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "KPI_ExitPrice"
+  },
+  "exit_per_key": {
+   "v": 4132558.422138709,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "KPI_ExitPricePerKey"
+  },
+  "exit_yield": {
+   "v": 0.04,
+   "fmt": "{:.2f}%",
+   "scale": 100,
+   "src": "Exit_Yield"
+  },
+  "exit_noi": {
+   "v": 11008613.761409814,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "Exit_NOI"
+  },
+  "exit_adjnoi": {
+   "v": 10592573.74762594,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "Exit_AdjNOI"
+  },
+  "exit_gop": {
+   "v": 15778000.750067467,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "Exit_GOP"
+  },
+  "purch_costs_pct": {
+   "v": 0.068,
+   "fmt": "{:.1f}%",
+   "scale": 100,
+   "src": "Exit_PurchasersCostsPct"
+  },
+  "disposal_costs_pct": {
+   "v": 0.015,
+   "fmt": "{:.1f}%",
+   "scale": 100,
+   "src": "Exit_DisposalCostsPct"
+  },
+  "exit_q": {
+   "v": 32,
+   "fmt": "{:.0f}",
+   "scale": 1,
+   "src": "Exit_Q"
+  },
+  "exit_gross": {
+   "v": 264814343.6906485,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "Exit_AdjNOI / Exit_Yield"
+  },
+  "exit_noi_on_gross": {
+   "v": 0.041571062986942596,
+   "fmt": "{:.2f}%",
+   "scale": 100,
+   "src": "Exit_NOI / gross exit value"
+  },
+  "capex_hotel": {
+   "v": 123605233.2,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "Capex!E22"
+  },
+  "capex_hotel_per_key": {
+   "v": 2060087.22,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "Capex!F22"
+  },
+  "capex_resi": {
+   "v": 44419571.207,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "Capex!E33"
+  },
+  "capex_resi_per_unit": {
+   "v": 3701630.933916667,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "Capex!F33"
+  },
+  "capex_works_total": {
+   "v": 168024804.407,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "Capex!E35"
+  },
+  "capex_prog_q": {
+   "v": 14,
+   "fmt": "{:.0f}",
+   "scale": 1,
+   "src": "Capex_ProgrammeQ"
+  },
+  "capex_prelims_pct": {
+   "v": 0.2,
+   "fmt": "{:.0f}%",
+   "scale": 100,
+   "src": "Capex_PrelimsPct"
+  },
+  "capex_fees_pct": {
+   "v": 0.125,
+   "fmt": "{:.1f}%",
+   "scale": 100,
+   "src": "Capex_GU_FeesPct"
+  },
+  "capex_cont_pct": {
+   "v": 0.15,
+   "fmt": "{:.0f}%",
+   "scale": 100,
+   "src": "Capex_GU_ContPct"
+  },
+  "capex_resi_prelims_pct": {
+   "v": 0.12,
+   "fmt": "{:.0f}%",
+   "scale": 100,
+   "src": "Capex!D30"
+  },
+  "capex_resi_fees_pct": {
+   "v": 0.08,
+   "fmt": "{:.0f}%",
+   "scale": 100,
+   "src": "Capex!D31"
+  },
+  "capex_resi_cont_pct": {
+   "v": 0.05,
+   "fmt": "{:.0f}%",
+   "scale": 100,
+   "src": "Capex!D32"
+  },
+  "capex_hotel_net": {
+   "v": 88058431,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "Capex!E18"
+  },
+  "capex_hotel_prelims": {
+   "v": 9311997,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "Capex!E19"
+  },
+  "capex_hotel_fees": {
+   "v": 11629241,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "Capex!E20"
+  },
+  "capex_hotel_cont": {
+   "v": 14605564.2,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "Capex!E21"
+  },
+  "capex_resi_net": {
+   "v": 38810063.260000005,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "Capex!E29"
+  },
+  "capex_resi_prelims": {
+   "v": 774436.7999999999,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "Capex!E30"
+  },
+  "capex_resi_fees": {
+   "v": 2855846.1440000003,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "Capex!E31"
+  },
+  "capex_resi_cont": {
+   "v": 1979225.0030000003,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "Capex!E32"
+  },
+  "cost_to_open": {
+   "v": 194192789.3553957,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "KPI_CostToOpen"
+  },
+  "cost_to_open_key": {
+   "v": 3236546.4892565953,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "KPI_CostToOpen_PerKey"
+  },
+  "all_in_to_exit": {
+   "v": 232788153.52286917,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "KPI_AllInCostToExit"
+  },
+  "co_acq": {
+   "v": 52500000,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "CostOpen_Acq"
+  },
+  "co_capex": {
+   "v": 121527937.67547855,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "CostOpen_Capex"
+  },
+  "co_arrfee": {
+   "v": 954828.7826,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "CostOpen_ArrFee"
+  },
+  "co_interest": {
+   "v": 16398518.6931833,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "CostOpen_Interest"
+  },
+  "co_shortfall": {
+   "v": 2811504.2041338827,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "CostOpen_OpShortfall"
+  },
+  "open_q": {
+   "v": 14,
+   "fmt": "{:.0f}",
+   "scale": 1,
+   "src": "KPI_OpenQ"
+  },
+  "adr_y1": {
+   "v": 1000,
+   "fmt": "£{:,.0f}",
+   "scale": 1,
+   "src": "'P&L Assumptions'!D16"
+  },
+  "adr_y7": {
+   "v": 1159.6934182128903,
+   "fmt": "£{:,.0f}",
+   "scale": 1,
+   "src": "'P&L Assumptions'!J16"
+  },
+  "occ_stab": {
+   "v": 0.65,
+   "fmt": "{:.2f}",
+   "scale": 1,
+   "src": "'P&L Assumptions'!J17"
+  },
+  "staff_index": {
+   "v": 1.2,
+   "fmt": "{:.2f}",
+   "scale": 1,
+   "src": "StaffCostIndex"
+  },
+  "fixedcost_scalar": {
+   "v": 0.3,
+   "fmt": "{:.2f}",
+   "scale": 1,
+   "src": "FixedCostKeyScalar"
+  },
+  "fixedcost_base_keys": {
+   "v": 45,
+   "fmt": "{:.0f}",
+   "scale": 1,
+   "src": "FixedCost_BaseKeys"
+  },
+  "regatta_days": {
+   "v": 10,
+   "fmt": "{:.0f}",
+   "scale": 1,
+   "src": "'P&L Assumptions'!D89"
+  },
+  "regatta_covers": {
+   "v": 400,
+   "fmt": "{:.0f}",
+   "scale": 1,
+   "src": "'P&L Assumptions'!D90"
+  },
+  "regatta_spend": {
+   "v": 300,
+   "fmt": "£{:.0f}",
+   "scale": 1,
+   "src": "'P&L Assumptions'!D91"
+  },
+  "sleepers": {
+   "v": 1.9,
+   "fmt": "{:.1f}",
+   "scale": 1,
+   "src": "'P&L Assumptions'!D23"
+  },
+  "weddings_y7": {
+   "v": 25,
+   "fmt": "{:.0f}",
+   "scale": 1,
+   "src": "'P&L Assumptions'!J71"
+  },
+  "wedding_rev_y1": {
+   "v": 140000,
+   "fmt": "£{:,.0f}",
+   "scale": 1,
+   "src": "'P&L Assumptions'!D72"
+  },
+  "corp_y7": {
+   "v": 15,
+   "fmt": "{:.0f}",
+   "scale": 1,
+   "src": "'P&L Assumptions'!J73"
+  },
+  "corp_rev_y1": {
+   "v": 90000,
+   "fmt": "£{:,.0f}",
+   "scale": 1,
+   "src": "'P&L Assumptions'!D74"
+  },
+  "rev_y7": {
+   "v": 45330420.42337695,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "P&L!S33"
+  },
+  "gop_y7": {
+   "v": 15393171.463480463,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "P&L!S76"
+  },
+  "noi_y7": {
+   "v": 10740110.98674129,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "P&L!S90"
+  },
+  "ebitda_y7": {
+   "v": 12100023.599442597,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "P&L!S85"
+  },
+  "gdp_y7": {
+   "v": 23457124.256765477,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "P&L!S67"
+  },
+  "gop_margin_y7": {
+   "v": 0.3395770725202052,
+   "fmt": "{:.2f}%",
+   "scale": 100,
+   "src": "P&L!S76 / S33"
+  },
+  "noi_margin_y7": {
+   "v": 0.236929436930671,
+   "fmt": "{:.2f}%",
+   "scale": 100,
+   "src": "P&L!S90 / S33"
+  },
+  "ebitda_margin_y7": {
+   "v": 0.266929436930671,
+   "fmt": "{:.2f}%",
+   "scale": 100,
+   "src": "P&L!S85 / S33"
+  },
+  "rev_per_key_y7": {
+   "v": 755507.0070562825,
+   "fmt": "£{:,.0f}",
+   "scale": 1,
+   "src": "P&L!S33 / 60 keys"
+  },
+  "revpar_y7": {
+   "v": 753.0778992283969,
+   "fmt": "£{:,.0f}",
+   "scale": 1,
+   "src": "P&L!S17"
+  },
+  "occ_y7_achieved": {
+   "v": 0.6493767123287673,
+   "fmt": "{:.1f}%",
+   "scale": 100,
+   "src": "P&L!S15"
+  },
+  "rooms_rev_y7": {
+   "v": 16492405.993101887,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "P&L!S23"
+  },
+  "fb_rev_y7": {
+   "v": 19720651.825410757,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "P&L!S25 + S26"
+  },
+  "other_rev_y7": {
+   "v": 9117362.60486431,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "P&L!S28+S30+S31+S32"
+  },
+  "rooms_share_y7": {
+   "v": 0.36382645117927775,
+   "fmt": "{:.1f}%",
+   "scale": 100,
+   "src": "P&L!S23 / S33"
+  },
+  "fb_share_y7": {
+   "v": 0.4350423323062937,
+   "fmt": "{:.1f}%",
+   "scale": 100,
+   "src": "(P&L!S25+S26) / S33"
+  },
+  "other_share_y7": {
+   "v": 0.20113121651442872,
+   "fmt": "{:.1f}%",
+   "scale": 100,
+   "src": "P&L rows 28-32 / S33"
+  },
+  "regatta_rev_y7": {
+   "v": 1391632.1018554685,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "P&L!S163 + S164"
+  },
+  "resi_units": {
+   "v": 12,
+   "fmt": "{:.0f}",
+   "scale": 1,
+   "src": "Resi_Units"
+  },
+  "resi_sqft": {
+   "v": 5500,
+   "fmt": "{:,.0f}",
+   "scale": 1,
+   "src": "Resi_AvgSqft"
+  },
+  "resi_psf": {
+   "v": 1300,
+   "fmt": "£{:,.0f}",
+   "scale": 1,
+   "src": "Resi_PricePsf"
+  },
+  "resi_esc": {
+   "v": 0.03,
+   "fmt": "{:.1f}%",
+   "scale": 100,
+   "src": "Resi_PriceEsc"
+  },
+  "resi_fee_pct": {
+   "v": 0.05,
+   "fmt": "{:.0f}%",
+   "scale": 100,
+   "src": "Resi_SalesFeePct"
+  },
+  "resi_absorption": {
+   "v": 3.75,
+   "fmt": "{:.2f}",
+   "scale": 1,
+   "src": "Resi_AbsorptionPerYr"
+  },
+  "resi_gross": {
+   "v": 95928425.82764935,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "KPI_ResiGross"
+  },
+  "resi_cost": {
+   "v": 44419571.207,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "KPI_ResiCost"
+  },
+  "resi_net": {
+   "v": 46712433.329266876,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "KPI_ResiNet"
+  },
+  "resi_sales_start_q": {
+   "v": 9,
+   "fmt": "{:.0f}",
+   "scale": 1,
+   "src": "Resi_SalesStartQ"
+  },
+  "resi_total_sqft": {
+   "v": 66000,
+   "fmt": "{:,.0f}",
+   "scale": 1,
+   "src": "Resi_Units x Resi_AvgSqft"
+  },
+  "resi_sales_fee": {
+   "v": 4796421.291382468,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "KPI_ResiGross x Resi_SalesFeePct"
+  },
+  "resi_build_per_sqft": {
+   "v": 325,
+   "fmt": "£{:,.0f}",
+   "scale": 1,
+   "src": "Capex!L184"
+  },
+  "resi_fitout_per_unit": {
+   "v": 400000,
+   "fmt": "£{:,.0f}",
+   "scale": 1,
+   "src": "Capex!L186"
+  },
+  "resi_roc": {
+   "v": 2.0516182858132934,
+   "fmt": "{:.2f}x",
+   "scale": 1,
+   "src": "KPI_ResiGross net of sales fee / KPI_ResiCost"
+  },
+  "fin_senior_ltc": {
+   "v": 0.55,
+   "fmt": "{:.0f}%",
+   "scale": 100,
+   "src": "Fin_SeniorLTC"
+  },
+  "fin_capex_ltc": {
+   "v": 0.55,
+   "fmt": "{:.0f}%",
+   "scale": 100,
+   "src": "Fin_CapexLTC"
+  },
+  "fin_refi_ltv": {
+   "v": 0.55,
+   "fmt": "{:.0f}%",
+   "scale": 100,
+   "src": "Fin_RefiLTV"
+  },
+  "fin_refi_yield": {
+   "v": 0.04,
+   "fmt": "{:.2f}%",
+   "scale": 100,
+   "src": "Fin_RefiYield"
+  },
+  "fin_senior_margin": {
+   "v": 0.035,
+   "fmt": "{:.1f}%",
+   "scale": 100,
+   "src": "Fin_SeniorMargin"
+  },
+  "fin_refi_margin": {
+   "v": 0.025,
+   "fmt": "{:.1f}%",
+   "scale": 100,
+   "src": "Fin_RefiMargin"
+  },
+  "fin_pik_q": {
+   "v": 14,
+   "fmt": "{:.0f}",
+   "scale": 1,
+   "src": "Fin_PIKQuarters"
+  },
+  "fin_refi_q": {
+   "v": 26,
+   "fmt": "{:.0f}",
+   "scale": 1,
+   "src": "Fin_RefiQ"
+  },
+  "refi_min_icr": {
+   "v": 1.3,
+   "fmt": "{:.1f}x",
+   "scale": 1,
+   "src": "Fin_RefiMinICR"
+  },
+  "base_rate": {
+   "v": 0.04,
+   "fmt": "{:.1f}%",
+   "scale": 100,
+   "src": "Fin_BaseRate"
+  },
+  "arr_fee_pct": {
+   "v": 0.01,
+   "fmt": "{:.0f}%",
+   "scale": 100,
+   "src": "Fin_ArrangementFeePct"
+  },
+  "refi_draw": {
+   "v": 116889415.75436245,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "CF!N42"
+  },
+  "senior_peak": {
+   "v": 111881396.95318331,
+   "fmt": "£{:.1f}m",
+   "scale": 1e-06,
+   "src": "CF!L38"
+  },
+  "fee_am": {
+   "v": 350000,
+   "fmt": "£{:,.0f}",
+   "scale": 1,
+   "src": "Fee_AnnualMgmtFee"
+  },
+  "fee_incentive": {
+   "v": 0.07,
+   "fmt": "{:.0f}%",
+   "scale": 100,
+   "src": "Fee_IncentivePct"
+  },
+  "fee_op_base": {
+   "v": 0.025,
+   "fmt": "{:.1f}%",
+   "scale": 100,
+   "src": "Fee_Op_BaseRevPct"
+  },
+  "fee_franchise": {
+   "v": 0.015,
+   "fmt": "{:.1f}%",
+   "scale": 100,
+   "src": "'P&L Assumptions'!D198"
+  },
+  "promote_h1": {
+   "v": 0.12,
+   "fmt": "{:.0f}%",
+   "scale": 100,
+   "src": "Promote_Hurdle1"
+  },
+  "promote_h2": {
+   "v": 0.2,
+   "fmt": "{:.0f}%",
+   "scale": 100,
+   "src": "Promote_Hurdle2"
+  },
+  "promote_h3": {
+   "v": 0.3,
+   "fmt": "{:.0f}%",
+   "scale": 100,
+   "src": "Promote_Hurdle3"
+  },
+  "tax_corp": {
+   "v": 0.25,
+   "fmt": "{:.0f}%",
+   "scale": 100,
+   "src": "Tax_CorpRate"
+  },
+  "tax_cgt": {
+   "v": 0,
+   "fmt": "{:.0f}%",
+   "scale": 100,
+   "src": "Tax_CGTRate"
+  },
+  "cash_floor": {
+   "v": 1000000,
+   "fmt": "£{:.0f}m",
+   "scale": 1e-06,
+   "src": "Cash_ReserveFloor"
+  },
+  "cash_floor_pre": {
+   "v": 4000000,
+   "fmt": "£{:.0f}m",
+   "scale": 1e-06,
+   "src": "Cash_ReserveFloorPre"
+  },
+  "exit_am_fee": {
+   "v": 416040.0137838743,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "CF!O22"
+  },
+  "y8_rev": {
+   "v": 46463680.93396138,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "P&L!U33"
+  },
+  "y8_gop": {
+   "v": 15778000.750067467,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "P&L!U76"
+  },
+  "y8_noi": {
+   "v": 11008613.761409814,
+   "fmt": "£{:.2f}m",
+   "scale": 1e-06,
+   "src": "P&L!U90"
+  }
+ },
+ "extra": {
+  "two_lever": {
+   "50": {
+    "irr": "18.39%",
+    "em": "2.39x"
+   },
+   "60": {
+    "irr": "16.33%",
+    "em": "2.21x"
+   },
+   "70": {
+    "irr": "14.41%",
+    "em": "2.05x"
+   }
+  },
+  "asset_sale": {
+   "irr": "11.28%",
+   "em": "1.69x",
+   "cgt": "£17.0m",
+   "corp_tax": "£4.72m",
+   "gain": "£68.1m",
+   "d_pp": "−1.71"
+  },
+  "base_tax": "£4.72m",
+  "resi_band": {
+   "1100": {
+    "irr": "11.27%",
+    "net": "£32.7m"
+   },
+   "1250": {
+    "irr": "12.56%",
+    "net": "£43.2m"
+   },
+   "1300": {
+    "irr": "12.99%",
+    "net": "£46.7m"
+   },
+   "1500": {
+    "irr": "14.75%",
+    "net": "£60.7m"
+   }
+  }
+ },
+ "ladder": [
+  {
+   "entry_m": 30,
+   "entry": "£30m",
+   "irr": "17.79%",
+   "irr_n": 17.7906,
+   "em": "2.19x",
+   "allin": "£31.5m",
+   "peak_equity": "£99.7m",
+   "profit": "£118.5m",
+   "adr": "£798",
+   "exit": "4.93%",
+   "psf": "£832",
+   "solved_raw": {
+    "adr": 797.8275775909424,
+    "exit_yield": 0.04932373523712158,
+    "resi_psf": 832.4874401092529,
+    "achieved": [
+     0.12999997735023502,
+     0.12999997735023502,
+     0.12999997735023502
+    ]
+   }
+  },
+  {
+   "entry_m": 35,
+   "entry": "£35m",
+   "irr": "16.51%",
+   "irr_n": 16.509,
+   "em": "2.10x",
+   "allin": "£36.8m",
+   "peak_equity": "£102.2m",
+   "profit": "£112.0m"
+  },
+  {
+   "entry_m": 40,
+   "entry": "£40m",
+   "irr": "15.29%",
+   "irr_n": 15.2869,
+   "em": "2.01x",
+   "allin": "£42.0m",
+   "peak_equity": "£104.7m",
+   "profit": "£105.5m",
+   "adr": "£899",
+   "exit": "4.42%",
+   "psf": "£1,050",
+   "solved_raw": {
+    "adr": 899.0565776824951,
+    "exit_yield": 0.044168443679809564,
+    "resi_psf": 1049.8527526855469,
+    "achieved": [
+     0.1300000369548798,
+     0.1299999058246613,
+     0.13000000119209296
+    ]
+   }
+  },
+  {
+   "entry_m": 45,
+   "entry": "£45m",
+   "irr": "14.12%",
+   "irr_n": 14.1171,
+   "em": "1.92x",
+   "allin": "£47.2m",
+   "peak_equity": "£107.3m",
+   "profit": "£99.0m"
+  },
+  {
+   "entry_m": 48,
+   "entry": "£48m",
+   "irr": "13.44%",
+   "irr_n": 13.4376,
+   "em": "1.87x",
+   "allin": "£50.4m",
+   "peak_equity": "£108.8m",
+   "profit": "£95.1m"
+  },
+  {
+   "entry_m": 50,
+   "entry": "£50m",
+   "irr": "12.99%",
+   "irr_n": 12.993,
+   "em": "1.84x",
+   "allin": "£52.5m",
+   "peak_equity": "£109.8m",
+   "profit": "£92.5m",
+   "adr": "£1,000",
+   "exit": "4.00%",
+   "psf": "£1,301",
+   "solved_raw": {
+    "adr": 1000.3215312957764,
+    "exit_yield": 0.03998797416687012,
+    "resi_psf": 1300.8028030395508,
+    "achieved": [
+     0.13000000119209296,
+     0.1300000131130219,
+     0.12999997735023502
+    ]
+   }
+  },
+  {
+   "entry_m": 51,
+   "entry": "£51m",
+   "irr": "12.77%",
+   "irr_n": 12.7733,
+   "em": "1.83x",
+   "allin": "£53.5m",
+   "peak_equity": "£110.3m",
+   "profit": "£91.2m"
+  },
+  {
+   "entry_m": 52,
+   "entry": "£52m",
+   "irr": "12.56%",
+   "irr_n": 12.5552,
+   "em": "1.81x",
+   "allin": "£54.6m",
+   "peak_equity": "£110.8m",
+   "profit": "£89.9m"
+  },
+  {
+   "entry_m": 53,
+   "entry": "£53m",
+   "irr": "12.34%",
+   "irr_n": 12.3386,
+   "em": "1.80x",
+   "allin": "£55.6m",
+   "peak_equity": "£111.3m",
+   "profit": "£88.6m"
+  },
+  {
+   "entry_m": 55,
+   "entry": "£55m",
+   "irr": "11.91%",
+   "irr_n": 11.9103,
+   "em": "1.77x",
+   "allin": "£57.8m",
+   "peak_equity": "£112.3m",
+   "profit": "£86.0m"
+  },
+  {
+   "entry_m": 60,
+   "entry": "£60m",
+   "irr": "10.87%",
+   "irr_n": 10.8743,
+   "em": "1.69x",
+   "allin": "£63.0m",
+   "peak_equity": "£114.8m",
+   "profit": "£79.6m",
+   "adr": "£1,102",
+   "exit": "3.65%",
+   "psf": "£1,555",
+   "solved_raw": {
+    "adr": 1101.6267776489258,
+    "exit_yield": 0.03654607295989991,
+    "resi_psf": 1554.5115947723389,
+    "achieved": [
+     0.13000002503395086,
+     0.13000000119209296,
+     0.129999989271164
+    ]
+   }
+  },
+  {
+   "entry_m": 65,
+   "entry": "£65m",
+   "irr": "9.86%",
+   "irr_n": 9.8632,
+   "em": "1.61x",
+   "allin": "£68.2m",
+   "peak_equity": "£117.4m",
+   "profit": "£73.1m"
+  },
+  {
+   "entry_m": 70,
+   "entry": "£70m",
+   "irr": "8.88%",
+   "irr_n": 8.8798,
+   "em": "1.53x",
+   "allin": "£73.5m",
+   "peak_equity": "£119.9m",
+   "profit": "£66.6m",
+   "adr": "£1,203",
+   "exit": "3.36%",
+   "psf": "£1,811",
+   "solved_raw": {
+    "adr": 1202.9345035552979,
+    "exit_yield": 0.03363929748535156,
+    "resi_psf": 1810.6569290161133,
+    "achieved": [
+     0.13000000119209296,
+     0.12999996542930606,
+     0.13000000119209296
+    ]
+   }
+  }
+ ],
+ "backsolve": {
+  "0.13": {
+   "target": "13.00%",
+   "price": "£49.97m",
+   "price_raw": 49968299.865722656,
+   "achieved": "13.0000%",
+   "allin": "£52.47m"
+  },
+  "0.14": {
+   "target": "14.00%",
+   "price": "£45.51m",
+   "price_raw": 45512199.40185547,
+   "achieved": "14.0000%",
+   "allin": "£47.79m"
+  },
+  "0.15": {
+   "target": "15.00%",
+   "price": "£41.21m",
+   "price_raw": 41206817.626953125,
+   "achieved": "15.0000%",
+   "allin": "£43.27m"
+  }
+ },
+ "sens": {
+  "adr_850": {
+   "irr": "9.48%",
+   "irr_n": 9.4847,
+   "em": "1.54x",
+   "peak_equity": "£109.9m",
+   "total_equity": "£115.5m",
+   "exit_value": "£219.6m",
+   "rev_y7": "£42.86m",
+   "gop_margin_y7": "32.52%",
+   "capex": "£123.6m",
+   "cost_to_open": "£194.5m",
+   "resi_net": "£46.7m"
+  },
+  "adr_1200": {
+   "irr": "16.99%",
+   "irr_n": 16.9912,
+   "em": "2.22x",
+   "peak_equity": "£109.6m",
+   "total_equity": "£109.6m",
+   "exit_value": "£285.7m",
+   "rev_y7": "£48.63m",
+   "gop_margin_y7": "35.65%",
+   "capex": "£123.6m",
+   "cost_to_open": "£193.8m",
+   "resi_net": "£46.7m"
+  },
+  "exit_475": {
+   "irr": "8.82%",
+   "irr_n": 8.8216,
+   "em": "1.49x",
+   "peak_equity": "£109.8m",
+   "total_equity": "£109.8m",
+   "exit_value": "£208.8m",
+   "rev_y7": "£45.33m",
+   "gop_margin_y7": "33.96%",
+   "capex": "£123.6m",
+   "cost_to_open": "£194.2m",
+   "resi_net": "£46.7m"
+  },
+  "exit_350": {
+   "irr": "16.03%",
+   "irr_n": 16.0274,
+   "em": "2.16x",
+   "peak_equity": "£109.8m",
+   "total_equity": "£109.8m",
+   "exit_value": "£283.4m",
+   "rev_y7": "£45.33m",
+   "gop_margin_y7": "33.96%",
+   "capex": "£123.6m",
+   "cost_to_open": "£194.2m",
+   "resi_net": "£46.7m"
+  },
+  "exit_425": {
+   "irr": "11.56%",
+   "irr_n": 11.5621,
+   "em": "1.71x",
+   "peak_equity": "£109.8m",
+   "total_equity": "£109.8m",
+   "exit_value": "£233.4m",
+   "rev_y7": "£45.33m",
+   "gop_margin_y7": "33.96%",
+   "capex": "£123.6m",
+   "cost_to_open": "£194.2m",
+   "resi_net": "£46.7m"
+  },
+  "exit_375": {
+   "irr": "14.48%",
+   "irr_n": 14.4775,
+   "em": "1.99x",
+   "peak_equity": "£109.8m",
+   "total_equity": "£109.8m",
+   "exit_value": "£264.5m",
+   "rev_y7": "£45.33m",
+   "gop_margin_y7": "33.96%",
+   "capex": "£123.6m",
+   "cost_to_open": "£194.2m",
+   "resi_net": "£46.7m"
+  },
+  "staff_100": {
+   "irr": "17.05%",
+   "irr_n": 17.0477,
+   "em": "2.22x",
+   "peak_equity": "£109.6m",
+   "total_equity": "£109.6m",
+   "exit_value": "£285.7m",
+   "rev_y7": "£45.33m",
+   "gop_margin_y7": "37.69%",
+   "capex": "£123.6m",
+   "cost_to_open": "£193.6m",
+   "resi_net": "£46.7m"
+  },
+  "staff_110": {
+   "irr": "15.10%",
+   "irr_n": 15.1048,
+   "em": "2.03x",
+   "peak_equity": "£109.7m",
+   "total_equity": "£109.7m",
+   "exit_value": "£266.8m",
+   "rev_y7": "£45.33m",
+   "gop_margin_y7": "35.82%",
+   "capex": "£123.6m",
+   "cost_to_open": "£193.9m",
+   "resi_net": "£46.7m"
+  },
+  "staff_130": {
+   "irr": "10.69%",
+   "irr_n": 10.6911,
+   "em": "1.65x",
+   "peak_equity": "£109.9m",
+   "total_equity": "£111.1m",
+   "exit_value": "£229.1m",
+   "rev_y7": "£45.33m",
+   "gop_margin_y7": "32.09%",
+   "capex": "£123.6m",
+   "cost_to_open": "£194.5m",
+   "resi_net": "£46.7m"
+  },
+  "keys_45": {
+   "irr": "6.80%",
+   "irr_n": 6.8034,
+   "em": "1.33x",
+   "peak_equity": "£109.8m",
+   "total_equity": "£125.0m",
+   "exit_value": "£200.0m",
+   "rev_y7": "£39.25m",
+   "gop_margin_y7": "32.53%",
+   "capex": "£123.6m",
+   "cost_to_open": "£194.0m",
+   "resi_net": "£46.7m"
+  },
+  "resi_1100": {
+   "irr": "11.27%",
+   "irr_n": 11.2684,
+   "em": "1.75x",
+   "peak_equity": "£109.8m",
+   "total_equity": "£109.8m",
+   "exit_value": "£248.0m",
+   "rev_y7": "£45.33m",
+   "gop_margin_y7": "33.96%",
+   "capex": "£123.6m",
+   "cost_to_open": "£194.2m",
+   "resi_net": "£32.7m"
+  },
+  "resi_1250": {
+   "irr": "12.56%",
+   "irr_n": 12.5589,
+   "em": "1.82x",
+   "peak_equity": "£109.8m",
+   "total_equity": "£109.8m",
+   "exit_value": "£248.0m",
+   "rev_y7": "£45.33m",
+   "gop_margin_y7": "33.96%",
+   "capex": "£123.6m",
+   "cost_to_open": "£194.2m",
+   "resi_net": "£43.2m"
+  },
+  "resi_1500": {
+   "irr": "14.75%",
+   "irr_n": 14.748,
+   "em": "1.94x",
+   "peak_equity": "£109.8m",
+   "total_equity": "£109.8m",
+   "exit_value": "£248.0m",
+   "rev_y7": "£45.33m",
+   "gop_margin_y7": "33.96%",
+   "capex": "£123.6m",
+   "cost_to_open": "£194.2m",
+   "resi_net": "£60.7m"
+  },
+  "resi_esc_0": {
+   "irr": "11.82%",
+   "irr_n": 11.8234,
+   "em": "1.78x",
+   "peak_equity": "£109.8m",
+   "total_equity": "£109.8m",
+   "exit_value": "£248.0m",
+   "rev_y7": "£45.33m",
+   "gop_margin_y7": "33.96%",
+   "capex": "£123.6m",
+   "cost_to_open": "£194.2m",
+   "resi_net": "£37.1m"
+  },
+  "resi_esc_25": {
+   "irr": "12.79%",
+   "irr_n": 12.7898,
+   "em": "1.83x",
+   "peak_equity": "£109.8m",
+   "total_equity": "£109.8m",
+   "exit_value": "£248.0m",
+   "rev_y7": "£45.33m",
+   "gop_margin_y7": "33.96%",
+   "capex": "£123.6m",
+   "cost_to_open": "£194.2m",
+   "resi_net": "£45.1m"
+  },
+  "courtyard_24": {
+   "irr": "13.13%",
+   "irr_n": 13.1323,
+   "em": "1.86x",
+   "peak_equity": "£108.8m",
+   "total_equity": "£108.8m",
+   "exit_value": "£248.0m",
+   "rev_y7": "£45.33m",
+   "gop_margin_y7": "33.96%",
+   "capex": "£123.6m",
+   "cost_to_open": "£193.3m",
+   "resi_net": "£46.7m"
+  },
+  "courtyard_43": {
+   "irr": "13.35%",
+   "irr_n": 13.3514,
+   "em": "1.88x",
+   "peak_equity": "£107.4m",
+   "total_equity": "£107.4m",
+   "exit_value": "£248.0m",
+   "rev_y7": "£45.33m",
+   "gop_margin_y7": "33.96%",
+   "capex": "£123.6m",
+   "cost_to_open": "£191.8m",
+   "resi_net": "£46.7m"
+  },
+  "programme_16": {
+   "irr": "12.90%",
+   "irr_n": 12.9036,
+   "em": "1.84x",
+   "peak_equity": "£109.8m",
+   "total_equity": "£109.8m",
+   "exit_value": "£248.0m",
+   "rev_y7": "£45.33m",
+   "gop_margin_y7": "33.96%",
+   "capex": "£123.6m",
+   "cost_to_open": "£197.8m",
+   "resi_net": "£46.7m"
+  },
+  "programme_18": {
+   "irr": "12.80%",
+   "irr_n": 12.8019,
+   "em": "1.83x",
+   "peak_equity": "£109.8m",
+   "total_equity": "£109.8m",
+   "exit_value": "£248.0m",
+   "rev_y7": "£45.33m",
+   "gop_margin_y7": "33.96%",
+   "capex": "£123.6m",
+   "cost_to_open": "£201.6m",
+   "resi_net": "£46.7m"
+  },
+  "occ_060": {
+   "irr": "11.16%",
+   "irr_n": 11.1571,
+   "em": "1.68x",
+   "peak_equity": "£109.8m",
+   "total_equity": "£109.8m",
+   "exit_value": "£231.0m",
+   "rev_y7": "£43.49m",
+   "gop_margin_y7": "33.35%",
+   "capex": "£123.6m",
+   "cost_to_open": "£194.2m",
+   "resi_net": "£46.7m"
+  },
+  "occ_070": {
+   "irr": "14.67%",
+   "irr_n": 14.6656,
+   "em": "2.00x",
+   "peak_equity": "£109.8m",
+   "total_equity": "£109.8m",
+   "exit_value": "£264.9m",
+   "rev_y7": "£47.17m",
+   "gop_margin_y7": "34.52%",
+   "capex": "£123.6m",
+   "cost_to_open": "£194.2m",
+   "resi_net": "£46.7m"
+  },
+  "occ_055": {
+   "irr": "9.13%",
+   "irr_n": 9.1298,
+   "em": "1.52x",
+   "peak_equity": "£109.8m",
+   "total_equity": "£109.8m",
+   "exit_value": "£214.0m",
+   "rev_y7": "£41.65m",
+   "gop_margin_y7": "32.68%",
+   "capex": "£123.6m",
+   "cost_to_open": "£194.2m",
+   "resi_net": "£46.7m"
+  },
+  "asset_sale": {
+   "irr": "11.28%",
+   "irr_n": 11.2822,
+   "em": "1.69x",
+   "peak_equity": "£109.8m",
+   "total_equity": "£109.8m",
+   "exit_value": "£248.0m",
+   "rev_y7": "£45.33m",
+   "gop_margin_y7": "33.96%",
+   "capex": "£123.6m",
+   "cost_to_open": "£194.2m",
+   "resi_net": "£46.7m"
+  },
+  "icr_14": {
+   "irr": "12.92%",
+   "irr_n": 12.9196,
+   "em": "1.85x",
+   "peak_equity": "£109.8m",
+   "total_equity": "£109.9m",
+   "exit_value": "£248.0m",
+   "rev_y7": "£45.33m",
+   "gop_margin_y7": "33.96%",
+   "capex": "£123.6m",
+   "cost_to_open": "£194.2m",
+   "resi_net": "£46.7m"
+  },
+  "incentive_8": {
+   "irr": "12.56%",
+   "irr_n": 12.5641,
+   "em": "1.81x",
+   "peak_equity": "£109.8m",
+   "total_equity": "£109.8m",
+   "exit_value": "£244.3m",
+   "rev_y7": "£45.33m",
+   "gop_margin_y7": "33.96%",
+   "capex": "£123.6m",
+   "cost_to_open": "£194.2m",
+   "resi_net": "£46.7m"
+  },
+  "sonia_45": {
+   "irr": "12.56%",
+   "irr_n": 12.5622,
+   "em": "1.81x",
+   "peak_equity": "£109.8m",
+   "total_equity": "£111.5m",
+   "exit_value": "£248.0m",
+   "rev_y7": "£45.33m",
+   "gop_margin_y7": "33.96%",
+   "capex": "£123.6m",
+   "cost_to_open": "£195.4m",
+   "resi_net": "£46.7m"
+  },
+  "opening_slip": {
+   "irr": "11.84%",
+   "irr_n": 11.8375,
+   "em": "1.77x",
+   "peak_equity": "£110.9m",
+   "total_equity": "£110.9m",
+   "exit_value": "£248.0m",
+   "rev_y7": "£45.33m",
+   "gop_margin_y7": "33.96%",
+   "capex": "£123.6m",
+   "cost_to_open": "£209.0m",
+   "resi_net": "£46.7m"
+  }
+ },
+ "margin": [
+  {
+   "index": "1.00",
+   "gop_margin": "37.69%",
+   "irr": "17.05%",
+   "em": "2.22x",
+   "solved": false
+  },
+  {
+   "index": "1.10",
+   "gop_margin": "35.82%",
+   "irr": "15.10%",
+   "em": "2.03x",
+   "solved": false
+  },
+  {
+   "index": "1.20",
+   "gop_margin": "33.96%",
+   "irr": "12.99%",
+   "em": "1.84x",
+   "solved": false
+  },
+  {
+   "index": "1.30",
+   "gop_margin": "32.09%",
+   "irr": "10.69%",
+   "em": "1.65x",
+   "solved": false
+  },
+  {
+   "index": "1.40",
+   "gop_margin": "30.23%",
+   "irr": "8.12%",
+   "em": "1.43x",
+   "solved": false
+  },
+  {
+   "index": "1.3587",
+   "gop_margin": "31.00%",
+   "irr": "9.22%",
+   "em": "1.51x",
+   "solved": true
+  },
+  {
+   "index": "1.5196",
+   "gop_margin": "28.00%",
+   "irr": "4.62%",
+   "em": "1.20x",
+   "solved": true
+  }
+ ],
+ "cases": {
+  "base": {
+   "irr": "12.99%",
+   "em": "1.84x",
+   "irr_unlev": "10.87%",
+   "rev_y7": "£45.33m",
+   "gop_margin_y7": "33.96%",
+   "cost_to_open": "£194.2m",
+   "peak_equity": "£109.8m",
+   "total_equity": "£109.8m",
+   "exit_value": "£248.0m",
+   "resi_net": "£46.7m",
+   "profit": "£92.5m",
+   "capex": "£123.6m"
+  },
+  "keys_45": {
+   "irr": "6.80%",
+   "em": "1.33x",
+   "irr_unlev": "7.68%",
+   "rev_y7": "£39.25m",
+   "gop_margin_y7": "32.53%",
+   "cost_to_open": "£194.0m",
+   "peak_equity": "£109.8m",
+   "total_equity": "£125.0m",
+   "exit_value": "£200.0m",
+   "resi_net": "£46.7m",
+   "profit": "£41.5m",
+   "capex": "£123.6m"
+  },
+  "trophy_downside": {
+   "irr": "−9.07%",
+   "em": "0.68x",
+   "irr_unlev": "0.57%",
+   "rev_y7": "£34.65m",
+   "gop_margin_y7": "30.83%",
+   "cost_to_open": "£195.0m",
+   "peak_equity": "£110.1m",
+   "total_equity": "£140.1m",
+   "exit_value": "£145.5m",
+   "resi_net": "£15.2m",
+   "profit": "−£44.7m",
+   "capex": "£123.6m"
+  }
+ },
+ "flows": [
+  {
+   "period": "Close",
+   "equity_in": "26.0",
+   "distributed": "—",
+   "senior": "27.5",
+   "refi": "—",
+   "net": -25.95
+  },
+  {
+   "period": "Y1",
+   "equity_in": "15.4",
+   "distributed": "—",
+   "senior": "12.9",
+   "refi": "—",
+   "net": -15.4
+  },
+  {
+   "period": "Y2",
+   "equity_in": "29.1",
+   "distributed": "—",
+   "senior": "27.0",
+   "refi": "—",
+   "net": -29.07
+  },
+  {
+   "period": "Y3",
+   "equity_in": "39.4",
+   "distributed": "—",
+   "senior": "17.9",
+   "refi": "—",
+   "net": -39.36
+  },
+  {
+   "period": "Y4",
+   "equity_in": "—",
+   "distributed": "39.1",
+   "senior": "9.7",
+   "refi": "—",
+   "net": 39.09
+  },
+  {
+   "period": "Y5",
+   "equity_in": "—",
+   "distributed": "23.2",
+   "senior": "0.5",
+   "refi": "—",
+   "net": 23.19
+  },
+  {
+   "period": "Y6",
+   "equity_in": "—",
+   "distributed": "0.9",
+   "senior": "—",
+   "refi": "—",
+   "net": 0.86
+  },
+  {
+   "period": "Y7",
+   "equity_in": "—",
+   "distributed": "8.6",
+   "senior": "(111.9)",
+   "refi": "116.9",
+   "net": 8.59
+  },
+  {
+   "period": "Y8",
+   "equity_in": "—",
+   "distributed": "130.6",
+   "senior": "—",
+   "refi": "(116.9)",
+   "net": 130.59
+  }
+ ],
+ "flow_totals": {
+  "equity_in": "109.8",
+  "distributed": "202.3",
+  "senior": "95.5",
+  "senior_repaid": "(111.9)",
+  "refi": "116.9",
+  "refi_repaid": "(116.9)"
+ },
+ "pnl_years": [
+  {
+   "year": 1,
+   "rev": "£0.00m",
+   "gop": "−£0.40m",
+   "noi": "−£1.08m",
+   "ebitda": "−£1.08m",
+   "gop_margin": "—",
+   "noi_margin": "—",
+   "keys": "0",
+   "occ": "0.00%",
+   "adr": "£1,000"
+  },
+  {
+   "year": 2,
+   "rev": "£0.00m",
+   "gop": "−£0.45m",
+   "noi": "−£1.15m",
+   "ebitda": "−£1.15m",
+   "gop_margin": "—",
+   "noi_margin": "—",
+   "keys": "0",
+   "occ": "0.00%",
+   "adr": "£1,025"
+  },
+  {
+   "year": 3,
+   "rev": "£4.10m",
+   "gop": "£0.28m",
+   "noi": "−£0.71m",
+   "ebitda": "−£0.59m",
+   "gop_margin": "6.90%",
+   "noi_margin": "-17.25%",
+   "keys": "12",
+   "occ": "35.00%",
+   "adr": "£1,051"
+  },
+  {
+   "year": 4,
+   "rev": "£23.50m",
+   "gop": "£6.64m",
+   "noi": "£4.00m",
+   "ebitda": "£4.71m",
+   "gop_margin": "28.26%",
+   "noi_margin": "17.03%",
+   "keys": "60",
+   "occ": "35.00%",
+   "adr": "£1,077"
+  },
+  {
+   "year": 5,
+   "rev": "£35.51m",
+   "gop": "£11.50m",
+   "noi": "£7.77m",
+   "ebitda": "£8.84m",
+   "gop_margin": "32.40%",
+   "noi_margin": "21.88%",
+   "keys": "60",
+   "occ": "50.00%",
+   "adr": "£1,104"
+  },
+  {
+   "year": 6,
+   "rev": "£42.75m",
+   "gop": "£14.33m",
+   "noi": "£9.93m",
+   "ebitda": "£11.21m",
+   "gop_margin": "33.52%",
+   "noi_margin": "23.24%",
+   "keys": "60",
+   "occ": "60.00%",
+   "adr": "£1,131"
+  },
+  {
+   "year": 7,
+   "rev": "£45.33m",
+   "gop": "£15.39m",
+   "noi": "£10.74m",
+   "ebitda": "£12.10m",
+   "gop_margin": "33.96%",
+   "noi_margin": "23.69%",
+   "keys": "60",
+   "occ": "65.00%",
+   "adr": "£1,160"
+  },
+  {
+   "year": 8,
+   "rev": "£46.46m",
+   "gop": "£15.78m",
+   "noi": "£11.01m",
+   "ebitda": "£12.40m",
+   "gop_margin": "33.96%",
+   "noi_margin": "23.69%",
+   "keys": "60",
+   "occ": "65.00%",
+   "adr": "£1,189"
+  },
+  {
+   "year": 9,
+   "rev": "£47.63m",
+   "gop": "£16.17m",
+   "noi": "£11.28m",
+   "ebitda": "£12.71m",
+   "gop_margin": "33.96%",
+   "noi_margin": "23.69%",
+   "keys": "60",
+   "occ": "65.00%",
+   "adr": "£1,218"
+  },
+  {
+   "year": 10,
+   "rev": "£48.95m",
+   "gop": "£16.62m",
+   "noi": "£11.60m",
+   "ebitda": "£13.07m",
+   "gop_margin": "33.96%",
+   "noi_margin": "23.69%",
+   "keys": "60",
+   "occ": "65.00%",
+   "adr": "£1,249"
+  }
+ ],
+ "bridge": [
+  {
+   "n": 0,
+   "lever": "Embassy base case, emulated on the Align engine",
+   "irr": "−34.31%",
+   "irr_n": -34.3149,
+   "d": null,
+   "d_n": null,
+   "em": "0.27x",
+   "exit": "£114.1m",
+   "peak": "£200.0m",
+   "rev_y7": "£36.43m",
+   "gop_margin": "26.99%",
+   "capex": "£135.4m"
+  },
+  {
+   "n": 1,
+   "lever": "Entry £75m → £50m",
+   "irr": "−27.73%",
+   "irr_n": -27.7301,
+   "d": "+6.58",
+   "d_n": 6.58,
+   "em": "0.32x",
+   "exit": "£114.1m",
+   "peak": "£165.5m",
+   "rev_y7": "£36.43m",
+   "gop_margin": "26.99%",
+   "capex": "£135.4m"
+  },
+  {
+   "n": 2,
+   "lever": "Works capex £135.45m → the ground-up schedule",
+   "irr": "−26.98%",
+   "irr_n": -26.9811,
+   "d": "+0.75",
+   "d_n": 0.75,
+   "em": "0.33x",
+   "exit": "£114.1m",
+   "peak": "£162.0m",
+   "rev_y7": "£36.43m",
+   "gop_margin": "26.99%",
+   "capex": "£132.6m"
+  },
+  {
+   "n": 3,
+   "lever": "Operating cost base → the engine-built P&L",
+   "irr": "−10.52%",
+   "irr_n": -10.5215,
+   "d": "+16.46",
+   "d_n": 16.46,
+   "em": "0.58x",
+   "exit": "£162.1m",
+   "peak": "£128.1m",
+   "rev_y7": "£36.43m",
+   "gop_margin": "34.01%",
+   "capex": "£132.6m"
+  },
+  {
+   "n": 4,
+   "lever": "ADR £1,200 flat → £1,000 escalating",
+   "irr": "−12.05%",
+   "irr_n": -12.0469,
+   "d": "−1.53",
+   "d_n": -1.53,
+   "em": "0.55x",
+   "exit": "£156.6m",
+   "peak": "£131.8m",
+   "rev_y7": "£35.86m",
+   "gop_margin": "33.61%",
+   "capex": "£132.6m"
+  },
+  {
+   "n": 5,
+   "lever": "Demand engines on",
+   "irr": "0.13%",
+   "irr_n": 0.1272,
+   "d": "+12.17",
+   "d_n": 12.17,
+   "em": "1.01x",
+   "exit": "£208.8m",
+   "peak": "£92.9m",
+   "rev_y7": "£45.33m",
+   "gop_margin": "33.96%",
+   "capex": "£132.6m"
+  },
+  {
+   "n": 6,
+   "lever": "Residences on, carrying their share of the estate",
+   "irr": "8.82%",
+   "irr_n": 8.8216,
+   "d": "+8.69",
+   "d_n": 8.69,
+   "em": "1.49x",
+   "exit": "£208.8m",
+   "peak": "£109.8m",
+   "rev_y7": "£45.33m",
+   "gop_margin": "33.96%",
+   "capex": "£123.6m"
+  },
+  {
+   "n": 7,
+   "lever": "Exit yield 4.75% → 4.00%",
+   "irr": "12.99%",
+   "irr_n": 12.993,
+   "d": "+4.17",
+   "d_n": 4.17,
+   "em": "1.84x",
+   "exit": "£248.0m",
+   "peak": "£109.8m",
+   "rev_y7": "£45.33m",
+   "gop_margin": "33.96%",
+   "capex": "£123.6m"
+  }
+ ],
+ "bridge_meta": {
+  "staff_index_emulated": "1.5601",
+  "ebitda_margin_achieved": "24.00%",
+  "capex_scalar": "1.021752",
+  "embassy_adr_y1": "£1,035",
+  "embassy_capex": "£135.45m",
+  "net_pp": "+47.31",
+  "reproduces": "12.9930%",
+  "checks_after": "YES"
+ },
+ "capex_chain": {
+  "ground_up": {
+   "irr": "9.20%",
+   "em": "1.55x",
+   "capex": "£136.8m",
+   "capex_per_key": "£2.28m",
+   "resi_cost": "£54.9m",
+   "works": "£191.7m",
+   "peak_equity": "£124.4m",
+   "resi_net": "£36.2m",
+   "cost_to_open": "£210.8m"
+  },
+  "adopted": {
+   "irr": "12.99%",
+   "em": "1.84x",
+   "capex": "£123.6m",
+   "capex_per_key": "£2.06m",
+   "resi_cost": "£44.4m",
+   "works": "£168.0m",
+   "peak_equity": "£109.8m",
+   "resi_net": "£46.7m",
+   "cost_to_open": "£194.2m"
+  },
+  "delta_irr_pp": "+3.79",
+  "delta_capex": "£13.2m",
+  "delta_works": "£23.7m"
+ },
+ "capex_groups": [
+  {
+   "key": "resi_presentational",
+   "label": "Residential presentational trims",
+   "lines": [
+    144,
+    145,
+    146
+   ],
+   "n_lines": 3,
+   "irr_if_restored": "11.82%",
+   "cost_pp": "+1.17",
+   "cost_pp_n": 1.171,
+   "capex_delta": "£0.0m",
+   "capex_delta_n": 0,
+   "resi_delta": "£8.3m"
+  },
+  {
+   "key": "infrastructure",
+   "label": "Infrastructure to best estimate",
+   "lines": [
+    103,
+    110,
+    112,
+    113,
+    120,
+    121
+   ],
+   "n_lines": 6,
+   "irr_if_restored": "12.39%",
+   "cost_pp": "+0.60",
+   "cost_pp_n": 0.602,
+   "capex_delta": "£2.9m",
+   "capex_delta_n": 2937294,
+   "resi_delta": "£0.4m"
+  },
+  {
+   "key": "gatehouses",
+   "label": "Four new gatehouses, switched off",
+   "lines": [
+    83,
+    84
+   ],
+   "n_lines": 2,
+   "irr_if_restored": "12.52%",
+   "cost_pp": "+0.47",
+   "cost_pp_n": 0.468,
+   "capex_delta": "£2.6m",
+   "capex_delta_n": 2631791,
+   "resi_delta": "£0.0m"
+  },
+  {
+   "key": "allowances",
+   "label": "Allowances to best estimate",
+   "lines": [
+    25,
+    87,
+    97,
+    99,
+    138,
+    139
+   ],
+   "n_lines": 6,
+   "irr_if_restored": "12.56%",
+   "cost_pp": "+0.43",
+   "cost_pp_n": 0.431,
+   "capex_delta": "£2.0m",
+   "capex_delta_n": 1952034,
+   "resi_delta": "£0.5m"
+  },
+  {
+   "key": "mezzanine",
+   "label": "Riding School mezzanine, switched off",
+   "lines": [
+    60,
+    62,
+    65
+   ],
+   "n_lines": 3,
+   "irr_if_restored": "12.69%",
+   "cost_pp": "+0.30",
+   "cost_pp_n": 0.302,
+   "capex_delta": "£1.8m",
+   "capex_delta_n": 1756568,
+   "resi_delta": "£0.0m"
+  },
+  {
+   "key": "composites",
+   "label": "Composite rates to the bottom of the published band",
+   "lines": [
+    28,
+    29,
+    30,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    43,
+    45,
+    78,
+    79,
+    80
+   ],
+   "n_lines": 14,
+   "irr_if_restored": "12.70%",
+   "cost_pp": "+0.30",
+   "cost_pp_n": 0.297,
+   "capex_delta": "£1.7m",
+   "capex_delta_n": 1680516,
+   "resi_delta": "£0.0m"
+  },
+  {
+   "key": "floating_restaurant",
+   "label": "Riverside floating restaurant, switched off",
+   "lines": [
+    122
+   ],
+   "n_lines": 1,
+   "irr_if_restored": "12.80%",
+   "cost_pp": "+0.19",
+   "cost_pp_n": 0.191,
+   "capex_delta": "£1.1m",
+   "capex_delta_n": 1090125,
+   "resi_delta": "£0.0m"
+  },
+  {
+   "key": "ballroom",
+   "label": "New-wing ballroom, switched off",
+   "lines": [
+    21
+   ],
+   "n_lines": 1,
+   "irr_if_restored": "12.81%",
+   "cost_pp": "+0.18",
+   "cost_pp_n": 0.182,
+   "capex_delta": "£1.1m",
+   "capex_delta_n": 1117282,
+   "resi_delta": "£0.0m"
+  },
+  {
+   "key": "deferrals",
+   "label": "Deferrals — dates only, scope kept",
+   "lines": [
+    72,
+    90,
+    91,
+    119,
+    136
+   ],
+   "n_lines": 5,
+   "irr_if_restored": "12.84%",
+   "cost_pp": "+0.15",
+   "cost_pp_n": 0.154,
+   "capex_delta": "£0.0m",
+   "capex_delta_n": 0,
+   "resi_delta": "£0.0m"
+  },
+  {
+   "key": "resi_overlap",
+   "label": "Residential in-plot overlap with the curtilage uplift",
+   "lines": [
+    128,
+    129
+   ],
+   "n_lines": 2,
+   "irr_if_restored": "12.84%",
+   "cost_pp": "+0.15",
+   "cost_pp_n": 0.153,
+   "capex_delta": "£0.0m",
+   "capex_delta_n": 0,
+   "resi_delta": "£1.1m"
+  }
+ ],
+ "capex_loading": {
+  "prelims_25": {
+   "irr": "12.49%",
+   "capex": "£126.6m",
+   "d": "−0.50"
+  },
+  "fees_15": {
+   "irr": "12.60%",
+   "capex": "£125.9m",
+   "d": "−0.39"
+  },
+  "cont_20": {
+   "irr": "12.17%",
+   "capex": "£128.5m",
+   "d": "−0.82"
+  },
+  "cont_10": {
+   "irr": "13.82%",
+   "capex": "£118.7m",
+   "d": "+0.83"
+  },
+  "v1_riskclass": {
+   "irr": "12.01%",
+   "capex": "£129.4m",
+   "d": "−0.98"
+  }
+ },
+ "capex_inflation": {
+  "infl_8m": {
+   "irr": "11.56%",
+   "capex": "£131.6m",
+   "d": "−1.43"
+  },
+  "infl_12m": {
+   "irr": "10.86%",
+   "capex": "£135.6m",
+   "d": "−2.13"
+  }
+ },
+ "derived": {
+  "bar_gap": "£31,700",
+  "acq_costs_amount": "£2.50m",
+  "senior_drawn_total": "£95.5m",
+  "total_project_cost": "£282.0m",
+  "cum_equity_y7": "£38.1m",
+  "downside_paren": "(9.07)%",
+  "swings": {
+   "adr": "7.5pp",
+   "exit_yield": "7.2pp",
+   "staff": "6.4pp",
+   "occupancy": "3.5pp",
+   "keys": "6.2pp",
+   "resi_psf": "3.5pp",
+   "resi_growth": "1.0pp",
+   "courtyard": "0.4pp",
+   "programme": "1.2pp",
+   "financing": "0.4pp",
+   "incentive": "0.4pp"
+  },
+  "levels": [
+   "£850",
+   "£1,200",
+   "4.75%",
+   "3.50%",
+   "1.30",
+   "1.00",
+   "45",
+   "£1,100",
+   "£1,250",
+   "£1,500",
+   "0%",
+   "24",
+   "43",
+   "16",
+   "18",
+   "4.5%",
+   "8%",
+   "1.4x",
+   "1.3x",
+   "0.60",
+   "0.70",
+   "£750",
+   "£1,507",
+   "£1,107",
+   "£1,478",
+   "£1,934",
+   "£1,186",
+   "£886"
+  ]
+ }
+}

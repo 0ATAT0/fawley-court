@@ -26,10 +26,10 @@
   "evidence_class": "SUBJECT",
   "currency": "GBP",
   "keys": 60,
-  "basis": "Year 7 stabilised, year-7 money (Align model, Base Case v15 at the ruled GBP 50m entry)",
-  "note": "Taken from the deal record (Model/docs/BUILD.md and Deck/im-v1/figures.json), not from the model file, which was not opened. The deal record publishes revenue, GOP and NOI only, so the departmental rows are blank. Year 7 is in year-7 money: the ADR chain runs GBP 975 in year 1 to GBP 1,131 in year 7, so revenue per key is not on the same money basis as the ten comparables. Margins are ratios and are unaffected by the money basis.",
-  "adr_y1": 975.0,
-  "adr_y7": 1131.0,
+  "basis": "Year 7 stabilised, year-7 money (Align model, Financial Model v16 at the ruled GBP 50m entry)",
+  "note": "Taken from the deal's own measurement record for v16 (Model/docs/v16-figures.json), measured on a scratch copy of the saved workbook on 18 August 2026. The record publishes revenue, GOP and NOI only, so the departmental rows are blank. Year 7 is in year-7 money: the ADR chain runs GBP 1,000 in year 1 to GBP 1,160 in year 7, so revenue per key is not on the same money basis as the ten comparables. Margins are ratios and are unaffected by the money basis. NOTE the NOI basis: in v16 the operator's base and incentive fees are charged inside the P&L, so this NOI is after them, while every comparable in this pack carries no operator fee at all. Only the GOP line is like-for-like.",
+  "adr_y1": 1000.0,
+  "adr_y7": 1160.0,
   "occupancy": 0.65,
   "seasonality": [
    0.8,
@@ -38,18 +38,18 @@
    0.9
   ],
   "pnl": {
-   "total_revenue": 44272860.0,
-   "gop": 15087432.0,
-   "noi": 12683065.0
+   "total_revenue": 45330420.0,
+   "gop": 15393171.0,
+   "noi": 10740111.0
   },
   "margins": {
-   "gop": 0.3408,
-   "noi": 0.2865
+   "gop": 0.3396,
+   "noi": 0.2369
   },
   "per_key": {
-   "revenue": 737881.0,
-   "gop": 251457.2,
-   "noi": 211384.41666666666
+   "revenue": 755507,
+   "gop": 256552.9,
+   "noi": 179001.9
   }
  },
  "hotels": [
