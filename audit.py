@@ -36,7 +36,8 @@ ROUTES += ["#/h/" + h["case_slug"] + "/rate" for h in _MKT if h.get("case_slug")
 ROUTES += ["#/m/" + h["slug"] for h in _MKT
            if h.get("in_cohort") and not h.get("case_slug")]
 _COH = [h for h in _MKT if h.get("in_cohort")]
-MKT_CARDS = {"eu": sum(1 for h in _COH if h["country"] != "UK"),
+MKT_CARDS = {"all": len(_COH),
+             "eu": sum(1 for h in _COH if h["country"] != "UK"),
              "uk": sum(1 for h in _COH if h["country"] == "UK")}
 
 JS = r"""
@@ -185,12 +186,12 @@ async def main():
                 findings.setdefault("ranking", []).append([sname, "a ranking row did not open its P&L: " + page.url])
 
             # chapter 10: both tabs, and the tab switch itself
-            for tab in ("eu", "uk"):
+            for tab in ("all", "eu", "uk"):
                 await page.goto(BASE + "#/c/market", wait_until="networkidle")
                 await page.wait_for_timeout(400)
-                if tab == "uk":
-                    await page.click('[data-mktab="uk"]')
-                    await page.wait_for_timeout(300)
+                if tab != "all":
+                    await page.click('[data-mktab="%s"]' % tab)
+                    await page.wait_for_timeout(350)
                 n = await page.locator(".mk").count()
                 if n != MKT_CARDS[tab]:
                     findings.setdefault("market grid", []).append(
@@ -203,6 +204,20 @@ async def main():
                         continue
                     for item in v:
                         findings.setdefault(k, set()).add(json.dumps([sname, "market/" + tab] + list(item)))
+            # the filters: a country narrows the set, a type narrows it again
+            await page.goto(BASE + "#/c/market", wait_until="networkidle")
+            await page.click('[data-mktab="eu"]'); await page.wait_for_timeout(350)
+            await page.click('[data-mkcountry="IT"]'); await page.wait_for_timeout(350)
+            it = sum(1 for h in _COH if h["country"] == "IT")
+            n = await page.locator(".mk").count()
+            if n != it:
+                findings.setdefault("market filter", []).append([sname, "Italy showed %d, expected %d" % (n, it)])
+            await page.click('[data-mktype="coast"]'); await page.wait_for_timeout(350)
+            itc = sum(1 for h in _COH if h["country"] == "IT" and h["type"] == "coast")
+            n = await page.locator(".mk").count()
+            if n != itc:
+                findings.setdefault("market filter", []).append([sname, "Italy + coast showed %d, expected %d" % (n, itc)])
+
             # a card leads to its property page
             await page.goto(BASE + "#/c/market", wait_until="networkidle")
             await page.wait_for_timeout(300)

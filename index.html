@@ -1184,10 +1184,10 @@ body.lb-open { overflow: hidden; }
   details::details-content { content-visibility: visible !important; block-size: auto !important; }
 }
 /* ── the ultra-luxury market index ──────────────────────────────────────
-   A card grid under two tabs, Europe and the United Kingdom, banded by what
-   kind of property each is. A card is a photograph of the place, its rate,
-   and whatever headline figures that hotel actually discloses. Where a hotel
-   discloses nothing, the card says so rather than filling the space.     */
+   A card grid, four across, under three tabs: all of it, Europe, the United
+   Kingdom. Europe opens a country filter; a type filter sits opposite it. A
+   card is a photograph of the place, its rate hung against its name, and the
+   headline figures that hotel actually discloses.                        */
 
 .mkt-tabs { display: flex; gap: clamp(20px, 3vw, 34px); border-bottom: 1px solid var(--line-strong); }
 .mkt-tab {
@@ -1201,7 +1201,33 @@ body.lb-open { overflow: hidden; }
 .mkt-tab[aria-selected="true"] .c { color: var(--accent); }
 .mkt-tab:hover, .mkt-tab:focus-visible { color: var(--accent); }
 
-.mkt-lede { font-size: var(--fs-sm); color: var(--muted); line-height: var(--lh-relaxed); max-width: 74ch; margin-top: 16px; }
+/* the filter line: countries on the left when Europe is open, types opposite */
+.mkt-fl { display: flex; align-items: center; gap: 14px 26px; flex-wrap: wrap; padding: 12px 0 2px; }
+.mkt-fl .grp { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; min-width: 0; }
+.mkt-fl .grp.r { margin-left: auto; }
+.mkt-fl .grp.r.split { padding-left: clamp(16px, 2vw, 30px); border-left: 1px solid var(--line); }
+.mkt-fl .fl-l { font-size: var(--fs-micro); letter-spacing: .13em; text-transform: uppercase; color: var(--muted-2); margin-right: 3px; white-space: nowrap; }
+.mkc {
+  display: inline-flex; align-items: baseline; gap: 6px; min-height: 46px; padding: 9px 12px;
+  font-size: var(--fs-cap); color: var(--muted); border: 1px solid var(--line); border-radius: 2px;
+  background: var(--paper); line-height: 1.2;
+  transition: color .2s var(--ease-out), border-color .2s var(--ease-out), background .2s var(--ease-out);
+}
+.mkc .n { font-size: var(--fs-micro); color: var(--muted-2); font-variant-numeric: tabular-nums; }
+.mkc:hover, .mkc:focus-visible { border-color: var(--accent); color: var(--accent); }
+.mkc[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.mkc[aria-pressed="true"] .n { color: rgba(255,255,255,.72); }
+
+/* the chapter's opening: a column of prose against the set's own counts */
+.mkt-head { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 64px);
+  align-items: start; margin-top: 20px; padding-bottom: 4px; }
+.mkt-head p { font-size: var(--fs-sm); color: var(--muted); line-height: var(--lh-relaxed); }
+.mkt-counts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px;
+  border-top: 1px solid var(--line-strong); padding-top: 12px; }
+.mkt-counts .n { display: block; font-size: clamp(1.3rem, 1.05rem + .8vw, 1.75rem); color: var(--accent);
+  font-variant-numeric: tabular-nums; letter-spacing: -.02em; line-height: 1; }
+.mkt-counts .l { display: block; font-size: var(--fs-micro); color: var(--muted); line-height: 1.35; margin-top: 7px; }
+@media (max-width: 820px) { .mkt-head { grid-template-columns: minmax(0, 1fr); gap: 22px; } }
 
 .mkt-band { margin-top: clamp(26px, 3.2vw, 42px); }
 .mkt-band-h {
@@ -1210,8 +1236,9 @@ body.lb-open { overflow: hidden; }
 }
 .mkt-band-h .t { font-size: var(--fs-h3); font-weight: 700; letter-spacing: -.006em; }
 .mkt-band-h .c { font-size: var(--fs-cap); color: var(--muted); margin-left: auto; font-variant-numeric: tabular-nums; }
+.mkt-empty { font-size: var(--fs-sm); color: var(--muted); margin-top: 22px; }
 
-.mkt-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 16px; }
+.mkt-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 14px; }
 
 /* ── the card ── */
 .mk {
@@ -1222,65 +1249,94 @@ body.lb-open { overflow: hidden; }
 .mk:hover, .mk:focus-visible { border-color: var(--accent); background: var(--accent-tint); }
 .mk-im { position: relative; display: block; aspect-ratio: 3 / 2; background: var(--surface-2); overflow: hidden; }
 .mk-im img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.mk-im.none { display: flex; align-items: center; justify-content: center; background: var(--surface-2); }
+.mk-im.none { display: flex; align-items: center; justify-content: center; }
 .mk-im.none span { font-size: var(--fs-micro); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-.mk-b { display: flex; flex-direction: column; flex: 1; padding: 14px 16px 16px; }
-.mk-nm { font-size: 1.02rem; line-height: 1.2; letter-spacing: -.014em; color: var(--ink); }
-.mk:hover .mk-nm, .mk:focus-visible .mk-nm { color: var(--accent); }
-.mk-rg { font-size: var(--fs-micro); color: var(--muted-2); margin-top: 3px; }
+.mk-b { display: flex; flex-direction: column; flex: 1; padding: 12px 13px 14px; }
 
-.mk-rate { display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; margin-top: 13px; padding-top: 11px; border-top: 1px solid var(--line); }
-.mk-rate .v { font-size: 1.16rem; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
-.mk-rate .u { font-size: var(--fs-micro); color: var(--muted-2); }
+/* the rate stands against the name, and its detail against the place */
+.mk-top { display: flex; align-items: baseline; gap: 10px; }
+.mk-nm { flex: 1 1 auto; min-width: 0; font-size: .97rem; line-height: 1.2; letter-spacing: -.014em; color: var(--ink); }
+.mk:hover .mk-nm, .mk:focus-visible .mk-nm { color: var(--accent); }
+.mk-v { flex: none; font-size: 1.06rem; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: -.012em; }
+.mk-sub { display: flex; align-items: baseline; gap: 10px; margin-top: 3px; }
+.mk-rg { flex: 1 1 auto; min-width: 0; font-size: var(--fs-micro); color: var(--muted-2); }
+.mk-u { flex: none; font-size: var(--fs-micro); color: var(--muted-2); }
 
 .mk-rows { margin-top: 11px; border-top: 1px solid var(--line); }
-.mk-row { display: grid; grid-template-columns: minmax(0, 8.2rem) minmax(0, 1fr); gap: 4px 10px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.mk-row { display: grid; grid-template-columns: minmax(0, 7rem) minmax(0, 1fr); gap: 3px 8px; padding: 5px 0; border-bottom: 1px solid var(--line); }
 .mk-row:last-child { border-bottom: 0; }
 .mk-row .k { font-size: var(--fs-micro); color: var(--muted); }
 .mk-row .v { font-size: var(--fs-cap); color: var(--ink); font-variant-numeric: tabular-nums; }
 .mk-row .cl { font-size: var(--fs-micro); color: var(--muted-2); letter-spacing: .02em; }
 .mk-row .cl.filed { color: var(--accent); }
-.mk-row .cl.note { color: var(--muted-2); }
 .mk-row .cl.modelled, .mk-row .cl.derived { color: var(--ochre); }
 
-.mk-none { font-size: var(--fs-micro); color: var(--muted); line-height: 1.5; margin-top: 11px; padding-top: 10px; border-top: 1px solid var(--line); }
-.mk-cav { font-size: var(--fs-micro); color: var(--ochre); line-height: 1.45; margin-top: 10px; }
-.mk-go { position: absolute; top: calc(66.6% + 14px); right: 15px; font-size: .78rem; color: var(--muted-2); opacity: 0; transition: opacity .22s var(--ease-out), transform .3s var(--ease); }
+.mk-none { font-size: var(--fs-micro); color: var(--muted); line-height: 1.5; margin-top: 10px; padding-top: 9px; border-top: 1px solid var(--line); }
+.mk-cav { font-size: var(--fs-micro); color: var(--ochre); line-height: 1.45; margin-top: 9px; }
+.mk-go { position: absolute; top: calc(66.6% + 12px); right: 12px; font-size: .78rem; color: var(--muted-2); opacity: 0; transition: opacity .22s var(--ease-out), transform .3s var(--ease); }
 .mk:hover .mk-go, .mk:focus-visible .mk-go { opacity: 1; transform: translateX(3px); color: var(--accent); }
 
-@media (max-width: 1000px) { .mkt-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 620px) { .mkt-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 1240px) { .mkt-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 940px)  { .mkt-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px)  { .mkt-grid { grid-template-columns: minmax(0, 1fr); } }
 
-/* ── the figures, printed in full on a hotel's own page ── */
-.mkf { width: 100%; border-collapse: collapse; margin-top: 14px; max-width: 900px; }
+/* ── a hotel's own page ────────────────────────────────────────────────
+   The deck's composition: the name and its figures on one rule, then the
+   photograph against what the property discloses, then the rate series
+   across the full width. No column of prose with an empty half beside it. */
+
+.mkp-h { display: flex; align-items: flex-end; justify-content: space-between; gap: clamp(18px, 3vw, 48px);
+  flex-wrap: wrap; padding-bottom: 12px; border-bottom: 1px solid var(--line-strong); }
+.mkp-h .nm { min-width: 0; }
+.mkp-h .eb { font-size: var(--fs-micro); letter-spacing: .13em; text-transform: uppercase; color: var(--muted-2); }
+.mkp-h h1 { font-size: var(--fs-display); letter-spacing: -.022em; line-height: 1.05; margin-top: 6px; }
+.mkp-h .pl { font-size: var(--fs-sm); color: var(--muted); margin-top: 6px; }
+.mkp-stats { display: flex; gap: clamp(18px, 3vw, 46px); text-align: right; margin-left: auto; }
+.mkp-stats .l { font-size: var(--fs-micro); letter-spacing: .1em; text-transform: uppercase; color: var(--muted-2); line-height: 1.2; }
+.mkp-stats .v { font-size: clamp(1.05rem, .95rem + .5vw, 1.4rem); color: var(--ink); font-variant-numeric: tabular-nums;
+  letter-spacing: -.018em; margin-top: 4px; line-height: 1.1; }
+@media (max-width: 700px) { .mkp-stats { margin-left: 0; text-align: left; gap: 22px; flex-wrap: wrap; } }
+
+.mkp-duo { display: grid; grid-template-columns: minmax(0, 46fr) minmax(0, 54fr); gap: clamp(22px, 3.4vw, 54px);
+  align-items: start; margin-top: clamp(22px, 3vw, 36px); }
+@media (max-width: 860px) { .mkp-duo { grid-template-columns: minmax(0, 1fr); gap: 26px; } }
+.mkp-im { display: block; width: 100%; }
+.mkp-im img { display: block; width: 100%; height: auto; }
+.mkp-im .cr { display: block; font-size: var(--fs-micro); color: var(--muted-2); margin-top: 8px; line-height: 1.5; }
+.mkp-sec { margin-top: clamp(30px, 4vw, 52px); }
+
+/* ── the figures, printed in full with their basis ── */
+.mkf { width: 100%; border-collapse: collapse; margin-top: 12px; }
 .mkf th { text-align: left; font-weight: 400; color: var(--muted); font-size: var(--fs-cap);
-  padding: .42rem 1rem .42rem 0; white-space: nowrap; vertical-align: top; border-top: 1px solid var(--line); width: 8.5rem; }
-.mkf td { font-size: var(--fs-cap); padding: .42rem 0; border-top: 1px solid var(--line); vertical-align: top; }
+  padding: .5rem 1rem .5rem 0; white-space: nowrap; vertical-align: top; border-top: 1px solid var(--line); width: 8.5rem; }
+.mkf td { font-size: var(--fs-cap); padding: .5rem 0; border-top: 1px solid var(--line); vertical-align: top; }
 .mkf td .v { color: var(--ink); font-variant-numeric: tabular-nums; }
-.mkf td .b { display: block; color: var(--muted); margin-top: .18rem; line-height: 1.5; }
+.mkf td .b { display: block; color: var(--muted); margin-top: .22rem; line-height: 1.5; }
 .mkf td .cl { font-size: var(--fs-micro); color: var(--muted-2); letter-spacing: .02em; margin-left: .5rem; }
 .mkf td .cl.filed { color: var(--accent); }
-.mkf td .cl.note { color: var(--muted-2); }
 .mkf td .cl.modelled, .mkf td .cl.derived { color: var(--ochre); }
-.mkp-im { display: block; width: 100%; max-width: 900px; margin-top: 16px; }
-.mkp-im img { display: block; width: 100%; height: auto; }
-.mkp-im .cr { display: block; font-size: var(--fs-micro); color: var(--muted-2); margin-top: 6px; }
 
-/* ── the rate record, on a case page and on a market page ── */
-.mkt-rec { margin-top: 4px; }
-.mkt-strip { display: grid; grid-template-columns: repeat(12, 1fr); gap: 3px; align-items: end; height: 46px; max-width: 860px; }
+/* ── the collected rate series, across the width ── */
+.mkt-strip { display: grid; grid-template-columns: repeat(12, 1fr); gap: 4px; align-items: end; height: 74px; }
 .mkt-strip i { display: block; background: var(--accent); opacity: .82; min-height: 2px; }
 .mkt-strip i.off { background: none; border-bottom: 1px solid var(--line-mid); height: 0; min-height: 0; }
-.mkt-mm { width: 100%; max-width: 860px; border-collapse: collapse; margin: 6px 0 0; font-variant-numeric: tabular-nums; }
-.mkt-mm th { font-size: var(--fs-micro); letter-spacing: .05em; color: var(--muted-2); font-weight: 400; text-align: right; padding: 0 .3rem .2rem 0; }
-.mkt-mm td { font-size: var(--fs-cap); text-align: right; padding: .28rem .3rem; border-top: 1px solid var(--line); }
-.mkt-kv { width: 100%; max-width: 620px; border-collapse: collapse; margin-top: 22px; }
-.mkt-kv th { width: 44%; text-align: left; font-weight: 400; color: var(--muted); font-size: var(--fs-cap);
-  padding: .3rem 1rem .3rem 0; white-space: nowrap; vertical-align: top; border-top: 1px solid var(--line); }
-.mkt-kv td { font-size: var(--fs-cap); padding: .3rem 0; font-variant-numeric: tabular-nums; border-top: 1px solid var(--line); }
-.mkt-cav-p { font-size: var(--fs-sm); color: var(--ochre); margin-top: 16px; max-width: 70ch; line-height: var(--lh-relaxed); }
-.mkt-none { font-size: var(--fs-sm); color: var(--muted); margin-top: 14px; max-width: 70ch; line-height: var(--lh-relaxed); }
-@media (max-width: 620px) { .mkt-mm { display: none; } }
+.mkt-mm { width: 100%; border-collapse: collapse; margin: 6px 0 0; font-variant-numeric: tabular-nums; }
+.mkt-mm th { font-size: var(--fs-micro); letter-spacing: .05em; color: var(--muted-2); font-weight: 400; text-align: center; padding: 0 .3rem .2rem; }
+.mkt-mm td { font-size: var(--fs-cap); text-align: center; padding: .32rem .3rem; border-top: 1px solid var(--line); }
+.mkt-kv { width: 100%; border-collapse: collapse; }
+.mkt-kv th { width: 52%; text-align: left; font-weight: 400; color: var(--muted); font-size: var(--fs-cap);
+  padding: .34rem 1rem .34rem 0; vertical-align: top; border-top: 1px solid var(--line); }
+.mkt-kv td { font-size: var(--fs-cap); padding: .34rem 0; font-variant-numeric: tabular-nums; border-top: 1px solid var(--line); text-align: right; }
+.mkt-kvduo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(24px, 4vw, 60px); margin-top: 22px; }
+@media (max-width: 700px) { .mkt-kvduo { grid-template-columns: minmax(0, 1fr); } }
+.mkt-cav-p { font-size: var(--fs-sm); color: var(--ochre); margin-top: 18px; line-height: var(--lh-relaxed); }
+.mkt-none { font-size: var(--fs-sm); color: var(--muted); margin-top: 14px; line-height: var(--lh-relaxed); }
+/* long source prose runs in columns rather than a ribbon with a dead half */
+/* a long source note runs in columns across the width, never as a ribbon */
+.src.cols { max-width: none; columns: 3; column-gap: clamp(26px, 3.4vw, 54px); }
+@media (max-width: 1100px) { .src.cols { columns: 2; } }
+@media (max-width: 760px) { .src.cols { columns: 1; } }
+@media (max-width: 600px) { .mkt-mm { display: none; } }
 
 </style>
 </head>
@@ -1622,7 +1678,7 @@ const CAPEX = {"meta":{"source":"Model/Fawley Court - Financial Model v16.xlsx, 
 /*CAPEX-DATA-END*/
 
 /*PHOTOS-DATA-START*/
-const PHOTOS = {"adare-manor":{"file":"adare-manor.jpg","credit":"IrishFireside (Flickr), via Wikimedia Commons","licence":"CC BY 2.0","source":"https://commons.wikimedia.org/wiki/File:Adare_Manor_Aerial.jpg","note":"Aerial view of the manor house, formal gardens and golf course; no people visible."},"aman-rosa-alpina":{"file":"aman-rosa-alpina.jpg","credit":"Aman (hotel's own press/website imagery)","licence":"hotel website, rights not cleared for republication","source":"https://www.aman.com/resorts/aman-rosa-alpina","note":"Exterior of the reopened (Jul 2025) resort against the Dolomites; no photographer named on the page."},"amanzoe":{"file":"amanzoe.jpg","credit":"Aman","licence":"hotel group's own press/gallery imagery, rights not cleared for republication","source":"https://www.aman.com/resorts/amanzoe/gallery","note":"Exterior architectural view of the colonnade, reflecting pool and Ed Tuttle's classical-Greek-inspired pavilions at dusk; unmistakably Amanzoe's signature architecture."},"ballyfin-demesne":{"file":"ballyfin-demesne.jpg","credit":"Christina Keddie (Wikimedia Commons user Djkeddie)","licence":"CC BY-SA 4.0","source":"https://commons.wikimedia.org/wiki/File:Ballyfin_House.jpg","note":"Front elevation of the neoclassical mansion from the drive, in its parkland setting. Clean CC licence."},"beaverbrook":{"file":"beaverbrook.jpg","credit":"Beaverbrook (hotel's own website imagery, used as the site's own og:image / homepage hero)","licence":"hotel's own press imagery, rights not cleared for republication","source":"https://beaverbrook.co.uk/","note":"Aerial drone shot of the main house and formal gardens; this is the hotel's own chosen social-share image, so it reads as their preferred representative photo. No usable image found on Wikimedia Commons for Beaverbrook."},"belmond-caruso":{"file":"belmond-caruso.jpg","credit":"Belmond","licence":"hotel group's own press imagery, rights not cleared for republication","source":"https://www.belmond.com/hotels/europe/italy/amalfi-coast/belmond-hotel-caruso/","note":"Aerial/grounds view of the hotel's famous cliff-edge infinity pool with the wisteria pergola, terraces and Ravello/Amalfi coastline below -- no usable Wikimedia Commons image exists for this property; this is the hero image used on Belmond's own hotel page and is the standard published view of Caruso. One distant swimmer visible in the pool, not a portrait shot."},"belmond-castello-di-casole":{"file":"belmond-castello-di-casole.jpg","credit":"Belmond","licence":"hotel group's own press imagery (Belmond Mediahub), rights not cleared for republication","source":"https://mediahub.belmond.com/castello-di-casole/","note":"Dusk view of the castle's internal courtyard with the medieval tower visible; small figures are incidental, not portraits. No Wikimedia Commons coverage of Castello di Casole was found."},"belmond-hotel-cipriani":{"file":"belmond-hotel-cipriani.jpg","credit":"Morn (Wikimedia Commons user)","licence":"CC BY-SA 3.0 / GFDL 1.2+","source":"https://commons.wikimedia.org/wiki/File:Hotel_Cipriani,_Venice.jpg","note":"View of the hotel facade and waterside terrace from the lagoon, with the HOTEL CIPRIANI signage visible. Clean CC licence."},"belmond-hotel-splendido":{"file":"belmond-hotel-splendido.jpg","credit":"Quintin Soloviev","licence":"CC BY 4.0","source":"https://commons.wikimedia.org/wiki/File:Belmond_Hotel_Splendido,_Portofino,_Italy.jpg","note":"Drone aerial of the hotel building on the hillside above Portofino, Sept 2023."},"belmond-villa-san-michele":{"file":"belmond-villa-san-michele.jpg","credit":"Jay Cross (Flickr user jaycross)","licence":"CC BY 2.0","source":"https://commons.wikimedia.org/wiki/File:Villa_san_michele_fiesole_02.jpg","note":"Front facade of the former Franciscan monastery, the loggia and pediment attributed to Michelozzo, taken at golden hour. A few parked cars and two guests are visible at the entrance but the building is the clear subject."},"borgo-egnazia":{"file":"borgo-egnazia.jpg","credit":"Borgo Egnazia (hotel's own website, og:image)","licence":"hotel website imagery, rights not cleared for republication","source":"https://www.borgoegnazia.com/en/ (retrieved via Wayback Machine snapshot dated 2024-11-25, since the live site returns HTTP 403 to automated fetches)","note":"The resort's distinctive limestone rooftop architecture (trulli-style chimneys/pinnacles) with the Adriatic Sea behind. Source file is only 1200x600 (the site's own og:image), so it is used at its native width with no upscaling. No Wikimedia Commons coverage found; the live borgoegnazia.com blocks non-browser HTTP clients (Cloudflare), so the image was recovered from a Wayback Machine cache of the same og:image the live site serves."},"castello-di-reschio":{"file":"castello-di-reschio.jpg","credit":"PierBer (Wikimedia Commons user)","licence":"CC BY-SA 3.0/2.5/2.0/1.0 + GFDL 1.2+","source":"https://commons.wikimedia.org/wiki/File:Castello_di_Reschio.JPG","note":"Photographed December 2008, before the estate's restoration into the current hotel (which opened in the 2020s) — shows the castle's structure and setting on the hill, unrestored. Only Commons image of the building; no clean-licence post-restoration exterior found."},"castiglion-del-bosco":{"file":"castiglion-del-bosco.jpg","credit":"Rosewood Hotel Group (hotel's own press/website imagery)","licence":"hotel website, rights not cleared for republication","source":"https://www.rosewoodhotels.com/en/castiglion-del-bosco","note":"Aerial of Il Borgo (the main hotel building) and pool set in the Tuscan estate; matches the page's own og:image subject ('Il Borgo with pool'). No photographer credited."},"chateau-de-la-messardiere":{"file":"chateau-de-la-messardiere.jpg","credit":"Airelles / Château de la Messardière","licence":"hotel's own press imagery, rights not cleared for republication","source":"https://airelles.com/en/destination/chateau-de-la-messardiere-hotel/story-5-star-luxury-hotel","note":"Frontal exterior view of the château's turreted facade and formal garden approach at sunset. The only Wikimedia Commons image found (File:Château de la Messardière.png, CC BY-SA 4.0) is portrait-orientation and too small to use, so the hotel's own site was used instead."},"chewton-glen":{"file":"chewton-glen.jpg","credit":"Michael Garlick (Geograph Britain and Ireland)","licence":"CC BY-SA 2.0","source":"https://commons.wikimedia.org/wiki/File:Chewton_Glen_Hotel_and_Spa_-_geograph.org.uk_-_5385750.jpg","note":"Front facade and forecourt, 10 May 2017."},"cliveden-house":{"file":"cliveden-house.jpg","credit":"Mark Percy","licence":"CC BY-SA 2.0","source":"https://commons.wikimedia.org/wiki/File:Cliveden_House_-_geograph.org.uk_-_7910880.jpg","note":"Exterior view of the Grade I Charles Barry mansion and its grounds, via Geograph."},"coworth-park":{"file":"coworth-park.jpg","credit":"Dorchester Collection","licence":"hotel group's own website imagery, rights not cleared for republication","source":"https://www.dorchestercollection.com/en/ascot/coworth-park/","note":"Twilight/winter exterior of the main Georgian mansion house, lit up, no people. The only Wikimedia Commons Coworth Park exterior image found (geograph 6385472, 'Building in Coworth Park') was rejected: its own caption says it 'might be the estate offices' near the north gate, i.e. not confidently the main house, so it fails the 'unmistakably that hotel' bar."},"danesfield-house":{"file":"danesfield-house.jpg","credit":"Danesfield House Hotel & Spa (hotel's own website, homepage banner image)","licence":"hotel website, rights not cleared","source":"https://danesfieldhouse.co.uk/","note":"The hotel's own homepage hero image: the white Tudor-revival house seen across the lawn through trees, framed by clipped hedges. Wikimedia Commons only holds an 1880 historic engraving of the house, not a photograph, so the hotel's own site was used."},"domaine-des-etangs":{"file":"domaine-des-etangs.jpg","credit":"Auberge Resorts Collection","licence":"hotel group's own website imagery, rights not cleared for republication","source":"https://fr.auberge.com/domaine-des-etangs/ (og:image; page itself blocks direct automated fetch, image CDN does not)","note":"Aerial of the turreted château on its island within the estate's lakes, pool and tennis court visible; no people. No Wikimedia Commons coverage found for this property."},"estelle-manor":{"file":"estelle-manor.jpg","credit":"Rob Brewer (Bristol, England), via Flickr","licence":"CC BY-SA 2.0","source":"https://commons.wikimedia.org/wiki/File:Eynsham_Hall.jpg","note":"The building is Eynsham Hall, the Grade II mansion now trading as Estelle Manor (rebranded/reopened May 2023); photo predates the rebrand but shows the unchanged exterior/grounds."},"gleneagles":{"file":"gleneagles.jpg","credit":"Tom Parnell (Wikimedia username ArchHist)","licence":"CC BY-SA 4.0","source":"https://commons.wikimedia.org/wiki/File:Gleneagles_Hotel_-_view_from_SE.jpg","note":"Front facade of the hotel with its formal fountain and gardens, taken from the south-east."},"heckfield-place":{"file":"heckfield-place.jpg","credit":"Heckfield Place (hotel's own website)","licence":"hotel website imagery, rights not cleared for republication","source":"https://www.heckfieldplace.com/gallery","note":"The Georgian house seen across the lake at dawn with full reflection; no people. The Wikimedia Commons image ('Heckfield Place Gardens and Lake', geograph 816122) was superseded by this clearer, higher-resolution hotel-sourced shot after Wikimedia's servers repeatedly rate-limited downloads; this one shows the house itself more clearly."},"hotel-du-cap-eden-roc":{"file":"hotel-du-cap-eden-roc.jpg","credit":"John Jason Junior (Wikimedia Commons user)","licence":"CC BY-SA 3.0","source":"https://commons.wikimedia.org/wiki/File:Hauptfassade_Hotel_Du_Cap.jpg","note":"Main facade of the hotel viewed up the entrance drive through umbrella pines. Clean CC licence."},"hotel-pitrizza":{"file":"hotel-pitrizza.jpg","credit":"Hotel Pitrizza, a Luxury Collection Hotel (photo: Olivier Fly, 2023)","licence":"hotel's own press/gallery imagery, rights not cleared for republication","source":"https://www.hotelpitrizza.com/en/","note":"Aerial view of Pitrizza's rock-set individual villas and pools on the Liscia di Vacca coastline, Costa Smeralda -- verified this is Pitrizza specifically (from Hotel Pitrizza's own site, filename says 'HotelPitrizza-Landscape'), not a neighbouring Costa Smeralda property such as Cala di Volpe or Romazzino."},"il-pellicano":{"file":"il-pellicano.jpg","credit":"Pellicano Hotels (hotel's own website)","licence":"hotel website imagery, rights not cleared for republication","source":"https://www.pellicanohotels.com/en/hotels/hotel-il-pellicano/gallery.html","note":"The hotel's terracotta cliffside buildings and gardens above the pool terrace; a few distant figures are incidental (dining under awnings), not portraits, and the building is unmistakably the subject. No Wikimedia Commons coverage found. The site's homepage og:image (a 1970s-style poolside photo with sunbathers prominent) was rejected as too people-centric."},"il-san-pietro-di-positano":{"file":"il-san-pietro-di-positano.jpg","credit":"Il San Pietro di Positano (hotel's own website gallery)","licence":"hotel website, rights not cleared","source":"https://www.ilsanpietro.com/gallery/","note":"Aerial view of the terraced hotel built into the cliff face above the sea, with the Amalfi coastline behind. No usable image found on Wikimedia Commons — the only Commons file returned by search under the hotel's name was unrelated (a mythological carving on Positano's cathedral bell tower)."},"la-bastide-de-gordes":{"file":"la-bastide-de-gordes.jpg","credit":"HiddenCliff, 2024, courtesy Airelles (hotel group's own press/website imagery)","licence":"hotel website, rights not cleared for republication","source":"https://airelles.com/en/destination/gordes-hotel","note":"Drone view of the hotel building, terraces, pool and gardens against the village of Gordes; the page's own og:image, filename credits '©HiddenCliff-2024'."},"la-reserve-ramatuelle":{"file":"la-reserve-ramatuelle.jpg","credit":"La Réserve Ramatuelle","licence":"hotel's own press/website imagery, rights not cleared for republication","source":"https://www.lareserve-ramatuelle.com/en/","note":"The hotel's distinctive curved-canopy entrance building framing a sea view; filename is explicitly 'property_exterior_entrance'. Note: the site's own gallery page also serves an image literally named 'the-hotel.jpg' that is actually a Paris rooftop/Grand Palais view (a mismatched asset on their WordPress media library) -- that file was identified and rejected as wrong-property."},"le-grand-controle":{"file":"le-grand-controle.jpg","credit":"Lionel Allorge, via Wikimedia Commons","licence":"CC BY-SA 3.0","source":"https://commons.wikimedia.org/wiki/File:H%C3%B4tel_du_Grand_Contr%C3%B4le_%C3%A0_Versailles_vu_du_Parterre_de_l%27Orangerie_le_11_septembre_2015.jpg","note":"This is the Hôtel du Grand Contrôle building itself (not the main Château de Versailles palace), photographed from the Orangerie parterre garden it overlooks, per the brief. Photo dates from 2015, before the 2016-2021 Airelles restoration, so some weathering/patched render is visible on the facade; it is the correct and only building, just not post-renovation. A closer 2007 Commons photo of the same building (street-facade, run-down, parked car) was rejected in favour of this cleaner garden view."},"le-sirenuse":{"file":"le-sirenuse.jpg","credit":"Le Sirenuse (hotel's own website imagery)","licence":"hotel website, rights not cleared for republication","source":"https://sirenuse.it/en/positano/","note":"The hotel's own pool terrace and part of its red facade in the foreground against the Positano coastline; no photographer credited on the page. Two straight-on facade/drone shots on the same domain were tried first but were either portrait-only or too generic a town panorama to read unmistakably as the hotel without a caption; this framing keeps the hotel's own terrace and building fabric identifiable."},"passalacqua":{"file":"passalacqua.jpg","credit":"Kaitu (Wikimedia)","licence":"CC BY-SA 4.0","source":"https://commons.wikimedia.org/wiki/Category:Villa_Lucini_Passalacqua","note":"Wide landscape view of the villa (built for Count Andrea Lucini Passalacqua, the building the 2023-opened hotel occupies) and its terraced gardens above Lake Como, framed from Via Giuseppe Bianchi in Proo."},"rosewood-schloss-fuschl":{"file":"rosewood-schloss-fuschl.jpg","credit":"A,Ocram (Wikimedia Commons user)","licence":"Public domain (CC0 / author release)","source":"https://commons.wikimedia.org/wiki/File:Schloss_Fuschl.jpg","note":"Aerial view of the castle on its wooded peninsula on Lake Fuschl. Clean public-domain licence."},"royal-champagne":{"file":"royal-champagne.jpg","credit":"Royal Champagne Hotel & Spa (hotel's own website gallery)","licence":"hotel website, rights not cleared","source":"https://royalchampagne.com/en/gallery.html","note":"Exterior of the modernist wing at sunset, terrace and vineyard hillside in view. No usable image found on Wikimedia Commons."},"son-bunyola":{"file":"son-bunyola.jpg","credit":"Virgin Limited Edition (hotel group's own website imagery)","licence":"hotel website, rights not cleared for republication","source":"https://www.virginlimitededition.com/son-bunyola/","note":"The restored finca building, terrace and pool against the Tramuntana mountains; the site's own homepage hero image, no photographer credited."},"villa-d-este":{"file":"villa-d-este.jpg","credit":"Ikreis (Jeroen Komen), via Wikimedia Commons","licence":"CC BY 4.0","source":"https://commons.wikimedia.org/wiki/File:Villa_d%27Este_Aerial_Photo.jpg","note":"Aerial view of the lakeside hotel building and floating pool on Lake Como; no people prominent. Source image is 1200x675 so used at native width."},"villa-la-coste":{"file":"villa-la-coste.jpg","credit":"Villa La Coste (hotel's own website imagery)","licence":"hotel website, rights not cleared for republication","source":"https://www.villalacoste.com/en/the-villa","note":"Hotel pool with the villa's stone-and-glass building visible above the cypress row behind. The site's own homepage hero (og:image, an unpeopled vineyard-view crop from the same October 2023 shoot) was tried first but shows no building at all, so this frame was used instead as the only landscape shot in the set that keeps the building legible. No Villa La Coste-specific Wikimedia Commons images exist; the Commons category for the wider Château La Coste estate holds only winery/art-pavilion shots, not the hotel."}};
+const PHOTOS = {"adare-manor":{"file":"adare-manor.jpg","credit":"IrishFireside (Flickr), via Wikimedia Commons","licence":"CC BY 2.0","source":"https://commons.wikimedia.org/wiki/File:Adare_Manor_Aerial.jpg","note":"Aerial view of the manor house, formal gardens and golf course; no people visible."},"aman-rosa-alpina":{"file":"aman-rosa-alpina.jpg","credit":"Aman (hotel's own press/website imagery)","licence":"hotel website, rights not cleared for republication","source":"https://www.aman.com/resorts/aman-rosa-alpina","note":"Exterior of the reopened (Jul 2025) resort against the Dolomites; no photographer named on the page."},"amanzoe":{"file":"amanzoe.jpg","credit":"Aman","licence":"hotel group's own press/gallery imagery, rights not cleared for republication","source":"https://www.aman.com/resorts/amanzoe/gallery","note":"Exterior architectural view of the colonnade, reflecting pool and Ed Tuttle's classical-Greek-inspired pavilions at dusk; unmistakably Amanzoe's signature architecture."},"ballyfin-demesne":{"file":"ballyfin-demesne.jpg","credit":"Christina Keddie (Wikimedia Commons user Djkeddie)","licence":"CC BY-SA 4.0","source":"https://commons.wikimedia.org/wiki/File:Ballyfin_House.jpg","note":"Front elevation of the neoclassical mansion from the drive, in its parkland setting. Clean CC licence."},"beaverbrook":{"file":"beaverbrook.jpg","credit":"Beaverbrook (hotel's own website imagery, used as the site's own og:image / homepage hero)","licence":"hotel's own press imagery, rights not cleared for republication","source":"https://beaverbrook.co.uk/","note":"Aerial drone shot of the main house and formal gardens; this is the hotel's own chosen social-share image, so it reads as their preferred representative photo. No usable image found on Wikimedia Commons for Beaverbrook."},"belmond-caruso":{"file":"belmond-caruso.jpg","credit":"Belmond","licence":"hotel group's own press imagery, rights not cleared for republication","source":"https://www.belmond.com/hotels/europe/italy/amalfi-coast/belmond-hotel-caruso/","note":"Aerial/grounds view of the hotel's famous cliff-edge infinity pool with the wisteria pergola, terraces and Ravello/Amalfi coastline below -- no usable Wikimedia Commons image exists for this property; this is the hero image used on Belmond's own hotel page and is the standard published view of Caruso. One distant swimmer visible in the pool, not a portrait shot."},"belmond-castello-di-casole":{"file":"belmond-castello-di-casole.jpg","credit":"Belmond (official press mediahub)","licence":"hotel/group press image, rights not cleared for republication","source":"https://mediahub.belmond.com/castello-di-casole/","note":"Sunrise aerial of the whole castle-and-borgo complex in the Tuscan hills, from Belmond's official press image library; replaces a dim dusk courtyard shot with little building visible."},"belmond-hotel-cipriani":{"file":"belmond-hotel-cipriani.jpg","credit":"Morn (Wikimedia Commons user)","licence":"CC BY-SA 3.0 / GFDL 1.2+","source":"https://commons.wikimedia.org/wiki/File:Hotel_Cipriani,_Venice.jpg","note":"View of the hotel facade and waterside terrace from the lagoon, with the HOTEL CIPRIANI signage visible. Clean CC licence."},"belmond-hotel-splendido":{"file":"belmond-hotel-splendido.jpg","credit":"Quintin Soloviev","licence":"CC BY 4.0","source":"https://commons.wikimedia.org/wiki/File:Belmond_Hotel_Splendido,_Portofino,_Italy.jpg","note":"Drone aerial of the hotel building on the hillside above Portofino, Sept 2023."},"belmond-villa-san-michele":{"file":"belmond-villa-san-michele.jpg","credit":"Jay Cross (Flickr user jaycross)","licence":"CC BY 2.0","source":"https://commons.wikimedia.org/wiki/File:Villa_san_michele_fiesole_02.jpg","note":"Front facade of the former Franciscan monastery, the loggia and pediment attributed to Michelozzo, taken at golden hour. A few parked cars and two guests are visible at the entrance but the building is the clear subject."},"borgo-egnazia":{"file":"borgo-egnazia.jpg","credit":"Borgo Egnazia (hotel website)","licence":"hotel website, rights not cleared for republication","source":"https://www.borgoegnazia.com/en","note":"Golden-hour aerial of the white borgo's rooftops, bell tower and clock tower; replaces a low-resolution 1200x600 Wayback-cache crop."},"castello-di-reschio":{"file":"castello-di-reschio.jpg","credit":"Reschio (hotel website)","licence":"hotel website, rights not cleared for republication","source":"https://www.reschio.com/hotel","note":"The restored castle and its cypress-lined approach at golden hour, as the hotel trades today; replaces a 2011 Wikimedia photo taken before the castle's conversion to a hotel."},"castiglion-del-bosco":{"file":"castiglion-del-bosco.jpg","credit":"Rosewood Hotel Group (hotel's own press/website imagery)","licence":"hotel website, rights not cleared for republication","source":"https://www.rosewoodhotels.com/en/castiglion-del-bosco","note":"Aerial of Il Borgo (the main hotel building) and pool set in the Tuscan estate; matches the page's own og:image subject ('Il Borgo with pool'). No photographer credited."},"chateau-de-la-messardiere":{"file":"chateau-de-la-messardiere.jpg","credit":"Airelles / Château de la Messardière","licence":"hotel's own press imagery, rights not cleared for republication","source":"https://airelles.com/en/destination/chateau-de-la-messardiere-hotel/story-5-star-luxury-hotel","note":"Frontal exterior view of the château's turreted facade and formal garden approach at sunset. The only Wikimedia Commons image found (File:Château de la Messardière.png, CC BY-SA 4.0) is portrait-orientation and too small to use, so the hotel's own site was used instead."},"chewton-glen":{"file":"chewton-glen.jpg","credit":"Michael Garlick (Geograph Britain and Ireland)","licence":"CC BY-SA 2.0","source":"https://commons.wikimedia.org/wiki/File:Chewton_Glen_Hotel_and_Spa_-_geograph.org.uk_-_5385750.jpg","note":"Front facade and forecourt, 10 May 2017."},"cliveden-house":{"file":"cliveden-house.jpg","credit":"Mark Percy","licence":"CC BY-SA 2.0","source":"https://commons.wikimedia.org/wiki/File:Cliveden_House_-_geograph.org.uk_-_7910880.jpg","note":"Exterior view of the Grade I Charles Barry mansion and its grounds, via Geograph."},"coworth-park":{"file":"coworth-park.jpg","credit":"Dorchester Collection","licence":"hotel group's own website imagery, rights not cleared for republication","source":"https://www.dorchestercollection.com/en/ascot/coworth-park/","note":"Twilight/winter exterior of the main Georgian mansion house, lit up, no people. The only Wikimedia Commons Coworth Park exterior image found (geograph 6385472, 'Building in Coworth Park') was rejected: its own caption says it 'might be the estate offices' near the north gate, i.e. not confidently the main house, so it fails the 'unmistakably that hotel' bar."},"danesfield-house":{"file":"danesfield-house.jpg","credit":"Danesfield House Hotel & Spa (hotel's own website, homepage banner image)","licence":"hotel website, rights not cleared","source":"https://danesfieldhouse.co.uk/","note":"The hotel's own homepage hero image: the white Tudor-revival house seen across the lawn through trees, framed by clipped hedges. Wikimedia Commons only holds an 1880 historic engraving of the house, not a photograph, so the hotel's own site was used."},"domaine-des-etangs":{"file":"domaine-des-etangs.jpg","credit":"Auberge Resorts Collection","licence":"hotel group's own website imagery, rights not cleared for republication","source":"https://fr.auberge.com/domaine-des-etangs/ (og:image; page itself blocks direct automated fetch, image CDN does not)","note":"Aerial of the turreted château on its island within the estate's lakes, pool and tennis court visible; no people. No Wikimedia Commons coverage found for this property."},"estelle-manor":{"file":"estelle-manor.jpg","credit":"Rob Brewer (Bristol, England), via Flickr","licence":"CC BY-SA 2.0","source":"https://commons.wikimedia.org/wiki/File:Eynsham_Hall.jpg","note":"The building is Eynsham Hall, the Grade II mansion now trading as Estelle Manor (rebranded/reopened May 2023); photo predates the rebrand but shows the unchanged exterior/grounds."},"gleneagles":{"file":"gleneagles.jpg","credit":"Tom Parnell (Wikimedia username ArchHist)","licence":"CC BY-SA 4.0","source":"https://commons.wikimedia.org/wiki/File:Gleneagles_Hotel_-_view_from_SE.jpg","note":"Front facade of the hotel with its formal fountain and gardens, taken from the south-east."},"heckfield-place":{"file":"heckfield-place.jpg","credit":"Heckfield Place (hotel's own website)","licence":"hotel website imagery, rights not cleared for republication","source":"https://www.heckfieldplace.com/gallery","note":"The Georgian house seen across the lake at dawn with full reflection; no people. The Wikimedia Commons image ('Heckfield Place Gardens and Lake', geograph 816122) was superseded by this clearer, higher-resolution hotel-sourced shot after Wikimedia's servers repeatedly rate-limited downloads; this one shows the house itself more clearly."},"hotel-du-cap-eden-roc":{"file":"hotel-du-cap-eden-roc.jpg","credit":"John Jason Junior, via Wikimedia Commons","licence":"CC BY-SA 3.0","source":"https://commons.wikimedia.org/wiki/File:Meerwasserschwimmbad_mit_Pavillon_Eden_Roc.jpg","note":"The Eden-Roc pavilion and its sea-cut infinity pool cut into the rock, with the Cap d'Antibes coastline and yachts beyond; replaces a flatter up-the-drive view of the main château with a more characteristic and distinctive image, per a Creative Commons source."},"hotel-pitrizza":{"file":"hotel-pitrizza.jpg","credit":"Hotel Pitrizza, a Luxury Collection Hotel (photo: Olivier Fly, 2023)","licence":"hotel's own press/gallery imagery, rights not cleared for republication","source":"https://www.hotelpitrizza.com/en/","note":"Aerial view of Pitrizza's rock-set individual villas and pools on the Liscia di Vacca coastline, Costa Smeralda -- verified this is Pitrizza specifically (from Hotel Pitrizza's own site, filename says 'HotelPitrizza-Landscape'), not a neighbouring Costa Smeralda property such as Cala di Volpe or Romazzino."},"il-pellicano":{"file":"il-pellicano.jpg","credit":"Pellicano Hotels (hotel website)","licence":"hotel website, rights not cleared for republication","source":"https://www.pellicanohotels.com/en/hotels/hotel-il-pellicano/","note":"Aerial of the terracotta-roofed hotel buildings and pool terraced into the cliff above the sea; replaces a pool-and-umbrellas shot with the buildings barely visible."},"il-san-pietro-di-positano":{"file":"il-san-pietro-di-positano.jpg","credit":"Il San Pietro di Positano (hotel's own website gallery)","licence":"hotel website, rights not cleared","source":"https://www.ilsanpietro.com/gallery/","note":"Aerial view of the terraced hotel built into the cliff face above the sea, with the Amalfi coastline behind. No usable image found on Wikimedia Commons — the only Commons file returned by search under the hotel's name was unrelated (a mythological carving on Positano's cathedral bell tower)."},"la-bastide-de-gordes":{"file":"la-bastide-de-gordes.jpg","credit":"HiddenCliff, 2024, courtesy Airelles (hotel group's own press/website imagery)","licence":"hotel website, rights not cleared for republication","source":"https://airelles.com/en/destination/gordes-hotel","note":"Drone view of the hotel building, terraces, pool and gardens against the village of Gordes; the page's own og:image, filename credits '©HiddenCliff-2024'."},"la-reserve-ramatuelle":{"file":"la-reserve-ramatuelle.jpg","credit":"La Réserve Ramatuelle (hotel website)","licence":"hotel website, rights not cleared for republication","source":"https://www.lareserve-ramatuelle.com/en/","note":"The hotel's rooftop terrace and glass balustrade above the Mediterranean in full daylight; replaces a narrow entrance-canopy view that did not read as a hotel. A guest is visible on the terrace but the deck, railing and sea remain the dominant subject; no purer daylight architectural exterior of comparable resolution was found on the hotel's own site."},"le-grand-controle":{"file":"le-grand-controle.jpg","credit":"Lionel Allorge, via Wikimedia Commons","licence":"CC BY-SA 3.0","source":"https://commons.wikimedia.org/wiki/File:H%C3%B4tel_du_Grand_Contr%C3%B4le_%C3%A0_Versailles_vu_du_Parterre_de_l%27Orangerie_le_11_septembre_2015.jpg","note":"This is the Hôtel du Grand Contrôle building itself (not the main Château de Versailles palace), photographed from the Orangerie parterre garden it overlooks, per the brief. Photo dates from 2015, before the 2016-2021 Airelles restoration, so some weathering/patched render is visible on the facade; it is the correct and only building, just not post-renovation. A closer 2007 Commons photo of the same building (street-facade, run-down, parked car) was rejected in favour of this cleaner garden view."},"le-sirenuse":{"file":"le-sirenuse.jpg","credit":"Le Sirenuse (hotel's own website imagery)","licence":"hotel website, rights not cleared for republication","source":"https://sirenuse.it/en/positano/","note":"The hotel's own pool terrace and part of its red facade in the foreground against the Positano coastline; no photographer credited on the page. Two straight-on facade/drone shots on the same domain were tried first but were either portrait-only or too generic a town panorama to read unmistakably as the hotel without a caption; this framing keeps the hotel's own terrace and building fabric identifiable."},"passalacqua":{"file":"passalacqua.jpg","credit":"Kaitu (Wikimedia)","licence":"CC BY-SA 4.0","source":"https://commons.wikimedia.org/wiki/Category:Villa_Lucini_Passalacqua","note":"Wide landscape view of the villa (built for Count Andrea Lucini Passalacqua, the building the 2023-opened hotel occupies) and its terraced gardens above Lake Como, framed from Via Giuseppe Bianchi in Proo."},"rosewood-schloss-fuschl":{"file":"rosewood-schloss-fuschl.jpg","credit":"A,Ocram (Wikimedia Commons user)","licence":"Public domain (CC0 / author release)","source":"https://commons.wikimedia.org/wiki/File:Schloss_Fuschl.jpg","note":"Aerial view of the castle on its wooded peninsula on Lake Fuschl. Clean public-domain licence."},"royal-champagne":{"file":"royal-champagne.jpg","credit":"Royal Champagne Hotel & Spa (hotel's own website gallery)","licence":"hotel website, rights not cleared","source":"https://royalchampagne.com/en/gallery.html","note":"Exterior of the modernist wing at sunset, terrace and vineyard hillside in view. No usable image found on Wikimedia Commons."},"son-bunyola":{"file":"son-bunyola.jpg","credit":"Virgin Limited Edition (hotel group's own website imagery)","licence":"hotel website, rights not cleared for republication","source":"https://www.virginlimitededition.com/son-bunyola/","note":"The restored finca building, terrace and pool against the Tramuntana mountains; the site's own homepage hero image, no photographer credited."},"villa-d-este":{"file":"villa-d-este.jpg","credit":"Ikreis (Jeroen Komen), via Wikimedia Commons","licence":"CC BY 4.0","source":"https://commons.wikimedia.org/wiki/File:Villa_d%27Este_Aerial_Photo.jpg","note":"Aerial view of the lakeside hotel building and floating pool on Lake Como; no people prominent. Source image is 1200x675 so used at native width."},"villa-la-coste":{"file":"villa-la-coste.jpg","credit":"Richard Haughton, via Villa La Coste (hotel website)","licence":"hotel website, rights not cleared for republication","source":"https://www.villalacoste.com/en/photo-gallery.html","note":"The hotel's own stone suites pavilion and balconies at golden hour, with the Provence hillside behind; replaces a pool-and-loungers shot with almost no building visible."}};
 const PHOTOS_BASIS = "Each photograph is the hotel's own or a Creative Commons image, collected from the page named on that property's own page here, with its credit and licence. Rights for onward publication are not cleared: this is a private portal and the photographs are here to identify the property, not to be republished.";
 /*PHOTOS-DATA-END*/
 /*MARKET-DATA-START*/
@@ -3888,15 +3944,15 @@ function casesIndexHTML() {
 
 /* ─────────────  the ultra-luxury market index  ─────────────
 
-   Thirty-six hotels with a full forward year of collected rates, under two
-   tabs and banded by what kind of property each is. A card carries a
-   photograph of the place, the rate it sells at, and the headline figures
-   that hotel actually discloses — each with its evidence class, and its
-   basis one tap away on the hotel's own page. Eight of the thirty-six
-   disclose nothing beyond a rate, and their cards say so.
+   Thirty-six hotels with a full forward year of collected rates, under three
+   tabs — all of it, Europe, the United Kingdom — with a country filter that
+   opens on Europe and a type filter opposite it. A card carries a photograph
+   of the place, the rate hung against the name, and the headline figures that
+   hotel actually discloses, each with its evidence class and its basis one
+   tap away on the hotel's own page.
 
-   Nothing here is retyped: MARKET is the pack, spliced whole, and PHOTOS is
-   the photography manifest.                                                */
+   Nothing here is retyped: MARKET is the pack and PHOTOS the photography
+   manifest, both spliced whole.                                            */
 
 const MKT_M = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const mktGbp = n => "£" + Math.round(n).toLocaleString("en-GB");
@@ -3914,25 +3970,35 @@ const mktOrder = (a, b) => (b.months_bookable - a.months_bookable) || ((b.median
 const mktPlace = h => h.region + (MKT_CTRY[h.country] ? " · " + MKT_CTRY[h.country] : "");
 const mktPhoto = h => PHOTOS[h.slug] || null;
 
+const MKSTATE = { tab: "all", country: null, type: null };
+const mktTab = t => t === "uk" ? MKT_ALL.filter(h => h.country === "UK")
+                  : t === "eu" ? MKT_ALL.filter(h => h.country !== "UK")
+                  : MKT_ALL;
+/* the rows the grid is showing: the tab, then the country, then the type */
+function mktRows() {
+  let r = mktTab(MKSTATE.tab);
+  if (MKSTATE.tab === "eu" && MKSTATE.country) r = r.filter(h => h.country === MKSTATE.country);
+  if (MKSTATE.type) r = r.filter(h => h.type === MKSTATE.type);
+  return r;
+}
+
 function mktCard(h) {
   const p = mktPhoto(h);
   const im = p
     ? '<span class="mk-im"><img src="img/comps/' + p.file + '" alt="' + h.name + ', ' + mktPlace(h)
       + '" loading="lazy" width="1200" height="800"></span>'
     : '<span class="mk-im none"><span>No photograph held</span></span>';
-  const rate = h.median
-    ? '<span class="v">' + mktGbp(h.median) + '</span><span class="u">lead-in median · '
-      + mktGbp(h.median_net_vat) + " net of VAT</span>"
-    : '<span class="u">No bookable inventory</span>';
   const rows = [["Bookable", h.months_bookable + " of 12 months", ""]]
     .concat((h.figures || []).map(f => [f.label, f.v, f.cls]));
   return '<button class="mk" data-hash="' + mktHash(h) + '" aria-label="' + h.name + ", " + mktPlace(h)
     + ". " + (h.median ? mktGbp(h.median) + " median lead-in" : "no bookable inventory") + ", "
     + h.months_bookable + ' of 12 months bookable. Open the property page.">'
     + im
-    + '<span class="mk-b"><span class="mk-nm">' + h.name + "</span>"
-    + '<span class="mk-rg">' + mktPlace(h) + "</span>"
-    + '<span class="mk-rate">' + rate + "</span>"
+    + '<span class="mk-b">'
+    + '<span class="mk-top"><span class="mk-nm">' + h.name + "</span>"
+    + '<span class="mk-v">' + (h.median ? mktGbp(h.median) : "—") + "</span></span>"
+    + '<span class="mk-sub"><span class="mk-rg">' + mktPlace(h) + "</span>"
+    + '<span class="mk-u">' + (h.median ? mktGbp(h.median_net_vat) + " net of VAT" : "no bookable inventory") + "</span></span>"
     + '<span class="mk-rows">' + rows.map(([k, v, cls]) =>
         '<span class="mk-row"><span class="k">' + k + '</span><span class="v">' + v
         + (cls ? '<span class="cl ' + cls + '"> ' + cls + "</span>" : "") + "</span></span>").join("")
@@ -3943,15 +4009,35 @@ function mktCard(h) {
     + "</span><span class=\"mk-go\" aria-hidden=\"true\">›</span></button>";
 }
 
-const MKSTATE = { tab: "eu" };
-
-function mktTabSet() {
-  return { eu: MKT_ALL.filter(h => h.country !== "UK"), uk: MKT_ALL.filter(h => h.country === "UK") };
+/* the filter line: countries on the left once Europe is open, types opposite */
+function mktControlsInner() {
+  const chip = (key, val, label, n, on) => '<button class="mkc" data-' + key + '="' + (val === null ? "" : val)
+    + '" aria-pressed="' + (on ? "true" : "false") + '">' + label
+    + (n === null ? "" : '<span class="n">' + n + "</span>") + "</button>";
+  const base = mktTab(MKSTATE.tab);
+  let left = "";
+  if (MKSTATE.tab === "eu") {
+    const counts = {};
+    for (const h of base) counts[h.country] = (counts[h.country] || 0) + 1;
+    const order = Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b));
+    left = '<div class="grp"><span class="fl-l">Country</span>'
+      + chip("mkcountry", null, "All", base.length, !MKSTATE.country)
+      + order.map(c => chip("mkcountry", c, MKT_CTRY[c] || c, counts[c], MKSTATE.country === c)).join("")
+      + "</div>";
+  }
+  const scoped = MKSTATE.tab === "eu" && MKSTATE.country ? base.filter(h => h.country === MKSTATE.country) : base;
+  const tcount = t => scoped.filter(h => h.type === t).length;
+  const types = MKT_BANDS.filter(t => tcount(t));
+  const right = '<div class="grp r' + (left ? " split" : "") + '"><span class="fl-l">Kind of place</span>'
+    + chip("mktype", null, "All", scoped.length, !MKSTATE.type)
+    + types.map(t => chip("mktype", t, MARKET.type_labels[t], tcount(t), MKSTATE.type === t)).join("")
+    + "</div>";
+  return left + right;
 }
 
 function mktGridInner() {
-  const set = mktTabSet();
-  const rows = MKSTATE.tab === "uk" ? set.uk : set.eu;
+  const rows = mktRows();
+  if (!rows.length) return '<p class="mkt-empty">Nothing in the set matches that pair of filters.</p>';
   const bands = MKT_BANDS.map(t => [t, rows.filter(h => h.type === t).sort(mktOrder)]).filter(x => x[1].length);
   return bands.map(([t, hs]) =>
     '<section class="mkt-band"><div class="mkt-band-h">'
@@ -3961,14 +4047,23 @@ function mktGridInner() {
 }
 
 function marketIndexHTML() {
-  const set = mktTabSet();
-  const tab = (id, t, n) => '<button class="mkt-tab" role="tab" data-mktab="' + id + '" aria-selected="'
-    + (MKSTATE.tab === id ? "true" : "false") + '"><span class="t">' + t + '</span><span class="c">' + n + "</span></button>";
+  const tab = (id, t) => '<button class="mkt-tab" role="tab" data-mktab="' + id + '" aria-selected="'
+    + (MKSTATE.tab === id ? "true" : "false") + '"><span class="t">' + t + '</span><span class="c">'
+    + mktTab(id).length + "</span></button>";
+  const yr = MKT_ALL.filter(h => h.year_round).length;
+  const blank = MKT_ALL.filter(h => !(h.figures || []).length).length;
   return '<div role="tablist" class="mkt-tabs" aria-label="Region">'
-    + tab("eu", "Europe", set.eu.length) + tab("uk", "The United Kingdom", set.uk.length) + "</div>"
-    + '<p class="mkt-lede">Ordered inside each band by how much of the year the hotel opens, then by rate, because in this set the two run against each other: everything above £1,200 closes for two to seven months, and the properties bookable in all twelve sit at the bottom of the rate table. Every British comparable is a country estate; the European set falls into five kinds of place. Eight of the thirty-six publish nothing beyond a rate.</p>'
+    + tab("all", "All") + tab("eu", "Europe") + tab("uk", "The United Kingdom") + "</div>"
+    + '<div class="mkt-fl" id="mktctl">' + mktControlsInner() + "</div>"
+    + '<div class="mkt-head"><p>Ordered inside each band by how much of the year the hotel opens, then by rate, because in this set the two run against each other: everything above £1,200 closes for two to seven months, and the properties bookable in all twelve sit at the bottom of the rate table. Every British comparable is a country estate; the European set falls into five kinds of place.</p>'
+    + '<div class="mkt-counts">'
+    + '<div><span class="n">' + yr + '</span><span class="l">bookable in all twelve months</span></div>'
+    + '<div><span class="n">' + blank + '</span><span class="l">publish nothing beyond a rate</span></div>'
+    + '<div><span class="n">' + MKT_BANDS.filter(t => MKT_ALL.some(h => h.type === t)).length
+    + '</span><span class="l">kinds of place in the set</span></div>'
+    + "</div></div>"
     + '<div id="mktgrid">' + mktGridInner() + "</div>"
-    + '<p class="src">' + MARKET.basis + " " + MARKET.vat_note + " " + MARKET.figures_basis + " "
+    + '<p class="src cols">' + MARKET.basis + " " + MARKET.vat_note + " " + MARKET.figures_basis + " "
     + MARKET.type_basis + " " + PHOTOS_BASIS + " Every card opens that property's own page, where each figure carries its basis.</p>";
 }
 
@@ -3984,7 +4079,7 @@ function mktFiguresHTML(h) {
 
 function mktPhotoHTML(h) {
   const p = mktPhoto(h);
-  if (!p) return "";
+  if (!p) return '<p class="mkt-none">No photograph is held for this property.</p>';
   return '<figure class="mkp-im"><img src="img/comps/' + p.file + '" alt="' + h.name + ', ' + mktPlace(h)
     + '" loading="lazy" width="1200" height="800">'
     + '<figcaption class="cr">' + h.name + ". Photograph: " + p.credit + " · " + p.licence
@@ -4017,46 +4112,57 @@ function mktRecordHTML(h) {
     ["Cheapest rate includes", h.meal_basis || "not established"],
     ["Collected from", h.engine + (h.window ? ", " + h.window[0] + " to " + h.window[1] : "")]
   ];
-  return '<div class="mkt-rec">' + mktPhotoHTML(h)
-    + '<p class="pane-h" style="margin-top:22px">' + h.name + " · what it discloses</p>"
-    + mktFiguresHTML(h)
-    + '<p class="pane-h" style="margin-top:26px">The collected rate series</p>'
+  const half = Math.ceil(rows.length / 2);
+  const table = rs => '<table class="mkt-kv"><tbody>'
+    + rs.map(r => "<tr><th>" + r[0] + "</th><td>" + r[1] + "</td></tr>").join("") + "</tbody></table>";
+  return '<section class="mkp-sec"><p class="pane-h">The collected rate series</p>'
     + '<div class="mkt-strip" aria-hidden="true">' + mktBars(h) + "</div>"
     + '<table class="mkt-mm"><tbody><tr>' + MKT_M.map(x => "<th>" + x + "</th>").join("")
     + "</tr><tr>" + cells + "</tbody></table>"
-    + '<table class="mkt-kv"><tbody>'
-    + rows.map(r => "<tr><th>" + r[0] + "</th><td>" + r[1] + "</td></tr>").join("") + "</tbody></table>"
+    + '<div class="mkt-kvduo">' + table(rows.slice(0, half)) + table(rows.slice(half)) + "</div>"
     + (h.caveat ? '<p class="mkt-cav-p">' + h.caveat + "</p>" : "")
-    + '<p class="src">' + MARKET.basis + " " + MARKET.vat_note + " " + MARKET.figures_basis + "</p></div>";
+    + '<p class="src cols">' + MARKET.basis + " " + MARKET.vat_note + " " + MARKET.figures_basis + "</p></section>";
+}
+
+/* the header rule, with the figures hung on its right — the deck's own line */
+function mktHeadHTML(h, eyebrow) {
+  const stat = (l, v) => '<div><div class="l">' + l + '</div><div class="v">' + v + "</div></div>";
+  return '<header class="mkp-h"><div class="nm"><p class="eb">' + eyebrow + "</p>"
+    + "<h1>" + h.name + "</h1>"
+    + '<p class="pl">' + mktPlace(h) + " · " + MARKET.type_labels[h.type] + "</p></div>"
+    + '<div class="mkp-stats">'
+    + (h.median ? stat("Lead-in median", mktGbp(h.median)) + stat("Net of VAT", mktGbp(h.median_net_vat)) : "")
+    + stat("Bookable", h.months_bookable + " of 12")
+    + "</div></header>";
 }
 
 /* ── a property page for the hotels with no case study written ── */
 
 function viewMarketHotel(h) {
-  const kpis = [[h.months_bookable + " of 12", "Months bookable"]];
-  if (h.median) kpis.push([mktGbp(h.median), "Median lead-in, gross"],
-                          [mktGbp(h.median_net_vat), "Net of VAT"]);
-  const set = mktTabSet();
-  const list = (h.country === "UK" ? set.uk : set.eu).filter(x => !x.case_slug).sort(mktOrder);
-  const i = list.findIndex(x => x.slug === h.slug);
-  const prev = list[i - 1], next = list[i + 1];
+  const rows = mktTab(h.country === "UK" ? "uk" : "eu").filter(x => !x.case_slug).sort(mktOrder);
+  const i = rows.findIndex(x => x.slug === h.slug);
+  const prev = rows[i - 1], next = rows[i + 1];
   const btn = (x, right) => '<button' + (right ? ' class="r"' : "") + ' data-hash="#/m/' + x.slug + '">'
     + '<span class="pg-l">' + (right ? "Next ›" : "‹ Previous") + '</span><span class="nm">' + x.name + "</span></button>";
-  return '<article class="view wrap"><header class="case-head st" style="--i:0"><div>'
-    + '<p class="case-num">The Ultra Luxury Market</p>'
-    + '<h1 class="h-display" style="margin-top:6px">' + h.name + "</h1></div>"
-    + '<span class="badge">' + MARKET.type_labels[h.type] + "</span></header>"
-    + '<div class="st" style="--i:2">'
-    + '<p class="pane-h">' + mktPlace(h) + "</p>"
-    + '<div class="kpis" style="margin-top:18px">' + kpis.map(([n, c]) =>
-        '<div class="kpi"><div class="num">' + n + '</div><div class="cap">' + c + "</div></div>").join("") + "</div>"
+  return '<article class="view wrap"><div class="st" style="--i:0">'
+    + mktHeadHTML(h, "The Ultra Luxury Market")
+    + '<div class="mkp-duo"><div>' + mktPhotoHTML(h) + "</div>"
+    + '<div><p class="pane-h">What it discloses</p>' + mktFiguresHTML(h)
+    + '<p class="mkt-none">A case study for this property is not yet written: the property record, the read against the underwrite and the estimated P&amp;L are still to be built.</p></div></div>'
     + mktRecordHTML(h)
-    + '<p class="mkt-none">A case study for this property is not yet written: the property record, the read against the underwrite and the estimated P&amp;L are still to be built.</p>'
     + "</div>"
     + '<nav class="pager">'
     + (prev ? btn(prev, false) : '<button data-hash="#/c/market"><span class="pg-l">‹ Back</span><span class="nm">The Ultra Luxury Market</span></button>')
     + (next ? btn(next, true) : '<button class="r" data-hash="#/c/market"><span class="pg-l">Back ›</span><span class="nm">The Ultra Luxury Market</span></button>')
     + "</nav>" + footHTML() + "</article>";
+}
+
+/* the same evidence, as a tab on one of the ten written case studies */
+function mktCaseEvidenceHTML(h) {
+  if (!h) return "";
+  return '<div class="mkp-duo"><div>' + mktPhotoHTML(h) + "</div>"
+    + '<div><p class="pane-h">What it discloses</p>' + mktFiguresHTML(h) + "</div></div>"
+    + mktRecordHTML(h);
 }
 </script>
 <script>
@@ -5120,7 +5226,7 @@ function viewCase(c, tab) {
     + '<span class="badge">' + c.layer + "</span></header>"
     + tabsHTML(CASE_VIEWS, tab, x => "#/h/" + c.slug + (x.id ? "/" + x.id : ""))
     + '<div class="st" style="--i:2">' + (tab === "pnl" ? pnlHotelHTML(c.slug)
-        : tab === "rate" ? mktRecordHTML(MKT_BY_CASE[c.slug]) : caseRecordHTML(c)) + "</div>"
+        : tab === "rate" ? mktCaseEvidenceHTML(MKT_BY_CASE[c.slug]) : caseRecordHTML(c)) + "</div>"
     + '<nav class="pager">'
     + (prev ? '<button data-slug="' + prev.slug + '"><span class="pg-l">‹ Previous</span><span class="nm">' + prev.name + "</span></button>"
             : '<button data-ch="evidence"><span class="pg-l">‹ Back</span><span class="nm">Evidence &amp; Comparables</span></button>')
@@ -5505,11 +5611,15 @@ document.addEventListener("click", e => {
   const mt = t.closest("[data-mktab]");
   if (mt) {
     MKSTATE.tab = mt.dataset.mktab;
+    MKSTATE.country = null;
     $$("[data-mktab]").forEach(x => x.setAttribute("aria-selected", String(x === mt)));
-    const g = $("#mktgrid");
-    if (g) g.innerHTML = mktGridInner();
+    rerenderMkt();
     return;
   }
+  const mcy = t.closest("[data-mkcountry]");
+  if (mcy) { MKSTATE.country = mcy.dataset.mkcountry || null; rerenderMkt(); return; }
+  const mty = t.closest("[data-mktype]");
+  if (mty) { MKSTATE.type = mty.dataset.mktype || null; rerenderMkt(); return; }
   const qh = t.closest(".q-h");
   if (qh) {
     const q = qh.parentElement, k = q.dataset.qkey;
@@ -5520,6 +5630,15 @@ document.addEventListener("click", e => {
     return;
   }
 });
+
+function rerenderMkt() {
+  const c = $("#mktctl"), g = $("#mktgrid");
+  if (!c || !g) return;
+  const y = window.scrollY;
+  c.innerHTML = mktControlsInner();
+  g.innerHTML = mktGridInner();
+  window.scrollTo({ top: y, behavior: "instant" });
+}
 
 function rerenderQs() {
   const target = $("#register");
@@ -5650,7 +5769,7 @@ if ("serviceWorker" in navigator && (location.protocol === "https:" || location.
    warmed on every visit: the first time a reader opens chapter 10 the images
    load lazily as they scroll, and this warms the rest of the set behind them so
    the chapter is whole on a dead connection afterwards. Once a session. */
-let mktWarmed = false;
+var mktWarmed = false;   // var: route() reaches this before the block is evaluated
 function warmMarketPhotos() {
   if (mktWarmed) return;
   mktWarmed = true;

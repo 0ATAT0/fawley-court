@@ -79,10 +79,11 @@ const mod = new Function(
   grab("const CASES = [", "const BY_SLUG") +
   grab("const CHEAT = {", "</script>") +
   grab("const QS = {", "/*QS-DATA-END*/") + ";" +
-  grab("const MKT_M =", "/* ── a property page") +
+  grab("const MKT_M =", "</script>") +
   "; return { FIGS, V16, CAPEX, DIALS, DIAL_SRC, PLATES, FIELD, LADDER, BRIDGE, PNL, PNLFMT, PNL_CASE,"
   + " PNL_NOTES, PNL_PROSE, CHAPTERS, CASES, CHEAT, QS, MARKET, MKT_ALL, MKT_BY_SLUG,"
   + " MKT_BY_CASE, MKSTATE, PHOTOS, marketIndexHTML, mktGridInner, mktRecordHTML, mktFiguresHTML,"
+  + " mktCaseEvidenceHTML, mktControlsInner, mktTab,"
   + " mktPhotoHTML, mktGbp };"
 )();
 
@@ -894,9 +895,10 @@ const mkCohort = mktSource.hotels.filter(h => h.in_cohort !== false);
 const mkEu = mkCohort.filter(h => h.country !== "UK");
 const mkUk = mkCohort.filter(h => h.country === "UK");
 
+mod.MKSTATE.country = null; mod.MKSTATE.type = null;
 mod.MKSTATE.tab = "eu"; const mkEuHtml = mod.marketIndexHTML();
 mod.MKSTATE.tab = "uk"; const mkUkHtml = mod.marketIndexHTML();
-mod.MKSTATE.tab = "eu";
+mod.MKSTATE.tab = "all"; const mkAllHtml = mod.marketIndexHTML();
 const mkHas = (label, hay, needle) => {
   checked++;
   if (!hay.includes(needle)) fail("MARKET FIGURE NOT PRINTED  " + label, '"' + needle + '"');
@@ -919,7 +921,7 @@ for (const h of mkCohort) {
   if (h.caveat) mkHas(where + " caveat", hay, h.caveat);
 
   /* G7 — the headline figures, on the card and with their basis on the page */
-  const page = mod.mktRecordHTML(h);
+  const page = mod.mktCaseEvidenceHTML(h);
   for (const f of h.figures || []) {
     mkHas(where + " " + f.k + " on the card", hay, f.v);
     mkHas(where + " " + f.k + " class", hay, '<span class="cl ' + f.cls + '"> ' + f.cls + "</span>");
@@ -980,12 +982,10 @@ mkHas("United Kingdom tab count", mkEuHtml, "The United Kingdom</span><span clas
   const blanks = mkCohort.filter(h => !(h.figures || []).length).length;
   const words = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
                  "eleven", "twelve"];
-  mkHas("blank count in the lede", mkEuHtml, "Eight of the thirty-six publish nothing beyond a rate");
-  checked++;
-  if (blanks !== 8) fail("BLANK COUNT", "the lede says eight publish nothing; the pack holds " + blanks
-    + " (" + (words[blanks] || blanks) + ")");
-  checked++;
-  if (mkCohort.length !== 36) fail("SET SIZE IN THE LEDE", "the lede says thirty-six; the pack holds " + mkCohort.length);
+  mkHas("blank count", mkAllHtml, '<span class="n">' + blanks + '</span><span class="l">publish nothing beyond a rate</span>');
+  mkHas("year-round count", mkAllHtml, '<span class="n">' + mkCohort.filter(h => h.year_round).length
+    + '</span><span class="l">bookable in all twelve months</span>');
+  mkHas("All tab count", mkAllHtml, 'All</span><span class="c">' + mkCohort.length);
 }
 for (const [tab, hay, rows] of [["eu", mkEuHtml, mkEu], ["uk", mkUkHtml, mkUk]]) {
   for (const t of Object.keys(mktSource.type_labels)) {
@@ -1035,9 +1035,8 @@ for (const c of mod.CASES) {
   const h = mktSource.hotels.find(x => x.case_slug === c.slug);
   checked++;
   if (!h) { fail("RATE RECORD WITHOUT A SERIES", c.slug); continue; }
-  const rec = mod.mktRecordHTML(mod.MKT_BY_CASE[c.slug]);
+  const rec = mod.mktCaseEvidenceHTML(mod.MKT_BY_CASE[c.slug]);
   const want = [
-    h.name + " · what it discloses",
     mkGbp(h.median) + " gross · " + mkGbp(h.median_net_vat) + " net of VAT",
     mkGbp(h.p25) + " · " + mkGbp(h.median) + " · " + mkGbp(h.p75),
     mkGbp(h.min) + " to " + mkGbp(h.max),

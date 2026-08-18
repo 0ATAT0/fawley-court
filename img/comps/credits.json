@@ -73,15 +73,18 @@
  },
  {
   "slug": "belmond-castello-di-casole",
-  "name": "Belmond Castello di Casole",
+  "name": "Belmond Castello di Casole, Casole d'Elsa, Tuscany, Italy",
   "saved": true,
-  "file": "C:\\Users\\angus.ANGUS\\Documents\\Projects\\fawley-court\\img\\comps\\belmond-castello-di-casole.jpg",
+  "file": "img/comps/belmond-castello-di-casole.jpg",
   "source_page": "https://mediahub.belmond.com/castello-di-casole/",
-  "image_url": "https://mediahub.belmond.com/wp-content/uploads/2021/05/855502-1500x1000.jpg",
-  "credit": "Belmond",
-  "licence": "hotel group's own press imagery (Belmond Mediahub), rights not cleared for republication",
+  "image_url": "https://mediahub.belmond.com/wp-content/uploads/2021/05/690648-1500x1124.jpg",
+  "credit": "Belmond (official press mediahub)",
+  "licence": "hotel/group press image, rights not cleared for republication",
   "accessed": "2026-08-18",
-  "note": "Dusk view of the castle's internal courtyard with the medieval tower visible; small figures are incidental, not portraits. No Wikimedia Commons coverage of Castello di Casole was found."
+  "width": 1400,
+  "height": 1049,
+  "bytes": 127767,
+  "note": "Sunrise aerial of the whole castle-and-borgo complex in the Tuscan hills, from Belmond's official press image library; replaces a dim dusk courtyard shot with little building visible."
  },
  {
   "slug": "belmond-hotel-cipriani",
@@ -121,27 +124,33 @@
  },
  {
   "slug": "borgo-egnazia",
-  "name": "Borgo Egnazia",
+  "name": "Borgo Egnazia, Savelletri di Fasano, Puglia, Italy",
   "saved": true,
-  "file": "C:\\Users\\angus.ANGUS\\Documents\\Projects\\fawley-court\\img\\comps\\borgo-egnazia.jpg",
-  "source_page": "https://www.borgoegnazia.com/en/ (retrieved via Wayback Machine snapshot dated 2024-11-25, since the live site returns HTTP 403 to automated fetches)",
-  "image_url": "https://web.archive.org/web/20241125015248im_/https://www.borgoegnazia.com/assets/img/luxury-hotel-puglia.jpg",
-  "credit": "Borgo Egnazia (hotel's own website, og:image)",
-  "licence": "hotel website imagery, rights not cleared for republication",
+  "file": "img/comps/borgo-egnazia.jpg",
+  "source_page": "https://www.borgoegnazia.com/en",
+  "image_url": "https://www.borgoegnazia.com/assets/img/sections/iltuoborgonew.jpg",
+  "credit": "Borgo Egnazia (hotel website)",
+  "licence": "hotel website, rights not cleared for republication",
   "accessed": "2026-08-18",
-  "note": "The resort's distinctive limestone rooftop architecture (trulli-style chimneys/pinnacles) with the Adriatic Sea behind. Source file is only 1200x600 (the site's own og:image), so it is used at its native width with no upscaling. No Wikimedia Commons coverage found; the live borgoegnazia.com blocks non-browser HTTP clients (Cloudflare), so the image was recovered from a Wayback Machine cache of the same og:image the live site serves."
+  "width": 1400,
+  "height": 786,
+  "bytes": 240810,
+  "note": "Golden-hour aerial of the white borgo's rooftops, bell tower and clock tower; replaces a low-resolution 1200x600 Wayback-cache crop."
  },
  {
   "slug": "castello-di-reschio",
-  "name": "Castello di Reschio",
+  "name": "Castello di Reschio, Lisciano Niccone, Umbria, Italy",
   "saved": true,
-  "file": "C:\\Users\\angus.ANGUS\\Documents\\Projects\\fawley-court\\img\\comps\\castello-di-reschio.jpg",
-  "source_page": "https://commons.wikimedia.org/wiki/File:Castello_di_Reschio.JPG",
-  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Castello_di_Reschio.JPG",
-  "credit": "PierBer (Wikimedia Commons user)",
-  "licence": "CC BY-SA 3.0/2.5/2.0/1.0 + GFDL 1.2+",
+  "file": "img/comps/castello-di-reschio.jpg",
+  "source_page": "https://www.reschio.com/hotel",
+  "image_url": "https://www.reschio.com/assets/transform/_2340x1650_crop_center-center_80_none/11-image-media-full-castle-desktop.jpg",
+  "credit": "Reschio (hotel website)",
+  "licence": "hotel website, rights not cleared for republication",
   "accessed": "2026-08-18",
-  "note": "Photographed December 2008, before the estate's restoration into the current hotel (which opened in the 2020s) — shows the castle's structure and setting on the hill, unrestored. Only Commons image of the building; no clean-licence post-restoration exterior found."
+  "width": 1400,
+  "height": 987,
+  "bytes": 375497,
+  "note": "The restored castle and its cypress-lined approach at golden hour, as the hotel trades today; replaces a 2011 Wikimedia photo taken before the castle's conversion to a hotel."
  },
  {
   "slug": "castiglion-del-bosco",
@@ -265,15 +274,18 @@
  },
  {
   "slug": "hotel-du-cap-eden-roc",
-  "name": "Hotel du Cap-Eden-Roc",
+  "name": "Hôtel du Cap-Eden-Roc, Antibes, France",
   "saved": true,
-  "file": "C:\\Users\\angus.ANGUS\\Documents\\Projects\\fawley-court\\img\\comps\\hotel-du-cap-eden-roc.jpg",
-  "source_page": "https://commons.wikimedia.org/wiki/File:Hauptfassade_Hotel_Du_Cap.jpg",
-  "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/94/Hauptfassade_Hotel_Du_Cap.jpg",
-  "credit": "John Jason Junior (Wikimedia Commons user)",
+  "file": "img/comps/hotel-du-cap-eden-roc.jpg",
+  "source_page": "https://commons.wikimedia.org/wiki/File:Meerwasserschwimmbad_mit_Pavillon_Eden_Roc.jpg",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/41/Meerwasserschwimmbad_mit_Pavillon_Eden_Roc.jpg",
+  "credit": "John Jason Junior, via Wikimedia Commons",
   "licence": "CC BY-SA 3.0",
   "accessed": "2026-08-18",
-  "note": "Main facade of the hotel viewed up the entrance drive through umbrella pines. Clean CC licence."
+  "width": 1400,
+  "height": 1050,
+  "bytes": 256949,
+  "note": "The Eden-Roc pavilion and its sea-cut infinity pool cut into the rock, with the Cap d'Antibes coastline and yachts beyond; replaces a flatter up-the-drive view of the main château with a more characteristic and distinctive image, per a Creative Commons source."
  },
  {
   "slug": "hotel-pitrizza",
@@ -289,15 +301,18 @@
  },
  {
   "slug": "il-pellicano",
-  "name": "Hotel Il Pellicano",
+  "name": "Hotel Il Pellicano, Porto Ercole, Tuscany, Italy",
   "saved": true,
-  "file": "C:\\Users\\angus.ANGUS\\Documents\\Projects\\fawley-court\\img\\comps\\il-pellicano.jpg",
-  "source_page": "https://www.pellicanohotels.com/en/hotels/hotel-il-pellicano/gallery.html",
-  "image_url": "https://pfn7inl2.cdn.imgeng.in/assets/uploads/Il-Pellicano/The-location/hotel-pellicano-pool-restaurants-tuscany.jpg",
-  "credit": "Pellicano Hotels (hotel's own website)",
-  "licence": "hotel website imagery, rights not cleared for republication",
+  "file": "img/comps/il-pellicano.jpg",
+  "source_page": "https://www.pellicanohotels.com/en/hotels/hotel-il-pellicano/",
+  "image_url": "https://pfn7inl2.cdn.imgeng.in/assets/uploads/Il-Pellicano/The-location/Il_Pellicano_The_location.jpg",
+  "credit": "Pellicano Hotels (hotel website)",
+  "licence": "hotel website, rights not cleared for republication",
   "accessed": "2026-08-18",
-  "note": "The hotel's terracotta cliffside buildings and gardens above the pool terrace; a few distant figures are incidental (dining under awnings), not portraits, and the building is unmistakably the subject. No Wikimedia Commons coverage found. The site's homepage og:image (a 1970s-style poolside photo with sunbathers prominent) was rejected as too people-centric."
+  "width": 1400,
+  "height": 732,
+  "bytes": 303418,
+  "note": "Aerial of the terracotta-roofed hotel buildings and pool terraced into the cliff above the sea; replaces a pool-and-umbrellas shot with the buildings barely visible."
  },
  {
   "slug": "il-san-pietro-di-positano",
@@ -325,15 +340,18 @@
  },
  {
   "slug": "la-reserve-ramatuelle",
-  "name": "La Réserve Ramatuelle",
+  "name": "La Réserve Ramatuelle, France",
   "saved": true,
   "file": "img/comps/la-reserve-ramatuelle.jpg",
   "source_page": "https://www.lareserve-ramatuelle.com/en/",
-  "image_url": "https://www.lareserve-ramatuelle.com/wp-content/uploads/2024/06/lrr_property_exterior_entrance_8244_bd-1.jpg",
-  "credit": "La Réserve Ramatuelle",
-  "licence": "hotel's own press/website imagery, rights not cleared for republication",
+  "image_url": "https://www.lareserve-ramatuelle.com/wp-content/uploads/2021/05/la_reserve_ramatuelle_exterior_rooftop.jpg",
+  "credit": "La Réserve Ramatuelle (hotel website)",
+  "licence": "hotel website, rights not cleared for republication",
   "accessed": "2026-08-18",
-  "note": "The hotel's distinctive curved-canopy entrance building framing a sea view; filename is explicitly 'property_exterior_entrance'. Note: the site's own gallery page also serves an image literally named 'the-hotel.jpg' that is actually a Paris rooftop/Grand Palais view (a mismatched asset on their WordPress media library) -- that file was identified and rejected as wrong-property."
+  "width": 1400,
+  "height": 788,
+  "bytes": 130489,
+  "note": "The hotel's rooftop terrace and glass balustrade above the Mediterranean in full daylight; replaces a narrow entrance-canopy view that did not read as a hotel. A guest is visible on the terrace but the deck, railing and sea remain the dominant subject; no purer daylight architectural exterior of comparable resolution was found on the hotel's own site."
  },
  {
   "slug": "le-grand-controle",
@@ -421,14 +439,17 @@
  },
  {
   "slug": "villa-la-coste",
-  "name": "Villa La Coste",
+  "name": "Villa La Coste, Le Puy-Sainte-Réparade, Provence, France",
   "saved": true,
-  "file": "C:\\Users\\angus.ANGUS\\Documents\\Projects\\fawley-court\\img\\comps\\villa-la-coste.jpg",
-  "source_page": "https://www.villalacoste.com/en/the-villa",
-  "image_url": "https://www.villalacoste.com/media/cache/jadro_resize/rc/CGgyjbXO1777454351/jadroRoot/medias/62ac3547e3085/la-coste-10-23-3077-a4.jpeg",
-  "credit": "Villa La Coste (hotel's own website imagery)",
+  "file": "img/comps/villa-la-coste.jpg",
+  "source_page": "https://www.villalacoste.com/en/photo-gallery.html",
+  "image_url": "https://www.villalacoste.com/media/cache/jadro_resize/rc/NFrq5I9O1777454351/jadroRoot/medias/62ac3547e3085/chateau-la-coste_exterieur-9-c-richardhaughton.jpeg",
+  "credit": "Richard Haughton, via Villa La Coste (hotel website)",
   "licence": "hotel website, rights not cleared for republication",
   "accessed": "2026-08-18",
-  "note": "Hotel pool with the villa's stone-and-glass building visible above the cypress row behind. The site's own homepage hero (og:image, an unpeopled vineyard-view crop from the same October 2023 shoot) was tried first but shows no building at all, so this frame was used instead as the only landscape shot in the set that keeps the building legible. No Villa La Coste-specific Wikimedia Commons images exist; the Commons category for the wider Château La Coste estate holds only winery/art-pavilion shots, not the hotel."
+  "width": 1400,
+  "height": 936,
+  "bytes": 381065,
+  "note": "The hotel's own stone suites pavilion and balconies at golden hour, with the Provence hillside behind; replaces a pool-and-loungers shot with almost no building visible."
  }
 ]

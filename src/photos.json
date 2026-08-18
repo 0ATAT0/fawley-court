@@ -45,10 +45,10 @@
   },
   "belmond-castello-di-casole": {
    "file": "belmond-castello-di-casole.jpg",
-   "credit": "Belmond",
-   "licence": "hotel group's own press imagery (Belmond Mediahub), rights not cleared for republication",
+   "credit": "Belmond (official press mediahub)",
+   "licence": "hotel/group press image, rights not cleared for republication",
    "source": "https://mediahub.belmond.com/castello-di-casole/",
-   "note": "Dusk view of the castle's internal courtyard with the medieval tower visible; small figures are incidental, not portraits. No Wikimedia Commons coverage of Castello di Casole was found."
+   "note": "Sunrise aerial of the whole castle-and-borgo complex in the Tuscan hills, from Belmond's official press image library; replaces a dim dusk courtyard shot with little building visible."
   },
   "belmond-hotel-cipriani": {
    "file": "belmond-hotel-cipriani.jpg",
@@ -73,17 +73,17 @@
   },
   "borgo-egnazia": {
    "file": "borgo-egnazia.jpg",
-   "credit": "Borgo Egnazia (hotel's own website, og:image)",
-   "licence": "hotel website imagery, rights not cleared for republication",
-   "source": "https://www.borgoegnazia.com/en/ (retrieved via Wayback Machine snapshot dated 2024-11-25, since the live site returns HTTP 403 to automated fetches)",
-   "note": "The resort's distinctive limestone rooftop architecture (trulli-style chimneys/pinnacles) with the Adriatic Sea behind. Source file is only 1200x600 (the site's own og:image), so it is used at its native width with no upscaling. No Wikimedia Commons coverage found; the live borgoegnazia.com blocks non-browser HTTP clients (Cloudflare), so the image was recovered from a Wayback Machine cache of the same og:image the live site serves."
+   "credit": "Borgo Egnazia (hotel website)",
+   "licence": "hotel website, rights not cleared for republication",
+   "source": "https://www.borgoegnazia.com/en",
+   "note": "Golden-hour aerial of the white borgo's rooftops, bell tower and clock tower; replaces a low-resolution 1200x600 Wayback-cache crop."
   },
   "castello-di-reschio": {
    "file": "castello-di-reschio.jpg",
-   "credit": "PierBer (Wikimedia Commons user)",
-   "licence": "CC BY-SA 3.0/2.5/2.0/1.0 + GFDL 1.2+",
-   "source": "https://commons.wikimedia.org/wiki/File:Castello_di_Reschio.JPG",
-   "note": "Photographed December 2008, before the estate's restoration into the current hotel (which opened in the 2020s) — shows the castle's structure and setting on the hill, unrestored. Only Commons image of the building; no clean-licence post-restoration exterior found."
+   "credit": "Reschio (hotel website)",
+   "licence": "hotel website, rights not cleared for republication",
+   "source": "https://www.reschio.com/hotel",
+   "note": "The restored castle and its cypress-lined approach at golden hour, as the hotel trades today; replaces a 2011 Wikimedia photo taken before the castle's conversion to a hotel."
   },
   "castiglion-del-bosco": {
    "file": "castiglion-del-bosco.jpg",
@@ -157,10 +157,10 @@
   },
   "hotel-du-cap-eden-roc": {
    "file": "hotel-du-cap-eden-roc.jpg",
-   "credit": "John Jason Junior (Wikimedia Commons user)",
+   "credit": "John Jason Junior, via Wikimedia Commons",
    "licence": "CC BY-SA 3.0",
-   "source": "https://commons.wikimedia.org/wiki/File:Hauptfassade_Hotel_Du_Cap.jpg",
-   "note": "Main facade of the hotel viewed up the entrance drive through umbrella pines. Clean CC licence."
+   "source": "https://commons.wikimedia.org/wiki/File:Meerwasserschwimmbad_mit_Pavillon_Eden_Roc.jpg",
+   "note": "The Eden-Roc pavilion and its sea-cut infinity pool cut into the rock, with the Cap d'Antibes coastline and yachts beyond; replaces a flatter up-the-drive view of the main château with a more characteristic and distinctive image, per a Creative Commons source."
   },
   "hotel-pitrizza": {
    "file": "hotel-pitrizza.jpg",
@@ -171,10 +171,10 @@
   },
   "il-pellicano": {
    "file": "il-pellicano.jpg",
-   "credit": "Pellicano Hotels (hotel's own website)",
-   "licence": "hotel website imagery, rights not cleared for republication",
-   "source": "https://www.pellicanohotels.com/en/hotels/hotel-il-pellicano/gallery.html",
-   "note": "The hotel's terracotta cliffside buildings and gardens above the pool terrace; a few distant figures are incidental (dining under awnings), not portraits, and the building is unmistakably the subject. No Wikimedia Commons coverage found. The site's homepage og:image (a 1970s-style poolside photo with sunbathers prominent) was rejected as too people-centric."
+   "credit": "Pellicano Hotels (hotel website)",
+   "licence": "hotel website, rights not cleared for republication",
+   "source": "https://www.pellicanohotels.com/en/hotels/hotel-il-pellicano/",
+   "note": "Aerial of the terracotta-roofed hotel buildings and pool terraced into the cliff above the sea; replaces a pool-and-umbrellas shot with the buildings barely visible."
   },
   "il-san-pietro-di-positano": {
    "file": "il-san-pietro-di-positano.jpg",
@@ -192,10 +192,10 @@
   },
   "la-reserve-ramatuelle": {
    "file": "la-reserve-ramatuelle.jpg",
-   "credit": "La Réserve Ramatuelle",
-   "licence": "hotel's own press/website imagery, rights not cleared for republication",
+   "credit": "La Réserve Ramatuelle (hotel website)",
+   "licence": "hotel website, rights not cleared for republication",
    "source": "https://www.lareserve-ramatuelle.com/en/",
-   "note": "The hotel's distinctive curved-canopy entrance building framing a sea view; filename is explicitly 'property_exterior_entrance'. Note: the site's own gallery page also serves an image literally named 'the-hotel.jpg' that is actually a Paris rooftop/Grand Palais view (a mismatched asset on their WordPress media library) -- that file was identified and rejected as wrong-property."
+   "note": "The hotel's rooftop terrace and glass balustrade above the Mediterranean in full daylight; replaces a narrow entrance-canopy view that did not read as a hotel. A guest is visible on the terrace but the deck, railing and sea remain the dominant subject; no purer daylight architectural exterior of comparable resolution was found on the hotel's own site."
   },
   "le-grand-controle": {
    "file": "le-grand-controle.jpg",
@@ -248,10 +248,10 @@
   },
   "villa-la-coste": {
    "file": "villa-la-coste.jpg",
-   "credit": "Villa La Coste (hotel's own website imagery)",
+   "credit": "Richard Haughton, via Villa La Coste (hotel website)",
    "licence": "hotel website, rights not cleared for republication",
-   "source": "https://www.villalacoste.com/en/the-villa",
-   "note": "Hotel pool with the villa's stone-and-glass building visible above the cypress row behind. The site's own homepage hero (og:image, an unpeopled vineyard-view crop from the same October 2023 shoot) was tried first but shows no building at all, so this frame was used instead as the only landscape shot in the set that keeps the building legible. No Villa La Coste-specific Wikimedia Commons images exist; the Commons category for the wider Château La Coste estate holds only winery/art-pavilion shots, not the hotel."
+   "source": "https://www.villalacoste.com/en/photo-gallery.html",
+   "note": "The hotel's own stone suites pavilion and balconies at golden hour, with the Provence hillside behind; replaces a pool-and-loungers shot with almost no building visible."
   }
  }
 }

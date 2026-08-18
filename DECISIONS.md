@@ -364,3 +364,49 @@ opened in a session — the architecture ruling's principle applied to weight ra
 every headline figure on a card is the pack's own with its class, that its basis is printed on
 that hotel's page, that every photograph named is on disk and carries its credit and licence,
 that no photograph belongs to a hotel outside the set, and that the subject stays out.
+
+## The dead right half, and what chapter 10 looks like now (19 August 2026, later)
+
+Angus circled the defect by name: a paragraph capped at a measure inside a full-width
+container, leaving half the page empty. It is a systematic LLM failure — the typographic rule
+("45–75 characters") survives training as a decontextualised instruction while the composition
+half of the job does not, and the defect is invisible in the CSS because `max-width: 74ch` is
+correct in isolation. It only exists in the render. **The rule is now in the global instruction
+file**, and the portal's own design context already carried the warning, which is worse: it was
+written down and shipped anyway.
+
+**Where it was, and what it is now.** The chapter's lede ran at 74ch with nothing beside it: it
+now sits in a two-column head, prose left, the set's own three counts right — how many are
+bookable in all twelve months, how many publish nothing at all, how many kinds of place there
+are. The source notes were the same ribbon: they now run in three columns across the full
+width. On a hotel's page the whole composition was a left column with a dead right side; it is
+rebuilt on the comparables deck's own model — the name and its figures on one rule, then the
+photograph against what the property discloses, then the rate series across the width, with the
+nine record rows in two columns rather than one narrow list.
+
+**The card, second revision.** Four across rather than three, the photograph unchanged, and the
+rate now hangs against the name on one line with the net-of-VAT figure against the place
+beneath it — the deck's own convention, and it makes the grid scan as a rate table with
+pictures.
+
+**Filters, on Angus's specification.** Three tabs — All, Europe, the United Kingdom — with All
+first and default. Choosing Europe opens a country row beneath (Italy 15, France 8, Ireland 2,
+Austria 1, Spain 1, Greece 1); the kind-of-place filter sits opposite it on the same line, and
+its counts recompute against whatever is selected, so the pair is always honest about what it
+is showing. Choosing a tab clears the country.
+
+**Seven photographs replaced** — Reschio (the restored castle rather than a 2008 pre-conversion
+Commons photograph), Castello di Casole, Villa La Coste, Borgo Egnazia, Il Pellicano, La Réserve
+Ramatuelle and Hôtel du Cap-Eden-Roc (the Eden-Roc pavilion and its sea-cut pool, and the only
+one of the seven with a clean Creative Commons source). Six of the seven came from the hotel's
+own site because Commons holds nothing usable. La Réserve's replacement has a person on the
+terrace, flagged in its caption; it is still a clear improvement on the entrance canopy it
+replaces.
+
+**Three defects the render caught and the code could not.** The filter labels used the class
+`.lb`, which is the lightbox's own class, so the global lightbox rules made them invisible —
+renamed `.fl-l`. The filter chips computed to a fraction under the 44px touch floor at iPad
+portrait and now sit at 46px. And the photography warm-up used `let` in a block the router
+reaches before it is evaluated, which threw on every load of the chapter; it is `var` now.
+`audit.py` also had to learn that the default tab is All, and it now exercises the country and
+type filters as well.
