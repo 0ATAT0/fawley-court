@@ -81,8 +81,9 @@ const mod = new Function(
   grab("const QS = {", "/*QS-DATA-END*/") + ";" +
   grab("const MKT_M =", "/* ── a property page") +
   "; return { FIGS, V16, CAPEX, DIALS, DIAL_SRC, PLATES, FIELD, LADDER, BRIDGE, PNL, PNLFMT, PNL_CASE,"
-  + " PNL_NOTES, PNL_PROSE, CHAPTERS, CASES, CHEAT, QS, MARKET, MKT_ALL, MKT_SUBJECT, MKT_BY_SLUG,"
-  + " MKT_BY_CASE, MKSTATE, marketIndexHTML, mktGridInner, mktRecordHTML, mktGbp };"
+  + " PNL_NOTES, PNL_PROSE, CHAPTERS, CASES, CHEAT, QS, MARKET, MKT_ALL, MKT_BY_SLUG,"
+  + " MKT_BY_CASE, MKSTATE, PHOTOS, marketIndexHTML, mktGridInner, mktRecordHTML, mktFiguresHTML,"
+  + " mktPhotoHTML, mktGbp };"
 )();
 
 const ent = s => String(s)
@@ -843,18 +844,23 @@ if (!mod.CHAPTERS.find(c => c.id === "dd").views.some(v => v.lead.some(b => b[0]
 
 /* ══ G · THE ULTRA-LUXURY MARKET ═══════════════════════════════════════
 
-   The market chapter prints thirty-five collected rate series. Nothing in it
-   is typed into the page: the pack is spliced whole and the cards are rendered
-   from it. So the gate is the same shape as the P&L pack's —
+   The market chapter prints thirty-six collected rate series and, for the
+   twenty-eight hotels that disclose anything, the headline figures they
+   disclose. Nothing in it is typed into the page: the pack is spliced whole
+   and the cards are rendered from it. So the gate is —
 
    G1  the shipped block equals Research/cohort-2026-08/market-web-data.json,
        leaf for leaf;
-   G2  every figure on every card is this file's own independent formatting of
-       that source, checked against the chapter's rendered HTML;
+   G2  every rate figure on every card is this file's own independent
+       formatting of that source, checked against the rendered HTML;
    G3  the index, tab and band counts are the source's own counts;
-   G4  every card leads to a route that exists;
-   G5  the basis, VAT and grouping prose is the pack's own wording;
-   G6  the ten rate records print the source's own series.
+   G4  every card leads to a route that resolves;
+   G5  the basis, VAT, grouping and figures prose is the pack's own wording;
+   G6  the ten rate records print the source's series;
+   G7  every headline figure a card prints is the pack's, with its class, and
+       its basis is printed on that hotel's own page;
+   G8  every photograph the page names is on disk, and every one carries its
+       credit and licence on the property's page.
    ══════════════════════════════════════════════════════════════════════ */
 
 const mkPath = (a, b, path) => {
@@ -863,8 +869,7 @@ const mkPath = (a, b, path) => {
   const tb = b === null ? "null" : Array.isArray(b) ? "array" : typeof b;
   if (ta !== tb) { fail("MARKET PACK DRIFT", path + ": shipped " + ta + ", source " + tb); return; }
   if (ta === "object") {
-    const ka = Object.keys(a), kb = Object.keys(b);
-    for (const k of new Set([...ka, ...kb])) {
+    for (const k of new Set([...Object.keys(a), ...Object.keys(b)])) {
       if (!(k in a)) { fail("MARKET PACK DRIFT", path + "." + k + " missing from the shipped block"); continue; }
       if (!(k in b)) { fail("MARKET PACK DRIFT", path + "." + k + " is in the page and not in the source"); continue; }
       mkPath(a[k], b[k], path + "." + k);
@@ -912,33 +917,48 @@ for (const h of mkCohort) {
     mkHas(where + " no inventory", hay, "No bookable inventory");
   }
   if (h.caveat) mkHas(where + " caveat", hay, h.caveat);
-  /* the flags are the source's own fields, not a reading of them */
-  if (h.year_round) mkHas(where + " year-round", hay, ">Year-round<");
-  if (!h.credible_annual_series && h.bookable) mkHas(where + " thin series", hay, "Thin series");
-  if (h.meal_basis === "package") mkHas(where + " meal basis", hay, "Bundled package");
-  mktFigures += 1;
-}
 
-/* the subject is in both tabs, on its own terms */
-for (const [t, hay] of [["Europe", mkEuHtml], ["the United Kingdom", mkUkHtml]]) {
-  mkHas("subject on " + t, hay, ">Fawley Court<");
-  mkHas("subject rate on " + t, hay, mkGbp(1000) + "</span><span class=\"u\">underwritten");
+  /* G7 — the headline figures, on the card and with their basis on the page */
+  const page = mod.mktRecordHTML(h);
+  for (const f of h.figures || []) {
+    mkHas(where + " " + f.k + " on the card", hay, f.v);
+    mkHas(where + " " + f.k + " class", hay, '<span class="cl ' + f.cls + '"> ' + f.cls + "</span>");
+    mkHas(where + " " + f.k + " basis on the page", page, f.basis);
+    mkHas(where + " " + f.k + " label", page, "<th>" + f.label + "</th>");
+    mktFigures += 3;
+  }
+  if (!(h.figures || []).length) {
+    mkHas(where + " states the blank", hay, "Nothing beyond a rate and a calendar is published");
+    mkHas(where + " states the blank on its page", page, "publishes nothing beyond a rate and a calendar");
+  }
+
+  /* G8 — the photograph, if the page names one */
+  const p = mod.PHOTOS[h.slug];
+  if (p) {
+    checked++;
+    if (!fs.existsSync("img/comps/" + p.file)) fail("PHOTOGRAPH NAMED BUT NOT ON DISK", h.slug + " -> " + p.file);
+    mkHas(where + " photograph", hay, 'src="img/comps/' + p.file + '"');
+    mkHas(where + " photograph credit", page, "Photograph: " + p.credit);
+    mkHas(where + " photograph licence", page, p.licence);
+    if (p.note) mkHas(where + " photograph note", page, p.note);
+  } else {
+    mkHas(where + " has no photograph", hay, "No photograph held");
+  }
 }
-/* and the subject card carries the underwrite's own ADR and occupancy, printed,
-   from the measured record — the card says why its bars are drawn in outline */
-for (const [t, hay] of [["Europe", mkEuHtml], ["the United Kingdom", mkUkHtml]]) {
-  mkHas("subject note on " + t, hay, mod.MKT_SUBJECT.note);
-}
-for (const k of ["adr_y1", "adr_y7", "occ_stab"]) {
+/* and every photograph shipped belongs to a hotel in the set */
+for (const slug of Object.keys(mod.PHOTOS)) {
   checked++;
-  if (!mod.MKT_SUBJECT.note.includes(v16Src.fig[k]))
-    fail("SUBJECT NOTE OFF THE MEASURED RECORD", k + " = " + v16Src.fig[k]);
-  mkHas("subject " + k, mkEuHtml, v16Src.fig[k]);
+  if (!mkCohort.some(h => h.slug === slug)) fail("PHOTOGRAPH FOR AN UNKNOWN HOTEL", slug);
+}
+/* the subject was taken out of the index by ruling: it must not come back */
+for (const hay of [mkEuHtml, mkUkHtml]) {
+  checked++;
+  if (hay.includes("Fawley Court")) fail("SUBJECT IN THE MARKET INDEX", "the subject was ruled out of this chapter");
 }
 
 /* G3 — the counts are the source's */
 mkHas("Europe tab count", mkEuHtml, "Europe</span><span class=\"c\">" + mkEu.length);
-mkHas("United Kingdom tab count", mkEuHtml, "The United Kingdom</span><span class=\"c\">" + (mkUk.length + 1));
+mkHas("United Kingdom tab count", mkEuHtml, "The United Kingdom</span><span class=\"c\">" + mkUk.length);
 /* the figures the contents prints for this chapter are the pack's own counts —
    read off CHAPTERS rather than written here, so a hotel joining the set cannot
    leave a stale literal behind in this file */
@@ -955,19 +975,29 @@ mkHas("United Kingdom tab count", mkEuHtml, "The United Kingdom</span><span clas
   if (ch.views[0].figure !== mkCohort.length + " hotels")
     fail("MARKET VIEW FIGURE", ch.views[0].figure + " against a pack of " + mkCohort.length);
 }
+/* the lede states how many hotels disclose nothing; it has to be the count */
+{
+  const blanks = mkCohort.filter(h => !(h.figures || []).length).length;
+  const words = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+                 "eleven", "twelve"];
+  mkHas("blank count in the lede", mkEuHtml, "Eight of the thirty-six publish nothing beyond a rate");
+  checked++;
+  if (blanks !== 8) fail("BLANK COUNT", "the lede says eight publish nothing; the pack holds " + blanks
+    + " (" + (words[blanks] || blanks) + ")");
+  checked++;
+  if (mkCohort.length !== 36) fail("SET SIZE IN THE LEDE", "the lede says thirty-six; the pack holds " + mkCohort.length);
+}
 for (const [tab, hay, rows] of [["eu", mkEuHtml, mkEu], ["uk", mkUkHtml, mkUk]]) {
   for (const t of Object.keys(mktSource.type_labels)) {
     const n = rows.filter(h => h.type === t).length;
     if (!n) continue;
-    const subj = mod.MKT_SUBJECT.type === t;
     mkHas("band " + t + " on " + tab, hay,
       '<span class="t">' + mktSource.type_labels[t] + '</span><span class="c">'
-      + n + (n === 1 ? " hotel" : " hotels") + (subj ? ", and the subject" : "") + "</span>");
+      + n + (n === 1 ? " hotel" : " hotels") + "</span>");
   }
-  /* every card in the tab, and no card twice */
-  const cards = (hay.match(/class="mk[ "]/g) || []).length;
+  const cards = (hay.match(/class="mk"/g) || []).length;
   checked++;
-  if (cards !== rows.length + 1) fail("MARKET CARD COUNT", tab + ": " + cards + " cards for " + rows.length + " hotels and the subject");
+  if (cards !== rows.length) fail("MARKET CARD COUNT", tab + ": " + cards + " cards for " + rows.length + " hotels");
 }
 
 /* G4 — every card leads somewhere that resolves */
@@ -980,7 +1010,7 @@ for (const hay of [mkEuHtml, mkUkHtml]) {
       if (!caseSlugs.has(hash.slice(4))) fail("MARKET CARD TO A MISSING CASE", hash);
     } else if (hash.startsWith("#/m/")) {
       if (!mktSource.hotels.some(h => h.slug === hash.slice(4))) fail("MARKET CARD TO A MISSING PROPERTY", hash);
-    } else if (hash !== "#/c/underwrite/dial-set") {
+    } else {
       fail("MARKET CARD TO AN UNKNOWN ROUTE", hash);
     }
   }
@@ -996,7 +1026,7 @@ checked++;
 
 /* G5 — the basis prose is the pack's own */
 for (const [k, v] of [["basis", mktSource.basis], ["vat_note", mktSource.vat_note],
-                      ["type_basis", mktSource.type_basis]]) {
+                      ["type_basis", mktSource.type_basis], ["figures_basis", mktSource.figures_basis]]) {
   mkHas("chapter " + k, mkEuHtml, v);
 }
 
@@ -1007,7 +1037,7 @@ for (const c of mod.CASES) {
   if (!h) { fail("RATE RECORD WITHOUT A SERIES", c.slug); continue; }
   const rec = mod.mktRecordHTML(mod.MKT_BY_CASE[c.slug]);
   const want = [
-    h.name + " · the collected rate series",
+    h.name + " · what it discloses",
     mkGbp(h.median) + " gross · " + mkGbp(h.median_net_vat) + " net of VAT",
     mkGbp(h.p25) + " · " + mkGbp(h.median) + " · " + mkGbp(h.p75),
     mkGbp(h.min) + " to " + mkGbp(h.max),

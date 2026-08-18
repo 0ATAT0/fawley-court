@@ -35,11 +35,9 @@ _MKT = json.load(open("src/market-data.json", encoding="utf-8"))["hotels"]
 ROUTES += ["#/h/" + h["case_slug"] + "/rate" for h in _MKT if h.get("case_slug")]
 ROUTES += ["#/m/" + h["slug"] for h in _MKT
            if h.get("in_cohort") and not h.get("case_slug")]
-CARDS = ["ledger", "calendar", "plate"]
-# the subject rides at the head of both tabs, so a tab is its hotels plus one
 _COH = [h for h in _MKT if h.get("in_cohort")]
-MKT_CARDS = {"eu": sum(1 for h in _COH if h["country"] != "UK") + 1,
-             "uk": sum(1 for h in _COH if h["country"] == "UK") + 1}
+MKT_CARDS = {"eu": sum(1 for h in _COH if h["country"] != "UK"),
+             "uk": sum(1 for h in _COH if h["country"] == "UK")}
 
 JS = r"""
 () => {
@@ -186,27 +184,25 @@ async def main():
             if "/pnl" not in page.url:
                 findings.setdefault("ranking", []).append([sname, "a ranking row did not open its P&L: " + page.url])
 
-            # chapter 10: every card treatment, both tabs, and the tab switch itself
-            for card in CARDS:
-                for tab in ("eu", "uk"):
-                    await page.goto(BASE + "?variants=1&card=" + card + "#/c/market", wait_until="networkidle")
-                    await page.wait_for_timeout(350)
-                    if tab == "uk":
-                        await page.click('[data-mktab="uk"]')
-                        await page.wait_for_timeout(300)
-                    n = await page.locator(".mk").count()
-                    want = MKT_CARDS[tab]
-                    if n != want:
-                        findings.setdefault("market grid", []).append(
-                            [sname, card, tab, "showed %d cards, expected %d" % (n, want)])
-                    r = await page.evaluate(JS)
-                    for k, v in r.items():
-                        if k == "docScroll":
-                            if v[0] > v[1] + 1:
-                                findings.setdefault("docScroll", []).append([sname, "market/" + card + "/" + tab, v])
-                            continue
-                        for item in v:
-                            findings.setdefault(k, set()).add(json.dumps([sname, "market/" + card + "/" + tab] + list(item)))
+            # chapter 10: both tabs, and the tab switch itself
+            for tab in ("eu", "uk"):
+                await page.goto(BASE + "#/c/market", wait_until="networkidle")
+                await page.wait_for_timeout(400)
+                if tab == "uk":
+                    await page.click('[data-mktab="uk"]')
+                    await page.wait_for_timeout(300)
+                n = await page.locator(".mk").count()
+                if n != MKT_CARDS[tab]:
+                    findings.setdefault("market grid", []).append(
+                        [sname, tab, "showed %d cards, expected %d" % (n, MKT_CARDS[tab])])
+                r = await page.evaluate(JS)
+                for k, v in r.items():
+                    if k == "docScroll":
+                        if v[0] > v[1] + 1:
+                            findings.setdefault("docScroll", []).append([sname, "market/" + tab, v])
+                        continue
+                    for item in v:
+                        findings.setdefault(k, set()).add(json.dumps([sname, "market/" + tab] + list(item)))
             # a card leads to its property page
             await page.goto(BASE + "#/c/market", wait_until="networkidle")
             await page.wait_for_timeout(300)

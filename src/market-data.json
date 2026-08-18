@@ -7,6 +7,7 @@
   "A flat month is usually season-band pricing, which is how these hotels sell, not a fault. The exception is a flat month far outside the property's own range.",
   "These are lead-in rates, not achieved ADR. No property in this set publishes an achieved rate."
  ],
+ "figures_basis": "The headline figures each hotel discloses, or that can be computed from what it discloses. Every row carries its own basis and its evidence class: filed, from a statutory account; press, from unaudited reporting; interview, from a named manager or owner on the record; derived, computed here from two disclosed figures; modelled, from the portal's own estimated profit and loss for that hotel rather than the hotel's own; note, a statement of what does not exist. The Continental filed figures reach us through registry aggregators surfacing a deposited filing rather than through the filed document itself, and are snippet-grade until a paid registry copy is bought. A blank is a blank: most of this set publishes nothing beyond a rate.",
  "type_basis": "Each property is grouped by its setting: an inland estate or demesne, a sea coast or island, a lake shore, an alpine valley, or a palace, town or village. The grouping is the portal's own reading of the setting each research pack records, not a classification any of these hotels publishes.",
  "type_labels": {
   "estate": "Country estate",
@@ -25,6 +26,36 @@
    "type": "coast",
    "case_slug": "messardiere",
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "occ",
+     "label": "Occupancy",
+     "v": "65%",
+     "basis": "about 2016, director interview",
+     "cls": "interview"
+    },
+    {
+     "k": "margin",
+     "label": "Margin",
+     "v": "36.5% EBITDA",
+     "basis": "EBE €21.2m on €58.1m revenue, FY2024",
+     "cls": "filed"
+    },
+    {
+     "k": "payroll",
+     "label": "Payroll",
+     "v": "19.2% of revenue",
+     "basis": "FY2024",
+     "cls": "filed"
+    },
+    {
+     "k": "capex",
+     "label": "Built at",
+     "v": "£1.42m a key all-in",
+     "basis": "€154m acquisition and €40m renovation over 117 keys, 2019-21",
+     "cls": "press"
+    }
+   ],
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -58,6 +89,7 @@
    "type": "coast",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [],
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -91,6 +123,29 @@
    "type": "estate",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "payroll",
+     "label": "Payroll",
+     "v": "19.4% of revenue",
+     "basis": "FY2024",
+     "cls": "filed"
+    },
+    {
+     "k": "revkey",
+     "label": "Revenue a key",
+     "v": "€850k a key",
+     "basis": "42 keys and 11 villas, FY2024 turnover €45.07m",
+     "cls": "filed"
+    },
+    {
+     "k": "txn",
+     "label": "Last trade",
+     "v": "€300-400m, March 2022",
+     "basis": "the whole 2,000-hectare estate with winery and golf, not a per-key hotel price",
+     "cls": "press"
+    }
+   ],
    "engine": "rosewood-crs (synxis lead-avail proxy)",
    "window": [
     "2026-08-18",
@@ -134,6 +189,29 @@
    "type": "coast",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "occ",
+     "label": "Occupancy",
+     "v": "75%",
+     "basis": "Q2 2011, with Splendido Mare; Orient-Express investor disclosure",
+     "cls": "press"
+    },
+    {
+     "k": "margin",
+     "label": "Margin",
+     "v": "loss €1.58m",
+     "basis": "FY2024, on turnover of €34.44m",
+     "cls": "filed"
+    },
+    {
+     "k": "payroll",
+     "label": "Payroll",
+     "v": "24.2% of revenue",
+     "basis": "FY2024",
+     "cls": "filed"
+    }
+   ],
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -174,6 +252,29 @@
    "type": "town",
    "case_slug": "grand-controle",
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "margin",
+     "label": "Margin",
+     "v": "(12.9)% EBITDA",
+     "basis": "EBE €(2.1m) on €16.3m revenue, FY2024; negative in every filed year since 2021",
+     "cls": "filed"
+    },
+    {
+     "k": "payroll",
+     "label": "Payroll",
+     "v": "43.2% of revenue",
+     "basis": "FY2024",
+     "cls": "filed"
+    },
+    {
+     "k": "capex",
+     "label": "Built at",
+     "v": "£1.84m a key",
+     "basis": "three listed buildings, about 5,000 sqm, 14 suites, 2018-21",
+     "cls": "press"
+    }
+   ],
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -215,6 +316,15 @@
    "type": "estate",
    "case_slug": "reschio",
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "margin",
+     "label": "Margin",
+     "v": "39.0% GOP",
+     "basis": "the portal's own estimated P&L; no usable filed trading figure exists",
+     "cls": "modelled"
+    }
+   ],
    "engine": "travelclick",
    "window": [
     "2026-08-18",
@@ -257,6 +367,29 @@
    "type": "coast",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "occ",
+     "label": "Occupancy",
+     "v": "80%",
+     "basis": "April 2023, managing director interview",
+     "cls": "interview"
+    },
+    {
+     "k": "payroll",
+     "label": "Payroll",
+     "v": "15.5% of revenue",
+     "basis": "FY2023",
+     "cls": "filed"
+    },
+    {
+     "k": "capex",
+     "label": "Built at",
+     "v": "£413k a key",
+     "basis": "restoration including land, 1999-2005; not inflation-adjusted",
+     "cls": "press"
+    }
+   ],
    "engine": "belmond bbe (own CRS proxy)",
    "window": [
     "2026-08-18",
@@ -295,6 +428,7 @@
    "type": "coast",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [],
    "engine": "bookwize",
    "window": [
     "2026-08-18",
@@ -329,6 +463,36 @@
    "type": "town",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "occ",
+     "label": "Occupancy",
+     "v": "73%",
+     "basis": "Q2 2011, with Palazzo Vendramin; Orient-Express investor disclosure",
+     "cls": "press"
+    },
+    {
+     "k": "payroll",
+     "label": "Payroll",
+     "v": "18.1% of revenue",
+     "basis": "FY2024, the lowest in the set",
+     "cls": "filed"
+    },
+    {
+     "k": "revkey",
+     "label": "Revenue a key",
+     "v": "€431k a key",
+     "basis": "96 keys, FY2024 turnover €41.33m",
+     "cls": "filed"
+    },
+    {
+     "k": "season",
+     "label": "Open",
+     "v": "about 172 days",
+     "basis": "derived from a stated closure window",
+     "cls": "derived"
+    }
+   ],
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -364,6 +528,36 @@
    "type": "coast",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "adr",
+     "label": "Achieved rate",
+     "v": "€1,344 ADR, €954 RevPAR",
+     "basis": "2017 season, listed owner's annual report",
+     "cls": "filed"
+    },
+    {
+     "k": "occ",
+     "label": "Occupancy",
+     "v": "71%",
+     "basis": "2017 season, listed owner's annual report",
+     "cls": "filed"
+    },
+    {
+     "k": "margin",
+     "label": "Margin",
+     "v": "€41.80m turnover",
+     "basis": "FY2023, on a perimeter that includes villa sales and the rental programme",
+     "cls": "filed"
+    },
+    {
+     "k": "txn",
+     "label": "Last trade",
+     "v": "€82.3m, August 2018",
+     "basis": "Grivalia and Dolphin bought 100% from DCI: €5.8m net cash and €76.5m of assumed loans, over the hotel, the villas and about 100 hectares",
+     "cls": "filed"
+    }
+   ],
    "engine": "azds",
    "window": [
     "2026-08-18",
@@ -403,6 +597,15 @@
    "type": "alpine",
    "case_slug": "rosa-alpina",
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "margin",
+     "label": "Margin",
+     "v": "37.2% GOP",
+     "basis": "the portal's own estimated P&L; no usable filed trading year",
+     "cls": "modelled"
+    }
+   ],
    "engine": "azds",
    "window": [
     "2026-08-18",
@@ -443,6 +646,7 @@
    "type": "alpine",
    "case_slug": null,
    "in_cohort": false,
+   "figures": [],
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -479,6 +683,29 @@
    "type": "town",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "occ",
+     "label": "Occupancy",
+     "v": "62%",
+     "basis": "Q2 2011, Orient-Express investor disclosure",
+     "cls": "press"
+    },
+    {
+     "k": "margin",
+     "label": "Margin",
+     "v": "loss €7.45m",
+     "basis": "FY2024, on turnover of €14.37m",
+     "cls": "filed"
+    },
+    {
+     "k": "capex",
+     "label": "Built at",
+     "v": "£660k a key",
+     "basis": "full 18-month restyling, 2024-26",
+     "cls": "press"
+    }
+   ],
    "engine": "belmond bbe (own CRS proxy)",
    "window": [
     "2026-08-18",
@@ -521,6 +748,15 @@
    "type": "town",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "capex",
+     "label": "Built at",
+     "v": "£429k to 750k a key",
+     "basis": "40 keys, spa, pools and restaurants, 2014-17; a press range of €20-35m",
+     "cls": "press"
+    }
+   ],
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -555,6 +791,7 @@
    "type": "coast",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [],
    "engine": "azds",
    "window": [
     "2026-08-18",
@@ -594,6 +831,15 @@
    "type": "lake",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "margin",
+     "label": "Margin",
+     "v": "41.2% EBITDA",
+     "basis": "FY2025, a record and the highest of any Italian group tracked; FY2024 39.5%",
+     "cls": "press"
+    }
+   ],
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -636,6 +882,29 @@
    "type": "estate",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "margin",
+     "label": "Margin",
+     "v": "€14.55m turnover",
+     "basis": "FY2024; the entity is classified property dealing and holds the estate",
+     "cls": "filed"
+    },
+    {
+     "k": "payroll",
+     "label": "Payroll",
+     "v": "32.5% of revenue",
+     "basis": "FY2024",
+     "cls": "filed"
+    },
+    {
+     "k": "txn",
+     "label": "Last trade",
+     "v": "€40.2m, February 2018",
+     "basis": "39 keys and 48 residential plots on 1,500 hectares, from Erste Abwicklungsanstalt",
+     "cls": "filed"
+    }
+   ],
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -676,6 +945,7 @@
    "type": "coast",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [],
    "engine": "azds",
    "window": [
     "2026-08-18",
@@ -709,6 +979,7 @@
    "type": "coast",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [],
    "engine": "azds",
    "window": [
     "2026-08-18",
@@ -747,6 +1018,36 @@
    "type": "estate",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "margin",
+     "label": "Margin",
+     "v": "operating loss €0.57m",
+     "basis": "on €12.45m turnover, FY2024",
+     "cls": "filed"
+    },
+    {
+     "k": "payroll",
+     "label": "Payroll",
+     "v": "41.1% of revenue",
+     "basis": "FY2024",
+     "cls": "filed"
+    },
+    {
+     "k": "revkey",
+     "label": "Revenue a key",
+     "v": "€402k a key",
+     "basis": "31 keys, FY2024",
+     "cls": "filed"
+    },
+    {
+     "k": "season",
+     "label": "Open",
+     "v": "about 308 days",
+     "basis": "derived from a stated closure window",
+     "cls": "derived"
+    }
+   ],
    "engine": "travelclick",
    "window": [
     "2026-08-18",
@@ -787,6 +1088,29 @@
    "type": "coast",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "occ",
+     "label": "Occupancy",
+     "v": "97%",
+     "basis": "2024, general manager interview; denominator not stated",
+     "cls": "interview"
+    },
+    {
+     "k": "revkey",
+     "label": "Revenue a key",
+     "v": "€637k a key",
+     "basis": "57 keys, FY2024 turnover €36.31m",
+     "cls": "filed"
+    },
+    {
+     "k": "season",
+     "label": "Open",
+     "v": "about 214 days",
+     "basis": "derived from a stated closure window",
+     "cls": "derived"
+    }
+   ],
    "engine": "azds",
    "window": [
     "2026-08-18",
@@ -824,6 +1148,15 @@
    "type": "estate",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "margin",
+     "label": "Margin",
+     "v": "nothing filed, and nothing will be",
+     "basis": "Tizzard Holdings Unlimited Company, CRO 552867; unlimited companies file no detailed accounts in Ireland, so this is a fact about how the asset is held and not a research gap",
+     "cls": "note"
+    }
+   ],
    "engine": "avvio",
    "window": [
     "2026-08-18",
@@ -867,6 +1200,7 @@
    "type": "coast",
    "case_slug": null,
    "in_cohort": false,
+   "figures": [],
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -902,6 +1236,29 @@
    "type": "coast",
    "case_slug": "borgo-egnazia",
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "margin",
+     "label": "Margin",
+     "v": "10.8% net",
+     "basis": "net profit €7.90m on €73.03m revenue, FY2024; no EBITDA disclosed",
+     "cls": "filed"
+    },
+    {
+     "k": "payroll",
+     "label": "Payroll",
+     "v": "19.0% of revenue",
+     "basis": "FY2024; 765 staff at the August peak",
+     "cls": "filed"
+    },
+    {
+     "k": "capex",
+     "label": "Built at",
+     "v": "£699k a key",
+     "basis": "ground-up resort including golf, 184 keys, 2004-10",
+     "cls": "press"
+    }
+   ],
    "engine": "ermes/blastness",
    "window": [
     "2026-08-18",
@@ -944,6 +1301,43 @@
    "type": "estate",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "adr",
+     "label": "Achieved rate",
+     "v": "about £762 achieved",
+     "basis": "€4.0m accommodation revenue over 4,500 room nights",
+     "cls": "derived"
+    },
+    {
+     "k": "occ",
+     "label": "Occupancy",
+     "v": "62-65%",
+     "basis": "4,500 room nights over about 344 open days, 2018 owner interview",
+     "cls": "derived"
+    },
+    {
+     "k": "margin",
+     "label": "Margin",
+     "v": "pre-tax loss €389k",
+     "basis": "on €6.61m turnover, FY2024",
+     "cls": "filed"
+    },
+    {
+     "k": "payroll",
+     "label": "Payroll",
+     "v": "50.5% of revenue",
+     "basis": "FY2024",
+     "cls": "filed"
+    },
+    {
+     "k": "season",
+     "label": "Open",
+     "v": "about 344 days",
+     "basis": "stated closure window",
+     "cls": "press"
+    }
+   ],
    "engine": "netaffinity",
    "window": [
     "2026-08-18",
@@ -987,6 +1381,22 @@
    "type": "lake",
    "case_slug": "passalacqua",
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "margin",
+     "label": "Margin",
+     "v": "41.2% GOP",
+     "basis": "the portal's own estimated P&L; no standalone entity files",
+     "cls": "modelled"
+    },
+    {
+     "k": "capex",
+     "label": "Built at",
+     "v": "£619k a key",
+     "basis": "over $20m restoration, 24 keys, 2019-22",
+     "cls": "press"
+    }
+   ],
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -1024,6 +1434,43 @@
    "type": "estate",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "margin",
+     "label": "Margin",
+     "v": "5.96% EBITDA",
+     "basis": "EBE €1.23m on €20.64m turnover, FY2024",
+     "cls": "filed"
+    },
+    {
+     "k": "payroll",
+     "label": "Payroll",
+     "v": "41.7% of revenue",
+     "basis": "FY2024, 127 staff at 2.70 a key",
+     "cls": "filed"
+    },
+    {
+     "k": "revkey",
+     "label": "Revenue a key",
+     "v": "€439k a key",
+     "basis": "47 keys, FY2024",
+     "cls": "filed"
+    },
+    {
+     "k": "capex",
+     "label": "Built at",
+     "v": "£912k a key",
+     "basis": "hotel and a 1,500 sqm spa, 2015-18",
+     "cls": "press"
+    },
+    {
+     "k": "season",
+     "label": "Open",
+     "v": "365 days",
+     "basis": "the only year-round single-hotel filer in the set",
+     "cls": "filed"
+    }
+   ],
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -1067,6 +1514,22 @@
    "type": "estate",
    "case_slug": "estelle",
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "margin",
+     "label": "Margin",
+     "v": "(6.2)% EBITDA",
+     "basis": "£(2.75m) on £44.39m turnover, FY2025",
+     "cls": "filed"
+    },
+    {
+     "k": "payroll",
+     "label": "Payroll",
+     "v": "49.5% of revenue",
+     "basis": "FY2025; 618 employees, 5.72 a key",
+     "cls": "filed"
+    }
+   ],
    "engine": "desk rate_calendar",
    "window": [
     "2026-08-12",
@@ -1110,6 +1573,15 @@
    "type": "estate",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "note",
+     "label": "Also",
+     "v": "Three whole-house villas sell beside the hotel",
+     "basis": "€2,900 to 9,000 a night, about €1,280 a bedroom",
+     "cls": "press"
+    }
+   ],
    "engine": "azds",
    "window": [
     "2026-08-18",
@@ -1150,6 +1622,15 @@
    "type": "lake",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "capex",
+     "label": "Built at",
+     "v": "£263k a key",
+     "basis": "at least €30m, but the 2005-06 renovation and not the 2024 one",
+     "cls": "press"
+    }
+   ],
    "engine": "rosewood-crs (synxis lead-avail proxy)",
    "window": [
     "2026-08-18",
@@ -1192,6 +1673,22 @@
    "type": "estate",
    "case_slug": "heckfield",
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "margin",
+     "label": "Margin",
+     "v": "loss £8.10m",
+     "basis": "FY2024, disclosed in the going-concern note; no turnover is filed",
+     "cls": "filed"
+    },
+    {
+     "k": "payroll",
+     "label": "Payroll",
+     "v": "52.4% of revenue",
+     "basis": "on the portal's estimated P&L; 248 average monthly employees are filed",
+     "cls": "modelled"
+    }
+   ],
    "engine": "desk rate_calendar",
    "window": [
     "2026-08-19",
@@ -1235,6 +1732,22 @@
    "type": "estate",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "occ",
+     "label": "Occupancy",
+     "v": "67-71%",
+     "basis": "FY2017-19",
+     "cls": "filed"
+    },
+    {
+     "k": "txn",
+     "label": "Last trade",
+     "v": "£647k a key, 2015",
+     "basis": "232 keys, at a 5.50% yield",
+     "cls": "press"
+    }
+   ],
    "engine": "desk rate_calendar",
    "window": [
     "2026-08-12",
@@ -1277,6 +1790,7 @@
    "type": "estate",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [],
    "engine": "desk rate_calendar",
    "window": [
     "2026-08-12",
@@ -1320,6 +1834,15 @@
    "type": "estate",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "payroll",
+     "label": "Payroll",
+     "v": "34.5% of revenue",
+     "basis": "FY2024; FY2023 32.9%",
+     "cls": "filed"
+    }
+   ],
    "engine": "desk rate_calendar",
    "window": [
     "2026-08-06",
@@ -1363,6 +1886,29 @@
    "type": "estate",
    "case_slug": "beaverbrook",
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "margin",
+     "label": "Margin",
+     "v": "12.5% adjusted EBITDA",
+     "basis": "£3.60m on £28.85m turnover, FY2025",
+     "cls": "filed"
+    },
+    {
+     "k": "payroll",
+     "label": "Payroll",
+     "v": "45.6% of revenue",
+     "basis": "FY2025; 462 average employees",
+     "cls": "filed"
+    },
+    {
+     "k": "capex",
+     "label": "Built at",
+     "v": "above £2.57m a key",
+     "basis": "reported above £90m over 2011-17 on the 35 keys open at completion",
+     "cls": "press"
+    }
+   ],
    "engine": "desk rate_calendar",
    "window": [
     "2026-08-07",
@@ -1406,6 +1952,29 @@
    "type": "estate",
    "case_slug": "cliveden",
    "in_cohort": true,
+   "figures": [
+    {
+     "k": "margin",
+     "label": "Margin",
+     "v": "27.1% EBITDA",
+     "basis": "£5.10m on £18.78m turnover, FY2024",
+     "cls": "filed"
+    },
+    {
+     "k": "payroll",
+     "label": "Payroll",
+     "v": "30.0% of revenue",
+     "basis": "FY2024; FY2023 31.1%",
+     "cls": "filed"
+    },
+    {
+     "k": "txn",
+     "label": "Last trade",
+     "v": "£756k a key, 2012",
+     "basis": "41 keys at the trade, 47 today; the 100-year National Trust lease",
+     "cls": "press"
+    }
+   ],
    "engine": "desk rate_calendar",
    "window": [
     "2026-08-14",
@@ -1449,6 +2018,7 @@
    "type": "estate",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [],
    "engine": "synxis",
    "window": [
     "2026-08-18",
@@ -1486,6 +2056,7 @@
    "type": "estate",
    "case_slug": null,
    "in_cohort": true,
+   "figures": [],
    "engine": "desk rate_calendar",
    "window": [
     "2026-08-15",
@@ -1529,6 +2100,7 @@
    "type": "alpine",
    "case_slug": null,
    "in_cohort": false,
+   "figures": [],
    "engine": "synxis",
    "window": [
     "2026-08-18",

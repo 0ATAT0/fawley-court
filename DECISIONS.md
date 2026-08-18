@@ -308,3 +308,59 @@ the pack carries a villas layer that nothing renders yet.
 applied. The new block uses `--line`, `--line-mid` and the real spacing. A new token, `--ochre`
 at `#8a5f13`, carries the caveat lines at 5.5:1 on paper and 4.97:1 on the subject's tinted
 ground; the old inline `#9a6b16` was 4.57:1, inside AA but with nothing to spare.
+
+## The card becomes a photograph and the figures we hold (19 August 2026)
+
+Angus's second pass on chapter 10, and it settles the treatment: **calendar, with the graph
+taken out and a photograph in its place. Ledger and plate are deleted, and the `?variants=1`
+harness with them** — one card style, one DOM, no switcher. The kill rule did its job: the
+options existed for one review cycle and the losers went the same day.
+
+**Fawley Court is out of the index by ruling.** The chapter is now the market, not the market
+with the subject inside it. `verify.mjs` fails if the subject reappears.
+
+**The card carries what the hotel actually discloses.** A photograph, the name and place, the
+lead-in rate gross and net of VAT, how many of the twelve months it is bookable, and then the
+headline figures held on that property: an achieved rate, occupancy, margin, payroll, revenue a
+key, what it was built for, what it last traded at. Each row prints its evidence class — filed,
+press, interview, derived, modelled, note — and each row's **basis is printed in full on that
+hotel's own page**, not on the card, so the card stays readable and the evidence is one tap
+away.
+
+**Twenty-eight of the thirty-six disclose something; eight disclose nothing at all.** Those
+eight say so on the card — "nothing beyond a rate and a calendar is published, and nothing was
+found in the registries" — rather than showing an empty frame. The lede states the count and
+the gate checks it against the pack, so it cannot go stale.
+
+**The figures are a new layer in the pack, not page furniture.** `build_market_pack.py` carries
+a curated table of 72 figure rows across 28 hotels, each with its value, its basis and its
+class, assembled from `Research/cohort-2026-08/FINDINGS.md` (the filing gate, the comparative
+table, the payroll finding, the occupancy sweep, the capex sweep, the transactions),
+`Research/comp-pnls/web-data.json` filed evidence, and the memorandum's own UK operating and
+transaction evidence. 41 rows are filed, 19 press, 5 derived, 4 modelled, 3 a note. The
+Continental filed figures reach us through registry aggregators surfacing deposited filings
+rather than the filed documents, and the chapter says so.
+
+**One figure was deliberately dropped.** The estimated P&L's occupancy assumption for Cliveden —
+the UK luxury segment average — is an assumption about the segment, not evidence about the
+hotel, and it would have read as Cliveden's own. Only evidenced occupancy is shown: eight
+properties.
+
+**Photography: 36 images, collected by four agents in parallel, and every one checked by eye
+against a contact sheet before it shipped.** Fifteen are Creative Commons or public domain;
+twenty-one are the hotel's or group's own imagery, whose **republication rights are not
+cleared** — the portal is private and the photographs identify the property rather than
+illustrate a publication. Each image carries its credit, its licence and its own note in the
+caption on the hotel's page, and the notes are honest about the weak ones: Reschio's Commons
+photograph predates the restoration, Le Grand Contrôle's predates Airelles, Le Sirenuse could
+only be had as a Positano view and Villa La Coste as a pool with the building behind. Commons
+was searched and has nothing better for either.
+
+**7.3MB of photography is not warmed on every visit.** The images load lazily as a reader
+scrolls the chapter, and the rest of the set warms once, on idle, the first time chapter 10 is
+opened in a session — the architecture ruling's principle applied to weight rather than to code.
+
+**The gate grew with the chapter**: 6,408 checks, 0 failures. Section G now also checks that
+every headline figure on a card is the pack's own with its class, that its basis is printed on
+that hotel's page, that every photograph named is on disk and carries its credit and licence,
+that no photograph belongs to a hotel outside the set, and that the subject stays out.
