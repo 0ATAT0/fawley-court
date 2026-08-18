@@ -982,9 +982,7 @@ mkHas("United Kingdom tab count", mkEuHtml, "The United Kingdom</span><span clas
   const blanks = mkCohort.filter(h => !(h.figures || []).length).length;
   const words = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
                  "eleven", "twelve"];
-  mkHas("blank count", mkAllHtml, '<span class="n">' + blanks + '</span><span class="l">publish nothing beyond a rate</span>');
-  mkHas("year-round count", mkAllHtml, '<span class="n">' + mkCohort.filter(h => h.year_round).length
-    + '</span><span class="l">bookable in all twelve months</span>');
+  /* the counts block was cut by ruling; the chapter's own figures are checked above */
   mkHas("All tab count", mkAllHtml, 'All</span><span class="c">' + mkCohort.length);
 }
 for (const [tab, hay, rows] of [["eu", mkEuHtml, mkEu], ["uk", mkUkHtml, mkUk]]) {

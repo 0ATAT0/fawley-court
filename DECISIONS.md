@@ -410,3 +410,28 @@ portrait and now sit at 46px. And the photography warm-up used `let` in a block 
 reaches before it is evaluated, which threw on every load of the chapter; it is `var` now.
 `audit.py` also had to learn that the default tab is All, and it now exercises the country and
 type filters as well.
+
+## The chart, the chips, and what came out (19 August 2026, evening)
+
+**The head block is cut.** The lede and the three counts beside it are gone on Angus's ruling;
+the reason the chapter is ordered the way it is now sits in the source note at the foot, where
+the rest of the basis lives.
+
+**Both filter groups sit on one line.** The kind-of-place label is gone, and every chip — country
+and type alike — is 72px wide, the width the narrowest chip already was, with the label free to
+wrap over two lines and the count beneath it. The type names shorten for the chips only
+(`type_labels_short` in the pack: "Coast & island", "Palace & town"); the band headings keep the
+full names. Where there is no country group — the All and United Kingdom tabs — the type chips
+start at the left rather than hanging in space.
+
+**The twelve monthly bars are gone, replaced by the rate year as the comparables deck draws
+it.** The bars existed because the pack only carried twelve monthly medians; the nightly series
+sat in `staging/` and was never brought through. It is in the pack now — a comma-separated run
+over the collection window, cleaned on the same convention as the medians, blank where nothing
+was bookable — and each hotel's page draws it as a line across the year with the median dashed
+over it, a £ axis, month marks, and a caption naming how many nights it rests on and how many
+the cleaning rule dropped, with the raw peak. Messardière's chart is the argument in one
+picture: sixteen nights of line in September and October and eleven empty months.
+
+The pack grows from 37KB to 92KB for the nightly data, which gzips well and is worth it: the
+chart is now drawn from what was collected rather than from a summary of it.
