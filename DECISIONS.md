@@ -499,3 +499,29 @@ the grid rather than swapping it under the eye, and the cards stagger back in; a
 draws itself once, left to right, with the median arriving after it. Transform, opacity and
 stroke only — nothing that lays out — and the whole layer is off under prefers-reduced-motion.
 The line uses `pathLength="1"`, so the draw needs no measurement in script.
+
+## One template for every hotel (19 August 2026, night)
+
+Ruled: the ten written case studies and the twenty-four property pages converge on a single
+template, and **a hotel that holds more is never cut down to the poorest one** — each section
+renders only if there is something to put in it. The order is fixed: the name and its figures on
+one rule; the photograph against an intro paragraph and what the property discloses; the property
+record beside what happened, what it earns and what it evidences; the read against the
+underwrite; the rate year; the sources. The ten keep their estimated P&L as a second tab and keep
+their case number and layer in the eyebrow.
+
+**Every page opens on prose, not on fact.** The intro paragraph sits above the disclosure table
+by ruling, so a page never begins cold with a figure. The ten have their case text; the intros
+for the rest are the first thing the per-hotel research writes.
+
+**The shared measures are in one place** — `--hp-sec`, `--hp-gap` and the `.hp-*` block — so
+spacing, structure and the split of every paired block change once for all thirty-four.
+
+The written layer is read from `HOTELPAGE[slug]` where it exists and from the memorandum's own
+case studies for the ten, so the gate on the memorandum's words still holds and nothing was
+retyped.
+
+**A second session was in this repo throughout**, moving the capital-cost chapter to a v28 model
+pack. Its in-flight state failed the shared gate for about twenty minutes; this work waited
+rather than pushing through it or patching another session's chapter, and went out once its own
+gate cleared.

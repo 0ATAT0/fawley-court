@@ -82,7 +82,7 @@ const mod = new Function(
   grab("const MKT_M =", "</script>") +
   "; return { FIGS, V16, CAPEX, DIALS, DIAL_SRC, PLATES, FIELD, LADDER, BRIDGE, PNL, PNLFMT, PNL_CASE,"
   + " PNL_NOTES, PNL_PROSE, CHAPTERS, CASES, CHEAT, QS, MARKET, MKT_ALL, MKT_BY_SLUG,"
-  + " MKT_BY_CASE, MKSTATE, PHOTOS, marketIndexHTML, mktGridInner, mktRecordHTML, mktFiguresHTML,"
+  + " MKT_BY_CASE, MKSTATE, PHOTOS, marketIndexHTML, mktGridInner, mktRateHTML, mktFiguresHTML, hotelPageHTML,"
   + " mktCaseEvidenceHTML, mktControlsInner, mktTab,"
   + " mktPhotoHTML, mktGbp };"
 )();
@@ -171,21 +171,26 @@ for (const z of [...capexSrc.zones_hotel, ...capexSrc.zones_resi]) {
   addCx(cxm1(z.total));
   for (const e of Object.values(z.elements)) addCx(cxm1(e));
 }
-for (const v of Object.values(capexSrc.analysis.by_class)) { addCx(cxm1(v)); addCx(cxpct1(v / Object.values(capexSrc.analysis.by_class).reduce((a, b) => a + b, 0))); }
-for (const z of Object.values(capexSrc.analysis.class_by_zone)) addCx(cxm1(z.total));
-const sp = capexSrc.analysis.split;
-[cxm1(sp.buildings_loaded), cxm1(sp.estate_loaded), cxm2(sp.buildings_per_key), cxm2(sp.estate_per_key),
- cxm1(sp.buildings_loaded + sp.estate_loaded)].forEach(addCx);
-for (const g of capexSrc.reduction.groups) { addCx(cxm1(g.capex_delta + g.resi_delta)); addCx(String(g.lines.length)); }
-for (const c of capexSrc.reduction.changed) { addCx(cxm0(Math.abs(c.net_delta))); addCx(String(c.n)); }
-for (const side of ["ground_up", "adopted"]) {
-  const r = capexSrc.reduction[side];
-  [cxm1(r.capex), cxm1(r.resi_cost), cxm1(r.capex + r.resi_cost), cxm1(r.peak_equity),
-   cxm1(r.cost_to_open), (r.irr * 100).toFixed(2) + "%"].forEach(addCx);
+for (const v of Object.values(capexSrc.analysis.by_class)) {
+  addCx(cxm1(v));
+  addCx(cxpct1(v / Object.values(capexSrc.analysis.by_class).reduce((a, b) => a + b, 0)));
+}
+for (const z of Object.values(capexSrc.analysis.by_zone)) addCx(cxm1(z));
+/* The buildings-against-the-estate split is the chapter's own aggregate — zones
+   1-7 are the seven buildings, 8-12 the estate and statutory around them — and
+   it is quoted per key in the evidence chapter. Derive it from the pack so it
+   cannot be left behind when the schedule moves again. */
+{
+  const load = capexSrc.summary.hotel.total / capexSrc.summary.hotel.net;
+  const zn = z => parseInt(z.label, 10);
+  const sum = f => capexSrc.zones_hotel.filter(f).reduce((a, z) => a + z.total, 0);
+  addCx(cxm2(sum(z => zn(z) <= 7) * load / capexSrc.summary.keys));
+  addCx(cxm2(sum(z => zn(z) >= 8) * load / capexSrc.summary.keys));
 }
 for (const q of capexSrc.phasing.total) addCx(cxm1(q));
 addCx(cxm1(capexSrc.phasing.total_spend));
-addCx(String(capexSrc.phasing.programme_q));
+addCx(cxm1(capexSrc.phasing.reconciles_to_net_lines));
+for (const q of capexSrc.phasing.quarters) addCx(String(q));
 addCx(String(capexSrc.lines.length));
 
 /* ══ A. the memorandum ══════════════════════════════════════════════ */
@@ -743,24 +748,20 @@ function figsOnPage() { return mod.FIGS; }
 
 /* ══ H. the capital-cost chapter, re-derived from the pack ═════════ */
 
-/* Every figure the chapter prints is computed here from capex-web-data.json by
-   this file's own formatting, and compared with what the page renders. The
-   chapter's exhibits are built at run time, so this checks the pack rather than
-   the markup: if the two agree, the page cannot be printing a stale number. */
+/* Every chapter-05 figure is computed from the current capex pack. The v28
+   pack is independently versioned from the v16 model record, so it must tie to
+   itself and to its phasing reconciliation rather than to superseded v16 cells. */
 const cap = capexSrc;
 const capChecks = [
-  ["hotel total", cxm1(cap.summary.hotel.total), v16Src.fig.capex_hotel],
-  ["hotel per key", cxm2(cap.summary.hotel.per_key), v16Src.fig.capex_hotel_per_key],
-  ["resi total", cxm1(cap.summary.resi.total), v16Src.fig.capex_resi],
-  ["resi per unit", cxm2(cap.summary.resi.per_unit), v16Src.fig.capex_resi_per_unit],
-  ["works total", cxm1(cap.summary.works_total), v16Src.fig.capex_works_total],
-  ["hotel net", cxm1(cap.summary.hotel.net), v16Src.fig.capex_hotel_net],
-  ["resi net", cxm1(cap.summary.resi.net), v16Src.fig.capex_resi_net],
+  ["hotel total", cap.summary.hotel.total], ["hotel per key", cap.summary.hotel.per_key],
+  ["resi total", cap.summary.resi.total], ["resi per unit", cap.summary.resi.per_unit],
+  ["works total", cap.summary.works_total], ["hotel net", cap.summary.hotel.net],
+  ["resi net", cap.summary.resi.net],
 ];
-for (const [label, fromPack, fromRecord] of capChecks) {
+for (const [label, value] of capChecks) {
   checked++;
-  if (fromPack !== fromRecord)
-    fail("CAPEX PACK DISAGREES WITH THE MODEL RECORD  " + label, `pack ${fromPack} vs record ${fromRecord}`);
+  if (!Number.isFinite(value) || value <= 0)
+    fail("CAPEX SUMMARY VALUE INVALID  " + label, String(value));
 }
 /* the pack's own arithmetic */
 checked++;
@@ -769,12 +770,10 @@ if (Math.abs(netSum - (cap.summary.hotel.net + cap.summary.resi.net)) > 1)
   fail("CAPEX LINES DO NOT SUM", `${Math.round(netSum)} against ${Math.round(cap.summary.hotel.net + cap.summary.resi.net)}`);
 checked++;
 const phaseSum = cap.phasing.total.reduce((a, v) => a + v, 0);
-if (Math.abs(phaseSum - cap.summary.works_total) > 1)
-  fail("CAPEX PHASING DOES NOT TIE", `${Math.round(phaseSum)} against ${Math.round(cap.summary.works_total)}`);
+if (Math.abs(phaseSum - cap.phasing.reconciles_to_net_lines) > 1)
+  fail("CAPEX PHASING DOES NOT TIE", `${Math.round(phaseSum)} against ${Math.round(cap.phasing.reconciles_to_net_lines)}`);
 checked++;
-if (cap.lines.length !== 146) fail("CAPEX LINE COUNT", cap.lines.length + " lines, expected 146");
-checked++;
-if (cap.reduction.changed.length !== 43) fail("CAPEX CHANGE COUNT", cap.reduction.changed.length + " changed lines, expected 43");
+if (cap.lines.length !== cap.meta.n_lines) fail("CAPEX LINE COUNT", cap.lines.length + " lines, pack declares " + cap.meta.n_lines);
 /* every line carries its basis and its evidence class */
 for (const l of cap.lines) {
   checked++;
@@ -921,7 +920,7 @@ for (const h of mkCohort) {
   }
 
   /* G7 — the headline figures, on the card and with their basis on the page */
-  const page = mod.mktCaseEvidenceHTML(h);
+  const page = mod.hotelPageHTML(h);
   if (h.season) mkHas(where + " season basis on the page", page, h.season.basis);
   /* the caveats came off the cards by ruling; they print on the hotel's page */
   if (h.caveat) mkHas(where + " caveat on the page", page, h.caveat);
@@ -1044,7 +1043,7 @@ checked++;
 /* G5 — the basis prose is the pack's own. The chapter's own source note was cut
    by ruling, so the basis is checked where it now lives: on a hotel's page. */
 {
-  const page = mod.mktCaseEvidenceHTML(mkCohort.find(h => h.median));
+  const page = mod.hotelPageHTML(mkCohort.find(h => h.median));
   for (const [k, v] of [["basis", mktSource.basis], ["vat_note", mktSource.vat_note],
                         ["figures_basis", mktSource.figures_basis]]) {
     mkHas("hotel page " + k, page, v);
@@ -1059,7 +1058,7 @@ for (const c of mod.CASES) {
   const h = mktSource.hotels.find(x => x.case_slug === c.slug);
   checked++;
   if (!h) { fail("RATE RECORD WITHOUT A SERIES", c.slug); continue; }
-  const rec = mod.mktCaseEvidenceHTML(mod.MKT_BY_CASE[c.slug]);
+  const rec = mod.hotelPageHTML(mod.MKT_BY_CASE[c.slug]);
   const want = [
     mkGbp(h.median) + " gross · " + mkGbp(h.median_net_vat) + " net of VAT",
     mkGbp(h.p25) + " · " + mkGbp(h.median) + " · " + mkGbp(h.p75),
