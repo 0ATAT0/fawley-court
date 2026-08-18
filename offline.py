@@ -12,7 +12,9 @@ ROUTES = ["#/", "#/c/summary", "#/c/asset", "#/c/asset/title", "#/c/evidence",
           "#/c/capital", "#/c/capital/schedule", "#/c/capital/phasing", "#/c/returns",
           "#/c/bridge", "#/c/dd", "#/c/dd/asks", "#/c/cheatsheet",
           "#/h/cliveden", "#/h/cliveden/pnl", "#/h/passalacqua/pnl",
-          "#/c/market", "#/h/reschio/rate", "#/m/royal-champagne", "#/m/adare-manor"]
+          "#/c/market", "#/h/reschio/rate", "#/m/royal-champagne", "#/m/adare-manor",
+          "#/areas", "#/areas/hall", "#/areas/courtyard", "#/areas/riding", "#/areas/spa",
+          "#/areas/riverclub", "#/areas/residences"]
 
 
 async def main():
@@ -26,10 +28,12 @@ async def main():
         await page.goto(BASE, wait_until="networkidle")
         await page.wait_for_function("navigator.serviceWorker.controller !== null", timeout=15000)
         print("service worker in control:", await page.evaluate("!!navigator.serviceWorker.controller"))
-        # let the page warm the full-size plates
-        await page.wait_for_timeout(9000)
+        # Visit the advanced estate chapter while connected: its own code, data
+        # and CGIs warm behind this visit, rather than joining the install shell.
+        await page.goto(BASE + "#/areas", wait_until="networkidle")
+        await page.wait_for_timeout(9500)
         keys = await page.evaluate(
-            "caches.open('fawley-court-v4').then(c => c.keys().then(k => k.map(r => new URL(r.url).pathname)))")
+            "caches.open('fawley-court-v5').then(c => c.keys().then(k => k.map(r => new URL(r.url).pathname)))")
         print("cached entries:", len(keys))
         for k in sorted(keys):
             print("   ", k)

@@ -42,7 +42,8 @@ Align-branded. Strictly private and confidential.
 | 09 | The Cheat Sheet | one view: the one-page IC reference |
 | — | Case study, ×10 | `#/h/<slug>` — the record and the read-against, and `#/h/<slug>/pnl`, its estimated P&L |
 
-Routes are `#/`, `#/c/<chapter>[/<view>]` and `#/h/<slug>[/pnl]`. Navigation is
+Routes are `#/`, `#/c/<chapter>[/<view>]`, `#/h/<slug>[/pnl]` and the advanced
+estate exhibit `#/areas[/<area>]`. Navigation is
 a fixed masthead with the finder, a chapter bar pinned to the bottom (chapter
 chips, a Contents sheet and a Dials sheet), a sticky tab strip per chapter and
 prev/next pagers.
@@ -52,6 +53,7 @@ prev/next pagers.
 | File | What it is |
 |---|---|
 | `index.html` | The whole portal — inline CSS and JS, hash-routed, no build step |
+| `areas.js` | Deferred estate-areas chapter — fetched only for `#/areas`, then reads `src/areas-data.json` and warms its CGIs |
 | `manifest.json`, `sw.js` | PWA: installable, network-first for the page, cache-first for assets (`fawley-court-v3`) |
 | `align-mark.png` | Align wordmark, strapline cropped |
 | `icon-192/512.png`, `apple-touch-icon.png` | Home-screen icons |

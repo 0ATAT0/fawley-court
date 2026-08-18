@@ -28,6 +28,8 @@ for _c, _vs in CHAPTERS.items():
     ROUTES += ["#/c/" + _c + ("/" + _v if _v else "") for _v in _vs]
 ROUTES += ["#/h/cliveden", "#/h/cliveden/pnl", "#/h/estelle", "#/h/rosa-alpina/pnl",
            "#/h/grand-controle/pnl", "#/h/borgo-egnazia/pnl"]
+ROUTES += ["#/areas", "#/areas/hall", "#/areas/courtyard", "#/areas/riding", "#/areas/spa",
+           "#/areas/riverclub", "#/areas/residences"]
 
 # chapter 10's destinations, read off the pack so the list cannot drift from it:
 # a rate record on each written case, and a property page for the rest

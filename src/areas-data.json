@@ -1,8 +1,8 @@
 {
  "meta": {
-  "source": "Model/v28.xlsx, Capex tab",
-  "model_sha": "3df0121d7cb637eb0bd84c24929152b0b03f776c4da28114630f81ef56ee59ff",
-  "figures": "v28.xlsx",
+  "source": "Model/Fawley Court - Financial Model v28.xlsx, Capex tab",
+  "model_sha": "7ad5cd323dcea85bd018a3d2e53f7454c41d29d9dd3c0f8ec87f70e3e55bfd45",
+  "figures": "Fawley Court - Financial Model v28.xlsx",
   "measured": "2026-08-18",
   "note": "Each area joins the capital-cost schedule to the imagery and to what the place earns. Loaded cost applies the limb's own prelims, fees and contingency to that area's net. The images are indicative and nothing here is designed or consented.",
   "covered": 124062257.66,
@@ -688,7 +688,7 @@
     }
    ],
    "what": "Twelve houses on the Savills-advised plots, sold rather than operated.",
-   "works": "Estate road and services to twelve plots, the houses themselves, the landscape framework, and the statutory provision including the residential share of the estate infrastructure.",
+   "works": "Estate road and services to twelve plots, the houses themselves, the landscape framework and the statutory provision. The figures on this page are the itemised residential lines alone. The limb also carries a share of the estate infrastructure the houses use, which is why chapter 05 shows the residential budget at £44.97m and £3.75m a unit against the £37.01m and £3.08m here.",
    "earns": "Sale proceeds across a single tranche at an absorption of 3.75 a year, not rental income. Both Six Senses and Rocco Forte assume a branded rental pool instead.",
    "watch": "No residential application has ever been made on this estate. Planning is at pre-application, and twelve units sits above the affordable-housing threshold."
   }

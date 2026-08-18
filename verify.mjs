@@ -23,6 +23,9 @@
                        printed figure must equal this file's own independent
                        formatting of that source, and every candour line must
                        be verbatim in Research/comp-pnls/REGISTER.md.
+   G. ESTATE AREAS     the on-demand renderer reads src/areas-data.json;
+                       every cost, quantity, rate, programme and coverage
+                       figure it prints must be derived from that pack.
 
    Plus: the portal's own navigation figures against the registers, banned
    words, the occupancy convention, the rate field against the rate-position
@@ -67,6 +70,10 @@ const hpSource = fs.existsSync(MKTDIR + "hotel-pages.json")
   ? JSON.parse(fs.readFileSync(MKTDIR + "hotel-pages.json", "utf8")) : {};
 const mktRecord = ["RATES.md", "RATES-round2.md", "RATES-new-candidates.md", "FINDINGS.md"]
   .map(f => fs.readFileSync(MKTDIR + f, "utf8")).join(String.fromCharCode(10));
+const areaSource = JSON.parse(fs.readFileSync("src/areas-data.json", "utf8"));
+const cgiSource = JSON.parse(fs.readFileSync("src/cgi-manifest.json", "utf8"));
+const areaCapexSource = JSON.parse(fs.readFileSync("src/capex-data.json", "utf8"));
+const areaJs = fs.readFileSync("areas.js", "utf8");
 
 /* the page's data, evaluated out of the page itself */
 const grab = (from, to) => {
@@ -114,7 +121,7 @@ const pnlRegText = quotes(pnlRegister.replace(/\*/g, "")).replace(/\s+/g, " ").t
 const mktText = quotes(JSON.stringify(mktSource) + " " + mktRecord.replace(/\*/g, ""))
   .replace(/\s+/g, " ").toLowerCase();
 
-let fails = 0, checked = 0;
+let fails = 0, checked = 0, areaFigures = 0;
 const fail = (l, d) => { fails++; console.log(`\n  ${l}\n        ${d}`); };
 
 const verbatim = (label, text, hay = deckText, hayName = "slides.md") => {
@@ -195,6 +202,33 @@ addCx(cxm1(capexSrc.phasing.total_spend));
 addCx(cxm1(capexSrc.phasing.reconciles_to_net_lines));
 for (const q of capexSrc.phasing.quarters) addCx(String(q));
 addCx(String(capexSrc.lines.length));
+
+/* The estate-area bolt-on ships no data in the shell. Collect the display
+   formats from its own pack exactly as the renderer does, rather than widening
+   a hand-kept exception list when a cost line or programme moves. */
+const AREA_VALUES = new Set();
+const addArea = v => { if (v != null && String(v).trim()) AREA_VALUES.add(String(v).trim().toLowerCase()); };
+const arm2 = v => "£" + (v / 1e6).toFixed(2) + "m";
+const ar0 = v => "£" + Math.round(v).toLocaleString("en-GB");
+const apct = v => (v * 100).toFixed(1) + "%";
+const aqty = v => Number(v).toLocaleString("en-GB", { maximumFractionDigits: 2 });
+for (const a of areaSource.areas) {
+  [arm2(a.loaded), arm2(a.net), apct(a.share_of_works), String(a.n_lines), String(a.n_live),
+   String(a.start_q), String(a.end_q), String(a.images.length)].forEach(addArea);
+  for (const l of a.top_lines) [String(l.n), aqty(l.qty), ar0(l.rate), ar0(l.net)].forEach(addArea);
+}
+for (const t of tok(JSON.stringify(areaSource))) addArea(t);
+addArea(String(areaCapexSource.meta.n_lines));
+for (const v of [arm2(areaSource.meta.covered), arm2(areaSource.meta.works_total), arm2(areaSource.meta.uncovered),
+                 apct(areaSource.meta.covered / areaSource.meta.works_total),
+                 apct(areaSource.meta.uncovered / areaSource.meta.works_total)]) addArea(v);
+const areaMaxQ = Math.max(...areaSource.areas.map(a => a.end_q));
+for (let q = 1; q <= areaMaxQ; q++) addArea(String(q));
+const areaUnitWords = { hall: ["Seventeen keys", 17], courtyard: ["Forty-three of the sixty keys", 43], residences: ["Twelve houses", 12] };
+for (const [key, [words, count]] of Object.entries(areaUnitWords)) {
+  const a = areaSource.areas.find(x => x.key === key);
+  if (a && (a.what + " " + a.earns).includes(words)) { addArea(String(count)); addArea(arm2(a.loaded / count)); }
+}
 
 /* ══ A. the memorandum ══════════════════════════════════════════════ */
 
@@ -785,6 +819,86 @@ for (const l of cap.lines) {
   if (!["MEASURED", "BENCHMARK", "ALLOWANCE"].includes(l.source)) fail("CAPEX LINE WITHOUT CLASS", "#" + l.n);
 }
 
+/* ══ I. estate areas — evaluate the deferred renderer against its pack ══ */
+
+checked++;
+if (!/fetch\("src\/areas-data\.json"\)/.test(areaJs))
+  fail("AREAS PACK NOT LAZY-LOADED", "areas.js must fetch src/areas-data.json when the route is requested");
+checked++;
+if (/areas\.js/.test(fs.readFileSync("sw.js", "utf8")) || /areas-data\.json/.test(fs.readFileSync("sw.js", "utf8")))
+  fail("AREAS IN INSTALL PAYLOAD", "the bolt-on and its pack must warm after a visit, not install with the shell");
+const AREA_KEYS = ["hall", "courtyard", "riding", "spa", "riverclub", "residences"];
+checked++;
+if (areaSource.areas.map(a => a.key).join("|") !== AREA_KEYS.join("|"))
+  fail("AREA ORDER", areaSource.areas.map(a => a.key).join(", "));
+checked++;
+if (cgiSource.areas.map(a => a.key).join("|") !== AREA_KEYS.join("|"))
+  fail("CGI MANIFEST AREA ORDER", cgiSource.areas.map(a => a.key).join(", "));
+checked++;
+if (Math.abs(areaSource.areas.reduce((s, a) => s + a.loaded, 0) - areaSource.meta.covered) > 1)
+  fail("AREA COVERED TOTAL", "area loaded costs do not sum to the pack's covered total");
+for (const [key, words] of Object.entries(areaUnitWords)) {
+  checked++;
+  const a = areaSource.areas.find(x => x.key === key);
+  if (!a || !(a.what + " " + a.earns).includes(words[0])) fail("AREA UNIT BASIS", key + " is not evidenced in the area prose");
+}
+
+/* Evaluate the real on-demand file with a tiny DOM shell. This keeps the
+   verification tied to the rendering code while leaving that code out of the
+   portal's normal parse path. */
+const areaWindow = { requestIdleCallback: () => {} };
+const areaDocument = {
+  querySelector: () => null,
+  createElement: () => ({}),
+  head: { append: () => {} },
+  addEventListener: () => {}
+};
+new Function("window", "document", "fetch", "requestIdleCallback", areaJs)(
+  areaWindow, areaDocument,
+  async () => ({ ok: true, json: async () => areaSource }),
+  () => {}
+);
+checked++;
+if (!areaWindow.AreasChapter) fail("AREAS MODULE DID NOT REGISTER", "areas.js did not expose AreasChapter");
+else {
+  await areaWindow.AreasChapter.load();
+  const areaHas = (page, text) => norm(page).includes(norm(text));
+  const hub = areaWindow.AreasChapter.render("");
+  for (const phrase of ["The places you can see", arm2(areaSource.meta.covered), arm2(areaSource.meta.works_total),
+                        apct(areaSource.meta.covered / areaSource.meta.works_total), arm2(areaSource.meta.uncovered),
+                        apct(areaSource.meta.uncovered / areaSource.meta.works_total), "has no imagery", "Chapter 05"]) {
+    checked++;
+    if (!areaHas(hub, phrase)) fail("AREA HUB MISSING", phrase);
+  }
+  for (const a of areaSource.areas) {
+    const manifest = cgiSource.areas.find(x => x.key === a.key);
+    checked++;
+    if (!manifest || JSON.stringify(manifest.images) !== JSON.stringify(a.images)) fail("AREA CGI MANIFEST DRIFT", a.key);
+    const page = areaWindow.AreasChapter.render(a.key);
+    for (const text of [a.label, a.what, a.works, a.earns, a.watch, arm2(a.loaded), arm2(a.net), apct(a.share_of_works),
+                        `Q${a.start_q}`, `Q${a.end_q}`]) {
+      checked++;
+      if (!areaHas(page, text)) fail("AREA VALUE NOT RENDERED  " + a.key, text);
+    }
+    for (const im of a.images) {
+      checked++;
+      if (!page.includes(im.thumb)) fail("AREA THUMB NOT RENDERED", a.key + " " + im.thumb);
+      checked++;
+      if (!fs.existsSync(im.thumb) || !fs.existsSync(im.full)) fail("AREA CGI MISSING ON DISK", a.key + " " + im.full);
+    }
+    for (const l of a.top_lines) {
+      for (const text of [l.desc, aqty(l.qty), ar0(l.rate), ar0(l.net), l.source]) {
+        checked++; areaFigures++;
+        if (!areaHas(page, text)) fail("AREA LINE NOT RENDERED  " + a.key + " #" + l.n, text);
+      }
+    }
+    for (const t of tok(page)) {
+      checked++; areaFigures++;
+      if (!AREA_VALUES.has(t)) fail("AREA FIGURE UNREGISTERED  " + a.key, `token "${t}" is not derived from src/areas-data.json`);
+    }
+  }
+}
+
 /* ══ house rules ═══════════════════════════════════════════════════ */
 
 for (const w of ["strand", "wilton", "\\bproceed\\b", "compelling", "\\bprime\\b(?! reach| Henley| sold| 5%)", "\\brare\\b"]) {
@@ -1101,5 +1215,5 @@ for (const c of mod.CASES) {
 }
 
 
-console.log(`\n${fails === 0 ? "PASS" : "FAIL"} — ${checked} checks, ${fails} failures  (${subjChecked} subject-cell figures, ${pnlFigures} P&L figures, ${mktFigures} market figures, ${ownProse} portal-authored lines figure-checked)`);
+console.log(`\n${fails === 0 ? "PASS" : "FAIL"} — ${checked} checks, ${fails} failures  (${subjChecked} subject-cell figures, ${pnlFigures} P&L figures, ${mktFigures} market figures, ${areaFigures} estate-area figures, ${ownProse} portal-authored lines figure-checked)`);
 process.exit(fails ? 1 : 0);
