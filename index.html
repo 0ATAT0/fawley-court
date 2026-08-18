@@ -508,8 +508,8 @@ ol.read li::before {
 /* ─────────────────────────  the view index (chapter hubs)  ───────────────────────── */
 
 .vidx { border-top: 1px solid var(--line-strong); }
-.vidx-h { display: flex; align-items: baseline; gap: 12px; padding: 12px 0 4px; }
-.vidx-h .t { font-size: var(--fs-cap); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.vidx-h { display: flex; align-items: baseline; gap: 12px; padding: 4px 0 9px; border-bottom: 1px solid var(--line-strong); margin-bottom: 4px; }
+.vidx-h .t { font-size: var(--fs-h2); font-weight: 700; letter-spacing: -.006em; color: var(--ink); }
 .vrow {
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(120px, 22%); gap: 0 clamp(14px, 2.2vw, 32px);
   align-items: baseline; width: 100%; text-align: left; padding: 13px 0; min-height: 52px;
@@ -794,15 +794,92 @@ ol.read li::before {
   .cxl-b .inner { padding-left: 0; }
 }
 
+/* ── a section that reads as one, in a chapter that reads as a page ──
+   A heading must never be smaller than the text it governs. The rule sits
+   under it and the space sits above it, so a heading binds to its own
+   content rather than floating between two blocks. */
+.blk + .blk { margin-top: clamp(42px, 5.6vw, 78px); }
+.blk-h {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+  gap: 2px 22px; padding-bottom: 9px; border-bottom: 1px solid var(--line-strong);
+  font-size: var(--fs-h2); font-weight: 700; line-height: 1.25; letter-spacing: -.006em;
+}
+.blk-h .n {
+  font-size: var(--fs-sm); font-weight: 400; color: var(--muted); letter-spacing: 0;
+}
+.blk-h + * { margin-top: clamp(15px, 1.8vw, 22px); }
+.blk-s {
+  font-size: var(--fs-body); line-height: var(--lh-relaxed); color: var(--muted-2);
+  max-width: 76ch;
+}
+
+/* a column's own label inside a section: the figure belongs to the label,
+   so it is not restated under the graphic */
+.sub-h {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px;
+  padding-bottom: 8px; border-bottom: 1px solid var(--line);
+  font-size: var(--fs-body); color: var(--muted-2);
+}
+.sub-h b { font-size: var(--fs-h2); color: var(--accent); letter-spacing: -.006em; }
+.sub-h span { font-size: var(--fs-sm); color: var(--muted); }
+
+/* the works budget's column header, and the sort it carries */
+.cxhead {
+  display: grid; grid-template-columns: 40px 1fr auto auto; gap: 0 14px;
+  align-items: end; padding: 0 0 7px; margin-top: 20px;
+  border-bottom: 1px solid var(--line-strong);
+  font-size: var(--fs-cap); letter-spacing: .09em; text-transform: uppercase; color: var(--muted);
+}
+.cxhead .s {
+  display: inline-flex; align-items: flex-end; gap: 6px; min-height: 44px; padding: 0;
+  font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--ink);
+  background: none; border: 0; align-self: end;
+}
+.cxhead .s:hover, .cxhead .s:focus-visible { color: var(--accent); }
+.cxhead .s i { font-style: normal; font-size: 1em; color: var(--accent); }
+.cxhead .s i.off { color: var(--muted-2); }
+@media (max-width: 700px) {
+  .cxhead { grid-template-columns: 32px 1fr auto; }
+  .cxhead .c { display: none; }
+}
+
+/* what is outside the budget: six statements, not a table with a prose column */
+.xrow {
+  display: grid; grid-template-columns: minmax(170px, 250px) minmax(0, 1fr) auto;
+  gap: 4px 32px; align-items: baseline;
+  padding: clamp(15px, 1.9vw, 21px) 0; border-bottom: 1px solid var(--line);
+}
+.xrow:last-child { border-bottom: 0; }
+.xrow .t { grid-column: 1; grid-row: 1; font-size: var(--fs-body); font-weight: 700; }
+.xrow .s {
+  grid-column: 3; grid-row: 1; font-size: var(--fs-sm); font-weight: 700; color: var(--accent);
+  font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right;
+}
+.xrow .s.none { font-weight: 400; color: var(--muted); }
+.xrow .b { grid-column: 2; grid-row: 1; max-width: 78ch; font-size: var(--fs-body); line-height: var(--lh-relaxed); }
+@media (max-width: 780px) {
+  .xrow { grid-template-columns: minmax(0, 1fr) auto; }
+  .xrow .t { grid-column: 1; grid-row: 1; }
+  .xrow .s { grid-column: 2; grid-row: 1; }
+  .xrow .b { grid-column: 1 / -1; grid-row: 2; margin-top: 6px; }
+}
+.wlist .i { padding: 13px 0; border-bottom: 1px solid var(--line); }
+.wlist .i:last-child { border-bottom: 0; }
+.wlist b { display: block; font-size: var(--fs-body); }
+.wlist span {
+  display: block; margin-top: 5px; font-size: var(--fs-sm); color: var(--muted-2);
+  line-height: var(--lh-relaxed); font-style: normal;
+}
+
 /* the cost matrix: magnitude reads off the cell, the zone column stays put */
-.cxmx { min-width: 900px; }
-.cxmx td, .cxmx th { padding: 8px 12px 8px 0; }
-.cxmx td.r, .cxmx th.r { padding-left: 11px; border-right: 1px solid var(--paper); }
-.cxmx td.tot, .cxmx th:nth-last-child(2) { padding-right: 22px; border-right: 0; }
-.cxmx thead th { white-space: nowrap; }
+.cxmx { min-width: 1040px; table-layout: fixed; }
+.cxmx td, .cxmx th { padding: 9px 10px 9px 0; }
+.cxmx td.r, .cxmx th.r { padding-left: 10px; border-right: 1px solid var(--paper); }
+.cxmx td.tot, .cxmx th:nth-last-child(2) { padding-right: 20px; border-right: 0; }
+.cxmx thead th { white-space: normal; vertical-align: bottom; line-height: 1.28; }
 .cxmx td:first-child, .cxmx th:first-child {
   position: sticky; left: 0; z-index: 1; background: var(--paper);
-  padding-right: 18px; min-width: 168px; box-shadow: 1px 0 0 var(--line);
+  padding-right: 18px; box-shadow: 1px 0 0 var(--line);
 }
 .cxmx tr.divider td:first-child { background: var(--surface-3); }
 .cxmx tr.total td { background: var(--paper); }
@@ -863,9 +940,13 @@ ol.read li::before {
 }
 
 /* the residential budget: the basis under the line, the cost weighted */
-.cxres { min-width: 560px; }
-.cxres td:first-child { max-width: 42ch; }
-.cxres .ag-note { font-style: normal; margin-top: 4px; }
+.cxres { min-width: 620px; }
+.cxres td { padding-top: 15px; padding-bottom: 15px; }
+.cxres td:first-child { width: 48%; }
+.cxres .ag-note {
+  font-style: normal; margin-top: 7px; font-size: var(--fs-sm);
+  color: var(--muted-2); line-height: var(--lh-relaxed);
+}
 .cxres td.tot { white-space: nowrap; }
 .cxres .u { color: var(--muted); font-size: var(--fs-cap); }
 .filters.bare { margin-top: 4px; }
@@ -1917,8 +1998,8 @@ const CHAPTERS = [
   { id: "", title: "The Budget", kicker: "Capital cost",
     figure: "£168.0m of works", blurb: "What the scheme costs to build, and how the total is made up.",
     lead: [
-      ["kpis", [["£123.6m", "Hotel works, all in"], ["£2.06m", "A key"],
-                ["£44.4m", "The twelve residences"], ["43.3%", "Of it set as an allowance", "q"]]],
+      ["kpis", [["£2.06m", "A hotel key, all in"], ["£3.70m", "A residence, all in"],
+                ["146", "Lines in the budget"], ["43.3%", "Of it set as an allowance", "q"]]],
       ["capexstack"],
     ],
     reason: [] },
@@ -3894,7 +3975,7 @@ const CX_NET_ON = CX_ON.reduce((a, l) => a + l.live, 0);
 
 /* One stacked bar for the hotel and one for the residences: net construction,
    then the three loading rows, each directly labelled. */
-function cxStackBar(s, unitLabel, unitValue) {
+function cxStackBar(s) {
   const parts = [
     ["Net construction", s.net, "a"],
     ["Preliminaries " + CX.pct0(s.prelims_pct), s.prelims, "b"],
@@ -3907,24 +3988,29 @@ function cxStackBar(s, unitLabel, unitValue) {
         + (v / s.total > 0.09 ? "<b>" + CX.m1(v) + "</b>" : "") + "</span>").join("")
     + '</div><div class="cxbar-key">'
     + parts.map(([l, v, c]) => '<span><i class="p' + c + '"></i>' + l + "</span>").join("")
-    + "</div>"
-    + '<p class="cxbar-tot"><b>' + CX.m1(s.total) + "</b> <span>" + unitLabel + " "
-    + unitValue + "</span></p></div>";
+    + "</div></div>";
 }
 
+/* The reading path: the four figures answer, the two bars give the shape, the
+   table is the ledger. No figure is stated twice at the same weight - each
+   total belongs to its column's own label rather than being restated beneath
+   the graphic it describes. */
 function capexStackHTML() {
   const S = CAPEX.summary;
-  return '<div class="duo" style="--duo:minmax(0,50fr) minmax(0,50fr)">'
-    + '<div><p class="pane-h">The hotel, ' + S.keys + " keys</p>"
-    + cxStackBar(S.hotel, "=", CX.m2(S.hotel.per_key) + " a key") + "</div>"
-    + '<div><p class="pane-h">The residences, ' + S.units + " units</p>"
-    + cxStackBar(S.resi, "=", CX.m2(S.resi.per_unit) + " a unit") + "</div></div>"
-    + '<div class="tbl-scroll wide" style="margin-top:clamp(20px,2.6vw,30px)"><table class="tbl num">'
-    + "<thead><tr><th>Build-up</th><th class='r'>Hotel</th><th class='r'>Residences</th>"
+  const side = (label, s, per) => '<div><p class="sub-h">' + label + "<b>" + CX.m1(s.total)
+    + '</b><span>' + per + "</span></p>" + cxStackBar(s) + "</div>";
+  return '<section class="blk"><h2 class="blk-h">How the ' + CX.m1(S.works_total)
+    + ' is built up<span class="n">net construction, then the three loadings</span></h2>'
+    + '<div class="duo" style="--duo:minmax(0,50fr) minmax(0,50fr)">'
+    + side("The hotel, " + S.keys + " keys", S.hotel, CX.m2(S.hotel.per_key) + " a key")
+    + side("The residences, " + S.units + " units", S.resi, CX.m2(S.resi.per_unit) + " a unit")
+    + "</div>"
+    + '<div class="tbl-scroll wide" style="margin-top:clamp(26px,3.4vw,42px)"><table class="tbl num">'
+    + "<thead><tr><th>Component</th><th class='r'>Hotel</th><th class='r'>Residences</th>"
     + "<th class='r'>Both</th><th>What it is</th></tr></thead><tbody>"
-    + [["Net construction", "net", "the 146 lines at quantity × rate, hotel share applied"],
+    + [["Net construction", "net", "the 146 lines at quantity \u00d7 rate, hotel share applied"],
        ["Contractor preliminaries and overheads", "prelims",
-        "Greenway's own 20% rate, charged only on the lines flagged for it — the composite rates already include it"],
+        "Greenway's own 20% rate, charged only on the lines flagged for it \u2014 the composite rates already include it"],
        ["Professional fees", "fees",
         "ruled flat, in place of the first budget's rates by risk class; off the statutory lines, which are themselves fees"],
        ["Contingency", "contingency", "ruled flat, against a budget with no cost plan behind it"]]
@@ -3935,15 +4021,15 @@ function capexStackHTML() {
     + CX.m1(S.hotel.total) + '</span></td><td class="r"><span class="emph">' + CX.m1(S.resi.total)
     + '</span></td><td class="r"><span class="emph">' + CX.m1(S.works_total)
     + "</span></td><td>the model's capital cost, before finance and before pre-opening losses</td></tr>"
-    + '<tr><td>Per key · per unit</td><td class="r">' + CX.m2(S.hotel.per_key)
-    + '</td><td class="r">' + CX.m2(S.resi.per_unit) + '</td><td class="r">—</td>'
+    + '<tr><td>Per key \u00b7 per unit</td><td class="r">' + CX.m2(S.hotel.per_key)
+    + '</td><td class="r">' + CX.m2(S.resi.per_unit) + '</td><td class="r">\u2014</td>'
     + "<td>60 keys and 12 houses</td></tr>"
-    + "</tbody></table></div>";
+    + "</tbody></table></div></section>";
 }
 
 /* ─────────────  the schedule  ───────────── */
 
-const CXSTATE = { limb: null, zone: null, showOff: false, q: "", open: {} };
+const CXSTATE = { limb: null, zone: null, showOff: false, sort: null, q: "", open: {} };
 
 function cxMatch(l) {
   if (!CXSTATE.showOff && !l.on) return false;
@@ -3997,9 +4083,23 @@ function cxSchedInner() {
     return h;
   }
 
+  /* sorting by amount dissolves the zone grouping - a list cannot be in two
+     orders at once - so each line carries its zone in its own meta line instead */
+  const sorted = CXSTATE.sort
+    ? shown.slice().sort((a, b) => (CXSTATE.sort === "desc" ? 1 : -1)
+        * ((b.on ? b.live : b.net) - (a.on ? a.live : a.net)))
+    : shown;
+
+  h += '<div class="cxhead"><span class="n">#</span><span class="t">'
+    + (CXSTATE.sort ? "Line, by amount" : "Line, in zone order") + "</span>"
+    + '<button class="s" data-cxsort="1" aria-label="Sort the budget by amount">Amount'
+    + (CXSTATE.sort === "desc" ? '<i>\u25be</i>' : CXSTATE.sort === "asc" ? '<i>\u25b4</i>'
+       : '<i class="off">\u21c5</i>') + "</button>"
+    + '<span class="c">Evidence</span></div>';
+
   let lastZone = null;
-  for (const l of shown) {
-    if (l.zone !== lastZone) {
+  for (const l of sorted) {
+    if (!CXSTATE.sort && l.zone !== lastZone) {
       if (lastZone !== null) h += "</div>";
       lastZone = l.zone;
       const zl = shown.filter(x => x.zone === l.zone);
@@ -4016,7 +4116,7 @@ function cxSchedInner() {
       + '<button class="cxl-h" aria-expanded="' + open + '">'
       + '<span class="cxl-n">' + l.n + "</span>"
       + '<span class="cxl-t">' + esc(l.desc)
-      + '<span class="cxl-m">' + esc(l.element) + " · " + rate
+      + '<span class="cxl-m">' + (CXSTATE.sort ? esc(l.zone) + " · " : "") + esc(l.element) + " · " + rate
       + (l.hotel_pct > 0 && l.hotel_pct < 1 ? " · hotel share " + CX.pct0(l.hotel_pct) : "")
       + (l.on ? "" : " · switched off") + "</span></span>"
       + '<span class="cxl-v">' + (l.on ? CX.m0(l.live) : "—") + "</span>"
@@ -4082,7 +4182,15 @@ function capexZonesHTML() {
     + '<td class="r"><b>' + CX.m1(net) + "</b></td><td></td></tr>";
 
   const span = els.length + 3;
-  return '<div class="tbl-scroll wide"><table class="tbl num cxmx"><thead><tr><th>Zone</th>'
+  /* the eight element columns are exactly equal, so a value's width carries no
+     accidental emphasis; the zone, the total and the programme bar take fixed
+     room around them */
+  const colg = '<colgroup><col style="width:17.4%">'
+    + els.map(() => '<col style="width:' + (61.6 / els.length).toFixed(3) + '%">').join("")
+    + '<col style="width:9.4%"><col style="width:11.6%"></colgroup>';
+
+  return '<div class="tbl-scroll wide"><table class="tbl num cxmx">' + colg
+    + '<thead><tr><th>Zone</th>'
     + els.map(e => '<th class="r">' + e.replace(" & ", " &amp;\u00a0") + "</th>").join("")
     + '<th class="r">Total</th><th>Built</th></tr></thead><tbody>'
     + '<tr class="divider"><td colspan="' + span + '">The hotel, ' + CAPEX.summary.keys + " keys</td></tr>"
@@ -4175,11 +4283,14 @@ function capexPhaseHTML() {
       .map(([nn, c]) => '<div class="kpi"><div class="num">' + nn + '</div><div class="cap">'
         + c + "</div></div>").join("") + "</div>";
 
-  return strip + '<div class="cxphase">'
-    + '<p class="pane-h" style="margin-top:clamp(20px,2.6vw,30px)">The programme, zone by zone</p>'
-    + cxGanttHTML()
-    + '<p class="pane-h" style="margin-top:clamp(24px,3vw,36px)">What that spends, quarter by quarter</p>'
-    + '<div class="wf-legend" style="margin-top:12px">'
+  return strip
+    + '<section class="blk"><h2 class="blk-h">The programme, zone by zone'
+    + '<span class="n">the two dates the underwrite turns on, marked across every row</span></h2>'
+    + cxGanttHTML() + "</section>"
+    + '<section class="blk"><h2 class="blk-h">What that spends, quarter by quarter'
+    + '<span class="n">' + CX.m1(P.total_spend) + " over " + n + ' quarters</span></h2>'
+    + '<div class="cxphase">'
+    + '<div class="wf-legend">'
     + '<span class="k"><span class="sw pos"></span>hotel works</span>'
     + '<span class="k"><span class="sw" style="background:#93a6b8"></span>the residences</span>'
     + '<span class="k"><span class="sw" style="background:none;border-bottom:2px dashed #6f6f6b;height:0"></span>cumulative, to the right-hand scale</span>'
@@ -4212,15 +4323,16 @@ function capexPhaseHTML() {
     + '<tr class="total"><td>Total</td><td class="r">' + CX.m1(CAPEX.summary.hotel.total)
     + '</td><td class="r">' + CX.m1(CAPEX.summary.resi.total) + '</td><td class="r">'
     + CX.m1(P.total_spend) + '</td><td class="r">\u2014</td></tr>'
-    + "</tbody></table></div></div>";
+    + "</tbody></table></div></div></section>";
 }
 
 /* the first sentence of a line's basis, cleaned of the register's own
    trailing punctuation, for a table that has room for one line and not five */
-function cxGloss(basis) {
+function cxGloss(basis, max) {
   let s = String(basis || "").split(/\.\s/)[0].trim();
   s = s.replace(/[.\s]+$/, "");
-  if (s.length > 190) return s.slice(0, 187).replace(/[\s,;(]+$/, "") + "…";
+  const lim = max || 190;
+  if (s.length > lim) return s.slice(0, lim - 3).replace(/[\s,;(]+$/, "") + "…";
   return s + ".";
 }
 
@@ -4234,14 +4346,16 @@ function capexResiHTML() {
     ? CX.m0(l.rate) : CX.m0(l.rate) + '<span class="u"> a ' + esc(l.unit) + "</span>";
 
   const body = lines.map(l => "<tr><td>" + esc(l.desc)
-      + '<span class="ag-note">' + esc(cxGloss(l.basis)) + "</span></td>"
+      + '<span class="ag-note">' + esc(cxGloss(l.basis, 300)) + "</span></td>"
       + '<td class="r">' + CX.qty(l.qty) + '<span class="u"> ' + esc(l.unit) + "</span></td>"
       + '<td class="r">' + rateOf(l) + "</td>"
       + '<td class="r tot"><b>' + CX.m0(l.live) + '</b><span class="trule" style="width:'
       + (l.live / costMax * 100).toFixed(1) + '%"></span></td></tr>').join("");
 
-  return '<div class="tbl-scroll wide"><table class="tbl num cxres"><thead><tr>'
-    + '<th>The residential budget</th><th class="r">Quantity</th><th class="r">Rate</th>'
+  return '<section class="blk"><h2 class="blk-h">The residential budget'
+    + '<span class="n">' + lines.length + " lines \u00b7 " + CX.m2(S.per_unit) + ' a unit</span></h2>'
+    + '<div class="tbl-scroll wide"><table class="tbl num cxres"><thead><tr>'
+    + '<th>Line</th><th class="r">Quantity</th><th class="r">Rate</th>'
     + '<th class="r">Cost</th></tr></thead><tbody>'
     + body
     + '<tr class="subtotal"><td>Net construction</td><td class="r">\u2014</td><td class="r">\u2014</td>'
@@ -4261,9 +4375,10 @@ function capexResiHTML() {
     + "fit-out: the quantities and rates beside them are the model's live ones \u2014 12 units at "
     + "5,500 square feet and \u00a3400,000 a unit \u2014 and the labels are a correction owed in "
     + "the workbook.</td></tr>"
-    + "</tbody></table></div>"
-    + '<p class="pane-h" style="margin-top:clamp(22px,2.8vw,34px)">What the residences return</p>'
-    + '<div class="tbl-scroll mid" style="max-width:620px"><table class="tbl num"><tbody>'
+    + "</tbody></table></div></section>"
+    + '<section class="blk"><h2 class="blk-h">What the residences return'
+    + '<span class="n">gross proceeds, less what it costs to build them</span></h2>'
+    + '<div class="tbl-scroll mid" style="max-width:640px"><table class="tbl num"><tbody>'
     + [["Gross sale proceeds, escalated to each sale quarter", F.resi_gross],
        ["Sales fee at " + F.resi_fee_pct, "(" + F.resi_sales_fee + ")"],
        ["All-in cost of the residences", "(" + F.resi_cost + ")"],
@@ -4273,50 +4388,60 @@ function capexResiHTML() {
         + v + "</td></tr>").join("")
     + '<tr class="note"><td colspan="2">Tenure is an open item: the vendor\u2019s adviser assumes '
     + "999-year leaseholds where the underwrite was ruled on freeholds.</td></tr>"
-    + "</tbody></table></div>";
+    + "</tbody></table></div></section>";
 }
 
 /* ─────────────  what is not in it  ───────────── */
 
 function capexExcludedHTML() {
   const I = CAPEX.reduction.inflation;
-  return '<div class="tbl-scroll wide"><table class="tbl num"><thead><tr><th>Outside the budget</th>'
-    + '<th class="r">Size</th><th>Why it is outside, and what it would do</th></tr></thead><tbody>'
-    + CAPEX.excluded.map(e => "<tr><td>" + e.item + '</td><td class="r">' + (e.amount || "—")
-        + "</td><td>" + e.note + "</td></tr>").join("")
-    + '<tr class="note"><td colspan="3">Nothing here is in the £' + (CAPEX.summary.works_total / 1e6).toFixed(1)
-    + "m. Each one is additive to it.</td></tr></tbody></table></div>"
-    + '<div class="duo" style="--duo:minmax(0,48fr) minmax(0,52fr);margin-top:clamp(20px,2.6vw,30px)">'
-    + '<div><p class="pane-h">Tender inflation, measured</p>'
-    + '<div class="tbl-scroll"><table class="tbl num"><thead><tr><th>Added to the works</th>'
-    + '<th class="r">Works</th><th class="r">Levered IRR</th><th class="r">Effect</th></tr></thead><tbody>'
-    + '<tr class="subject"><td>Nothing — the budget as it stands</td><td class="r">'
+
+  /* Six of these are a sentence each. A three-column table gave the prose a
+     130-character measure beside a column of dashes; as statements they read
+     at a measure, and the size sits with the name it belongs to. */
+  const outside = CAPEX.excluded.map(e =>
+    '<div class="xrow"><span class="t">' + e.item + '</span><span class="s'
+    + (e.amount ? "" : " none") + '">' + (e.amount || "not sized")
+    + '</span><p class="b">' + e.note + "</p></div>").join("");
+
+  const inflation = '<div class="tbl-scroll"><table class="tbl num">'
+    + '<thead><tr><th>Added to the works</th><th class="r">Works</th>'
+    + '<th class="r">Levered IRR</th><th class="r">Effect</th></tr></thead><tbody>'
+    + '<tr class="subject"><td>Nothing \u2014 the budget as it stands</td><td class="r">'
     + CX.m1(CAPEX.summary.hotel.total) + '</td><td class="r"><span class="emph">'
-    + CX.irr(CAPEX.reduction.adopted.irr) + '</span></td><td class="r">—</td></tr>'
-    + [["£8m", "infl_8m"], ["£12m", "infl_12m"]].map(([l, k]) =>
+    + CX.irr(CAPEX.reduction.adopted.irr) + '</span></td><td class="r">\u2014</td></tr>'
+    + [["\u00a38m", "infl_8m"], ["\u00a312m", "infl_12m"]].map(([l, k]) =>
         "<tr><td>" + l + " across the hotel lines</td><td class='r'>" + CX.m1(I[k].capex)
         + '</td><td class="r">' + CX.irr(I[k].irr) + '</td><td class="r">' + CX.pp(I[k].d_pp)
         + "pp</td></tr>").join("")
-    + '<tr class="note"><td colspan="4">Applied pro rata to every hotel line and measured on the '
-    + "model, so it carries through the debt, the interest and the equity as a real cost would. The "
-    + "band is the register's own: the tender price index was running at 3.2% a year in June 2026 "
-    + "and the programme is fourteen quarters.</td></tr></tbody></table></div></div>"
-    + '<div><p class="pane-h">What would most change the answer</p>'
-    + '<div class="bullets" style="margin-top:14px">'
-    + "<div><b>A measured survey</b><span class='ag-note'>Every quantity here is approximate, and the "
-    + "Main House alone varies by a factor of two across four documents in the room.</span></div>"
-    + "<div><b>23/07589/FUL</b><span class='ag-note'>It settles whether the 43 courtyard guest rooms "
-    + "need a fresh application, what conditions attach, and whether there is a section 106 "
-    + "obligation at all.</span></div>"
-    + "<div><b>A ground investigation and a levels survey</b><span class='ag-note'>Flood Zone 3, "
-    + "medium-high groundwater vulnerability, and the below-ground work priced off nothing.</span></div>"
-    + "<div><b>A distribution network operator capacity statement and a foul strategy</b>"
-    + "<span class='ag-note'>The power and drainage lines rest on Align's own hypothesis and a 2021 "
-    + "sentence saying nothing will change.</span></div>"
-    + "<div><b>A quantity surveyor's cost plan</b><span class='ag-note'>This budget exists because "
-    + "there is no forward cost plan in the room. It is a first-principles estimate by a "
-    + "non-surveyor, built to be argued with rather than relied on.</span></div>"
-    + "</div></div></div>";
+    + "</tbody></table></div>";
+
+  const asks = [
+    ["A measured survey",
+     "Every quantity here is approximate, and the Main House alone varies by a factor of two across four documents in the room."],
+    ["23/07589/FUL",
+     "It settles whether the 43 courtyard guest rooms need a fresh application, what conditions attach, and whether there is a section 106 obligation at all."],
+    ["A ground investigation and a levels survey",
+     "Flood Zone 3, medium-high groundwater vulnerability, and the below-ground work priced off nothing."],
+    ["A distribution network operator capacity statement and a foul strategy",
+     "The power and drainage lines rest on Align's own hypothesis and a 2021 sentence saying nothing will change."],
+    ["A quantity surveyor's cost plan",
+     "This budget exists because there is no forward cost plan in the room. It is a first-principles estimate by a non-surveyor, built to be argued with rather than relied on."],
+  ].map(([t, b]) => '<div class="i"><b>' + t + "</b><span>" + b + "</span></div>").join("");
+
+  return '<section class="blk"><h2 class="blk-h">Outside the budget'
+    + '<span class="n">none of it is in the ' + CX.m1(CAPEX.summary.works_total)
+    + '; each one is additive</span></h2><div class="xlist">' + outside + "</div></section>"
+    + '<section class="blk"><h2 class="blk-h">Tender inflation, measured'
+    + '<span class="n">the largest of them, priced through the model</span></h2>'
+    + '<div class="duo" style="--duo:minmax(0,54fr) minmax(0,46fr)"><div>' + inflation + "</div>"
+    + '<div><p class="blk-s">Applied pro rata to every hotel line and measured on the model, so it '
+    + "carries through the debt, the interest and the equity as a real cost would. The band is the "
+    + "register's own: the tender price index was running at 3.2% a year in June 2026 and the "
+    + "programme is fourteen quarters.</p></div></div></section>"
+    + '<section class="blk"><h2 class="blk-h">What would most change the answer'
+    + '<span class="n">five documents, none of them in the data room</span></h2>'
+    + '<div class="wlist">' + asks + "</div></section>";
 }
 </script>
 <script>
@@ -4978,7 +5103,7 @@ document.addEventListener("click", e => {
     }
     if (hit.dataset.cxlineGo) {
       const n = hit.dataset.cxlineGo;
-      CXSTATE.limb = null; CXSTATE.zone = null; CXSTATE.q = "";
+      CXSTATE.limb = null; CXSTATE.zone = null; CXSTATE.sort = null; CXSTATE.q = "";
       CXSTATE.showOff = true;
       CXSTATE.open[n] = true; pendingCx = n;
     }
@@ -5028,13 +5153,17 @@ document.addEventListener("click", e => {
   if (sc) { QSTATE.section = sc.dataset.qsec || null; rerenderQs(); return; }
   if (t.closest("#qclear")) { QSTATE.status = null; QSTATE.section = null; QSTATE.q = ""; rerenderQs(); return; }
   /* the capital-cost schedule */
+  if (t.closest("[data-cxsort]")) {
+    CXSTATE.sort = CXSTATE.sort === null ? "desc" : CXSTATE.sort === "desc" ? "asc" : null;
+    rerenderCx(); return;
+  }
   const cxl = t.closest("[data-cxlimb]");
   if (cxl) { CXSTATE.limb = cxl.dataset.cxlimb || null; rerenderCx(); return; }
   const cxz = t.closest("[data-cxzone]");
   if (cxz) { CXSTATE.zone = cxz.dataset.cxzone || null; rerenderCx(); return; }
   if (t.closest("[data-cxoff]")) { CXSTATE.showOff = !CXSTATE.showOff; rerenderCx(); return; }
   if (t.closest("#cxclear")) {
-    CXSTATE.limb = null; CXSTATE.zone = null;
+    CXSTATE.limb = null; CXSTATE.zone = null; CXSTATE.sort = null;
     CXSTATE.showOff = false; CXSTATE.q = ""; rerenderCx(); return;
   }
   const cxh = t.closest(".cxl-h");

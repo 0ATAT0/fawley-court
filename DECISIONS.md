@@ -130,6 +130,38 @@ split — £1.46m a key on the seven buildings against £0.75m a key on the esta
 around them — was the chapter's own finding and no longer appears anywhere on the
 portal. It is in `Model/capex/REGISTER.md` and the deal record.
 
+## The reading path (19 August 2026, second pass)
+
+Angus's diagnosis: the eye scatters, section titles get lost, and the site sits
+too far toward the printed memorandum on the website-to-PDF spectrum. Three
+habits were doing it, and all three are print habits:
+
+1. **Section headings were 11px uppercase captions** — smaller than the text they
+   governed, so they read as labels on a page rather than as structure on a
+   screen. They are now real headings at h2 scale in sentence case, with a rule
+   under them, generous space above and tight space below, so a heading binds to
+   its own content instead of floating between two blocks. The chapter index's
+   "In this chapter" got the same treatment site-wide.
+2. **Prose was forced into table cells.** On "What Is Not In It" that gave six
+   paragraphs a 130-character measure beside a column of em dashes. They are now
+   statements: the name on the left, the prose at a measure in the middle, the
+   size on the right — a definition list that uses the canvas.
+3. **Spacing was uniform, so nothing grouped, and figures repeated at equal
+   weight, so the eye kept re-checking which one was the statement.** Sections
+   are now separated by 42–78px and bound to their content by 15–22px. On The
+   Budget, each total belongs to its own column label rather than being restated
+   under the bar it describes, and the headline strip no longer repeats the two
+   figures the bars carry immediately below it.
+
+Also in this pass, on Angus's list: the works budget gained a column header with
+a sort on the amount (which dissolves the zone grouping, because a list cannot
+be in two orders at once, so each line carries its zone in its own meta line);
+the cost matrix's eight element columns are exactly equal and its headers wrap;
+the residential basis sentences run at reading size with room to breathe.
+
+This treatment is applied to chapter 05 only. The rest of the portal still uses
+the old micro-label, and is ready to follow on a word.
+
 ## The architecture ruling (19 August 2026)
 
 The core portal stays one HTML file. Advanced bolt-ons — a European market
@@ -142,7 +174,7 @@ surface that should cost nothing until it is asked for.
 
 ## The gates that hold this
 
-- `verify.mjs` — 5,440 checks, 0 failures. Adds section F: the shipped P&L pack
+- `verify.mjs` — 5,442 checks, 0 failures. Adds section F: the shipped P&L pack
   must equal `Research/comp-pnls/web-data.json` leaf for leaf; every printed
   P&L figure (1,741 of them) must equal this file's own independent formatting
   of that source; every candour line must be verbatim in `REGISTER.md`. It also
