@@ -201,7 +201,7 @@ const OWN_PROSE = new Set([
 ]);
 
 const KPI_CAPTIONS = new Set(["Levered IRR at the ruled price", "Equity multiple", "Peak equity",
-  "Agent guidance, understood", "Levered profit", "Hotel works, all in", "A key, against a £2.0m ceiling",
+  "Agent guidance, understood", "Levered profit", "Hotel works, all in", "A key",
   "The twelve residences", "Of it set as an allowance", "off the cost of works",
   "of levered return, measured"]);
 
@@ -361,13 +361,14 @@ for (const ch of mod.CHAPTERS) {
    them must already be registered somewhere. */
 const NAV_OK = new Set(["10", "11", "13", "16", "12", "8", "6", "7", "5", "4", "39", "87", "26",
   "1", "2", "3", "9", "19", "100", "0.80", "1.05", "1.25", "0.90", "33.96%", "1.84x", "12.99%",
-  "146", "14", "£8–12m", "£1.46m", "43.3%", "£23.7m", "3.79", "£2.06m", "£3.70m", "£123.6m",
+  "146", "14", "£8–12m", "43.3%", "£2.06m", "£3.70m", "£123.6m",
   "£44.4m", "£168.0m", "£194.2m", "£248.0m", "£45.33m", "£4.13m", "£49.97m", "£109.8m",
-  "−34.31%", "+12.99%", "+47.31pp", "9.07", "(9.07)%", "7.5pp", "12m", "£2.0m"]);
+  "−34.31%", "+12.99%", "+47.31pp", "9.07", "(9.07)%", "7.5pp", "12m"]);
 const navToken = (label, s) => {
   for (const t of tok(s)) {
     checked++;
-    if (!FIG_VALUES.has(t) && !EXTRA_OK.has(t) && !NAV_OK.has(t) && !deckText.includes(t) && !bridgeText.includes(t))
+    if (!FIG_VALUES.has(t) && !EXTRA_OK.has(t) && !NAV_OK.has(t) && !CAPEX_VALUES.has(t)
+        && !deckText.includes(t) && !bridgeText.includes(t))
       fail("NAVIGATION FIGURE UNREGISTERED  " + label, `token "${t}" in "${norm(s)}"`);
   }
 };

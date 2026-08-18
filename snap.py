@@ -25,7 +25,7 @@ CHAPTERS = {
     "asset": ["", "photography", "title", "planning", "scheme", "counterparty"],
     "evidence": ["", "layers", "cohort-rate", "uk-rate", "seasonality", "cohort-ops", "uk-ops", "capex", "pnl"],
     "underwrite": ["", "dial-set", "engines", "margin", "capital", "profile", "residences", "residences-evidence"],
-    "capital": ["", "schedule", "zones", "evidence", "reduction", "phasing", "residences", "excluded"],
+    "capital": ["", "schedule", "zones", "phasing", "residences", "excluded"],
     "returns": ["", "cases", "sensitivities", "exit"],
     "bridge": [""],
     "dd": ["", "asks", "keys", "room", "gates", "closing"],

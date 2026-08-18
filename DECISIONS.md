@@ -85,19 +85,74 @@ Kept so a later revision knows what was deliberate.
    flag-failure branch live on older books that cannot be reproduced on v16;
    they are named in the note instead of being shown as if they were current.
 
+## The capital-cost chapter, cut back (19 August 2026)
+
+Angus's comments on the chapter, taken as given. What changed, and what it cost:
+
+1. **Two views were withdrawn** — "What It Rests On" (the evidence-class
+   analysis) and "How It Came Down" (the reduction chain). Their renderers and
+   everything only they used were deleted rather than hidden. The evidence class
+   still shows on every line of the works budget; the reduction record survives
+   in `Model/capex/PROPOSAL.md` and in the v16 measurement record.
+2. **The folded argument is gone from this chapter.** Every "reasoning & basis"
+   disclosure in chapter 05 was removed except the one under "What Is Not In It",
+   which Angus did not comment on. The chapter is now exhibits only. The
+   preliminary-and-subject-to-DD statement is carried by the page footer on every
+   view, so the standing Align rule still holds.
+3. **The word "limb" is gone from the chapter**, along with the "x is y, not z"
+   construction wherever it appeared here. The filter reads Everything / Hotel /
+   Residences and sits under the search box, which is now first.
+4. **"The Schedule" is "Works Budget"; "Spend Over the Programme" is
+   "Programme"; "The Residential Limb" is "Residential".**
+5. **The zone matrix was rebuilt.** It was a flat wide table; it now carries a
+   navy wash scaled across the whole matrix so magnitude reads off the cell, a
+   sticky zone column, section dividers, and a programme bar per zone in place of
+   the "Q5–14" text. The wash is composited to an opaque colour in the renderer
+   rather than left as an alpha, because `audit.py` reads
+   `getComputedStyle().backgroundColor` and cannot see through an alpha — it
+   scored charcoal-on-navy and failed. Opaque values keep the audit honest.
+6. **The programme leads its own view.** Sixteen zones against the quarters they
+   are built in, with the opening quarter and the first residential sale marked
+   across every row, over a four-figure milestone strip. The spend chart follows,
+   because when the money leaves is a consequence of the programme rather than the
+   subject. Both come from the same pack; the two dates come from the v16 record.
+7. **The residential budget table** gained its basis sentence under each line, a
+   magnitude rule on the cost column, and a constrained measure on the returns
+   table beside it. The four presentational trims were removed with the reduction
+   view; they remain named in `PROPOSAL.md` and in the v16 record.
+8. **`navToken` now accepts the capital-cost pack.** Navigation figures were
+   checked against the deck, the bridge and a hand-kept allowlist; they now also
+   validate against `capex-web-data.json`, and the entries the withdrawn views
+   needed were dropped from the allowlist rather than left to widen it.
+
+**What was lost, stated rather than buried:** the buildings-against-the-estate
+split — £1.46m a key on the seven buildings against £0.75m a key on the estate
+around them — was the chapter's own finding and no longer appears anywhere on the
+portal. It is in `Model/capex/REGISTER.md` and the deal record.
+
+## The architecture ruling (19 August 2026)
+
+The core portal stays one HTML file. Advanced bolt-ons — a European market
+walkthrough being the live case — get their own files, fetched when asked for and
+warmed into the offline cache after load, the way `sw.js` already treats the
+full-size photography. The reason is not total weight: the page is 205KB on the
+wire gzipped, which is fine. It is that code in `index.html` parses on every
+visit whether or not the reader opens the thing, and a walkthrough is the kind of
+surface that should cost nothing until it is asked for.
+
 ## The gates that hold this
 
-- `verify.mjs` — 5,552 checks, 0 failures. Adds section F: the shipped P&L pack
+- `verify.mjs` — 5,440 checks, 0 failures. Adds section F: the shipped P&L pack
   must equal `Research/comp-pnls/web-data.json` leaf for leaf; every printed
   P&L figure (1,741 of them) must equal this file's own independent formatting
   of that source; every candour line must be verbatim in `REGISTER.md`. It also
   now checks the portal's own navigation figures against the registers, that
   every view leads with an exhibit, that no route is duplicated, and that the
   withdrawn internal marking has not returned.
-- `audit.py` — 57 routes × 4 viewports with every disclosure forced open, plus
-  the finder, the register filters, the capital-cost schedule's filters, the
-  ladder, the ranking and the lightbox.
-- `offline.py` — service worker `fawley-court-v3`, sampled routes offline.
+- `audit.py` — 55 routes × 4 viewports with every disclosure forced open, plus
+  the finder, the register filters, the works budget's filters, the ladder, the
+  ranking and the lightbox.
+- `offline.py` — service worker `fawley-court-v4`, sampled routes offline.
 
 ## Known and deliberate
 

@@ -35,7 +35,7 @@ Align-branded. Strictly private and confidential.
 | 02 | The Asset | estate card (photo strip + key facts) · photography · title & ownership · planning & consents · the scheme · counterparty & the price question |
 | 03 | Evidence & Comparables | rate positioning + the ten-case grid · the two layers · cohort rate · UK rate · seasonality · cohort operations · UK operational evidence · conversion capex · **estimated P&Ls** |
 | 04 | The Underwrite | the sixteen dials · the dial set · revenue engines · the margin frame · capital & cost to open · drawdown & return profile · residences, adopted product · residences, sold evidence |
-| 05 | The Capital Cost | the build-up · **the 146-line schedule, filterable, every line with its basis** · buildings & the estate · what it rests on · how it came down · spend over the programme · the residential limb · what is not in it |
+| 05 | The Capital Cost | the build-up · **the 146-line works budget, filterable, every line with its basis** · buildings & the estate · **the programme, zone by zone, and what it spends** · residential · what is not in it |
 | 06 | Returns & the Entry Ladder | returns strip + the interactive ladder · the cases · single-lever sensitivities · exit yield & value per key |
 | 07 | The IRR Bridge | one view: the seven-lever walk, its table, and the reading and limits folded under it |
 | 08 | Diligence | the 87-question register · the 39-item ask list · tags, keys & counts · the underwrite against the data room · diligence gates · in closing |

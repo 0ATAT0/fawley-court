@@ -737,7 +737,7 @@ ol.read li::before {
 
 /* ─────────────────────────  the capital cost  ───────────────────────── */
 
-/* the build-up: one stacked bar a limb, every band directly labelled */
+/* the build-up: one stacked bar a side, every band directly labelled */
 .cxbar-wrap { margin-top: 14px; }
 .cxbar { display: flex; height: 46px; gap: 2px; background: var(--paper); }
 .cxbar span { position: relative; display: flex; align-items: center; justify-content: center; min-width: 0; font-size: var(--fs-micro); font-variant-numeric: tabular-nums; overflow: hidden; }
@@ -761,10 +761,6 @@ ol.read li::before {
 .cx-measured { background: var(--accent); }
 .cx-benchmark { background: var(--chart-2); }
 .cx-allowance { background: var(--chart-3); }
-.cxclassbar span { color: #fff; }
-.cxclassbar .cx-allowance { color: var(--ink); }
-.qbar-key .cx-measured, .qbar-key .cx-benchmark, .qbar-key .cx-allowance { width: 11px; height: 11px; }
-.ft i.cx-measured, .ft i.cx-benchmark, .ft i.cx-allowance { width: 9px; height: 9px; }
 
 /* the schedule: one line a row, its basis behind it */
 .cxl { border-bottom: 1px solid var(--line); }
@@ -798,30 +794,81 @@ ol.read li::before {
   .cxl-b .inner { padding-left: 0; }
 }
 
-/* the buildings against the estate, and the class mix zone by zone */
-.cxsplit { margin-top: 14px; }
-.cxsplit-row { display: grid; grid-template-columns: minmax(120px, 1.1fr) minmax(0, 2fr) auto auto; gap: 0 14px; align-items: center; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: var(--fs-sm); }
-.cxsplit-row .l { line-height: 1.35; }
-.cxsplit-row .t { height: 16px; background: var(--surface-2); }
-.cxsplit-row .b { display: block; height: 100%; }
-.cxsplit-row .b.a { background: var(--accent); }
-.cxsplit-row .b.b { background: var(--chart-3); }
-.cxsplit-row .v { font-variant-numeric: tabular-nums; font-weight: 700; }
-.cxsplit-row .k { font-size: var(--fs-cap); color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
-@media (max-width: 560px) {
-  .cxsplit-row { grid-template-columns: 1fr auto; row-gap: 6px; }
-  .cxsplit-row .t { grid-column: 1 / -1; }
+/* the cost matrix: magnitude reads off the cell, the zone column stays put */
+.cxmx { min-width: 900px; }
+.cxmx td, .cxmx th { padding: 8px 12px 8px 0; }
+.cxmx td.r, .cxmx th.r { padding-left: 11px; border-right: 1px solid var(--paper); }
+.cxmx td.tot, .cxmx th:nth-last-child(2) { padding-right: 22px; border-right: 0; }
+.cxmx thead th { white-space: nowrap; }
+.cxmx td:first-child, .cxmx th:first-child {
+  position: sticky; left: 0; z-index: 1; background: var(--paper);
+  padding-right: 18px; min-width: 168px; box-shadow: 1px 0 0 var(--line);
 }
-.cxzclass { margin-top: 14px; }
-.cxzc-row { display: grid; grid-template-columns: minmax(110px, 1fr) minmax(0, 1.6fr) auto; gap: 0 14px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: var(--fs-sm); }
-.cxzc-row .t { display: flex; height: 14px; gap: 1px; background: var(--surface-2); }
-.cxzc-row .t span { display: block; min-width: 0; }
-.cxzc-row .v { font-variant-numeric: tabular-nums; }
+.cxmx tr.divider td:first-child { background: var(--surface-3); }
+.cxmx tr.total td { background: var(--paper); }
+.cxmx tr.divider td { box-shadow: none; }
+.cxmx td.nil { color: var(--line-mid); }
+.cxmx td.tot { white-space: nowrap; }
+.cxres td.tot .trule {
+  display: block; height: 2px; margin: 5px 0 0 auto; background: var(--accent); opacity: .5;
+}
+.cxmx td.win { padding-right: 0; min-width: 104px; }
+.wbar { position: relative; display: block; height: 6px; background: var(--surface-2); }
+.wbar i { position: absolute; top: 0; bottom: 0; display: block; }
+.wbar i.h { background: var(--accent); }
+.wbar i.r { background: var(--chart-3); }
+.wl { display: block; margin-top: 5px; font-size: var(--fs-micro); color: var(--muted); font-variant-numeric: tabular-nums; }
 
 /* the quarterly spend */
 .cxphase { margin-top: 6px; }
 .chart-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; overscroll-behavior-inline: contain; }
 .cxsvg { display: block; width: 100%; min-width: 620px; height: auto; }
+
+/* the programme: one row a zone, the two dates marked across every one of them */
+.gantt { margin-top: 14px; border-top: 1px solid var(--line-strong); }
+.grow {
+  display: grid; grid-template-columns: minmax(126px, 1.05fr) minmax(0, 3fr) auto;
+  gap: 0 16px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line);
+  font-size: var(--fs-sm);
+}
+.grow .l { line-height: 1.32; }
+.grow .t { position: relative; height: 15px; background: var(--surface-2); }
+.grow .v { font-variant-numeric: tabular-nums; color: var(--muted); white-space: nowrap; }
+.gb { position: absolute; top: 0; bottom: 0; z-index: 1; display: block; min-width: 3px; }
+.gb.h { background: var(--accent); }
+.gb.r { background: var(--chart-3); }
+.gm { position: absolute; top: -3px; bottom: -3px; z-index: 2; width: 1.5px; display: block; }
+.gm.open { background: var(--neg); }
+.gm.sale { background: var(--muted-2); }
+.gantt .gax { border-bottom: 1px solid var(--line); padding-bottom: 5px; }
+.gantt .gax .l, .gantt .gax .v {
+  font-size: var(--fs-micro); letter-spacing: .11em; text-transform: uppercase; color: var(--muted-2);
+}
+.gantt .gax .t { background: none; height: 14px; }
+.gantt .gax b {
+  position: absolute; top: 0; font-size: var(--fs-micro); font-weight: 400; color: var(--muted-2);
+  transform: translateX(-50%); font-variant-numeric: tabular-nums;
+}
+.gkey { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: var(--fs-cap); padding-top: 12px; }
+.gkey span { display: inline-flex; align-items: center; gap: 7px; }
+.gkey i.sw { width: 18px; height: 8px; flex: none; }
+.gkey i.sw.h { background: var(--accent); }
+.gkey i.sw.r { background: var(--chart-3); }
+.gkey i.sw.mo { width: 2px; height: 14px; background: var(--neg); }
+.gkey i.sw.ms { width: 2px; height: 14px; background: var(--muted-2); }
+@media (max-width: 620px) {
+  .grow { grid-template-columns: 1fr auto; row-gap: 5px; }
+  .grow .t { grid-column: 1 / -1; order: 3; }
+  .gantt .gax .t { order: 3; }
+}
+
+/* the residential budget: the basis under the line, the cost weighted */
+.cxres { min-width: 560px; }
+.cxres td:first-child { max-width: 42ch; }
+.cxres .ag-note { font-style: normal; margin-top: 4px; }
+.cxres td.tot { white-space: nowrap; }
+.cxres .u { color: var(--muted); font-size: var(--fs-cap); }
+.filters.bare { margin-top: 4px; }
 
 /* ─────────────────────────  the case index + case pages  ───────────────────────── */
 
@@ -1364,7 +1411,7 @@ const PNL = {"generated":"2026-08-16","fx":{"pair":"EUR/GBP","rate":0.8575,"basi
 
 /* The capital-cost pack — Model/capex/capex-web-data.json, whole and unaltered:
    the 146-line schedule with its basis text, the zone by element matrix, the
-   source-class analysis, the quarterly spend, the reduction chain and the
+   source-class analysis, the quarterly spend and the
    measured effect of every ruled group. Spliced by tools/inline-capex.py;
    verify.mjs checks it leaf for leaf against the source. */
 /* The v16 figure record — Model/docs/v16-figures.json, whole and unaltered:
@@ -1863,95 +1910,49 @@ const CHAPTERS = [
 },
 {
   id: "capital", num: "05", eyebrow: "Capital cost", title: "The Capital Cost",
-  blurb: "The 146-line budget behind the works: what it buys, what it rests on, how it spends, and how it came down.",
+  blurb: "The ground-up budget behind £168.0m of works, priced line by line.",
+  noLede: true,
   figures: [["£123.6m", "Hotel works · £2.06m a key"], ["£44.4m", "Residences · £3.70m a unit"]],
   views: [
   { id: "", title: "The Budget", kicker: "Capital cost",
     figure: "£168.0m of works", blurb: "What the scheme costs to build, and how the total is made up.",
     lead: [
-      ["kpis", [["£123.6m", "Hotel works, all in"], ["£2.06m", "A key, against a £2.0m ceiling"],
+      ["kpis", [["£123.6m", "Hotel works, all in"], ["£2.06m", "A key"],
                 ["£44.4m", "The twelve residences"], ["43.3%", "Of it set as an allowance", "q"]]],
       ["capexstack"],
     ],
-    reason: [
-      ["para", "This is a ground-up budget, not a rate a key. It was built line by line after the site inspection of 17 August 2026, because the model had carried a five-input lump since before diligence began and the data room holds no cost plan. Each of the 146 lines names a quantity, a rate and the document or published set behind it; the three loading rows — preliminaries, professional fees and contingency — are input cells applied across the whole schedule rather than judgments taken line by line."],
-      ["para", "It is the construction number and nothing else. Finance, the pre-opening trading shortfall and the acquisition itself sit above it in the cost to open, which is the figure that compares with a third party's all-in cost claim: <b>£194.2m</b>, or £3.24m a key."],
-      ["src", "Source: the Capex tab of Align's Financial Model v16, read at its saved state of 17 August 2026; the evidence behind every line is the capital-cost register built the same day. Preliminary and subject to confirmatory due diligence: there is no forward cost plan, no measured survey, no ground investigation and no services survey anywhere in the data room, and no quantity surveyor has seen this budget."],
-    ] },
-  { id: "schedule", title: "The Schedule", kicker: "Schedule",
+    reason: [] },
+  { id: "schedule", title: "Works Budget", kicker: "Works budget",
     figure: "146 lines", blurb: "Every line, with its quantity, its rate and the sentence behind it.",
     lead: [
       ["capexsched"],
     ],
-    reason: [
-      ["para", "Filter by limb, by zone or by evidence class, search the basis text, and open any line to read what the quantity and the rate rest on. Switched-off lines are hidden until asked for: they are scope the budget priced and the underwrite then declined, and they stay in the schedule so the decision is visible rather than absent."],
-      ["para", "<b>Net</b> is the line at this limb's share, before loading. A line the hotel and the houses both use is priced once, and its share is stated on its face: the hotel carries its percentage and the residential limb carries the rest. Nothing is priced twice and nothing falls between the two."],
-      ["src", "Source: the Capex tab of Financial Model v16, line for line. The basis sentence on each line is the register's own wording. Quantities marked as assumptions are the estimator's, not the room's, and the evidence class on every line says which is which."],
-    ] },
+    reason: [] },
   { id: "zones", title: "Buildings &amp; the Estate", kicker: "Composition",
-    figure: "£1.46m a key on the buildings", blurb: "Where the money sits, building by building and element by element.",
+    figure: "£88.1m net across the zones", blurb: "Where the money sits, building by building and element by element.",
     lead: [
       ["capexzones"],
     ],
-    reason: [
-      ["para", "The composition is the finding. Converting the buildings to a 60-key hotel costs less a key than the ceiling the underwrite ruled; what carries the budget past it is the estate around them — no mains sewer, no evidenced grid capacity, parking consented at eleven spaces, about 650 metres of river bank, a registered park on the Heritage at Risk register, and a planning and statutory programme with no application in the room to price it against."],
-      ["para", "That split also says where the risk lies. The buildings are described by an area schedule and a condition survey; the estate is described by nothing, which is why almost all of its cost is an allowance rather than a measurement."],
-      ["src", "Source: the Capex tab of Financial Model v16. Zone totals are net construction at each limb's share; the per-key figures apply the schedule's own loading to those totals across 60 keys. The elements are the model's own eight columns."],
-    ] },
-  { id: "evidence", title: "What It Rests On", kicker: "Evidence",
-    figure: "43.3% is an allowance", blurb: "The evidence class of every pound, the largest allowances, and the rates behind the schedule.",
-    lead: [
-      ["capexclass"],
-    ],
-    reason: [
-      ["exhibit", { h: "The rate sources", b: [["tbl", { cls: "num wide", head: ["Source", "What it gives", "Date and basis"], rows: [
-        [null, ["Greenway Associates, Historic Cost Estimate", "The only rate set in the data room: elemental costs a square metre across the Main House, with preliminaries at 20% and fees at 12%", "Q2 2026 rates, 20 May 2026. A retrospective estimate of works already reflected in the building, not an invoice record; it excludes risk, contingency, inflation, planning and every building other than the Main House"]],
-        [null, ["costmodelling.com UK building costs", "Composite costs a square metre, preliminaries included: luxury hotel, health and fitness, pools, one-off houses", "Released 1 July 2026, index 233, UK national average. A South East factor of 1.10 and a heritage detailing premium of 1.12 are applied on top and stated on each line"]],
-        [null, ["JSA Design &amp; Access Statement", "Condition, building by building — the only condition record in the room", "April 2021. It covers the courtyard group only, and describes a scheme of staff flats and 15 guest rooms rather than 43"]],
-        [null, ["EPR Proposed Area Schedule", "The quantity spine: 77 rows of area by space", "Revision B, 10 July 2025. Its own note calls the areas approximate, from a design-stage model"]],
-        [null, ["Buckinghamshire Council CIL rates", "£0 a square metre on the hotel; £261.83 on residential in Zone B", "2025 rate summary, 2012 base indexed"]],
-        [null, ["Public 2026 cost guidance", "Comfort cooling, hotel fit-out and furniture, package treatment plants, substation connections, river revetment, off-site biodiversity units", "Cited line by line, each with its own date"]],
-        [null, ["The Align transaction database", "Nothing usable. 2,343 capital-cost records across 14 deals, every one operational or maintenance capital expenditure", "There is no development or conversion benchmark set for this asset class, which is stated rather than papered over"]],
-      ] }]] }],
-      ["para", "<b>The assumptions that are the estimator's, not the room's</b>, each stated on its line: the 20/23 split of courtyard keys, which comes from Align's own annotation rather than a vendor document; a 25% circulation gross-up on both courtyards, because the schedule counts guest-room area only; the 45/55 split between converting retained fabric and building new in the South Courtyard; the elemental split of composite rates into shell, services and fit-out; the pool house at 480 square metres and the gym at 240, both sized from prose; 24 hectares of parkland; 22 biodiversity units against a metric that has never been run; and Zone B for the residential levy, where Zone A would be £267,000 less."],
-      ["src", "Source: the capital-cost register, section by section, and the documents it cites in the data room. Shares are of net construction on the lines that are switched on, recomputed from the schedule as it now stands rather than carried from the register's first print."],
-    ] },
-  { id: "reduction", title: "How It Came Down", kicker: "Reduction",
-    figure: "£23.7m and 3.79 points", blurb: "The budget as first built, every change made to it, and what each was worth.",
-    lead: [
-      ["capexreduction"],
-    ],
-    reason: [
-      ["para", "The first budget was ruled too expensive to underwrite at £2.70m a key all in. The reduction that followed was made line by line against the data room, and it separated genuine scope from prudence: allowances went to a best estimate, composite rates to the bottom of their published band, four buildings and a structure came out of the scheme, and four items moved into the programme's tail without losing any scope at all."],
-      ["para", "<b>Four of the changes are presentational and are named as such.</b> The residential shell rate, the curtilage percentage, the fit-out a unit and the residential contingency were trimmed toward a ruled cost target rather than against evidence. Together they are worth over a point of levered return, they are flagged for diligence, and they are the first place a quantity surveyor's cost plan will push back."],
-      ["src", "Source: measured on scratch copies of Financial Model v16 on 18 August 2026 — the as-imported schedule replayed line for line, then each ruled group restored on its own with the levered return read back through the model. The rationale for each group is the reduction proposal's own, recorded on 17 August 2026 when the trims were ruled and applied. Nothing was saved to the model; the deployed workbook was never opened for write."],
-    ] },
-  { id: "phasing", title: "Spend Over the Programme", kicker: "Phasing",
-    figure: "14 quarters", blurb: "When the money goes out, and what that does to the funding.",
+    reason: [] },
+  { id: "phasing", title: "Programme", kicker: "Programme",
+    figure: "opens in quarter 14", blurb: "When each part of the estate is built, when the hotel opens, and when the money goes out.",
     lead: [
       ["capexphase"],
     ],
-    reason: [
-      ["para", "Each line spends evenly across its own window, so the shape of the curve is the schedule's own start and duration dates rather than a profile applied to a lump. That matters at one point in particular: the courtyard opens twelve keys in year three, which requires the South Courtyard, the Riding School restaurant and the preparation kitchen to be finished ahead of the Main House — and the money has to be spent in that order for the opening to be real."],
-      ["para", "Phasing moves the funding, not the return. Deferring the four estate lines into the tail is worth a fraction of a point of levered return and rather more in peak equity, because equity is drawn against a programme that is 55% debt-funded and the deferred spend arrives after the first distributions rather than before them."],
-      ["src", "Source: the quarterly cost schedule on the Capex tab of Financial Model v16, which is the vector the cash flow draws against. Quarter 0 is the September 2026 completion quarter; the opening quarter is the model's own programme input."],
-    ] },
-  { id: "residences", title: "The Residential Limb", kicker: "Residences",
+    reason: [] },
+  { id: "residences", title: "Residential", kicker: "Residences",
     figure: "£3.70m a unit", blurb: "What the twelve houses cost to build, what they carry of the estate, and what they return.",
     lead: [
       ["capexresi"],
     ],
-    reason: [
-      ["para", "The residential limb pays for itself and for its share of the estate. Its own build is priced on a repeat-design housebuilding basis rather than the heritage estate's, which is why its loading rates are lower than the hotel's; its plot infrastructure, its levy and its share of the systems both limbs use are charged to it in full. On the earlier basis, where that share sat in the hotel's number or in neither, the limb looked better than it is."],
-      ["src", "Source: the Capex tab and the residential assumptions of Financial Model v16. The product is the vendor's own — Savills for Cherrilow, 9 October 2025 — and the sale price, absorption and escalation dials sit with the underwrite. Tenure is unresolved: the adviser's report assumes 999-year long leaseholds where the underwrite was ruled on freeholds, which is a structuring item for diligence."],
-    ] },
+    reason: [] },
   { id: "excluded", title: "What Is Not In It", kicker: "Exclusions",
     figure: "VAT and £8–12m of inflation", blurb: "Everything the budget leaves out, why, and what the largest omission is worth.",
     lead: [
       ["capexexcluded"],
     ],
     reason: [
-      ["para", "Two of these are large enough to change the answer. Tender inflation is measured beside, and it is the clearest case for pricing escalation into the model rather than trusting the contingency to absorb it. Value added tax is not a claim that a fifth of the budget is lost — existing-building works are generally standard-rated and recovery depends on the structure and on partial exemption — but nothing in the model carries it, and any part that proves irrecoverable is additive."],
+      ["para", "Two of these are large enough to change the answer. Tender inflation is measured beside, and it makes the clearest case for pricing escalation into the model, because the contingency is already committed against a budget with no cost plan behind it. Value added tax needs care before it is read as a fifth of the budget lost: existing-building works are generally standard-rated, and recovery depends on the structure and on partial exemption. Nothing in the model carries it, and any part that proves irrecoverable is additive."],
       ["src", "Source: the capital-cost register's own exclusions, with the inflation band measured on scratch copies of Financial Model v16 on 18 August 2026 by applying the sum pro rata across the hotel lines and reading the levered return back through the model."],
     ] },
   ]
@@ -3389,9 +3390,7 @@ function blockHTML(b) {
   if (k === "capexstack") return capexStackHTML();
   if (k === "capexsched") return capexSchedHTML();
   if (k === "capexzones") return capexZonesHTML();
-  if (k === "capexclass") return capexClassHTML();
   if (k === "capexphase") return capexPhaseHTML();
-  if (k === "capexreduction") return capexReductionHTML();
   if (k === "capexresi") return capexResiHTML();
   if (k === "capexexcluded") return capexExcludedHTML();
   if (k === "contact") return contactHTML();
@@ -3884,28 +3883,17 @@ const CX_CLASSES = ["MEASURED", "BENCHMARK", "ALLOWANCE"];
 const CX_CLASS_LABEL = {
   MEASURED: "Measured", BENCHMARK: "Benchmark", ALLOWANCE: "Allowance",
 };
-/* the reduction chart has room for two words a bar; the table beside it and
-   the bar's own tooltip carry the full name */
-const CX_SHORT = {
-  composites: ["Composite", "rates"], ballroom: ["Ballroom", "off"],
-  mezzanine: ["Mezzanine", "off"], floating_restaurant: ["Floating", "restaurant off"],
-  gatehouses: ["Gatehouses", "off"], infrastructure: ["Infrastructure", "re-based"],
-  allowances: ["Allowances", "re-based"], resi_overlap: ["Plot overlap", "halved"],
-  deferrals: ["Deferrals", "dates only"], resi_presentational: ["Residential", "trims"],
-};
 const CX_CLASS_NOTE = {
   MEASURED: "a quantity taken from a document in the room, at a rate from the room or a named published set",
   BENCHMARK: "a published rate applied to a quantity the room supports",
   ALLOWANCE: "a sum set because nothing in the room prices it",
 };
 const CX_NET_ON = CX_ON.reduce((a, l) => a + l.live, 0);
-const CX_CLASS_TOTAL = Object.fromEntries(CX_CLASSES.map(c =>
-  [c, CX_ON.filter(l => l.source === c).reduce((a, l) => a + l.live, 0)]));
 
 /* ─────────────  the build-up  ───────────── */
 
-/* One stacked bar per limb: net construction, then the three loading rows,
-   each directly labelled. The percentages are the model's own input cells. */
+/* One stacked bar for the hotel and one for the residences: net construction,
+   then the three loading rows, each directly labelled. */
 function cxStackBar(s, unitLabel, unitValue) {
   const parts = [
     ["Net construction", s.net, "a"],
@@ -3933,7 +3921,7 @@ function capexStackHTML() {
     + cxStackBar(S.resi, "=", CX.m2(S.resi.per_unit) + " a unit") + "</div></div>"
     + '<div class="tbl-scroll wide" style="margin-top:clamp(20px,2.6vw,30px)"><table class="tbl num">'
     + "<thead><tr><th>Build-up</th><th class='r'>Hotel</th><th class='r'>Residences</th>"
-    + "<th class='r'>Both limbs</th><th>What it is</th></tr></thead><tbody>"
+    + "<th class='r'>Both</th><th>What it is</th></tr></thead><tbody>"
     + [["Net construction", "net", "the 146 lines at quantity × rate, hotel share applied"],
        ["Contractor preliminaries and overheads", "prelims",
         "Greenway's own 20% rate, charged only on the lines flagged for it — the composite rates already include it"],
@@ -3950,23 +3938,17 @@ function capexStackHTML() {
     + '<tr><td>Per key · per unit</td><td class="r">' + CX.m2(S.hotel.per_key)
     + '</td><td class="r">' + CX.m2(S.resi.per_unit) + '</td><td class="r">—</td>'
     + "<td>60 keys and 12 houses</td></tr>"
-    + '<tr class="note"><td colspan="5">Loading rates are input cells, not derived: the hotel carries '
-    + CX.pct0(S.hotel.prelims_pct) + " preliminaries, " + CX.pct1(S.hotel.fees_pct) + " fees and "
-    + CX.pct0(S.hotel.cont_pct) + " contingency; the residences " + CX.pct0(S.resi.prelims_pct)
-    + ", " + CX.pct0(S.resi.fees_pct) + " and " + CX.pct0(S.resi.cont_pct)
-    + " on a repeat-design housebuilding basis.</td></tr>"
     + "</tbody></table></div>";
 }
 
 /* ─────────────  the schedule  ───────────── */
 
-const CXSTATE = { limb: null, zone: null, cls: null, showOff: false, q: "", open: {} };
+const CXSTATE = { limb: null, zone: null, showOff: false, q: "", open: {} };
 
 function cxMatch(l) {
   if (!CXSTATE.showOff && !l.on) return false;
   if (CXSTATE.limb && l.limb !== CXSTATE.limb) return false;
   if (CXSTATE.zone && l.zone !== CXSTATE.zone) return false;
-  if (CXSTATE.cls && l.source !== CXSTATE.cls) return false;
   if (CXSTATE.q) {
     const hay = (l.desc + " " + l.zone + " " + l.element + " " + l.unit + " " + l.basis).toLowerCase();
     if (!hay.includes(CXSTATE.q.toLowerCase())) return false;
@@ -3978,22 +3960,18 @@ const capexSchedHTML = () => '<div id="cxsched">' + cxSchedInner() + "</div>";
 
 function cxSchedInner() {
   const zoneCount = z => CAPEX.lines.filter(l => l.zone === z && (CXSTATE.showOff || l.on)).length;
-  let h = '<div class="filters"><span class="fl">Limb</span>'
-    + '<button class="ft" data-cxlimb="" aria-pressed="' + (!CXSTATE.limb) + '">Both<span class="c">'
+  let h = '<div class="filters bare"><div class="qsearch"><span class="gl" aria-hidden="true">⌕</span>'
+    + '<input id="cxsearch" type="search" placeholder="Search the works budget — sewage, substation, parkland, CIL" value="'
+    + esc(CXSTATE.q) + '" aria-label="Search the works budget"></div></div>';
+
+  h += '<div class="filters">'
+    + '<button class="ft" data-cxlimb="" aria-pressed="' + (!CXSTATE.limb) + '">Everything<span class="c">'
     + CAPEX.lines.length + "</span></button>"
     + [["hotel", "Hotel"], ["resi", "Residences"]].map(([k, l]) =>
         '<button class="ft" data-cxlimb="' + k + '" aria-pressed="' + (CXSTATE.limb === k) + '">' + l
         + '<span class="c">' + CAPEX.lines.filter(x => x.limb === k).length + "</span></button>").join("")
-    + '<span class="fl">Evidence</span>'
-    + '<button class="ft" data-cxcls="" aria-pressed="' + (!CXSTATE.cls) + '">Any</button>'
-    + CX_CLASSES.map(c => '<button class="ft" data-cxcls="' + c + '" aria-pressed="' + (CXSTATE.cls === c)
-        + '"><i class="cx-' + c.toLowerCase() + '"></i>' + CX_CLASS_LABEL[c] + '<span class="c">'
-        + CX_ON.filter(l => l.source === c).length + "</span></button>").join("")
     + '<button class="ft" data-cxoff="1" aria-pressed="' + CXSTATE.showOff + '">Show the '
-    + CX_OFF.length + " switched off</button>"
-    + '<div class="qsearch"><span class="gl" aria-hidden="true">⌕</span>'
-    + '<input id="cxsearch" type="search" placeholder="Search the schedule" value="' + esc(CXSTATE.q)
-    + '" aria-label="Search the capital-cost schedule"></div></div>';
+    + CX_OFF.length + " switched off</button></div>";
 
   h += '<div class="filters"><span class="fl">Zone</span>'
     + '<button class="ft" data-cxzone="" aria-pressed="' + (!CXSTATE.zone) + '">Every zone</button>'
@@ -4008,13 +3986,13 @@ function cxSchedInner() {
     + " lines · net construction <b>" + CX.m1(net) + "</b>"
     + (CXSTATE.showOff ? " · " + CX.m1(gross - net) + " priced and switched off" : "")
     + (net < CX_NET_ON - 1 ? " · " + CX.pct1(net / CX_NET_ON) + " of the schedule" : "")
-    + (CXSTATE.limb || CXSTATE.zone || CXSTATE.cls || CXSTATE.q || CXSTATE.showOff
+    + (CXSTATE.limb || CXSTATE.zone || CXSTATE.q || CXSTATE.showOff
         ? ' · <button id="cxclear" style="text-decoration:underline">clear the filters</button>' : "")
     + "</p>";
 
   if (!shown.length) {
-    h += '<p class="q-empty">No line matches those filters. <b>Clear the zone or the evidence class</b>'
-      + " to widen the schedule, or search a term the basis text uses — sewage, substation, mezzanine,"
+    h += '<p class="q-empty">No line matches those filters. <b>Clear the zone</b> to widen the'
+      + " budget, or search a term the basis text uses — sewage, substation, mezzanine,"
       + " parkland, riverbank, CIL.</p>";
     return h;
   }
@@ -4027,7 +4005,7 @@ function cxSchedInner() {
       const zl = shown.filter(x => x.zone === l.zone);
       const zn = zl.filter(x => x.on).reduce((a, x) => a + x.live, 0);
       h += '<div class="qsec"><div class="qsec-h"><h3 class="t">' + esc(l.zone) + "</h3>"
-        + '<span class="muted" style="font-size:var(--fs-cap)">' + (l.limb === "resi" ? "residential limb" : "hotel limb")
+        + '<span class="muted" style="font-size:var(--fs-cap)">' + (l.limb === "resi" ? "residential" : "hotel")
         + '</span><span class="c">' + zl.length + " lines · " + CX.m1(zn) + " net</span></div>";
     }
     const open = !!CXSTATE.open[l.n];
@@ -4048,7 +4026,7 @@ function cxSchedInner() {
       + '<table class="tbl num cxl-tbl"><tbody>'
       + "<tr><td>Quantity and rate</td><td class='r'>" + CX.qty(l.qty) + " " + esc(l.unit)
       + " × " + CX.m0(l.rate) + " = " + CX.m0(l.net) + "</td></tr>"
-      + "<tr><td>Share carried by this limb</td><td class='r'>"
+      + "<tr><td>Share carried</td><td class='r'>"
       + (l.limb === "resi" ? "residential, in full" : CX.pct0(l.hotel_pct) + " hotel")
       + " · " + CX.m0(l.live) + "</td></tr>"
       + "<tr><td>Spends</td><td class='r'>quarter " + l.start + " to " + l.end
@@ -4061,106 +4039,91 @@ function cxSchedInner() {
       + "</tbody></table></div></div></div></div>";
   }
   if (lastZone !== null) h += "</div>";
-  h += '<p class="src">Source: the Capex tab of Financial Model v16, read as it stands; the basis '
-    + "sentence on every line is the register's own. Net is the line's cost at this limb's share, "
-    + "before preliminaries, fees and contingency, which are charged as rows over the whole "
-    + "schedule. Where a rate has been ruled since its basis was written, the basis names the "
-    + "earlier figure and the rate column carries the live one.</p>";
   return h;
 }
 
 /* ─────────────  zones, and the buildings against the estate  ───────────── */
 
 function capexZonesHTML() {
-  const S = CAPEX.analysis.split, els = CAPEX.elements;
-  const zoneRow = z => {
-    const cells = els.map(e => z.elements[e]);
-    return "<tr><td>" + esc(z.label) + "</td>"
-      + cells.map(v => '<td class="r">' + (v ? CX.m1(v) : "—") + "</td>").join("")
-      + '<td class="r"><b>' + CX.m1(z.total) + "</b></td>"
-      + '<td class="r">Q' + z.start + "–" + z.end + "</td></tr>";
+  const els = CAPEX.elements;
+  const rows = [["h", CAPEX.zones_hotel], ["r", CAPEX.zones_resi]];
+  const all = [...CAPEX.zones_hotel, ...CAPEX.zones_resi];
+  const cellMax = Math.max(...all.map(z => Math.max(...els.map(e => z.elements[e] || 0))));
+  const rowMax = Math.max(...all.map(z => z.total));
+  const qEnd = Math.max(...all.map(z => z.end));
+
+  /* magnitude reads off the cell itself: a navy wash scaled across the whole
+     matrix, so a column can be read down and a row across without arithmetic.
+     The wash is composited here rather than left as an alpha, so the contrast
+     audit reads the colour the eye actually sees. */
+  const wash = a => "rgb(" + [252, 252, 251].map((c, i) =>
+    Math.round(c + ([30, 58, 95][i] - c) * a)).join(",") + ")";
+  const cell = v => v
+    ? '<td class="r" style="background:' + wash(0.05 + 0.21 * Math.pow(v / cellMax, 0.62))
+      + '">' + CX.m1(v) + "</td>"
+    : '<td class="r nil">\u2014</td>';
+
+  const win = (z, k) => {
+    const l = (z.start / qEnd * 100), w = Math.max(2.2, (z.end - z.start) / qEnd * 100);
+    return '<td class="win"><span class="wbar"><i class="' + k + '" style="left:' + l.toFixed(2)
+      + "%;width:" + w.toFixed(2) + '%"></i></span><span class="wl">Q' + z.start
+      + "\u2013" + z.end + "</span></td>";
   };
-  const colTotal = e => CAPEX.zones_hotel.reduce((a, z) => a + z.elements[e], 0);
-  const bar = (label, value, key, of) =>
-    '<div class="cxsplit-row"><span class="l">' + label + "</span>"
-    + '<span class="t"><span class="b ' + key + '" style="width:' + (value / of * 100).toFixed(1) + '%"></span></span>'
-    + '<span class="v">' + CX.m1(value) + "</span>"
-    + '<span class="k">' + CX.m2(value / 60) + " a key</span></div>";
-  const total = S.buildings_loaded + S.estate_loaded;
-  return '<div class="duo" style="--duo:minmax(0,50fr) minmax(0,50fr)">'
-    + '<div><p class="pane-h">The buildings against the estate</p>'
-    + '<div class="cxsplit">' + bar("The seven buildings", S.buildings_loaded, "a", total)
-    + bar("The estate around them", S.estate_loaded, "b", total) + "</div></div>"
-    + '<div><p class="pane-h">What the split says</p>'
-    + '<p class="para">The seven buildings — the Main House, both courtyards, the Riding School, '
-    + "the chapel and towers, the Concert Hall spa and the lodges — carry " + CX.m1(S.buildings_loaded)
-    + " of the hotel's " + CX.m1(S.buildings_loaded + S.estate_loaded) + ", which is "
-    + CX.m2(S.buildings_per_key) + " a key. The estate around them — infrastructure, the public realm, "
-    + "the river, supplies and the statutory programme — carries " + CX.m2(S.estate_per_key)
-    + " a key on top. The ceiling of £2.0m a key holds on the buildings and fails on the estate, "
-    + "and the estate is the part the room does not describe.</p></div></div>"
-    + '<div style="margin-top:clamp(22px,2.8vw,34px)"><p class="pane-h">Where the money sits</p>'
-    + '<div class="tbl-scroll wide"><table class="tbl num"><thead><tr><th>Zone</th>'
-    + els.map(e => '<th class="r">' + e.replace(" & ", " &amp; ") + "</th>").join("")
-    + '<th class="r">Total</th><th class="r">Window</th></tr></thead><tbody>'
-    + CAPEX.zones_hotel.map(zoneRow).join("")
-    + '<tr class="total"><td>Hotel, net of loading</td>'
-    + els.map(e => '<td class="r">' + (colTotal(e) ? CX.m1(colTotal(e)) : "—") + "</td>").join("")
-    + '<td class="r"><b>' + CX.m1(CAPEX.summary.hotel.net) + "</b></td><td></td></tr>"
-    + CAPEX.zones_resi.map(zoneRow).join("")
-    + '<tr class="total"><td>Residences, net of loading</td>'
-    + els.map(e => '<td class="r">' + (CAPEX.zones_resi.reduce((a, z) => a + z.elements[e], 0)
-        ? CX.m1(CAPEX.zones_resi.reduce((a, z) => a + z.elements[e], 0)) : "—") + "</td>").join("")
-    + '<td class="r"><b>' + CX.m1(CAPEX.summary.resi.net) + "</b></td><td></td></tr>"
-    + '<tr class="note"><td colspan="' + (els.length + 3) + '">Wide table — it scrolls. Figures are net construction at each '
-    + "limb's share, before preliminaries, fees and contingency. The window is the quarter the "
-    + "zone's first line starts and the quarter its last one ends; a zone can be interrupted "
-    + "inside it. The residential row for shared estate systems carries the share the houses take "
-    + "of lines the hotel also uses.</td></tr>"
-    + "</tbody></table></div></div>";
+
+  const zoneRow = (z, k) => "<tr><td>" + esc(z.label) + "</td>"
+    + els.map(e => cell(z.elements[e])).join("")
+    + '<td class="r tot" style="background:'
+    + wash(0.05 + 0.19 * Math.pow(z.total / rowMax, 0.62)) + '"><b>'
+    + CX.m1(z.total) + "</b></td>" + win(z, k);
+
+  const colTotal = (set, e) => set.reduce((a, z) => a + z.elements[e], 0);
+  const subtotal = (label, set, net) => '<tr class="total"><td>' + label + "</td>"
+    + els.map(e => '<td class="r">' + (colTotal(set, e) ? CX.m1(colTotal(set, e)) : "\u2014") + "</td>").join("")
+    + '<td class="r"><b>' + CX.m1(net) + "</b></td><td></td></tr>";
+
+  const span = els.length + 3;
+  return '<div class="tbl-scroll wide"><table class="tbl num cxmx"><thead><tr><th>Zone</th>'
+    + els.map(e => '<th class="r">' + e.replace(" & ", " &amp;\u00a0") + "</th>").join("")
+    + '<th class="r">Total</th><th>Built</th></tr></thead><tbody>'
+    + '<tr class="divider"><td colspan="' + span + '">The hotel, ' + CAPEX.summary.keys + " keys</td></tr>"
+    + CAPEX.zones_hotel.map(z => zoneRow(z, "h")).join("")
+    + subtotal("Hotel, net construction", CAPEX.zones_hotel, CAPEX.summary.hotel.net)
+    + '<tr class="divider"><td colspan="' + span + '">The residences, ' + CAPEX.summary.units + " units</td></tr>"
+    + CAPEX.zones_resi.map(z => zoneRow(z, "r")).join("")
+    + subtotal("Residences, net construction", CAPEX.zones_resi, CAPEX.summary.resi.net)
+    + "</tbody></table></div>";
 }
 
-/* ─────────────  what the numbers rest on  ───────────── */
+/* ─────────────  the programme, and what it spends  ───────────── */
 
-function capexClassHTML() {
-  const seg = c => (CX_CLASS_TOTAL[c] / CX_NET_ON * 100);
-  const byZone = CAPEX.analysis.class_by_zone;
-  const zones = Object.keys(byZone).sort((a, b) => byZone[b].total - byZone[a].total);
-  const allowances = CX_ON.filter(l => l.source === "ALLOWANCE")
-    .sort((a, b) => b.live - a.live).slice(0, 6);
-  return '<div class="qbar cxclassbar" role="img" aria-label="'
-    + CX_CLASSES.map(c => CX_CLASS_LABEL[c] + " " + seg(c).toFixed(1) + " per cent").join(", ") + '">'
-    + CX_CLASSES.map(c => '<span class="cx-' + c.toLowerCase() + '" style="flex:'
-        + CX_CLASS_TOTAL[c].toFixed(0) + ' 1 0">' + seg(c).toFixed(1) + "%</span>").join("") + "</div>"
-    + '<div class="qbar-key">' + CX_CLASSES.map(c => '<span><i class="cx-' + c.toLowerCase() + '"></i>'
-        + CX_CLASS_LABEL[c] + " · " + CX.m1(CX_CLASS_TOTAL[c]) + " · " + CX_CLASS_NOTE[c] + "</span>").join("")
-    + "</div>"
-    + '<div class="duo" style="--duo:minmax(0,52fr) minmax(0,48fr);margin-top:clamp(20px,2.6vw,30px)">'
-    + '<div><p class="pane-h">Zone by zone</p><div class="cxzclass">'
-    + zones.map(z => {
-        const r = byZone[z];
-        return '<div class="cxzc-row"><span class="l">' + esc(z.replace(/^\d+\.\s*/, "")) + "</span>"
-          + '<span class="t">' + CX_CLASSES.map(c => '<span class="cx-' + c.toLowerCase()
-              + '" style="flex:' + (r[c] || 0).toFixed(0) + ' 1 0"></span>').join("") + "</span>"
-          + '<span class="v">' + CX.m1(r.total) + "</span></div>";
-      }).join("") + "</div>"
-    + '<p class="src">Shares are of net construction on the lines that are switched on. A zone with '
-    + "no measured share is one the data room does not describe: the buildings are measurable, and "
-    + "the estate is not.</p></div>"
-    + '<div><p class="pane-h">The largest allowances, and what reprices each</p>'
-    + '<div class="tbl-scroll"><table class="tbl num"><thead><tr><th>Allowance</th>'
-    + '<th class="r">Net</th></tr></thead><tbody>'
-    + allowances.map(l => "<tr><td>" + esc(l.desc) + '<span class="ag-note">' + esc(l.zone) + "</span></td>"
-        + '<td class="r">' + CX.m0(l.live) + "</td></tr>").join("")
-    + '<tr class="note"><td colspan="2">Each of these is a sum set because nothing in the room prices '
-    + "it. The diligence chapter carries the ask that reprices each one: a foul strategy and an "
-    + "Environment Agency pre-application for the sewage plant, a distribution network operator "
-    + "budget offer for the substation, the Ecovision report for the energy centre, and the "
-    + "23/07589/FUL decision notice for the planning and statutory programme.</td></tr>"
-    + "</tbody></table></div></div></div>";
+/* The programme leads: sixteen zones against the quarters they are built in,
+   the two dates the underwrite turns on marked across every one of them. The
+   spend chart follows, because when the money leaves is a consequence of it. */
+function cxGanttHTML() {
+  const zs = [...CAPEX.zones_hotel.map(z => [z, "h"]), ...CAPEX.zones_resi.map(z => [z, "r"])];
+  const qEnd = Math.max(...zs.map(([z]) => z.end));
+  const openQ = CAPEX.phasing.programme_q;
+  const saleQ = Number(V16.fig.resi_sales_start_q);
+  const pc = q => (q / qEnd * 100);
+  const marks = '<i class="gm open" style="left:' + pc(openQ).toFixed(2) + '%"></i>'
+    + '<i class="gm sale" style="left:' + pc(saleQ).toFixed(2) + '%"></i>';
+  const ticks = [];
+  for (let q = 0; q <= qEnd; q += 2) ticks.push(q);
+
+  return '<div class="gantt">'
+    + '<div class="grow gax"><span class="l">Quarter from completion</span><span class="t">'
+    + ticks.map(q => '<b style="left:' + pc(q).toFixed(2) + '%">' + q + "</b>").join("")
+    + '</span><span class="v">Net</span></div>'
+    + zs.map(([z, k]) => '<div class="grow"><span class="l">'
+        + esc(z.label.replace(/^\d+\.\s*/, "")) + '</span><span class="t">' + marks
+        + '<i class="gb ' + k + '" style="left:' + pc(z.start).toFixed(2) + "%;width:"
+        + Math.max(2, pc(z.end - z.start)).toFixed(2) + '%"></i></span><span class="v">'
+        + CX.m1(z.total) + "</span></div>").join("")
+    + '<div class="gkey"><span><i class="sw h"></i>hotel</span>'
+    + '<span><i class="sw r"></i>residences</span>'
+    + '<span><i class="sw mo"></i>the hotel opens, quarter ' + openQ + "</span>"
+    + '<span><i class="sw ms"></i>residential sales start, quarter ' + saleQ + "</span></div></div>";
 }
-
-/* ─────────────  the spend over the programme  ───────────── */
 
 function capexPhaseHTML() {
   const P = CAPEX.phasing;
@@ -4203,7 +4166,20 @@ function capexPhaseHTML() {
   });
   const openX = x(P.programme_q);
   const spentAtOpen = P.cumulative[Math.min(P.programme_q, P.cumulative.length - 1)];
-  return '<div class="cxphase"><div class="wf-legend">'
+
+  const strip = '<div class="kpis four">'
+    + [[P.programme_q + " quarters", "Of works to the opening"],
+       [V16.fig.courtyard_keys + " keys", "Trade in year three, before the opening"],
+       ["Quarter " + V16.fig.resi_sales_start_q, "The first residential sale"],
+       [CX.pct0(spentAtOpen / P.total_spend), "Of the money spent by opening"]]
+      .map(([nn, c]) => '<div class="kpi"><div class="num">' + nn + '</div><div class="cap">'
+        + c + "</div></div>").join("") + "</div>";
+
+  return strip + '<div class="cxphase">'
+    + '<p class="pane-h" style="margin-top:clamp(20px,2.6vw,30px)">The programme, zone by zone</p>'
+    + cxGanttHTML()
+    + '<p class="pane-h" style="margin-top:clamp(24px,3vw,36px)">What that spends, quarter by quarter</p>'
+    + '<div class="wf-legend" style="margin-top:12px">'
     + '<span class="k"><span class="sw pos"></span>hotel works</span>'
     + '<span class="k"><span class="sw" style="background:#93a6b8"></span>the residences</span>'
     + '<span class="k"><span class="sw" style="background:none;border-bottom:2px dashed #6f6f6b;height:0"></span>cumulative, to the right-hand scale</span>'
@@ -4217,7 +4193,7 @@ function capexPhaseHTML() {
     + '<text x="' + (openX + 6).toFixed(1) + '" y="' + (padT + 12)
     + '" font-size="11" fill="#b3402e">opens, quarter ' + P.programme_q + "</text>"
     + '<text x="' + padL + '" y="' + (h - 6) + '" font-size="11" fill="#666">quarter from completion</text>'
-    + '<text x="' + (padL - 8) + '" y="' + (padT - 6) + '" text-anchor="end" font-size="11" fill="#666">£m</text>'
+    + '<text x="' + (padL - 8) + '" y="' + (padT - 6) + '" text-anchor="end" font-size="11" fill="#666">\u00a3m</text>'
     + "</svg></div>"
     + '<div class="tbl-scroll" style="margin-top:18px"><table class="tbl num"><thead><tr><th>Year</th>'
     + '<th class="r">Hotel</th><th class="r">Residences</th><th class="r">Both</th>'
@@ -4228,116 +4204,15 @@ function capexPhaseHTML() {
         const rq = qs.reduce((a, q) => a + P.resi[q], 0);
         if (hq + rq < 1) return "";
         const cum = P.cumulative[Math.min(qs[qs.length - 1], P.cumulative.length - 1)];
-        const small = v => (v > 0 && v < 1e5 ? "&lt;£0.1m" : CX.m1(v));
-        return "<tr><td>Year " + (yr + 1) + " (quarters " + qs[0] + "–" + qs[qs.length - 1] + ")</td>"
-          + '<td class="r">' + small(hq) + '</td><td class="r">' + (rq ? small(rq) : "—")
+        const small = v => (v > 0 && v < 1e5 ? "&lt;\u00a30.1m" : CX.m1(v));
+        return "<tr><td>Year " + (yr + 1) + " (quarters " + qs[0] + "\u2013" + qs[qs.length - 1] + ")</td>"
+          + '<td class="r">' + small(hq) + '</td><td class="r">' + (rq ? small(rq) : "\u2014")
           + '</td><td class="r">' + small(hq + rq) + '</td><td class="r">' + CX.m1(cum) + "</td></tr>";
       }).join("")
     + '<tr class="total"><td>Total</td><td class="r">' + CX.m1(CAPEX.summary.hotel.total)
     + '</td><td class="r">' + CX.m1(CAPEX.summary.resi.total) + '</td><td class="r">'
-    + CX.m1(P.total_spend) + '</td><td class="r">—</td></tr>'
-    + '<tr class="note"><td colspan="5">Every line spends evenly across its own window, so the shape '
-    + "is the schedule's own start and duration dates rather than a curve applied to a lump. "
-    + CX.pct0(spentAtOpen / P.total_spend) + " of the money is spent by the opening quarter.</td></tr>"
+    + CX.m1(P.total_spend) + '</td><td class="r">\u2014</td></tr>'
     + "</tbody></table></div></div>";
-}
-
-/* ─────────────  the reduction chain  ───────────── */
-
-function capexReductionHTML() {
-  const R = CAPEX.reduction;
-  const gu = R.ground_up, ad = R.adopted;
-  const guWorks = gu.capex + gu.resi_cost, adWorks = ad.capex + ad.resi_cost;
-  const groups = R.groups.slice().sort((a, b) => (b.capex_delta + b.resi_delta) - (a.capex_delta + a.resi_delta));
-  const named = groups.reduce((a, g) => a + g.capex_delta + g.resi_delta, 0);
-  const residual = (guWorks - adWorks) - named;
-  const items = [{ type: "total", value: guWorks / 1e6, display: (guWorks / 1e6).toFixed(1),
-    label: "Ground-up", sub: "as built",
-    tip: "<b>The ground-up budget</b> &nbsp;<span class='v'>" + CX.m1(guWorks)
-      + " of works — every line at its register quantity and rate, replayed on the v16 model: "
-      + CX.irr(gu.irr) + " at the ruled price</span>",
-    aria: "The ground-up budget, " + (guWorks / 1e6).toFixed(1) + " million pounds of works" }];
-  for (const g of groups) {
-    const v = -(g.capex_delta + g.resi_delta) / 1e6;
-    if (Math.abs(v) < 0.05) continue;
-    const short = CX_SHORT[g.key] || [g.label.split(",")[0], ""];
-    items.push({ type: "delta", value: v, display: v.toFixed(1), label: short[0],
-      sub: short[1], tip: "<b>" + g.label + "</b> &nbsp;<span class='v'>" + CX.m1(-v * 1e6)
-        + " off the works; measured on its own it is worth " + CX.pp(g.worth_pp)
-        + "pp of levered return</span>",
-      aria: g.label + ", " + v.toFixed(1) + " million pounds" });
-  }
-  if (Math.abs(residual) > 5e4) {
-    items.push({ type: "delta", value: -residual / 1e6, display: (-residual / 1e6).toFixed(1),
-      label: "Loading", sub: "interaction",
-      tip: "<b>Loading interaction</b> &nbsp;<span class='v'>" + CX.m1(residual)
-        + " — the residential preliminaries, fees and contingency rates moved with the lines they "
-        + "load, so the group figures beside do not quite sum to the total</span>",
-      aria: "Loading interaction, " + (-residual / 1e6).toFixed(1) + " million pounds" });
-  }
-  items.push({ type: "total", value: adWorks / 1e6, display: (adWorks / 1e6).toFixed(1),
-    label: "Adopted", sub: "in the model",
-    tip: "<b>The adopted budget</b> &nbsp;<span class='v'>" + CX.m1(adWorks) + " of works — "
-      + CX.m1(ad.capex) + " hotel and " + CX.m1(ad.resi_cost) + " residences: " + CX.irr(ad.irr)
-      + " at the ruled price</span>",
-    aria: "The adopted budget, " + (adWorks / 1e6).toFixed(1) + " million pounds of works" });
-
-  return '<div class="duo" style="--duo:minmax(0,54fr) minmax(0,46fr)">'
-    + '<p class="lede">The ground-up budget was built first and ruled too expensive to underwrite. '
-    + "What follows is every change made to it, what each was worth, and what the two ends return: "
-    + "the budget as first built prints " + CX.irr(gu.irr) + " at the ruled price, and the budget in "
-    + "the model prints " + CX.irr(ad.irr) + ". Both are measured on the same machinery, so the "
-    + "difference is the reduction and nothing else.</p>"
-    + '<div class="stack"><div class="kpis">'
-    + '<div class="kpi"><div class="num">' + CX.m1(guWorks - adWorks) + '</div><div class="cap">off the cost of works</div></div>'
-    + '<div class="kpi"><div class="num">' + CX.pp((ad.irr - gu.irr) * 100) + 'pp</div><div class="cap">of levered return, measured</div></div>'
-    + "</div>"
-    + '<p class="para muted">' + R.n_changed + " lines moved out of " + CAPEX.lines.length
-    + ". Four of the changes are presentational — trims to a ruled target rather than to evidence — "
-    + "and they are named as such in the table below.</p></div></div>"
-    + '<div class="wf" style="margin-top:clamp(22px,3vw,38px)"><div class="wf-legend">'
-    + '<span class="k"><span class="sw pos"></span>cost taken out</span>'
-    + '<span class="k"><span class="sw end"></span>a budget total, struck from nil</span></div>'
-    + waterfall({ items, min: 0, max: 200, step: 50, h: 320, w: 1120, minW: 940,
-        fmtTick: v => v,
-        aria: "The reduction from the ground-up budget to the adopted one, in millions of pounds" })
-    + '<div class="wf-read idle" id="wfread-capex" aria-live="polite">Select a bar to read the change.</div></div>'
-    + '<div class="tbl-scroll wide"><table class="tbl num"><thead><tr><th>What moved</th>'
-    + '<th class="r">Lines</th><th class="r">Off the works</th><th class="r">Worth, on its own</th>'
-    + "<th>Why</th></tr></thead><tbody>"
-    + groups.map(g => "<tr><td>" + g.label + '</td><td class="r">' + g.lines.length
-        + '</td><td class="r">' + CX.m1(g.capex_delta + g.resi_delta) + '</td><td class="r">'
-        + CX.pp(g.worth_pp) + "pp</td><td>" + g.why + "</td></tr>").join("")
-    + '<tr class="note"><td colspan="5">The return column measures each group on its own against the '
-    + "adopted budget, so the column does not sum to the " + CX.pp((ad.irr - gu.irr) * 100)
-    + "pp measured across the whole reduction. Cost does sum, to within "
-    + CX.m1(Math.abs(residual)) + " of loading interaction.</td></tr>"
-    + "</tbody></table></div>"
-    + '<h3 class="pane-h" style="margin-top:clamp(24px,3vw,36px)">Every line that moved</h3>'
-    + '<div class="tbl-scroll wide"><table class="tbl num"><thead><tr><th>#</th><th>Line</th>'
-    + "<th>Zone</th><th>What changed</th><th class='r'>Net effect</th></tr></thead><tbody>"
-    + R.changed.map(ch => {
-        const moves = ch.changes.map(c => {
-          if (c.field === "new") return "restated onto the schedule from the model's named inputs";
-          if (c.field === "removed") return "removed";
-          const f = c.field === "on" ? (c.to ? "switched on" : "switched off")
-            : c.field === "rate" ? "rate " + CX.m0(c.from) + " → " + CX.m0(c.to)
-            : c.field === "qty" ? "quantity " + CX.qty(c.from) + " → " + CX.qty(c.to)
-            : c.field === "hotel_pct" ? "hotel share " + CX.pct0(c.from) + " → " + CX.pct0(c.to)
-            : c.field === "start" ? "starts quarter " + c.from + " → " + c.to
-            : c.field === "dur" ? "runs " + c.from + " → " + c.to + " quarters"
-            : c.field;
-          return f;
-        }).join("; ");
-        return "<tr><td>" + ch.n + "</td><td>" + esc(ch.desc) + "</td><td>"
-          + esc(ch.zone.replace(/^\d+\.\s*/, "")) + "</td><td>" + moves
-          + (ch.pre_trim ? " <span class='ag-note'>presentational — a trim to the ruled target, flagged for diligence</span>" : "")
-          + '</td><td class="r">' + (ch.net_delta ? CX.m0(ch.net_delta) : "timing only") + "</td></tr>";
-      }).join("")
-    + '<tr class="note"><td colspan="5">Net effect is on net construction at the line\'s own share, '
-    + "before loading. A deferral moves dates and keeps the scope, so its net effect is nil and its "
-    + "value is in the funding profile.</td></tr>"
-    + "</tbody></table></div>";
 }
 
 /* the first sentence of a line's basis, cleaned of the register's own
@@ -4345,62 +4220,60 @@ function capexReductionHTML() {
 function cxGloss(basis) {
   let s = String(basis || "").split(/\.\s/)[0].trim();
   s = s.replace(/[.\s]+$/, "");
-  if (s.length > 190) s = s.slice(0, 187).replace(/[\s,;(]+$/, "") + "…";
+  if (s.length > 190) return s.slice(0, 187).replace(/[\s,;(]+$/, "") + "…";
   return s + ".";
 }
 
-/* ─────────────  the residential limb  ───────────── */
+/* ─────────────  the residences  ───────────── */
 
 function capexResiHTML() {
   const S = CAPEX.summary.resi, lines = CAPEX.lines.filter(l => l.limb === "resi");
   const F = V16.fig;
-  return '<div class="tbl-scroll wide"><table class="tbl num"><thead><tr><th>The residential budget</th>'
-    + '<th class="r">Quantity</th><th class="r">Rate</th><th class="r">Cost</th>'
-    + "<th>What it is</th></tr></thead><tbody>"
-    + lines.map(l => "<tr><td>" + esc(l.desc) + '</td><td class="r">' + CX.qty(l.qty) + " " + esc(l.unit)
-        + '</td><td class="r">' + CX.m0(l.rate) + '</td><td class="r">' + CX.m0(l.live) + "</td><td>"
-        + esc(cxGloss(l.basis)) + "</td></tr>").join("")
-    + '<tr class="total"><td>Net construction</td><td class="r">—</td><td class="r">—</td>'
-    + '<td class="r"><b>' + CX.m1(S.net) + "</b></td><td>before loading</td></tr>"
-    + "<tr><td>Preliminaries, fees and contingency</td><td class='r'>—</td><td class='r'>"
-    + CX.pct0(S.prelims_pct) + " · " + CX.pct0(S.fees_pct) + " · " + CX.pct0(S.cont_pct)
-    + '</td><td class="r">' + CX.m1(S.prelims + S.fees + S.contingency)
-    + "</td><td>a repeat-design housebuilding basis, not the estate's</td></tr>"
-    + '<tr class="total"><td>Total residential cost</td><td class="r">12 units</td>'
-    + '<td class="r">—</td><td class="r"><span class="emph">' + CX.m1(S.total)
-    + '</span></td><td>' + CX.m2(S.per_unit) + " a unit</td></tr>"
-    + '<tr class="note"><td colspan="5">The limb carries its own build, its own plot infrastructure, '
-    + "its own levy, and the share of the estate's shared systems the houses use. Nothing of it "
-    + "sits in the hotel budget, and nothing of it disappears. Two of the line labels still name "
-    + "the earlier average of 5,492 square feet and the earlier £500,000 fit-out: the quantities "
-    + "and rates beside them are the model's live ones — 12 units at 5,500 square feet and "
-    + "£400,000 a unit — and the labels are a correction owed in the workbook.</td></tr>"
+  const costMax = Math.max(...lines.map(l => l.live));
+  const rateOf = l => (l.unit === "item" || l.qty === 1)
+    ? CX.m0(l.rate) : CX.m0(l.rate) + '<span class="u"> a ' + esc(l.unit) + "</span>";
+
+  const body = lines.map(l => "<tr><td>" + esc(l.desc)
+      + '<span class="ag-note">' + esc(cxGloss(l.basis)) + "</span></td>"
+      + '<td class="r">' + CX.qty(l.qty) + '<span class="u"> ' + esc(l.unit) + "</span></td>"
+      + '<td class="r">' + rateOf(l) + "</td>"
+      + '<td class="r tot"><b>' + CX.m0(l.live) + '</b><span class="trule" style="width:'
+      + (l.live / costMax * 100).toFixed(1) + '%"></span></td></tr>').join("");
+
+  return '<div class="tbl-scroll wide"><table class="tbl num cxres"><thead><tr>'
+    + '<th>The residential budget</th><th class="r">Quantity</th><th class="r">Rate</th>'
+    + '<th class="r">Cost</th></tr></thead><tbody>'
+    + body
+    + '<tr class="subtotal"><td>Net construction</td><td class="r">\u2014</td><td class="r">\u2014</td>'
+    + '<td class="r"><b>' + CX.m1(S.net) + "</b></td></tr>"
+    + "<tr><td>Preliminaries, fees and contingency<span class='ag-note'>Charged on a repeat-design "
+    + "housebuilding basis, lighter than the heritage estate carries.</span></td><td class='r'>\u2014</td><td class='r'>"
+    + CX.pct0(S.prelims_pct) + " \u00b7 " + CX.pct0(S.fees_pct) + " \u00b7 " + CX.pct0(S.cont_pct)
+    + '</td><td class="r">' + CX.m1(S.prelims + S.fees + S.contingency) + "</td></tr>"
+    + '<tr class="total"><td>Total residential cost<span class="ag-note">' + CX.m2(S.per_unit)
+    + ' a unit across ' + CAPEX.summary.units + ' houses</span></td><td class="r">'
+    + CAPEX.summary.units + ' units</td><td class="r">\u2014</td><td class="r"><span class="emph">'
+    + CX.m1(S.total) + "</span></td></tr>"
+    + '<tr class="note"><td colspan="4">The residences carry their own build, their own plot '
+    + "infrastructure, their own levy, and the share of the estate's shared systems the houses "
+    + "use. None of it sits in the hotel budget, and none of it disappears. Two of the line "
+    + "labels still name the earlier average of 5,492 square feet and the earlier \u00a3500,000 "
+    + "fit-out: the quantities and rates beside them are the model's live ones \u2014 12 units at "
+    + "5,500 square feet and \u00a3400,000 a unit \u2014 and the labels are a correction owed in "
+    + "the workbook.</td></tr>"
     + "</tbody></table></div>"
-    + '<div class="duo" style="--duo:minmax(0,50fr) minmax(0,50fr);margin-top:clamp(20px,2.6vw,30px)">'
-    + '<div><p class="pane-h">What the limb returns</p><div class="tbl-scroll"><table class="tbl num"><tbody>'
+    + '<p class="pane-h" style="margin-top:clamp(22px,2.8vw,34px)">What the residences return</p>'
+    + '<div class="tbl-scroll mid" style="max-width:620px"><table class="tbl num"><tbody>'
     + [["Gross sale proceeds, escalated to each sale quarter", F.resi_gross],
        ["Sales fee at " + F.resi_fee_pct, "(" + F.resi_sales_fee + ")"],
-       ["All-in cost of the limb", "(" + F.resi_cost + ")"],
+       ["All-in cost of the residences", "(" + F.resi_cost + ")"],
        ["Net contribution", F.resi_net],
        ["Return on cost", F.resi_roc]]
       .map(([l, v], i) => '<tr class="' + (i === 3 ? "total" : "") + '"><td>' + l + '</td><td class="r">'
         + v + "</td></tr>").join("")
-    + "</tbody></table></div></div>"
-    + '<div><p class="pane-h">The four presentational trims</p>'
-    + '<div class="bullets" style="margin-top:14px">'
-    + '<div><b>Shell £360 → £325 a square foot</b><span class="ag-note">The rate a repeat-design '
-    + "housebuilder would price; the higher figure came from the heritage estate's own basis.</span></div>"
-    + '<div><b>Curtilage externals 15% → 10% of shell</b><span class="ag-note">Gardens, drives and '
-    + "boundaries within each plot.</span></div>"
-    + '<div><b>Fit-out £500,000 → £400,000 a unit</b><span class="ag-note">Furnished to hotel '
-    + "standard, as the branded product requires.</span></div>"
-    + '<div><b>Contingency 8% → 5%</b><span class="ag-note">On a scheme with no design and no '
-    + "consent.</span></div></div>"
-    + '<p class="src">These four are trims to a ruled cost target rather than to evidence, and they '
-    + "are flagged for diligence as such. Restoring all four costs "
-    + CX.pp(-(CAPEX.reduction.groups.find(g => g.key === "resi_presentational") || { worth_pp: 0 }).worth_pp)
-    + "pp of levered return. Tenure is a separate open item: the vendor's adviser assumes "
-    + "999-year leaseholds where the underwrite was ruled on freeholds.</p></div></div>";
+    + '<tr class="note"><td colspan="2">Tenure is an open item: the vendor\u2019s adviser assumes '
+    + "999-year leaseholds where the underwrite was ruled on freeholds.</td></tr>"
+    + "</tbody></table></div>";
 }
 
 /* ─────────────  what is not in it  ───────────── */
@@ -4741,7 +4614,7 @@ function viewChapter(ch, v) {
     + '<div class="vhead"><h1 class="h-display">' + (overview ? ch.title : v.title) + "</h1>"
     + '<span class="fig">' + v.figure + "</span></div>"
     /* the chapter line introduces the hub; a single-view chapter has its own standfirst */
-    + (overview && multi ? '<p class="lede hub-lede" style="margin-top:12px">' + ch.blurb + "</p>" : "") + "</header>";
+    + (overview && multi && !ch.noLede ? '<p class="lede hub-lede" style="margin-top:12px">' + ch.blurb + "</p>" : "") + "</header>";
 
   const body = '<div class="stack-lg">' + v.lead.map(blockHTML).join("") + "</div>" + viewReason(v);
 
@@ -5105,7 +4978,7 @@ document.addEventListener("click", e => {
     }
     if (hit.dataset.cxlineGo) {
       const n = hit.dataset.cxlineGo;
-      CXSTATE.limb = null; CXSTATE.zone = null; CXSTATE.cls = null; CXSTATE.q = "";
+      CXSTATE.limb = null; CXSTATE.zone = null; CXSTATE.q = "";
       CXSTATE.showOff = true;
       CXSTATE.open[n] = true; pendingCx = n;
     }
@@ -5159,11 +5032,9 @@ document.addEventListener("click", e => {
   if (cxl) { CXSTATE.limb = cxl.dataset.cxlimb || null; rerenderCx(); return; }
   const cxz = t.closest("[data-cxzone]");
   if (cxz) { CXSTATE.zone = cxz.dataset.cxzone || null; rerenderCx(); return; }
-  const cxc = t.closest("[data-cxcls]");
-  if (cxc) { CXSTATE.cls = cxc.dataset.cxcls || null; rerenderCx(); return; }
   if (t.closest("[data-cxoff]")) { CXSTATE.showOff = !CXSTATE.showOff; rerenderCx(); return; }
   if (t.closest("#cxclear")) {
-    CXSTATE.limb = null; CXSTATE.zone = null; CXSTATE.cls = null;
+    CXSTATE.limb = null; CXSTATE.zone = null;
     CXSTATE.showOff = false; CXSTATE.q = ""; rerenderCx(); return;
   }
   const cxh = t.closest(".cxl-h");
