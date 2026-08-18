@@ -9,7 +9,7 @@ missing, and writes the manifest between the PHOTOS-DATA markers.
 
     python tools/inline-photos.py
 """
-import json, pathlib, sys
+import json, pathlib, re, sys
 
 HERE = pathlib.Path(__file__).resolve().parent.parent
 IMG = HERE / "img" / "comps"
@@ -23,6 +23,14 @@ BASIS = ("Each photograph is the hotel's own or a Creative Commons image, collec
 if not SRC.exists():
     sys.exit("no credits file: %s" % SRC)
 
+def first_sentence(t):
+    t = (t or "").strip()
+    if not t:
+        return ""
+    m = re.search(r"(?<=[.!?])\s", t)
+    return (t[:m.start()] if m else t).strip().rstrip(".")
+
+
 recs = json.loads(SRC.read_text(encoding="utf-8"))
 out, dropped = {}, []
 for r in recs:
@@ -32,7 +40,9 @@ for r in recs:
         continue
     out[r["slug"]] = {"file": r["slug"] + ".jpg", "credit": r["credit"],
                       "licence": r["licence"], "source": r["source_page"],
-                      "note": (r.get("note") or "").strip()}
+                      # the caption says what the picture shows; the rest of the
+                      # researcher's note stays in credits.json, which is the record
+                      "note": first_sentence(r.get("note") or "")}
 
 page = (HERE / "index.html").read_text(encoding="utf-8")
 A, B = "/*PHOTOS-DATA-START*/", "/*PHOTOS-DATA-END*/"
