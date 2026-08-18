@@ -2,3 +2,6 @@
 snaps/
 aud.txt
 src/_all.js
+
+# agents' scratch downloads while a research run is in flight
+img/comps/_dl/
