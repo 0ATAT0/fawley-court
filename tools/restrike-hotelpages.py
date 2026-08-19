@@ -46,6 +46,36 @@ SWAP = [
 ]
 
 
+# The written prose names the subject too. Only phrases that name Fawley are
+# touched, so a comparable's own figure can never be rewritten by accident.
+PROSE_SWAP = [
+    ("Fawley's 33.96% GOP", "Fawley's {gop}" + " GOP"),
+    ("Fawley Court's 33.96% GOP", "Fawley Court's {gop}" + " GOP"),
+    ("Fawley's £756k Year 7 revenue a key", "Fawley's {rk} Year 7 revenue a key"),
+    ("Fawley's £756k", "Fawley's {rk}"),
+    ("Fawley's £1,000 underwriting figure", "Fawley's £1,000 underwriting figure"),
+    ("Year 7 revenue a key or 33.96% GOP", "Year 7 revenue a key or {gop} GOP"),
+    ("Fawley's underwritten 33.96% GOP", "Fawley's underwritten {gop} GOP"),
+    ("against Fawley's underwritten £756k", "against Fawley's underwritten {rk}"),
+]
+
+
+def swap_prose(v):
+    if not isinstance(v, str) or "Fawley" not in v:
+        return v
+    for old, new in PROSE_SWAP:
+        v = v.replace(old, new.format(gop=F["gop_margin_y7"], rk=F["rev_per_key_y7"]))
+    return v
+
+
+def walk(o):
+    if isinstance(o, dict):
+        return {k: walk(x) for k, x in o.items()}
+    if isinstance(o, list):
+        return [walk(x) for x in o]
+    return swap_prose(o)
+
+
 def main():
     """The assembled pack is rebuilt from these staging files every time the
     inline tool runs, so the subject figures have to be corrected here."""
@@ -63,6 +93,10 @@ def main():
                 hits += 1
                 moved = True
                 print(f"  {path.stem:28s} {str(row[0])[:30]:32s} {before[:40]}  ->  {row[2][:40]}")
+        prosed = walk(rec)
+        if prosed != rec:
+            moved = True
+            rec = prosed
         if moved:
             path.write_text(json.dumps(rec, ensure_ascii=False, indent=1), encoding="utf-8")
             files += 1

@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """Regenerate the portal's model-figure blocks from the measured record.
 
-The page carries its model figures in five authored blocks: the figures map,
-the dial sheet, the dial source line, the entry ladder and the bridge. Each was
+The page carries its model figures in six authored blocks: the figures map,
+the dial sheet, the dial source line, the entry ladder, the bridge and the equity waterfall. Each was
 hand-cut on an earlier version of the model and went stale silently. This
-rebuilds all five from `Model/docs/v29-figures.json`, so a re-strike is a rerun
+rebuilds all six from `Model/docs/v29-figures.json`, so a re-strike is a rerun
 rather than a rewrite. The measured record and the cheat-sheet pack are carried
 in separately by inline-model.py and inline-cheat.py.
 
@@ -292,6 +292,35 @@ def bridge_block():
     return "\n".join(out)
 
 
+# ══ 6. the equity waterfall ═══════════════════════════════════════════
+EQ_NOTES = {
+    "Close": "{v} of equity drawn at the September 2026 completion quarter",
+    "Y1": "{v} drawn against the works programme",
+    "Y2": "{v} drawn; the residential build starts",
+    "Y3": "{v} drawn — the peak equity quarter, {peak} cumulative",
+    "Y4": "{v} distributed, dominated by residence completions",
+    "Y5": "{v} distributed",
+    "Y6": "{v} distributed",
+    "Y7": "{v} distributed; the refinancing draws {refi} against {senior} of senior",
+    "Y8": "{v} distributed at exit, clearing the {cum} cumulative outstanding",
+}
+
+
+def eq_block():
+    rows = []
+    for f in REC["flows"]:
+        n = f["net"]
+        money = f"£{abs(n):.1f}m"
+        note = EQ_NOTES[f["period"]].format(
+            v=money, peak=F["peak_equity"], refi=F["refi_draw"], senior=F["senior_peak"],
+            cum=D["cum_equity_y7"])
+        rows.append("  { l: " + js(f["period"]) + ", v: " + f"{n:.2f}"
+                    + ", d: " + js(f"({abs(n):.1f})" if n < 0 else f"{n:.1f}")
+                    + ", t: " + js(note) + " },")
+    rows[-1] = rows[-1][:-1]
+    return "const EQ = [\n" + "\n".join(rows) + "\n];"
+
+
 # ══ splice ════════════════════════════════════════════════════════════
 BLOCKS = [
     ("const FIGS = {", "};", figs_block),
@@ -299,6 +328,7 @@ BLOCKS = [
     ("const DIAL_SRC = ", None, dial_src_block),
     ("const LADDER = {", "};", ladder_block),
     ("const BRIDGE = {", "};", bridge_block),
+    ("const EQ = [", "];", eq_block),
 ]
 
 MODEL_NAME = "Financial Model v29"
