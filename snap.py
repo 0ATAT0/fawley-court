@@ -23,13 +23,12 @@ SIZES = {
 CHAPTERS = {
     "summary": [""],
     "asset": ["", "photography", "title", "planning", "scheme", "counterparty"],
-    "evidence": ["", "layers", "cohort-rate", "uk-rate", "seasonality", "cohort-ops", "uk-ops", "capex", "pnl"],
-    "underwrite": ["", "dial-set", "engines", "margin", "capital", "profile", "residences", "residences-evidence"],
-    "capital": ["", "schedule", "zones", "phasing", "residences", "excluded"],
+    "market": ["", "layers", "rate", "seasonality", "operations", "capex", "pnl"],
+    "underwrite": ["", "dial-set", "engines", "margin", "capital", "profile", "residences",
+                   "residences-evidence", "bridge", "cheat"],
+    "capital": ["", "schedule", "areas", "phasing", "residences"],
     "returns": ["", "cases", "sensitivities", "exit"],
-    "bridge": [""],
     "dd": ["", "asks", "keys", "room", "gates", "closing"],
-    "cheatsheet": [""],
     "market": [""],
 }
 MKT = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "src", "market-data.json"), encoding="utf-8"))["hotels"]

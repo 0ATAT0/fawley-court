@@ -32,7 +32,7 @@
       .area-cap { display:flex; gap:12px; justify-content:space-between; margin-top:8px; font-size:var(--fs-cap); color:var(--muted); }
       .area-strip { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,168px),1fr)); gap:10px; margin-top:12px; }
       .area-strip button { min-height:44px; background:var(--surface-3); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; aspect-ratio:3 / 2; }
-      .area-strip img { width:100%; height:100%; object-fit:contain; }
+      .area-strip img { width:100%; height:100%; object-fit:cover; }
       .area-section { margin-top:clamp(42px,5.5vw,72px); }
       .area-section > h2 { font-size:var(--fs-h2); line-height:1.2; padding-bottom:9px; border-bottom:1px solid var(--line-strong); margin-bottom:16px; }
       .area-copy { max-width:72ch; line-height:var(--lh-relaxed); }
@@ -60,14 +60,12 @@
       .area-earns p { max-width:72ch; font-size:clamp(1rem,.94rem + .24vw,1.08rem); font-weight:700; line-height:var(--lh-relaxed); }
       .area-watch { border-left:3px solid var(--neg); padding-left:16px; }
       .area-watch p { max-width:72ch; line-height:var(--lh-relaxed); }
-      .area-hub-intro { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(230px,.75fr); gap:clamp(20px,3vw,44px); align-items:start; margin-top:20px; }
-      .area-hub-intro p { max-width:70ch; line-height:var(--lh-relaxed); }
       .area-split { border-left:3px solid var(--neg); padding:14px 0 14px 16px; font-size:var(--fs-sm); line-height:var(--lh-relaxed); }
       .area-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(18px,2.7vw,34px); margin-top:clamp(28px,4vw,52px); }
       .area-card { min-width:0; border-top:1px solid var(--line-strong); padding-top:10px; text-align:left; }
       .area-card button { display:block; width:100%; min-height:44px; text-align:left; }
       .area-card .im { display:block; background:var(--surface-3); aspect-ratio:3 / 2; overflow:hidden; border-radius:var(--radius); }
-      .area-card .im img { width:100%; height:100%; object-fit:contain; }
+      .area-card .im img { width:100%; height:100%; object-fit:cover; }
       .area-card h2 { font-size:var(--fs-h2); margin-top:12px; color:var(--ink); }
       .area-card button:hover h2, .area-card button:focus-visible h2 { color:var(--accent); }
       .area-card .d { color:var(--muted); font-size:var(--fs-sm); line-height:1.48; margin-top:6px; }
@@ -111,7 +109,7 @@
 
   function hub() {
     const p = pack.meta;
-    return `<p class="lede st" style="--i:1">The places you can see.</p><section class="area-hub-intro st" style="--i:2"><p>Six CGI-backed areas account for ${money(p.covered)} of ${money(p.works_total)} of works — ${pct(p.covered / p.works_total)}. Open an area for its lead CGI, the works behind it, when it is built, what it earns and what remains exposed.</p><p class="area-split">The other ${pct(p.uncovered / p.works_total)} (${money(p.uncovered)}) has no imagery: the chapel and towers, staff accommodation, estate and public realm, infrastructure, OS&amp;E and statutory. Chapter 05’s works budget remains the home for the rest.</p></section><section class="area-grid st" style="--i:3">${pack.areas.map(a => `<article class="area-card"><button data-area="${a.key}"><span class="im"><img src="${esc(a.images[0].thumb)}" alt="${esc(a.label)} CGI" loading="lazy" width="${a.images[0].w}" height="${a.images[0].h}"></span><h2>${esc(a.label)}</h2><p class="d">${esc(a.what)}</p><p class="f">${money(a.loaded)} loaded · ${a.images.length} CGI view${a.images.length === 1 ? "" : "s"} <span aria-hidden="true">›</span></p></button></article>`).join("")}</section>`;
+    return `<section class="area-grid st" style="--i:1">${pack.areas.map(a => `<article class="area-card"><button data-area="${a.key}"><span class="im"><img src="${esc(a.images[0].thumb)}" alt="${esc(a.label)} CGI" loading="lazy" width="${a.images[0].w}" height="${a.images[0].h}"></span><h2>${esc(a.label)}</h2><p class="d">${esc(a.what)}</p><p class="f">${money(a.loaded)} loaded · ${a.images.length} CGI view${a.images.length === 1 ? "" : "s"} <span aria-hidden="true">›</span></p></button></article>`).join("")}</section>`;
   }
 
   function warm() {

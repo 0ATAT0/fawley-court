@@ -509,6 +509,37 @@ for (const ch of mod.CHAPTERS) {
   }
 }
 
+/* ══ A9. the shape of the book ═════════════════════════════════════
+   A chapter restructure on 19 August dropped a whole chapter and folded its
+   views into its neighbour, and every other check still passed: nothing held
+   the book to a shape. These do. */
+{
+  const nums = mod.CHAPTERS.map(c => c.num);
+  checked++;
+  if (nums.join("|") !== mod.CHAPTERS.map((_, i) => String(i + 1).padStart(2, "0")).join("|"))
+    fail("CHAPTER NUMBERS NOT SEQUENTIAL FROM 01", nums.join(", "));
+  const ids = new Set();
+  for (const c of mod.CHAPTERS) {
+    checked++;
+    if (ids.has(c.id)) fail("DUPLICATE CHAPTER ID", c.id);
+    ids.add(c.id);
+    checked++;
+    if (!(c.views || []).length) fail("CHAPTER WITH NO VIEWS", c.id);
+    const vids = (c.views || []).map(v => v.id);
+    checked++;
+    if (new Set(vids).size !== vids.length)
+      fail("DUPLICATE VIEW ID WITHIN A CHAPTER", c.id + ": " + vids.join(", "));
+    checked++;
+    if (vids[0] !== "") fail("CHAPTER DOES NOT OPEN ON AN OVERVIEW", c.id + ": " + vids.join(", "));
+    for (const v of c.views) {
+      checked++;
+      if (!(v.title || "").trim()) fail("VIEW WITHOUT A TITLE", c.id + "/" + v.id);
+      checked++;
+      if (!(v.lead || []).length) fail("VIEW THAT LEADS WITH NOTHING", c.id + "/" + v.id);
+    }
+  }
+}
+
 /* ══ B. the case studies ═══════════════════════════════════════════ */
 
 const blockFor = slug => {
@@ -918,11 +949,17 @@ else {
   await areaWindow.AreasChapter.load();
   const areaHas = (page, text) => norm(page).includes(norm(text));
   const hub = areaWindow.AreasChapter.render("");
-  for (const phrase of ["The places you can see", arm2(areaSource.meta.covered), arm2(areaSource.meta.works_total),
-                        apct(areaSource.meta.covered / areaSource.meta.works_total), arm2(areaSource.meta.uncovered),
-                        apct(areaSource.meta.uncovered / areaSource.meta.works_total), "has no imagery", "Chapter 05"]) {
+  /* the hub lede and its coverage note were cut by ruling. What the coverage figures
+     describe still has to hold, so the gate reads them off the pack and checks they
+     reconcile, rather than checking a paragraph that no longer exists. */
+  {
+    const m = areaSource.meta;
     checked++;
-    if (!areaHas(hub, phrase)) fail("AREA HUB MISSING", phrase);
+    if (Math.abs((m.covered + m.uncovered) - m.works_total) > 1)
+      fail("AREA COVERAGE DOES NOT RECONCILE",
+           arm2(m.covered) + " + " + arm2(m.uncovered) + " against " + arm2(m.works_total));
+    checked++;
+    if (!(m.covered > 0 && m.uncovered > 0)) fail("AREA COVERAGE NOT MEASURED", JSON.stringify(m));
   }
   for (const a of areaSource.areas) {
     const manifest = cgiSource.areas.find(x => x.key === a.key);
@@ -1075,10 +1112,18 @@ for (const s of ["INTERNAL — ALIGN ONLY", "Internal — Align only", 'class="i
   if (html.includes(s)) fail("WITHDRAWN INTERNAL MARKING PRESENT", s);
 }
 for (const ch of mod.CHAPTERS) { checked++; if (ch.internal) fail("INTERNAL FLAG PRESENT", ch.id); }
-/* the two former internal chapters are still here, unbadged */
-for (const id of ["dd", "cheatsheet"]) {
-  checked++;
-  if (!mod.CHAPTERS.some(c => c.id === id)) fail("CHAPTER MISSING", id);
+/* the former internal chapters are still here, unbadged. The cheat sheet and the
+   IRR bridge became views of the underwrite on 19 August, so they are checked
+   where they now live rather than as chapters of their own. */
+checked++;
+if (!mod.CHAPTERS.some(c => c.id === "dd")) fail("CHAPTER MISSING", "dd");
+{
+  const uw = mod.CHAPTERS.find(c => c.id === "underwrite");
+  for (const vid of ["bridge", "cheat"]) {
+    checked++;
+    if (!uw || !uw.views.some(v => v.id === vid))
+      fail("VIEW MISSING FROM THE UNDERWRITE", vid);
+  }
 }
 checked++;
 if (!mod.CHAPTERS.find(c => c.id === "dd").views.some(v => v.lead.some(b => b[0] === "qs")))
@@ -1199,8 +1244,11 @@ for (const h of mkCohort) {
     checked++;
     if (!fs.existsSync("img/comps/" + p.file)) fail("PHOTOGRAPH NAMED BUT NOT ON DISK", h.slug + " -> " + p.file);
     mkHas(where + " photograph", hay, 'src="img/comps/' + p.file + '"');
-    mkHas(where + " photograph credit", page, "Photograph: " + p.credit);
-    mkHas(where + " photograph licence", page, p.licence);
+    /* the credit and the licence are held, not printed — see G9 */
+    checked++;
+    if (!(p.credit || "").trim()) fail("PHOTOGRAPH WITHOUT A CREDIT", h.slug + " -> " + p.file);
+    checked++;
+    if (!(p.licence || "").trim()) fail("PHOTOGRAPH WITHOUT A LICENCE", h.slug + " -> " + p.file);
     if (p.note) mkHas(where + " photograph note", page, p.note);
   } else {
     mkHas(where + " has no photograph", hay, "No photograph held");
@@ -1231,8 +1279,13 @@ for (const [slug, w] of Object.entries(hpSource)) {
     if (!fs.existsSync("img/comps/" + im.file)) fail("PAGE IMAGE NOT ON DISK", slug + " -> " + im.file);
     checked++;
     if (!im.file.startsWith(slug + "-")) fail("PAGE IMAGE NAMED FOR ANOTHER HOTEL", slug + " -> " + im.file);
-    mkHas(h.name + " image credit", page, im.credit);
-    mkHas(h.name + " image licence", page, im.licence);
+    /* attribution is carried in the record and in img/comps/credits.json, not on the
+       page: these are investment materials, not published photography. The guarantee
+       the gate holds is that no image travels without its credit and its licence. */
+    checked++;
+    if (!(im.credit || "").trim()) fail("PAGE IMAGE WITHOUT A CREDIT", slug + " -> " + im.file);
+    checked++;
+    if (!(im.licence || "").trim()) fail("PAGE IMAGE WITHOUT A LICENCE", slug + " -> " + im.file);
   }
   for (const row of w.record || []) mkHas(h.name + " record row", page, row[0]);
   for (const c of w.cards || []) mkHas(h.name + " card", page, c[1]);
@@ -1303,13 +1356,14 @@ checked++;
     fail("MARKET CASE MAP", "pack: " + mapped.join(", ") + "  |  portal: " + written.join(", "));
 }
 
-/* G5 — the basis prose is the pack's own. The chapter's own source note was cut
-   by ruling, so the basis is checked where it now lives: on a hotel's page. */
+/* G5 — the basis prose no longer prints anywhere: source and basis statements were
+   cut from the page by ruling, these being investment materials rather than a
+   published research paper. The basis still has to exist, and it lives in the pack
+   and in Research/cohort-2026-08, so the gate holds the pack to carrying it. */
 {
-  const page = mod.hotelPageHTML(mkCohort.find(h => h.median));
-  for (const [k, v] of [["basis", mktSource.basis], ["vat_note", mktSource.vat_note],
-                        ["figures_basis", mktSource.figures_basis]]) {
-    mkHas("hotel page " + k, page, v);
+  for (const k of ["basis", "vat_note", "figures_basis"]) {
+    checked++;
+    if (!(mktSource[k] || "").trim()) fail("BASIS MISSING FROM THE PACK", k);
   }
   /* the grouping's own basis travels with the type labels it explains */
   checked++;

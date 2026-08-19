@@ -14,13 +14,12 @@ SIZES = {"ipad-land": (1180, 820), "ipad-port": (820, 1180), "phone": (390, 844)
 CHAPTERS = {
     "summary": [""],
     "asset": ["", "photography", "title", "planning", "scheme", "counterparty"],
-    "evidence": ["", "layers", "cohort-rate", "uk-rate", "seasonality", "cohort-ops", "uk-ops", "capex", "pnl"],
-    "underwrite": ["", "dial-set", "engines", "margin", "capital", "profile", "residences", "residences-evidence"],
-    "capital": ["", "schedule", "zones", "phasing", "residences", "excluded"],
+    "market": ["", "layers", "rate", "seasonality", "operations", "capex", "pnl"],
+    "underwrite": ["", "dial-set", "engines", "margin", "capital", "profile", "residences",
+                   "residences-evidence", "bridge", "cheat"],
+    "capital": ["", "schedule", "areas", "phasing", "residences"],
     "returns": ["", "cases", "sensitivities", "exit"],
-    "bridge": [""],
     "dd": ["", "asks", "keys", "room", "gates", "closing"],
-    "cheatsheet": [""],
     "market": [""],
 }
 ROUTES = ["#/"]
@@ -186,7 +185,7 @@ async def main():
                 findings.setdefault("ladder", []).append([sname, "rung detail did not update: " + txt[:60]])
 
             # the comparative ranking opens the hotel's own estimated P&L
-            await page.goto(BASE + "#/c/evidence/pnl", wait_until="networkidle")
+            await page.goto(BASE + "#/c/market/pnl", wait_until="networkidle")
             await page.click(".rankrow.link"); await page.wait_for_timeout(500)
             if "/pnl" not in page.url:
                 findings.setdefault("ranking", []).append([sname, "a ranking row did not open its P&L: " + page.url])

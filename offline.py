@@ -7,10 +7,9 @@ import sys
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 BASE = "http://127.0.0.1:8732/"
-ROUTES = ["#/", "#/c/summary", "#/c/asset", "#/c/asset/title", "#/c/evidence",
-          "#/c/evidence/pnl", "#/c/underwrite", "#/c/underwrite/profile",
+ROUTES = ["#/", "#/c/asset", "#/c/asset/title", "#/c/market/pnl", "#/c/underwrite", "#/c/underwrite/profile",
           "#/c/capital", "#/c/capital/schedule", "#/c/capital/phasing", "#/c/returns",
-          "#/c/bridge", "#/c/dd", "#/c/dd/asks", "#/c/cheatsheet",
+          "#/c/underwrite/bridge", "#/c/dd", "#/c/dd/asks", "#/c/underwrite/cheat",
           "#/h/cliveden", "#/h/cliveden/pnl", "#/h/passalacqua/pnl",
           "#/c/market", "#/h/reschio/rate", "#/m/royal-champagne", "#/m/adare-manor",
           "#/areas", "#/areas/hall", "#/areas/courtyard", "#/areas/riding", "#/areas/spa",
