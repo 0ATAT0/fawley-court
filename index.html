@@ -1340,13 +1340,17 @@ body.lb-open { overflow: hidden; }
 /* the name, its figures and the rule under them need air before the page starts */
 .hp-open { margin-top: clamp(28px, 3.4vw, 48px); }
 @media (max-width: 860px) { .hp-duo { grid-template-columns: minmax(0, 1fr); gap: 26px; } }
-.hp-cards { margin-top: var(--hp-lead); grid-template-columns: minmax(0, 1fr); }
-.hp-cards > div + div { margin-top: clamp(18px, 2vw, 26px); }
+/* every record carries exactly three of these, so they run three across: stacked
+   full width each one was a ribbon of text with the right half of the page empty */
+.hp-cards { margin-top: var(--hp-lead); grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: clamp(22px, 2.6vw, 40px); }
+@media (max-width: 900px) { .hp-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .hp-cards { grid-template-columns: minmax(0, 1fr); } }
 /* a card heading is a heading, not a banner: the accent bar it used to carry
    read as decoration and set a fourth type size going on the same page */
 .hp-cards .card-h { font-size: var(--fs-body); font-weight: 700; border-bottom: 0;
                     padding-bottom: 0; margin-bottom: 6px; color: var(--ink); }
-.hp-cards .card-b { font-size: var(--hp-content); line-height: var(--lh-relaxed); max-width: 78ch; }
+.hp-cards .card-b { font-size: var(--hp-content); line-height: var(--lh-relaxed); }
 .hp-record { font-size: var(--hp-content); }
 .hp-record .tbl td, .hp-record .tbl th { padding: 11px 14px 11px 0; }
 /* five images: two across, then three. A three-column grid left the second
