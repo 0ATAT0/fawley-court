@@ -1004,6 +1004,25 @@ for (const [slug, rec] of Object.entries(hpSource)) {
   }
 }
 
+/* No surface may name a version of the model other than the one the record was
+   measured on. A version label is not a figure, so the retired-figure check
+   cannot see it: the cheat sheet's footer band and the dial pane's heading both
+   printed "Financial Model v16" long after every figure around them had moved. */
+{
+  const live = modelSrc.meta.model.replace(/^.*?-\s*/, "").replace(/\.xlsx$/i, "");
+  /* One deliberate lineage reference: the cases note explains that two columns
+     are not shown because they were built on a book this version cannot
+     reproduce. Naming it is the point of the sentence. */
+  const HISTORIC = new Set(["Financial Model v12"]);
+  const named = new Set((html.match(/Financial Model v\d+/g) || []));
+  for (const n of named) {
+    checked++;
+    if (n !== live && !HISTORIC.has(n))
+      fail("A SUPERSEDED MODEL IS NAMED ON THE PAGE",
+        `"${n}" against the record's ${live} — derive it from MODEL.meta.model`);
+  }
+}
+
 /* ══ house rules ═══════════════════════════════════════════════════ */
 
 for (const w of ["strand", "wilton", "\\bproceed\\b", "compelling", "\\bprime\\b(?! reach| Henley| sold| 5%)", "\\brare\\b"]) {
