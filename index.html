@@ -2092,7 +2092,7 @@ const CHAPTERS = [
 },
 {
   id: "market", num: "02", eyebrow: "Ultra Luxury Market", title: "The Ultra Luxury Market",
-  blurb: "Every comparable hotel we hold a rate series for, European and British — what each charges, how long it opens, what it files, and what its conversion cost.",
+  blurb: "",
   figures: [["34","Hotels with a forward-year series"],["10","Bookable in all twelve months"]],
   views: [
   { id: "", title: "The Index", kicker: "Market",
@@ -3791,9 +3791,7 @@ function pnlHotelHTML(caseSlug) {
     + '<p class="src">Source: Research/comp-pnls, built ' + PNL.generated + " — one forked model per hotel on the same engine the underwrite uses, the operating interface populated and financing, capex and exit left untouched. "
     + PNL.fx.pair + " " + PNL.fx.rate + ", " + PNL.fx.basis + ". Conventions in full on the Evidence chapter's Estimated P&amp;Ls view.</p>";
 
-  return main + '<details class="reason"><summary><span class="gl">›</span>Reasoning &amp; basis'
-    + '<span class="ct">' + (notes.length + 2) + " notes</span></summary>"
-    + '<div class="reason-b"><div class="rb-main">' + reasonMain + '</div><div class="rb-side">' + reasonSide + "</div></div></details>";
+  return main;
 }
 
 /* the comparative: eleven columns of GOP margin, the subject in its place */
@@ -3852,9 +3850,7 @@ function pnlCompHTML() {
     + '<div class="duo" style="--duo:minmax(0,50fr) minmax(0,50fr)">'
     + '<p class="lede">' + PNL_PROSE.ranking[0] + "</p>"
     + '<p class="para muted">' + PNL_PROSE.ranking[1] + "</p></div>"
-    + table + "</div>"
-    + '<details class="reason"><summary><span class="gl">›</span>Reasoning &amp; basis<span class="ct">13 limits · 13 conventions</span></summary>'
-    + '<div class="reason-b"><div class="rb-main">' + reasonMain + '</div><div class="rb-side">' + reasonSide + "</div></div></details>";
+    + table + "</div>";
 }
 </script>
 <script>
@@ -4708,15 +4704,13 @@ function footHTML() {
 }
 
 /* the argument, folded behind a rule: prose left, sources right */
-function reasonHTML(main, side, label, count) {
-  if (!main.length && !side.length) return "";
-  const only = !main.length;   /* sources alone set as footnote columns, never as a ribbon */
-  return '<details class="reason"><summary><span class="gl">›</span>' + (label || "Reasoning &amp; basis")
-    + (count ? '<span class="ct">' + count + "</span>" : "") + "</summary>"
-    + '<div class="reason-b' + (only ? " only-src" : "") + '">'
-    + (only ? "" : '<div class="rb-main stack">' + main.map(blockHTML).join("") + "</div>")
-    + '<div class="rb-side">' + side.map(blockHTML).join("") + "</div></div></details>";
+function reasonHTML() {
+  /* Reasoning & basis was cut by ruling on 19 August. These are investment
+     materials: the basis belongs in the research folder and the packs, not
+     folded under every view. The reason arrays stay in the data as the record. */
+  return "";
 }
+
 
 function viewReason(v) {
   const side = v.reason.filter(b => b[0] === "src");

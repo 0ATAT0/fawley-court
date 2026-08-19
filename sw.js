@@ -1,4 +1,4 @@
-const CACHE = 'fawley-court-42b2598dc6ee';
+const CACHE = 'fawley-court-4fe8eb64397a';
 
 // Shell: everything needed to open the portal and read every chapter
 // offline. Full-size photography is warmed by the page after load, not on
