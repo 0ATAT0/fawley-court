@@ -27,8 +27,14 @@
       .areas-status { min-height: 260px; display:grid; place-items:center; color:var(--muted); }
       .areas-status p { font-size:var(--fs-sm); }
       .area-exhibit { margin-top:clamp(20px,2.8vw,34px); }
-      .area-exhibit button { display:block; width:100%; background:var(--surface-3); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; }
-      .area-exhibit img { width:100%; height:auto; max-height:min(68vh,760px); object-fit:contain; margin:auto; }
+      /* every CGI is exactly 3:2, so the frame is sized to the picture rather
+         than the picture floated inside a wider frame: contain in a full-width
+         box with a height cap was showing grey down both sides. A third smaller
+         than it was, which is what the principal asked for. */
+      .area-exhibit button { display:block; width:100%; max-width:calc(min(48vh,532px) * 1.5);
+        margin-inline:auto; aspect-ratio:3 / 2; background:var(--surface-3);
+        border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; }
+      .area-exhibit img { width:100%; height:100%; object-fit:cover; display:block; }
       .area-cap { display:flex; gap:12px; justify-content:space-between; margin-top:8px; font-size:var(--fs-cap); color:var(--muted); }
       .area-strip { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,168px),1fr)); gap:10px; margin-top:12px; }
       .area-strip button { min-height:44px; background:var(--surface-3); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; aspect-ratio:3 / 2; }
@@ -61,7 +67,11 @@
       .area-watch { border-left:3px solid var(--neg); padding-left:16px; }
       .area-watch p { max-width:72ch; line-height:var(--lh-relaxed); }
       .area-split { border-left:3px solid var(--neg); padding:14px 0 14px 16px; font-size:var(--fs-sm); line-height:var(--lh-relaxed); }
-      .area-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(18px,2.7vw,34px); margin-top:clamp(28px,4vw,52px); }
+      /* three across rather than two: a third narrower, and the six areas fill two
+         rows exactly. Four across would leave two of them alone on the second row. */
+      .area-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(16px,2.2vw,28px); margin-top:clamp(28px,4vw,52px); }
+      @media (max-width:1000px) { .area-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+      @media (max-width:620px)  { .area-grid { grid-template-columns:minmax(0,1fr); } }
       .area-card { min-width:0; border-top:1px solid var(--line-strong); padding-top:10px; text-align:left; }
       .area-card button { display:block; width:100%; min-height:44px; text-align:left; }
       .area-card .im { display:block; background:var(--surface-3); aspect-ratio:3 / 2; overflow:hidden; border-radius:var(--radius); }

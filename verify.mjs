@@ -35,6 +35,7 @@
    ══════════════════════════════════════════════════════════════════════ */
 
 import fs from "node:fs";
+import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 
 /* The deal folder. Override with FAWLEY_DEAL_ROOT so the path need not live in
@@ -536,6 +537,42 @@ for (const ch of mod.CHAPTERS) {
       if (!(v.title || "").trim()) fail("VIEW WITHOUT A TITLE", c.id + "/" + v.id);
       checked++;
       if (!(v.lead || []).length) fail("VIEW THAT LEADS WITH NOTHING", c.id + "/" + v.id);
+    }
+  }
+}
+
+/* ══ A10. the service worker's cache name ═══════════════════════════
+   Non-page assets are served cache-first, and `activate` only clears caches
+   whose name differs from the current one, so a cache name that does not move
+   pins every returning visitor to the last name it had. sw.js sat on
+   'fawley-court-v5' across three chapters' worth of shipped work. The name is
+   now derived from the bytes by tools/stamp-sw.py, and this is the check that
+   it was re-stamped. */
+{
+  const sw = fs.readFileSync("sw.js", "utf8");
+  const block = sw.match(/const ASSETS = \[(.*?)\];/s);
+  checked++;
+  if (!block) fail("SERVICE WORKER HAS NO ASSET LIST", "sw.js");
+  else {
+    const rels = new Set(["index.html", "areas.js"]);
+    for (const m of block[1].matchAll(/'\.\/([^']*)'/g)) if (m[1]) rels.add(m[1]);
+    const h = crypto.createHash("sha256");
+    let missing = null;
+    for (const rel of [...rels].sort()) {
+      if (!fs.existsSync(rel)) { missing = rel; break; }
+      h.update(Buffer.from(rel, "utf8"));
+      h.update(fs.readFileSync(rel));
+    }
+    checked++;
+    if (missing) fail("SERVICE WORKER CACHES A FILE THAT IS NOT ON DISK", missing);
+    else {
+      const want = "fawley-court-" + h.digest("hex").slice(0, 12);
+      const have = (sw.match(/const CACHE = '([^']+)';/) || [])[1];
+      checked++;
+      if (have !== want)
+        fail("SERVICE WORKER CACHE NAME IS STALE",
+             "sw.js says " + have + "; the cached files hash to " + want
+             + ". Run python tools/stamp-sw.py");
     }
   }
 }

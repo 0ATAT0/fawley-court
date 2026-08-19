@@ -2987,7 +2987,11 @@ function blockHTML(b) {
   if (k === "pnlcomp") return pnlCompHTML();
   if (k === "capexstack") return capexStackHTML();
   if (k === "capexsched") return capexSchedHTML();
-  if (k === "capexzones") return capexZonesHTML();
+  if (k === "capexzones") {
+    /* it opens the estate areas, and it describes all of them: on one area's
+       own page it is the wrong table entirely */
+    return location.hash.includes("/capital/areas/") ? "" : capexZonesHTML();
+  }
   if (k === "capexphase") return capexPhaseHTML();
   if (k === "capexresi") return capexResiHTML();
   if (k === "capexexcluded") return capexExcludedHTML();
