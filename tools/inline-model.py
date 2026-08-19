@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""Splice the v16 figure record into index.html between the V16-DATA markers,
-and cache a copy at src/v16-figures.json.
+"""Splice the measured figure record into index.html between the MODEL-DATA
+markers, and cache a copy at src/model-figures.json.
 
-The record is Model/docs/v16-figures.json — every figure the portal prints on
+The record is Model/docs/v29-figures.json — every figure the portal prints on
 the v16 basis, as struck on the model, with its raw value and its provenance.
 This tool only carries it in; verify.mjs checks the shipped block equals the
-source leaf for leaf and that nothing on a v16-basis view prints a figure that
+source leaf for leaf and that no model-figure surface prints a figure that
 is not in it.
 
-    python tools/inline-v16.py [--deal <path to the deal folder>]
+    python tools/inline-model.py [--deal <path to the deal folder>]
 """
 import argparse, json, os, pathlib, sys
 
@@ -17,23 +17,23 @@ ap = argparse.ArgumentParser()
 ap.add_argument("--deal", default=os.environ.get("FAWLEY_DEAL_ROOT", DEFAULT_DEAL))
 args = ap.parse_args()
 
-src = pathlib.Path(args.deal) / "Model" / "docs" / "v16-figures.json"
+src = pathlib.Path(args.deal) / "Model" / "docs" / "v29-figures.json"
 if not src.exists():
     sys.exit(f"figure record not found: {src}")
 
 data = json.loads(src.read_text(encoding="utf-8"))
 here = pathlib.Path(__file__).resolve().parent.parent
 (here / "src").mkdir(exist_ok=True)
-(here / "src" / "v16-figures.json").write_text(
+(here / "src" / "model-figures.json").write_text(
     json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
 
 page = (here / "index.html").read_text(encoding="utf-8")
-A, B = "/*V16-DATA-START*/", "/*V16-DATA-END*/"
+A, B = "/*MODEL-DATA-START*/", "/*MODEL-DATA-END*/"
 i, j = page.find(A), page.find(B)
 if i < 0 or j < 0:
-    sys.exit("the V16-DATA markers are not in index.html")
+    sys.exit("the MODEL-DATA markers are not in index.html")
 
-block = A + "\nconst V16 = " + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + ";\n"
+block = A + "\nconst MODEL = " + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + ";\n"
 page = page[:i] + block + page[j:]
 (here / "index.html").write_text(page, encoding="utf-8")
 

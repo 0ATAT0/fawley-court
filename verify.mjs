@@ -15,9 +15,9 @@
    D. THE REGISTER     the shipped QS block must equal a fresh parse of
                        Research/vendor-qs-crosscheck-20260816.md, and the
                        counts must tie to the document's own Register 2.
-   E. THE CHEAT SHEET  every label, note and static value verbatim in
-                       Model/cheatsheet-spec.json; every measured value
-                       verbatim in the sheet's own render.
+   E. THE CHEAT SHEET  the shipped block equals Model/docs/cheat-web-data.json,
+                       built from the workbook's own Cheat Sheet tab, leaf for
+                       leaf, and the pack is off the measured model.
    F. THE COMPARABLE   the shipped PNL block must equal
       P&Ls             Research/comp-pnls/web-data.json line for line, every
                        printed figure must equal this file's own independent
@@ -48,17 +48,14 @@ const PNLDIR = DEAL + "Research/comp-pnls/";
 const html = fs.readFileSync("index.html", "utf8");
 const slides = fs.readFileSync(DECK + "slides.md", "utf8");
 const figs = JSON.parse(fs.readFileSync(DECK + "figures.json", "utf8"));
-const bridgeMd = fs.readFileSync(DEAL + "Model/docs/embassy-bridge-20260816.md", "utf8");
-const bridgeHtml = fs.readFileSync(DEAL + "Deck/irr-bridge/index.html", "utf8");
-const csSpec = JSON.parse(fs.readFileSync(DEAL + "Model/cheatsheet-spec-v16.json", "utf8"));
-const csRender = fs.readFileSync("src/cheatsheet-render-v16.txt", "utf8");
+const cheatSrc = JSON.parse(fs.readFileSync(DEAL + "Model/docs/cheat-web-data.json", "utf8"));
 /* the v16 sources of record: the measured figure set and the capital-cost pack */
-const v16Src = JSON.parse(fs.readFileSync(DEAL + "Model/docs/v16-figures.json", "utf8"));
+const modelSrc = JSON.parse(fs.readFileSync(DEAL + "Model/docs/v29-figures.json", "utf8"));
 const capexSrc = JSON.parse(fs.readFileSync(DEAL + "Model/capex/capex-web-data.json", "utf8"));
-const bridgeMd16 = fs.readFileSync(DEAL + "Model/docs/embassy-bridge-v16-20260818.md", "utf8");
+const bridgeMd29 = fs.readFileSync(DEAL + "Model/docs/embassy-bridge-v29-20260819.md", "utf8");
 const capexRegister = fs.readFileSync(DEAL + "Model/capex/REGISTER.md", "utf8")
   + "\n" + fs.readFileSync(DEAL + "Model/capex/PROPOSAL.md", "utf8");
-const restrikeMd = fs.readFileSync(DEAL + "Model/docs/v16-restrike-20260818.md", "utf8");
+const restrikeMd = fs.readFileSync(DEAL + "Model/docs/v29-portal-restrike-20260819.md", "utf8");
 const qsSource = fs.readFileSync(DEAL + "Research/vendor-qs-crosscheck-20260816.md", "utf8");
 const pnlSource = JSON.parse(fs.readFileSync(PNLDIR + "web-data.json", "utf8"));
 const pnlRegister = fs.readFileSync(PNLDIR + "REGISTER.md", "utf8");
@@ -90,7 +87,7 @@ const mod = new Function(
   grab("const CHEAT = {", "</script>") +
   grab("const QS = {", "/*QS-DATA-END*/") + ";" +
   grab("const MKT_M =", "</script>") +
-  "; return { FIGS, V16, CAPEX, DIALS, DIAL_SRC, PLATES, FIELD, LADDER, BRIDGE, PNL, PNLFMT, PNL_CASE,"
+  "; return { FIGS, MODEL, CAPEX, DIALS, DIAL_SRC, PLATES, FIELD, LADDER, BRIDGE, PNL, PNLFMT, PNL_CASE,"
   + " PNL_NOTES, PNL_PROSE, CHAPTERS, CASES, CHEAT, QS, MARKET, MKT_ALL, MKT_BY_SLUG,"
   + " MKT_BY_CASE, MKSTATE, PHOTOS, marketIndexHTML, mktGridInner, mktRateHTML, mktFiguresHTML, hotelPageHTML,"
   + " mktCaseEvidenceHTML, mktControlsInner, mktTab, HOTELPAGE,"
@@ -110,11 +107,10 @@ const deckText = norm(slides).toLowerCase();
 const deckRaw = ent(slides).replace(/\s+/g, " ").toLowerCase();
 /* The bridge ships from two sources of record: the measured table and reading in
    the markdown, and the prose the standing bridge page already carries. */
-const bridgeText = (norm(bridgeMd16) + " \u00b6 " + norm(bridgeMd) + " \u00b6 " + norm(bridgeHtml)).toLowerCase();
+const bridgeText = norm(bridgeMd29).toLowerCase();
 const restrikeText = norm(restrikeMd).toLowerCase();
 const capexRegText = quotes(capexRegister.replace(/\*/g, "")).replace(/\s+/g, " ").toLowerCase();
-const csSpecText = quotes(JSON.stringify(csSpec).replace(/\\"/g, '"')).replace(/\s+/g, " ").toLowerCase();
-const csRenderText = quotes(csRender.replace(/ \| /g, " ")).replace(/\s+/g, " ").toLowerCase();
+const cheatText = quotes(JSON.stringify(cheatSrc).replace(/\\"/g, '"')).replace(/\s+/g, " ").toLowerCase();
 /* the P&L build record, with its markdown emphasis removed */
 const pnlRegText = quotes(pnlRegister.replace(/\*/g, "")).replace(/\s+/g, " ").toLowerCase();
 /* the market pack and its run record, as one haystack for figure registration */
@@ -152,11 +148,64 @@ const walkReg = o => {
   if (typeof o === "object") { Object.values(o).forEach(walkReg); return; }
   addReg(o);
 };
-walkReg(v16Src.fig); walkReg(v16Src.ladder); walkReg(v16Src.backsolve); walkReg(v16Src.sens);
-walkReg(v16Src.margin); walkReg(v16Src.cases); walkReg(v16Src.flows); walkReg(v16Src.flow_totals);
-walkReg(v16Src.pnl_years); walkReg(v16Src.bridge); walkReg(v16Src.bridge_meta);
-walkReg(v16Src.capex_chain); walkReg(v16Src.capex_groups); walkReg(v16Src.capex_loading);
-walkReg(v16Src.capex_inflation); walkReg(v16Src.extra); walkReg(v16Src.derived);
+walkReg(modelSrc.fig); walkReg(modelSrc.ladder); walkReg(modelSrc.rungs);
+walkReg(modelSrc.backsolve); walkReg(modelSrc.sens); walkReg(modelSrc.margin);
+walkReg(modelSrc.cases); walkReg(modelSrc.flows); walkReg(modelSrc.flow_totals);
+walkReg(modelSrc.pnl_years); walkReg(modelSrc.bridge); walkReg(modelSrc.bridge_meta);
+walkReg(modelSrc.extra); walkReg(modelSrc.derived); walkReg(cheatSrc);
+
+/* the measured record, in the formats the page prints. The record holds raw
+   numbers; the page holds "13.19%" and "£110.9m". Derived here rather than
+   allowlisted, so a figure the model no longer produces stops being valid. */
+const mpct = (v, dp = 2) => (v * 100).toFixed(dp) + "%";
+const mneg = v => "(" + Math.abs(v * 100).toFixed(2) + ")%";
+const mem = v => v.toFixed(2) + "x";
+const mm1 = v => "£" + (v / 1e6).toFixed(1) + "m";
+const mm2 = v => "£" + (v / 1e6).toFixed(2) + "m";
+const mpp = v => (v > 0 ? "+" : "−") + Math.abs(v).toFixed(2) + "pp";
+const MONEY_KEYS = ["profit", "peak_equity", "total_equity", "peak_debt", "exit_price",
+  "resi_gross", "resi_net", "resi_cost", "capex", "cost_to_open", "all_in_to_exit",
+  "works_total", "y7_rev", "y7_gop", "y7_noi", "exit_noi", "exit_adjnoi", "refi_draw",
+  "senior_drawn", "senior_repaid", "cum_equity_y7"];
+const regOut = o => {
+  if (!o || typeof o !== "object") return;
+  if (typeof o.irr === "number") {
+    [mpct(o.irr), mpct(o.irr, 1), mpct(o.irr, 4), mneg(o.irr)].forEach(addReg);
+  }
+  if (typeof o.em === "number") addReg(mem(o.em));
+  if (typeof o.irr_unlev === "number") addReg(mpct(o.irr_unlev));
+  if (typeof o.d_pp === "number") {
+    [mpp(o.d_pp), Math.abs(o.d_pp).toFixed(1) + "pp", Math.abs(o.d_pp).toFixed(2) + "pp"]
+      .forEach(addReg);
+  }
+  for (const k of MONEY_KEYS) {
+    if (typeof o[k] === "number") { addReg(mm1(o[k])); addReg(mm2(o[k])); }
+  }
+  if (typeof o.y7_gop === "number" && typeof o.y7_rev === "number")
+    addReg(mpct(o.y7_gop / o.y7_rev));
+  if (typeof o.y7_noi === "number" && typeof o.y7_rev === "number")
+    addReg(mpct(o.y7_noi / o.y7_rev));
+};
+for (const v of modelSrc.derived.levels || []) { addReg(v); addReg("£" + v); }
+Object.values(modelSrc.sens).forEach(regOut);
+Object.values(modelSrc.cases).forEach(regOut);
+modelSrc.ladder.forEach(regOut);
+modelSrc.bridge.forEach(regOut);
+for (const r of modelSrc.rungs) {
+  regOut(r);
+  for (const k of ["adr", "exit_yield", "resi_psf"]) {
+    const s = r[k] && r[k].solved;
+    if (typeof s !== "number") continue;
+    addReg(k === "exit_yield" ? mpct(s) : "£" + Math.round(s).toLocaleString("en-GB"));
+  }
+}
+/* swings between two settings, quoted as a band on the sensitivity table */
+for (const a of Object.values(modelSrc.sens)) {
+  for (const b of Object.values(modelSrc.sens)) {
+    if (typeof a.d_pp === "number" && typeof b.d_pp === "number")
+      addReg(Math.abs(a.d_pp - b.d_pp).toFixed(1) + "pp");
+  }
+}
 
 /* the capital-cost pack, formatted the way the page formats it */
 const cxm0 = v => "£" + Math.round(v).toLocaleString("en-GB");
@@ -269,7 +318,7 @@ let ownProse = 0;
 const FIG_OK_EXTRA = new Set();
 const registered = t => REGISTERED.has(t) || CAPEX_VALUES.has(t) || FIG_OK_EXTRA.has(t)
   || deckText.includes(t) || bridgeText.includes(t) || restrikeText.includes(t)
-  || csRenderText.includes(t) || csSpecText.includes(t) || pnlRegText.includes(t)
+  || cheatText.includes(t) || pnlRegText.includes(t)
   || capexRegText.includes(t) || qsSource.toLowerCase().includes(t) || mktText.includes(t);
 const prose = (label, text, hay = deckText, hayName = "slides.md") => {
   const t = norm(text).toLowerCase();
@@ -334,7 +383,7 @@ for (const key of ["keys", "courtyard_keys", "adr_y1", "adr_y7", "rev_y7", "gop_
   "staff_index", "exit_yield", "purch_costs_pct", "capex_prog_q", "entry", "irr", "em",
   "peak_equity", "fin_senior_ltc", "fin_refi_q", "refi_draw"]) {
   checked++;
-  if (!dialText.includes(v16Src.fig[key])) fail("DIAL FIGURE MISSING  " + key, v16Src.fig[key]);
+  if (!dialText.includes(modelSrc.fig[key])) fail("DIAL FIGURE MISSING  " + key, modelSrc.fig[key]);
 }
 for (const s of norm(mod.DIAL_SRC).split(/(?<=\.)\s+/)) prose("dial source sentence", s);
 prose("field text", mod.FIELD.text);
@@ -344,8 +393,8 @@ const fieldBlock = slides.slice(slides.indexOf("id: rate-position"), slides.inde
 for (const r of mod.FIELD.rows) {
   if (r.subject) {                          // the subject's own rate is the model's
     checked++;
-    if ("£" + r.min.toLocaleString("en-GB") !== v16Src.fig.adr_y1)
-      fail("FIELD SUBJECT RATE", r.min + " against the model's " + v16Src.fig.adr_y1);
+    if ("£" + r.min.toLocaleString("en-GB") !== modelSrc.fig.adr_y1)
+      fail("FIELD SUBJECT RATE", r.min + " against the model's " + modelSrc.fig.adr_y1);
     continue;
   }
   const want = `{ label: '${r.label.replace(/'/g, "\\'")}', min: ${r.min}, max: ${r.max}`;
@@ -354,22 +403,36 @@ for (const r of mod.FIELD.rows) {
   if (r.mid != null) { checked++; if (!fieldBlock.includes(`mid: ${r.mid}`)) fail("FIELD MID NOT IN SLIDE", `${r.label} ${r.mid}`); }
 }
 
-/* the entry ladder, cell by cell, against the measured record */
-const LAD_SRC = Object.fromEntries(v16Src.ladder.map(r => [r.entry, r]));
+/* the entry ladder, cell by cell, against the measured record. The record
+   holds the thirteen measured entries and, separately, the five rungs whose
+   lever columns were solved, so the page's five rows read from both. */
+const LAD_SRC = Object.fromEntries(modelSrc.ladder.map(r => [r.price_fig, r]));
+const RUNG_SRC = Object.fromEntries(modelSrc.rungs.map(r => [r.price_fig, r]));
+const solvedFig = (r, k) => k === "exit_yield"
+  ? (r[k].solved * 100).toFixed(2) + "%"
+  : "£" + Math.round(r[k].solved).toLocaleString("en-GB");
 for (const r of mod.LADDER.rows) {
-  const src = LAD_SRC[r.e];
+  const src = LAD_SRC[r.e], rung = RUNG_SRC[r.e];
   checked++;
-  if (!src) { fail("LADDER RUNG NOT MEASURED", r.e); continue; }
-  for (const [k, want] of [["allin", src.allin], ["irr", src.irr], ["adr", src.adr],
-                           ["exit", src.exit], ["psf", src.psf]]) {
+  if (!src || !rung) { fail("LADDER RUNG NOT MEASURED", r.e); continue; }
+  for (const [k, want] of [["allin", src.all_in_fig], ["irr", src.irr_fig],
+                           ["adr", solvedFig(rung, "adr")],
+                           ["exit", solvedFig(rung, "exit_yield")],
+                           ["psf", solvedFig(rung, "resi_psf")]]) {
     checked++;
     if (r[k] !== want) fail("LADDER CELL MISMATCH  " + r.e + "/" + k, `page "${r[k]}" vs record "${want}"`);
   }
   checked++;
-  if (Math.abs(r.irrN - src.irr_n) > 0.005) fail("LADDER BAR MISMATCH  " + r.e, `${r.irrN} vs ${src.irr_n}`);
+  if (Math.abs(r.irrN - src.irr * 100) > 0.005) fail("LADDER BAR MISMATCH  " + r.e, `${r.irrN} vs ${src.irr * 100}`);
+  /* every solved lever must reach the bar it is solved to */
+  for (const k of ["adr", "exit_yield", "resi_psf"]) {
+    checked++;
+    if (Math.abs(rung[k].achieved - 0.13) > 1e-4)
+      fail("LADDER LEVER OFF THE BAR  " + r.e + "/" + k, String(rung[k].achieved));
+  }
   prose("ladder note " + r.e, r.note);
 }
-for (const [k, want] of [["adr", v16Src.fig.adr_y1], ["exit", v16Src.fig.exit_yield], ["psf", v16Src.fig.resi_psf]]) {
+for (const [k, want] of [["adr", modelSrc.fig.adr_y1], ["exit", modelSrc.fig.exit_yield], ["psf", modelSrc.fig.resi_psf]]) {
   checked++;
   if (mod.LADDER.underwritten[k] !== want)
     fail("LADDER UNDERWRITTEN MISMATCH  " + k, `page "${mod.LADDER.underwritten[k]}" vs record "${want}"`);
@@ -379,19 +442,14 @@ prose("ladder note", mod.LADDER.note);
 prose("ladder source", mod.LADDER.src);
 
 /* every subject-cell figure ties to the register */
-const FIG_VALUES = new Set([...Object.values(figs).map(v => String(v).toLowerCase()), ...REGISTERED]);
+const FIG_VALUES = new Set([...Object.values(figs).map(v => String(v).toLowerCase()),
+  ...REGISTERED, ...CAPEX_VALUES]);
+/* Tokens that are not model figures: key counts, an index, a share, the
+   occupancy interval, and the two loading percentages the residential limb
+   carries. Everything that IS a model figure has to come from the record. */
 const EXTRA_OK = new Set([
-  "60", "45", "12", "17", "43", "24", "22", "21", "15", "13.3", "10.7", "8", "9", "2", "3.75", "1.20",
-  "0.65", "0.80", "1.25", "1.05", "0.90", "60–70%", "£738k", "£16.08m", "£18.43m", "£9.77m", "36.3%",
-  "41.6%", "22.1%", "£734", "£1.39m", "£5.62m", "£0.09m", "100%", "£2.90m", "£3.62m", "£250.9m",
-  "£86.5m", "£34.35m", "£1.24m", "£1.11m", "£0.42m", "5.09%", "£255.3m", "1.068", "£72.5m", "£33.3m",
-  "£35.6m", "£1.46m", "£0.75m", "146", "£2.0m", "£123.6m", "£194.2m", "£45.33m", "£15.39m",
-  "£10.74m", "33.96%", "23.69%", "£756k", "£16.49m", "£19.72m", "£9.12m", "36.4%", "43.5%",
-  "20.1%", "£753", "£4.13m", "£2.06m", "£3.24m", "£248.0m", "£10.59m", "£11.01m", "4.16%",
-  "£264.8m", "£95.9m", "£44.4m", "£46.7m", "£282.0m", "£232.8m", "£121.5m", "£116.9m", "£111.9m",
-  "£95.5m", "£2.50m", "£0.95m", "£16.40m", "£2.81m", "£0.42m", "5.0%", "3.0%", "£1,300", "5,500",
-  "£109.8m", "£92.5m", "12.99%", "1.84x", "£1,000", "£1,160", "1.3x", "4.00%", "£1.39m", "£5.62m",
-  "£0.09m", "100%"
+  "60", "45", "12", "17", "43", "24", "22", "21", "15", "8", "9", "2", "1.068",
+  "60–70%", "100%", "5,500", "3.75", "1.20", "0.65"
 ]);
 let subjChecked = 0;
 for (const ch of mod.CHAPTERS) {
@@ -480,18 +538,24 @@ for (const c of mod.CASES) {
 function SUBJ_OK() {
   return new Set([
     "£1,000 underwritten", "60", "twelve months",
-    "£756k · £45.33m, year 7", "33.96% gop · £15.39m, year 7", "33.96% gop · year 7",
-    "£2.06m a key works · £123.6m", "staff cost index 1.20; no headcount is modelled",
+    "£785,630 · £47.14m, year 7",
+    "33.88% gop · £15.97m, year 7",
+    "33.88% gop · year 7",
+    "£2.10m a key works · £125.9m",
+    "staff cost index 1.20; no headcount is modelled",
     "not computable on a like basis", "12 at £1,300/sqft, 5,500 sqft average",
-    "3.75 a year", "150 founder memberships at £7,500, then £3,500",
-    "14 quarters of works, opening at t+3.5", "60: 17 main house, 43 stables and courtyard",
-    "£1,000 underwritten, across all twelve months", "£45.33m revenue, £15.39m gop, year 7"
+    "3.75 a year",
+    "250 members at £650 a month, 100 founders at £25,000",
+    "14 quarters of works, opening at t+3.5",
+    "60: 17 main house, 43 stables and courtyard",
+    "£1,000 underwritten, across all twelve months",
+    "£47.14m revenue, £15.97m gop, year 7"
   ]);
 }
 
 /* ══ C. the bridge ═════════════════════════════════════════════════ */
 
-const bridgeTable = bridgeMd16.slice(bridgeMd16.indexOf("| # | Lever"), bridgeMd16.indexOf("Net:"));
+const bridgeTable = bridgeMd29.slice(bridgeMd29.indexOf("| # | Lever"), bridgeMd29.indexOf("Net:"));
 for (const r of mod.BRIDGE.rows) {
   const line = bridgeTable.split("\n").find(l => l.trim().startsWith("| " + r.n + " |"));
   checked++;
@@ -561,64 +625,51 @@ for (const h of mod.QS.halves) for (const s of h.sections) for (const it of s.it
     fail("QUESTION NOT VERBATIM", `${s.name} ${it.n}: "${it.q.slice(0, 80)}"`);
 }
 
-/* ══ E. the cheat sheet ════════════════════════════════════════════ */
+/* ══ E. the cheat sheet ════════════════════════════════════════════
 
-const csv = (label, text, hay, hayName) => {
-  const t = quotes(String(text).replace(/&amp;/g, "&")).replace(/\s+/g, " ").trim().toLowerCase();
-  if (!t || t === "-" || t === "—" || t === "") return;
-  checked++;
-  if (hay.includes(t) || csSpecText.includes(t) || csRenderText.includes(t)) return;
-  /* the sheet is struck at a moment; where the model has moved since, the portal
-     carries the correction and says so. Those lines are the portal's own, and
-     are checked figure by figure instead of verbatim. */
-  prose("cheat " + label, text);
-};
-const inSpec = (l, t) => csv(l, t, csSpecText, "cheatsheet-spec.json");
-const inRender = (l, t) => csv(l, t, csRenderText, "the sheet's own render");
+   Chapter 09 renders the workbook's own Cheat Sheet tab through a pack built
+   from it, so the check is equality with that pack rather than a search for
+   each string in a spec. The tab is formula-linked to the model, so this also
+   ties the chapter to the model without a second measurement. */
 
 const C = mod.CHEAT;
-inSpec("title", C.title); inSpec("meta", C.meta); inSpec("asset line", C.assetLine); inSpec("thesis", C.thesis);
-for (const [l, v, c] of C.kpis) { inSpec("kpi label", l); inRender("kpi value " + l, v); inSpec("kpi note " + l, c); }
-for (const c of C.operating.columns) inSpec("operating column", c);
-for (const [l, vals] of C.operating.rows) { inSpec("operating row", l); for (const v of vals) inRender("operating " + l, v); }
-for (const c of C.cashflow.columns) inSpec("cashflow column", c);
-for (const [l, vals, , note] of C.cashflow.rows) {
-  inSpec("cashflow row", l); if (note) inSpec("cashflow note " + l, note);
-  for (const v of vals) inRender("cashflow " + l, v);
-}
-for (const [t, c] of C.cashflow.funding) { inRender("funding line", t); inSpec("funding note", c); }
-inSpec("competitive headline", C.competitive.headline);
-for (const c of C.competitive.columns) inSpec("competitive column", c);
-for (const r of C.competitive.rows) { inRender("competitive label", r[0]); for (const v of r.slice(1, 5)) inRender("competitive value", v); }
-inSpec("competitive caption", C.competitive.caption);
-for (const n of C.competitive.notes) inSpec("competitive note", n.replace(/^[^:]+: /, ""));
-for (const [t, c] of C.competitive.plan) { inSpec("plan", t); inSpec("plan note", c); }
-for (const c of C.competitive.constituents) inSpec("constituent", c);
-for (const r of C.su) { if (r[0] === "sub") { inSpec("s&u subhead", r[1]); continue; } inSpec("s&u label", r[1]); inRender("s&u value " + r[1], r[2]); if (r[3]) inSpec("s&u note", r[3]); }
-for (const [t, c] of C.yieldLines) { inRender("yield line", t); if (c) inSpec("yield note", c); }
-for (const r of C.returns) { inSpec("returns label", r[0]); inRender("returns value " + r[0], r[1]); if (r[2]) inSpec("returns note", r[2]); }
-for (const c of C.sensitivity.cols) inRender("sensitivity column", c);
-for (const r of C.sensitivity.rows) inRender("sensitivity row", r);
-for (const row of C.sensitivity.grid) for (const v of row) inRender("sensitivity cell", v);
-inSpec("sensitivity caption", C.sensitivity.caption);
-for (const [t, c] of C.sensitivity.stress) { inSpec("stress line", t); inSpec("stress note", c); }
-for (const r of C.comps.rows) { inRender("comp " + r[0], r[0]); for (const v of r.slice(1, 5)) inRender("comp value " + r[0], v); if (r[6]) inSpec("comp note", r[6]); }
-inRender("comps caption", C.comps.caption);
-inSpec("comps caption note", C.comps.captionNote);
-for (const r of C.terms) {
-  if (r[0] === "sub") { inSpec("terms subhead", r[1]); continue; }
-  inSpec("terms label", r[1]);
-  // term values are TEXT() formulas in the spec, so the printed string is the render's
-  inRender("terms value", r[2]);
-  if (r[3]) inSpec("terms note", r[3]);
-}
-for (const [s, t, c] of C.watchpoints) { inSpec("watch status", s); inSpec("watch text", t); inSpec("watch note", c); }
-for (const f of C.footer) inSpec("cheat footer", f);
-/* the sensitivity grid's own corners must tie the measured entry ladder */
+const cheatShipped = JSON.parse(JSON.stringify(C));
+const cheatSource = JSON.parse(JSON.stringify(cheatSrc));
+delete cheatSource.pack;
+delete cheatShipped.pack;
+const leafEq = (a, b, path) => {
+  if (Array.isArray(a) && Array.isArray(b)) {
+    checked++;
+    if (a.length !== b.length) { fail("CHEAT PACK LENGTH", `${path}: page ${a.length} vs pack ${b.length}`); return; }
+    a.forEach((v, i) => leafEq(v, b[i], `${path}[${i}]`));
+    return;
+  }
+  if (a && b && typeof a === "object" && typeof b === "object") {
+    const ka = Object.keys(a), kb = Object.keys(b);
+    checked++;
+    if (ka.join() !== kb.join()) { fail("CHEAT PACK KEYS", `${path}: ${ka.join()} vs ${kb.join()}`); return; }
+    for (const k of ka) leafEq(a[k], b[k], `${path}.${k}`);
+    return;
+  }
+  checked++;
+  if (String(a ?? "") !== String(b ?? ""))
+    fail("CHEAT PACK LEAF", `${path}: page "${a}" vs pack "${b}"`);
+};
+leafEq(cheatShipped, cheatSource, "CHEAT");
+
+/* the sensitivity grid's own base cell must tie the measured record */
 checked++;
-const csBase = (parseFloat(v16Src.fig.irr) ).toFixed(1) + "%";
-if (C.sensitivity.grid[1][1] !== csBase)
-  fail("SENSITIVITY BASE", "base cell is " + C.sensitivity.grid[1][1] + ", the model prints " + csBase);
+const csBase = (parseFloat(modelSrc.fig.irr)).toFixed(1) + "%";
+if (C.sensitivity.grid[C.sensitivity.base[0]][C.sensitivity.base[1]] !== csBase)
+  fail("SENSITIVITY BASE", "base cell is "
+    + C.sensitivity.grid[C.sensitivity.base[0]][C.sensitivity.base[1]]
+    + ", the model prints " + csBase);
+
+/* the pack must have been built from the model the record was measured on */
+checked++;
+if (cheatSrc.pack.snapshot_sha256 !== modelSrc.meta.snapshot_sha256)
+  fail("CHEAT PACK IS OFF ANOTHER MODEL",
+    `${cheatSrc.pack.snapshot_sha256.slice(0, 12)} vs ${modelSrc.meta.snapshot_sha256.slice(0, 12)}`);
 
 /* ══ F. the comparable estimated P&Ls ══════════════════════════════ */
 
@@ -771,16 +822,19 @@ if (Object.keys(mod.PNL_CASE).length !== pnlSource.hotels.length) fail("P&L MAP 
 /* ══ G. the two shipped packs equal their sources ══════════════════ */
 
 checked++;
-if (JSON.stringify(mod.V16) !== JSON.stringify(v16Src))
-  fail("V16 BLOCK OUT OF DATE", "the V16 block in index.html is not the record in Model/docs — run tools/inline-v16.py");
+if (JSON.stringify(mod.MODEL) !== JSON.stringify(modelSrc))
+  fail("MODEL BLOCK OUT OF DATE", "the MODEL block in index.html is not the record in Model/docs — run tools/inline-model.py");
+checked++;
+if (JSON.stringify(mod.CHEAT) !== JSON.stringify(cheatSrc))
+  fail("CHEAT BLOCK OUT OF DATE", "the CHEAT block in index.html is not the pack in Model/docs — run tools/inline-cheat.py");
 checked++;
 if (JSON.stringify(mod.CAPEX) !== JSON.stringify(capexSrc))
   fail("CAPEX BLOCK OUT OF DATE", "the CAPEX block in index.html is not the pack in Model/capex — run tools/inline-capex.py");
 
 /* the figure mirror on the page is the record's own map */
 checked++;
-if (JSON.stringify(figsOnPage()) !== JSON.stringify(v16Src.fig))
-  fail("FIGURE MIRROR OUT OF DATE", "the FIGS map in index.html is not v16-figures.json's fig block");
+if (JSON.stringify(figsOnPage()) !== JSON.stringify(modelSrc.fig))
+  fail("FIGURE MIRROR OUT OF DATE", "the FIGS map in index.html is not the record's fig block");
 function figsOnPage() { return mod.FIGS; }
 
 /* ══ H. the capital-cost chapter, re-derived from the pack ═════════ */
@@ -905,6 +959,51 @@ else {
   }
 }
 
+/* ══ the retired figures ═══════════════════════════════════════════
+
+   The portal was cut on v15, re-struck onto v16 and now onto v29. Each of
+   those records was a registered source in its turn, so a figure left behind
+   from an earlier one passes every check that asks "is this a real number
+   somewhere". These are the headline figures of the retired versions, and none
+   of them may appear on a model-figure surface: the chapters, the case plates,
+   the cheat sheet, the dial sheet, the ladder, the bridge or the figures map.
+   Comparable packs are excluded, where the same string can be another hotel's
+   honest number. */
+
+const RETIRED = [
+  /* v16 */ "12.99%", "12.9930%", "1.84x", "£109.8m", "£92.5m", "£123.6m", "£44.4m",
+  "£168.0m", "£194.2m", "£45.33m", "33.96%", "£248.0m", "£4.13m", "10.87%", "1.76x",
+  "£116.9m", "£3.24m", "£2.06m", "£3.70m", "£15.39m", "£10.74m", "23.69%", "£46.7m",
+  "£95.9m", "£111.9m", "£95.5m", "£121.5m", "£11.01m", "£10.59m", "£264.8m", "£49.97m",
+  "146-line", "143-line", "£755,507", "£19.72m", "£9.12m", "£16.49m", "£282.0m",
+  /* v15 */ "£107.3m", "£161.8m",
+];
+const modelSurface = JSON.stringify([mod.FIGS, mod.CHAPTERS, mod.CASES, mod.CHEAT, mod.DIALS,
+  mod.DIAL_SRC, mod.LADDER, mod.BRIDGE, mod.FIELD]);
+const liveFigures = new Set(Object.values(modelSrc.fig).map(String));
+for (const t of RETIRED) {
+  checked++;
+  if (liveFigures.has(t)) continue;          /* the model has come back to it */
+  if (modelSurface.includes(t))
+    fail("RETIRED FIGURE STILL ON THE PAGE", `"${t}" is from a superseded version of the model`);
+}
+
+/* the written hotel pages read a comparable against the subject, and the
+   subject column is the underwrite's own figure. That pack is built by its own
+   pipeline and regenerated from its own sources, so a re-strike of the model
+   has to reach it too. */
+for (const [slug, rec] of Object.entries(hpSource)) {
+  for (const row of rec.against || []) {
+    if (!row || row.length < 3 || typeof row[2] !== "string") continue;
+    checked++;
+    const stale = RETIRED.find(t => row[2].includes(t)
+      || row[2].includes(t.replace("£", "GBP ")) || row[2].includes(t.replace("£", "GBP")));
+    if (stale && !liveFigures.has(stale))
+      fail(`HOTEL PAGE SUBJECT CELL IS STALE  ${slug}/${row[0]}`,
+        `"${row[2]}" carries ${stale} — run python tools/restrike-hotelpages.py, then tools/inline-hotelpages.py`);
+  }
+}
+
 /* ══ house rules ═══════════════════════════════════════════════════ */
 
 for (const w of ["strand", "wilton", "\\bproceed\\b", "compelling", "\\bprime\\b(?! reach| Henley| sold| 5%)", "\\brare\\b"]) {
@@ -923,7 +1022,7 @@ const OCC_OK = [
   '"occupancy":0.65',                        // the comparable pack, carried whole
   "0.65 x administrative and general",       // the P&L pack's payroll bridge, a weighting
   "0.65 / 0.45 / 0.40 / 0.00 convention",    // the same weighting, restated in the limits
-  "0.65 \u2192 12.99%",                        // the sensitivities table's underwritten cell
+  "0.65 \u2192 " + modelSrc.fig.irr,      // the sensitivities table's underwritten cell
   "occupancy 0.65, seasonality",             // the P&L pack's subject note
   "0.65 is the model input",
   "reaching 0.55",                           // the downside's own occupancy override
@@ -933,7 +1032,8 @@ const OCC_OK = [
    the figure record, the capital-cost pack, the comparable P&Ls, the register —
    are sources, and their raw values are not narrative claims. */
 let narrative = html;
-for (const [a, b] of [["/*V16-DATA-START*/", "/*V16-DATA-END*/"],
+for (const [a, b] of [["/*MODEL-DATA-START*/", "/*MODEL-DATA-END*/"],
+                      ["/*CHEAT-DATA-START*/", "/*CHEAT-DATA-END*/"],
                       ["/*CAPEX-DATA-START*/", "/*CAPEX-DATA-END*/"],
                       ["/*PNL-DATA-START*/", "/*PNL-DATA-END*/"],
                       ["/*QS-DATA-START*/", "/*QS-DATA-END*/"]]) {

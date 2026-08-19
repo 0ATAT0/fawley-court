@@ -61,8 +61,8 @@
     {
      "k": "capex",
      "label": "Built at",
-     "v": "£1.42m a key all-in",
-     "basis": "€154m acquisition and €40m renovation over 117 keys, 2019-21",
+     "v": "£1.42m to 1.94m a key all-in",
+     "basis": "€154m acquisition and €40m renovation, 2019-21: £1.42m over the 117 keys bought, £1.94m over the 86 rooms and suites Airelles now lists",
      "cls": "press"
     }
    ],
@@ -97,7 +97,7 @@
    "year_round": false
   },
   {
-   "name": "Hotel Pitrizza",
+   "name": "Cheval Blanc Pitrizza",
    "slug": "hotel-pitrizza",
    "country": "IT",
    "region": "Costa Smeralda",
@@ -156,6 +156,13 @@
      "v": "19.4% of revenue",
      "basis": "FY2024",
      "cls": "filed"
+    },
+    {
+     "k": "club",
+     "label": "Membership",
+     "v": "invitation only, nothing published",
+     "basis": "The Club at Castiglion del Bosco, a family golf membership; neither the joining fee nor the annual dues are published",
+     "cls": "note"
     },
     {
      "k": "revkey",
@@ -555,8 +562,8 @@
     {
      "k": "revkey",
      "label": "Revenue a key",
-     "v": "€431k a key",
-     "basis": "96 keys, FY2024 turnover €41.33m",
+     "v": "€523k a key",
+     "basis": "79 keys, FY2024 turnover €41.33m. Belmond's own site gives 79 two ways - 55 rooms, 20 suites and 4 signature suites, and 63 in the main building with 16 in Palazzo Vendramin. The 96 widely repeated elsewhere is a dated count, down from 102 in 2001",
      "cls": "filed"
     }
    ],
@@ -1242,6 +1249,13 @@
    "in_cohort": true,
    "figures": [
     {
+     "k": "adr",
+     "label": "Achieved rate",
+     "v": "€1,882 achieved",
+     "basis": "2022 average room rate, Cornell hospitality case study",
+     "cls": "press"
+    },
+    {
      "k": "occ",
      "label": "Occupancy",
      "v": "97%",
@@ -1252,7 +1266,7 @@
      "k": "revkey",
      "label": "Revenue a key",
      "v": "€637k a key",
-     "basis": "57 keys, FY2024 turnover €36.31m",
+     "basis": "57 keys, FY2024 turnover €36.31m; the count is unsettled - the general manager said 55 in an October 2025 interview, and trade listings give 56 and 62, a range that puts revenue a key between €586k and €660k",
      "cls": "filed"
     }
    ],
@@ -1492,15 +1506,15 @@
     {
      "k": "margin",
      "label": "Margin",
-     "v": "pre-tax loss €389k",
+     "v": "loss after tax €389k",
      "basis": "on €6.61m turnover, FY2024",
      "cls": "filed"
     },
     {
      "k": "payroll",
      "label": "Payroll",
-     "v": "50.5% of revenue",
-     "basis": "FY2024",
+     "v": "52.9% of revenue",
+     "basis": "€3.5m of staff cost on €6.61m of turnover, FY2024; 96 employees",
      "cls": "filed"
     }
    ],
@@ -1711,6 +1725,13 @@
      "v": "49.5% of revenue",
      "basis": "FY2025; 618 employees, 5.72 a key",
      "cls": "filed"
+    },
+    {
+     "k": "club",
+     "label": "Membership",
+     "v": "£3,750 a year, £1,000 to join",
+     "basis": "Manor Membership on the club's own site, VAT inclusive, monthly options offered; a separate under-33 tier is listed without a published price",
+     "cls": "press"
     }
    ],
    "season": {
@@ -1956,6 +1977,13 @@
      "cls": "filed"
     },
     {
+     "k": "club",
+     "label": "Membership",
+     "v": "£3,780 a year, £2,000 to join",
+     "basis": "individual golf membership on the resort's own site; categories run from £645 junior to £14,617 plus VAT corporate. Gleneagles Townhouse in Edinburgh is a separate members' hotel at £2,200 a year",
+     "cls": "press"
+    },
+    {
      "k": "txn",
      "label": "Last trade",
      "v": "£647k a key, 2015",
@@ -2170,6 +2198,13 @@
      "cls": "filed"
     },
     {
+     "k": "club",
+     "label": "Membership",
+     "v": "£4,000 a year, £1,000 to join",
+     "basis": "the Coach House Spa wellness membership on the estate's own site, weekday access, twelve-month minimum; the golf club's joining fee is separately reported at £305,000",
+     "cls": "press"
+    },
+    {
      "k": "capex",
      "label": "Built at",
      "v": "above £2.57m a key",
@@ -2242,6 +2277,13 @@
      "v": "30.0% of revenue",
      "basis": "FY2024; FY2023 31.1%",
      "cls": "filed"
+    },
+    {
+     "k": "club",
+     "label": "Membership",
+     "v": "from £570 a month single",
+     "basis": "the Cliveden Club on the hotel's own site: single from £570 a month, double from £1,040, junior from £2,400 a year; no joining fee published",
+     "cls": "press"
     },
     {
      "k": "txn",

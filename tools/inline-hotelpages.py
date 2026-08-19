@@ -66,7 +66,10 @@ for f in sorted(PAGES.glob("*.json")):
         continue
     r = scrub(r, slug, "record", problems)
     keep = {"intro": r["intro"].strip()}
-    for k in ("record", "record_extra", "cards", "against", "gap", "sources", "conflicts", "not_found"):
+    # conflicts and not_found are the research's own working record. They live in
+    # staging/pages/*.json and in VERIFICATION.md; the page never renders them, so
+    # shipping them only costs every visit the bytes and the parse.
+    for k in ("record", "record_extra", "cards", "against", "gap", "sources"):
         if r.get(k):
             keep[k] = r[k]
     ok = []

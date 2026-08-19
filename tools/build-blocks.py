@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 """Regenerate the portal's model-figure blocks from the measured record.
 
-The page carries its model figures in six top-level blocks. Each one was
+The page carries its model figures in five authored blocks: the figures map,
+the dial sheet, the dial source line, the entry ladder and the bridge. Each was
 hand-cut on an earlier version of the model and went stale silently. This
-rebuilds all six from `Model/docs/v29-figures.json` and the cheat-sheet pack, so
-a re-strike is a rerun rather than a rewrite.
+rebuilds all five from `Model/docs/v29-figures.json`, so a re-strike is a rerun
+rather than a rewrite. The measured record and the cheat-sheet pack are carried
+in separately by inline-model.py and inline-cheat.py.
 
     python tools/build-blocks.py [--check]
 
@@ -18,8 +20,6 @@ DEAL = os.environ.get(
     r"D:\OneDrive - Strand Labs\2. Clients\Align\2. Live Deals\Fawley Court")
 IDX = os.path.join(HERE, "index.html")
 REC = json.load(open(os.path.join(DEAL, "Model", "docs", "v29-figures.json"), encoding="utf-8"))
-CHEAT = json.load(open(os.path.join(DEAL, "Model", "docs", "cheat-web-data.json"),
-                       encoding="utf-8"))
 
 F = REC["fig"]
 LAD = {int(r["price"] / 1e6): r for r in REC["ladder"]}
@@ -292,15 +292,6 @@ def bridge_block():
     return "\n".join(out)
 
 
-# ══ 5. the record and the cheat sheet, inlined ════════════════════════
-def model_block():
-    return "const MODEL = " + js(REC) + ";"
-
-
-def cheat_block():
-    return "const CHEAT = " + js(CHEAT, indent=2) + ";"
-
-
 # ══ splice ════════════════════════════════════════════════════════════
 BLOCKS = [
     ("const FIGS = {", "};", figs_block),
@@ -308,8 +299,6 @@ BLOCKS = [
     ("const DIAL_SRC = ", None, dial_src_block),
     ("const LADDER = {", "};", ladder_block),
     ("const BRIDGE = {", "};", bridge_block),
-    ("const MODEL = ", None, model_block),
-    ("const CHEAT = {", "};", cheat_block),
 ]
 
 MODEL_NAME = "Financial Model v29"

@@ -34,6 +34,10 @@ ROUTES += ["#/areas", "#/areas/hall", "#/areas/courtyard", "#/areas/riding", "#/
 # chapter 10's destinations, read off the pack so the list cannot drift from it:
 # a rate record on each written case, and a property page for the rest
 _MKT = json.load(open("src/market-data.json", encoding="utf-8"))["hotels"]
+# the ladder's top rung, read from the record rather than typed, so this
+# check follows the model instead of pinning it to a version
+_FIG = json.load(open("src/model-figures.json", encoding="utf-8"))
+_TOP_RUNG = _FIG["ladder"][-2]["irr_fig"]   # £70m, one below the £75m tail
 ROUTES += ["#/h/" + h["case_slug"] + "/rate" for h in _MKT if h.get("case_slug")]
 ROUTES += ["#/m/" + h["slug"] for h in _MKT
            if h.get("in_cohort") and not h.get("case_slug")]
@@ -178,7 +182,7 @@ async def main():
             await page.goto(BASE + "#/c/returns", wait_until="networkidle")
             await page.click('[data-lad="4"]'); await page.wait_for_timeout(300)
             txt = await page.locator("#laddetail").inner_text()
-            if "8.88%" not in txt:          # the £70m rung on the v16 ladder
+            if _TOP_RUNG not in txt:        # the £70m rung, off the measured record
                 findings.setdefault("ladder", []).append([sname, "rung detail did not update: " + txt[:60]])
 
             # the comparative ranking opens the hotel's own estimated P&L
