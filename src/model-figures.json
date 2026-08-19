@@ -1,7 +1,7 @@
 {
  "meta": {
   "model": "Fawley Court - Financial Model v29.xlsx",
-  "snapshot_sha256": "b9bbcf3b71fa4720f66aff34426925cd8bfcaae6f6465de5da5f9a927301f90d",
+  "snapshot_sha256": "fbca82156a0c56526ca287f944384e0d52af81c2d1ee0f899d1ea0e9dea970aa",
   "measured": "2026-08-19",
   "entry": "£50m",
   "basis": "Every figure measured on a scratch copy of the saved model in one Excel session, inputs restored between scenarios. Solves are bisections with the achieved value recorded.",
@@ -9,7 +9,7 @@
   "baseline_after": 0.1338372647762299,
   "baseline_checks_after": "YES",
   "measured_against": "ff0bb9f9d873eccd24d75beb948b8b5fd67ba9ac62b0e4f2cf02b1f7aa51da8e",
-  "restamped": "One text cell was corrected after the measurement: a watchpoint on the Cheat Sheet tab whose cell is formatted as Text, so the formula written into it had been stored as a literal. Every value in both books was compared afterwards - 10,589 of them across the names, the P&L, the assumptions, the schedule, the cash flow and the checks - with no numeric difference, so the measurement stands against the re-stamped file."
+  "restamped": "Two text cells were corrected after the measurement: a watchpoint whose cell is formatted as Text, so a formula written into it was stored as a literal, and the equity register's covenant note, which repeated a capital call the 1.30x cover test no longer produces on this book. Every value in the books was compared after each - 10,589 of them across the names, the P&L, the assumptions, the schedule, the cash flow and the checks - with no numeric difference, so the measurement stands against the re-stamped file."
  },
  "fig": {
   "keys": "60",

@@ -1,7 +1,7 @@
 {
  "pack": {
   "source": "Fawley Court - Financial Model v29.xlsx, Cheat Sheet tab",
-  "snapshot_sha256": "b9bbcf3b71fa4720f66aff34426925cd8bfcaae6f6465de5da5f9a927301f90d",
+  "snapshot_sha256": "fbca82156a0c56526ca287f944384e0d52af81c2d1ee0f899d1ea0e9dea970aa",
   "basis": "Every printed value is the sheet's own render; every note is the sheet's own off-page register, keyed by the cell it annotates."
  },
  "title": "Fawley Court — Investor Cheat Sheet",
@@ -17,7 +17,7 @@
   [
    "EQUITY — PARTNER 100%",
    "£110.9m",
-   "Total equity = peak equity = £110,910,483. The cash reserve funds later drawdowns, so equity is called only in periods 0-12 and none after the first distribution. The two figures parted company at v20 and closed again at v22, when the refinancing covenant was sized at 1.25x. A lender holding 1.30x reopens the gap: the refinancing draws £120.0m, total equity rises to £110.9m against a £110.9m peak, and the difference of £0.00m is a fresh capital call. Align contributes no equity: its economics are the AM fee plus a promote once structured."
+   "Total equity = peak equity = £110,910,483. The cash reserve funds later drawdowns, so equity is called only in periods 0-12 and none after the first distribution. The two figures parted company at v20 and closed again at v22, when the refinancing covenant was sized at 1.25x. A lender holding 1.30x no longer reopens them on this book: the refinancing draws £120.0m rather than £124.8m, the equity requirement is unchanged and the return falls to 13.33%. The £3.45m capital call the v22 record warned about was a v20-v21 measurement and does not survive here. Align contributes no equity: its economics are the AM fee plus a promote once structured."
   ],
   [
    "WORKS / COST TO OPEN",
@@ -486,7 +486,7 @@
    "total",
    "Total equity = peak equity",
    "£110.9m",
-   "£110,910,483. Equal by construction at the 1.25x covenant: the cash reserve funds later drawdowns, so no equity is called after the first distribution."
+   "£110,910,483. Equal by construction, and it stays equal at a 1.30x covenant as well: the cash reserve funds later drawdowns, so no equity is called after the first distribution."
   ]
  ],
  "yieldLines": [

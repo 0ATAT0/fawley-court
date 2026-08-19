@@ -56,6 +56,52 @@ Kept so a later revision knows what was deliberate.
   states 0.65 as the model input in the table note, keeping the house
   convention.
 
+## The v29 re-strike, and the gate that could not see it (19 August 2026)
+
+Chapter 05 moved to the current capital budget overnight. Every other chapter still argued the
+case the model had left behind three versions earlier, and the gate passed all of it.
+
+1. **The whole page is on one basis again.** Chapters 01, 02, 03, 04, 06, 07, 08 and 09, plus the
+   figures map, the dial sheet, the entry ladder, the bridge block, the ten case plates and 31
+   subject cells inside the written hotel pages. The masthead names v29 because every chapter is.
+2. **Five blocks are generated, not written.** `tools/build-blocks.py` rebuilds the figures map,
+   the dial sheet, its source line, the ladder and the bridge from the measured record, so the next
+   re-strike is a rerun. The record itself and the capital-cost, cheat-sheet and estate-area packs
+   are carried in by their own inline tools.
+3. **Chapter 09 is generated from the workbook's own Cheat Sheet tab.** Every printed value as the
+   sheet renders it, every note from the sheet's own off-page register, keyed by the cell it
+   annotates — so a note cannot drift onto the wrong figure. The previous pack had been transcribed
+   by hand out of a PDF render, which is how it came to carry v16 prose beside v28 numbers.
+4. **The gate now fails on a retired figure.** It used to accept any figure that appeared in a
+   registered source, and each version's record stayed registered after it was superseded, so a v16
+   number inside a v29 chapter was indistinguishable from a live one. `verify.mjs` carries the
+   retired headline figures of v15 and v16 and fails on any that survives on a model-figure
+   surface. Comparable packs are excluded, where the same string can be another hotel's honest
+   number. Eight survivors were found this way, in chapters the re-strike had already been through.
+5. **The subject-figure allowlist held sixty of v16's own figures**, which is the same defect in a
+   different place. It now holds only tokens that are not model figures at all — key counts, an
+   index, the occupancy interval — and the capital-cost pack joins the registered set instead.
+6. **The written hotel pages are rebuilt from staging files.** Each page reads a comparable against
+   the subject, and the subject column is the underwrite's own figure. Editing the assembled pack
+   is undone the next time the pack is assembled, so `tools/restrike-hotelpages.py` corrects the
+   staging files and a gate check names it by name when a stale figure comes back.
+7. **A render-only defect shipped through 8,661 passing checks.** The generated cheat pack put its
+   provenance under the key the renderer prints as the sheet's header line, so chapter 09 displayed
+   "[object Object]". Nothing mechanical could see it; the render did, immediately.
+
+**What was corrected in the model itself.** v29 is a prose pass on v28 and moves no number — 10,589
+values compared, zero numeric differences. The Cheat Sheet tab was still written on v16: it called
+the estate off-market when CBRE has an information memorandum out, described ten days of Regatta
+against six and a 300-member club against 250, printed a 1.25x covenant as "1.3x", and carried all
+64 register annotations on the earlier numbers. One of those annotations repeated a £3.45m capital
+call at a 1.30x cover test; measured on this book that call does not exist, so the note now says
+what 1.30x actually does — draws £120.0m of refinancing rather than £124.8m, leaves the equity
+requirement where it is, and costs five basis points of return.
+
+**Gates:** verify.mjs 8,661 checks and 0 failures; audit.py clean; offline.py clean; eleven routes
+rendered at four widths with no console error and no sideways scroll. The deployed page was
+confirmed byte-identical to the commit.
+
 ## The v16 re-strike (18 August 2026)
 
 1. **The portal moved to Financial Model v16; the memorandum did not.** Angus

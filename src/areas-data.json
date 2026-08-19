@@ -1,8 +1,8 @@
 {
  "meta": {
-  "source": "Model/Fawley Court - Financial Model v28.xlsx, Capex tab",
-  "model_sha": "7ad5cd323dcea85bd018a3d2e53f7454c41d29d9dd3c0f8ec87f70e3e55bfd45",
-  "figures": "Fawley Court - Financial Model v28.xlsx",
+  "source": "Model/Fawley Court - Financial Model v29.xlsx, Capex tab",
+  "model_sha": "fbca82156a0c56526ca287f944384e0d52af81c2d1ee0f899d1ea0e9dea970aa",
+  "figures": "Fawley Court - Financial Model v29.xlsx",
   "measured": "2026-08-18",
   "note": "Each area joins the capital-cost schedule to the imagery and to what the place earns. Loaded cost applies the limb's own prelims, fees and contingency to that area's net. The images are indicative and nothing here is designed or consented.",
   "covered": 124062257.66,
@@ -602,7 +602,7 @@
    "top_lines": [
     {
      "n": 144,
-     "desc": "Residences shell and structure - 12 units x 5,492 sqft",
+     "desc": "Residences shell and structure - 12 units x 5,500 sqft",
      "qty": 66000.0,
      "unit": "sqft",
      "rate": 325.0,

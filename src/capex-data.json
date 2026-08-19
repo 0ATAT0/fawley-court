@@ -1,7 +1,7 @@
 {
  "meta": {
   "source": "Model/Fawley Court - Financial Model v29.xlsx, Capex tab",
-  "snapshot_sha256": "b9bbcf3b71fa4720f66aff34426925cd8bfcaae6f6465de5da5f9a927301f90d",
+  "snapshot_sha256": "fbca82156a0c56526ca287f944384e0d52af81c2d1ee0f899d1ea0e9dea970aa",
   "register": "Model/capex/REGISTER.md and Model/capex/PROPOSAL.md",
   "measured": "2026-08-18",
   "entry": "£50m",

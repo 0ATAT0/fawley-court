@@ -62,7 +62,10 @@ prev/next pagers.
 | `tools/parse-qs.py` | Parses the vendor-question register markdown into `src/qs-data.json` |
 | `tools/inline-qs.py` | Splices that JSON into `index.html` between the `QS-DATA` markers |
 | `tools/inline-pnl.py` | Splices the comparable-P&L pack in between the `PNL-DATA` markers, and caches it at `src/pnl-data.json` |
-| `tools/inline-v16.py` | Splices the v16 figure record in between the `V16-DATA` markers |
+| `tools/inline-model.py` | Splices the measured figure record in between the `MODEL-DATA` markers |
+| `tools/inline-cheat.py` | Splices the cheat-sheet pack in between the `CHEAT-DATA` markers |
+| `tools/build-blocks.py` | Regenerates the figures map, the dial sheet, its source line, the ladder and the bridge from the record |
+| `tools/restrike-hotelpages.py` | Re-strikes the underwrite's own figures in the hotel pages' staging files |
 | `tools/inline-capex.py` | Splices the capital-cost pack in between the `CAPEX-DATA` markers |
 | `tools/dump.mjs` | Dumps the page's own data structures as readable text, for inventory work |
 | `tools/shot.py` | One route, one viewport, at full scale — for reading a region rather than a page |
@@ -109,12 +112,12 @@ carried verbatim from one of six sources, and `verify.mjs` gates each of them:
 
 | Section | Source |
 |---|---|
-| **Every figure on the v16 basis** | `Model/docs/v16-figures.json` — the measured record, struck on Financial Model v16 on 18 August 2026 and spliced in whole |
+| **Every model figure** | `Model/docs/v29-figures.json` — the measured record, struck on Financial Model v29 on 19 August 2026 and spliced in whole. A figure retired with an earlier version fails the gate rather than passing on the strength of the old record |
 | **The capital cost, chapter 05** | `Model/capex/capex-web-data.json` — the 146-line schedule as the model holds it, with `REGISTER.md` and `PROPOSAL.md` behind the prose |
 | Asset, planning, evidence and the case studies | `Deck/im-v1/slides.md` and `Deck/im-v1/figures.json`, governed by `Deck/im-v1/INTENT.md` |
 | Chapter 07, the bridge | `Model/docs/embassy-bridge-v16-20260818.md` |
 | Chapter 08, the register | `Research/vendor-qs-crosscheck-20260816.md` |
-| Chapter 09, the cheat sheet | `Model/cheatsheet-spec-v16.json` for every label and note; the sheet's own A3 render for every measured value |
+| Chapter 09, the cheat sheet | `Model/docs/cheat-web-data.json`, generated from the workbook's own Cheat Sheet tab: every printed value as the sheet renders it, every note from the sheet's off-page register keyed by the cell it annotates |
 | The estimated P&Ls | `Research/comp-pnls/web-data.json`, carried whole, with the candour lines verbatim from `Research/comp-pnls/REGISTER.md` |
 | The portal's own navigation copy | written for the medium; the words are ours, and every figure token inside them is checked against the registers above |
 
