@@ -85,7 +85,15 @@ case the model had left behind three versions earlier, and the gate passed all o
    the subject, and the subject column is the underwrite's own figure. Editing the assembled pack
    is undone the next time the pack is assembled, so `tools/restrike-hotelpages.py` corrects the
    staging files and a gate check names it by name when a stale figure comes back.
-7. **A render-only defect shipped through 8,661 passing checks.** The generated cheat pack put its
+7. **Three surfaces sat outside what the check scopes, and all three were stale.** The equity
+   waterfall's own spec was a hardcoded array, so chapter 04 drew a v16 drawdown beside a v29
+   table; it is generated from the record now, and so is its closing bar. The written hotel pages
+   and the comparable P&L register name the subject in their *prose* as well as in their subject
+   column, and those sentences were still on the earlier margin and revenue a key. The hotel-page
+   re-strike sweeps prose too, but only phrases that name Fawley — Cliveden House traded at £756k
+   a key in 2012, which is exactly our old revenue a key, and three surfaces keep that figure and
+   are right to.
+8. **A render-only defect shipped through 8,661 passing checks.** The generated cheat pack put its
    provenance under the key the renderer prints as the sheet's header line, so chapter 09 displayed
    "[object Object]". Nothing mechanical could see it; the render did, immediately.
 
