@@ -1,0 +1,722 @@
+{
+ "_": "Two authored flat-colour treatments for the 34 slots in materials.json. drawing is the white-card architectural model register; estate is the real materials as considered flat colour and replaces the undesigned estate baseline in materials.json. Colours are LINEAR sRGB floats 0-1, the glTF baseColorFactor convention, matching materials.json. Merge with tools/materials_merge.py.",
+ "drawing": {
+  "_intent": "White card. Every material sits on one warm-neutral value scale of constant hue, so tone alone separates dressings from brick from slate and the light does the modelling.",
+  "wall_brick": {
+   "colour": [
+    0.5841,
+    0.5457,
+    0.4678
+   ],
+   "roughness": 0.9,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "wall_stone": {
+   "colour": [
+    0.7011,
+    0.6514,
+    0.5583
+   ],
+   "roughness": 0.86,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "wall_render": {
+   "colour": [
+    0.8308,
+    0.7682,
+    0.6654
+   ],
+   "roughness": 0.88,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "wallplain": {
+   "colour": [
+    0.491,
+    0.4564,
+    0.3916
+   ],
+   "roughness": 0.92,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "wallbrick": {
+   "colour": [
+    0.491,
+    0.4564,
+    0.3916
+   ],
+   "roughness": 0.92,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "wall_off": {
+   "colour": [
+    0.3663,
+    0.3419,
+    0.2961
+   ],
+   "roughness": 0.97,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "stone": {
+   "colour": [
+    0.402,
+    0.3763,
+    0.3231
+   ],
+   "roughness": 0.94,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "stone_detail": {
+   "colour": [
+    0.8963,
+    0.8308,
+    0.7157
+   ],
+   "roughness": 0.82,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "roof_slate": {
+   "colour": [
+    0.0953,
+    0.0887,
+    0.0782
+   ],
+   "roughness": 0.68,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "roof": {
+   "colour": [
+    0.1413,
+    0.1329,
+    0.1144
+   ],
+   "roughness": 0.8,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "roof_lead": {
+   "colour": [
+    0.162,
+    0.15,
+    0.1301
+   ],
+   "roughness": 0.45,
+   "metallic": 0.1,
+   "alpha": 1.0
+  },
+  "roof_off": {
+   "colour": [
+    0.305,
+    0.2831,
+    0.2462
+   ],
+   "roughness": 0.97,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "prop_roof": {
+   "colour": [
+    0.2747,
+    0.2542,
+    0.2195
+   ],
+   "roughness": 0.85,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "timber": {
+   "colour": [
+    0.2462,
+    0.2307,
+    0.1981
+   ],
+   "roughness": 0.9,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "frame": {
+   "colour": [
+    0.7682,
+    0.7157,
+    0.6105
+   ],
+   "roughness": 0.55,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "door": {
+   "colour": [
+    0.1248,
+    0.117,
+    0.1022
+   ],
+   "roughness": 0.6,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "glass": {
+   "colour": [
+    0.1095,
+    0.1022,
+    0.0887
+   ],
+   "roughness": 0.06,
+   "metallic": 0.0,
+   "alpha": 0.3
+  },
+  "metal": {
+   "colour": [
+    0.0595,
+    0.0561,
+    0.0482
+   ],
+   "roughness": 0.3,
+   "metallic": 0.5,
+   "alpha": 1.0
+  },
+  "gravel": {
+   "colour": [
+    0.4508,
+    0.4179,
+    0.3613
+   ],
+   "roughness": 0.96,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "earth": {
+   "colour": [
+    0.2016,
+    0.1878,
+    0.162
+   ],
+   "roughness": 0.95,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "terrain": {
+   "colour": [
+    0.3372,
+    0.314,
+    0.2705
+   ],
+   "roughness": 0.92,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "surface_pale_gravel_hardstanding": {"colour": [0.4508, 0.4179, 0.3613], "roughness": 0.96, "metallic": 0.0, "alpha": 1.0},
+  "surface_bound_macadam_hardstanding": {"colour": [0.2100, 0.2000, 0.1900], "roughness": 0.94, "metallic": 0.0, "alpha": 1.0},
+  "surface_formal_lawn": {"colour": [0.3372, 0.314, 0.2705], "roughness": 0.92, "metallic": 0.0, "alpha": 1.0},
+  "surface_planted_beds": {"colour": [0.255, 0.245, 0.205], "roughness": 0.96, "metallic": 0.0, "alpha": 1.0},
+  "surface_service_hardstanding": {"colour": [0.3, 0.285, 0.25], "roughness": 0.95, "metallic": 0.0, "alpha": 1.0},
+  "surface_rough_parkland": {"colour": [0.3, 0.31, 0.255], "roughness": 0.94, "metallic": 0.0, "alpha": 1.0},
+  "hedge": {
+   "colour": [
+    0.0823,
+    0.0762,
+    0.0666
+   ],
+   "roughness": 0.93,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "trunk": {
+   "colour": [
+    0.0704,
+    0.0666,
+    0.0578
+   ],
+   "roughness": 0.92,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "leaf_broadleaf": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "roughness": 0.9,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "leaf_veteran": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "roughness": 0.9,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "leaf_poplar": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "roughness": 0.9,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "leaf_cedar": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "roughness": 0.9,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "water": {
+   "colour": [
+    0.1812,
+    0.1683,
+    0.147
+   ],
+   "roughness": 0.07,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "longwater": {
+   "colour": [
+    0.2232,
+    0.2086,
+    0.1812
+   ],
+   "roughness": 0.05,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "proposed_on": {
+   "colour": [
+    0.6445,
+    0.5972,
+    0.5149
+   ],
+   "roughness": 0.85,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "proposed_off": {
+   "colour": [
+    0.5333,
+    0.4969,
+    0.4287
+   ],
+   "roughness": 1.0,
+   "metallic": 0.0,
+   "alpha": 0.3
+  },
+  "area": {
+   "colour": [
+    0.0482,
+    0.0452,
+    0.0395
+   ],
+   "roughness": 0.95,
+   "metallic": 0.0,
+   "alpha": 0.28
+  },
+  "marker": {
+   "colour": [
+    0.0382,
+    0.0356,
+    0.0319
+   ],
+   "roughness": 0.45,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "anchor": {
+   "colour": [
+    0.0284,
+    0.0262,
+    0.0242
+   ],
+   "roughness": 0.45,
+   "metallic": 0.0,
+   "alpha": 1.0
+  }
+ },
+ "estate": {
+  "_intent": "Painted. Every slot is anchored on the measured albedo of its own texture set, then separated by value and hue together, so red brick, buff ashlar, Portland dressings, blue-grey slate and parkland green each read at a glance.",
+  "wall_brick": {
+   "colour": [
+    0.4452,
+    0.1651,
+    0.0782
+   ],
+   "roughness": 0.62,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "wall_stone": {
+   "colour": [
+    0.4508,
+    0.3613,
+    0.1812
+   ],
+   "roughness": 0.6,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "wall_render": {
+   "colour": [
+    0.7835,
+    0.6795,
+    0.4342
+   ],
+   "roughness": 0.76,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "wallplain": {
+   "colour": [
+    0.3515,
+    0.1356,
+    0.0908
+   ],
+   "roughness": 0.66,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "wallbrick": {
+   "colour": [
+    0.3515,
+    0.1356,
+    0.0908
+   ],
+   "roughness": 0.66,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "wall_off": {
+   "colour": [
+    0.1529,
+    0.1384,
+    0.107
+   ],
+   "roughness": 0.95,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "stone": {
+   "colour": [
+    0.1946,
+    0.1746,
+    0.1195
+   ],
+   "roughness": 0.8,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "stone_detail": {
+   "colour": [
+    0.6867,
+    0.6654,
+    0.5776
+   ],
+   "roughness": 0.55,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "roof_slate": {
+   "colour": [
+    0.0865,
+    0.1274,
+    0.1441
+   ],
+   "roughness": 0.48,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "roof": {
+   "colour": [
+    0.1119,
+    0.1559,
+    0.1746
+   ],
+   "roughness": 0.58,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "roof_lead": {
+   "colour": [
+    0.2122,
+    0.227,
+    0.2016
+   ],
+   "roughness": 0.4,
+   "metallic": 0.2,
+   "alpha": 1.0
+  },
+  "roof_off": {
+   "colour": [
+    0.1221,
+    0.1095,
+    0.0844
+   ],
+   "roughness": 0.95,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "prop_roof": {
+   "colour": [
+    0.1559,
+    0.1946,
+    0.2159
+   ],
+   "roughness": 0.55,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "timber": {
+   "colour": [
+    0.2086,
+    0.1274,
+    0.0513
+   ],
+   "roughness": 0.78,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "frame": {
+   "colour": [
+    0.76,
+    0.742,
+    0.694
+   ],
+   "roughness": 0.42,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "door": {
+   "colour": [
+    0.0452,
+    0.0704,
+    0.0545
+   ],
+   "roughness": 0.32,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "glass": {
+   "colour": [
+    0.0612,
+    0.0931,
+    0.1144
+   ],
+   "roughness": 0.05,
+   "metallic": 0.0,
+   "alpha": 0.3
+  },
+  "metal": {
+   "colour": [
+    0.0331,
+    0.0369,
+    0.0423
+   ],
+   "roughness": 0.38,
+   "metallic": 0.65,
+   "alpha": 1.0
+  },
+  "gravel": {
+   "colour": [
+    0.3278,
+    0.3005,
+    0.2346
+   ],
+   "roughness": 0.62,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "earth": {
+   "colour": [
+    0.2542,
+    0.1651,
+    0.0802
+   ],
+   "roughness": 0.82,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "terrain": {
+   "colour": [
+    0.1248,
+    0.159,
+    0.0452
+   ],
+   "roughness": 0.72,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "surface_pale_gravel_hardstanding": {"colour": [0.5647, 0.4125, 0.2831], "roughness": 0.92, "metallic": 0.0, "alpha": 1.0},
+  "surface_bound_macadam_hardstanding": {"colour": [0.2542, 0.2384, 0.2122], "roughness": 0.88, "metallic": 0.0, "alpha": 1.0},
+  "surface_formal_lawn": {"colour": [0.3900, 0.5000, 0.2400], "roughness": 0.88, "metallic": 0.0, "alpha": 1.0},
+  "surface_planted_beds": {"colour": [0.1800, 0.2200, 0.1000], "roughness": 0.96, "metallic": 0.0, "alpha": 1.0},
+  "surface_service_hardstanding": {"colour": [0.3900, 0.3600, 0.2850], "roughness": 0.90, "metallic": 0.0, "alpha": 1.0},
+  "surface_rough_parkland": {"colour": [0.4300, 0.4900, 0.2700], "roughness": 0.93, "metallic": 0.0, "alpha": 1.0},
+  "hedge": {
+   "colour": [
+    0.0482,
+    0.0742,
+    0.0284
+   ],
+   "roughness": 0.85,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "trunk": {
+   "colour": [
+    0.0931,
+    0.0666,
+    0.0423
+   ],
+   "roughness": 0.88,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "leaf_broadleaf": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "roughness": 0.8,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "leaf_veteran": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "roughness": 0.8,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "leaf_poplar": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "roughness": 0.8,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "leaf_cedar": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "roughness": 0.8,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "water": {
+   "colour": [
+    0.0908,
+    0.1384,
+    0.1529
+   ],
+   "roughness": 0.05,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "longwater": {
+   "colour": [
+    0.1529,
+    0.2542,
+    0.2831
+   ],
+   "roughness": 0.03,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "proposed_on": {
+   "colour": [
+    0.6105,
+    0.521,
+    0.3231
+   ],
+   "roughness": 0.65,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "proposed_off": {
+   "colour": [
+    0.552,
+    0.5776,
+    0.6038
+   ],
+   "roughness": 1.0,
+   "metallic": 0.0,
+   "alpha": 0.26
+  },
+  "area": {
+   "colour": [
+    0.5776,
+    0.3005,
+    0.0437
+   ],
+   "roughness": 0.95,
+   "metallic": 0.0,
+   "alpha": 0.3
+  },
+  "marker": {
+   "colour": [
+    0.0482,
+    0.0908,
+    0.1812
+   ],
+   "roughness": 0.4,
+   "metallic": 0.0,
+   "alpha": 1.0
+  },
+  "anchor": {
+   "colour": [
+    0.4233,
+    0.0319,
+    0.0194
+   ],
+   "roughness": 0.4,
+   "metallic": 0.0,
+   "alpha": 1.0
+  }
+ },
+ "_notes": {
+  "_method": "estate colours were authored in sRGB 8-bit against the measured mean albedo of the slot's own texture set in textures/, then converted to linear here. drawing colours are a single value ladder: the slot picks a value V, and hue is fixed for every slot by R=V, G=0.968V, B=0.905V.",
+  "_value_ladder": "The drawing ladder is spaced perceptually, not numerically: every adjacent step is about 2.5 to 3.0 L*, so the separation between neighbours is the same all the way from the dressings at the top to the annotation at the bottom. estate cannot be spaced that way, because real materials cluster in luminance; there hue and chroma carry part of the separation, and the test that matters is that any two slots which physically touch on the model are far enough apart in full colour distance.",
+  "wall_brick": "Anchored on handmade-red-brick-albedo, whose mean is sRGB #985c45. That mean already mixes brick faces (#954428 at the median) with lime joints, which is what a wall reads as at distance, so it is the right stand-in for an untextured wall. Lifted to #b2714f, the largest departure from an anchor in the palette, for two reasons: a flat colour loses the texture's highlights and renders darker than the texture does, and at the anchor value the brick landed on the same luminance as the parkland grass, so the house dissolved into the lawn in anything but full colour. The lift puts nine points of L* between them.",
+  "wallplain / wallbrick": "Both are reconstruction brick, so both take one value. wallbrick currently renders from scratch/wall_tile.png, whose mean is #734e3c; that is darker and browner than the brick the rest of the model uses, which is part of why the reconstructions look muddy. Set to the same brick as wall_brick, desaturated one step, so LIDAR-derived buildings sit behind the hand-modelled fabric without changing material identity.",
+  "roof / roof_slate": "_known_bad says these are two slots for one material and that they disagree, one brown and one near-black. Closed here: both are Welsh slate, roof one step lighter as the reconstruction counterpart. Anchor is welsh-slate-roof-albedo, mean #445358, median #45555a. Lifted to #53646a so the mansard is a blue-grey mass rather than a black hole under ACES at exposure 0.62.",
+  "roof_lead": "Held at 1.5x the luminance of roof_slate, which is the ratio the two texture sets actually have (lead mean Y 0.124, slate mean Y 0.081). Lead has to read lighter than slate or the flat deck and the valleys disappear into the mansard.",
+  "frame": "CORRECTED 19 Aug from photographic evidence. The palette was authored at [0.418,0.445,0.356], a pale grey-green, on the strength of painted-timber-joinery-albedo.png and the existing baseline, both of which are grey-green. Data Room 2.4.1.2 External / \"Fawley Court 5.jpg\" - the primary entrance elevation - shows the sashes and glazing bars are WHITE, set in pale stone surrounds. Measured median of the brightest 8 per cent of a first-floor window crop: sRGB #f1e5db in direct sun; brick alongside reads #b6684c. The procedural texture is not evidence about this building and was wrong. Previous value: [0.4179, 0.4452, 0.3564].",
+  "wall_stone / stone_detail": "The registry gives one ashlar-stone texture to both slots, so in the baseline they are the same warm buff a few points apart and neither reads against the other. They are not the same stone. Fawley's dressings are Portland, a pale grey-white limestone, while dressed stone walling on the Riding School and the Church of St Anne is the local warm buff. Separated here by hue as well as value: stone_detail #d8d5c8 is pale and almost neutral, wall_stone #b3a276 is darker and strongly buff. That also gives the dressings the crispness the elevation needs, since a cornice, quoin or sill is what tells you where the brick ends.",
+  "gravel / stone": "Both sat in the same warm buff and a gravel drive runs up to a rubble boundary wall, so they had to be pulled apart. Gravel is taken as grey Thames flint rather than buff, at the bright end of loose-gravel-albedo; the rubble wall drops to a grey-brown below it. The two now differ by thirteen points of L* as well as by chroma.",
+  "metal": "The registry gives metal the patinated-copper texture, mean #587468, which is verdigris. The role line and the Main House notes both say cast-iron downpipes, hopper heads and railings, so the flat colour is dark iron. Flagged as a registry conflict rather than resolved silently.",
+  "terrain": "White in the baseline because scratch/terrain_albedo_estate.png carries the colour. That image means sRGB #737e4c and mown-lawn-albedo means #5b7237; the baked sheet is yellower because it covers dry parkland as well as mown lawn. #6b7845 sits between the two. Taking a flat value also removes the double-shadowing in STANDARD.md R20, because the baked canopy shadow goes with the image.",
+  "wall_off / roof_off": "Tier 4 recession is done four ways at once: low chroma, a value close to the ground so there is little figure-ground contrast, near-zero contrast between a wall and its own roof so the massing reads as one undifferentiated lump, and a clear step below the principal walling so the eye never prefers an off-estate neighbour to the house. The baseline had these two at 0.66 and 0.52 linear, brighter than anything on the estate, which is the opposite of what STANDARD.md tier 4 asks for. Roughness is pushed to 0.97 in drawing and 0.95 in estate so nothing off-estate ever catches a specular highlight.",
+  "proposed_off": "Has to read as not built at a glance. Cool pale grey is the only cool neutral in either palette, so it cannot be mistaken for fabric; alpha 0.26 to 0.30 and roughness 1.0 remove any specular cue that would suggest a real surface.",
+  "proposed_on": "Deliberately greyer than wall_render, which is close to it in value. New work should read as new stone against the limewash and the brick, and hue is what separates them.",
+  "area / marker / anchor": "Annotation, not fabric. In estate they are a translucent amber wash, an ink navy and a signal red, all outside the fabric hues. In drawing the monochrome discipline holds, so they are placed below every fabric slot on the value ladder instead: at 64, 56 and 46 against a darkest fabric of 74, they read as pencil and ink on card. area keeps its alpha in both.",
+  "water / longwater": "still-water-long-water-albedo, mean #6e8a91, is the canal. The Thames is given a darker, greener value than the canal because it is moving and silt-laden. Both carry very low roughness, which is what actually makes water read; in drawing they are told apart from the surrounding card by gloss as much as by tone.",
+  "glass": "Reads as a void rather than a surface. Dark, low alpha and roughness 0.05, so the real inset window geometry in the Main House reads as openings rather than as panels.",
+  "leaf_*": "Left pure white in both treatments as the registry requires, because vertex colours drive the tint. This is a live risk for the drawing treatment: the monochrome discipline holds for every slot this file can reach, but the canopy tint is set outside it, and if those vertex colours are green then the white card model will have green trees.",
+  "roughness": "Set per slot, not carried over from the baseline. In estate the values follow the roughness ranges recorded in textures/NOTES.md, so the flat treatment and the fabric treatment behave the same under a moving light: living grass 0.72 rather than the baseline 0.95, gravel 0.62, brick 0.62, lime render 0.76. In drawing everything sits in a card register around 0.85 to 0.95, and roughness becomes the second channel of separation where tone alone is not enough, chiefly water, glass, lead and ironwork."
+ }
+}

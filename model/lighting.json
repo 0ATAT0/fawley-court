@@ -1,0 +1,370 @@
+{
+ "_": "THE LIGHTING REGISTRY. Three named directions, orthogonal to the three material treatments in materials.json (?variants=1&treatment=estate&light=raking). Every sun is a real solar position for Fawley Court - 51.55 N, -0.90 E, British National Grid SU 76520 84214 - computed with the NOAA solar position algorithm. Values are named and scaled for out/viewer.html as it stands; tools/LIGHTING.md lists the handful of things the viewer must gain before all of them can be applied.",
+ "_units": {
+  "colour": "linear RGB 0-1, the same convention as materials.json. colour_hex beside it is the sRGB hex to hand to THREE.Color.set(), which is what the viewer already does.",
+  "sun.direction": "unit vector in THREE.JS scene coordinates (+x east, +y up, -z north), pointing FROM the scene TOWARD the sun. sun.position = direction * distance.",
+  "sun.skyAzimuthParam": "the second argument to the viewer's own setSun(elevDeg, azimDeg). It is NOT a compass bearing: setFromSphericalCoords makes it 180 - true azimuth. See tools/LIGHTING.md.",
+  "azimuth_deg": "true solar azimuth, degrees clockwise from grid north.",
+  "elevation_deg": "true solar elevation above the horizon, refraction-corrected.",
+  "fog": "THREE.Fog, linear: factor = clamp((depth - near)/(far - near), 0, 1). Metres.",
+  "shadow.bias": "three.js units - a fraction of the shadow camera's near-to-far depth range. _bias_metres beside it is what that works out to in world units.",
+  "shadow.normalBias": "world metres.",
+  "intensity": "three.js light intensity, unitless, as the viewer already uses it."
+ },
+ "_model_extents": {
+  "_source": "measured in Blender from out/fawley-estate.blend with the overlay and off-estate objects hidden, which is the viewer's default beauty layer set",
+  "blender_min": [
+   -423.5,
+   -616.4,
+   0.0
+  ],
+  "blender_max": [
+   680.0,
+   689.5,
+   65.8
+  ],
+  "plan_centre_threejs": [
+   128.2,
+   30.0,
+   -36.6
+  ],
+  "plan_radius_m": 854.9,
+  "height_m": 65.8
+ },
+ "overcast": {
+  "_intent": "Soft high cloud at equinox noon: an even, cool, top-lit condition that shows the plan and the layout of the estate and gives nothing a flattering angle.",
+  "_sun": {
+   "date": "2026-03-21",
+   "time": "12:00 GMT (12:00 UTC)",
+   "azimuth_deg": 176.56,
+   "elevation_deg": 38.77,
+   "shadow_length_x_height": 1.25,
+   "_source": "NOAA solar position algorithm (the NOAA Solar Calculator formulation) at 51.55 N, -0.90 E. Solar declination +0.352 deg, equation of time -7.14 min. British Summer Time ran 29 Mar to 25 Oct 2026, so the local clock is UTC+0. Verified in Blender by reading the sun lamp's actual beam vector back off the evaluated depsgraph."
+  },
+  "sun": {
+   "direction": [
+    0.0468,
+    0.6262,
+    0.7782
+   ],
+   "colour": [
+    0.827,
+    0.867,
+    0.914
+   ],
+   "colour_hex": "#ebeff5",
+   "intensity": 2.1,
+   "castShadow": true,
+   "distance": 2000,
+   "target": [
+    128.2,
+    30.0,
+    -36.6
+   ],
+   "skyAzimuthParam": 3.44,
+   "elevation_deg": 38.77
+  },
+  "fill": {
+   "_": "the viewer's HemisphereLight - sky colour above, ground bounce below",
+   "type": "HemisphereLight",
+   "skyColour": [
+    0.678,
+    0.741,
+    0.804
+   ],
+   "skyColour_hex": "#d7dfe8",
+   "groundColour": [
+    0.196,
+    0.212,
+    0.176
+   ],
+   "groundColour_hex": "#7a7f74",
+   "intensity": 1.1
+  },
+  "ambient": {
+   "_": "there is no AmbientLight in the viewer and none should be added - flat ambient is what makes the current render chalky. The ambient term is the PMREM of the Sky dome, scaled by scene.environmentIntensity and then by each material's envMapIntensity.",
+   "environmentIntensity": 0.44,
+   "materialEnvMapIntensity": 0.55,
+   "_effective": 0.242
+  },
+  "sky": {
+   "_": "uniforms on the three/addons/objects/Sky.js shader",
+   "turbidity": 8.5,
+   "rayleigh": 0.85,
+   "mieCoefficient": 0.019,
+   "mieDirectionalG": 0.78
+  },
+  "fog": {
+   "colour": [
+    0.5841,
+    0.6514,
+    0.6939
+   ],
+   "colour_hex": "#c9d3d9",
+   "near": 1250,
+   "far": 9500
+  },
+  "exposure": 0.58,
+  "shadow": {
+   "mapSize": 8192,
+   "type": "PCFShadowMap",
+   "bias": -0.000208,
+   "_bias_metres": 0.3,
+   "normalBias": 0.45,
+   "radius": 4.0,
+   "camera": {
+    "left": -880,
+    "right": 880,
+    "top": 620,
+    "bottom": -620,
+    "near": 1280,
+    "far": 2720
+   },
+   "_texel_metres": [
+    0.2148,
+    0.1514
+   ],
+   "_fit": "fitted to a 855 m plan radius about the model's own centre at a 38.8 deg sun; left/right spans the plan, top/bottom spans the plan foreshortened by sin(elevation) plus the 66 m model height."
+  },
+  "ao": {
+   "_": "GTAOPass. intensity is gtaoPass.blendIntensity; the rest go through gtaoPass.updateGtaoMaterial({...}). radius is in WORLD METRES.",
+   "intensity": 1.0,
+   "radius": 5.0,
+   "distanceExponent": 1.0,
+   "thickness": 1.0,
+   "scale": 1.0,
+   "samples": 16,
+   "screenSpaceRadius": false
+  },
+  "background": [
+   0.5841,
+   0.6514,
+   0.6939
+  ],
+  "background_hex": "#c9d3d9"
+ },
+ "raking": {
+  "_intent": "Late September evening, the sun low in the west on the entrance front: a warm key against a cool sky fill, throwing shadows five times the height of what casts them.",
+  "_sun": {
+   "date": "2026-09-24",
+   "time": "17:45 BST (16:45 UTC)",
+   "azimuth_deg": 255.61,
+   "elevation_deg": 10.42,
+   "shadow_length_x_height": 5.44,
+   "_source": "NOAA solar position algorithm (the NOAA Solar Calculator formulation) at 51.55 N, -0.90 E. Solar declination -0.658 deg, equation of time +8.03 min. British Summer Time ran 29 Mar to 25 Oct 2026, so the local clock is UTC+1. Verified in Blender by reading the sun lamp's actual beam vector back off the evaluated depsgraph."
+  },
+  "sun": {
+   "direction": [
+    -0.9526,
+    0.1809,
+    0.2444
+   ],
+   "colour": [
+    1.0,
+    0.812,
+    0.573
+   ],
+   "colour_hex": "#ffe9c7",
+   "intensity": 4.3,
+   "castShadow": true,
+   "distance": 2500,
+   "target": [
+    128.2,
+    30.0,
+    -36.6
+   ],
+   "skyAzimuthParam": 284.39,
+   "elevation_deg": 10.42
+  },
+  "fill": {
+   "_": "the viewer's HemisphereLight - sky colour above, ground bounce below",
+   "type": "HemisphereLight",
+   "skyColour": [
+    0.545,
+    0.667,
+    0.827
+   ],
+   "skyColour_hex": "#c3d5eb",
+   "groundColour": [
+    0.235,
+    0.216,
+    0.161
+   ],
+   "groundColour_hex": "#858070",
+   "intensity": 0.95
+  },
+  "ambient": {
+   "_": "there is no AmbientLight in the viewer and none should be added - flat ambient is what makes the current render chalky. The ambient term is the PMREM of the Sky dome, scaled by scene.environmentIntensity and then by each material's envMapIntensity.",
+   "environmentIntensity": 0.55,
+   "materialEnvMapIntensity": 0.55,
+   "_effective": 0.3025
+  },
+  "sky": {
+   "_": "uniforms on the three/addons/objects/Sky.js shader",
+   "turbidity": 4.2,
+   "rayleigh": 2.6,
+   "mieCoefficient": 0.007,
+   "mieDirectionalG": 0.86
+  },
+  "fog": {
+   "colour": [
+    0.6939,
+    0.5457,
+    0.4179
+   ],
+   "colour_hex": "#d9c3ad",
+   "near": 1700,
+   "far": 14000
+  },
+  "exposure": 0.6,
+  "shadow": {
+   "mapSize": 8192,
+   "type": "PCFSoftShadowMap",
+   "bias": -0.000313,
+   "_bias_metres": 0.55,
+   "normalBias": 0.9,
+   "radius": 1.0,
+   "camera": {
+    "left": -880,
+    "right": 880,
+    "top": 250,
+    "bottom": -250,
+    "near": 1620,
+    "far": 3380
+   },
+   "_texel_metres": [
+    0.2148,
+    0.061
+   ],
+   "_fit": "fitted to a 855 m plan radius about the model's own centre at a 10.4 deg sun; left/right spans the plan, top/bottom spans the plan foreshortened by sin(elevation) plus the 66 m model height."
+  },
+  "ao": {
+   "_": "GTAOPass. intensity is gtaoPass.blendIntensity; the rest go through gtaoPass.updateGtaoMaterial({...}). radius is in WORLD METRES.",
+   "intensity": 0.75,
+   "radius": 3.0,
+   "distanceExponent": 1.0,
+   "thickness": 1.0,
+   "scale": 1.0,
+   "samples": 16,
+   "screenSpaceRadius": false
+  },
+  "background": [
+   0.6939,
+   0.5457,
+   0.4179
+  ],
+  "background_hex": "#d9c3ad"
+ },
+ "bright": {
+  "_intent": "Midsummer afternoon under a clear sky: high sun off the south-west, short crisp shadows and deep contrast, the estate at its most legible.",
+  "_sun": {
+   "date": "2026-06-21",
+   "time": "14:30 BST (13:30 UTC)",
+   "azimuth_deg": 218.05,
+   "elevation_deg": 57.54,
+   "shadow_length_x_height": 0.64,
+   "_source": "NOAA solar position algorithm (the NOAA Solar Calculator formulation) at 51.55 N, -0.90 E. Solar declination +23.438 deg, equation of time -1.84 min. British Summer Time ran 29 Mar to 25 Oct 2026, so the local clock is UTC+1. Verified in Blender by reading the sun lamp's actual beam vector back off the evaluated depsgraph."
+  },
+  "sun": {
+   "direction": [
+    -0.3308,
+    0.8437,
+    0.4227
+   ],
+   "colour": [
+    1.0,
+    0.957,
+    0.882
+   ],
+   "colour_hex": "#fffaf1",
+   "intensity": 5.1,
+   "castShadow": true,
+   "distance": 1800,
+   "target": [
+    128.2,
+    30.0,
+    -36.6
+   ],
+   "skyAzimuthParam": 321.95,
+   "elevation_deg": 57.54
+  },
+  "fill": {
+   "_": "the viewer's HemisphereLight - sky colour above, ground bounce below",
+   "type": "HemisphereLight",
+   "skyColour": [
+    0.56,
+    0.729,
+    0.91
+   ],
+   "skyColour_hex": "#c5def5",
+   "groundColour": [
+    0.259,
+    0.255,
+    0.184
+   ],
+   "groundColour_hex": "#8b8a77",
+   "intensity": 0.58
+  },
+  "ambient": {
+   "_": "there is no AmbientLight in the viewer and none should be added - flat ambient is what makes the current render chalky. The ambient term is the PMREM of the Sky dome, scaled by scene.environmentIntensity and then by each material's envMapIntensity.",
+   "environmentIntensity": 0.46,
+   "materialEnvMapIntensity": 0.55,
+   "_effective": 0.253
+  },
+  "sky": {
+   "_": "uniforms on the three/addons/objects/Sky.js shader",
+   "turbidity": 2.6,
+   "rayleigh": 1.7,
+   "mieCoefficient": 0.0035,
+   "mieDirectionalG": 0.76
+  },
+  "fog": {
+   "colour": [
+    0.624,
+    0.7157,
+    0.8228
+   ],
+   "colour_hex": "#cfdcea",
+   "near": 2100,
+   "far": 18000
+  },
+  "exposure": 0.44,
+  "shadow": {
+   "mapSize": 8192,
+   "type": "PCFSoftShadowMap",
+   "bias": -0.000212,
+   "_bias_metres": 0.22,
+   "normalBias": 0.35,
+   "radius": 1.0,
+   "camera": {
+    "left": -880,
+    "right": 880,
+    "top": 790,
+    "bottom": -790,
+    "near": 1280,
+    "far": 2320
+   },
+   "_texel_metres": [
+    0.2148,
+    0.1929
+   ],
+   "_fit": "fitted to a 855 m plan radius about the model's own centre at a 57.5 deg sun; left/right spans the plan, top/bottom spans the plan foreshortened by sin(elevation) plus the 66 m model height."
+  },
+  "ao": {
+   "_": "GTAOPass. intensity is gtaoPass.blendIntensity; the rest go through gtaoPass.updateGtaoMaterial({...}). radius is in WORLD METRES.",
+   "intensity": 0.6,
+   "radius": 2.2,
+   "distanceExponent": 1.0,
+   "thickness": 1.0,
+   "scale": 1.0,
+   "samples": 16,
+   "screenSpaceRadius": false
+  },
+  "background": [
+   0.624,
+   0.7157,
+   0.8228
+  ],
+  "background_hex": "#cfdcea"
+ }
+}

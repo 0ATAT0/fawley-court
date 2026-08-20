@@ -1,0 +1,1946 @@
+{
+ "_": "Web delivery set for the FABRIC treatment. One file is enough to build a material: take the slot from `slots`, load its three files from this directory, apply tile_m as the world-space size of one repeat in metres.",
+ "_colour_space_rule": "albedo is sRGB-ENCODED and must be decoded to linear by the sampler (three.js: texture.colorSpace = THREE.SRGBColorSpace). normal and orm are LINEAR DATA and must not be decoded (THREE.NoColorSpace). Getting this backwards on the data maps is silent: the render still draws, the lighting is simply wrong.",
+ "_orm": "glTF convention, occlusion-roughness-metalness in R-G-B. Only G carries data. R is a constant 1.0 and B a constant 0.0 - read the CHANNEL SEMANTICS section of tools/TEXTURES.md before wiring B to anything.",
+ "generated": "2026-08-19T12:52:23+00:00",
+ "generator": "tools/build_textures.py",
+ "command": "python tools/build_textures.py --size 512 --contact --verify",
+ "source": "textures",
+ "source_px": 1024,
+ "px": 512,
+ "_px": "px and encoding describe THIS run. Per-file px and encoding under sets[].files are authoritative: a --sets run can leave the directory at mixed sizes or mixed encoder settings, and carried_forward names the sets it did not rebuild.",
+ "px_present": [
+  512
+ ],
+ "carried_forward": [],
+ "wrap": "repeat in both axes; sources tile toroidally, the box downsample preserves that",
+ "mip": "power-of-two, no mip chain in the file - generate mipmaps on upload (three.js does this by default) and set anisotropy to the context maximum",
+ "tile_m_source": "materials.json slots[<slot>].tile_m",
+ "encoding": {
+  "albedo": "webp lossy quality 90, method 6",
+  "normal": "webp lossless, method 6",
+  "orm": "webp lossless, method 6",
+  "icc": "none written on any map"
+ },
+ "totals": {
+  "sets": 20,
+  "files": 60,
+  "bytes": 6151072,
+  "mb": 5.866,
+  "bytes_written_this_run": 6151072,
+  "largest_set": "loose-gravel",
+  "largest_set_bytes": 546602
+ },
+ "_texel_density": "texels_per_m = px / tile_m. The station lens (35 mm on a 36 mm sensor at 1600x1000) resolves about 1556/d pixels per metre at d metres, so the nearest QA station at 41 m resolves 38 px/m. Every slot here is above that; see tools/TEXTURES.md for the resolution evidence.",
+ "_tile_seams": "tile_seam_ratio is how hard the wrap boundary is, [across x, across y], in units of the map's own interior variation. About 1 means the tile joins invisibly. The sets listed in source_seam_defects arrive from the generator with a hard join and will show a repeating line; this is a SOURCE defect that the conversion faithfully preserves, not a conversion artefact.",
+ "source_seam_defects": {
+  "brick-paviour": {
+   "albedo": [
+    2.64,
+    2.41
+   ],
+   "normal": [
+    1.67,
+    8.59
+   ],
+   "orm": [
+    0.17,
+    3.4
+   ]
+  },
+  "handmade-red-brick": {
+   "albedo": [
+    2.15,
+    3.97
+   ],
+   "normal": [
+    4.27,
+    5.59
+   ],
+   "orm": [
+    1.75,
+    4.37
+   ]
+  },
+  "lead-roof-flashing": {
+   "albedo": [
+    1.73,
+    1.55
+   ],
+   "normal": [
+    12.53,
+    1.03
+   ],
+   "orm": [
+    3.21,
+    0.97
+   ]
+  },
+  "mown-lawn-mower-stripe": {
+   "albedo": [
+    4.97,
+    1.23
+   ],
+   "normal": [
+    1.3,
+    0.95
+   ],
+   "orm": [
+    40.12,
+    0.95
+   ]
+  },
+  "oak-weatherboard": {
+   "albedo": [
+    1.67,
+    0.98
+   ],
+   "normal": [
+    1.25,
+    5.47
+   ],
+   "orm": [
+    0.48,
+    2.59
+   ]
+  },
+  "painted-timber-joinery": {
+   "albedo": [
+    1.49,
+    1.1
+   ],
+   "normal": [
+    5.11,
+    0.98
+   ],
+   "orm": [
+    1.06,
+    1.06
+   ]
+  },
+  "patinated-copper": {
+   "albedo": [
+    2.01,
+    1.32
+   ],
+   "normal": [
+    12.99,
+    1.03
+   ],
+   "orm": [
+    0.99,
+    1.06
+   ]
+  },
+  "tarmac": {
+   "albedo": [
+    4.94,
+    1.26
+   ],
+   "normal": [
+    0.77,
+    1.15
+   ],
+   "orm": [
+    0.74,
+    1.13
+   ]
+  },
+  "welsh-slate-roof": {
+   "albedo": [
+    2.29,
+    0.69
+   ],
+   "normal": [
+    1.79,
+    7.42
+   ],
+   "orm": [
+    0.2,
+    1.7
+   ]
+  }
+ },
+ "sets": {
+  "ashlar-stone": {
+   "files": {
+    "albedo": {
+     "file": "ashlar-stone-albedo.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 33242,
+     "colour_space": "srgb",
+     "encoding": "webp lossy q90",
+     "channels": {
+      "R": "base colour red (sRGB-encoded)",
+      "G": "base colour green (sRGB-encoded)",
+      "B": "base colour blue (sRGB-encoded)"
+     },
+     "three_colorspace": "THREE.SRGBColorSpace",
+     "tile_seam_ratio": [
+      1.97,
+      0.91
+     ]
+    },
+    "normal": {
+     "file": "ashlar-stone-normal.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 225404,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "tangent X, (x+1)/2",
+      "G": "tangent Y, (y+1)/2  OpenGL +Y up",
+      "B": "tangent Z, (z+1)/2"
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "convention": "OpenGL tangent space, green up",
+     "tile_seam_ratio": [
+      0.55,
+      0.51
+     ]
+    },
+    "orm": {
+     "file": "ashlar-stone-orm.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 35914,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
+      "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "roughness_range": [
+      0.5176,
+      0.6902
+     ],
+     "tile_seam_ratio": [
+      0.21,
+      0.31
+     ]
+    }
+   },
+   "slots": [
+    {
+     "slot": "stone_detail",
+     "tile_m": 1.2,
+     "role": "Cornices, quoins, copings, plinths, balustrade"
+    },
+    {
+     "slot": "wall_stone",
+     "tile_m": 2.4,
+     "role": "Dressed stone walling"
+    }
+   ],
+   "bytes": 294560,
+   "tile_seam_ratio_worst": 1.97
+  },
+  "bound-resin-gravel": {
+   "files": {
+    "albedo": {
+     "file": "bound-resin-gravel-albedo.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 66330,
+     "colour_space": "srgb",
+     "encoding": "webp lossy q90",
+     "channels": {
+      "R": "base colour red (sRGB-encoded)",
+      "G": "base colour green (sRGB-encoded)",
+      "B": "base colour blue (sRGB-encoded)"
+     },
+     "three_colorspace": "THREE.SRGBColorSpace",
+     "tile_seam_ratio": [
+      1.23,
+      1.42
+     ]
+    },
+    "normal": {
+     "file": "bound-resin-gravel-normal.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 390562,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "tangent X, (x+1)/2",
+      "G": "tangent Y, (y+1)/2  OpenGL +Y up",
+      "B": "tangent Z, (z+1)/2"
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "convention": "OpenGL tangent space, green up",
+     "tile_seam_ratio": [
+      1.03,
+      1.14
+     ]
+    },
+    "orm": {
+     "file": "bound-resin-gravel-orm.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 12426,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
+      "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "roughness_range": [
+      0.4588,
+      0.5098
+     ],
+     "tile_seam_ratio": [
+      1.26,
+      1.35
+     ]
+    }
+   },
+   "slots": [],
+   "bytes": 469318,
+   "tile_seam_ratio_worst": 1.42
+  },
+  "brick-paviour": {
+   "files": {
+    "albedo": {
+     "file": "brick-paviour-albedo.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 41048,
+     "colour_space": "srgb",
+     "encoding": "webp lossy q90",
+     "channels": {
+      "R": "base colour red (sRGB-encoded)",
+      "G": "base colour green (sRGB-encoded)",
+      "B": "base colour blue (sRGB-encoded)"
+     },
+     "three_colorspace": "THREE.SRGBColorSpace",
+     "tile_seam_ratio": [
+      2.64,
+      2.41
+     ]
+    },
+    "normal": {
+     "file": "brick-paviour-normal.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 158888,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "tangent X, (x+1)/2",
+      "G": "tangent Y, (y+1)/2  OpenGL +Y up",
+      "B": "tangent Z, (z+1)/2"
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "convention": "OpenGL tangent space, green up",
+     "tile_seam_ratio": [
+      1.67,
+      8.59
+     ]
+    },
+    "orm": {
+     "file": "brick-paviour-orm.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 37062,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
+      "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "roughness_range": [
+      0.4824,
+      0.6549
+     ],
+     "tile_seam_ratio": [
+      0.17,
+      3.4
+     ]
+    }
+   },
+   "slots": [],
+   "bytes": 236998,
+   "tile_seam_ratio_worst": 8.59
+  },
+  "compacted-earth-path": {
+   "files": {
+    "albedo": {
+     "file": "compacted-earth-path-albedo.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 40444,
+     "colour_space": "srgb",
+     "encoding": "webp lossy q90",
+     "channels": {
+      "R": "base colour red (sRGB-encoded)",
+      "G": "base colour green (sRGB-encoded)",
+      "B": "base colour blue (sRGB-encoded)"
+     },
+     "three_colorspace": "THREE.SRGBColorSpace",
+     "tile_seam_ratio": [
+      1.39,
+      1.36
+     ]
+    },
+    "normal": {
+     "file": "compacted-earth-path-normal.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 401332,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "tangent X, (x+1)/2",
+      "G": "tangent Y, (y+1)/2  OpenGL +Y up",
+      "B": "tangent Z, (z+1)/2"
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "convention": "OpenGL tangent space, green up",
+     "tile_seam_ratio": [
+      0.99,
+      1.01
+     ]
+    },
+    "orm": {
+     "file": "compacted-earth-path-orm.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 35198,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
+      "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "roughness_range": [
+      0.7451,
+      0.851
+     ],
+     "tile_seam_ratio": [
+      0.91,
+      0.96
+     ]
+    }
+   },
+   "slots": [
+    {
+     "slot": "earth",
+     "tile_m": 3.0,
+     "role": "Terrain skirt, exposed ground, tracks"
+    }
+   ],
+   "bytes": 476974,
+   "tile_seam_ratio_worst": 1.39
+  },
+  "handmade-red-brick": {
+   "files": {
+    "albedo": {
+     "file": "handmade-red-brick-albedo.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 54840,
+     "colour_space": "srgb",
+     "encoding": "webp lossy q90",
+     "channels": {
+      "R": "base colour red (sRGB-encoded)",
+      "G": "base colour green (sRGB-encoded)",
+      "B": "base colour blue (sRGB-encoded)"
+     },
+     "three_colorspace": "THREE.SRGBColorSpace",
+     "tile_seam_ratio": [
+      2.15,
+      3.97
+     ]
+    },
+    "normal": {
+     "file": "handmade-red-brick-normal.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 114950,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "tangent X, (x+1)/2",
+      "G": "tangent Y, (y+1)/2  OpenGL +Y up",
+      "B": "tangent Z, (z+1)/2"
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "convention": "OpenGL tangent space, green up",
+     "tile_seam_ratio": [
+      4.27,
+      5.59
+     ]
+    },
+    "orm": {
+     "file": "handmade-red-brick-orm.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 45984,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
+      "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "roughness_range": [
+      0.5333,
+      0.7412
+     ],
+     "tile_seam_ratio": [
+      1.75,
+      4.37
+     ]
+    }
+   },
+   "slots": [
+    {
+     "slot": "wall_brick",
+     "tile_m": 2.0,
+     "role": "Principal walling brick - Main House, courtyards, stables"
+    },
+    {
+     "slot": "wallbrick",
+     "tile_m": 2.0,
+     "role": "Legacy tiled brick on reconstructions"
+    },
+    {
+     "slot": "wallplain",
+     "tile_m": 2.0,
+     "role": "Reconstruction walling - LIDAR-derived buildings"
+    }
+   ],
+   "bytes": 215774,
+   "tile_seam_ratio_worst": 5.59
+  },
+  "lead-roof-flashing": {
+   "files": {
+    "albedo": {
+     "file": "lead-roof-flashing-albedo.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 37960,
+     "colour_space": "srgb",
+     "encoding": "webp lossy q90",
+     "channels": {
+      "R": "base colour red (sRGB-encoded)",
+      "G": "base colour green (sRGB-encoded)",
+      "B": "base colour blue (sRGB-encoded)"
+     },
+     "three_colorspace": "THREE.SRGBColorSpace",
+     "tile_seam_ratio": [
+      1.73,
+      1.55
+     ]
+    },
+    "normal": {
+     "file": "lead-roof-flashing-normal.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 222324,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "tangent X, (x+1)/2",
+      "G": "tangent Y, (y+1)/2  OpenGL +Y up",
+      "B": "tangent Z, (z+1)/2"
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "convention": "OpenGL tangent space, green up",
+     "tile_seam_ratio": [
+      12.53,
+      1.03
+     ]
+    },
+    "orm": {
+     "file": "lead-roof-flashing-orm.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 28598,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
+      "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "roughness_range": [
+      0.3529,
+      0.4863
+     ],
+     "tile_seam_ratio": [
+      3.21,
+      0.97
+     ]
+    }
+   },
+   "slots": [
+    {
+     "slot": "roof_lead",
+     "tile_m": 1.5,
+     "role": "Lead flats, valleys, flashings, the Main House deck"
+    }
+   ],
+   "bytes": 288882,
+   "tile_seam_ratio_worst": 12.53
+  },
+  "loose-gravel": {
+   "files": {
+    "albedo": {
+     "file": "loose-gravel-albedo.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 65174,
+     "colour_space": "srgb",
+     "encoding": "webp lossy q90",
+     "channels": {
+      "R": "base colour red (sRGB-encoded)",
+      "G": "base colour green (sRGB-encoded)",
+      "B": "base colour blue (sRGB-encoded)"
+     },
+     "three_colorspace": "THREE.SRGBColorSpace",
+     "tile_seam_ratio": [
+      1.6,
+      1.34
+     ]
+    },
+    "normal": {
+     "file": "loose-gravel-normal.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 454360,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "tangent X, (x+1)/2",
+      "G": "tangent Y, (y+1)/2  OpenGL +Y up",
+      "B": "tangent Z, (z+1)/2"
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "convention": "OpenGL tangent space, green up",
+     "tile_seam_ratio": [
+      0.97,
+      1.09
+     ]
+    },
+    "orm": {
+     "file": "loose-gravel-orm.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 27068,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
+      "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "roughness_range": [
+      0.6392,
+      0.7765
+     ],
+     "tile_seam_ratio": [
+      0.76,
+      1.28
+     ]
+    }
+   },
+   "slots": [
+    {
+     "slot": "gravel",
+     "tile_m": 2.5,
+     "role": "Drives and the forecourt apron"
+    }
+   ],
+   "bytes": 546602,
+   "tile_seam_ratio_worst": 1.6
+  },
+  "mown-lawn": {
+   "files": {
+    "albedo": {
+     "file": "mown-lawn-albedo.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 34302,
+     "colour_space": "srgb",
+     "encoding": "webp lossy q90",
+     "channels": {
+      "R": "base colour red (sRGB-encoded)",
+      "G": "base colour green (sRGB-encoded)",
+      "B": "base colour blue (sRGB-encoded)"
+     },
+     "three_colorspace": "THREE.SRGBColorSpace",
+     "tile_seam_ratio": [
+      1.22,
+      1.35
+     ]
+    },
+    "normal": {
+     "file": "mown-lawn-normal.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 152360,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "tangent X, (x+1)/2",
+      "G": "tangent Y, (y+1)/2  OpenGL +Y up",
+      "B": "tangent Z, (z+1)/2"
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "convention": "OpenGL tangent space, green up",
+     "tile_seam_ratio": [
+      1.29,
+      0.96
+     ]
+    },
+    "orm": {
+     "file": "mown-lawn-orm.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 13656,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
+      "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "roughness_range": [
+      0.6039,
+      0.7098
+     ],
+     "tile_seam_ratio": [
+      1.59,
+      0.91
+     ]
+    }
+   },
+   "slots": [
+    {
+     "slot": "terrain",
+     "tile_m": 6.0,
+     "role": "The ground sheet - carries its own baked albedo today"
+    }
+   ],
+   "bytes": 200318,
+   "tile_seam_ratio_worst": 1.59
+  },
+  "mown-lawn-mower-stripe": {
+   "files": {
+    "albedo": {
+     "file": "mown-lawn-mower-stripe-albedo.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 37178,
+     "colour_space": "srgb",
+     "encoding": "webp lossy q90",
+     "channels": {
+      "R": "base colour red (sRGB-encoded)",
+      "G": "base colour green (sRGB-encoded)",
+      "B": "base colour blue (sRGB-encoded)"
+     },
+     "three_colorspace": "THREE.SRGBColorSpace",
+     "tile_seam_ratio": [
+      4.97,
+      1.23
+     ]
+    },
+    "normal": {
+     "file": "mown-lawn-mower-stripe-normal.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 152680,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "tangent X, (x+1)/2",
+      "G": "tangent Y, (y+1)/2  OpenGL +Y up",
+      "B": "tangent Z, (z+1)/2"
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "convention": "OpenGL tangent space, green up",
+     "tile_seam_ratio": [
+      1.3,
+      0.95
+     ]
+    },
+    "orm": {
+     "file": "mown-lawn-mower-stripe-orm.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 17672,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
+      "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "roughness_range": [
+      0.5255,
+      0.7059
+     ],
+     "tile_seam_ratio": [
+      40.12,
+      0.95
+     ]
+    }
+   },
+   "slots": [],
+   "bytes": 207530,
+   "tile_seam_ratio_worst": 40.12
+  },
+  "oak-weatherboard": {
+   "files": {
+    "albedo": {
+     "file": "oak-weatherboard-albedo.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 36404,
+     "colour_space": "srgb",
+     "encoding": "webp lossy q90",
+     "channels": {
+      "R": "base colour red (sRGB-encoded)",
+      "G": "base colour green (sRGB-encoded)",
+      "B": "base colour blue (sRGB-encoded)"
+     },
+     "three_colorspace": "THREE.SRGBColorSpace",
+     "tile_seam_ratio": [
+      1.67,
+      0.98
+     ]
+    },
+    "normal": {
+     "file": "oak-weatherboard-normal.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 110192,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "tangent X, (x+1)/2",
+      "G": "tangent Y, (y+1)/2  OpenGL +Y up",
+      "B": "tangent Z, (z+1)/2"
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "convention": "OpenGL tangent space, green up",
+     "tile_seam_ratio": [
+      1.25,
+      5.47
+     ]
+    },
+    "orm": {
+     "file": "oak-weatherboard-orm.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 4250,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
+      "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "roughness_range": [
+      0.5412,
+      0.698
+     ],
+     "tile_seam_ratio": [
+      0.48,
+      2.59
+     ]
+    }
+   },
+   "slots": [
+    {
+     "slot": "timber",
+     "tile_m": 1.8,
+     "role": "Weatherboarding, structural timber"
+    }
+   ],
+   "bytes": 150846,
+   "tile_seam_ratio_worst": 5.47
+  },
+  "painted-timber-joinery": {
+   "files": {
+    "albedo": {
+     "file": "painted-timber-joinery-albedo.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 37592,
+     "colour_space": "srgb",
+     "encoding": "webp lossy q90",
+     "channels": {
+      "R": "base colour red (sRGB-encoded)",
+      "G": "base colour green (sRGB-encoded)",
+      "B": "base colour blue (sRGB-encoded)"
+     },
+     "three_colorspace": "THREE.SRGBColorSpace",
+     "tile_seam_ratio": [
+      1.49,
+      1.1
+     ]
+    },
+    "normal": {
+     "file": "painted-timber-joinery-normal.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 164404,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "tangent X, (x+1)/2",
+      "G": "tangent Y, (y+1)/2  OpenGL +Y up",
+      "B": "tangent Z, (z+1)/2"
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "convention": "OpenGL tangent space, green up",
+     "tile_seam_ratio": [
+      5.11,
+      0.98
+     ]
+    },
+    "orm": {
+     "file": "painted-timber-joinery-orm.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 23674,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
+      "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "roughness_range": [
+      0.3961,
+      0.502
+     ],
+     "tile_seam_ratio": [
+      1.06,
+      1.06
+     ]
+    }
+   },
+   "slots": [
+    {
+     "slot": "door",
+     "tile_m": 1.0,
+     "role": "Door leaves"
+    },
+    {
+     "slot": "frame",
+     "tile_m": 1.0,
+     "role": "Window frames, glazing bars"
+    }
+   ],
+   "bytes": 225670,
+   "tile_seam_ratio_worst": 5.11
+  },
+  "patinated-copper": {
+   "files": {
+    "albedo": {
+     "file": "patinated-copper-albedo.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 38650,
+     "colour_space": "srgb",
+     "encoding": "webp lossy q90",
+     "channels": {
+      "R": "base colour red (sRGB-encoded)",
+      "G": "base colour green (sRGB-encoded)",
+      "B": "base colour blue (sRGB-encoded)"
+     },
+     "three_colorspace": "THREE.SRGBColorSpace",
+     "tile_seam_ratio": [
+      2.01,
+      1.32
+     ]
+    },
+    "normal": {
+     "file": "patinated-copper-normal.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 188878,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "tangent X, (x+1)/2",
+      "G": "tangent Y, (y+1)/2  OpenGL +Y up",
+      "B": "tangent Z, (z+1)/2"
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "convention": "OpenGL tangent space, green up",
+     "tile_seam_ratio": [
+      12.99,
+      1.03
+     ]
+    },
+    "orm": {
+     "file": "patinated-copper-orm.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 40884,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
+      "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "roughness_range": [
+      0.3176,
+      0.4706
+     ],
+     "tile_seam_ratio": [
+      0.99,
+      1.06
+     ]
+    }
+   },
+   "slots": [
+    {
+     "slot": "metal",
+     "tile_m": 1.0,
+     "role": "Ironwork, railings, rainwater goods, roof metalwork"
+    }
+   ],
+   "bytes": 268412,
+   "tile_seam_ratio_worst": 12.99
+  },
+  "rough-meadow-grass": {
+   "files": {
+    "albedo": {
+     "file": "rough-meadow-grass-albedo.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 59694,
+     "colour_space": "srgb",
+     "encoding": "webp lossy q90",
+     "channels": {
+      "R": "base colour red (sRGB-encoded)",
+      "G": "base colour green (sRGB-encoded)",
+      "B": "base colour blue (sRGB-encoded)"
+     },
+     "three_colorspace": "THREE.SRGBColorSpace",
+     "tile_seam_ratio": [
+      1.26,
+      1.46
+     ]
+    },
+    "normal": {
+     "file": "rough-meadow-grass-normal.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 252870,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "tangent X, (x+1)/2",
+      "G": "tangent Y, (y+1)/2  OpenGL +Y up",
+      "B": "tangent Z, (z+1)/2"
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "convention": "OpenGL tangent space, green up",
+     "tile_seam_ratio": [
+      0.92,
+      0.95
+     ]
+    },
+    "orm": {
+     "file": "rough-meadow-grass-orm.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 32986,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
+      "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "roughness_range": [
+      0.6902,
+      0.8549
+     ],
+     "tile_seam_ratio": [
+      0.8,
+      0.91
+     ]
+    }
+   },
+   "slots": [],
+   "bytes": 345550,
+   "tile_seam_ratio_worst": 1.46
+  },
+  "rubble-stone": {
+   "files": {
+    "albedo": {
+     "file": "rubble-stone-albedo.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 57198,
+     "colour_space": "srgb",
+     "encoding": "webp lossy q90",
+     "channels": {
+      "R": "base colour red (sRGB-encoded)",
+      "G": "base colour green (sRGB-encoded)",
+      "B": "base colour blue (sRGB-encoded)"
+     },
+     "three_colorspace": "THREE.SRGBColorSpace",
+     "tile_seam_ratio": [
+      1.92,
+      1.39
+     ]
+    },
+    "normal": {
+     "file": "rubble-stone-normal.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 340112,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "tangent X, (x+1)/2",
+      "G": "tangent Y, (y+1)/2  OpenGL +Y up",
+      "B": "tangent Z, (z+1)/2"
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "convention": "OpenGL tangent space, green up",
+     "tile_seam_ratio": [
+      1.61,
+      1.26
+     ]
+    },
+    "orm": {
+     "file": "rubble-stone-orm.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 49944,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
+      "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "roughness_range": [
+      0.5451,
+      0.7686
+     ],
+     "tile_seam_ratio": [
+      2.22,
+      1.58
+     ]
+    }
+   },
+   "slots": [
+    {
+     "slot": "stone",
+     "tile_m": 2.0,
+     "role": "Rubble stone, garden and boundary walls"
+    }
+   ],
+   "bytes": 447254,
+   "tile_seam_ratio_worst": 2.22
+  },
+  "smooth-lime-render": {
+   "files": {
+    "albedo": {
+     "file": "smooth-lime-render-albedo.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 35572,
+     "colour_space": "srgb",
+     "encoding": "webp lossy q90",
+     "channels": {
+      "R": "base colour red (sRGB-encoded)",
+      "G": "base colour green (sRGB-encoded)",
+      "B": "base colour blue (sRGB-encoded)"
+     },
+     "three_colorspace": "THREE.SRGBColorSpace",
+     "tile_seam_ratio": [
+      1.18,
+      1.52
+     ]
+    },
+    "normal": {
+     "file": "smooth-lime-render-normal.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 322532,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "tangent X, (x+1)/2",
+      "G": "tangent Y, (y+1)/2  OpenGL +Y up",
+      "B": "tangent Z, (z+1)/2"
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "convention": "OpenGL tangent space, green up",
+     "tile_seam_ratio": [
+      0.96,
+      1.02
+     ]
+    },
+    "orm": {
+     "file": "smooth-lime-render-orm.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 27756,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
+      "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "roughness_range": [
+      0.7216,
+      0.7843
+     ],
+     "tile_seam_ratio": [
+      1.0,
+      0.95
+     ]
+    }
+   },
+   "slots": [
+    {
+     "slot": "wall_render",
+     "tile_m": 3.0,
+     "role": "Rendered or limewashed walling"
+    }
+   ],
+   "bytes": 385860,
+   "tile_seam_ratio_worst": 1.52
+  },
+  "still-water-long-water": {
+   "files": {
+    "albedo": {
+     "file": "still-water-long-water-albedo.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 27342,
+     "colour_space": "srgb",
+     "encoding": "webp lossy q90",
+     "channels": {
+      "R": "base colour red (sRGB-encoded)",
+      "G": "base colour green (sRGB-encoded)",
+      "B": "base colour blue (sRGB-encoded)"
+     },
+     "three_colorspace": "THREE.SRGBColorSpace",
+     "tile_seam_ratio": [
+      1.28,
+      1.22
+     ]
+    },
+    "normal": {
+     "file": "still-water-long-water-normal.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 18300,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "tangent X, (x+1)/2",
+      "G": "tangent Y, (y+1)/2  OpenGL +Y up",
+      "B": "tangent Z, (z+1)/2"
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "convention": "OpenGL tangent space, green up",
+     "tile_seam_ratio": [
+      1.16,
+      1.03
+     ]
+    },
+    "orm": {
+     "file": "still-water-long-water-orm.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 5224,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
+      "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "roughness_range": [
+      0.0549,
+      0.0745
+     ],
+     "tile_seam_ratio": [
+      1.0,
+      1.53
+     ]
+    }
+   },
+   "slots": [
+    {
+     "slot": "longwater",
+     "tile_m": 8.0,
+     "role": "The Long Water canal"
+    },
+    {
+     "slot": "water",
+     "tile_m": 12.0,
+     "role": "The Thames"
+    }
+   ],
+   "bytes": 50866,
+   "tile_seam_ratio_worst": 1.53
+  },
+  "tarmac": {
+   "files": {
+    "albedo": {
+     "file": "tarmac-albedo.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 39102,
+     "colour_space": "srgb",
+     "encoding": "webp lossy q90",
+     "channels": {
+      "R": "base colour red (sRGB-encoded)",
+      "G": "base colour green (sRGB-encoded)",
+      "B": "base colour blue (sRGB-encoded)"
+     },
+     "three_colorspace": "THREE.SRGBColorSpace",
+     "tile_seam_ratio": [
+      4.94,
+      1.26
+     ]
+    },
+    "normal": {
+     "file": "tarmac-normal.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 276316,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "tangent X, (x+1)/2",
+      "G": "tangent Y, (y+1)/2  OpenGL +Y up",
+      "B": "tangent Z, (z+1)/2"
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "convention": "OpenGL tangent space, green up",
+     "tile_seam_ratio": [
+      0.77,
+      1.15
+     ]
+    },
+    "orm": {
+     "file": "tarmac-orm.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 42852,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
+      "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "roughness_range": [
+      0.4039,
+      0.5333
+     ],
+     "tile_seam_ratio": [
+      0.74,
+      1.13
+     ]
+    }
+   },
+   "slots": [],
+   "bytes": 358270,
+   "tile_seam_ratio_worst": 4.94
+  },
+  "welsh-slate-roof": {
+   "files": {
+    "albedo": {
+     "file": "welsh-slate-roof-albedo.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 31080,
+     "colour_space": "srgb",
+     "encoding": "webp lossy q90",
+     "channels": {
+      "R": "base colour red (sRGB-encoded)",
+      "G": "base colour green (sRGB-encoded)",
+      "B": "base colour blue (sRGB-encoded)"
+     },
+     "three_colorspace": "THREE.SRGBColorSpace",
+     "tile_seam_ratio": [
+      2.29,
+      0.69
+     ]
+    },
+    "normal": {
+     "file": "welsh-slate-roof-normal.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 158926,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "tangent X, (x+1)/2",
+      "G": "tangent Y, (y+1)/2  OpenGL +Y up",
+      "B": "tangent Z, (z+1)/2"
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "convention": "OpenGL tangent space, green up",
+     "tile_seam_ratio": [
+      1.79,
+      7.42
+     ]
+    },
+    "orm": {
+     "file": "welsh-slate-roof-orm.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 42380,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
+      "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "roughness_range": [
+      0.2588,
+      0.4549
+     ],
+     "tile_seam_ratio": [
+      0.2,
+      1.7
+     ]
+    }
+   },
+   "slots": [
+    {
+     "slot": "prop_roof",
+     "tile_m": 1.6,
+     "role": "Proposed-massing roof"
+    },
+    {
+     "slot": "roof",
+     "tile_m": 1.6,
+     "role": "Reconstruction roof covering"
+    },
+    {
+     "slot": "roof_slate",
+     "tile_m": 1.6,
+     "role": "Slate roof covering"
+    }
+   ],
+   "bytes": 232386,
+   "tile_seam_ratio_worst": 7.42
+  },
+  "woodland-floor": {
+   "files": {
+    "albedo": {
+     "file": "woodland-floor-albedo.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 63586,
+     "colour_space": "srgb",
+     "encoding": "webp lossy q90",
+     "channels": {
+      "R": "base colour red (sRGB-encoded)",
+      "G": "base colour green (sRGB-encoded)",
+      "B": "base colour blue (sRGB-encoded)"
+     },
+     "three_colorspace": "THREE.SRGBColorSpace",
+     "tile_seam_ratio": [
+      1.47,
+      1.33
+     ]
+    },
+    "normal": {
+     "file": "woodland-floor-normal.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 372318,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "tangent X, (x+1)/2",
+      "G": "tangent Y, (y+1)/2  OpenGL +Y up",
+      "B": "tangent Z, (z+1)/2"
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "convention": "OpenGL tangent space, green up",
+     "tile_seam_ratio": [
+      1.14,
+      1.25
+     ]
+    },
+    "orm": {
+     "file": "woodland-floor-orm.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 35026,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
+      "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "roughness_range": [
+      0.7882,
+      0.8824
+     ],
+     "tile_seam_ratio": [
+      0.91,
+      1.25
+     ]
+    }
+   },
+   "slots": [],
+   "bytes": 470930,
+   "tile_seam_ratio_worst": 1.47
+  },
+  "york-stone-paving": {
+   "files": {
+    "albedo": {
+     "file": "york-stone-paving-albedo.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 31750,
+     "colour_space": "srgb",
+     "encoding": "webp lossy q90",
+     "channels": {
+      "R": "base colour red (sRGB-encoded)",
+      "G": "base colour green (sRGB-encoded)",
+      "B": "base colour blue (sRGB-encoded)"
+     },
+     "three_colorspace": "THREE.SRGBColorSpace",
+     "tile_seam_ratio": [
+      2.47,
+      0.69
+     ]
+    },
+    "normal": {
+     "file": "york-stone-paving-normal.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 220916,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "tangent X, (x+1)/2",
+      "G": "tangent Y, (y+1)/2  OpenGL +Y up",
+      "B": "tangent Z, (z+1)/2"
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "convention": "OpenGL tangent space, green up",
+     "tile_seam_ratio": [
+      0.59,
+      0.42
+     ]
+    },
+    "orm": {
+     "file": "york-stone-paving-orm.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 25406,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
+      "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "roughness_range": [
+      0.4235,
+      0.6941
+     ],
+     "tile_seam_ratio": [
+      0.12,
+      0.1
+     ]
+    }
+   },
+   "slots": [],
+   "bytes": 278072,
+   "tile_seam_ratio_worst": 2.47
+  }
+ },
+ "slots": {
+  "wall_brick": {
+   "set": "handmade-red-brick",
+   "tile_m": 2.0,
+   "role": "Principal walling brick - Main House, courtyards, stables",
+   "albedo": "handmade-red-brick-albedo.webp",
+   "normal": "handmade-red-brick-normal.webp",
+   "orm": "handmade-red-brick-orm.webp",
+   "px": 512,
+   "texels_per_m": 256.0
+  },
+  "wall_stone": {
+   "set": "ashlar-stone",
+   "tile_m": 2.4,
+   "role": "Dressed stone walling",
+   "albedo": "ashlar-stone-albedo.webp",
+   "normal": "ashlar-stone-normal.webp",
+   "orm": "ashlar-stone-orm.webp",
+   "px": 512,
+   "texels_per_m": 213.3
+  },
+  "wall_render": {
+   "set": "smooth-lime-render",
+   "tile_m": 3.0,
+   "role": "Rendered or limewashed walling",
+   "albedo": "smooth-lime-render-albedo.webp",
+   "normal": "smooth-lime-render-normal.webp",
+   "orm": "smooth-lime-render-orm.webp",
+   "px": 512,
+   "texels_per_m": 170.7
+  },
+  "wallplain": {
+   "set": "handmade-red-brick",
+   "tile_m": 2.0,
+   "role": "Reconstruction walling - LIDAR-derived buildings",
+   "albedo": "handmade-red-brick-albedo.webp",
+   "normal": "handmade-red-brick-normal.webp",
+   "orm": "handmade-red-brick-orm.webp",
+   "px": 512,
+   "texels_per_m": 256.0
+  },
+  "wallbrick": {
+   "set": "handmade-red-brick",
+   "tile_m": 2.0,
+   "role": "Legacy tiled brick on reconstructions",
+   "albedo": "handmade-red-brick-albedo.webp",
+   "normal": "handmade-red-brick-normal.webp",
+   "orm": "handmade-red-brick-orm.webp",
+   "px": 512,
+   "texels_per_m": 256.0
+  },
+  "stone": {
+   "set": "rubble-stone",
+   "tile_m": 2.0,
+   "role": "Rubble stone, garden and boundary walls",
+   "albedo": "rubble-stone-albedo.webp",
+   "normal": "rubble-stone-normal.webp",
+   "orm": "rubble-stone-orm.webp",
+   "px": 512,
+   "texels_per_m": 256.0
+  },
+  "stone_detail": {
+   "set": "ashlar-stone",
+   "tile_m": 1.2,
+   "role": "Cornices, quoins, copings, plinths, balustrade",
+   "albedo": "ashlar-stone-albedo.webp",
+   "normal": "ashlar-stone-normal.webp",
+   "orm": "ashlar-stone-orm.webp",
+   "px": 512,
+   "texels_per_m": 426.7
+  },
+  "roof_slate": {
+   "set": "welsh-slate-roof",
+   "tile_m": 1.6,
+   "role": "Slate roof covering",
+   "albedo": "welsh-slate-roof-albedo.webp",
+   "normal": "welsh-slate-roof-normal.webp",
+   "orm": "welsh-slate-roof-orm.webp",
+   "px": 512,
+   "texels_per_m": 320.0
+  },
+  "roof": {
+   "set": "welsh-slate-roof",
+   "tile_m": 1.6,
+   "role": "Reconstruction roof covering",
+   "albedo": "welsh-slate-roof-albedo.webp",
+   "normal": "welsh-slate-roof-normal.webp",
+   "orm": "welsh-slate-roof-orm.webp",
+   "px": 512,
+   "texels_per_m": 320.0
+  },
+  "roof_lead": {
+   "set": "lead-roof-flashing",
+   "tile_m": 1.5,
+   "role": "Lead flats, valleys, flashings, the Main House deck",
+   "albedo": "lead-roof-flashing-albedo.webp",
+   "normal": "lead-roof-flashing-normal.webp",
+   "orm": "lead-roof-flashing-orm.webp",
+   "px": 512,
+   "texels_per_m": 341.3
+  },
+  "prop_roof": {
+   "set": "welsh-slate-roof",
+   "tile_m": 1.6,
+   "role": "Proposed-massing roof",
+   "albedo": "welsh-slate-roof-albedo.webp",
+   "normal": "welsh-slate-roof-normal.webp",
+   "orm": "welsh-slate-roof-orm.webp",
+   "px": 512,
+   "texels_per_m": 320.0
+  },
+  "timber": {
+   "set": "oak-weatherboard",
+   "tile_m": 1.8,
+   "role": "Weatherboarding, structural timber",
+   "albedo": "oak-weatherboard-albedo.webp",
+   "normal": "oak-weatherboard-normal.webp",
+   "orm": "oak-weatherboard-orm.webp",
+   "px": 512,
+   "texels_per_m": 284.4
+  },
+  "frame": {
+   "set": "painted-timber-joinery",
+   "tile_m": 1.0,
+   "role": "Window frames, glazing bars",
+   "albedo": "painted-timber-joinery-albedo.webp",
+   "normal": "painted-timber-joinery-normal.webp",
+   "orm": "painted-timber-joinery-orm.webp",
+   "px": 512,
+   "texels_per_m": 512.0
+  },
+  "door": {
+   "set": "painted-timber-joinery",
+   "tile_m": 1.0,
+   "role": "Door leaves",
+   "albedo": "painted-timber-joinery-albedo.webp",
+   "normal": "painted-timber-joinery-normal.webp",
+   "orm": "painted-timber-joinery-orm.webp",
+   "px": 512,
+   "texels_per_m": 512.0
+  },
+  "metal": {
+   "set": "patinated-copper",
+   "tile_m": 1.0,
+   "role": "Ironwork, railings, rainwater goods, roof metalwork",
+   "albedo": "patinated-copper-albedo.webp",
+   "normal": "patinated-copper-normal.webp",
+   "orm": "patinated-copper-orm.webp",
+   "px": 512,
+   "texels_per_m": 512.0
+  },
+  "gravel": {
+   "set": "loose-gravel",
+   "tile_m": 2.5,
+   "role": "Drives and the forecourt apron",
+   "albedo": "loose-gravel-albedo.webp",
+   "normal": "loose-gravel-normal.webp",
+   "orm": "loose-gravel-orm.webp",
+   "px": 512,
+   "texels_per_m": 204.8
+  },
+  "earth": {
+   "set": "compacted-earth-path",
+   "tile_m": 3.0,
+   "role": "Terrain skirt, exposed ground, tracks",
+   "albedo": "compacted-earth-path-albedo.webp",
+   "normal": "compacted-earth-path-normal.webp",
+   "orm": "compacted-earth-path-orm.webp",
+   "px": 512,
+   "texels_per_m": 170.7
+  },
+  "terrain": {
+   "set": "mown-lawn",
+   "tile_m": 6.0,
+   "role": "The ground sheet - carries its own baked albedo today",
+   "albedo": "mown-lawn-albedo.webp",
+   "normal": "mown-lawn-normal.webp",
+   "orm": "mown-lawn-orm.webp",
+   "px": 512,
+   "texels_per_m": 85.3
+  },
+  "water": {
+   "set": "still-water-long-water",
+   "tile_m": 12.0,
+   "role": "The Thames",
+   "albedo": "still-water-long-water-albedo.webp",
+   "normal": "still-water-long-water-normal.webp",
+   "orm": "still-water-long-water-orm.webp",
+   "px": 512,
+   "texels_per_m": 42.7
+  },
+  "longwater": {
+   "set": "still-water-long-water",
+   "tile_m": 8.0,
+   "role": "The Long Water canal",
+   "albedo": "still-water-long-water-albedo.webp",
+   "normal": "still-water-long-water-normal.webp",
+   "orm": "still-water-long-water-orm.webp",
+   "px": 512,
+   "texels_per_m": 64.0
+  }
+ },
+ "untextured_slots": [
+  "anchor",
+  "area",
+  "glass",
+  "hedge",
+  "leaf_broadleaf",
+  "leaf_cedar",
+  "leaf_poplar",
+  "leaf_veteran",
+  "marker",
+  "proposed_off",
+  "proposed_on",
+  "roof_off",
+  "trunk",
+  "wall_off"
+ ],
+ "sets_not_used_by_any_slot": [
+  "bound-resin-gravel",
+  "brick-paviour",
+  "mown-lawn-mower-stripe",
+  "rough-meadow-grass",
+  "tarmac",
+  "woodland-floor",
+  "york-stone-paving"
+ ]
+}

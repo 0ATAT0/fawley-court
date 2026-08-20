@@ -1,0 +1,751 @@
+{
+ "px": 512,
+ "rows": [
+  {
+   "set": "ashlar-stone",
+   "map": "albedo",
+   "peak": 17,
+   "mean": 1.264238993326823,
+   "src_peak": 47,
+   "src_mean": 1.9870246251424153
+  },
+  {
+   "set": "ashlar-stone",
+   "map": "normal",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 62,
+   "src_mean": 1.7987378438313801,
+   "len": {
+    "min": 0.9944,
+    "max": 1.00554,
+    "mean": 1.0004,
+    "p01": 0.99626,
+    "p99": 1.00407,
+    "worst_abs_dev": 0.0056,
+    "frac_outside_1pc": 0.0
+   },
+   "ang_mean": 1.875,
+   "ang_p99": 16.748,
+   "ang_max": 34.756
+  },
+  {
+   "set": "ashlar-stone",
+   "map": "orm(G)",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 4,
+   "src_mean": 0.3134031295776367
+  },
+  {
+   "set": "bound-resin-gravel",
+   "map": "albedo",
+   "peak": 41,
+   "mean": 1.7103195190429688,
+   "src_peak": 68,
+   "src_mean": 3.130143165588379
+  },
+  {
+   "set": "bound-resin-gravel",
+   "map": "normal",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 181,
+   "src_mean": 3.4617735544840493,
+   "len": {
+    "min": 0.99391,
+    "max": 1.00658,
+    "mean": 1.00046,
+    "p01": 0.99619,
+    "p99": 1.00394,
+    "worst_abs_dev": 0.00658,
+    "frac_outside_1pc": 0.0
+   },
+   "ang_mean": 3.327,
+   "ang_p99": 36.194,
+   "ang_max": 132.838
+  },
+  {
+   "set": "bound-resin-gravel",
+   "map": "orm(G)",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 5,
+   "src_mean": 0.057384490966796875
+  },
+  {
+   "set": "brick-paviour",
+   "map": "albedo",
+   "peak": 27,
+   "mean": 2.1567179361979165,
+   "src_peak": 50,
+   "src_mean": 3.052366574605306
+  },
+  {
+   "set": "brick-paviour",
+   "map": "normal",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 79,
+   "src_mean": 3.1911853154500327,
+   "len": {
+    "min": 0.99409,
+    "max": 1.00554,
+    "mean": 1.0001,
+    "p01": 0.99595,
+    "p99": 1.00407,
+    "worst_abs_dev": 0.00591,
+    "frac_outside_1pc": 0.0
+   },
+   "ang_mean": 3.295,
+   "ang_p99": 26.414,
+   "ang_max": 37.314
+  },
+  {
+   "set": "brick-paviour",
+   "map": "orm(G)",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 10,
+   "src_mean": 0.7360715866088867
+  },
+  {
+   "set": "compacted-earth-path",
+   "map": "albedo",
+   "peak": 18,
+   "mean": 1.3678792317708333,
+   "src_peak": 51,
+   "src_mean": 2.0188287099202475
+  },
+  {
+   "set": "compacted-earth-path",
+   "map": "normal",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 133,
+   "src_mean": 2.628109614054362,
+   "len": {
+    "min": 0.99397,
+    "max": 1.00572,
+    "mean": 1.00029,
+    "p01": 0.99607,
+    "p99": 1.00413,
+    "worst_abs_dev": 0.00603,
+    "frac_outside_1pc": 0.0
+   },
+   "ang_mean": 2.575,
+   "ang_p99": 8.997,
+   "ang_max": 93.769
+  },
+  {
+   "set": "compacted-earth-path",
+   "map": "orm(G)",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 1,
+   "src_mean": 0.07507705688476562
+  },
+  {
+   "set": "handmade-red-brick",
+   "map": "albedo",
+   "peak": 40,
+   "mean": 4.183121999104817,
+   "src_peak": 99,
+   "src_mean": 7.951117197672526
+  },
+  {
+   "set": "handmade-red-brick",
+   "map": "normal",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 101,
+   "src_mean": 4.401515642801921,
+   "len": {
+    "min": 0.9944,
+    "max": 1.00541,
+    "mean": 1.00006,
+    "p01": 0.99613,
+    "p99": 1.0048,
+    "worst_abs_dev": 0.0056,
+    "frac_outside_1pc": 0.0
+   },
+   "ang_mean": 4.626,
+   "ang_p99": 41.126,
+   "ang_max": 48.157
+  },
+  {
+   "set": "handmade-red-brick",
+   "map": "orm(G)",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 22,
+   "src_mean": 1.8321647644042969
+  },
+  {
+   "set": "lead-roof-flashing",
+   "map": "albedo",
+   "peak": 16,
+   "mean": 1.2352663675944011,
+   "src_peak": 54,
+   "src_mean": 2.002257982889811
+  },
+  {
+   "set": "lead-roof-flashing",
+   "map": "normal",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 45,
+   "src_mean": 0.970005989074707,
+   "len": {
+    "min": 0.99446,
+    "max": 1.00554,
+    "mean": 1.00039,
+    "p01": 0.99644,
+    "p99": 1.00358,
+    "worst_abs_dev": 0.00554,
+    "frac_outside_1pc": 0.0
+   },
+   "ang_mean": 1.015,
+   "ang_p99": 10.096,
+   "ang_max": 20.89
+  },
+  {
+   "set": "lead-roof-flashing",
+   "map": "orm(G)",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 3,
+   "src_mean": 0.13127422332763672
+  },
+  {
+   "set": "loose-gravel",
+   "map": "albedo",
+   "peak": 25,
+   "mean": 1.7404937744140625,
+   "src_peak": 81,
+   "src_mean": 3.1230316162109375
+  },
+  {
+   "set": "loose-gravel",
+   "map": "normal",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 199,
+   "src_mean": 4.707420984903972,
+   "len": {
+    "min": 0.99341,
+    "max": 1.00651,
+    "mean": 1.00053,
+    "p01": 0.99595,
+    "p99": 1.00407,
+    "worst_abs_dev": 0.00659,
+    "frac_outside_1pc": 0.0
+   },
+   "ang_mean": 4.44,
+   "ang_p99": 43.057,
+   "ang_max": 140.798
+  },
+  {
+   "set": "loose-gravel",
+   "map": "orm(G)",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 12,
+   "src_mean": 0.18862056732177734
+  },
+  {
+   "set": "mown-lawn",
+   "map": "albedo",
+   "peak": 15,
+   "mean": 1.2759043375651042,
+   "src_peak": 40,
+   "src_mean": 1.8380902608235676
+  },
+  {
+   "set": "mown-lawn",
+   "map": "normal",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 132,
+   "src_mean": 0.9197626113891602,
+   "len": {
+    "min": 0.9944,
+    "max": 1.00627,
+    "mean": 1.00009,
+    "p01": 0.99687,
+    "p99": 1.00333,
+    "worst_abs_dev": 0.00627,
+    "frac_outside_1pc": 0.0
+   },
+   "ang_mean": 0.884,
+   "ang_p99": 18.279,
+   "ang_max": 97.452
+  },
+  {
+   "set": "mown-lawn",
+   "map": "orm(G)",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 9,
+   "src_mean": 0.04641151428222656
+  },
+  {
+   "set": "mown-lawn-mower-stripe",
+   "map": "albedo",
+   "peak": 17,
+   "mean": 1.3238983154296875,
+   "src_peak": 41,
+   "src_mean": 1.9195280075073242
+  },
+  {
+   "set": "mown-lawn-mower-stripe",
+   "map": "normal",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 133,
+   "src_mean": 0.9199638366699219,
+   "len": {
+    "min": 0.99403,
+    "max": 1.00627,
+    "mean": 1.00009,
+    "p01": 0.99687,
+    "p99": 1.00327,
+    "worst_abs_dev": 0.00627,
+    "frac_outside_1pc": 0.0
+   },
+   "ang_mean": 0.884,
+   "ang_p99": 18.281,
+   "ang_max": 97.67
+  },
+  {
+   "set": "mown-lawn-mower-stripe",
+   "map": "orm(G)",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 8,
+   "src_mean": 0.09293937683105469
+  },
+  {
+   "set": "oak-weatherboard",
+   "map": "albedo",
+   "peak": 19,
+   "mean": 1.8327852884928386,
+   "src_peak": 58,
+   "src_mean": 3.2677412033081055
+  },
+  {
+   "set": "oak-weatherboard",
+   "map": "normal",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 59,
+   "src_mean": 2.316122055053711,
+   "len": {
+    "min": 0.99434,
+    "max": 1.00554,
+    "mean": 1.00035,
+    "p01": 0.99589,
+    "p99": 1.00437,
+    "worst_abs_dev": 0.00566,
+    "frac_outside_1pc": 0.0
+   },
+   "ang_mean": 2.581,
+   "ang_p99": 18.823,
+   "ang_max": 26.854
+  },
+  {
+   "set": "oak-weatherboard",
+   "map": "orm(G)",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 11,
+   "src_mean": 0.3050680160522461
+  },
+  {
+   "set": "painted-timber-joinery",
+   "map": "albedo",
+   "peak": 18,
+   "mean": 1.2344500223795574,
+   "src_peak": 50,
+   "src_mean": 1.8788569768269856
+  },
+  {
+   "set": "painted-timber-joinery",
+   "map": "normal",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 20,
+   "src_mean": 0.5391387939453125,
+   "len": {
+    "min": 0.99496,
+    "max": 1.00499,
+    "mean": 1.00031,
+    "p01": 0.99731,
+    "p99": 1.00296,
+    "worst_abs_dev": 0.00504,
+    "frac_outside_1pc": 0.0
+   },
+   "ang_mean": 0.605,
+   "ang_p99": 4.543,
+   "ang_max": 9.176
+  },
+  {
+   "set": "painted-timber-joinery",
+   "map": "orm(G)",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 2,
+   "src_mean": 0.1131143569946289
+  },
+  {
+   "set": "patinated-copper",
+   "map": "albedo",
+   "peak": 17,
+   "mean": 1.334381103515625,
+   "src_peak": 58,
+   "src_mean": 2.02629820505778
+  },
+  {
+   "set": "patinated-copper",
+   "map": "normal",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 33,
+   "src_mean": 0.6961355209350586,
+   "len": {
+    "min": 0.9944,
+    "max": 1.00541,
+    "mean": 1.00038,
+    "p01": 0.99681,
+    "p99": 1.00352,
+    "worst_abs_dev": 0.0056,
+    "frac_outside_1pc": 0.0
+   },
+   "ang_mean": 0.749,
+   "ang_p99": 8.22,
+   "ang_max": 15.177
+  },
+  {
+   "set": "patinated-copper",
+   "map": "orm(G)",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 1,
+   "src_mean": 0.10479259490966797
+  },
+  {
+   "set": "rough-meadow-grass",
+   "map": "albedo",
+   "peak": 19,
+   "mean": 1.619122823079427,
+   "src_peak": 70,
+   "src_mean": 2.999654769897461
+  },
+  {
+   "set": "rough-meadow-grass",
+   "map": "normal",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 92,
+   "src_mean": 1.0328585306803386,
+   "len": {
+    "min": 0.99446,
+    "max": 1.00548,
+    "mean": 1.00036,
+    "p01": 0.99632,
+    "p99": 1.0037,
+    "worst_abs_dev": 0.00554,
+    "frac_outside_1pc": 0.0
+   },
+   "ang_mean": 1.039,
+   "ang_p99": 10.255,
+   "ang_max": 55.776
+  },
+  {
+   "set": "rough-meadow-grass",
+   "map": "orm(G)",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 9,
+   "src_mean": 0.1242685317993164
+  },
+  {
+   "set": "rubble-stone",
+   "map": "albedo",
+   "peak": 19,
+   "mean": 1.5805308024088542,
+   "src_peak": 65,
+   "src_mean": 2.9604670206705728
+  },
+  {
+   "set": "rubble-stone",
+   "map": "normal",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 66,
+   "src_mean": 2.1976378758748374,
+   "len": {
+    "min": 0.99335,
+    "max": 1.00658,
+    "mean": 1.0005,
+    "p01": 0.99613,
+    "p99": 1.00407,
+    "worst_abs_dev": 0.00665,
+    "frac_outside_1pc": 0.0
+   },
+   "ang_mean": 2.12,
+   "ang_p99": 17.264,
+   "ang_max": 41.709
+  },
+  {
+   "set": "rubble-stone",
+   "map": "orm(G)",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 5,
+   "src_mean": 0.47499847412109375
+  },
+  {
+   "set": "smooth-lime-render",
+   "map": "albedo",
+   "peak": 19,
+   "mean": 1.214734395345052,
+   "src_peak": 64,
+   "src_mean": 1.8258406321207683
+  },
+  {
+   "set": "smooth-lime-render",
+   "map": "normal",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 61,
+   "src_mean": 1.5954147974650066,
+   "len": {
+    "min": 0.99521,
+    "max": 1.00486,
+    "mean": 1.00077,
+    "p01": 0.99626,
+    "p99": 1.00394,
+    "worst_abs_dev": 0.00486,
+    "frac_outside_1pc": 0.0
+   },
+   "ang_mean": 1.605,
+   "ang_p99": 9.771,
+   "ang_max": 30.884
+  },
+  {
+   "set": "smooth-lime-render",
+   "map": "orm(G)",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 1,
+   "src_mean": 0.053908348083496094
+  },
+  {
+   "set": "still-water-long-water",
+   "map": "albedo",
+   "peak": 15,
+   "mean": 0.8714981079101562,
+   "src_peak": 43,
+   "src_mean": 1.2689844767252605
+  },
+  {
+   "set": "still-water-long-water",
+   "map": "normal",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 1,
+   "src_mean": 0.014425277709960938,
+   "len": {
+    "min": 1.00002,
+    "max": 1.00284,
+    "mean": 1.00076,
+    "p01": 1.00002,
+    "p99": 1.00235,
+    "worst_abs_dev": 0.00284,
+    "frac_outside_1pc": 0.0
+   },
+   "ang_mean": 0.019,
+   "ang_p99": 0.449,
+   "ang_max": 0.636
+  },
+  {
+   "set": "still-water-long-water",
+   "map": "orm(G)",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 1,
+   "src_mean": 0.0074558258056640625
+  },
+  {
+   "set": "tarmac",
+   "map": "albedo",
+   "peak": 36,
+   "mean": 1.4015146891276042,
+   "src_peak": 61,
+   "src_mean": 1.9954280853271484
+  },
+  {
+   "set": "tarmac",
+   "map": "normal",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 177,
+   "src_mean": 1.8164437611897786,
+   "len": {
+    "min": 0.99391,
+    "max": 1.00621,
+    "mean": 1.00031,
+    "p01": 0.9965,
+    "p99": 1.00358,
+    "worst_abs_dev": 0.00621,
+    "frac_outside_1pc": 0.0
+   },
+   "ang_mean": 1.789,
+   "ang_p99": 30.111,
+   "ang_max": 97.599
+  },
+  {
+   "set": "tarmac",
+   "map": "orm(G)",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 5,
+   "src_mean": 0.10370349884033203
+  },
+  {
+   "set": "welsh-slate-roof",
+   "map": "albedo",
+   "peak": 16,
+   "mean": 1.38092041015625,
+   "src_peak": 44,
+   "src_mean": 2.447933832804362
+  },
+  {
+   "set": "welsh-slate-roof",
+   "map": "normal",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 110,
+   "src_mean": 2.8010390599568686,
+   "len": {
+    "min": 0.99434,
+    "max": 1.00578,
+    "mean": 1.00014,
+    "p01": 0.99613,
+    "p99": 1.00407,
+    "worst_abs_dev": 0.00578,
+    "frac_outside_1pc": 0.0
+   },
+   "ang_mean": 2.908,
+   "ang_p99": 31.373,
+   "ang_max": 51.972
+  },
+  {
+   "set": "welsh-slate-roof",
+   "map": "orm(G)",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 7,
+   "src_mean": 0.6145200729370117
+  },
+  {
+   "set": "woodland-floor",
+   "map": "albedo",
+   "peak": 27,
+   "mean": 1.5470288594563801,
+   "src_peak": 69,
+   "src_mean": 2.9559240341186523
+  },
+  {
+   "set": "woodland-floor",
+   "map": "normal",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 157,
+   "src_mean": 2.081756273905436,
+   "len": {
+    "min": 0.99403,
+    "max": 1.00621,
+    "mean": 1.00065,
+    "p01": 0.99613,
+    "p99": 1.00401,
+    "worst_abs_dev": 0.00621,
+    "frac_outside_1pc": 0.0
+   },
+   "ang_mean": 2.038,
+   "ang_p99": 12.284,
+   "ang_max": 117.971
+  },
+  {
+   "set": "woodland-floor",
+   "map": "orm(G)",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 1,
+   "src_mean": 0.07579231262207031
+  },
+  {
+   "set": "york-stone-paving",
+   "map": "albedo",
+   "peak": 18,
+   "mean": 1.276079813639323,
+   "src_peak": 46,
+   "src_mean": 2.021066665649414
+  },
+  {
+   "set": "york-stone-paving",
+   "map": "normal",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 57,
+   "src_mean": 1.5623067220052083,
+   "len": {
+    "min": 0.99434,
+    "max": 1.00566,
+    "mean": 1.00047,
+    "p01": 0.99644,
+    "p99": 1.00407,
+    "worst_abs_dev": 0.00566,
+    "frac_outside_1pc": 0.0
+   },
+   "ang_mean": 1.642,
+   "ang_p99": 15.974,
+   "ang_max": 34.044
+  },
+  {
+   "set": "york-stone-paving",
+   "map": "orm(G)",
+   "peak": 0,
+   "mean": 0.0,
+   "src_peak": 6,
+   "src_mean": 0.48944950103759766
+  }
+ ],
+ "worst": {
+  "albedo": {
+   "pk": 41,
+   "mn": 4.183121999104817,
+   "spk": 99,
+   "smn": 7.951117197672526,
+   "ang": 0.0,
+   "len": 0.0
+  },
+  "normal": {
+   "pk": 0,
+   "mn": 0.0,
+   "spk": 199,
+   "smn": 4.707420984903972,
+   "ang": 43.057,
+   "len": 0.00665
+  },
+  "orm(G)": {
+   "pk": 0,
+   "mn": 0.0,
+   "spk": 22,
+   "smn": 1.8321647644042969,
+   "ang": 0.0,
+   "len": 0.0
+  }
+ }
+}

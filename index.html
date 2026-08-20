@@ -3517,7 +3517,23 @@ const CHAPTERS = [
     reason: [
     ] }
   ]
-}
+},
+{
+  id: "model", num: "07", eyebrow: "Estate Model", title: "Estate Model",
+  blurb: "The estate in three dimensions: terrain, water and planting from survey data, the buildings modelled from the plans and photography, and the capex schedule bound element by element to the fabric it prices.",
+  figures: [["72","Registry elements"],["162","Capex lines bound to the geometry"]],
+  views: [
+  { id: "", title: "The Estate Model", kicker: "Model",
+    figure: "Interactive, in the browser", blurb: "The measured estate model, rendered live.",
+    lead: [
+      ["lede","A measured model of the whole estate. Terrain and water are built from Environment Agency LIDAR, the buildings from the EPR plans and the data-room photography, and every element carries its own capex lines, so the budget can be read off the fabric itself."],
+      ["para","<div style='border:1px solid #e2e5e9;border-radius:10px;overflow:hidden;background:#f6f7f9'><iframe src='model/out/viewer.html' loading='lazy' title='Fawley Court estate model' style='width:100%;height:78vh;border:0;display:block'></iframe></div><p class='para' style='margin-top:10px'><a href='model/out/viewer.html' target='_blank' rel='noopener'>Open the model full screen&nbsp;↗</a> · the first load fetches about 80&nbsp;MB of geometry. Drag to orbit, scroll to zoom, click a building for its capex. The chip at top left opens layers, saved views and the scheme switches.</p>"],
+      ["src","Source: Environment Agency LIDAR (April 2023), the EPR site plans and the data-room photography, rendered in the browser. The model's capex overlay carries the v19 measured schedule; chapters 01–06 carry Financial Model v29. Proposed geometry is indicative; nothing is designed or consented unless stated. Contains Environment Agency information © Environment Agency and database right 2023, OGL v3.0."],
+    ],
+    reason: [
+    ] }
+  ]
+},
 ];
 
 /* Returns are read as part of the underwrite, not as a separate chapter. Keep

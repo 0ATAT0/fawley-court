@@ -1,0 +1,2433 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fawley Court — Estate Model</title>
+<!-- three.js + Draco decoder and Google Fonts load from CDNs: internet required. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}
+</script>
+<script src="estate-data.js"></script>
+<style>
+:root{
+  --navy:#0f172a; --charcoal:#1c1c1c; --ground:#f6f7f9; --card:#ffffff;
+  --muted:#6b7280; --line:#e5e7eb; --green:#10b981; --brick:#7c5a43;
+  --serif:"Playfair Display",Georgia,serif; --sans:Inter,ui-sans-serif,system-ui,sans-serif;
+}
+*{box-sizing:border-box} html,body{margin:0;height:100%;overflow:hidden;
+  font:14px/1.45 var(--sans);color:var(--charcoal);background:var(--ground)}
+canvas{display:block}
+#app{position:fixed;inset:0}
+
+#rail{position:fixed;top:0;left:0;bottom:0;width:316px;background:var(--card);
+  border-right:1px solid var(--line);display:flex;flex-direction:column;z-index:10}
+#rail header{padding:20px 20px 14px;border-bottom:1px solid var(--line)}
+#rail h1{margin:0;font:600 21px/1.2 var(--serif);color:var(--navy);letter-spacing:.01em}
+#rail header p{margin:5px 0 0;color:var(--muted);font-size:12.5px}
+#railscroll{flex:1;overflow-y:auto;padding:14px 20px 20px}
+#railscroll::-webkit-scrollbar{width:8px}
+#railscroll::-webkit-scrollbar-thumb{background:#d7dade;border-radius:4px}
+/* rail minimise: the whole sidebar hides behind a single +/- chip.
+   Default is minimised; state persists as fcm.railmin. */
+#railmin{position:absolute;top:10px;right:10px;width:26px;height:26px;border:1px solid var(--line);
+  border-radius:6px;background:#fff;color:var(--muted);cursor:pointer;font:600 14px/1 var(--sans);z-index:11}
+#railmin:hover{color:var(--navy)}
+#rail.min{width:46px;height:46px;bottom:auto;border-bottom:1px solid var(--line);border-radius:0 0 10px 0}
+#rail.min header,#rail.min #railscroll{display:none}
+body.railmin #status,body.railmin #prog{left:16px}
+.sect{margin:0 0 18px}
+.sect h2{margin:0 0 8px;font:600 14.5px/1.3 var(--sans);color:var(--navy)}
+.seg{display:flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.seg button{flex:1;border:0;background:transparent;padding:7px 2px;font:500 12.5px var(--sans);
+  color:var(--muted);cursor:pointer;border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button.on{background:var(--navy);color:#fff}
+.views{display:flex;flex-wrap:wrap;gap:6px}
+.views button{border:1px solid var(--line);background:#fff;border-radius:6px;
+  padding:5px 9px;font:500 12px var(--sans);color:var(--charcoal);cursor:pointer}
+.views button:hover{border-color:var(--navy)}
+.lay{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+.lay label{display:flex;gap:7px;align-items:center;font-size:13px;color:var(--charcoal);cursor:pointer}
+.lay input{accent-color:var(--navy)}
+
+#totals{padding:12px 14px;background:var(--ground);border:1px solid var(--line);border-radius:8px}
+#totals .big{font:600 22px/1.1 var(--serif);color:var(--navy)}
+#totals .sub{color:var(--muted);font-size:12.5px;margin-top:3px}
+#totals .tie{font-size:11.5px;margin-top:6px;color:var(--green)}
+#totals .tie.off{color:#b45309}
+
+.sw{border-top:1px solid var(--line);padding:9px 0}
+.sw:first-of-type{border-top:0}
+.sw .row1{display:flex;align-items:flex-start;gap:9px}
+.sw .name{flex:1;font-weight:500;font-size:13px;line-height:1.3}
+.sw .detail{color:var(--muted);font-size:12px;margin-top:2px;padding-left:41px}
+.sw .detail b{color:var(--charcoal);font-weight:600}
+.sw .pp.up{color:var(--green)} .sw .pp.down{color:#b91c1c}
+.tog{position:relative;width:32px;height:18px;flex:none;margin-top:1px;cursor:pointer}
+.tog input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.tog i{position:absolute;inset:0;border-radius:9px;background:#d3d7dc;transition:background .18s}
+.tog i::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;
+  background:#fff;transition:transform .18s cubic-bezier(.22,1,.36,1)}
+.tog input:checked+i{background:var(--green)}
+.tog input:checked+i::after{transform:translateX(14px)}
+.reset{border:0;background:none;color:var(--muted);font:500 12px var(--sans);
+  cursor:pointer;text-decoration:underline;padding:0;margin-top:8px}
+
+#card{position:fixed;top:16px;right:16px;width:min(390px,calc(100vw - 348px));max-height:calc(100vh - 120px);
+  background:var(--card);border:1px solid var(--line);border-radius:10px;
+  box-shadow:0 12px 40px rgba(15,23,42,.13);display:none;flex-direction:column;z-index:11;
+  animation:cardin .28s cubic-bezier(.22,1,.36,1)}
+@keyframes cardin{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+#card.show{display:flex}
+#card .head{padding:16px 18px 12px;border-bottom:1px solid var(--line);position:relative}
+#card .head h3{margin:0;font:600 19px/1.25 var(--serif);color:var(--navy);padding-right:26px}
+#card .chips{margin-top:7px;display:flex;flex-wrap:wrap;gap:5px}
+.chip{font:500 11.5px var(--sans);padding:2.5px 8px;border-radius:20px;border:1px solid var(--line);color:var(--muted)}
+.chip.listed{border-color:#c9a45c;color:#8a6d2f;background:#fdf9ef}
+.chip.ind{border-color:#c4b5fd;color:#6d28d9;background:#f8f6ff}
+.chip.offst{background:#f3f4f6}
+.chip.swon{border-color:var(--green);color:#047857;background:#ecfdf5}
+.chip.swoff{border-color:#fca5a5;color:#b91c1c;background:#fef2f2}
+#card .close{position:absolute;top:12px;right:12px;border:0;background:none;font-size:19px;
+  color:var(--muted);cursor:pointer;line-height:1}
+#card .body{overflow-y:auto;padding:12px 18px 16px}
+#card .body::-webkit-scrollbar{width:8px}
+#card .body::-webkit-scrollbar-thumb{background:#d7dade;border-radius:4px}
+#card .cost{font:600 24px/1 var(--serif);color:var(--navy);margin:4px 0 1px}
+#card .costsub{color:var(--muted);font-size:12.5px;margin-bottom:9px}
+#card .note{color:var(--charcoal);font-size:13px;margin:9px 0;line-height:1.5}
+#card .note.basis{color:var(--muted);font-size:12.5px}
+#card table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:5px}
+#card th{text-align:left;color:var(--muted);font-weight:500;padding:3px 0;border-bottom:1px solid var(--line)}
+#card th:last-child,#card td:last-child{text-align:right}
+#card td{padding:4px 0;border-bottom:1px solid #f1f2f4;vertical-align:top}
+#card td.n{color:var(--muted);width:26px}
+#card tr.off td{color:#b6bac1}
+#card .qtr{font-size:12.5px;color:var(--muted);margin-top:8px}
+
+#prog{position:fixed;left:340px;right:16px;bottom:14px;transition:right .25s;background:var(--card);
+  border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 28px rgba(15,23,42,.10);
+  padding:12px 18px 22px;display:none;z-index:9}
+#prog.show{display:block}
+body.hascard #prog{right:436px}
+#prog .top{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+#prog .top .q{font:600 17px/1 var(--serif);color:var(--navy);min-width:52px}
+#prog .top .spend{color:var(--muted);font-size:12.5px}
+#prog .top button{margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:6px;
+  padding:4px 12px;font:500 12.5px var(--sans);cursor:pointer}
+#bars{display:flex;align-items:flex-end;gap:3px;height:44px;cursor:pointer}
+#bars .bar{flex:1;background:#e2e5e9;border-radius:2px 2px 0 0;position:relative;min-height:2px}
+#bars .bar.done{background:#b7c0cc}
+#bars .bar.cur{background:var(--green)}
+#bars .bar span{position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  font-size:10.5px;color:var(--muted);margin-top:2px}
+
+#legend{position:fixed;right:16px;bottom:14px;background:var(--card);border:1px solid var(--line);
+  border-radius:8px;padding:10px 14px;font-size:12px;color:var(--muted);z-index:8;display:none;max-width:230px}
+#legend.show{display:block}
+#legend .li{display:flex;gap:7px;align-items:center;margin:3px 0}
+#legend .swatch{width:13px;height:13px;border-radius:3px;flex:none}
+
+#perf{position:fixed;right:14px;top:14px;z-index:20;background:rgba(15,23,42,.82);color:#e8edf3;
+  font:11.5px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;padding:7px 10px;border-radius:7px;
+  white-space:pre;pointer-events:none;letter-spacing:.01em}
+#perf.off{display:none}
+#status{position:fixed;left:340px;top:14px;background:var(--card);border:1px solid var(--line);
+  border-radius:7px;padding:6px 12px;font-size:12.5px;color:var(--muted);z-index:8}
+#hovertip{position:fixed;pointer-events:none;background:var(--navy);color:#fff;font:500 12px var(--sans);
+  padding:4px 9px;border-radius:5px;z-index:20;display:none;white-space:nowrap}
+#hud{position:fixed;left:340px;bottom:34px;display:flex;align-items:flex-end;
+  gap:12px;z-index:8;pointer-events:none}
+#scalebar{position:relative;height:6px;background:rgba(255,255,255,.85);
+  border:1px solid #aeb4ba;border-top:0;width:120px}
+#scalefill{position:absolute;left:0;top:0;bottom:0;width:50%;background:#0f172a}
+#scaletext{position:absolute;left:0;top:-18px;font:500 11px var(--sans);color:#3c434b;
+  text-shadow:0 0 4px rgba(246,247,249,.9)}
+@media (max-width:900px){#hud{left:276px}}
+#variants{position:fixed;right:14px;top:56px;z-index:24;display:none;
+  background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:10px 12px 11px;box-shadow:0 6px 22px rgba(15,23,42,.10);width:232px}
+html[data-variants="1"] #variants{display:block}
+#variants h4{margin:0 0 7px;font:600 11px var(--sans);letter-spacing:.07em;
+  text-transform:uppercase;color:var(--muted)}
+#variants .axis{margin-bottom:9px}
+#variants .row{display:flex;gap:4px}
+#variants .row button{flex:1;border:1px solid var(--line);background:#fff;border-radius:6px;
+  padding:5px 2px;font:500 11.5px var(--sans);color:var(--charcoal);cursor:pointer;
+  transition:background .15s,color .15s,border-color .15s}
+#variants .row button:hover{border-color:var(--navy)}
+#variants .row button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+#variants .intent{margin-top:6px;font:400 11px/1.4 var(--sans);color:var(--muted);
+  min-height:31px}
+#variants .coords{margin-top:8px;padding-top:8px;border-top:1px solid var(--line);
+  font:500 10.5px var(--sans);color:var(--muted);word-break:break-all}
+/* ---- THE INTERPRETER: mark mode ----------------------------------------------
+   Every rule here is inert until a human presses K. Nothing draws into the scene and
+   nothing is shown by default: STANDARD.md R01 exists because the survey anchor was
+   once forced visible in every render anyone looked at, and a marking tool that tinted
+   what it hit, or left a chrome ring in the frame, would be that same defect twice. */
+#markring{position:fixed;inset:0;border:3px solid #b91c1c;pointer-events:none;z-index:26;display:none}
+#markring::after{content:"MARK";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  background:#b91c1c;color:#fff;font:600 11px/1 var(--sans);letter-spacing:.11em;
+  padding:6px 14px;border-radius:0 0 7px 7px}
+#markring.on{display:block}
+#mark{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);
+  width:min(680px,calc(100vw - 372px));background:var(--card);border:1px solid var(--line);
+  border-radius:10px;box-shadow:0 14px 44px rgba(15,23,42,.18);padding:11px 14px 12px;
+  z-index:27;display:none}
+#mark.on{display:block}
+#mark .hint{font-size:12px;color:var(--muted);margin-bottom:7px}
+#mark .subj{font:500 12.5px/1.45 var(--sans);color:var(--charcoal);
+  background:var(--ground);border:1px solid var(--line);border-radius:7px;
+  padding:7px 10px;margin-bottom:8px}
+#mark .subj b{color:var(--navy)}
+#mark .subj .none{color:var(--muted);font-weight:400}
+#mark .subj .co{font:11.5px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}
+#mark .entry{display:flex;gap:8px;align-items:center}
+#mark .sev{display:flex;border:1px solid var(--line);border-radius:7px;overflow:hidden;flex:none}
+#mark .sev button{border:0;background:transparent;padding:7px 9px;font:500 11.5px var(--sans);
+  color:var(--muted);cursor:pointer;border-right:1px solid var(--line)}
+#mark .sev button:last-child{border-right:0}
+#mark .sev button.on{background:var(--navy);color:#fff}
+#mark input{flex:1;min-width:0;border:1px solid var(--line);border-radius:7px;
+  padding:8px 11px;font:14px var(--sans);color:var(--charcoal);background:#fff}
+#mark input:focus{outline:0;border-color:var(--navy)}
+#mark .stat{margin-top:7px;font-size:12px;color:var(--muted);min-height:16px}
+#mark .stat.bad{color:#b91c1c}
+#mark .stat.good{color:#047857}
+#markbtn.on{background:#b91c1c;border-color:#b91c1c;color:#fff}
+#markwhere{margin-top:6px;font-size:12px;color:var(--muted)}
+#drop{display:none;position:fixed;inset:0;z-index:30;background:rgba(246,247,249,.96);
+  align-items:center;justify-content:center;text-align:center;font-size:15px;color:var(--charcoal)}
+#drop.show{display:flex}
+#drop .box{border:2px dashed var(--navy);border-radius:12px;padding:44px 52px;background:#fff}
+@media (max-width:900px){#rail{width:260px}#prog{left:276px}#status{left:276px}
+  #card{width:min(340px,calc(100vw - 290px))}}
+</style>
+<script>
+/* VARIANT HARNESS - blocking, in <head>, so the page never flashes a default treatment.
+   Reads the URL first, then localStorage. Gated: the switcher only appears with ?variants=1,
+   so nobody without the link ever sees it. ?variants=0 clears the gate. */
+(function(){
+  try{
+    var q = new URLSearchParams(location.search);
+    var LS = window.localStorage;
+    if (q.get('variants') === '0'){ LS.removeItem('fcm.variants'); }
+    else if (q.get('variants') === '1'){ LS.setItem('fcm.variants','1'); }
+    var on = LS.getItem('fcm.variants') === '1';
+    /* THE CHOSEN LOOK, picked 19 Aug 2026: estate treatment, raking light.
+       LOOK_VER exists because a stored preference from the fork would otherwise
+       outrank the decision - a browser that had tried overcast would keep showing
+       overcast forever. Bumping the version resets both axes to the chosen look
+       once, then normal per-browser overriding resumes. */
+    var LOOK = {treatment:'estate', light:'raking', ver:'1'};
+    if (LS.getItem('fcm.lookver') !== LOOK.ver){
+      LS.setItem('fcm.lookver', LOOK.ver);
+      LS.removeItem('fcm.treatment'); LS.removeItem('fcm.light');
+    }
+    var t = q.get('treatment') || LS.getItem('fcm.treatment') || LOOK.treatment;
+    var l = q.get('light')     || LS.getItem('fcm.light')     || LOOK.light;
+    LS.setItem('fcm.treatment', t); LS.setItem('fcm.light', l);
+    var r = document.documentElement;
+    r.setAttribute('data-treatment', t);
+    r.setAttribute('data-light', l);
+    if (on) r.setAttribute('data-variants','1');
+  }catch(e){}
+})();
+</script>
+</head>
+<body>
+<div id="app"></div>
+
+<aside id="rail">
+  <button id="railmin" title="Minimise sidebar">–</button>
+  <header>
+    <h1>Fawley Court<br>Estate Model</h1>
+    <p id="modelref">v19 capex schedule · EA LIDAR Apr 2023</p>
+  </header>
+  <div id="railscroll">
+    <div class="sect" id="totals">
+      <div class="big" id="tWorks">£—</div>
+      <div class="sub" id="tSplit"></div>
+      <div class="tie" id="tTie"></div>
+    </div>
+    <div class="sect">
+      <h2>Theme</h2>
+      <div class="seg" id="themes">
+        <button data-th="estate" class="on">Estate</button>
+        <button data-th="museum">Museum</button>
+      </div>
+    </div>
+    <div class="sect">
+      <h2>Colour by</h2>
+      <div class="seg" id="modes">
+        <button data-mode="scheme" class="on">Scheme</button>
+        <button data-mode="zone">Zone</button>
+        <button data-mode="cost">Cost</button>
+        <button data-mode="prog">Build</button>
+      </div>
+    </div>
+    <div class="sect">
+      <h2>Views</h2>
+      <div class="views" id="views">
+        <button data-v="whole">Estate</button><button data-v="house">House</button>
+        <button data-v="court">Courtyards</button><button data-v="river">River</button>
+        <button data-v="south">South Park</button><button data-v="fly">Fly mode</button>
+      </div>
+    </div>
+    <div class="sect" id="laysect">
+      <h2>Layers</h2>
+      <div class="lay" id="layers">
+        <label><input type="checkbox" data-l="building" checked> Existing</label>
+        <label><input type="checkbox" data-l="proposed" checked> Proposed</label>
+        <label><input type="checkbox" data-l="area"> Ground works</label>
+        <label><input type="checkbox" data-l="marker"> Site markers</label>
+        <label><input type="checkbox" data-l="anchor"> Survey anchor</label>
+        <label><input type="checkbox" data-l="vegetation" checked> Trees</label>
+        <label><input type="checkbox" data-l="water" checked> Water</label>
+        <label><input type="checkbox" data-l="offestate"> Off-estate</label>
+        <label class="keep"><input type="checkbox" data-l="hideoff"> Hide switched-off</label>
+        <label><input type="checkbox" data-l="ao" checked> Ambient occlusion</label>
+      </div>
+    </div>
+    <div class="sect">
+      <h2>Findings</h2>
+      <div class="views"><button id="markbtn" title="press K">Mark a finding (K)</button></div>
+      <div id="markwhere">off. A click orbits as usual.</div>
+    </div>
+    <div class="sect">
+      <h2>Scheme switches</h2>
+      <div id="switches"></div>
+      <button class="reset" id="resetsw">Reset to the model's states</button>
+    </div>
+  </div>
+</aside>
+
+<div id="status">Loading model…</div>
+<div id="perf" title="press P to hide">—</div>
+<div id="card"><div class="head"><h3 id="cTitle"></h3><div class="chips" id="cChips"></div>
+  <button class="close" id="cClose">×</button></div><div class="body" id="cBody"></div></div>
+<div id="prog"><div class="top"><span class="q" id="pQ">Q1</span>
+  <span class="spend" id="pSpend"></span><button id="pPlay">Play</button></div>
+  <div id="bars"></div></div>
+<div id="legend"></div>
+<div id="hovertip"></div>
+<div id="hud">
+  <svg id="compass" width="54" height="54" viewBox="0 0 54 54">
+    <circle cx="27" cy="27" r="25" fill="rgba(255,255,255,.88)" stroke="#d5d9dd"/>
+    <g id="needle">
+      <polygon points="27,7 31,27 27,24 23,27" fill="#b91c1c"/>
+      <polygon points="27,47 31,27 27,30 23,27" fill="#0f172a"/>
+    </g>
+    <text x="27" y="16" text-anchor="middle" font-size="9" font-weight="600"
+      fill="#0f172a" id="ntext">N</text>
+  </svg>
+  <div id="scalebar"><div id="scalefill"></div><span id="scaletext">100 m</span></div>
+</div>
+<div id="variants">
+  <h4>Treatment</h4>
+  <div class="axis"><div class="row" id="vt"></div></div>
+  <h4>Light</h4>
+  <div class="axis"><div class="row" id="vl"></div></div>
+  <div class="intent" id="vintent"></div>
+  <div class="coords" id="vcoords"></div>
+</div>
+<div id="markring"></div>
+<div id="mark">
+  <div class="hint">Click the thing that is wrong — or type nothing but the note if the
+    finding is about the view itself. Enter files it and returns you to flying · Esc leaves.</div>
+  <div class="subj" id="marksubj"><span class="none">no object — this finding is about the view</span></div>
+  <div class="entry">
+    <div class="sev" id="marksev">
+      <button data-sev="ERROR">Error</button><button data-sev="WARN" class="on">Warn</button><button data-sev="INFO">Info</button>
+    </div>
+    <input id="marknote" type="text" maxlength="500" autocomplete="off" spellcheck="false"
+      placeholder="what is wrong with it">
+  </div>
+  <div class="stat" id="markstat"></div>
+</div>
+<div id="drop"><div class="box">Browser blocked local file loading.<br><br>
+  Drop <b>fawley-estate.glb</b> here, or serve the folder:<br>
+  <code>python -m http.server</code></div></div>
+
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {FlyControls} from 'three/addons/controls/FlyControls.js';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {DRACOLoader} from 'three/addons/loaders/DRACOLoader.js';
+import {Sky} from 'three/addons/objects/Sky.js';
+import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';
+import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
+import {GTAOPass} from 'three/addons/postprocessing/GTAOPass.js';
+import {OutputPass} from 'three/addons/postprocessing/OutputPass.js';
+
+const E = window.ESTATE;
+const elements = {}; E.elements.forEach(e => elements[e.id] = e);
+const schemes = {}; E.schemes.forEach(s => schemes[s.switch] = s);
+const lineIndex = {};
+E.elements.forEach(el => (el.capex_lines||[]).forEach(l => lineIndex[l.n] = {line:l, el:el.id}));
+const PROG_Q = E.meta.programme_quarters || 14;
+const PQ = Math.max(PROG_Q,
+  ...E.elements.flatMap(e => (e.capex_lines||[]).map(l => l.end||0)));
+
+const swState = {};
+E.schemes.forEach(s => swState[s.switch] = !!s.state);
+
+/* ------- cost engine (mirrors the workbook two-limb loading exactly) ------- */
+const HL = E.loading.hotel, RL = E.loading.resi;
+function lineActive(l){ return l.switch ? swState[l.switch] : !!l.on; }
+function lineLoaded(l, activeOverride){
+  const active = activeOverride === undefined ? lineActive(l) : activeOverride;
+  if (!active) return 0;
+  const live = l.net;
+  const hp = l.limb === 'hotel' ? l.hotel_pct : 0;
+  const hb = live*hp*(1+HL.prelims_pct*(l.prelims_flag?1:0));
+  const hf = hb*HL.fees_pct*(l.fees_flag?1:0);
+  const hc = hb*HL.contingency_pct;
+  const rshare = l.limb === 'hotel' ? live*(1-l.hotel_pct) : live;
+  const rb = rshare*(1+RL.prelims_pct*(l.prelims_flag?1:0));
+  const rf = rb*RL.fees_pct*(l.fees_flag?1:0);
+  const rc = rb*RL.contingency_pct;
+  return hb+hf+hc+rb+rf+rc;
+}
+function hotelLoaded(l){ if(!lineActive(l)) return 0;
+  const hp = l.limb==='hotel'?l.hotel_pct:0;
+  const hb = l.net*hp*(1+HL.prelims_pct*(l.prelims_flag?1:0));
+  return hb*(1+HL.fees_pct*(l.fees_flag?1:0)+HL.contingency_pct); }
+function allLines(){ const out=[]; E.elements.forEach(el => (el.capex_lines||[]).forEach(l=>out.push(l))); return out; }
+function elementCost(el){ let t=0; (el.capex_lines||[]).forEach(l => t+=lineLoaded(l)); return t; }
+const fmtM = v => '£'+(v/1e6).toFixed(v>=99.5e6?0:1)+'m';
+const fmtK = v => v>=1e6 ? fmtM(v) : '£'+Math.round(v/1e3)+'k';
+
+function updateTotals(){
+  let works=0, hotel=0;
+  allLines().forEach(l => {works += lineLoaded(l); hotel += hotelLoaded(l);});
+  const resi = works-hotel;
+  document.getElementById('tWorks').textContent = fmtM(works)+' works';
+  document.getElementById('tSplit').textContent =
+    `hotel ${fmtM(hotel)} · £${(hotel/60/1e6).toFixed(2)}m/key · resi ${fmtM(resi)}`;
+  const atModel = E.schemes.every(s => swState[s.switch] === !!s.state);
+  const tie = document.getElementById('tTie');
+  if (atModel){
+    const diff = Math.abs(works - E.book_summary.works_total);
+    tie.className = 'tie'; tie.textContent = diff < 2
+      ? '✓ ties to the model, £'+(E.book_summary.works_total/1e6).toFixed(2)+'m'
+      : '⚠ does not tie: off by £'+Math.round(diff);
+  } else {
+    const d = works - E.book_summary.works_total; tie.className='tie off';
+    tie.textContent = (d>=0?'+':'−')+fmtK(Math.abs(d))+' vs the model\'s switch states';
+  }
+}
+
+/* ------- switch rail ------- */
+const swWrap = document.getElementById('switches');
+function switchCapex(s){
+  let t=0; s.capex_lines.forEach(n => { const r=lineIndex[n]; if(r) t+=lineLoaded(r.line, true); });
+  return t;
+}
+function buildSwitchRail(){
+  swWrap.innerHTML='';
+  E.schemes.forEach(s => {
+    const d = (E.switch_irr_deltas?.deltas||{})[s.switch];
+    const cap = switchCapex(s);
+    const div = document.createElement('div'); div.className='sw';
+    const revOnly = !s.capex_lines.length;
+    let detail = revOnly ? 'revenue only' : ('moves <b>'+fmtK(cap)+'</b> of works');
+    if (d && d.pp !== null && d.pp !== undefined){
+      const cls = d.pp>=0?'up':'down';
+      detail += ` · flip <span class="pp ${cls}">${d.pp>0?'+':''}${d.pp.toFixed(2)}pp</span>`;
+    }
+    div.innerHTML = `<div class="row1"><label class="tog"><input type="checkbox" data-sw="${s.switch}"
+      ${swState[s.switch]?'checked':''}><i></i></label>
+      <div class="name">${s.label}</div></div><div class="detail">${detail}</div>`;
+    div.title = (d? d.basis+'. ' : '') + s.what_it_moves;
+    swWrap.appendChild(div);
+  });
+  swWrap.querySelectorAll('input[data-sw]').forEach(inp => inp.addEventListener('change', () => {
+    swState[inp.dataset.sw] = inp.checked; onStateChange();
+  }));
+}
+document.getElementById('resetsw').addEventListener('click', () => {
+  E.schemes.forEach(s => swState[s.switch] = !!s.state); buildSwitchRail(); onStateChange();
+});
+
+/* ------- scene ------- */
+const app = document.getElementById('app');
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(46, innerWidth/innerHeight, 0.5, 6000);
+const renderer = new THREE.WebGLRenderer({antialias:true, powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 0.62;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+/* The sun is static and the scene is static, so the shadow map does not need
+   redrawing every frame. It was, which doubled the per-frame draw submissions
+   for nothing. It now redraws only when the sun moves or something is shown,
+   hidden or reloaded - markShadows() is the one way to ask for that. */
+renderer.shadowMap.autoUpdate = false;
+renderer.shadowMap.needsUpdate = true;
+/* info resets itself at the start of every internal render pass, so with post
+   processing on it ends the frame describing the final fullscreen quad. Reset
+   it once per frame instead and the readout counts the whole frame. */
+renderer.info.autoReset = false;
+function markShadows(){ renderer.shadowMap.needsUpdate = true; }
+app.appendChild(renderer.domElement);
+
+/* post: GTAO ambient occlusion (toggleable) */
+let composer = null, gtaoPass = null, aoOn = true;
+function setupComposer(){
+  /* An EffectComposer renders into its own target, which bypasses the MSAA on
+     the WebGL context - the scene was being drawn with no anti-aliasing at all
+     whenever AO was on. This target asks for 4x multisampling explicitly. */
+  const dpr = renderer.getPixelRatio();
+  const rt = new THREE.WebGLRenderTarget(innerWidth*dpr, innerHeight*dpr, {
+    type: THREE.HalfFloatType, samples: 4
+  });
+  composer = new EffectComposer(renderer, rt);
+  composer.addPass(new RenderPass(scene, camera));
+  gtaoPass = new GTAOPass(scene, camera, innerWidth, innerHeight);
+  gtaoPass.output = GTAOPass.OUTPUT.Default;
+  composer.addPass(gtaoPass);
+  composer.addPass(new OutputPass());
+}
+
+/* sky + sun + environment */
+const sky = new Sky();
+sky.scale.setScalar(45000);
+scene.add(sky);
+const sun = new THREE.DirectionalLight(0xfff0d8, 3.4);
+sun.castShadow = true;
+sun.shadow.mapSize.set(4096, 4096);
+sun.shadow.camera.left = -820; sun.shadow.camera.right = 820;
+sun.shadow.camera.top = 820; sun.shadow.camera.bottom = -820;
+sun.shadow.camera.near = 50; sun.shadow.camera.far = 3200;
+sun.shadow.bias = -0.00035;
+sun.shadow.normalBias = 2.6;
+scene.add(sun);
+scene.add(sun.target);
+const hemi = new THREE.HemisphereLight(0xdfe8ee, 0x5d6355, 0.75);
+scene.add(hemi);
+const pmrem = new THREE.PMREMGenerator(renderer);
+let envRT = null;
+
+/* The raking shadow camera was fitted to an 855 m plan radius with the sun 2,500 m
+   from the model centre. setSun() pulled it back to 1,500 m and moved the target to
+   the origin after the rig had set both, putting 687 m of estate depth before the
+   authored 1,620 m near plane. Keep the rig together here: its vector drives both
+   the sky and the light, so rounding the alternate angle pair cannot split them. */
+function setSun(elevDeg, azimDeg, rigSun, environmentIntensity){
+  const validVector = v => Array.isArray(v) && v.length === 3 &&
+    v.every(Number.isFinite) && new THREE.Vector3().fromArray(v).lengthSq() > 0;
+  const validTarget = v => Array.isArray(v) && v.length === 3 && v.every(Number.isFinite);
+  const elev = Number.isFinite(elevDeg) ? elevDeg : 38;
+  const azim = Number.isFinite(azimDeg) ? azimDeg : 215;
+  const phi = THREE.MathUtils.degToRad(90 - elev);
+  const theta = THREE.MathUtils.degToRad(azim);
+  const fallbackDir = new THREE.Vector3().setFromSphericalCoords(1, phi, theta);
+  const dir = validVector(rigSun && rigSun.direction)
+    ? new THREE.Vector3().fromArray(rigSun.direction).normalize()
+    : fallbackDir;
+  const target = validTarget(rigSun && rigSun.target) ? rigSun.target : [0, 30, 0];
+  const distance = Number.isFinite(rigSun && rigSun.distance) && rigSun.distance > 0
+    ? rigSun.distance : 1500;
+  sky.material.uniforms.sunPosition.value.copy(dir);
+  sun.target.position.set(...target);
+  sun.position.copy(sun.target.position).addScaledVector(dir, distance);
+  if (envRT) envRT.dispose();
+  envRT = pmrem.fromScene(sky, 0.02);
+  scene.environment = envRT.texture;
+  scene.environmentIntensity = Number.isFinite(environmentIntensity) ? environmentIntensity : 0.34;
+  markShadows();
+}
+
+const THEMES = {
+  estate: {
+    skyU: {turbidity:5.5, rayleigh:1.6, mieCoefficient:0.004, mieDirectionalG:0.7},
+    sunElev: 38, sunAzim: 215, sunColor:0xfff0d8, sunI:3.0, hemiI:0.72,
+    exposure: 0.56, fog: [0xdfe5e8, 1900, 4200],
+    useMuseumMap: false,
+    roof:'#6f6a61', wall:'#9a7157', roofOff:'#8b8b8c', wallOff:'#a8a5a0',
+    propOn:'#d9ccb2', propOff:'#cfcfcb', propRoof:'#57524b', stone:'#b3a893',
+    water:{color:'#14262b', rough:0.09}, lw:{color:'#183530', rough:0.08},
+    leafVC:true, leafFlat:null, trunk:'#4a382a',
+    assetMats:{wall_brick:'#96603f', wall_stone:'#c9bda4', wall_render:'#ddd3c0',
+      roof_slate:'#4a4a50', roof_lead:'#7d8388', glass:'#22313d', frame:'#e8e2d4',
+      door:'#3a4436', timber:'#7a6248', metal:'#5a5f63', stone_detail:'#cfc4ab',
+      gravel:'#7a6b54',
+      /* THE SIX NAMES THE PROP LIBRARY ADDS. Measured 19 Aug 2026: out/props.glb carries
+         fifteen material names and six of them - paint, rubber, fabric, foliage, water,
+         plastic - appeared nowhere in this table. The viewer maps a material ONTO THE
+         TREATMENT BY NAME, so a prop carrying one of these matched nothing and rendered
+         against the fallback silently, in every treatment, for ever. That is why they are
+         here before a single prop is placed rather than after somebody notices. */
+      paint:'#39414a', rubber:'#26262a', fabric:'#c9c0ae', foliage:'#3f5a33',
+      water:'#1d3a41', plastic:'#8d8c88'},
+  },
+  museum: {
+    skyU: {turbidity:2.2, rayleigh:0.6, mieCoefficient:0.002, mieDirectionalG:0.6},
+    sunElev: 46, sunAzim: 205, sunColor:0xffffff, sunI:2.7, hemiI:0.8,
+    exposure: 0.66, fog: [0xf1f0ec, 2100, 4600],
+    useMuseumMap: true,
+    roof:'#b8a98e', wall:'#ddd2ba', roofOff:'#c9c4b8', wallOff:'#d8d3c8',
+    propOn:'#e6d3ae', propOff:'#dedbd2', propRoof:'#b9ac93', stone:'#cfc8b8',
+    water:{color:'#1d3049', rough:0.05}, lw:{color:'#234055', rough:0.05},
+    leafVC:false, leafFlat:'#a9bd94', trunk:'#b3a58c',
+    assetMats:{wall_brick:'#d8c9ae', wall_stone:'#e2d8c2', wall_render:'#e8e0cd',
+      roof_slate:'#b4a88f', roof_lead:'#c0b69e', glass:'#3a4a5c', frame:'#efe9da',
+      door:'#c9bda4', timber:'#cfc2a8', metal:'#b9b0a0', stone_detail:'#e2d8c2',
+      gravel:'#cbc2ae',
+      paint:'#cfc7b6', rubber:'#b3ada4', fabric:'#e6dfd0', foliage:'#c6cdb4',
+      water:'#aebac0', plastic:'#ded8cc'},
+  },
+};
+let themeName = 'estate';
+let estateTerrainTex = null;
+let museumTerrainTex = null;
+
+/* ================= VARIANT HARNESS =================================================
+   Two orthogonal axes. A treatment says what the model is MADE OF; a light says how it
+   is LIT. Neither encodes the other, so three of each compose into nine looks for six
+   units of work, and feedback arrives as coordinates - "drawing + raking, but the
+   estate brick" - instead of prose.
+
+   Before this, viewer.html had a single THEMES object in which sun elevation, exposure
+   and fog sat in the same block as wall and roof colour, so choosing a paler palette
+   also silently moved the sun. That is the exact failure this split exists to prevent.
+
+   The material values themselves live in materials.json / treatment-flat.json and the
+   light rigs in lighting.json, all loaded at runtime. An option whose file has not
+   landed is shown DISABLED rather than silently falling back to another option, because
+   a switcher that lies about what you are looking at is worse than one with gaps.
+   ================================================================================== */
+const AXES = {
+  treatment: {
+    estate:  {label:'Estate',  intent:'Painted. The real materials - Berkshire brick, Welsh slate, Portland ashlar, lead - as considered flat colour.'},
+    drawing: {label:'Drawing', intent:'White card. The architectural model register: material read by tone and shadow alone.'},
+    fabric:  {label:'Fabric',  intent:'Built. Full physically-based materials, projected triplanar so they land on meshes with no UVs.'},
+  },
+  light: {
+    overcast: {label:'Overcast', intent:'Soft high cloud. Even light, gentle shadow, cool. Shows plan and layout.'},
+    raking:   {label:'Raking',   intent:'Low sun, late in the day. Long shadows, warm key. Shows landform and roof pitch.'},
+    bright:   {label:'Bright',   intent:'High sun, clear day. Short crisp shadows, strong contrast.'},
+  },
+};
+const MATERIAL_FIELDS = ['roof','wall','roofOff','wallOff','propOn','propOff','propRoof',
+  'stone','water','lw','leafVC','leafFlat','trunk','assetMats','useMuseumMap',
+  'texturedWalls','churchRoof','slots'];
+const LIGHT_FIELDS = ['skyU','sunElev','sunAzim','sunColor','sunI','hemiI','exposure','fog'];
+
+function pickFields(src, fields){
+  const o = {}; fields.forEach(f => { if (src && src[f] !== undefined) o[f] = src[f]; });
+  return o;
+}
+/* Seed both axes from the two themes that already existed, so the harness works before any
+   of the authored files land: `estate` supplies the painted treatment and the overcast
+   light, `museum` supplies the white-card treatment. */
+const TREATMENTS = {
+  estate:  Object.assign(pickFields(THEMES.estate, MATERIAL_FIELDS), {texturedWalls:true,  churchRoof:'#7fa78f'}),
+  drawing: Object.assign(pickFields(THEMES.museum, MATERIAL_FIELDS), {texturedWalls:false, churchRoof:'#b9c9b4'}),
+};
+const LIGHTS = { overcast: pickFields(THEMES.estate, LIGHT_FIELDS) };
+
+let treatmentName = document.documentElement.getAttribute('data-treatment') || 'estate';
+let lightName     = document.documentElement.getAttribute('data-light')     || 'overcast';
+
+function activeTheme(){
+  const t = TREATMENTS[treatmentName] || TREATMENTS.estate;
+  const l = LIGHTS[lightName] || LIGHTS.overcast;
+  return Object.assign({}, THEMES.estate, l, t);
+}
+
+/* linear-sRGB floats, because that is what glTF baseColorFactor is and what materials.json
+   stores. Setting these through a hex string would gamma-encode them twice and produce the
+   washed-out chalky result this whole exercise is trying to get away from. */
+function setLinear(col, rgb){
+  try { col.setRGB(rgb[0], rgb[1], rgb[2], THREE.LinearSRGBColorSpace); }
+  catch(e){ col.setRGB(rgb[0], rgb[1], rgb[2]); }
+  return col;
+}
+
+async function loadVariantFiles(){
+  const grab = async (u) => { try { const r = await fetch(u); return r.ok ? await r.json() : null; }
+                             catch(e){ return null; } };
+  const [reg, flat, lights, texman] = await Promise.all([
+    grab('../materials.json'), grab('../treatment-flat.json'),
+    grab('../lighting.json'), grab('../textures/web/MANIFEST.json')]);
+  if (reg && reg.treatments){
+    for (const [k, v] of Object.entries(reg.treatments)){
+      if (k.startsWith('_')) continue;
+      const slots = {}; for (const [n, d] of Object.entries(v)) if (!n.startsWith('_')) slots[n] = d;
+      TREATMENTS[k] = Object.assign({}, TREATMENTS[k] || TREATMENTS.estate, {slots});
+    }
+  }
+  if (flat){
+    for (const k of ['drawing','estate']){
+      if (!flat[k]) continue;
+      const slots = {}; for (const [n, d] of Object.entries(flat[k])) if (!n.startsWith('_')) slots[n] = d;
+      TREATMENTS[k] = Object.assign({}, TREATMENTS[k] || TREATMENTS.estate, {slots});
+    }
+  }
+  if (lights){
+    for (const [k, v] of Object.entries(lights)){
+      if (k.startsWith('_') || !v || typeof v !== 'object') continue;
+      /* Keep only what the legacy path still needs; applyLightRig consumes the rig
+         wholesale from _raw. skyAzimuthParam, NOT _sun.azimuth_deg - see applyLightRig. */
+      const L = Object.assign({}, LIGHTS.overcast, {_raw: v});
+      if (v.sun && v.sun.elevation_deg     !== undefined) L.sunElev = v.sun.elevation_deg;
+      if (v.sun && v.sun.skyAzimuthParam   !== undefined) L.sunAzim = v.sun.skyAzimuthParam;
+      if (v.sun && v.sun.intensity !== undefined) L.sunI = v.sun.intensity;
+      if (v.fill && v.fill.intensity !== undefined) L.hemiI = v.fill.intensity;
+      if (v.exposure !== undefined) L.exposure = v.exposure;
+      if (v.sky) L.skyU = Object.assign({}, L.skyU, v.sky);
+      LIGHTS[k] = L;
+    }
+  }
+  const fab = await (async () => { try {
+      const r = await fetch('../treatment-fabric.json'); return r.ok ? await r.json() : null;
+    } catch(e){ return null; } })();
+  window.__fcmVariants = {texman: texman, hasFabric: !!(texman && fab)};
+  if (fab) TREATMENTS.fabric = Object.assign({}, TREATMENTS.estate,
+                                             {slots: fab.fabric, fabric: true,
+                                              texturedWalls: false});
+  /* F5 gravel-treatment candidates: registry treatments get switcher buttons so
+     the Rake/Wash/Wear pick happens in the browser at ?variants=1. */
+  for (const [k, label] of Object.entries({'estate-rake':'Rake','estate-wash':'Wash','estate-wear':'Wear'}))
+    if (TREATMENTS[k] && !AXES.treatment[k]) AXES.treatment[k] = {label, intent:'Estate gravel treatment option'};
+  buildSwitcher();
+  if (treatmentName === 'fabric') await ensureFabric();
+  applyTheme();
+}
+
+function applyVariants(){
+  const r = document.documentElement;
+  r.setAttribute('data-treatment', treatmentName);
+  r.setAttribute('data-light', lightName);
+  try{ localStorage.setItem('fcm.treatment', treatmentName);
+       localStorage.setItem('fcm.light', lightName); }catch(e){}
+  try{
+    const q = new URLSearchParams(location.search);
+    q.set('treatment', treatmentName); q.set('light', lightName);
+    if (r.getAttribute('data-variants') === '1') q.set('variants','1');
+    history.replaceState(null, '', location.pathname + '?' + q.toString());
+  }catch(e){}
+  applyTheme();
+  buildSwitcher();
+}
+
+function buildSwitcher(){
+  const host = document.getElementById('variants');
+  if (!host) return;
+  const avail = {
+    treatment: k => k === 'fabric'
+        ? !!(window.__fcmVariants && window.__fcmVariants.hasFabric)
+        : !!TREATMENTS[k],
+    light: k => !!LIGHTS[k],
+  };
+  const cur = {treatment: treatmentName, light: lightName};
+  for (const pair of [['treatment','vt'], ['light','vl']]){
+    const axis = pair[0], row = document.getElementById(pair[1]);
+    if (!row) continue;
+    row.innerHTML = '';
+    for (const [key, def] of Object.entries(AXES[axis])){
+      const b = document.createElement('button');
+      b.textContent = def.label;
+      b.className = cur[axis] === key ? 'on' : '';
+      if (!avail[axis](key)){
+        b.disabled = true; b.style.opacity = .38; b.style.cursor = 'not-allowed';
+        b.title = 'not authored yet';
+      } else {
+        b.onclick = async () => {
+          if (axis === 'treatment'){
+            if (key === 'fabric') await ensureFabric();
+            treatmentName = key;
+          } else lightName = key;
+          applyVariants();
+        };
+      }
+      b.onmouseenter = () => { const i = document.getElementById('vintent');
+                               if (i) i.textContent = def.intent; };
+      row.appendChild(b);
+    }
+  }
+  const i = document.getElementById('vintent');
+  if (i) i.textContent = (AXES.treatment[treatmentName]||{}).intent || '';
+  const c = document.getElementById('vcoords');
+  if (c) c.textContent = 'treatment=' + treatmentName + '  light=' + lightName;
+}
+
+/* ---------------------------------------------------------------- light rigs
+   Consumes a lighting.json direction exactly as authored. Three things here were got
+   wrong on the first attempt and are worth naming, because each was invisible in the
+   render and only a contract table caught them:
+
+   1. AZIMUTH. setSun() passes its azimuth to setFromSphericalCoords, whose theta is
+      180 - trueAzimuth. Feeding the TRUE bearing in puts the sun on the opposite side of
+      the sky. The rigs publish `sun.skyAzimuthParam` precisely so nobody has to know
+      that, and that is the field to read - never `_sun.azimuth_deg`.
+      (The viewer's own default of sunAzim 215 is a true bearing of 325 degrees, which
+      the sun never reaches at 51.55 N at any time of year. Every shadow rendered before
+      today fell the wrong way.)
+   2. The hemisphere fill is `fill.intensity`, not `ambient.intensity`. `ambient` is the
+      environment term. Reading the wrong one left all three directions on one fill value
+      and made them look far more alike than they are.
+   3. sun.shadow.map must be DISPOSED when mapSize changes, or the new size is silently
+      ignored and you keep the old, softer map.
+*/
+function applyLightRig(v){
+  if (!v) return false;
+  if (v.sun){
+    if (v.sun.colour) setLinear(sun.color, v.sun.colour);
+    if (v.sun.intensity !== undefined) sun.intensity = v.sun.intensity;
+    if (v.sun.castShadow !== undefined) sun.castShadow = !!v.sun.castShadow;
+  }
+  if (v.fill){
+    if (v.fill.skyColour) setLinear(hemi.color, v.fill.skyColour);
+    if (v.fill.groundColour) setLinear(hemi.groundColor, v.fill.groundColour);
+    if (v.fill.intensity !== undefined) hemi.intensity = v.fill.intensity;
+  }
+  if (v.sky){
+    const u = sky.material.uniforms;
+    ['turbidity','rayleigh','mieCoefficient','mieDirectionalG'].forEach(k => {
+      if (v.sky[k] !== undefined && u[k]) u[k].value = v.sky[k];
+    });
+  }
+  if (v.shadow){
+    const sh = sun.shadow;
+    if (v.shadow.mapSize && sh.mapSize.x !== v.shadow.mapSize){
+      sh.mapSize.set(v.shadow.mapSize, v.shadow.mapSize);
+      if (sh.map){ sh.map.dispose(); sh.map = null; }   /* or the new size is ignored */
+    }
+    if (v.shadow.bias       !== undefined) sh.bias = v.shadow.bias;
+    if (v.shadow.normalBias !== undefined) sh.normalBias = v.shadow.normalBias;
+    if (v.shadow.radius     !== undefined) sh.radius = v.shadow.radius;
+    const c = v.shadow.camera;
+    if (c){
+      ['left','right','top','bottom','near','far'].forEach(k => {
+        if (c[k] !== undefined) sh.camera[k] = c[k];
+      });
+      sh.camera.updateProjectionMatrix();
+    }
+    if (v.shadow.type && THREE[v.shadow.type] !== undefined){
+      renderer.shadowMap.type = THREE[v.shadow.type];
+    }
+  }
+  if (v.ambient && v.ambient.environmentIntensity !== undefined){
+    scene.environmentIntensity = v.ambient.environmentIntensity;
+  }
+  if (v.ao && gtaoPass){
+    /* GTAO shipped on the three.js default radius of 0.25 WORLD UNITS. On an estate
+       1,100 m across that samples a quarter of a metre, which is why the ambient
+       occlusion toggle appeared to do almost nothing. */
+    if (v.ao.intensity !== undefined) gtaoPass.blendIntensity = v.ao.intensity;
+    const g = {};
+    ['radius','distanceExponent','thickness','scale','samples','screenSpaceRadius']
+      .forEach(k => { if (v.ao[k] !== undefined) g[k] = v.ao[k]; });
+    if (Object.keys(g).length && gtaoPass.updateGtaoMaterial) gtaoPass.updateGtaoMaterial(g);
+  }
+  if (v.background) renderer.setClearColor(setLinear(new THREE.Color(), v.background));
+  if (v.exposure !== undefined) renderer.toneMappingExposure = v.exposure;
+  if (v.fog && v.fog.colour){
+    scene.fog = new THREE.Fog(setLinear(new THREE.Color(), v.fog.colour).getHex(),
+                              v.fog.near, v.fog.far);
+  }
+  if (v.sun){
+    setSun(v.sun.elevation_deg, v.sun.skyAzimuthParam, v.sun,
+           v.ambient && v.ambient.environmentIntensity);   /* setSun does the PMREM + shadow mark */
+  } else {
+    markShadows();
+  }
+  return true;
+}
+
+/* ================= FABRIC: triplanar physically-based materials ====================
+   Only 61 of the 244 mesh primitives in this scene carry UVs. The seven hand-modelled
+   building assets have none at all - the modelling kit emits flat-shaded architectural
+   geometry and never unwrapped it - and neither do the LIDAR reconstructions or the
+   terrain. Unwrapping all of it would be a project in itself and would have to be redone
+   every time a building is rebuilt.
+
+   So the fabric treatment projects instead of unwrapping. Every texture is sampled three
+   times, along the world X, Y and Z planes, and blended by the surface normal. That needs
+   no UVs at all, it is stable when geometry is rebuilt, and because the projection is in
+   WORLD METRES a brick course is the same size on every building whatever its scale.
+   `tile_m` in the registry is exactly that: the physical size of one repeat.
+
+   The blend is the standard "whiteout" for normals, which keeps the detail from all three
+   projections rather than letting the dominant axis wash the others out.
+*/
+const TEX_CACHE = new Map();
+let fabricLoading = null;
+
+function loadTex(url, srgb){
+  if (TEX_CACHE.has(url)) return TEX_CACHE.get(url);
+  const t = texLoader.load(url);
+  t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  t.colorSpace = srgb ? THREE.SRGBColorSpace : THREE.NoColorSpace;
+  t.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+  TEX_CACHE.set(url, t);
+  return t;
+}
+
+const TRIPLANAR_COMMON = `
+varying vec3 vTriPos;
+varying vec3 vTriNrm;
+uniform float uTriScale;
+vec3 triBlend(vec3 n){
+  vec3 b = pow(abs(n), vec3(4.0));
+  return b / max(b.x + b.y + b.z, 1e-5);
+}
+vec4 triSample(sampler2D tex, vec3 p, vec3 b, float s){
+  return texture2D(tex, p.zy * s) * b.x
+       + texture2D(tex, p.xz * s) * b.y
+       + texture2D(tex, p.xy * s) * b.z;
+}
+`;
+
+function makeTriplanar(mat, spec){
+  mat.userData.triplanar = true;
+  const scale = 1.0 / (spec.tile_m || 2.0);
+  mat.onBeforeCompile = (sh) => {
+    sh.uniforms.uTriScale = {value: scale};
+    sh.vertexShader = sh.vertexShader
+      .replace('#include <common>',
+        '#include <common>\nvarying vec3 vTriPos;\nvarying vec3 vTriNrm;')
+      .replace('#include <begin_vertex>',
+        '#include <begin_vertex>\n  vTriPos = (modelMatrix * vec4(position, 1.0)).xyz;')
+      .replace('#include <beginnormal_vertex>',
+        '#include <beginnormal_vertex>\n  vTriNrm = normalize(mat3(modelMatrix) * objectNormal);');
+    sh.fragmentShader = sh.fragmentShader
+      .replace('#include <common>', '#include <common>\n' + TRIPLANAR_COMMON)
+      .replace('#include <map_fragment>', `
+        #ifdef USE_MAP
+          vec3 triB = triBlend(normalize(vTriNrm));
+          diffuseColor *= triSample(map, vTriPos, triB, uTriScale);
+        #endif
+      `)
+      .replace('#include <roughnessmap_fragment>', `
+        float roughnessFactor = roughness;
+        #ifdef USE_ROUGHNESSMAP
+          vec3 triBr = triBlend(normalize(vTriNrm));
+          /* ORM packing: G is roughness. R is unused occlusion, B is pinned to zero so
+             nothing can accidentally become metal. */
+          roughnessFactor *= triSample(roughnessMap, vTriPos, triBr, uTriScale).g;
+        #endif
+      `)
+      .replace('#include <normal_fragment_maps>', `
+        #ifdef USE_NORMALMAP
+          vec3 wN = normalize(vTriNrm);
+          vec3 triBn = triBlend(wN);
+          vec3 tnx = texture2D(normalMap, vTriPos.zy * uTriScale).xyz * 2.0 - 1.0;
+          vec3 tny = texture2D(normalMap, vTriPos.xz * uTriScale).xyz * 2.0 - 1.0;
+          vec3 tnz = texture2D(normalMap, vTriPos.xy * uTriScale).xyz * 2.0 - 1.0;
+          tnx.xy *= normalScale;  tny.xy *= normalScale;  tnz.xy *= normalScale;
+          /* whiteout blend - keep detail from every projection instead of letting the
+             dominant axis wash the other two out */
+          tnx = vec3(tnx.xy + wN.zy, abs(tnx.z) * wN.x);
+          tny = vec3(tny.xy + wN.xz, abs(tny.z) * wN.y);
+          tnz = vec3(tnz.xy + wN.xy, abs(tnz.z) * wN.z);
+          vec3 wNrm = normalize(tnx.zyx * triBn.x + tny.xzy * triBn.y + tnz.xyz * triBn.z);
+          normal = normalize((viewMatrix * vec4(wNrm, 0.0)).xyz);
+        #endif
+      `);
+  };
+  /* Without a distinct cache key three.js reuses the untextured program and the patch
+     silently never runs. */
+  mat.customProgramCacheKey = () => 'fcm-triplanar-' + scale.toFixed(4);
+  mat.needsUpdate = true;
+}
+
+function clearTriplanar(mat){
+  if (!mat.userData.triplanar) return;
+  mat.userData.triplanar = false;
+  mat.onBeforeCompile = () => {};
+  mat.customProgramCacheKey = () => 'fcm-plain';
+  mat.map = null; mat.normalMap = null; mat.roughnessMap = null;
+  mat.needsUpdate = true;
+}
+
+/* Fetch only the sets the registry actually references. Seven of the twenty built sets
+   are the terrain-detail palette that nothing consumes yet - 2.37 MB that must not be
+   pulled down for a treatment that cannot use it. */
+async function ensureFabric(){
+  if (fabricLoading) return fabricLoading;
+  fabricLoading = (async () => {
+    const r = await fetch('../treatment-fabric.json');
+    if (!r.ok) return null;
+    const doc = await r.json();
+    const tbl = doc.fabric || {};
+    for (const spec of Object.values(tbl)){
+      if (!spec.textured) continue;
+      spec._albedo = loadTex('../' + spec.albedo, true);
+      spec._normal = loadTex('../' + spec.normal, false);
+      spec._orm    = loadTex('../' + spec.orm, false);
+    }
+    TREATMENTS.fabric = Object.assign({}, TREATMENTS.estate, {slots: tbl, fabric: true,
+                                                              texturedWalls: false});
+    return tbl;
+  })();
+  return fabricLoading;
+}
+
+function applyFabricSlot(m, spec, layer){
+  /* The terrain keeps its baked albedo under every treatment. That image is derived from
+     the LIDAR itself - it carries the real landform, hedge lines and field pattern - and
+     tiling a 6 m lawn swatch across 1.1 km replaces all of it with flat green. A texture
+     set is not an improvement on evidence. */
+  if (layer === 'terrain') return false;
+  if (!spec || !spec.textured){ clearTriplanar(m); return false; }
+  m.map = spec._albedo; m.normalMap = spec._normal; m.roughnessMap = spec._orm;
+  m.color.setRGB(1, 1, 1);
+  m.metalness = spec.metallic || 0;
+  m.roughness = 1.0;                       /* the map's G channel carries it */
+  if (m.normalScale) m.normalScale.set(1, 1);
+  makeTriplanar(m, spec);
+  return true;
+}
+
+function applyTheme(){
+  const T = activeTheme();
+  /* An authored rig sets everything about the light, including things the legacy theme
+     block has no field for: hemisphere colours, environment intensity, the shadow
+     frustum, GTAO radius and the clear colour. Use it whole rather than through the
+     handful of fields the old THEMES object happened to carry. */
+  if (T._raw && applyLightRig(T._raw)){
+    if (!modelRoot) return;
+    paintScene(T);
+    return;
+  }
+  sky.material.uniforms.turbidity.value = T.skyU.turbidity;
+  sky.material.uniforms.rayleigh.value = T.skyU.rayleigh;
+  sky.material.uniforms.mieCoefficient.value = T.skyU.mieCoefficient;
+  sky.material.uniforms.mieDirectionalG.value = T.skyU.mieDirectionalG;
+  sun.color.set(T.sunColor); sun.intensity = T.sunI; hemi.intensity = T.hemiI;
+  renderer.toneMappingExposure = T.exposure;
+  scene.fog = new THREE.Fog(T.fog[0], T.fog[1], T.fog[2]);
+  setSun(T.sunElev, T.sunAzim);
+  if (!modelRoot) return;
+  paintScene(T);
+}
+
+function paintScene(T){
+  meshLayer.forEach((layer, o) => {
+    const mats = Array.isArray(o.material) ? o.material : [o.material];
+    if (layer === 'terrain'){
+      const map = (T.useMuseumMap && museumTerrainTex) ? museumTerrainTex
+                                                       : estateTerrainTex;
+      if (map) mats.forEach(m => { m.map = map; m.needsUpdate = true; });
+    }
+    if (layer === 'vegetation'){
+      mats.forEach(m => {
+        if (o.userData.isLeaf){
+          m.vertexColors = T.leafVC;
+          m.color.set(T.leafVC ? '#b6c2a8' : T.leafFlat);
+          m.needsUpdate = true;
+        } else m.color.set(T.trunk);
+      });
+    }
+  });
+  refreshBaseColors();
+  recolour();
+}
+
+const orbit = new OrbitControls(camera, renderer.domElement);
+orbit.enableDamping = true; orbit.dampingFactor = .08;
+orbit.maxPolarAngle = Math.PI*.49; orbit.minDistance = 6; orbit.maxDistance = 2800;
+const fly = new FlyControls(camera, renderer.domElement);
+fly.movementSpeed = 70; fly.rollSpeed = .22; fly.dragToLook = true; fly.enabled = false;
+
+const VIEWS = {
+  whole:[[-430,470,640],[130,30,-40]],
+  house:[[235,95,95],[-5,40,-10]],
+  court:[[-30,120,75],[-58,38,-118]],
+  river:[[460,150,360],[245,32,75]],
+  south:[[40,320,930],[110,30,420]],
+};
+function setView(name){
+  const v = VIEWS[name]; if(!v) return;
+  camera.position.set(...v[0]); orbit.target.set(...v[1]); orbit.update();
+}
+setView('whole');
+
+/* ------- load GLB ------- */
+const meshesByElement = {};
+const meshLayer = new Map();
+let modelRoot = null;
+const draco = new DRACOLoader();
+draco.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/libs/draco/');
+const loader = new GLTFLoader(); loader.setDRACOLoader(draco);
+const texLoader = new THREE.TextureLoader();
+let waterNormalTex = null;
+texLoader.load('water_normal.png', t => {
+  t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  t.repeat.set(0.55, 0.55);
+  waterNormalTex = t;
+  if (modelRoot) refreshBaseColors();
+});
+
+function nodeMeta(o){
+  /* multi-primitive meshes: extras + the node name live on the parent Object3D */
+  let cur = o;
+  while (cur){
+    const n = cur.name || '';
+    const ex = cur.userData || {};
+    if (ex.layer === 'feature') return {name: cur.name, extras: {}};
+    if (ex.layer || elements[n] || n.startsWith('terrain') || n.startsWith('vegetation') ||
+        n.startsWith('ANCHOR')){
+      return {name: n, extras: ex};
+    }
+    cur = cur.parent;
+  }
+  return {name: o.name||'', extras: o.userData||{}};
+}
+function classify(meta){
+  const ex = meta.extras;
+  if (ex.layer) return ex.layer;
+  const n = meta.name;
+  if (n.startsWith('adj.')||n.startsWith('bldg.')) return 'building';
+  if (n.startsWith('prop.')) return 'proposed';
+  if (n.startsWith('area.')) return 'area';
+  if (n.startsWith('site.')) return 'marker';
+  if (n.startsWith('water.')) return 'water';
+  /* three.js GLTFLoader runs every node name through PropertyBinding.sanitizeNodeName,
+     which STRIPS dots - the animation system reserves them for property paths. So the GLB
+     node 'feature.hedges' arrives as 'featurehedges' and these two tests never matched.
+     Consequence: the hedges and the garden walls were on no layer at all, so the Trees
+     toggle never controlled them and no theme ever repainted them. Found by the variant
+     audit reporting the hedge slot as layer=null, not by looking at a render. */
+  const flat = n.replace(/\./g, '');
+  if (flat === 'featurehedges') return 'vegetation';
+  if (flat === 'featurewalls') return 'terrain';
+  if (n.startsWith('vegetation')) return 'vegetation';
+  if (n.startsWith('terrain')) return 'terrain';
+  if (n.startsWith('ANCHOR')) return 'anchor';
+  return null;
+}
+function refreshBaseColors(){
+  const T = activeTheme();
+  meshLayer.forEach((layer, o) => {
+    const el = elements[o.userData.eid];
+    const mats = Array.isArray(o.material) ? o.material : [o.material];
+    const assetTint = m => {
+      const base = m.name.split('.')[0];
+      /* The registry is authoritative: 34 semantic slots, one definition each, in linear
+         sRGB. T.assetMats is the legacy hex table and only answers for slots the active
+         treatment has not defined. */
+      const slot = T.slots && T.slots[base];
+      if (T.fabric && slot){
+        if (applyFabricSlot(m, slot, layer)) return true;
+      } else if (m.userData.triplanar){
+        clearTriplanar(m);
+      }
+      if (slot && slot.colour){
+        setLinear(m.color, slot.colour);
+        if (slot.roughness !== undefined) m.roughness = slot.roughness;
+        if (slot.metallic  !== undefined) m.metalness = slot.metallic;
+        if (slot.alpha !== undefined && slot.alpha < 1){
+          m.transparent = true; m.opacity = slot.alpha;
+        }
+        if (base === 'glass') m.envMapIntensity = 1.3;
+        /* An image map multiplies the colour, so a treatment that is not meant to be
+           textured must DROP the map, not merely repaint underneath it. Missing this is
+           why the Water Tower stayed brick red in the white-card treatment while every
+           other building went pale: the card colour was being multiplied by a photograph
+           of brick. Found by measuring hasMap per treatment, not by looking. */
+        if (m.userData.savedMap !== undefined){
+          const want = T.texturedWalls ? m.userData.savedMap : null;
+          if (m.map !== want){ m.map = want; m.needsUpdate = true; }
+        }
+        /* An albedo map IS the colour. three.js multiplies map by material colour, so a
+           slot value applied on top of a surviving map darkens it twice - which is why
+           the estate treatment came out murky: the palette authored terrain as a standalone
+           green, and it was multiplying the baked terrain albedo. Where a map survives, the
+           slot value is discarded and the map carries the colour. */
+        if (m.map) m.color.setRGB(1, 1, 1);
+        return true;
+      }
+      let c = T.assetMats[base];
+      // the Church of St Anne's roof is weathered verdigris copper (pack 01
+      // exterior reference) - element-specific override
+      if (o.userData.eid === 'bldg.church-st-anne' &&
+          ['roof_lead','roof_slate','metal'].includes(base)){
+        c = T.churchRoof;
+      }
+      if (c === undefined) return false;
+      m.color.set(c);
+      if (base === 'glass'){ m.roughness = 0.12; m.metalness = 0.0;
+        m.envMapIntensity = 1.3; }
+      return true;
+    };
+    if (layer==='terrain' || layer==='phase4'){
+      /* Phase 4 ground, masonry and vegetation carry semantic material names from the
+         same registry as the rest of the model. They are source geometry, not a treatment
+         exception: repaint them under estate/drawing and apply fabric maps where declared. */
+      mats.forEach(m => assetTint(m));
+    }
+    if (layer==='building'){
+      const off = el && el.class==='off-estate';
+      mats.forEach(m => {
+        if (assetTint(m)) return;
+        const isRoof = /roof/.test(m.name);
+        if (m.userData.savedMap){
+          const want = T.texturedWalls ? m.userData.savedMap : null;
+          if (m.map !== want){ m.map = want; m.needsUpdate = true; }
+          m.color.set(T.texturedWalls ? '#ffffff' : T.wall);
+        } else if (m.name === 'stone'){
+          m.color.set(T.stone);
+        } else {
+          m.color.set(off ? (isRoof?T.roofOff:T.wallOff)
+                          : (isRoof?T.roof:T.wall));
+        }
+      });
+    } else if (layer==='proposed'){
+      const offState = el && el.switch && !swState[el.switch];
+      mats.forEach(m => {
+        if (!offState && assetTint(m)) return;
+        m.color.set(offState? T.propOff
+          : (m.name.split('.')[0] === 'prop_roof' ? T.propRoof : T.propOn));
+      });
+    } else if (layer==='area' || layer==='marker' || layer==='anchor'){
+      /* The overlay was never repainted by the theme at all - it kept whatever colour the
+         GLB shipped, under every treatment. It is still diagram rather than fabric, but a
+         white-card model needs annotation that suits a white-card model. */
+      mats.forEach(m => assetTint(m));
+    } else if (layer==='vegetation'){
+      /* Leaf tint and trunk are driven by the theme's own vertex-colour logic in
+         applyTheme(); the hedge is ordinary fabric and belongs to the registry. */
+      mats.forEach(m => { if (m.name.split('.')[0] === 'hedge') assetTint(m); });
+    } else if (layer==='water'){
+      const cfg = o.userData.eid==='water.long-water' ? T.lw : T.water;
+      mats.forEach(m => { m.color.set(cfg.color); m.roughness = cfg.rough;
+        m.metalness = 0.0; m.envMapIntensity = 1.5;
+        if (waterNormalTex && !m.normalMap){
+          m.normalMap = waterNormalTex;
+          m.normalScale = new THREE.Vector2(0.2, 0.2);
+          m.needsUpdate = true;
+        }});
+    }
+    o.userData.baseColors = mats.map(m => m.color.clone());
+  });
+}
+function accept(gltf){
+  modelRoot = gltf.scene;
+  const imported = [];
+  modelRoot.traverse(o => { if (o.isLight) imported.push(o); });
+  imported.forEach(l => l.parent && l.parent.remove(l));   /* viewer lights itself */
+  /* Materials are cloned so an element can be recoloured without touching its
+     neighbours, but they were cloned per MESH, so one element with eleven
+     material slots across several meshes produced dozens of identical
+     materials and as many shader programs. The clone is now shared by every
+     mesh of the same element that came from the same source material, which is
+     the granularity the colouring actually works at. */
+  const matCache = new Map();
+  const cloneFor = (key, m) => {
+    const k = key + '|' + m.uuid;
+    let c = matCache.get(k);
+    if (!c){ c = m.clone(); matCache.set(k, c); }
+    return c;
+  };
+  modelRoot.traverse(o => {
+    if (!o.isMesh) return;
+    const meta = nodeMeta(o);
+    const layer = classify(meta); meshLayer.set(o, layer);
+    const ckey = meta.extras.element || meta.name;
+    o.material = Array.isArray(o.material) ? o.material.map(m=>cloneFor(ckey,m))
+                                           : cloneFor(ckey, o.material);
+    const mats = Array.isArray(o.material) ? o.material : [o.material];
+    mats.forEach(m => { m.envMapIntensity = 0.55; });
+    mats.forEach(m => { if (m.map && m.name === 'wallbrick') m.userData.savedMap = m.map; });
+    const eid = meta.extras.element || meta.name;
+    if (elements[eid]){
+      o.userData.eid = eid;
+      (meshesByElement[eid] = meshesByElement[eid]||[]).push(o);
+    }
+    if (layer==='vegetation'){
+      o.userData.isLeaf = !/trunks/.test(meta.name);
+    }
+    if (layer==='terrain'){
+      o.receiveShadow = true;
+      mats.forEach(m => { if (m.map){ estateTerrainTex = estateTerrainTex || m.map;
+        m.map.anisotropy = 8; } });
+    } else if (layer==='building'||layer==='proposed'||layer==='vegetation'||
+               layer==='marker'){
+      o.castShadow = true; o.receiveShadow = false;
+    } else if (layer==='water'){
+      o.receiveShadow = true;
+    }
+    o.userData.baseOpacities = mats.map(m => m.opacity);
+  });
+  scene.add(modelRoot);
+  /* Both terrain albedos load from disk. The estate one used to be a 5.39 MB PNG
+     embedded in the GLB - half the whole file - which meant every rebuild made the
+     browser re-download a texture that had not changed. As external WebP it is 0.52 MB
+     and cached independently of the geometry. */
+  const loadTerrainTex = (url, assign) => texLoader.load(url, t => {
+    t.colorSpace = THREE.SRGBColorSpace;
+    t.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+    t.flipY = false;
+    t.wrapS = t.wrapT = THREE.ClampToEdgeWrapping;
+    assign(t);
+    applyTheme();
+  }, undefined, () => console.warn('[fcm] missing terrain texture ' + url));
+  loadTerrainTex('terrain_albedo_estate.webp', t => { estateTerrainTex = t; });
+  loadTerrainTex('terrain_albedo_museum.webp', t => { museumTerrainTex = t; });
+  document.getElementById('status').textContent =
+    'Click a building, ground work or marker for its capex. Drag to orbit · wheel to zoom.';
+  setTimeout(()=>document.getElementById('status').style.display='none', 9000);
+  refreshBaseColors();
+  onStateChange(); applyLayers();
+}
+/* ================= SPLIT LOAD: static geometry + placed assets =====================
+   The model used to arrive as one 11 MB file with every building's position baked into
+   its vertices. Ninety per cent of that file - terrain, its albedo, the trees - does not
+   change when a building moves, and yet moving a building rewrote all of it, so a three
+   degree rotation of the courtyard group cost a nine-minute rebuild.
+
+   Now geometry and layout are separate concerns, which is how any game engine or normal
+   3D pipeline has always done it:
+
+     static.glb   terrain, water, trees, drives, the LIDAR reconstructions (whose
+                  vertices are baked in world coordinates and cannot be moved by a
+                  transform), and the overlay. Rebuilt only when that geometry changes.
+     assets.glb   one unpositioned copy of each hand-modelled building.
+     scene.json   where everything goes.
+
+   The viewer clones an asset per placement and positions it here, at load. Changing a
+   placement is now editing a number in scene.json and refreshing - no build at all.
+
+   Everything downstream is untouched: the clones are dropped into the same scene graph
+   and handed to accept(), so classification, material cloning, the element binding that
+   carries the capex, layers and the treatment switch all work exactly as before.
+*/
+const SPLIT = {static: 'static.glb', assets: 'assets.glb', spec: '../scene.json',
+               props: 'props.glb', dressing: 'props-placement.json',
+               legacy: 'fawley-estate.glb'};
+
+/* PROPS ARE A SEPARATE LIBRARY AND A SEPARATE PLACEMENT FILE, deliberately.
+   scene.json is the layout of things placed by JUDGEMENT - 58 buildings, each one a
+   decision somebody made and can defend. Props are placed by RULE, which STANDARD.md
+   section 3 requires, so their positions are DERIVED: you edit the grammar in
+   dressing.json, never the output. Keeping generated data out of the hand-authored file
+   is what stops scene.json becoming half source and half machine, which is a confusion
+   this project has been criticised for elsewhere.
+   Both are optional. Measured 19 Aug 2026, before any of this existed: 45 props built,
+   14,906 triangles, ZERO placed, because there was no mechanism at all - no prop kind in
+   the spec, no props in assets.glb, and six of the library's material names missing from
+   the theme map. A viewer that cannot load a missing props file is a viewer that breaks
+   the moment somebody has not run the generator, so absence is normal here and is
+   reported rather than thrown. */
+
+/* Ray-cast the terrain for a ground level. Used only where scene.json has none. */
+const _groundRay = new THREE.Raycaster();
+const _down = new THREE.Vector3(0, -1, 0);
+function groundAt(root, x, z){
+  const targets = [];
+  root.traverse(o => { if (o.isMesh && /^terrain/.test(o.name || '')) targets.push(o); });
+  if (!targets.length) return 0;
+  _groundRay.set(new THREE.Vector3(x, 500, z), _down);
+  const hit = _groundRay.intersectObjects(targets, false)[0];
+  return hit ? hit.point.y : 0;
+}
+
+function placeAssets(staticScene, assetScene, spec){
+  /* library: the exporter names each unpositioned copy "asset:<name>" */
+  const lib = new Map();
+  assetScene.traverse(o => {
+    const n = o.name || '';
+    if (n.startsWith('asset:')) lib.set(n.slice(6), o);
+    else if (o.userData && o.userData.asset && !lib.has(o.userData.asset))
+      lib.set(o.userData.asset, o);
+  });
+  let placed = 0, needGround = 0, missing = [];
+  for (const o of (spec.objects || [])){
+    if (o.kind !== 'asset' || !o.asset) continue;      /* reconstructions ship positioned */
+    const src = lib.get(o.asset);
+    if (!src){ missing.push(o.asset); continue; }
+    const inst = src.clone(true);
+    inst.name = o.id;
+    inst.userData = Object.assign({}, src.userData, {
+      layer: o.layer || (o.id.startsWith('prop.') ? 'proposed' : 'building'),
+      element: o.id.replace(/\.\d+$/, ''),
+      asset: o.asset,
+      placement_basis: o.basis || 'unknown',
+    });
+    if (!o.existing) inst.userData.indicative = true;
+    /* scene.json is Z-up metres; three.js is Y-up. ground is the sampled LIDAR height;
+       where the spec has none, drop a ray onto the terrain rather than trust it - a
+       missing ground would otherwise seat the building at sea level, forty metres under
+       the estate, and 27 of the proposed placements currently have none. */
+    let gy = o.ground;
+    if (gy === null || gy === undefined){
+      gy = groundAt(staticScene, o.x, -o.y);
+      needGround++;
+    }
+    inst.position.set(o.x, gy, -o.y);
+    inst.rotation.set(0, THREE.MathUtils.degToRad(o.rot_deg || 0), 0);
+    staticScene.add(inst);
+    placed++;
+  }
+  if (missing.length){
+    console.warn('[fcm] assets.glb has no entry for: ' + [...new Set(missing)].join(', '));
+  }
+  console.log(`[fcm] placed ${placed} assets from scene.json`
+    + (needGround ? `, ${needGround} seated by ray-cast (no ground in the spec)` : ''));
+  return {placed, needGround, missing: [...new Set(missing)]};
+}
+
+/* Place the generated props. Deliberately tolerant about field names: the grammar and
+   this reader were written by different hands on the same afternoon, and a viewer that
+   silently drops every prop because a key is called yaw_deg instead of rot_deg is exactly
+   the kind of failure this project keeps finding. Anything it cannot resolve is COUNTED
+   AND NAMED in the console rather than skipped quietly. */
+function placeProps(staticScene, propScene, dressing){
+  if (!propScene || !dressing) return {placed: 0, missing: [], skipped: 0};
+  const lib = new Map();
+  propScene.traverse(o => {
+    const n = o.name || '';
+    if (n.startsWith('asset:')) lib.set(n.slice(6), o);
+    else if (o.userData && o.userData.asset && !lib.has(o.userData.asset))
+      lib.set(o.userData.asset, o);
+  });
+  const list = Array.isArray(dressing) ? dressing
+             : (dressing.objects || dressing.placements || dressing.props || []);
+  let placed = 0, needGround = 0, skipped = 0;
+  const missing = [];
+  for (const o of list){
+    const key = o.prop || o.asset;
+    const src = key && lib.get(key);
+    if (!src){ if (key) missing.push(key); else skipped++; continue; }
+    const inst = src.clone(true);
+    inst.name = o.id || ('prop:' + key);
+    inst.userData = Object.assign({}, src.userData, {
+      layer: 'prop',
+      element: o.element || o.id || key,
+      asset: key,
+      prop: key,
+      rule: o.rule || null,
+      placement_basis: 'generated',
+    });
+    let gy = (o.ground === null || o.ground === undefined)
+      ? (needGround++, groundAt(staticScene, o.x, -o.y)) : o.ground;
+    inst.position.set(o.x, gy, -o.y);
+    const yaw = (o.rot_deg !== undefined) ? o.rot_deg
+              : (o.yaw_deg !== undefined) ? o.yaw_deg : 0;
+    inst.rotation.set(0, THREE.MathUtils.degToRad(yaw), 0);
+    const sc = o.scale;
+    if (typeof sc === 'number') inst.scale.setScalar(sc);
+    else if (Array.isArray(sc) && sc.length === 3) inst.scale.set(sc[0], sc[2], sc[1]);
+    staticScene.add(inst);
+    placed++;
+  }
+  if (missing.length){
+    console.warn('[fcm] props.glb has no entry for: ' + [...new Set(missing)].join(', '));
+  }
+  if (skipped){
+    console.warn(`[fcm] ${skipped} dressing record(s) named no prop and were not placed`);
+  }
+  console.log(`[fcm] placed ${placed} props from ${SPLIT.dressing}`
+    + (needGround ? `, ${needGround} seated by ray-cast` : ''));
+  return {placed, missing: [...new Set(missing)], skipped};
+}
+
+async function loadSplit(){
+  const get = (u) => new Promise((res, rej) => loader.load(u, res, undefined, rej));
+  const json = async (u) => { const r = await fetch(u); if (!r.ok) throw new Error(u); return r.json(); };
+  try {
+    const [stat, assets, spec] = await Promise.all([
+      get(SPLIT.static), get(SPLIT.assets), json(SPLIT.spec)]);
+    const report = placeAssets(stat.scene, assets.scene, spec);
+    /* The props library and the generated dressing are BOTH optional and are fetched
+       after the model, not with it. A missing props.glb means the library has not been
+       packed; a missing props-placement.json means the grammar has not been run. Neither
+       is a broken model and neither may take the estate down with it. */
+    let propReport = {placed: 0, missing: [], skipped: 0, reason: null};
+    try {
+      const [props, dressing] = await Promise.all([
+        get(SPLIT.props), json(SPLIT.dressing)]);
+      propReport = placeProps(stat.scene, props.scene, dressing);
+    } catch (pe){
+      propReport.reason = String(pe && pe.message || pe);
+      console.log('[fcm] no props placed (' + propReport.reason + ')');
+    }
+    window.__fcmSplit = Object.assign({mode: 'split', props: propReport}, report);
+    accept(stat);
+    return true;
+  } catch (e){
+    /* One file missing and the whole split is unusable, so say so loudly and fall back
+       rather than render half a model and let somebody judge it. */
+    console.warn('[fcm] split load unavailable (' + e.message + '); using the combined GLB');
+    window.__fcmSplit = {mode: 'combined', reason: String(e.message || e)};
+    return false;
+  }
+}
+
+loadSplit().then(ok => { if (ok) return;
+loader.load(SPLIT.legacy, accept, undefined, err => {
+  console.warn(err); document.getElementById('drop').classList.add('show');
+});
+});
+const drop = document.getElementById('drop');
+addEventListener('dragover', e=>e.preventDefault());
+addEventListener('drop', e => { e.preventDefault();
+  const f=[...e.dataTransfer.files].find(f=>f.name.endsWith('.glb'));
+  if(f) f.arrayBuffer().then(b => loader.parse(b,'',g=>{drop.classList.remove('show');accept(g);}));
+});
+
+/* ------- layers ------- */
+const layerState = {building:true, proposed:true, area:false, marker:false,
+                    vegetation:true, water:true, offestate:false, hideoff:false,
+                    /* The survey anchor is a 20 m red pole at SU 76520 84214. It was
+                       forced visible, so it stood up through the roof of the Main
+                       House in every view anyone ever looked at, including the ones
+                       shown to other people. It is a survey instrument, not fabric:
+                       off by default, and on the same footing as the other overlay
+                       layers. STANDARD.md R01. */
+                    anchor:false};
+function applyLayers(){
+  meshLayer.forEach((layer, o) => {
+    let vis = true;
+    if (layer==='terrain') vis = true;
+    else if (layer==='building'){
+      const el = elements[o.userData.eid];
+      vis = (el && el.class==='off-estate') ? layerState.offestate : layerState.building;
+    }
+    else vis = layerState[layer] !== false;
+    if (vis && layer==='proposed' && layerState.hideoff){
+      const el = elements[o.userData.eid];
+      if (el && el.switch && !swState[el.switch]) vis = false;
+    }
+    o.visible = vis;
+  });
+  markShadows();
+}
+document.getElementById('layers').addEventListener('change', e => {
+  const l = e.target.dataset.l; if(!l) return;
+  if (l === 'ao'){ aoOn = e.target.checked; return; }
+  layerState[l] = e.target.checked; applyLayers();
+});
+
+/* rail minimise: default is minimised — the working view needs only the
+   hide-switched-off toggle. + / – chip expands and collapses; persisted. */
+const railEl = document.getElementById('rail'), railBtn = document.getElementById('railmin');
+function setRailMin(min){
+  railEl.classList.toggle('min', min);
+  document.body.classList.toggle('railmin', min);
+  railBtn.textContent = min ? '+' : '–';
+  railBtn.title = min ? 'Expand sidebar' : 'Minimise sidebar';
+  try{ localStorage.setItem('fcm.railmin', min ? '1' : '0'); }catch(e){}
+}
+railBtn.addEventListener('click', () => setRailMin(!railEl.classList.contains('min')));
+setRailMin((()=>{ try{ return localStorage.getItem('fcm.railmin') !== '0'; }catch(e){ return true; } })());
+
+/* ------- colour modes ------- */
+let mode = 'scheme';
+const ZONES = [...new Set(allLines().map(l=>l.zone))];
+const zonePalette = {};
+const ZONE_COLORS = ['#7c5a43','#9a6a4f','#b07d52','#5b6e58','#41597a','#6b4f68',
+  '#3e6b62','#8a8156','#54636f','#356577','#71543f','#5c5470','#87614a','#4a6b52','#6e5a49','#44536b'];
+ZONES.forEach((z,i)=>zonePalette[z]=new THREE.Color(ZONE_COLORS[i%ZONE_COLORS.length]));
+function elementZone(el){
+  const ls = el.capex_lines||[]; if(!ls.length) return null;
+  const by = {}; ls.forEach(l => by[l.zone]=(by[l.zone]||0)+l.loaded);
+  return Object.entries(by).sort((a,b)=>b[1]-a[1])[0][0];
+}
+const costRampLo = new THREE.Color('#dfe3e8'), costRampHi = new THREE.Color('#0f172a');
+function costColor(v, vmax){
+  if (v<=0) return new THREE.Color('#e8eaec');
+  const t = Math.log10(1+v/1e5) / Math.log10(1+vmax/1e5);
+  return costRampLo.clone().lerp(costRampHi, Math.min(1,t));
+}
+let progQ = 1, playing = false;
+
+function elementQuarterState(el, q){
+  const ls = (el.capex_lines||[]).filter(lineActive);
+  if(!ls.length) return 'none';
+  let started=false, activeNow=false, allDone=ls.length>0;
+  ls.forEach(l => {
+    if (q >= l.start) started = true;
+    if (q >= l.start && q <= l.end) activeNow = true;
+    if (q < l.end) allDone = false;
+  });
+  if (activeNow) return 'active';
+  if (allDone && started) return 'done';
+  return 'future';
+}
+function recolour(){
+  let vmax = 1;
+  if (mode==='cost') Object.values(elements).forEach(el => vmax = Math.max(vmax, elementCost(el)));
+  meshLayer.forEach((layer, o) => {
+    const eid = o.userData.eid, el = eid && elements[eid];
+    const mats = Array.isArray(o.material) ? o.material : [o.material];
+    const bases = o.userData.baseColors || mats.map(m=>m.color.clone());
+    const baseOp = o.userData.baseOpacities || mats.map(m=>m.opacity);
+    const setAll = c => mats.forEach(m => m.color.copy(c));
+    const resetC = () => mats.forEach((m,i) => m.color.copy(bases[i]));
+    mats.forEach((m,i) => { m.opacity = baseOp[i]; m.transparent = baseOp[i] < 1; });
+    if (!el || layer==='terrain' || layer==='vegetation' || layer==='anchor'){
+      return;
+    }
+    if (el.class==='off-estate'){ resetC(); return; }
+    const offState = el.switch && !swState[el.switch];
+    const ghost = op => mats.forEach(m => { m.transparent = true; m.opacity = op; });
+    /* Keyed off the legacy single-axis themeName until 19 Aug, which meant recolour()
+       put the brick image map BACK after refreshBaseColors() had removed it for the
+       white-card treatment. The treatment now decides. */
+    const mapAllowed = mode==='scheme' && activeTheme().texturedWalls;
+    mats.forEach(m => { if (m.userData.savedMap && !m.userData.triplanar){
+      /* Skip anything the fabric treatment has textured. This block exists to restore the
+         legacy brick tile, and without the guard it nulled the fabric albedo one frame
+         after it was assigned - which is why the north service wing rendered pure white
+         while every other building was correctly textured. */
+      const want = mapAllowed ? m.userData.savedMap : null;
+      if (m.map !== want){ m.map = want; m.needsUpdate = true; }
+    }});
+    if (mode==='scheme'){
+      resetC();
+      if (layer==='proposed') ghost(offState? .25 : .97);
+    } else if (mode==='zone'){
+      const z = elementZone(el);
+      setAll(z? zonePalette[z] : new THREE.Color('#d9dbdf'));
+      if (layer==='proposed') ghost(offState? .22 : .9);
+    } else if (mode==='cost'){
+      setAll(costColor(elementCost(el), vmax));
+      if (layer==='proposed') ghost(offState? .22 : .95);
+    } else if (mode==='prog'){
+      const st = elementQuarterState(el, progQ);
+      if (st==='active') setAll(new THREE.Color('#10b981'));
+      else if (st==='done') resetC();
+      else setAll(new THREE.Color('#dfe2e6'));
+      if (layer==='proposed') ghost(offState? .2 : (st==='future'? .4 : .96));
+    }
+  });
+  if (selected) highlight(selected, true);
+  renderLegend();
+}
+
+/* ------- legend ------- */
+const legend = document.getElementById('legend');
+function renderLegend(){
+  if (mode==='scheme'){ legend.classList.remove('show'); return; }
+  legend.classList.add('show');
+  if (mode==='zone'){
+    legend.innerHTML = '<b>Zones</b>' + ZONES.map(z =>
+      `<div class="li"><span class="swatch" style="background:#${zonePalette[z].getHexString()}"></span>${z}</div>`).join('');
+  } else if (mode==='cost'){
+    const steps=[0.5e6,2e6,8e6,30e6,120e6]; let vmax=1;
+    Object.values(elements).forEach(el => vmax=Math.max(vmax, elementCost(el)));
+    legend.innerHTML = '<b>Loaded cost (incl. prelims, fees, contingency)</b>' + steps.map(v =>
+      `<div class="li"><span class="swatch" style="background:#${costColor(v,vmax).getHexString()}"></span>${fmtM(v)}</div>`).join('');
+  } else if (mode==='prog'){
+    legend.innerHTML = '<b>Build programme</b>' +
+      `<div class="li"><span class="swatch" style="background:#dfe2e6"></span>not started</div>
+       <div class="li"><span class="swatch" style="background:#10b981"></span>under construction</div>
+       <div class="li"><span class="swatch" style="background:#7c5a43"></span>complete (own colour)</div>`;
+  }
+}
+
+/* ------- programme bar ------- */
+const barsEl = document.getElementById('bars');
+function quarterSpend(q){
+  let t=0;
+  allLines().forEach(l => { if(lineActive(l) && q>=l.start && q<=l.end && l.dur>0) t += lineLoaded(l)/l.dur; });
+  return t;
+}
+function buildBars(){
+  const spends=[]; let mx=1;
+  for(let q=1;q<=PQ;q++){ const s=quarterSpend(q); spends.push(s); mx=Math.max(mx,s); }
+  barsEl.innerHTML='';
+  spends.forEach((s,i) => {
+    const q=i+1, div=document.createElement('div');
+    div.className='bar'+(q<progQ?' done':q===progQ?' cur':'');
+    div.style.height = Math.max(4, s/mx*44)+'px';
+    div.innerHTML = `<span>${q}</span>`;
+    div.addEventListener('click', ()=>{ progQ=q; syncProg(); });
+    barsEl.appendChild(div);
+  });
+  let cum=0; for(let q=1;q<=progQ;q++) cum+=spends[q-1];
+  document.getElementById('pQ').textContent = 'Q'+progQ;
+  document.getElementById('pSpend').textContent =
+    `${fmtM(quarterSpend(progQ))} this quarter · ${fmtM(cum)} spent to date`
+    + (progQ>PROG_Q? ' · tail works beyond the 14-quarter programme':'');
+}
+function syncProg(){ buildBars(); recolour(); }
+document.getElementById('pPlay').addEventListener('click', function(){
+  playing = !playing; this.textContent = playing? 'Pause':'Play';
+});
+setInterval(()=>{ if(playing && mode==='prog'){ progQ = progQ>=PQ? 1 : progQ+1; syncProg(); } }, 900);
+
+/* ------- controls ------- */
+document.getElementById('modes').addEventListener('click', e => {
+  const b = e.target.closest('button'); if(!b) return;
+  mode = b.dataset.mode;
+  document.querySelectorAll('#modes button').forEach(x=>x.classList.toggle('on', x===b));
+  document.getElementById('prog').classList.toggle('show', mode==='prog');
+  if (mode==='prog') buildBars();
+  recolour();
+});
+document.getElementById('themes').addEventListener('click', e => {
+  const b = e.target.closest('button'); if(!b) return;
+  themeName = b.dataset.th;
+  document.querySelectorAll('#themes button').forEach(x=>x.classList.toggle('on', x===b));
+  applyTheme();
+});
+document.getElementById('views').addEventListener('click', e => {
+  const b = e.target.closest('button'); if(!b) return;
+  if (b.dataset.v==='fly'){ toggleFly(); return; }
+  if (fly.enabled) toggleFly();
+  setView(b.dataset.v);
+});
+function toggleFly(){
+  fly.enabled = !fly.enabled; orbit.enabled = !fly.enabled;
+  document.querySelector('[data-v="fly"]').style.background = fly.enabled? '#0f172a':'#fff';
+  document.querySelector('[data-v="fly"]').style.color = fly.enabled? '#fff':'#1c1c1c';
+}
+addEventListener('keydown', e => {
+  if (e.target.tagName==='INPUT') return;
+  const k = e.key;
+  if (k==='m'||k==='M') toggleFly();
+  const map={'1':'whole','2':'house','3':'court','4':'river','5':'south'};
+  if (map[k]) setView(map[k]);
+});
+
+/* ------- picking + card ------- */
+const ray = new THREE.Raycaster(); const mouse = new THREE.Vector2();
+let selected = null; let hovered = null;
+const tip = document.getElementById('hovertip');
+function pickables(){
+  const out=[]; meshLayer.forEach((layer,o) => {
+    if (!o.visible) return;
+    if (['building','proposed','area','marker','water'].includes(layer) && o.userData.eid) out.push(o);
+  }); return out;
+}
+function pick(e){
+  mouse.x = (e.clientX/innerWidth)*2-1; mouse.y = -(e.clientY/innerHeight)*2+1;
+  ray.setFromCamera(mouse, camera);
+  const hits = ray.intersectObjects(pickables(), false);
+  return hits.length ? hits[0].object : null;
+}
+function highlight(eid, on){
+  (meshesByElement[eid]||[]).forEach(o => {
+    const mats = Array.isArray(o.material)? o.material : [o.material];
+    mats.forEach(m => {
+      m.emissive = new THREE.Color(on? 0x22314e : 0x000000);
+      m.emissiveIntensity = on? .5 : 0;
+    });
+  });
+}
+let downAt = null;
+renderer.domElement.addEventListener('pointerdown', e => downAt=[e.clientX,e.clientY]);
+renderer.domElement.addEventListener('pointerup', e => {
+  if (!downAt || Math.hypot(e.clientX-downAt[0], e.clientY-downAt[1]) > 5) return;
+  /* mark mode takes the click instead: it names what is under the pixel rather than
+     opening a capex card, and it must not change the highlight, because the frame
+     filed with the finding is captured in this same handler */
+  if (markOn){ markClick(e); return; }
+  const o = pick(e);
+  if (selected) highlight(selected, false);
+  if (o && o.userData.eid){ selected = o.userData.eid; highlight(selected, true); showCard(elements[selected]); }
+  else { selected=null; document.getElementById('card').classList.remove('show');
+    document.body.classList.remove('hascard'); }
+});
+renderer.domElement.addEventListener('pointermove', e => {
+  if (markOn) return;          /* no hover tint while a frame is about to be filed */
+  const o = pick(e);
+  const eid = o && o.userData.eid;
+  if (eid !== hovered){
+    if (hovered && hovered!==selected) highlight(hovered, false);
+    hovered = eid;
+    if (hovered && hovered!==selected) highlight(hovered, true);
+  }
+  if (eid){ tip.style.display='block'; tip.style.left=(e.clientX+14)+'px'; tip.style.top=(e.clientY+6)+'px';
+    tip.textContent = elements[eid].name; renderer.domElement.style.cursor='pointer'; }
+  else { tip.style.display='none'; renderer.domElement.style.cursor=''; }
+});
+document.getElementById('cClose').addEventListener('click', ()=>{
+  if(selected) highlight(selected,false); selected=null;
+  document.getElementById('card').classList.remove('show');
+  document.body.classList.remove('hascard');
+});
+
+/* ================= THE INTERPRETER: mark mode =====================================
+   DEFECT 19 Aug 2026, four times in one day. A language model looked at renders of this
+   model and called the hedge runs capex overlay patches; called South Buildings a broken
+   roof plane; said the Main House needed turning 90 degrees when its rotation was already
+   right; said the terrain texture and the tree tint had regressed when both were loading
+   correctly. Every code measurement taken the same day was right. Not one of those four
+   was a failure of judgement - in every case the machine could not say WHAT was in the
+   picture, and whether the thing was good or bad was never the hard part.
+
+   Mark mode removes exactly that step. The human looks and judges; the ray-cast says what
+   they were looking at. What leaves the browser is an element id, a world coordinate, a
+   camera pose that reproduces the view and the frame as it stood - never prose somebody
+   else has to guess at. A finding with no object under the pixel is an ordinary case, not
+   an error: "the whole west approach is dull" is exactly the kind of judgement no rule in
+   fcm_check.py will ever reach.
+
+   OFF by default. While it is off nothing in this block runs, nothing is added to the
+   scene and no material is touched, so the render is the render without it. STANDARD.md
+   R01 - the survey anchor forced visible in every render anyone ever looked at - is the
+   reason that is worth stating rather than assuming.
+
+   The ray-cast is tools/pick_pixel.mjs's, not a second one: every visible mesh in the
+   scene, not the pickable subset the capex card uses, because terrain, hedges and trees
+   carry no element id and they are precisely what was misread.
+*/
+let markOn = false;             /* THE DEFAULT. R01. */
+let markPending = null;         /* the snapshot waiting for a note: pose, look, frame */
+let markSeverity = 'WARN';
+let markFiled = 0, markLast = null, markSaved = null;
+const MARK_ENDPOINT = '/__fcm/finding';   /* served by tools/mark_server.mjs only */
+
+const _mround = (v, n) => +v.toFixed(n);
+const _mesc = s => String(s).replace(/[<>&]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]));
+
+function markTargets(){
+  const out = [];
+  /* The sky dome is a mesh too, and it is the one thing a ray always hits: pick_pixel
+     reports it 26 km away and prints it as "?". Filing a finding against the atmosphere
+     would turn the ordinary case - a judgement about the view - into a nonsense object,
+     so the sky is background here and a click that reaches it resolves to nothing. */
+  scene.traverse(o => { if (o.isMesh && o.visible && o !== sky) out.push(o); });
+  return out;
+}
+
+function markDescribe(h){
+  const o = h.object;
+  const m = Array.isArray(o.material) ? o.material[0] : o.material;
+  const meta = nodeMeta(o);
+  /* userData.eid is set by accept() only where the name resolves in estate.json; the
+     placement's own userData.element survives for everything else, and the node name is
+     the last resort. All three are recorded rather than collapsed, because the whole
+     value of this tool is that the identification can be checked afterwards. */
+  const eid = o.userData.eid || meta.extras.element || null;
+  const el = eid ? elements[eid] : null;
+  return {
+    mesh: o.name || (o.parent && o.parent.name) || '?',
+    node: meta.name || null,
+    element: eid,
+    element_name: el ? el.name : null,
+    layer: meshLayer.get(o) || meshLayer.get(o.parent) || null,
+    material: m ? m.name : null,
+    point: h.point.toArray().map(v => _mround(v, 2)),
+    distance_m: _mround(h.distance, 2),
+    cast_shadow: !!o.castShadow, receive_shadow: !!o.receiveShadow,
+  };
+}
+
+function markResolve(clientX, clientY){
+  const r = renderer.domElement.getBoundingClientRect();
+  const px = clientX - r.left, py = clientY - r.top;
+  const ndc = new THREE.Vector2((px / r.width) * 2 - 1, -(py / r.height) * 2 + 1);
+  const rc = new THREE.Raycaster();
+  rc.setFromCamera(ndc, camera);
+  const hits = rc.intersectObjects(markTargets(), false).slice(0, 5);
+  if (!hits.length) return {pixel: [Math.round(px), Math.round(py)], subject: null};
+  const subject = markDescribe(hits[0]);
+  /* what stands behind the first surface, so a shadow on the ground can be told from a
+     dark surface without anybody having to look again */
+  subject.behind = hits.slice(1).map(h => {
+    const d = markDescribe(h);
+    return {mesh: d.mesh, element: d.element, layer: d.layer, distance_m: d.distance_m};
+  });
+  return {pixel: [Math.round(px), Math.round(py)], subject};
+}
+
+function markCameraPose(){
+  camera.updateMatrixWorld(true);
+  /* DEFECT, found by reshooting a rolled fly-mode view on 19 Aug 2026: the first version
+     of this asked fly.enabled which mode was in force, and by then mark mode had already
+     turned fly off, so it read the orbit rig - which in a fly view is still pointing
+     wherever it was last left. The finding came back with a target 250 m off the view
+     axis: harmless, because the quaternion is what reproduces the view, but a lie in a
+     record whose whole job is to be trusted six months later.
+     The mode is not the question. Whether orbit.target lies on the view axis is, and
+     that is measurable. Where it does, it IS the target and keeping it preserves how the
+     view orbits; where it does not, the target is the point the frame is centred on. */
+  const fwd = new THREE.Vector3(); camera.getWorldDirection(fwd);
+  const toTarget = orbit.target.clone().sub(camera.position);
+  const range = toTarget.length();
+  const onAxis = range > 1e-6 && toTarget.clone().normalize().dot(fwd) > 0.9999;
+  let t, basis;
+  if (onAxis){
+    t = orbit.target.clone();
+    basis = 'the orbit target, which is on the view axis ' + _mround(range, 1) + ' m out';
+  } else {
+    const rc = new THREE.Raycaster(); rc.setFromCamera(new THREE.Vector2(0, 0), camera);
+    const hit = rc.intersectObjects(markTargets(), false)[0];
+    t = camera.position.clone().addScaledVector(fwd, hit ? hit.distance : 250);
+    basis = hit
+      ? 'the centre of the frame: ' + (hit.object.name || '?') + ' at '
+        + _mround(hit.distance, 1) + ' m'
+      : 'a point 250 m down the view axis - the frame centre is sky';
+  }
+  return {
+    position: camera.position.toArray().map(v => _mround(v, 4)),
+    target: t.toArray().map(v => _mround(v, 4)),
+    target_basis: basis,
+    /* the quaternion is what actually reproduces the view. Position and target alone
+       cannot: FlyControls rolls the camera, and a rolled frame restored by lookAt comes
+       back level and is a different picture. __fcm.restoreCam() uses this. */
+    quaternion: camera.quaternion.toArray().map(v => _mround(v, 8)),
+    up: camera.up.toArray().map(v => _mround(v, 4)),
+    fov_deg: _mround(camera.fov, 4),
+    aspect: _mround(camera.aspect, 6),
+    near: camera.near, far: camera.far,
+    frame_of_reference: 'three.js scene metres: +x east, +y up, -z north',
+  };
+}
+
+function markLook(){
+  return {
+    treatment: treatmentName, light: lightName, theme: themeName,
+    colour_mode: mode, programme_quarter: mode === 'prog' ? progQ : null,
+    exposure: _mround(renderer.toneMappingExposure, 4),
+    ao: aoOn && !!composer,
+    lookver: (function(){ try { return localStorage.getItem('fcm.lookver'); }
+                          catch(e){ return null; } })(),
+  };
+}
+
+function markSnapshot(subject, pixel){
+  /* Capture FIRST, read the pose SECOND. __fcm.capture() re-applies a pose that a
+     headless tool set before it draws, so reading the camera afterwards is the only
+     order in which the record and the pixels are guaranteed to be the same frame. */
+  const png = window.__fcm.capture();
+  return {
+    kind: subject ? 'object' : 'view',
+    object: subject ? (subject.element || subject.mesh) : '-',
+    subject: subject,
+    numbers: subject
+      ? {distance_m: subject.distance_m, hit_point: subject.point, pixel: pixel,
+         fov_deg: _mround(camera.fov, 3)}
+      : {distance_m: null, hit_point: null, pixel: pixel, fov_deg: _mround(camera.fov, 3)},
+    camera: markCameraPose(),
+    look: markLook(),
+    layers: Object.assign({ao: aoOn && !!composer}, layerState),
+    switches: Object.assign({}, swState),
+    viewport: {css: [innerWidth, innerHeight],
+               canvas: [renderer.domElement.width, renderer.domElement.height],
+               device_pixel_ratio: _mround(renderer.getPixelRatio(), 3)},
+    source: {url: location.href,
+             load_mode: (window.__fcmSplit || {}).mode || 'unknown',
+             placed_assets: (window.__fcmSplit || {}).placed || 0,
+             three_revision: THREE.REVISION,
+             user_agent: navigator.userAgent},
+    png: png,
+  };
+}
+
+function markShowSubject(){
+  const el = document.getElementById('marksubj');
+  const s = markPending && markPending.subject;
+  if (!s){
+    el.innerHTML = '<span class="none">nothing under the pointer yet — Enter files this '
+      + 'as a finding about the view, which is an ordinary kind of finding</span>';
+    return;
+  }
+  el.innerHTML = '<b>' + _mesc(s.mesh) + '</b>'
+    + (s.element ? ' · ' + _mesc(s.element)
+        + (s.element_name ? ' (' + _mesc(s.element_name) + ')' : '')
+        : ' · <span class="none">no element id</span>')
+    + '<br><span class="co">layer ' + _mesc(s.layer || '-')
+    + ' · material ' + _mesc(s.material || '-')
+    + ' · ' + s.distance_m + ' m from the camera · at ['
+    + s.point.join(', ') + ']</span>'
+    + (s.behind && s.behind.length
+        ? '<br><span class="co">behind it: '
+          + _mesc(s.behind.map(b => b.mesh + ' ' + b.distance_m + ' m').join(' · '))
+          + '</span>'
+        : '');
+}
+
+function markSetSeverity(sev){
+  sev = String(sev || '').toUpperCase();
+  if (!['ERROR', 'WARN', 'INFO'].includes(sev)) return false;
+  markSeverity = sev;
+  document.querySelectorAll('#marksev button').forEach(
+    b => b.classList.toggle('on', b.dataset.sev === sev));
+  return true;
+}
+
+function markWhere(){
+  const w = document.getElementById('markwhere');
+  if (markOn){ w.textContent = 'ON — a click names what is under it; the camera is held still.'; }
+  else if (markFiled){ w.textContent = markFiled + ' filed this session'
+    + (markLast ? ' · last ' + markLast : ''); }
+  else { w.textContent = 'off. A click orbits as usual.'; }
+}
+
+function markSetMode(on){
+  on = !!on;
+  if (on === markOn) return markOn;
+  markOn = on;
+  document.getElementById('markring').classList.toggle('on', on);
+  document.getElementById('mark').classList.toggle('on', on);
+  document.getElementById('markbtn').classList.toggle('on', on);
+  renderer.domElement.style.cursor = on ? 'crosshair' : '';
+  if (on){
+    markSaved = {orbit: orbit.enabled, fly: fly.enabled};
+    orbit.enabled = false; fly.enabled = false;
+    /* the hover tint is an emissive colour on whatever the pointer was last over. Clear
+       it on the way in, or the frame filed with the finding shows a building lit up for
+       a reason nobody reading the record in six months could reconstruct. */
+    if (hovered && hovered !== selected) highlight(hovered, false);
+    hovered = null;
+    document.getElementById('hovertip').style.display = 'none';
+    markPending = markSnapshot(null, null);
+    markShowSubject();
+    const stat = document.getElementById('markstat');
+    stat.className = 'stat'; stat.textContent = '';
+    const box = document.getElementById('marknote');
+    box.value = ''; box.focus();
+  } else {
+    if (markSaved){ orbit.enabled = markSaved.orbit; fly.enabled = markSaved.fly; }
+    markSaved = null; markPending = null;
+    document.getElementById('marknote').blur();
+  }
+  markWhere();
+  return markOn;
+}
+
+function markClick(e){
+  const r = markResolve(e.clientX, e.clientY);
+  markPending = markSnapshot(r.subject, r.pixel);
+  markShowSubject();
+  const stat = document.getElementById('markstat');
+  stat.className = 'stat';
+  stat.textContent = r.subject ? '' : 'nothing under that pixel — it is sky. Filing as a view.';
+  /* the click blurred the note box; typing has to go straight into it or the next
+     keystroke toggles fly mode instead of writing the finding */
+  document.getElementById('marknote').focus();
+}
+
+async function markFile(){
+  const stat = document.getElementById('markstat');
+  const box = document.getElementById('marknote');
+  const note = box.value.trim();
+  if (!note){
+    stat.className = 'stat bad'; stat.textContent = 'a finding needs a note';
+    return {ok: false, error: 'no note'};
+  }
+  if (!markPending) markPending = markSnapshot(null, null);
+  const rec = Object.assign({}, markPending, {detail: note, severity: markSeverity});
+  stat.className = 'stat'; stat.textContent = 'filing…';
+  try {
+    const res = await fetch(MARK_ENDPOINT, {
+      method: 'POST', headers: {'content-type': 'application/json'},
+      body: JSON.stringify(rec)});
+    const txt = await res.text();
+    if (!res.ok) throw new Error(res.status + ' ' + txt.slice(0, 240));
+    const out = JSON.parse(txt);
+    markFiled++; markLast = out.id;
+    box.value = '';
+    markSetMode(false);
+    document.getElementById('markwhere').textContent =
+      markFiled + ' filed this session · last ' + out.id + ' → ' + out.frame;
+    return out;
+  } catch (err){
+    /* Nothing is thrown away when the write fails. The note and the captured frame stay
+       exactly where they are, and the whole record goes to the console, because losing a
+       finding at the moment it was typed is the one thing this tool must never do. */
+    stat.className = 'stat bad';
+    stat.textContent = 'NOT filed: ' + err.message
+      + ' — this page needs the write endpoint: python tools/fcm.py mark';
+    console.warn('[fcm] finding NOT filed, kept in the box:', err, rec);
+    return {ok: false, error: String(err.message || err)};
+  }
+}
+
+async function markFileFromTool(o){
+  o = o || {};
+  if (!markOn) markSetMode(true);
+  if (o.severity) markSetSeverity(o.severity);
+  if (typeof o.x === 'number' && typeof o.y === 'number'){
+    const r = markResolve(o.x, o.y);
+    markPending = markSnapshot(r.subject, r.pixel);
+    markShowSubject();
+  }
+  document.getElementById('marknote').value = o.note || '';
+  return await markFile();
+}
+
+document.getElementById('markbtn').addEventListener('click', () => markSetMode(!markOn));
+document.getElementById('marksev').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  markSetSeverity(b.dataset.sev);
+  document.getElementById('marknote').focus();
+});
+document.getElementById('marknote').addEventListener('keydown', e => {
+  if (e.key === 'Enter'){ e.preventDefault(); markFile(); }
+});
+addEventListener('keydown', e => {
+  if (e.key === 'Escape' && markOn){ e.preventDefault(); markSetMode(false); return; }
+  const t = e.target && e.target.tagName;
+  if (t === 'INPUT' || t === 'TEXTAREA') return;
+  if (e.key === 'k' || e.key === 'K'){ e.preventDefault(); markSetMode(!markOn); }
+});
+
+const GRADE = {
+  'bldg.main-house':'Grade I · NHLE 1125740',
+  'bldg.riding-school':'Grade II',
+  'bldg.dairy-chapel':'Grade II · NHLE 1159447',
+  'bldg.church-st-anne':'Grade II · NHLE 1393459',
+  'bldg.north-lodge':'Grade II', 'site.south-lodge':'Grade II',
+  'bldg.follies-east-park':'Grade II (Gothic Ruin, Covered Bridge)',
+  'site.entrance-gates':'Grade II',
+};
+function showCard(el){
+  const card = document.getElementById('card');
+  document.getElementById('cTitle').textContent = el.name;
+  const chips = [];
+  const cls = {'existing-building':'existing', 'proposed':'proposed — indicative',
+    'proposed-area':'proposed — indicative', 'area':'ground works — indicative',
+    'marker':'site marker — indicative', 'water':'water', 'off-estate':'off-estate',
+    'estate':'estate-wide'}[el.class] || el.class;
+  chips.push(`<span class="chip${el.class==='off-estate'?' offst':''}${el.indicative?' ind':''}">${cls}</span>`);
+  if (GRADE[el.id]) chips.push(`<span class="chip listed">${GRADE[el.id]}</span>`);
+  if (el.switch){
+    const on = swState[el.switch];
+    chips.push(`<span class="chip ${on?'swon':'swoff'}">${el.switch} · ${on?'ON':'OFF'}</span>`);
+  }
+  document.getElementById('cChips').innerHTML = chips.join('');
+  document.body.classList.add('hascard');
+  const body = document.getElementById('cBody');
+  const ls = el.capex_lines||[];
+  let html = '';
+  const cost = elementCost(el);
+  if (ls.length){
+    html += `<div class="cost">${fmtK(cost)}</div>
+      <div class="costsub">loaded works cost at current switches — incl. prelims, fees, contingency</div>`;
+    const qs = ls.filter(lineActive);
+    if (qs.length){
+      const q0 = Math.min(...qs.map(l=>l.start)), q1 = Math.max(...qs.map(l=>l.end));
+      html += `<div class="qtr">built quarters ${q0}–${q1} (programme ${PROG_Q}q${q1>PROG_Q?' + tail':''}) · straight-line spread per line</div>`;
+    }
+    html += '<table><tr><th>#</th><th>line</th><th>loaded</th></tr>';
+    ls.slice().sort((a,b)=>lineLoaded(b,true)-lineLoaded(a,true)).forEach(l => {
+      const act = lineActive(l);
+      html += `<tr${act?'':' class="off"'}><td class="n">${l.n}</td>
+        <td>${l.desc}${l.switch? ' <span style="color:#6d28d9">('+l.switch+')</span>':''}</td>
+        <td>${act? fmtK(lineLoaded(l)) : 'off'}</td></tr>`;
+    });
+    html += '</table>';
+  }
+  if (el.notes) html += `<div class="note">${el.notes}</div>`;
+  if (el.basis) html += `<div class="note basis">${el.basis}</div>`;
+  if (el.confidence) html += `<div class="note basis">identification confidence: ${el.confidence}</div>`;
+  if (el.cross_ref_lines && el.cross_ref_lines.length)
+    html += `<div class="note basis">cost carried on lines ${el.cross_ref_lines.join(', ')} under another element (see binding notes)</div>`;
+  body.innerHTML = html;
+  card.classList.add('show');
+}
+
+function onStateChange(){
+  updateTotals(); buildSwitchRail(); applyLayers(); recolour();
+  if (mode==='prog') buildBars();
+  if (selected) showCard(elements[selected]);
+}
+
+const clock = new THREE.Clock();
+let waterT = 0;
+let hudFrame = 0;
+const _dir = new THREE.Vector3();
+function updateHud(){
+  camera.getWorldDirection(_dir);
+  // world: +x east, -z north. Screen-up direction of north:
+  const az = Math.atan2(_dir.x, -_dir.z);   // 0 = facing north
+  const needle = document.getElementById('needle');
+  const deg = az * 180 / Math.PI;
+  needle.setAttribute('transform', `rotate(${deg} 27 27)`);
+  document.getElementById('ntext').setAttribute('transform',
+    `rotate(${deg} 27 27)`);
+  const dist = camera.position.distanceTo(orbit.target);
+  const pxPerM = (innerHeight / 2) /
+    (dist * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)));
+  let m = 100;
+  const candidates = [20, 50, 100, 200, 500, 1000];
+  for (const c of candidates){ if (c * pxPerM >= 70){ m = c; break; } m = c; }
+  const wpx = Math.min(240, Math.max(30, m * pxPerM));
+  const bar = document.getElementById('scalebar');
+  bar.style.width = wpx + 'px';
+  document.getElementById('scaletext').textContent = m + ' m';
+}
+function tick(){
+  requestAnimationFrame(tick);
+  renderer.info.reset();
+  const dt = clock.getDelta();
+  waterT += dt;
+  if (waterNormalTex){
+    waterNormalTex.offset.set(waterT * 0.005, waterT * 0.003);
+  }
+  /* Mark mode holds the camera absolutely still. Without this the orbit rig keeps
+     settling its damping between the click and the note, so the frame filed with the
+     finding would be a slightly different view from the pose recorded beside it - and
+     OrbitControls.update() would also level any roll a fly-mode view was carrying. */
+  if (!markOn){ if (fly.enabled) fly.update(dt); else orbit.update(); }
+  hudFrame = (hudFrame + 1) % 8;
+  if (hudFrame === 0) updateHud();
+  if (aoOn && composer) composer.render();
+  else renderer.render(scene, camera);
+  updatePerf();
+}
+setupComposer();
+addEventListener('resize', () => {
+  camera.aspect = innerWidth/innerHeight; camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+  if (composer){ composer.setSize(innerWidth, innerHeight);
+    gtaoPass.setSize(innerWidth, innerHeight); }
+});
+applyTheme();
+buildSwitchRail(); updateTotals(); tick();
+document.getElementById('modelref').textContent =
+  `capex from ${E.meta.model_source.split('\\').pop().replace('.xlsx','')} · EA LIDAR Apr 2023`;
+/* ------- budget readout -------
+   Frame cost, draw calls and triangles on screen, because a budget nobody can
+   see is a budget nobody keeps. P toggles it. */
+/* var, and guarded: tick() starts before this block is evaluated */
+var perfEl = document.getElementById('perf');
+var perfAcc = 0, perfN = 0, perfLast = performance.now();
+function updatePerf(){
+  if (!perfEl) return;
+  const now = performance.now();
+  perfAcc += now - perfLast; perfLast = now; perfN++;
+  if (perfN < 20) return;
+  const ms = perfAcc / perfN; perfAcc = 0; perfN = 0;
+  const r = renderer.info.render, m = renderer.info.memory;
+  perfEl.textContent =
+    `${ms.toFixed(1)} ms/frame  ${(1000/ms).toFixed(0)} fps\n` +
+    `${r.calls} draws   ${(r.triangles/1e6).toFixed(2)}M tris\n` +
+    `${m.geometries} geom  ${m.textures} tex  ${renderer.info.programs.length} prog`;
+}
+addEventListener('keydown', e => {
+  if (e.key === 'p' || e.key === 'P') perfEl.classList.toggle('off');
+});
+
+/* Deterministic benchmark: the same five views, rendered synchronously with a
+   GPU fence after each, so the number does not depend on the browser's frame
+   pacing or on whether the tab is in the foreground. Run __bench() before and
+   after a change and the comparison is honest. */
+window.__bench = function(frames){
+  frames = frames || 15;
+  const gl = renderer.getContext();
+  const names = Object.keys(VIEWS);
+  const saveP = camera.position.clone(), saveT = orbit.target.clone();
+  const draw = () => { if (aoOn && composer) composer.render();
+                       else renderer.render(scene, camera); };
+  setView(names[0]); draw(); gl.finish();
+  const res = {};
+  for (const n of names){
+    setView(n); draw(); gl.finish();
+    const t = [];
+    for (let i = 0; i < frames; i++){
+      const a = performance.now(); draw(); gl.finish();
+      t.push(performance.now() - a);
+    }
+    t.sort((a,b) => a-b);
+    res[n] = +t[Math.floor(frames/2)].toFixed(2);
+  }
+  renderer.info.reset(); draw();
+  const r = renderer.info.render;
+  camera.position.copy(saveP); orbit.target.copy(saveT); orbit.update();
+  const vals = Object.values(res);
+  return {
+    ms: res,
+    ms_mean: +(vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(2),
+    calls: r.calls, triangles: r.triangles,
+    programs: renderer.info.programs.length,
+    geometries: renderer.info.memory.geometries,
+    textures: renderer.info.memory.textures,
+    ao: aoOn, shadowAutoUpdate: renderer.shadowMap.autoUpdate,
+    dpr: renderer.getPixelRatio(),
+    size: [renderer.domElement.width, renderer.domElement.height]
+  };
+};
+
+/* ------- headless capture hook (driven by tools/shoot_viewer.mjs) -------
+   Review shots have to come out of THIS renderer - ACES tone mapping, PCF
+   soft shadows, the GTAO pass - because a render from anywhere else is a
+   different picture and reviewing it proves nothing. The harness needs four
+   things the module otherwise keeps private: whether the model has finished
+   loading and the shadow map has been drawn, a way to put the camera on an
+   exact station, a way to switch a layer, and a way to read the canvas back in
+   the same task as the draw (the context has no preserveDrawingBuffer, so the
+   read must happen before the browser composites).
+   Nothing here runs unless something calls it. A human user is unaffected. */
+let __shotPose = null;
+window.__fcm = {
+  /* readiness, polled by the harness - never a fixed sleep */
+  ready(){
+    return {
+      model: !!modelRoot,
+      shadowsClean: renderer.shadowMap.needsUpdate === false,
+      frame: renderer.info.render.frame,
+      textures: renderer.info.memory.textures,
+      geometries: renderer.info.memory.geometries,
+      size: [renderer.domElement.width, renderer.domElement.height],
+      ao: aoOn && !!composer,
+      exposure: renderer.toneMappingExposure,
+      theme: themeName,
+      treatment: treatmentName,
+      light: lightName,
+      variantsLoaded: !!window.__fcmVariants,
+      loadMode: (window.__fcmSplit || {}).mode || 'pending',
+      placedAssets: (window.__fcmSplit || {}).placed || 0,
+      mode: mode,
+      mark: markOn            /* OFF unless a human asked for it; see the interpreter */
+    };
+  },
+  /* Drive the two variant axes from a headless capture. Returns false rather than
+     silently doing nothing if the option does not exist, so a grid run cannot quietly
+     shoot nine frames of the same look. */
+  async setTreatment(name){
+    if (!TREATMENTS[name]) return false;
+    if (name === 'fabric'){
+      if (!(window.__fcmVariants && window.__fcmVariants.hasFabric)) return false;
+      await ensureFabric();
+      /* the textures are fetched but decode asynchronously; a capture taken before they
+         are on the GPU shows an untextured white model and looks like a failed treatment */
+      for (let i = 0; i < 200; i++){
+        const pending = Object.values(TREATMENTS.fabric.slots || {})
+          .filter(sp => sp.textured && (!sp._albedo || !sp._albedo.image));
+        if (!pending.length) break;
+        await new Promise(r => setTimeout(r, 100));
+      }
+    }
+    treatmentName = name; applyVariants(); return true;
+  },
+  setLight(name){
+    if (!LIGHTS[name]) return false;
+    lightName = name; applyVariants(); return true;
+  },
+  variants(){
+    return {
+      treatment: treatmentName, light: lightName,
+      treatments: Object.keys(AXES.treatment).filter(k => k === 'fabric'
+          ? !!(window.__fcmVariants && window.__fcmVariants.hasFabric) : !!TREATMENTS[k]),
+      lights: Object.keys(AXES.light).filter(k => !!LIGHTS[k]),
+      declared: {treatments: Object.keys(AXES.treatment), lights: Object.keys(AXES.light)},
+    };
+  },
+  frameCount(){ return renderer.info.render.frame; },
+  markShadows(){ markShadows(); return true; },
+  /* pos and target are three.js scene coordinates: +x east, +y up, -z north */
+  setCam(pos, target, fovDeg){
+    const p = new THREE.Vector3(pos[0], pos[1], pos[2]);
+    const t = new THREE.Vector3(target[0], target[1], target[2]);
+    const d = t.clone().sub(p);
+    /* A camera looking straight down has no defined roll, so lookAt with the
+       default up would give an arbitrary frame rotation and the plan stations
+       could not be held against a north-up drawing. Force north up the frame. */
+    const vertical = Math.hypot(d.x, d.z) < Math.abs(d.y) * 0.02;
+    const up = vertical ? new THREE.Vector3(0, 0, -1) : new THREE.Vector3(0, 1, 0);
+    if (fovDeg) camera.fov = fovDeg;
+    camera.up.copy(up);
+    camera.position.copy(p);
+    camera.lookAt(t);
+    camera.updateProjectionMatrix();
+    camera.updateMatrixWorld(true);
+    /* the orbit rig clamps distance to 2800 m and polar angle to .49pi, which
+       several stations sit outside; loosen it so the idle tick cannot drag the
+       camera off the station between calls */
+    orbit.enableDamping = false;
+    orbit.minDistance = 0.01; orbit.maxDistance = 1e7;
+    orbit.minPolarAngle = 0; orbit.maxPolarAngle = Math.PI;
+    orbit.target.copy(t);
+    __shotPose = {p, t, up, q: null};
+    return {fov: camera.fov, aspect: camera.aspect};
+  },
+  /* Put the camera back exactly where a finding was filed from. The quaternion is used
+     in preference to the target because a view taken in fly mode can carry roll, and
+     restoring that view with lookAt brings it back level - a different picture, filed
+     under a record that claims to reproduce the one that was judged. */
+  restoreCam(cam){
+    if (!cam || !Array.isArray(cam.position)) return false;
+    const p = new THREE.Vector3().fromArray(cam.position);
+    const t = Array.isArray(cam.target) ? new THREE.Vector3().fromArray(cam.target)
+                                        : p.clone().add(new THREE.Vector3(0, 0, -1));
+    if (Array.isArray(cam.up)) camera.up.fromArray(cam.up);
+    camera.position.copy(p);
+    let q = null;
+    if (Array.isArray(cam.quaternion) && cam.quaternion.length === 4){
+      camera.quaternion.fromArray(cam.quaternion);
+      q = camera.quaternion.clone();
+    } else {
+      camera.lookAt(t);
+    }
+    if (Number.isFinite(cam.fov_deg)) camera.fov = cam.fov_deg;
+    camera.updateProjectionMatrix();
+    camera.updateMatrixWorld(true);
+    orbit.enableDamping = false;
+    orbit.minDistance = 0.01; orbit.maxDistance = 1e7;
+    orbit.minPolarAngle = 0; orbit.maxPolarAngle = Math.PI;
+    orbit.target.copy(t);
+    __shotPose = {p: p.clone(), t: t.clone(), up: camera.up.clone(), q};
+    return {fov: camera.fov, aspect: camera.aspect,
+            position: camera.position.toArray(), target: t.toArray()};
+  },
+  setLayer(name, on){
+    if (name === 'ao'){ aoOn = !!on; }
+    else {
+      if (!(name in layerState)) return false;
+      layerState[name] = !!on; applyLayers();
+    }
+    const box = document.querySelector('#layers input[data-l="' + name + '"]');
+    if (box) box.checked = !!on;
+    return true;
+  },
+  layers(){ return Object.assign({ao: aoOn}, layerState); },
+  /* draw and read back in one synchronous task */
+  capture(){
+    if (__shotPose){
+      camera.up.copy(__shotPose.up);
+      camera.position.copy(__shotPose.p);
+      /* a pose restored from a finding carries its own rotation, roll included; a
+         station set by setCam has none and is aimed the way it always was */
+      if (__shotPose.q) camera.quaternion.copy(__shotPose.q);
+      else camera.lookAt(__shotPose.t);
+      camera.updateMatrixWorld(true);
+    }
+    if (aoOn && composer) composer.render(); else renderer.render(scene, camera);
+    return renderer.domElement.toDataURL('image/png');
+  },
+  /* ---- the interpreter, driven from a tool. Exactly the code path a human's click
+     takes: resolve the pixel, snapshot the frame and the pose, POST the record. A test
+     that used a private shortcut would prove nothing about what the human gets. */
+  mark: {
+    state(){
+      return {on: markOn, severity: markSeverity, filed: markFiled, last: markLast,
+              pending: markPending ? {kind: markPending.kind, object: markPending.object}
+                                   : null,
+              endpoint: MARK_ENDPOINT};
+    },
+    set(on){ return markSetMode(on); },
+    severity(s){ return markSetSeverity(s); },
+    /* resolve one pixel and arm the finding, without filing it */
+    at(x, y){
+      if (!markOn) markSetMode(true);
+      const r = markResolve(x, y);
+      markPending = markSnapshot(r.subject, r.pixel);
+      markShowSubject();
+      return r;
+    },
+    /* {note, severity, x, y} - x and y omitted files a finding about the view */
+    async file(o){ return await markFileFromTool(o); },
+  }
+};
+
+window.__dbg = {scene, renderer, camera, meshLayer, elements, THREE, orbit, setView, applyTheme, markShadows};
+
+/* Load the authored variant files and build the switcher. Deliberately last, and
+   deliberately not awaited: the model must render on the seeded fallback treatments even
+   if materials.json, treatment-flat.json or lighting.json are missing or malformed. */
+buildSwitcher();
+loadVariantFiles();
+</script>
+</body>
+</html>

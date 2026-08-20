@@ -1,0 +1,586 @@
+{
+ "_": "DERIVED by tools/materials_merge.py from materials.json + the texture manifest. Do not hand-edit: change the slot's `texture` or `tile_m` in materials.json and re-run.",
+ "_intent": "Built. Full physically-based materials from the 20-set library, projected triplanar so they land on the 183 of 244 mesh primitives that carry no UVs.",
+ "_orm": "R=occlusion(unused, 255), G=roughness, B=metalness(pinned 0). Per-slot metallic is the scalar in this file, never the map.",
+ "fabric": {
+  "wall_brick": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.62,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "handmade-red-brick",
+   "tile_m": 2.0,
+   "albedo": "textures/web/handmade-red-brick-albedo.webp",
+   "normal": "textures/web/handmade-red-brick-normal.webp",
+   "orm": "textures/web/handmade-red-brick-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "wall_stone": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.6,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "ashlar-stone",
+   "tile_m": 2.4,
+   "albedo": "textures/web/ashlar-stone-albedo.webp",
+   "normal": "textures/web/ashlar-stone-normal.webp",
+   "orm": "textures/web/ashlar-stone-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "wall_render": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.76,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "smooth-lime-render",
+   "tile_m": 3.0,
+   "albedo": "textures/web/smooth-lime-render-albedo.webp",
+   "normal": "textures/web/smooth-lime-render-normal.webp",
+   "orm": "textures/web/smooth-lime-render-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "wallplain": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.66,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "handmade-red-brick",
+   "tile_m": 2.0,
+   "albedo": "textures/web/handmade-red-brick-albedo.webp",
+   "normal": "textures/web/handmade-red-brick-normal.webp",
+   "orm": "textures/web/handmade-red-brick-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "wallbrick": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.66,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "handmade-red-brick",
+   "tile_m": 2.0,
+   "albedo": "textures/web/handmade-red-brick-albedo.webp",
+   "normal": "textures/web/handmade-red-brick-normal.webp",
+   "orm": "textures/web/handmade-red-brick-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "wall_off": {
+   "colour": [
+    0.1529,
+    0.1384,
+    0.107
+   ],
+   "metallic": 0.0,
+   "roughness": 0.95,
+   "alpha": 1.0,
+   "textured": false
+  },
+  "stone": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.8,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "rubble-stone",
+   "tile_m": 2.0,
+   "albedo": "textures/web/rubble-stone-albedo.webp",
+   "normal": "textures/web/rubble-stone-normal.webp",
+   "orm": "textures/web/rubble-stone-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "stone_detail": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.55,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "ashlar-stone",
+   "tile_m": 1.2,
+   "albedo": "textures/web/ashlar-stone-albedo.webp",
+   "normal": "textures/web/ashlar-stone-normal.webp",
+   "orm": "textures/web/ashlar-stone-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "roof_slate": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.48,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "welsh-slate-roof",
+   "tile_m": 1.6,
+   "albedo": "textures/web/welsh-slate-roof-albedo.webp",
+   "normal": "textures/web/welsh-slate-roof-normal.webp",
+   "orm": "textures/web/welsh-slate-roof-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "roof": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.58,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "welsh-slate-roof",
+   "tile_m": 1.6,
+   "albedo": "textures/web/welsh-slate-roof-albedo.webp",
+   "normal": "textures/web/welsh-slate-roof-normal.webp",
+   "orm": "textures/web/welsh-slate-roof-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "roof_lead": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.2,
+   "roughness": 0.4,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "lead-roof-flashing",
+   "tile_m": 1.5,
+   "albedo": "textures/web/lead-roof-flashing-albedo.webp",
+   "normal": "textures/web/lead-roof-flashing-normal.webp",
+   "orm": "textures/web/lead-roof-flashing-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "roof_off": {
+   "colour": [
+    0.1221,
+    0.1095,
+    0.0844
+   ],
+   "metallic": 0.0,
+   "roughness": 0.95,
+   "alpha": 1.0,
+   "textured": false
+  },
+  "prop_roof": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.55,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "welsh-slate-roof",
+   "tile_m": 1.6,
+   "albedo": "textures/web/welsh-slate-roof-albedo.webp",
+   "normal": "textures/web/welsh-slate-roof-normal.webp",
+   "orm": "textures/web/welsh-slate-roof-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "timber": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.78,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "oak-weatherboard",
+   "tile_m": 1.8,
+   "albedo": "textures/web/oak-weatherboard-albedo.webp",
+   "normal": "textures/web/oak-weatherboard-normal.webp",
+   "orm": "textures/web/oak-weatherboard-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "frame": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.42,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "painted-timber-joinery",
+   "tile_m": 1.0,
+   "albedo": "textures/web/painted-timber-joinery-albedo.webp",
+   "normal": "textures/web/painted-timber-joinery-normal.webp",
+   "orm": "textures/web/painted-timber-joinery-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "door": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.32,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "painted-timber-joinery",
+   "tile_m": 1.0,
+   "albedo": "textures/web/painted-timber-joinery-albedo.webp",
+   "normal": "textures/web/painted-timber-joinery-normal.webp",
+   "orm": "textures/web/painted-timber-joinery-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "glass": {
+   "colour": [
+    0.0612,
+    0.0931,
+    0.1144
+   ],
+   "metallic": 0.0,
+   "roughness": 0.05,
+   "alpha": 0.3,
+   "textured": false
+  },
+  "metal": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.65,
+   "roughness": 0.38,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "patinated-copper",
+   "tile_m": 1.0,
+   "albedo": "textures/web/patinated-copper-albedo.webp",
+   "normal": "textures/web/patinated-copper-normal.webp",
+   "orm": "textures/web/patinated-copper-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "gravel": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.62,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "loose-gravel",
+   "tile_m": 2.5,
+   "albedo": "textures/web/loose-gravel-albedo.webp",
+   "normal": "textures/web/loose-gravel-normal.webp",
+   "orm": "textures/web/loose-gravel-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "earth": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.82,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "compacted-earth-path",
+   "tile_m": 3.0,
+   "albedo": "textures/web/compacted-earth-path-albedo.webp",
+   "normal": "textures/web/compacted-earth-path-normal.webp",
+   "orm": "textures/web/compacted-earth-path-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "terrain": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.72,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "mown-lawn",
+   "tile_m": 6.0,
+   "albedo": "textures/web/mown-lawn-albedo.webp",
+   "normal": "textures/web/mown-lawn-normal.webp",
+   "orm": "textures/web/mown-lawn-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "surface_pale_gravel_hardstanding": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.92,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "loose-gravel",
+   "tile_m": 2.5,
+   "albedo": "textures/web/loose-gravel-albedo.webp",
+   "normal": "textures/web/loose-gravel-normal.webp",
+   "orm": "textures/web/loose-gravel-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "surface_formal_lawn": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.88,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "mown-lawn-mower-stripe",
+   "tile_m": 4.0,
+   "albedo": "textures/web/mown-lawn-mower-stripe-albedo.webp",
+   "normal": "textures/web/mown-lawn-mower-stripe-normal.webp",
+   "orm": "textures/web/mown-lawn-mower-stripe-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "surface_planted_beds": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.96,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "woodland-floor",
+   "tile_m": 4.0,
+   "albedo": "textures/web/woodland-floor-albedo.webp",
+   "normal": "textures/web/woodland-floor-normal.webp",
+   "orm": "textures/web/woodland-floor-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "surface_service_hardstanding": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.9,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "bound-resin-gravel",
+   "tile_m": 2.0,
+   "albedo": "textures/web/bound-resin-gravel-albedo.webp",
+   "normal": "textures/web/bound-resin-gravel-normal.webp",
+   "orm": "textures/web/bound-resin-gravel-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "surface_rough_parkland": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.93,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "rough-meadow-grass",
+   "tile_m": 4.0,
+   "albedo": "textures/web/rough-meadow-grass-albedo.webp",
+   "normal": "textures/web/rough-meadow-grass-normal.webp",
+   "orm": "textures/web/rough-meadow-grass-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "hedge": {
+   "colour": [
+    0.0482,
+    0.0742,
+    0.0284
+   ],
+   "metallic": 0.0,
+   "roughness": 0.85,
+   "alpha": 1.0,
+   "textured": false
+  },
+  "trunk": {
+   "colour": [
+    0.0931,
+    0.0666,
+    0.0423
+   ],
+   "metallic": 0.0,
+   "roughness": 0.88,
+   "alpha": 1.0,
+   "textured": false
+  },
+  "leaf_broadleaf": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.8,
+   "alpha": 1.0,
+   "textured": false
+  },
+  "leaf_veteran": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.8,
+   "alpha": 1.0,
+   "textured": false
+  },
+  "leaf_poplar": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.8,
+   "alpha": 1.0,
+   "textured": false
+  },
+  "leaf_cedar": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.8,
+   "alpha": 1.0,
+   "textured": false
+  },
+  "water": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.05,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "still-water-long-water",
+   "tile_m": 12.0,
+   "albedo": "textures/web/still-water-long-water-albedo.webp",
+   "normal": "textures/web/still-water-long-water-normal.webp",
+   "orm": "textures/web/still-water-long-water-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "longwater": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.03,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "still-water-long-water",
+   "tile_m": 8.0,
+   "albedo": "textures/web/still-water-long-water-albedo.webp",
+   "normal": "textures/web/still-water-long-water-normal.webp",
+   "orm": "textures/web/still-water-long-water-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "proposed_on": {
+   "colour": [
+    0.6105,
+    0.521,
+    0.3231
+   ],
+   "metallic": 0.0,
+   "roughness": 0.65,
+   "alpha": 1.0,
+   "textured": false
+  },
+  "proposed_off": {
+   "colour": [
+    0.552,
+    0.5776,
+    0.6038
+   ],
+   "metallic": 0.0,
+   "roughness": 1.0,
+   "alpha": 0.26,
+   "textured": false
+  },
+  "area": {
+   "colour": [
+    0.5776,
+    0.3005,
+    0.0437
+   ],
+   "metallic": 0.0,
+   "roughness": 0.95,
+   "alpha": 0.3,
+   "textured": false
+  },
+  "marker": {
+   "colour": [
+    0.0482,
+    0.0908,
+    0.1812
+   ],
+   "metallic": 0.0,
+   "roughness": 0.4,
+   "alpha": 1.0,
+   "textured": false
+  },
+  "anchor": {
+   "colour": [
+    0.4233,
+    0.0319,
+    0.0194
+   ],
+   "metallic": 0.0,
+   "roughness": 0.4,
+   "alpha": 1.0,
+   "textured": false
+  }
+ }
+}
