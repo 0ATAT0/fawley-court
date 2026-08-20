@@ -262,6 +262,83 @@ table.cs-t tr.total td.ans { color: var(--accent); }
 table.cs-t tr.rule > * { border-top: 1px solid var(--line-mid); }
 table.cs-t tbody td:first-child { color: var(--ink); }
 
+/* ─────────────────────────  the evidence ledger  ───────────────────────── */
+
+/* Two tracks: what the record is and where it comes from on the left, what it
+   holds on the right. The right track is fixed, so every headline figure in the
+   set sits on one vertical line and the eye reads down it. */
+.evl { margin-top: clamp(4px, 0.8vw, 10px); border-top: 1px solid var(--line-strong); }
+.ev-head { font-size: var(--fs-micro); letter-spacing: .09em; text-transform: uppercase;
+           color: var(--muted-2); text-align: right; padding: 9px 0 0; }
+.ev {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(230px, 30%);
+  gap: 6px clamp(18px, 2.6vw, 44px); align-items: start;
+  padding: clamp(15px, 1.8vw, 20px) 0; border-bottom: 1px solid var(--line);
+}
+.ev.subject { background: var(--accent-tint); box-shadow: -14px 0 0 var(--accent-tint), 14px 0 0 var(--accent-tint); }
+.ev.subject + .ev.subject { border-top: 1px solid rgba(255,255,255,.6); }
+
+.ev-n { font-size: var(--fs-body); font-weight: 700; letter-spacing: -.006em; color: var(--ink);
+        line-height: 1.3; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.ev.subject .ev-n { color: var(--accent); }
+.ev-k { font-size: var(--fs-cap); font-weight: 400; color: var(--muted); white-space: nowrap;
+        font-variant-numeric: tabular-nums; }
+.ev-n .cl { font-size: var(--fs-micro); letter-spacing: .09em; text-transform: uppercase;
+            color: var(--muted-2); font-weight: 600; }
+.ev-n .cl.filed { color: var(--accent); }
+.ev-n .cl.modelled { color: var(--ochre); }
+.ev-n .cl.press, .ev-n .cl.interview { color: var(--muted-2); }
+.ev-n .cl.derived { color: var(--ochre); }
+.ev-r { font-size: var(--fs-sm); color: var(--ink); line-height: var(--lh-relaxed); margin-top: 7px;
+        max-width: 74ch; }
+.ev-b { font-size: var(--fs-cap); color: var(--muted); line-height: 1.55; margin-top: 7px;
+        max-width: 82ch; }
+
+.ev-side { text-align: right; display: grid; gap: 9px; justify-items: end; padding-top: 1px; }
+.ev-f { display: grid; justify-items: end; gap: 2px; }
+.ev-f + .ev-f { margin-top: 4px; padding-top: 8px; border-top: 1px solid var(--line);
+                width: 100%; }
+.ev-v { font-size: clamp(1rem, .9rem + .5vw, 1.32rem); font-weight: 700; color: var(--accent);
+        font-variant-numeric: tabular-nums; letter-spacing: -.016em; line-height: 1.2; }
+.ev-l { font-size: var(--fs-micro); letter-spacing: .08em; text-transform: uppercase;
+        color: var(--muted-2); }
+.ev-c { font-size: var(--fs-micro); color: var(--muted); font-variant-numeric: tabular-nums;
+        margin-top: 2px; }
+.ev-none { font-size: var(--fs-micro); color: var(--muted-2); }
+
+.ev-bar { position: relative; width: 100%; height: 3px; background: var(--surface-3); }
+.ev-bar i { position: absolute; top: 0; bottom: 0; background: var(--accent); display: block;
+            animation: evbar .66s var(--ease) both; transform-origin: left; }
+.ev-bar.neg i { background: var(--neg); transform-origin: right; }
+.ev-zero { position: absolute; top: -3px; bottom: -3px; width: 1px; background: var(--line-mid); }
+@keyframes evbar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.ev.subject .ev-bar { background: #dfe5ee; }
+/* the muted grey clears 4.5:1 on paper and lands at 4.45:1 on the subject's
+   tint, so the small labels darken one step inside the tinted band */
+.ev.subject .ev-l, .ev.subject .ev-s dt, .ev.subject .ev-c { color: var(--muted); }
+
+.ev-s { display: grid; gap: 3px; width: 100%; }
+.ev-s div { display: flex; justify-content: flex-end; align-items: baseline; gap: 10px; }
+.ev-s dt { font-size: var(--fs-micro); color: var(--muted-2); }
+.ev-s dd { font-size: var(--fs-cap); color: var(--ink); font-variant-numeric: tabular-nums; }
+
+.ev-div { font-size: var(--fs-micro); font-weight: 700; letter-spacing: .09em;
+          text-transform: uppercase; color: var(--muted-2); padding: 22px 0 9px;
+          border-bottom: 1px solid var(--line-mid); }
+.ev-key { font-size: var(--fs-micro); color: var(--muted-2); line-height: 1.55; margin-top: 14px; }
+.ev-note { font-size: var(--fs-sm); color: var(--muted); line-height: var(--lh-relaxed);
+           margin-top: 12px; max-width: 92ch; }
+
+@media (max-width: 820px) {
+  .ev { grid-template-columns: minmax(0, 1fr); }
+  .ev-main { order: 2; }
+  .ev-side { order: 1; text-align: left; justify-items: start; }
+  .ev-f, .ev-s div { justify-items: start; }
+  .ev-s div { justify-content: flex-start; }
+  .ev-b, .ev-r { max-width: none; }
+}
+@media (prefers-reduced-motion: reduce) { .ev-bar i { animation: none; } }
+
 /* ─────────────────────────  the rate tab  ───────────────────────── */
 
 .rt-bar { display: flex; align-items: baseline; justify-content: space-between; gap: 18px;
@@ -1831,6 +1908,920 @@ const FIGS = {
 };
 
 /* The dial set, for the bar's Dials sheet. Figures as the memorandum prints them. */
+/* EVID-DATA */
+const EVID = {
+ "cohort": {
+  "rows": [
+   {
+    "n": "Fawley Court — underwritten",
+    "b": "Financial Model v29, Year 7; 365-day operation; staff cost index 1.20 and no headcount modelled",
+    "c": "modelled",
+    "k": "60",
+    "f": [
+     {
+      "l": "GOP",
+      "v": "33.88%",
+      "calc": "£15.97m / £47.14m"
+     }
+    ],
+    "s": [
+     [
+      "Revenue",
+      "£47.14m Y7 (£785,630/key)"
+     ]
+    ],
+    "p": 33.88,
+    "pl": "margin",
+    "subject": true
+   },
+   {
+    "n": "Le Grand Contrôle",
+    "b": "LOV &amp; DUCASSE, French statutory accounts FY2021–24 filed via Pappers; 100–199 employees is a 2023 band",
+    "c": "filed",
+    "k": "14",
+    "f": [
+     {
+      "l": "EBE",
+      "v": "−12.9%",
+      "calc": "−€2.10m / €16.3m"
+     }
+    ],
+    "r": "FY2021–24 all negative: −€1.89m/€5.92m, −€2.02m/€13.7m, −€2.36m/€15.1m, −€2.10m/€16.3m",
+    "s": [
+     [
+      "Revenue",
+      "€16.3m FY2024"
+     ],
+     [
+      "Staff a key",
+      "7.1–14.2, flagged"
+     ]
+    ],
+    "p": -12.9,
+    "pl": "margin"
+   },
+   {
+    "n": "Château de la Messardière",
+    "b": "SA Hotel Château de la Messardière, French statutory accounts FY2024 filed 21 July 2025; current Airelles page confirms 86 rooms; season about 5.5–6 months",
+    "c": "filed",
+    "k": "86",
+    "f": [
+     {
+      "l": "EBE",
+      "v": "36.5%",
+      "calc": "€21.2m / €58.1m"
+     }
+    ],
+    "s": [
+     [
+      "Revenue",
+      "€58.1m FY2024"
+     ]
+    ],
+    "p": 36.5,
+    "pl": "margin"
+   },
+   {
+    "n": "La Bastide de Gordes",
+    "b": "La Bastide de Gordes &amp; Spa, French statutory accounts FY2024 via Pappers/Verif; 70–96 employees from registry surfaces; about six months open",
+    "c": "filed",
+    "k": "40",
+    "f": [
+     {
+      "l": "EBE",
+      "v": "11.8%",
+      "calc": "€2.17m / €18.36m"
+     }
+    ],
+    "s": [
+     [
+      "Revenue",
+      "€18.36m FY2024"
+     ],
+     [
+      "Staff a key",
+      "1.75–2.40, conflicting"
+     ]
+    ],
+    "p": 11.8,
+    "pl": "margin"
+   },
+   {
+    "n": "Borgo Egnazia",
+    "b": "E.I.T. S.p.A. Italian Business Register data FY2024; 765 August-peak staff from Il Sole 24 Ore, 2024",
+    "c": "filed",
+    "k": "184",
+    "f": [
+     {
+      "l": "Net profit",
+      "v": "10.8%",
+      "calc": "€7.903m / €73.025m"
+     }
+    ],
+    "r": "EBITDA not disclosed",
+    "s": [
+     [
+      "Revenue",
+      "€73.025m FY2024"
+     ],
+     [
+      "Staff a key",
+      "4.16 peak"
+     ]
+    ],
+    "p": 10.8,
+    "pl": "margin"
+   },
+   {
+    "n": "Smeralda portfolio — four hotels",
+    "b": "Sardegna Resorts S.r.l. FY2024 registry data and UniOlbia summary of filed accounts; 600 annual-average staff and 800 peak staff; not Pitrizza standalone",
+    "c": "filed",
+    "k": "~395",
+    "f": [
+     {
+      "l": "EBITDA",
+      "v": "25.8%",
+      "calc": "€37.7m / €146.1m"
+     }
+    ],
+    "s": [
+     [
+      "Revenue",
+      "€142.691m registry / €146.1m UniOlbia FY2024"
+     ],
+     [
+      "Staff a key",
+      "1.52 annual average; 2.03 peak"
+     ]
+    ],
+    "p": 25.8,
+    "pl": "margin"
+   },
+   {
+    "n": "Passalacqua",
+    "b": "Meta S.p.A. FY2024 filing covers Grand Hotel Tremezzo, Passalacqua and Sheraton Lake Como; 100 staff from GM interview, CNN, September 2023",
+    "c": "filed",
+    "k": "24",
+    "f": [
+     {
+      "l": "Group net profit",
+      "v": "34.9%",
+      "calc": "€26.3m / €75.3m"
+     }
+    ],
+    "r": "property margin not held",
+    "s": [
+     [
+      "Revenue",
+      "Within €75.3m FY2024 three-hotel group"
+     ],
+     [
+      "Staff a key",
+      "4.17"
+     ]
+    ],
+    "p": 34.9,
+    "pl": "margin"
+   },
+   {
+    "n": "Belmond Europe owned-hotels segment",
+    "b": "Belmond Ltd Forms 10-K FY2017 and FY2018, SEC Note 25 / Europe segment; segment, not property-level",
+    "c": "filed",
+    "f": [
+     {
+      "l": "adjusted EBITDA",
+      "v": "34.7%",
+      "calc": "$73.687m / $212.379m"
+     },
+     {
+      "l": "margin",
+      "v": "33.1%",
+      "calc": "$79.038m / $238.440m"
+     }
+    ],
+    "s": [
+     [
+      "Revenue",
+      "$212.379m FY2017; $238.440m FY2018"
+     ]
+    ],
+    "p": 34.7,
+    "pl": "margin"
+   },
+   {
+    "n": "Royal Champagne",
+    "b": "Royal Champagne FY2024 French accounts filed via Pappers; 127-person headcount is dated 2022, not FY2024",
+    "c": "filed",
+    "k": "47",
+    "f": [
+     {
+      "l": "EBE",
+      "v": "5.96%",
+      "calc": "€1.23m / €20.636m"
+     }
+    ],
+    "s": [
+     [
+      "Revenue",
+      "€20.636m FY2024"
+     ],
+     [
+      "Staff a key",
+      "2.70, using 127 staff / 47 keys"
+     ]
+    ],
+    "p": 5.96,
+    "pl": "margin"
+   },
+   {
+    "n": "Ballyfin Demesne",
+    "b": "Ballyfin Demesne Limited CRO FY2024 accounts; 96 employees and 20–21 keys",
+    "c": "filed",
+    "k": "20–21",
+    "f": [
+     {
+      "l": "Loss after tax",
+      "v": "−5.9%",
+      "calc": "−€389,281 / €6.61m"
+     }
+    ],
+    "r": "GOP/EBITDA not held",
+    "s": [
+     [
+      "Revenue",
+      "€6.61m FY2024"
+     ],
+     [
+      "Staff a key",
+      "4.6–4.8"
+     ]
+    ],
+    "p": -5.9,
+    "pl": "margin"
+   },
+   {
+    "n": "Hotel Cipriani",
+    "b": "Hotel Cipriani S.p.A. FY2024 Italian registry data; current Belmond count is 79, replacing the older 96-key figure",
+    "c": "filed",
+    "k": "79 current; 103 older combined basis",
+    "r": "EBITDA/GOP not disclosed",
+    "s": [
+     [
+      "Revenue",
+      "€41.329m FY2024"
+     ],
+     [
+      "Staff a key",
+      "0.63–1.25 registry band; unverified 228-person figure excluded"
+     ]
+    ]
+   },
+   {
+    "n": "Hotel Splendido",
+    "b": "Hotel Splendido S.p.A. FY2024 Italian registry data; operator and registry key counts remain unreconciled",
+    "c": "filed",
+    "k": "54 operator count; 61 registry conflict",
+    "r": "EBITDA/GOP not disclosed; net loss −€1.578m",
+    "s": [
+     [
+      "Revenue",
+      "€34.441m FY2024"
+     ]
+    ]
+   },
+   {
+    "n": "Belmond Villa San Michele",
+    "b": "Villa San Michele S.p.A. FY2024 Italian registry data; FY2024 predates the full reopening",
+    "c": "filed",
+    "k": "39",
+    "r": "Net loss −€7.453m; EBITDA/GOP not disclosed",
+    "s": [
+     [
+      "Revenue",
+      "€14.368m FY2024"
+     ]
+    ]
+   },
+   {
+    "n": "Hotel Caruso",
+    "b": "Hotel Caruso S.p.A. FY2024 Italian registry revenue; EBITDA from Xray Finance aggregator, FY2024",
+    "c": "filed",
+    "k": "50",
+    "f": [
+     {
+      "l": "Reported EBITDA",
+      "v": "26.5%",
+      "calc": "€6.816m / €25.68m"
+     }
+    ],
+    "r": "aggregator figure, not filed EBITDA",
+    "s": [
+     [
+      "Revenue",
+      "€25.68m FY2024"
+     ]
+    ],
+    "p": 26.5,
+    "pl": "margin"
+   },
+   {
+    "n": "Villa La Coste",
+    "b": "CLC Luxury Hotel SARL, French accounts FY2024 via Pappers; Pappers supports €12.4m, not €12.45m",
+    "c": "filed",
+    "k": "31",
+    "f": [
+     {
+      "l": "Operating loss",
+      "v": "−4.6%",
+      "calc": "−€0.568m / €12.4m"
+     }
+    ],
+    "r": "EBITDA/GOP not held",
+    "s": [
+     [
+      "Revenue",
+      "€12.4m FY2024"
+     ]
+    ],
+    "p": -4.6,
+    "pl": "margin"
+   },
+   {
+    "n": "Castiglion del Bosco",
+    "b": "Castiglion del Bosco Hotel S.r.l. FY2024 Italian registry data; 175 versus 241 employees unresolved",
+    "c": "filed",
+    "k": "53",
+    "f": [
+     {
+      "l": "Net profit",
+      "v": "7.9%",
+      "calc": "€3.575m / €45.074m"
+     }
+    ],
+    "r": "EBITDA/GOP not disclosed",
+    "s": [
+     [
+      "Revenue",
+      "€45.074m FY2024"
+     ],
+     [
+      "Staff a key",
+      "3.3–4.6, conflicting"
+     ]
+    ],
+    "p": 7.9,
+    "pl": "margin"
+   },
+   {
+    "n": "Amanzoe",
+    "b": "FY2023 turnover perimeter includes villa sales; no clean hotel-only filing",
+    "c": "filed",
+    "k": "~40 pavilions plus villas",
+    "r": "Property EBITDA/GOP not held",
+    "s": [
+     [
+      "Revenue",
+      "€41.80m FY2023"
+     ]
+    ]
+   }
+  ],
+  "note": "Sixteen properties file something; not one of them files a hotel-level GOP on a year-round northern-European conversion. Royal Champagne is the closest analogue held, and it earns 5.96% on the same convention. The subject’s 33.88% is a modelled margin, not a demonstrated one.",
+  "max": 36.5,
+  "min": -12.9,
+  "plotLabel": "margin"
+ },
+ "margin": {
+  "rows": [
+   {
+    "n": "Fawley Court — GOP",
+    "b": "Financial Model v29, Year 7 underwrite; modelled, not filed",
+    "c": "modelled",
+    "f": [
+     {
+      "l": "margin",
+      "v": "33.88%",
+      "calc": "£15.97m / £47.14m"
+     }
+    ],
+    "subject": true
+   },
+   {
+    "n": "Belmond Europe — adjusted EBITDA",
+    "b": "Belmond Ltd Forms 10-K FY2016–18, Europe segment",
+    "c": "filed",
+    "f": [
+     {
+      "l": "margin",
+      "v": "33.9%",
+      "calc": "$67.590m / $199.251m"
+     },
+     {
+      "l": "margin",
+      "v": "34.7%",
+      "calc": "$73.687m / $212.379m"
+     },
+     {
+      "l": "margin",
+      "v": "33.1%",
+      "calc": "$79.038m / $238.440m"
+     }
+    ],
+    "r": "FY2016; FY2017; FY2018"
+   },
+   {
+    "n": "Le Grand Contrôle — EBE",
+    "b": "LOV &amp; DUCASSE French statutory accounts FY2024 via Pappers; payroll not disclosed in the filing",
+    "c": "filed",
+    "f": [
+     {
+      "l": "margin",
+      "v": "−12.9%",
+      "calc": "−€2.10m / €16.3m"
+     }
+    ],
+    "r": "FY2024"
+   },
+   {
+    "n": "Château de la Messardière — EBE and payroll",
+    "b": "SA Hotel Château de la Messardière French accounts FY2024 via Pappers",
+    "c": "filed",
+    "f": [
+     {
+      "l": "EBE",
+      "v": "36.5%",
+      "calc": "€21.2m / €58.1m"
+     },
+     {
+      "l": "payroll",
+      "v": "19.2%",
+      "calc": "€11.2m / €58.1m"
+     }
+    ],
+    "r": "FY2024"
+   },
+   {
+    "n": "La Bastide de Gordes — EBE",
+    "b": "La Bastide de Gordes &amp; Spa French accounts FY2024 via Pappers/Verif; payroll not held on a verified filed basis",
+    "c": "filed",
+    "f": [
+     {
+      "l": "margin",
+      "v": "11.8%",
+      "calc": "€2.17m / €18.36m"
+     }
+    ],
+    "r": "FY2024"
+   },
+   {
+    "n": "Royal Champagne — EBE and payroll",
+    "b": "Royal Champagne French accounts FY2024 via Pappers; 127-person headcount is FY2022",
+    "c": "filed",
+    "f": [
+     {
+      "l": "EBE",
+      "v": "5.96%",
+      "calc": "€1.23m / €20.636m"
+     },
+     {
+      "l": "payroll",
+      "v": "41.7%",
+      "calc": "€8.612m / €20.636m"
+     }
+    ],
+    "r": "FY2024"
+   },
+   {
+    "n": "Borgo Egnazia — net margin and payroll",
+    "b": "E.I.T. S.p.A. Italian Business Register FY2024; primary filing not purchased",
+    "c": "filed",
+    "f": [
+     {
+      "l": "Net profit",
+      "v": "10.8%",
+      "calc": "€7.903m / €73.025m"
+     },
+     {
+      "l": "personnel cost",
+      "v": "19.0%",
+      "calc": "€13.851m / €73.025m"
+     }
+    ],
+    "r": "EBITDA/GOP not disclosed"
+   },
+   {
+    "n": "Smeralda portfolio — EBITDA and payroll",
+    "b": "Sardegna Resorts S.r.l. FY2024 filed-account summaries and registry data; four-hotel perimeter",
+    "c": "filed",
+    "f": [
+     {
+      "l": "EBITDA",
+      "v": "25.8%",
+      "calc": "€37.7m / €146.1m"
+     },
+     {
+      "l": "payroll",
+      "v": "17.6%",
+      "calc": "€25.7m / €146.1m"
+     },
+     {
+      "l": "on UniOlbia basis versus",
+      "v": "25.1%",
+      "calc": "€35.79m / €142.69m"
+     }
+    ],
+    "r": "on registry basis; unreconciled"
+   },
+   {
+    "n": "Cliveden House — EBITDA and payroll",
+    "b": "SRE Hotels (Cliveden) Limited Companies House accounts FY2024, filed 7 August 2025",
+    "c": "filed",
+    "f": [
+     {
+      "l": "EBITDA",
+      "v": "27.12%",
+      "calc": "£5.095m / £18.784m"
+     },
+     {
+      "l": "payroll",
+      "v": "30.0%",
+      "calc": "£5.638m / £18.784m"
+     }
+    ]
+   },
+   {
+    "n": "Chewton Glen — operating profit and payroll",
+    "b": "Chewton Glen Hotels Limited Companies House accounts FY2024; 321 average monthly employees",
+    "c": "filed",
+    "f": [
+     {
+      "l": "Operating profit",
+      "v": "19.6%",
+      "calc": "£4.27m / £21.83m"
+     },
+     {
+      "l": "payroll",
+      "v": "34.5%",
+      "calc": "£7.53m / £21.83m"
+     }
+    ]
+   },
+   {
+    "n": "Beaverbrook — adjusted EBITDA and payroll",
+    "b": "Beaverbrook Holdings Limited consolidated Companies House accounts, year ended March 2025",
+    "c": "filed",
+    "f": [
+     {
+      "l": "Adjusted EBITDA",
+      "v": "12.48%",
+      "calc": "£3.601m / £28.850m"
+     },
+     {
+      "l": "payroll",
+      "v": "45.6%",
+      "calc": "£13.145m / £28.850m"
+     }
+    ]
+   },
+   {
+    "n": "Estelle Manor — adjusted EBITDA and payroll",
+    "b": "Estelle Manor Limited Companies House accounts FY2025, year ended 31 March 2025",
+    "c": "filed",
+    "f": [
+     {
+      "l": "EBITDA",
+      "v": "−6.20%",
+      "calc": "−£2.751m / £44.392m"
+     },
+     {
+      "l": "payroll",
+      "v": "49.5%",
+      "calc": "£21.957m / £44.392m"
+     }
+    ]
+   },
+   {
+    "divider": "Held from the wider corpus, and from filings without a full revenue split"
+   },
+   {
+    "n": "Align corpus p25 / p50 / p75",
+    "b": "GOP, 67 hotels, FY2012–25A",
+    "c": "filed",
+    "f": [
+     {
+      "l": "GOP",
+      "v": "22.3 / 31.1 / 36.0%"
+     }
+    ]
+   },
+   {
+    "n": "Careys Manor",
+    "b": "GOP, FY2023A",
+    "c": "filed",
+    "f": [
+     {
+      "l": "GOP",
+      "v": "~30%"
+     }
+    ]
+   },
+   {
+    "n": "Fairmont St Andrews",
+    "b": "GOP, FY2021–23A",
+    "c": "filed",
+    "f": [
+     {
+      "l": "GOP",
+      "v": "19.5–23.3%"
+     }
+    ]
+   },
+   {
+    "n": "Luton Hoo",
+    "b": "GOP, FY2018–20A",
+    "c": "filed",
+    "f": [
+     {
+      "l": "GOP",
+      "v": "10–15%"
+     }
+    ]
+   },
+   {
+    "n": "Lucknam Park",
+    "b": "Payroll share of revenue, FY25A; FY24A 41.8%",
+    "c": "filed",
+    "f": [
+     {
+      "l": "payroll",
+      "v": "40.1%"
+     }
+    ]
+   },
+   {
+    "n": "Grantley Hall",
+    "b": "Payroll share of revenue, FY25A, full-estate staffing",
+    "c": "filed",
+    "f": [
+     {
+      "l": "payroll",
+      "v": "51.5%"
+     }
+    ]
+   },
+   {
+    "n": "The Newt in Somerset",
+    "b": "Payroll share of revenue, FY25A, whole estate including gardens",
+    "c": "filed",
+    "f": [
+     {
+      "l": "payroll",
+      "v": "71.1%"
+     }
+    ]
+   }
+  ],
+  "note": "Every line above the rule now carries the absolutes it is struck on, so no percentage travels alone. Payroll runs from 19.0% at Borgo Egnazia, on a seasonal Puglian base, to 49.5% at Estelle Manor, which trades year-round on a membership model of the kind this underwrite assumes."
+ },
+ "capex": {
+  "rows": [
+   {
+    "n": "Fawley Court — hotel works",
+    "b": "£125.9m, 2026 Financial Model v29 Capex tab; 162-line ground-up works budget with 15% preliminaries, 9% fees and 10% contingency; works only, VAT and tender inflation excluded",
+    "c": "modelled",
+    "k": "60",
+    "f": [
+     {
+      "v": "£2.10m"
+     }
+    ],
+    "p": 2.1,
+    "pl": "£m a key",
+    "subject": true
+   },
+   {
+    "n": "Fawley Court — cost to open",
+    "b": "£196.6m, 2026 Financial Model v29; hotel works plus £50m acquisition, 5% acquisition costs, finance fees, capitalised interest and pre-opening shortfall; all-in funded cost to opening",
+    "c": "modelled",
+    "k": "60",
+    "f": [
+     {
+      "v": "£3.28m"
+     }
+    ],
+    "p": 3.28,
+    "pl": "£m a key",
+    "subject": true
+   },
+   {
+    "n": "Le Grand Contrôle",
+    "b": "2018–21 works on three listed buildings, c.5,000 sqm. Press figures conflict: US$39m, &gt;US$50m and €55m; converted at US$1=£0.7426 and €1=£0.8575. Sources: CALQ project page, Pratique, Condé Nast Traveler; press-reported, not filed",
+    "c": "press",
+    "k": "14",
+    "f": [
+     {
+      "v": "£2.07m–£3.37m"
+     }
+    ],
+    "r": "middle report &gt;£2.65m",
+    "p": 2.72,
+    "pl": "£m a key"
+   },
+   {
+    "n": "Château de la Messardière — all-in",
+    "b": "2019–21; €154m acquisition plus approximately €40m planned renovation, converted at €1=£0.8575. 117 keys bought; 86 rooms and suites now let. Sources: Groupe BPCE financing release, L’Hôtellerie-Restauration, CFNEWS; reported transaction plus planned works, not filed actual spend",
+    "c": "press",
+    "k": "86 / 117",
+    "f": [
+     {
+      "v": "£1.94m / £1.42m"
+     }
+    ],
+    "p": 1.68,
+    "pl": "£m a key"
+   },
+   {
+    "n": "Beaverbrook",
+    "b": "More than £90m reported over the 2011–17 restoration, covering the mansion and estate outbuildings; 2017 completion basis. Source: Forbes, 14 Nov 2018; press-reported, not filed",
+    "c": "press",
+    "k": "35 at 2017 completion; 56 today",
+    "f": [
+     {
+      "v": "£2.57m floor"
+     }
+    ],
+    "p": 2.57,
+    "pl": "£m a key"
+   },
+   {
+    "n": "Ballyfin Demesne",
+    "b": "Restoration and hotel conversion before the 2011 opening; acquisition and works not split. Press figures and currency conflict: more than US$50m and more than €50m. Sources: Town &amp; Country, 2022; Irish Times, 2019; press-reported",
+    "c": "press",
+    "k": "20–21",
+    "f": [
+     {
+      "v": "&gt;£1.77m"
+     }
+    ],
+    "r": "on the US$50m report; &gt;£2.04m on the €50m report",
+    "p": 1.77,
+    "pl": "£m a key"
+   },
+   {
+    "n": "Grantley Hall",
+    "b": "2019 outturn including acquisition, restoration and expansion; citing Yorkshire Post; not split into works and acquisition",
+    "c": "press",
+    "k": "47",
+    "f": [
+     {
+      "v": "£1.49m"
+     }
+    ],
+    "p": 1.49,
+    "pl": "£m a key"
+   },
+   {
+    "n": "Rayners Penn",
+    "b": "January 2025 consent-stage estimate for listed conversion, spa and restaurants; source: Hospitality Investor; outturn unpublished",
+    "c": "derived",
+    "k": "33",
+    "f": [
+     {
+      "v": "£2.73m"
+     }
+    ],
+    "p": 2.73,
+    "pl": "£m a key"
+   },
+   {
+    "n": "Royal Champagne",
+    "b": "More than €50m historic hotel-and-spa redevelopment, 2015–18; source: Vedomosti 2019; press-reported. The 2024 Pappers filing separately records €779,618 of tangible additions, not the historic conversion cost",
+    "c": "filed",
+    "k": "47",
+    "f": [
+     {
+      "v": "&gt;£0.91m",
+      "calc": "reported as &gt;€1.06m"
+     }
+    ],
+    "p": 0.91,
+    "pl": "£m a key"
+   },
+   {
+    "n": "La Bastide de Gordes",
+    "b": "2014–17 works covering hotel, spa, pools, restaurants and public areas; press range €20m–€35m. Sources: L’Hôtellerie-Restauration 2016 and Forbes 2019; press-reported",
+    "c": "press",
+    "k": "c.40",
+    "f": [
+     {
+      "v": "£0.43m–£0.75m",
+      "calc": "reported as €0.50m–€0.88m"
+     }
+    ],
+    "p": 0.59,
+    "pl": "£m a key"
+   },
+   {
+    "n": "Belmond Villa San Michele",
+    "b": "2024–26, €30m press-estimated restyling covering rooms, spa, gardens and restaurant; source: T24 Economia; press-reported",
+    "c": "derived",
+    "k": "39",
+    "f": [
+     {
+      "v": "c.£0.66m",
+      "calc": "reported as c.€0.77m"
+     }
+    ],
+    "p": 0.66,
+    "pl": "£m a key"
+   },
+   {
+    "n": "Passalacqua",
+    "b": "2019–22 conversion, fresco and garden restoration; press currencies conflict between “more than US$20m” and approximately €20m. Sources: LUXUO, Design &amp; Contract and 8 Real Estate; conversion works only, no acquisition",
+    "c": "press",
+    "k": "24",
+    "f": [
+     {
+      "v": "&gt;£0.62m",
+      "calc": "reported as &gt;US$0.83m"
+     }
+    ],
+    "r": "approximately €0.83m / £0.71m on the separate €20m report",
+    "p": 0.62,
+    "pl": "£m a key"
+   },
+   {
+    "n": "Hotel Caruso",
+    "b": "1999–2005 restoration including land, rooms, frescoes, salons, chapel, bar, reception and infinity pool; US$30m press report. SEC filings separately record approximately US$7m invested to date and EU grants; figures are different milestones, not a reconciled outturn",
+    "c": "filed",
+    "k": "54",
+    "f": [
+     {
+      "v": "c.£0.41m",
+      "calc": "reported as c.US$0.56m"
+     }
+    ],
+    "p": 0.41,
+    "pl": "£m a key"
+   },
+   {
+    "n": "Rosewood Schloss Fuschl — earlier renovation",
+    "b": "At least €30m spent in 2005–06 on the hotel, spa, Waldhaus, Jägerhaus and connecting works; source: ORF 2006; earlier renovation, not the 2024 Rosewood reopening",
+    "c": "press",
+    "k": "98",
+    "f": [
+     {
+      "v": "at least £0.26m",
+      "calc": "reported as at least €0.31m"
+     }
+    ],
+    "p": 0.26,
+    "pl": "£m a key"
+   },
+   {
+    "n": "Borgo Egnazia",
+    "b": "Approximately €150m, 2000–10, for 155 rooms, 29 villas, golf, spa and infrastructure; sources: The Independent and Treehouse Group; mixed new-build project total, not divisible to a clean hotel-only per-key figure",
+    "c": "derived",
+    "k": "c.184",
+    "r": "not divisible by keys on this scope"
+   },
+   {
+    "n": "Adare Manor",
+    "b": "2016–17 restoration and expansion reports range from approximately €50m to over €100m; scope includes manor, new accommodation, spa, ballroom, golf and estate infrastructure. Sources: Irish Times and Independent; conflicting press reports, no hotel-only per-key figure",
+    "c": "press",
+    "k": "104 after expansion",
+    "r": "not divisible by keys on this scope"
+   },
+   {
+    "n": "Six Senses Antognolla",
+    "b": "€150m stated project investment, with later reports of €173m; scope includes hotel, residences, castle, golf and estate infrastructure. ANSA 2016 and Rizzani de Eccher project material; not a hotel-only build cost",
+    "c": "press",
+    "k": "71 keys plus 79 residences",
+    "r": "not divisible by keys on this scope"
+   },
+   {
+    "n": "Six Senses Loire Valley / Les Bordes",
+    "b": "€270m announced 2023, with another report of at least €140m; scope includes hotel, residences, restaurants, pools, golf and estate infrastructure. Sources: Les Bordes announcement and Ecozoom; conflicting bundled project totals",
+    "c": "press",
+    "k": "50 hotel rooms plus 52 residences",
+    "r": "not divisible by keys on this scope"
+   },
+   {
+    "n": "Sveti Stefan",
+    "b": "€56m contractor/lender-supervision figure for 2011–15 refurbishment of the island, Villa Miločer and infrastructure. Adriatic Properties separately claims more than €110m, while €110m is also a lease investment obligation; the latter is not evidence of spend. Sources: STMG capability statement, Vijesti, Europa Nostra",
+    "c": "press",
+    "k": "n/c",
+    "r": "not divisible by keys on this scope"
+   }
+  ],
+  "note": "Two subject rows on two bases, because they are not interchangeable: the works figure is the construction number and cost to open is the all-in funded number. Of the third-party figures, six carry conflicting press reports and five cover a scope too mixed to divide by keys at all, which is stated rather than resolved. Sterling conversions use the research convention of €1=£0.8575 and US$1=£0.7426, and nothing here is adjusted for inflation.",
+  "sideHead": "a key",
+  "max": 3.28,
+  "min": 0.0,
+  "plotLabel": "£m a key"
+ }
+};
+/* /EVID-DATA */
 const ASSUMPTIONS = [
   {"g": "The asset", "k": "Price", "v": "<span class='n'>£50m</span>", "c": "Decision", "b": "Ruled, not solved: every return on this page is an output at it. Guidance is understood at about £70m, and the 13.00% bar solves at £51.7m, £1.74m above the ruled price."},
   {"g": "The asset", "k": "Keys", "v": "<span class='n'>60</span>", "c": "Decision", "b": "17 Main House and 43 Stables and Courtyard, the vendor’s own scheduled scheme. 60 keys is the consensus across three of the four operator forecasts. Fifteen fewer keys take the revenue and leave the budget, because the capital cost is a schedule of buildings and estate rather than a price a key.", "w": "6.3pp", "s": [["45 keys", "7.04%"]]},
@@ -2291,18 +3282,18 @@ const CHAPTERS = [
     figure: "Sixteen filers, one year-round analogue", blurb: "What each layer files: revenue, margin, occupancy and staffing.",
     lead: [
       ["h", "The European ceiling cohort"],
-      ["tbl", {"cls": "num wide", "head": ["Property or series", {"t": "Keys", "a": "r"}, {"t": "Revenue", "a": "r"}, "Margin", {"t": "Staff/key", "a": "r"}, "Basis"], "rows": [["subject", ["Fawley Court — underwritten", "60", "<span class='emph'>£47.14m Y7 (£785,630/key)</span>", "<span class='emph'>£15.97m / £47.14m = 33.88% GOP</span>", "—", "Financial Model v29, Year 7; 365-day operation; staff cost index 1.20 and no headcount modelled"]], [null, ["Le Grand Contrôle", "14", "€16.3m FY2024", "EBE −€2.10m / €16.3m = −12.9%; FY2021–24 all negative: −€1.89m/€5.92m, −€2.02m/€13.7m, −€2.36m/€15.1m, −€2.10m/€16.3m", "7.1–14.2, flagged", "LOV &amp; DUCASSE, French statutory accounts FY2021–24 filed via Pappers; 100–199 employees is a 2023 band"]], [null, ["Château de la Messardière", "86", "€58.1m FY2024", "EBE €21.2m / €58.1m = 36.5%", "—", "SA Hotel Château de la Messardière, French statutory accounts FY2024 filed 21 July 2025; current Airelles page confirms 86 rooms; season about 5.5–6 months"]], [null, ["La Bastide de Gordes", "40", "€18.36m FY2024", "EBE €2.17m / €18.36m = 11.8%", "1.75–2.40, conflicting", "La Bastide de Gordes &amp; Spa, French statutory accounts FY2024 via Pappers/Verif; 70–96 employees from registry surfaces; about six months open"]], [null, ["Borgo Egnazia", "184", "€73.025m FY2024", "Net profit €7.903m / €73.025m = 10.8%; EBITDA not disclosed", "4.16 peak", "E.I.T. S.p.A. Italian Business Register data FY2024; 765 August-peak staff from Il Sole 24 Ore, 2024"]], [null, ["Smeralda portfolio — four hotels", "~395", "€142.691m registry / €146.1m UniOlbia FY2024", "EBITDA €37.7m / €146.1m = 25.8%", "1.52 annual average; 2.03 peak", "Sardegna Resorts S.r.l. FY2024 registry data and UniOlbia summary of filed accounts; 600 annual-average staff and 800 peak staff; not Pitrizza standalone"]], [null, ["Passalacqua", "24", "Within €75.3m FY2024 three-hotel group", "Group net profit €26.3m / €75.3m = 34.9%; property margin not held", "4.17", "Meta S.p.A. FY2024 filing covers Grand Hotel Tremezzo, Passalacqua and Sheraton Lake Como; 100 staff from GM interview, CNN, September 2023"]], [null, ["Belmond Europe owned-hotels segment", "—", "$212.379m FY2017; $238.440m FY2018", "$73.687m / $212.379m = 34.7%; $79.038m / $238.440m = 33.1% adjusted EBITDA", "—", "Belmond Ltd Forms 10-K FY2017 and FY2018, SEC Note 25 / Europe segment; segment, not property-level"]], [null, ["Royal Champagne", "47", "€20.636m FY2024", "EBE €1.23m / €20.636m = 5.96%", "2.70, using 127 staff / 47 keys", "Royal Champagne FY2024 French accounts filed via Pappers; 127-person headcount is dated 2022, not FY2024"]], [null, ["Ballyfin Demesne", "20–21", "€6.61m FY2024", "Loss after tax −€389,281 / €6.61m = −5.9%; GOP/EBITDA not held", "4.6–4.8", "Ballyfin Demesne Limited CRO FY2024 accounts; 96 employees and 20–21 keys"]], [null, ["Hotel Cipriani", "79 current; 103 older combined basis", "€41.329m FY2024", "EBITDA/GOP not disclosed", "0.63–1.25 registry band; unverified 228-person figure excluded", "Hotel Cipriani S.p.A. FY2024 Italian registry data; current Belmond count is 79, replacing the older 96-key figure"]], [null, ["Hotel Splendido", "54 operator count; 61 registry conflict", "€34.441m FY2024", "EBITDA/GOP not disclosed; net loss −€1.578m", "—", "Hotel Splendido S.p.A. FY2024 Italian registry data; operator and registry key counts remain unreconciled"]], [null, ["Belmond Villa San Michele", "39", "€14.368m FY2024", "Net loss −€7.453m; EBITDA/GOP not disclosed", "—", "Villa San Michele S.p.A. FY2024 Italian registry data; FY2024 predates the full reopening"]], [null, ["Hotel Caruso", "50", "€25.68m FY2024", "Reported EBITDA €6.816m / €25.68m = 26.5%; aggregator figure, not filed EBITDA", "—", "Hotel Caruso S.p.A. FY2024 Italian registry revenue; EBITDA from Xray Finance aggregator, FY2024"]], [null, ["Villa La Coste", "31", "€12.4m FY2024", "Operating loss −€0.568m / €12.4m = −4.6%; EBITDA/GOP not held", "—", "CLC Luxury Hotel SARL, French accounts FY2024 via Pappers; Pappers supports €12.4m, not €12.45m"]], [null, ["Castiglion del Bosco", "53", "€45.074m FY2024", "Net profit €3.575m / €45.074m = 7.9%; EBITDA/GOP not disclosed", "3.3–4.6, conflicting", "Castiglion del Bosco Hotel S.r.l. FY2024 Italian registry data; 175 versus 241 employees unresolved"]], [null, ["Amanzoe", "~40 pavilions plus villas", "€41.80m FY2023", "Property EBITDA/GOP not held", "—", "FY2023 turnover perimeter includes villa sales; no clean hotel-only filing"]]], "note": "Sixteen properties file something; not one of them files a hotel-level GOP on a year-round northern-European conversion. Royal Champagne is the closest analogue held, and it earns 5.96% on the same convention. The subject’s 33.88% is a modelled margin, not a demonstrated one."}],
+      ["evid", "cohort"],
       ["h", "Occupancy, named annual actuals"],
       ["tbl", {"cls": "num wide", "head": ["Property", {"t": "Occupancy", "a": "r"}, "Vintage and basis"], "rows": [["subject", ["Fawley Court — underwritten", "<span class='emph'>60–70%</span>", "Stabilised in trading year 7, Align model"]], [null, ["Belmond Europe owned-hotels segment", "56% / 62% / 64% / 64% / 63%", "FY2014 / FY2015 / FY2016 / FY2017 / FY2018A; Belmond 10-K Item 7, filed 2017–19"]], [null, ["Il San Pietro di Positano", "97%", "2024 GM interview; denominator and operating-period basis not stated"]], [null, ["Amanzoe", "71%", "2017 season; listed-owner annual report"]], [null, ["Château de la Messardière", "65%", "c.2016 director interview"]], [null, ["Ballyfin Demesne", "62.3–65.4% inferred", "2018 owner interview reported 4,500 room nights; inference from 20–21 keys and approximately 344 open days"]], [null, ["Hotel Caruso", "80%", "April 2023 MD interview; not an annual filed figure and denominator not stated"]], [null, ["Hotel Splendido", "75%", "Q2 2011 Orient-Express disclosure, including Splendido Mare; not an annual figure"]], [null, ["Hotel Cipriani", "73%", "Q2 2011 Orient-Express disclosure, including Palazzo Vendramin; not an annual figure"]], [null, ["Belmond Villa San Michele", "62%", "Q2 2011 Orient-Express disclosure; not an annual figure"]], ["divider", ["The United Kingdom, filed and reported annual actuals"]], [null, ["Gilpin Hotel &amp; Lake House", "94%", "FY2023A"]], [null, ["Cameron House", "79–84%", "FY2014–17A"]], [null, ["Cowley Manor", "76–82%", "FY2024–25A"]], [null, ["The Belfry", "~81%", "FY2017–19A"]], [null, ["Gleneagles", "67–71%", "FY2017–19A"]], [null, ["Stoke Park", "66–71%", "FY2014–17A"]], [null, ["Mar Hall", "~65%", "FY2018–19A"]], [null, ["Fairmont St Andrews", "39–58%", "FY2021–23A, recovery"]]], "note": "The audited series is Belmond’s: five years of European owned-hotel occupancy that never exceeds 64%. Most of the rest are interview or quarterly disclosures rather than annual filed figures, and each says so. The United Kingdom rows below the rule are filed annual actuals and are unchanged."}],
       ["h", "Margin and payroll, filed accounts"],
-      ["tbl", {"cls": "num wide", "head": ["Line", {"t": "Value", "a": "r"}, "Basis"], "rows": [["subject", ["Fawley Court — GOP", "<span class='emph'>£15.97m / £47.14m = 33.88%</span>", "Financial Model v29, Year 7 underwrite; modelled, not filed"]], [null, ["Belmond Europe — adjusted EBITDA", "$67.590m / $199.251m = 33.9% FY2016; $73.687m / $212.379m = 34.7% FY2017; $79.038m / $238.440m = 33.1% FY2018", "Belmond Ltd Forms 10-K FY2016–18, Europe segment"]], [null, ["Le Grand Contrôle — EBE", "−€2.10m / €16.3m = −12.9% FY2024", "LOV &amp; DUCASSE French statutory accounts FY2024 via Pappers; payroll not disclosed in the filing"]], [null, ["Château de la Messardière — EBE and payroll", "EBE €21.2m / €58.1m = 36.5%; payroll €11.2m / €58.1m = 19.2% FY2024", "SA Hotel Château de la Messardière French accounts FY2024 via Pappers"]], [null, ["La Bastide de Gordes — EBE", "€2.17m / €18.36m = 11.8% FY2024", "La Bastide de Gordes &amp; Spa French accounts FY2024 via Pappers/Verif; payroll not held on a verified filed basis"]], [null, ["Royal Champagne — EBE and payroll", "EBE €1.23m / €20.636m = 5.96%; payroll €8.612m / €20.636m = 41.7% FY2024", "Royal Champagne French accounts FY2024 via Pappers; 127-person headcount is FY2022"]], [null, ["Borgo Egnazia — net margin and payroll", "Net profit €7.903m / €73.025m = 10.8%; personnel cost €13.851m / €73.025m = 19.0%; EBITDA/GOP not disclosed", "E.I.T. S.p.A. Italian Business Register FY2024; primary filing not purchased"]], [null, ["Smeralda portfolio — EBITDA and payroll", "EBITDA €37.7m / €146.1m = 25.8%; payroll €25.7m / €146.1m = 17.6% on UniOlbia basis versus €35.79m / €142.69m = 25.1% on registry basis; unreconciled", "Sardegna Resorts S.r.l. FY2024 filed-account summaries and registry data; four-hotel perimeter"]], [null, ["Cliveden House — EBITDA and payroll", "EBITDA £5.095m / £18.784m = 27.12%; payroll £5.638m / £18.784m = 30.0%", "SRE Hotels (Cliveden) Limited Companies House accounts FY2024, filed 7 August 2025"]], [null, ["Chewton Glen — operating profit and payroll", "Operating profit £4.27m / £21.83m = 19.6%; payroll £7.53m / £21.83m = 34.5%", "Chewton Glen Hotels Limited Companies House accounts FY2024; 321 average monthly employees"]], [null, ["Beaverbrook — adjusted EBITDA and payroll", "Adjusted EBITDA £3.601m / £28.850m = 12.48%; payroll £13.145m / £28.850m = 45.6%", "Beaverbrook Holdings Limited consolidated Companies House accounts, year ended March 2025"]], [null, ["Estelle Manor — adjusted EBITDA and payroll", "EBITDA −£2.751m / £44.392m = −6.20%; payroll £21.957m / £44.392m = 49.5%", "Estelle Manor Limited Companies House accounts FY2025, year ended 31 March 2025"]], ["divider", ["Held from the wider corpus, and from filings without a full revenue split"]], ["key", ["Align corpus p25 / p50 / p75", "22.3 / 31.1 / 36.0%", "GOP, 67 hotels, FY2012–25A"]], [null, ["Careys Manor", "~30%", "GOP, FY2023A"]], [null, ["Fairmont St Andrews", "19.5–23.3%", "GOP, FY2021–23A"]], [null, ["Luton Hoo", "10–15%", "GOP, FY2018–20A"]], [null, ["Lucknam Park", "40.1%", "Payroll share of revenue, FY25A; FY24A 41.8%"]], [null, ["Grantley Hall", "51.5%", "Payroll share of revenue, FY25A, full-estate staffing"]], [null, ["The Newt in Somerset", "71.1%", "Payroll share of revenue, FY25A, whole estate including gardens"]]], "note": "Every line above the rule now carries the absolutes it is struck on, so no percentage travels alone. Payroll runs from 19.0% at Borgo Egnazia, on a seasonal Puglian base, to 49.5% at Estelle Manor, which trades year-round on a membership model of the kind this underwrite assumes."}],
+      ["evid", "margin"],
     ],
     reason: [
     ] },
   { id: "capex", title: "Conversion Capex", kicker: "Capital cost",
     figure: "£2.10m a key, against nineteen held", blurb: "The two bases the subject appears on, against every conversion cost located.",
     lead: [
-      ["tbl", {"cls": "num wide", "head": ["Evidence", {"t": "Keys", "a": "r"}, {"t": "Per key", "a": "r"}, "Basis"], "rows": [["subject", ["Fawley Court — hotel works", "60", "<span class='emph'>£2.10m</span>", "£125.9m, 2026 Financial Model v29 Capex tab; 162-line ground-up works budget with 15% preliminaries, 9% fees and 10% contingency; works only, VAT and tender inflation excluded"]], [null, ["Fawley Court — cost to open", "60", "£3.28m", "£196.6m, 2026 Financial Model v29; hotel works plus £50m acquisition, 5% acquisition costs, finance fees, capitalised interest and pre-opening shortfall; all-in funded cost to opening"]], [null, ["Le Grand Contrôle", "14", "£2.07m–£3.37m; middle report &gt;£2.65m", "2018–21 works on three listed buildings, c.5,000 sqm. Press figures conflict: US$39m, &gt;US$50m and €55m; converted at US$1=£0.7426 and €1=£0.8575. Sources: CALQ project page, Pratique, Condé Nast Traveler; press-reported, not filed"]], [null, ["Château de la Messardière — all-in", "86 / 117", "£1.94m / £1.42m", "2019–21; €154m acquisition plus approximately €40m planned renovation, converted at €1=£0.8575. 117 keys bought; 86 rooms and suites now let. Sources: Groupe BPCE financing release, L’Hôtellerie-Restauration, CFNEWS; reported transaction plus planned works, not filed actual spend"]], [null, ["Beaverbrook", "35 at 2017 completion; 56 today", "£2.57m floor", "More than £90m reported over the 2011–17 restoration, covering the mansion and estate outbuildings; 2017 completion basis. Source: Forbes, 14 Nov 2018; press-reported, not filed"]], [null, ["Ballyfin Demesne", "20–21", "&gt;£1.77m on the US$50m report; &gt;£2.04m on the €50m report", "Restoration and hotel conversion before the 2011 opening; acquisition and works not split. Press figures and currency conflict: more than US$50m and more than €50m. Sources: Town &amp; Country, 2022; Irish Times, 2019; press-reported"]], [null, ["Grantley Hall", "47", "£1.49m", "2019 outturn including acquisition, restoration and expansion; citing Yorkshire Post; not split into works and acquisition"]], [null, ["Rayners Penn", "33", "£2.73m", "January 2025 consent-stage estimate for listed conversion, spa and restaurants; source: Hospitality Investor; outturn unpublished"]], [null, ["Royal Champagne", "47", "&gt;€1.06m / &gt;£0.91m", "More than €50m historic hotel-and-spa redevelopment, 2015–18; source: Vedomosti 2019; press-reported. The 2024 Pappers filing separately records €779,618 of tangible additions, not the historic conversion cost"]], [null, ["La Bastide de Gordes", "c.40", "€0.50m–€0.88m / £0.43m–£0.75m", "2014–17 works covering hotel, spa, pools, restaurants and public areas; press range €20m–€35m. Sources: L’Hôtellerie-Restauration 2016 and Forbes 2019; press-reported"]], [null, ["Belmond Villa San Michele", "39", "c.€0.77m / c.£0.66m", "2024–26, €30m press-estimated restyling covering rooms, spa, gardens and restaurant; source: T24 Economia; press-reported"]], [null, ["Passalacqua", "24", "&gt;US$0.83m / &gt;£0.62m; approximately €0.83m / £0.71m on the separate €20m report", "2019–22 conversion, fresco and garden restoration; press currencies conflict between “more than US$20m” and approximately €20m. Sources: LUXUO, Design &amp; Contract and 8 Real Estate; conversion works only, no acquisition"]], [null, ["Hotel Caruso", "54", "c.US$0.56m / c.£0.41m", "1999–2005 restoration including land, rooms, frescoes, salons, chapel, bar, reception and infinity pool; US$30m press report. SEC filings separately record approximately US$7m invested to date and EU grants; figures are different milestones, not a reconciled outturn"]], [null, ["Rosewood Schloss Fuschl — earlier renovation", "98", "at least €0.31m / at least £0.26m", "At least €30m spent in 2005–06 on the hotel, spa, Waldhaus, Jägerhaus and connecting works; source: ORF 2006; earlier renovation, not the 2024 Rosewood reopening"]], [null, ["Borgo Egnazia", "c.184", "n/c", "Approximately €150m, 2000–10, for 155 rooms, 29 villas, golf, spa and infrastructure; sources: The Independent and Treehouse Group; mixed new-build project total, not divisible to a clean hotel-only per-key figure"]], [null, ["Adare Manor", "104 after expansion", "n/c", "2016–17 restoration and expansion reports range from approximately €50m to over €100m; scope includes manor, new accommodation, spa, ballroom, golf and estate infrastructure. Sources: Irish Times and Independent; conflicting press reports, no hotel-only per-key figure"]], [null, ["Six Senses Antognolla", "71 keys plus 79 residences", "n/c", "€150m stated project investment, with later reports of €173m; scope includes hotel, residences, castle, golf and estate infrastructure. ANSA 2016 and Rizzani de Eccher project material; not a hotel-only build cost"]], [null, ["Six Senses Loire Valley / Les Bordes", "50 hotel rooms plus 52 residences", "n/c", "€270m announced 2023, with another report of at least €140m; scope includes hotel, residences, restaurants, pools, golf and estate infrastructure. Sources: Les Bordes announcement and Ecozoom; conflicting bundled project totals"]], [null, ["Sveti Stefan", "n/c", "n/c", "€56m contractor/lender-supervision figure for 2011–15 refurbishment of the island, Villa Miločer and infrastructure. Adriatic Properties separately claims more than €110m, while €110m is also a lease investment obligation; the latter is not evidence of spend. Sources: STMG capability statement, Vijesti, Europa Nostra"]]], "note": "Two subject rows on two bases, because they are not interchangeable: the works figure is the construction number and cost to open is the all-in funded number. Of the third-party figures, six carry conflicting press reports and five cover a scope too mixed to divide by keys at all, which is stated rather than resolved. Sterling conversions use the research convention of €1=£0.8575 and US$1=£0.7426, and nothing here is adjusted for inflation."}],
+      ["evid", "capex"],
     ],
     reason: [
     ] },
@@ -3069,6 +4060,7 @@ function blockHTML(b) {
   if (k === "plates") return platesHTML(b[1]);
   if (k === "strip") return stripHTML();
   if (k === "h") return '<h3 class="pane-h">' + b[1] + "</h3>";
+  if (k === "evid") return evidHTML(b[1]);
   if (k === "ratetable") return rateTableHTML();
   if (k === "ladder") return ladderHTML();
   if (k === "cases") return casesIndexHTML();
@@ -3101,6 +4093,67 @@ function blockHTML(b) {
 const DOM_MIN = 0, DOM_MAX = 3000;
 const domStep = () => (window.innerWidth < 700 ? 1000 : 500);
 const pos = v => ((Math.min(v, DOM_MAX) - DOM_MIN) / (DOM_MAX - DOM_MIN)) * 100;
+
+/* ─────────────  the evidence ledger  ─────────────
+
+   A comparable is not a row of a spreadsheet. It is a record: one headline
+   figure, the arithmetic behind it, the handful of other numbers the property
+   discloses, and a paragraph saying where all of it comes from. Six columns of
+   which two held paragraphs gave none of that a reading order, and filled the
+   grid with em dashes wherever a filer disclosed less than the widest one.
+
+   So each record renders only what it holds, the figure leads at size with its
+   own workings under it in small type, and the bar ranks the set on the one
+   dimension the tab is actually about — the margin here, the cost a key there.
+   The bar is the answer to "is ours high?", which is the question the tab
+   exists to answer and the old table never showed. */
+
+function evBar(r, d) {
+  if (r.p == null || !d.max) return "";
+  const lo = Math.min(d.min || 0, 0), hi = d.max;
+  const span = hi - lo;
+  if (span <= 0) return "";
+  const zero = ((0 - lo) / span) * 100;
+  const at = ((r.p - lo) / span) * 100;
+  const left = Math.min(zero, at), w = Math.max(0.6, Math.abs(at - zero));
+  return '<div class="ev-bar' + (r.p < 0 ? " neg" : "") + '">'
+    + (lo < 0 ? '<span class="ev-zero" style="left:' + zero.toFixed(2) + '%"></span>' : "")
+    + '<i style="left:' + left.toFixed(2) + "%;width:" + w.toFixed(2) + '%"></i></div>';
+}
+
+function evRow(r, d) {
+  if (r.divider) return '<p class="ev-div">' + r.divider + "</p>";
+  const figs = (r.f || []).map(f =>
+    '<div class="ev-f"><div class="ev-v">' + f.v + "</div>"
+    + (f.l ? '<div class="ev-l">' + f.l + "</div>" : "")
+    + (f.calc ? '<div class="ev-c">' + f.calc + "</div>" : "") + "</div>").join("");
+  const stats = (r.s || []).map(([l, v]) =>
+    "<div><dt>" + l + "</dt><dd>" + v + "</dd></div>").join("");
+  return '<article class="ev' + (r.subject ? " subject" : "") + '">'
+    + '<div class="ev-main"><h4 class="ev-n">' + r.n
+    + (r.k ? '<span class="ev-k">' + r.k + "</span>" : "")
+    + '<span class="cl ' + r.c + '">' + r.c + "</span></h4>"
+    + (r.r && (r.f || []).length ? '<p class="ev-r">' + r.r + "</p>" : "")
+    + '<p class="ev-b">' + r.b + "</p></div>"
+    /* a record with no headline figure says why in its own words where it has
+       them, and only falls back to the flat statement where it does not */
+    /* a record with no headline figure says why in the column the figure would
+       have stood in, so the eye still finds an answer where it looks for one */
+    + '<div class="ev-side">' + (figs || '<p class="ev-none">' + (r.r || "Not disclosed") + "</p>")
+    + evBar(r, d) + (stats ? '<dl class="ev-s">' + stats + "</dl>" : "") + "</div></article>";
+}
+
+function evidHTML(key) {
+  const d = EVID[key];
+  if (!d) return "";
+  return '<div class="evl">'
+    + (d.sideHead ? '<p class="ev-head">' + d.sideHead + "</p>" : "")
+    + d.rows.map(r => evRow(r, d)).join("")
+    + (d.plotLabel ? '<p class="ev-key">The bar ranks the set on ' + d.plotLabel
+        + ", and it is the only thing on this page drawn to a scale rather than "
+        + "written out.</p>" : "")
+    + '<p class="ev-note">' + d.note + "</p></div>";
+}
 
 /* ─────────────  the rate tab  ─────────────
 
@@ -5047,7 +6100,7 @@ let FIND_IX = null;
 /* every string a block holds, so a search reaches into the tables themselves —
    "EFG" has to find the charge on the title page, not just a section name */
 const BLOCK_KINDS = new Set(["lede", "para", "subhead", "src", "kpis", "tbl", "cards", "bullets",
-  "panes", "exhibit", "plates", "strip", "rate", "ratetable", "ladder", "cases", "assumptions", "wf", "bridge",
+  "panes", "exhibit", "plates", "strip", "rate", "ratetable", "evid", "ladder", "cases", "assumptions", "wf", "bridge",
   "read", "qs", "asks", "keys", "cheat", "pnlcomp", "contact", "left", "right", "labeled", "num",
   "num wide", "wide", "subject", "total", "key", "divider", "note", "r", "c", "q", "subtotal"]);
 function harvest(v, out) {

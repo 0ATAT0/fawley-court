@@ -112,7 +112,7 @@ const mod = new Function(
   grab("const CHEAT = {", "</script>") +
   grab("const QS = {", "/*QS-DATA-END*/") + ";" +
   grab("const MKT_M =", "</script>") +
-  "; return { FIGS, MODEL, CAPEX, ASSUMPTIONS, DIAL_SRC, PLATES, LADDER, BRIDGE, PNL, PNLFMT, PNL_CASE,"
+  "; return { FIGS, MODEL, CAPEX, ASSUMPTIONS, EVID, DIAL_SRC, PLATES, LADDER, BRIDGE, PNL, PNLFMT, PNL_CASE,"
   + " PNL_NOTES, PNL_PROSE, CHAPTERS, CASES, CHEAT, QS, MARKET, MKT_ALL, MKT_BY_SLUG,"
   + " MKT_BY_CASE, MKSTATE, PHOTOS, marketIndexHTML, mktGridInner, mktRateHTML, mktFiguresHTML, hotelPageHTML,"
   + " mktCaseEvidenceHTML, mktControlsInner, mktTab, HOTELPAGE,"
@@ -471,12 +471,37 @@ const prose = (label, text, hay = deckText, hayName = "slides.md") => {
     "([£€$]\\s?[\\d,]+(?:\\.\\d+)?(?:m|k|bn)?)\\s*/\\s*(\\d+)\\s*=\\s*"
     + "([£€$]\\s?[\\d,]+(?:\\.\\d+)?(?:m|k|bn)?)", "g");
   let ratios = 0;
+  /* the tables' cells, and the ledger's, which hold the same kind of claim in a
+     different shape: a headline figure, its workings, and the note beside it */
+  const surfaces = [];
   for (const ch of mod.CHAPTERS) {
     for (const v of ch.views) walkBlocks(allBlocks(v), b => {
       if (b[0] !== "tbl") return;
       const cells = [];
       for (const [, cs] of b[1].rows) for (const c of cs) cells.push(c);
       if (b[1].note) cells.push(b[1].note);
+      surfaces.push([ch.id, v.id, cells]);
+    });
+  }
+  for (const [key, d] of Object.entries(mod.EVID)) {
+    const cells = [d.note];
+    for (const r of d.rows) {
+      if (r.divider) { cells.push(r.divider); continue; }
+      cells.push(r.n, r.b, r.r || "");
+      for (const f of r.f || []) {
+        cells.push(f.v, f.calc || "", (f.l || "") + " " + f.v);
+        /* The ledger splits "A / B = C%" into a headline and its workings, so
+           put the equation back together for the arithmetic check: if the parse
+           mangled either absolute, the recomputation says so. */
+        if (f.calc) cells.push(f.calc + " = " + f.v);
+      }
+      for (const [l, v] of r.s || []) cells.push(l, v);
+    }
+    surfaces.push(["ledger", key, cells]);
+  }
+  {
+    for (const [chId, vId, cells] of surfaces) {
+      const ch = { id: chId }, v = { id: vId };
       for (const cell of cells) {
         const text = norm(cell);
         checkConversions(ch.id + "/" + v.id, text);
@@ -506,7 +531,7 @@ const prose = (label, text, hay = deckText, hayName = "slides.md") => {
           else { addReg(totRaw); addReg(perRaw); }
         }
       }
-    });
+    }
   }
   checked++;
   if (ratios < 20) fail("EVIDENCE RATIOS THIN", ratios + " ratios recomputed across the tables");
@@ -540,6 +565,65 @@ for (const ch of mod.CHAPTERS) {
       }
     });
   }
+}
+
+/* ══ the evidence ledger ═══════════════════════════════════════════
+   The operations and conversion-cost evidence left the table blocks on 20
+   August and became records, so the walk over CHAPTERS no longer reaches it.
+   These check the same things the table checks did, plus the shape the
+   renderer relies on: a record has a name, a basis and an evidence class, and
+   a plotted value is a number the bar can draw. */
+{
+  const CLASSES = new Set(["filed", "press", "official", "derived", "modelled",
+                           "interview", "note"]);
+  let records = 0, plotted = 0;
+  for (const [key, d] of Object.entries(mod.EVID)) {
+    checked++;
+    if (!d.rows || !d.rows.length) fail("LEDGER EMPTY", key);
+    prose("ledger " + key + " note", d.note);
+    for (const r of d.rows) {
+      if (r.divider) { prose("ledger " + key + " divider", r.divider); continue; }
+      records++;
+      checked++;
+      if (!norm(r.n)) fail("LEDGER RECORD WITHOUT A NAME", key);
+      checked++;
+      if (!norm(r.b)) fail("LEDGER RECORD WITHOUT A BASIS", key + ": " + r.n);
+      checked++;
+      if (!CLASSES.has(r.c)) fail("LEDGER EVIDENCE CLASS UNKNOWN", key + ": " + r.n + " = " + r.c);
+      /* our own file paths are plumbing: a basis names the filing, not where we
+         keep our copy of it. The first render of these tables printed both. */
+      checked++;
+      if (/\.(md|json|txt)\b/.test(r.b) || /Research\//.test(r.b))
+        fail("LEDGER BASIS CITES A FILE PATH", key + ": " + r.n + " \u2014 " + r.b.slice(0, 90));
+      prose("ledger " + key + " name", r.n);
+      prose("ledger " + key + " basis", r.b);
+      if (r.r) prose("ledger " + key + " note line", r.r);
+      if (r.k) prose("ledger " + key + " keys", r.k);
+      for (const f of r.f || []) {
+        checked++;
+        if (!norm(f.v)) fail("LEDGER FIGURE WITHOUT A VALUE", key + ": " + r.n);
+        prose("ledger " + key + " figure", f.v);
+        if (f.calc) prose("ledger " + key + " workings", f.calc);
+      }
+      for (const [l, v] of r.s || []) { prose("ledger " + key + " stat", l); prose("ledger " + key + " stat value", v); }
+      if (r.p != null) {
+        plotted++;
+        checked++;
+        if (typeof r.p !== "number" || !isFinite(r.p))
+          fail("LEDGER PLOT NOT A NUMBER", key + ": " + r.n + " = " + r.p);
+        checked++;
+        /* the bar is drawn inside the set's own range, so a value outside it
+           would render off the track */
+        if (r.p > d.max + 1e-9 || r.p < (d.min || 0) - 1e-9)
+          fail("LEDGER PLOT OUTSIDE THE SCALE", key + ": " + r.n + " = " + r.p);
+      }
+    }
+  }
+  checked++;
+  if (records < 50) fail("LEDGER THIN", records + " records across the ledgers");
+  checked++;
+  if (plotted < 25) fail("LEDGER BARS THIN", plotted + " of " + records + " records plotted");
+  console.log(`  ${records} evidence records, ${plotted} of them ranked on a bar`);
 }
 
 /* the pane and exhibit headers are the deck's own leftHeader / rightHeader lines */
@@ -1275,7 +1359,7 @@ const RETIRED = [
   /* v15 */ "£107.3m", "£161.8m",
 ];
 const modelSurface = JSON.stringify([mod.FIGS, mod.CHAPTERS, mod.CASES, mod.CHEAT,
-  mod.ASSUMPTIONS, mod.DIAL_SRC, mod.LADDER, mod.BRIDGE]);
+  mod.ASSUMPTIONS, mod.EVID, mod.DIAL_SRC, mod.LADDER, mod.BRIDGE]);
 const liveFigures = new Set(Object.values(modelSrc.fig).map(String));
 for (const t of RETIRED) {
   checked++;
