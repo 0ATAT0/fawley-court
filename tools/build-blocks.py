@@ -93,10 +93,196 @@ def dials_block():
     return "const DIALS = [\n" + body + "\n];"
 
 
+# == 2. the assumptions sheet =========================================
+#   The master sheet of what the model runs on: thirty assumptions, grouped,
+#   each with its class, its basis and - where the measurement holds one - what
+#   moving it is worth in return terms. The swing settings are the single-lever
+#   sensitivities, which used to be a view of their own; they now travel with
+#   the assumption they belong to, so nothing is read in isolation.
+GROUPS = ["The asset", "Rate and demand", "The revenue engines", "What it earns",
+          "The capital cost", "Funding", "The residences", "The exit"]
+
+
+def sens_irr(key):
+    return pct(SENS[key]["irr"], 2)
+
+
+def worth(keys):
+    """Swing in percentage points across the settings measured."""
+    dd = [0.0] + [SENS[k]["d_pp"] for k in keys]
+    return f"{max(dd) - min(dd):.1f}pp"
+
+
+def A(group, name, value, cls, basis, settings=None):
+    r = {"g": group, "k": name, "v": value, "c": cls, "b": basis}
+    if settings:
+        r["w"] = worth([t[1] for t in settings])
+        r["s"] = [[lab, sens_irr(key)] for lab, key in settings]
+    return r
+
+
+def assumptions_block():
+    rows = [
+        A("The asset", "Price", n(F["entry"]), "Decision",
+          "Ruled, not solved: every return on this page is an output at it. Guidance is understood "
+          f"at about £70m, and the 13.00% bar solves at {D['bar_price']}, {D['bar_gap']} above "
+          "the ruled price."),
+        A("The asset", "Keys", n(F["keys"]), "Decision",
+          "17 Main House and 43 Stables and Courtyard, the vendor’s own scheduled scheme. "
+          "60 keys is the consensus across three of the four operator forecasts. Fifteen fewer "
+          "keys take the revenue and leave the budget, because the capital cost is a schedule of "
+          "buildings and estate rather than a price a key.",
+          [["45 keys", "keys_45"]]),
+        A("The asset", "Courtyard keys", n(F["courtyard_keys"]), "Decision",
+          "The courtyard opens first and trades through the works. The consented courtyard count "
+          "is 15, against the 43 the design statement schedules.",
+          [["24 keys", "courtyard_24"], ["43 keys", "courtyard_43"]]),
+        A("The asset", "Programme and hold", f"{n(F['capex_prog_q'])} quarters", "Decision",
+          f"Works run {F['capex_prog_q']} quarters and the hotel opens at T+3.5; the hold is "
+          f"{F['hold_yrs']} years to a sale in quarter {F['exit_q']}. A longer programme costs a "
+          "little, because the schedule spends against its own dates.",
+          [["16 quarters", "programme_16"], ["18 quarters", "programme_18"]]),
+
+        A("Rate and demand", "ADR",
+          f"{n(F['adr_y1'])} {ARROW} {n(F['adr_y7'])}", "Decision",
+          "Year-1 money at 2026 prices, reaching the year-7 figure on general inflation. It sits "
+          "above every UK lead-in held and below the four cohort lead-ins of £1,372 and above; "
+          "the four operator forecasts average £1,183 at their own stabilised year.",
+          [["£850", "adr_850"], ["£1,200", "adr_1200"]]),
+        A("Rate and demand", "Occupancy", n("60" + NDASH + "70%"), "Decision",
+          f"Stabilised in trading year 7; {F['occ_stab']} is the model input and the narrative "
+          "interval is 60–70%. The four operator forecasts average 65.5%.",
+          [["0.60", "occ_060"], ["0.67", "occ_067"], ["0.70", "occ_070"]]),
+        A("Rate and demand", "Season", "Twelve months", "Decision",
+          "Underwritten on a year-round calendar. Of the comparable set, only one demonstrably "
+          "year-round European estate hotel clears £1,000, and everything above £1,200 "
+          "closes for two to seven months."),
+
+        A("The revenue engines", "The members’ club",
+          f"{n(F['members'])} at {n(F['member_fee'])} a month", "Decision",
+          f"Plus {F['founder_cap']} founder members at {F['founder_fee']} and a {F['join_fee']} "
+          "joining fee. The largest revenue lever in the model, and the fee has no filed "
+          "comparable anywhere in the evidence estate.",
+          [["Off", "club_off"], ["£490 a month", "club_490"]]),
+        A("The revenue engines", "Exclusive-use buyouts",
+          f"{n(F['buyouts_y7'])} at {n(F['buyout_premium'])}", "Decision",
+          "A premium over the accommodation the buyout displaces. It has no filed comparable "
+          "either, and with the club fee it carries about seven points of the return.",
+          [["Off", "buyouts_off"]]),
+        A("The revenue engines", "Corporate events",
+          f"{n(F['corp_y7'])} at {n(F['corp_rev_y1'])}", "Decision",
+          "Year-1 money, priced excluding rooms."),
+        A("The revenue engines", "Day meetings and private dining",
+          f"{n(F['hires_per_day'])} a day at {n(F['hire_rate'])}", "Decision",
+          "Twelve delegates a hire, against Beaverbrook’s filed room hire of £491,623 on "
+          "56 keys.",
+          [["Off", "daymeetings_off"]]),
+        A("The revenue engines", "Regatta hospitality",
+          f"{n(F['regatta_days'])} days", "Decision",
+          f"{F['regatta_covers']} covers a day at {F['regatta_spend']} a head, the vendor’s "
+          "own six-day format. It runs from year 1, through the works.",
+          [["Off", "regatta_off"]]),
+
+        A("What it earns", "Revenue, year 7", n(F["rev_y7"]), "Output",
+          f"{F['rev_per_key_y7']} a key, against an average of £450,300 across the four "
+          f"operator forecasts. Rooms {F['rooms_rev_y7']}, food and beverage {F['fb_rev_y7']}, "
+          f"spa, club and other {F['other_rev_y7']}."),
+        A("What it earns", "GOP, year 7", f"{n(F['gop_y7'])} = {n(F['gop_margin_y7'])}", "Output",
+          "The margin is not the outlier in this underwrite; the revenue it is struck on is. The "
+          "filed-accounts corpus prints 22.3 / 31.1 / 36.0% at its quartiles."),
+        A("What it earns", "NOI, year 7", f"{n(F['noi_y7'])} = {n(F['noi_margin_y7'])}", "Output",
+          "After the operator’s base and incentive fees, which are charged inside the profit "
+          "and loss account. Only Align’s own asset-management fee sits below it."),
+        A("What it earns", "Staff cost index", n(F["staff_index"]), "Decision",
+          "Applied to all seven direct-wage lines; undistributed costs are not scaled and no "
+          "headcount is modelled. Per key the model spends more on undistributed expenses than all "
+          "four operator forecasts.",
+          [["1.00", "staff_100"], ["1.10", "staff_110"], ["1.30", "staff_130"]]),
+
+        A("The capital cost", "Cost of works", n(F["capex_works_total"]), "Decision",
+          f"Hotel {F['capex_hotel']} and residences {F['capex_resi']}, from a 162-line ground-up "
+          "budget priced after the site inspection of 17 August 2026: a quantity and a rate on "
+          "every line. Chapter 04 carries every line and its basis."),
+        A("The capital cost", "Hotel works a key", n(F["capex_hotel_per_key"]), "Decision",
+          f"{F['capex_hotel']} over {F['keys']} keys. Published conversion costs run "
+          "£400–900k a key and top out at £1.84m at Le Grand Contrôle, so this "
+          "sits above all of them; the buildings alone carry £1.50m a key and the estate adds "
+          "£0.60m."),
+        A("The capital cost", "Loadings",
+          f"{n(F['capex_prelims_pct'])} / {n(F['capex_fees_pct'])} / {n(F['capex_cont_pct'])}",
+          "Decision",
+          "Preliminaries, fees and contingency on the hotel limb, which are Rocco Forte’s own "
+          f"loadings; the residential limb carries {F['capex_resi_prelims_pct']}, "
+          f"{F['capex_resi_fees_pct']} and {F['capex_resi_cont_pct']}."),
+        A("The capital cost", "Cost to open",
+          f"{n(F['cost_to_open'])} = {n(F['cost_to_open_key'])} a key", "Output",
+          f"The works spent to opening plus the entry, {F['acq_costs_pct']} acquisition costs, the "
+          "arrangement fee, capitalised interest and the pre-opening trading shortfall. It yields "
+          f"{F['yield_on_cost']} in year 7, a spread of {F['dev_spread_bp']} over the "
+          f"{F['exit_yield']} exit."),
+
+        A("Funding", "Senior debt", f"{n(F['fin_senior_ltc'])} LTC", "Decision",
+          f"Base rate {F['base_rate']} plus a {F['fin_senior_margin']} margin, rolling up for "
+          f"{F['fin_pik_q']} quarters and peaking at {F['senior_peak']}; the arrangement fee is "
+          f"{F['arr_fee_pct']}.",
+          [["Base rate 4.5%", "sonia_45"]]),
+        A("Funding", "The refinancing", f"Q{n(F['fin_refi_q'])}, {n(F['refi_draw'])}", "Decision",
+          f"Sized to the lower of {F['fin_refi_ltv']} loan to value at a {F['fin_refi_yield']} "
+          f"yield and {F['refi_min_icr']} post-fee cover, margin {F['fin_refi_margin']}. The cover "
+          "test binds. At 1.30x cover the equity requirement does not move.",
+          [["1.30x cover", "icr_130"], ["1.40x cover", "icr_140"]]),
+        A("Funding", "Equity", n(F["total_equity"]), "Output",
+          "Peak equity equals total equity: cash funds the later drawdowns, so nothing is called "
+          "after the first distribution. Capital comes back in year 8."),
+        A("Funding", "Fees",
+          f"{n(F['fee_op_base'])} / {n(F['fee_incentive'])} / {n(F['fee_am'])}", "Decision",
+          "Operator base on total revenue and incentive on GOP, both inside the profit and loss "
+          "account, plus Align’s escalating asset-management fee. Align funds no equity and "
+          f"its promote over {F['promote_h1']} / {F['promote_h2']} / {F['promote_h3']} hurdles is "
+          "carried at nil, so returns are pre-promote.",
+          [["Incentive 8%", "incentive_8"]]),
+
+        A("The residences", "Product and price",
+          f"{n(F['resi_units'])} at {n(F['resi_psf'])}/sqft", "Market",
+          f"{F['resi_sqft']} sqft average, the vendor’s advised product. Savills recommends "
+          "£1,934/sqft weighted, which it calls a 63% premium over the local top 5%; the RG9 "
+          "prime reach prints a £1,107 median.",
+          [["£1,100/sqft", "resi_1100"], ["£1,250/sqft", "resi_1250"],
+           ["£1,500/sqft", "resi_1500"]]),
+        A("The residences", "Price growth", n(F["resi_esc"]), "Decision",
+          "Escalating to each sale quarter, above the 2.5% general inflation rate the model "
+          "otherwise runs.",
+          [["Nil", "resi_esc_0"], ["2.5%", "resi_esc_25"]]),
+        A("The residences", "Absorption and tenure", f"{n(F['resi_absorption'])} a year", "Decision",
+          f"Sales open in quarter {F['resi_sales_start_q']} on 999-year leaseholds, ruled 18 "
+          f"August 2026 following Savills’ own assumption; the limb is net {F['resi_net']} "
+          f"after a {F['resi_fee_pct']} sales fee and {F['resi_cost']} of all-in cost."),
+
+        A("The exit", "Exit yield", n(F["exit_yield"]), "Decision",
+          f"On adjusted NOI of {F['exit_adjnoi']} with {F['purch_costs_pct']} purchasers’ "
+          "costs, hotel alone. Every non-London country-house and resort trade held prints between "
+          "5.42% and 6.00%.",
+          [["3.50%", "exit_350"], ["3.75%", "exit_375"],
+           ["4.25%", "exit_425"], ["4.75%", "exit_475"]]),
+        A("The exit", "Exit value",
+          f"{n(F['exit_value'])} = {n(F['exit_per_key'])} a key", "Output",
+          "Hotel alone. The exit is modelled as a sale of the holding company’s shares; an "
+          "asset sale instead costs the return.",
+          [["Asset sale", "asset_sale"]]),
+        A("The exit", "Returns", f"{n(F['irr'])} / {n(F['em'])}", "Output",
+          f"Levered, on {F['total_equity']} of equity, for a levered profit of "
+          f"{F['levered_profit']}. Unlevered {F['irr_unlev']} and {F['em_unlev']}."),
+    ]
+    assert len(rows) == 30, len(rows)
+    assert [r["g"] for r in rows] == sorted([r["g"] for r in rows], key=GROUPS.index)
+    body = ",\n".join("  " + js(r) for r in rows)
+    return "const ASSUMPTIONS = [\n" + body + "\n];"
+
+
 def dial_src_block():
     t = (f"Source: Align model, {MODEL_NAME}, saved state {SAVED}. Occupancy is an interval of "
          f"60{NDASH}70% in narrative; {F['occ_stab']} is the model input. The cost of works is the "
-         "construction number, built line by line in chapter 05; cost to open is the all-in funded "
+         "construction number, built line by line in chapter 04; cost to open is the all-in funded "
          "number, and it is the basis that compares with a third party\u2019s all-in cost claim. "
          "The operator\u2019s base and incentive fees sit inside the profit and loss account, so "
          "net operating income is after them. Align funds no equity and earns the "
@@ -324,7 +510,7 @@ def eq_block():
 # ══ splice ════════════════════════════════════════════════════════════
 BLOCKS = [
     ("const FIGS = {", "};", figs_block),
-    ("const DIALS = [", "];", dials_block),
+    ("const ASSUMPTIONS = [", "];", assumptions_block),
     ("const DIAL_SRC = ", None, dial_src_block),
     ("const LADDER = {", "};", ladder_block),
     ("const BRIDGE = {", "};", bridge_block),

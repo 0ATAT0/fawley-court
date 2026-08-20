@@ -12,14 +12,11 @@ BASE = "http://127.0.0.1:8732/"
 SIZES = {"ipad-land": (1180, 820), "ipad-port": (820, 1180), "phone": (390, 844), "desktop": (1512, 950)}
 
 CHAPTERS = {
-    "summary": [""],
     "asset": ["", "photography", "title", "planning", "scheme", "counterparty"],
-    "market": ["", "layers", "rate", "seasonality", "operations", "capex", "pnl"],
-    "underwrite": ["", "dial-set", "engines", "margin", "capital", "profile", "residences",
-                   "residences-evidence", "bridge", "cheat", "returns", "cases", "sensitivities", "exit"],
+    "market": ["", "rate", "operations", "capex", "exit", "pnl"],
+    "underwrite": ["", "capital", "residences", "bridge", "cheat", "returns"],
     "capital": ["", "schedule", "areas", "phasing", "residences"],
     "dd": ["", "asks", "keys", "room", "gates", "closing"],
-    "market": [""],
 }
 ROUTES = ["#/"]
 for _c, _vs in CHAPTERS.items():

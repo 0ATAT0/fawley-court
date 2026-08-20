@@ -227,6 +227,163 @@ code { font-family: 'SF Mono', ui-monospace, Menlo, Consolas, monospace; font-si
 .toc-sub button:hover, .toc-sub button:focus-visible { color: var(--accent); padding-left: 30px; }
 .dials { margin-top: 8px; }
 .dial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 0 clamp(22px, 3vw, 44px); }
+/* ─────────────────────────  summary financials  ───────────────────────── */
+
+.cs-top { align-items: start; }
+/* Four figures answer the deal — what it costs, what it costs to open, what it
+   exits at, what it returns — and four qualify them. Rules, not boxes: a grid
+   of eight equal tiles gives no reading order at all. */
+.cs-spine { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0 clamp(16px, 2.4vw, 38px); margin-top: clamp(22px, 2.8vw, 34px);
+            border-top: 1px solid var(--line-strong); padding-top: clamp(15px, 1.8vw, 21px); }
+.cs-spine.sub { margin-top: clamp(15px, 1.8vw, 22px); padding-top: clamp(13px, 1.5vw, 18px);
+                border-top: 1px solid var(--line); }
+.cs-f { min-width: 0; position: relative; padding-left: clamp(13px, 1.8vw, 26px); }
+.cs-f:first-child { padding-left: 0; }
+.cs-f + .cs-f::before { content: ''; position: absolute; left: 0; top: 2px; bottom: 4px;
+                        width: 1px; background: var(--line); }
+.cs-f .l { font-size: var(--fs-micro); letter-spacing: .1em; text-transform: uppercase;
+           color: var(--muted-2); line-height: 1.35; }
+.cs-f .v { font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums;
+           letter-spacing: -.018em; line-height: 1.14; margin-top: 7px;
+           font-size: clamp(.98rem, .82rem + .62vw, 1.32rem); }
+.cs-f.lead .v { font-size: clamp(1.12rem, .84rem + 1.16vw, 1.86rem); }
+@media (max-width: 780px) {
+  .cs-spine { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px clamp(14px, 3vw, 24px); }
+  .cs-f:nth-child(3) { padding-left: 0; }
+  .cs-f:nth-child(3)::before { display: none; }
+}
+
+/* the answer column: the stabilised year, and the whole hold */
+table.cs-t th.ans, table.cs-t td.ans { background: var(--accent-tint);
+                                       box-shadow: inset 1px 0 0 var(--accent-tint-2); }
+table.cs-t thead th.ans { color: var(--accent); font-weight: 700; }
+table.cs-t tr.total td.ans { color: var(--accent); }
+table.cs-t tr.rule > * { border-top: 1px solid var(--line-mid); }
+table.cs-t tbody td:first-child { color: var(--ink); }
+
+/* ─────────────────────────  the rate tab  ───────────────────────── */
+
+.rt-bar { display: flex; align-items: baseline; justify-content: space-between; gap: 18px;
+          flex-wrap: wrap; margin: clamp(14px, 1.8vw, 22px) 0 clamp(10px, 1.2vw, 16px); }
+.rt-n { font-size: var(--fs-cap); color: var(--muted-2); letter-spacing: .03em;
+        font-variant-numeric: tabular-nums; }
+.rt-swx { display: inline-flex; border: 1px solid var(--line-mid); border-radius: 2px; overflow: hidden; }
+.rt-sw { min-height: 44px; padding: 6px 18px; font-size: var(--fs-cap); font-weight: 600;
+         letter-spacing: .03em; color: var(--muted); background: transparent; border: 0;
+         cursor: pointer; transition: background .2s var(--ease-out), color .2s var(--ease-out); }
+.rt-sw + .rt-sw { border-left: 1px solid var(--line-mid); }
+.rt-sw:hover { background: var(--accent-tint); color: var(--accent); }
+.rt-sw[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+
+.faxis.top { margin-bottom: 6px; }
+.faxis.top .fbase { top: auto; bottom: 0; }
+.rt-scroll { overflow-x: auto; }
+table.rt { min-width: 1180px; }
+table.rt th.rt-nm { position: sticky; left: 0; z-index: 2; background: var(--paper);
+                    text-align: left; font-weight: 400; min-width: 190px;
+                    box-shadow: 1px 0 0 var(--line); }
+table.rt thead th.rt-nm { z-index: 3; }
+table.rt tr.subject th.rt-nm { font-weight: 700; color: var(--accent); background: var(--accent-tint); }
+table.rt tr.subject td { background: var(--accent-tint); }
+table.rt td.rt-mo { color: var(--muted); }
+table.rt td.rt-mo.off { color: var(--muted-2); opacity: .55; }
+table.rt td.em { font-weight: 700; color: var(--accent); }
+table.rt th.r, table.rt td.r { text-align: right; }
+table.rt thead th { white-space: nowrap; }
+table.rt tbody td:nth-child(2) { white-space: nowrap; }
+table.rt td.sub-note { text-align: left; color: var(--muted); font-style: normal; }
+table.rt th.c, table.rt td.c { text-align: center; }
+/* the whole name cell is the hit area, so the row itself carries the 44px */
+.rt-go { border: 0; background: none; padding: 11px 0; margin: -11px 0; font: inherit; color: var(--ink);
+         text-align: left; cursor: pointer; display: flex; align-items: center; min-height: 44px;
+         width: 100%; transition: color .2s var(--ease-out); }
+.rt-go:hover, .rt-go:focus-visible { color: var(--accent); }
+.rt-go::after { content: '›'; margin-left: 7px; color: var(--muted-2); display: inline-block;
+                transition: transform .3s var(--ease); }
+.rt-go:hover::after { transform: translateX(3px); color: var(--accent); }
+.rt-src { margin-top: clamp(18px, 2.2vw, 28px); }
+@media (max-width: 700px) { table.rt th.rt-nm { min-width: 148px; } }
+
+/* ─────────────────────────  the assumptions sheet  ───────────────────────── */
+
+/* Four tracks: the group rail, the assumption and its basis, the value, and
+   what moving it alone is worth. The rail holds the left edge so the value and
+   the swing can sit hard right without a ribbon of prose beside dead space. */
+.asm { margin-top: clamp(6px, 1vw, 14px); }
+.asm-legend { border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line);
+              padding: 13px 0 15px; }
+.asm-legend p { font-size: var(--fs-sm); line-height: var(--lh-relaxed); color: var(--muted);
+                max-width: 92ch; }
+.asm-legend b { color: var(--ink); font-weight: 700; }
+
+.asm-g { display: grid; grid-template-columns: minmax(150px, 17%) minmax(0, 1fr);
+         gap: 0 clamp(16px, 2.4vw, 40px); padding: clamp(22px, 2.6vw, 34px) 0 0;
+         border-bottom: 1px solid var(--line-strong); }
+.asm-g:last-of-type { border-bottom: 0; }
+.asm-rail { position: sticky; top: calc(var(--mast-h) + var(--tabs-h) + 14px); align-self: start;
+            padding-bottom: 22px; }
+.asm-rail h3 { font-size: var(--fs-h2); font-weight: 700; letter-spacing: -.012em;
+               line-height: 1.18; color: var(--ink); }
+.asm-rail p { font-size: var(--fs-micro); color: var(--muted-2); margin-top: 6px;
+              letter-spacing: .03em; }
+
+.asm-r { display: grid; grid-template-columns: minmax(0, 1fr) minmax(112px, 15%) minmax(140px, 19%);
+         gap: 4px clamp(14px, 2vw, 30px); align-items: start;
+         padding: 15px 0 17px; border-bottom: 1px solid var(--line); }
+.asm-rows > .asm-r:last-child { border-bottom: 0; padding-bottom: 26px; }
+.asm-k { font-size: var(--fs-body); font-weight: 700; letter-spacing: -.006em; color: var(--ink);
+         line-height: 1.3; display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; }
+.asm-c { font-size: var(--fs-micro); font-weight: 600; letter-spacing: .05em; text-transform: uppercase;
+         padding: 2px 7px; border: 1px solid var(--line-mid); border-radius: 2px; color: var(--muted-2);
+         white-space: nowrap; }
+.asm-c.d { color: var(--accent); border-color: var(--accent-tint-2); background: var(--accent-tint); }
+.asm-c.m { color: var(--ochre); border-color: #e6dcc4; background: #faf6ec; }
+.asm-c.o { color: var(--muted-2); background: var(--surface-2); border-color: var(--line); }
+.asm-b { font-size: var(--fs-sm); line-height: var(--lh-relaxed); color: var(--muted);
+         margin-top: 6px; max-width: 72ch; }
+.asm-v { font-size: clamp(1.0625rem, .96rem + .5vw, 1.38rem); font-weight: 700; color: var(--accent);
+         font-variant-numeric: tabular-nums; letter-spacing: -.016em; text-align: right;
+         line-height: 1.24; padding-top: 1px; }
+.asm-v .n { color: inherit; font-weight: inherit; }
+
+.asm-w { text-align: right; padding-top: 3px; }
+.asm-pp { display: flex; align-items: baseline; justify-content: flex-end; gap: 3px; }
+.asm-pp b { font-size: var(--fs-h2); font-weight: 700; color: var(--ink);
+            font-variant-numeric: tabular-nums; letter-spacing: -.014em; }
+.asm-pp span { font-size: var(--fs-micro); color: var(--muted-2); }
+.asm-bar { height: 3px; background: var(--surface-3); margin: 7px 0 9px; overflow: hidden; }
+.asm-bar i { display: block; height: 100%; width: calc(var(--f) * 100%); margin-left: auto;
+             background: var(--accent); transform-origin: right;
+             animation: asmbar .72s var(--ease) both; }
+@keyframes asmbar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.asm-s { display: grid; gap: 3px; }
+.asm-s div { display: flex; justify-content: flex-end; align-items: baseline; gap: 10px; }
+.asm-s dt { font-size: var(--fs-micro); color: var(--muted-2); }
+.asm-s dd { font-size: var(--fs-cap); color: var(--ink); font-variant-numeric: tabular-nums;
+            min-width: 52px; text-align: right; }
+.asm-nw { font-size: var(--fs-micro); color: var(--muted-2); line-height: 1.4; }
+.asm-src { margin-top: clamp(24px, 3vw, 38px); }
+
+@media (max-width: 900px) {
+  .asm-g { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .asm-rail { position: static; padding: 0 0 12px; display: flex; align-items: baseline; gap: 11px;
+              border-bottom: 1px solid var(--line-mid); }
+  .asm-rail p { margin-top: 0; }
+  .asm-r { grid-template-columns: minmax(0, 1fr) minmax(96px, 30%); }
+  .asm-main { grid-column: 1 / -1; order: 1; }
+  .asm-v { grid-column: 1; order: 2; text-align: left; margin-top: 9px; }
+  .asm-w { grid-column: 2; order: 3; margin-top: 9px; }
+  .asm-b { max-width: none; }
+}
+@media (prefers-reduced-motion: reduce) { .asm-bar i { animation: none; } }
+
+/* the pop-up sheet carries the same thirty, with its groups called out */
+.dial-gh { font-size: var(--fs-micro); font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+           color: var(--muted-2); padding: 15px 0 5px; border-bottom: 1px solid var(--line-mid); }
+.dial-gh:first-child { padding-top: 2px; }
+.dial-w { display: inline-block; margin-left: 9px; font-size: var(--fs-micro); color: var(--muted-2);
+          font-variant-numeric: tabular-nums; }
 .dial-row { display: grid; grid-template-columns: minmax(96px, 32%) 1fr; gap: 14px; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: var(--fs-sm); line-height: var(--lh-relaxed); }
 .dial-row .k { font-weight: 700; }
 .dial-row .v .n { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
@@ -409,7 +566,12 @@ main { display: block; }
 
 /* ─────────────────────────  panes, cards, kpis  ───────────────────────── */
 
+/* Two panes are authored as two tracks - every use passes its own --split - and
+   the variable had stopped being read, so a pair of two-column tables ran the
+   full width with the labels and the amounts at opposite edges. The split is
+   honoured again from the width at which two tracks are readable. */
 .panes { display: grid; grid-template-columns: 1fr; gap: clamp(22px, 3vw, 44px); align-items: start; }
+@media (min-width: 1000px) { .panes { grid-template-columns: var(--split, 1fr 1fr); } }
 .panes > section { min-width: 0; }
 .pane-h { font-size: var(--fs-cap); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); padding-bottom: 7px; border-bottom: 1px solid var(--line); }
 
@@ -504,10 +666,17 @@ ol.read li::before {
 .findbar .kbd { margin-left: auto; font-size: var(--fs-micro); color: var(--muted-2); border: 1px solid var(--line); border-radius: 2px; padding: 3px 6px; letter-spacing: .06em; }
 @media (max-width: 560px) { .findbar .kbd { display: none; } }
 
-.contents { margin-top: clamp(22px, 3vw, 34px); border-top: 1px solid var(--line-strong); }
+/* Every chapter row is the same height, whatever the length of its description
+   or the number of figures hung on it: the contents is a rhythm, and a row that
+   grows because its blurb ran to a second line reads as emphasis it has not
+   earned. The rows share one auto-row track and the description is held to two
+   lines; the figures run across rather than stacking, so three cannot outgrow
+   two. */
+.contents { margin-top: clamp(22px, 3vw, 34px); border-top: 1px solid var(--line-strong);
+            display: grid; grid-auto-rows: 1fr; }
 .crow {
-  display: grid; grid-template-columns: 40px minmax(0, 1fr) minmax(150px, 23%);
-  gap: 0 clamp(14px, 1.8vw, 26px); align-items: start; width: 100%; text-align: left;
+  display: grid; grid-template-columns: 40px minmax(0, 1fr) minmax(190px, 30%);
+  gap: 0 clamp(14px, 1.8vw, 26px); align-items: start; width: 100%; height: 100%; text-align: left;
   padding: clamp(15px, 1.9vw, 21px) 0; border-bottom: 1px solid var(--line);
   position: relative; transition: background .26s var(--ease-out);
 }
@@ -519,8 +688,11 @@ ol.read li::before {
 .crow:hover .t, .crow:focus-visible .t { color: var(--accent); }
 .crow .t .gl { color: var(--muted-2); margin-left: 8px; font-size: .78em; display: inline-block; transition: transform .3s var(--ease), color .24s var(--ease-out); }
 .crow:hover .t .gl, .crow:focus-visible .t .gl { transform: translateX(4px); color: var(--accent); }
-.crow .d { display: block; font-size: var(--fs-sm); color: var(--muted); line-height: 1.5; margin-top: 7px; max-width: 68ch; }
-.crow .f { display: grid; gap: 11px; justify-items: end; text-align: right; padding-top: 3px; }
+.crow .d { font-size: var(--fs-sm); color: var(--muted); line-height: 1.5; margin-top: 7px; max-width: 68ch;
+           display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+           min-height: calc(2 * 1.5em); }
+.crow .f { display: flex; flex-wrap: wrap; gap: 6px clamp(16px, 2.2vw, 30px); justify-content: flex-end;
+           align-items: baseline; text-align: right; padding-top: 3px; }
 .crow .fp { display: grid; gap: 3px; justify-items: end; }
 .crow .f .v { font-size: var(--fs-h3); font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
 .crow .f .l { font-size: var(--fs-cap); color: var(--muted-2); line-height: 1.35; }
@@ -1181,6 +1353,10 @@ body.lb-open { overflow: hidden; }
 /* ─────────────────────────  cheat sheet  ───────────────────────── */
 
 .cs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(20px, 2.6vw, 34px); align-items: start; }
+/* two columns of comparable depth beat three that stop at three different
+   places: the returns table and the sensitivity grid share the second column */
+.cs-grid.two { grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); }
+.cs-h2 { margin-top: clamp(24px, 2.8vw, 36px); }
 .cs-block { min-width: 0; }
 .cs-h { font-size: var(--fs-cap); letter-spacing: .13em; text-transform: uppercase; color: var(--ink); font-weight: 700; padding-bottom: 6px; border-bottom: 1px solid var(--accent); }
 .pane-h, .cs-h, .qsec-h .t { margin: 0; }
@@ -1463,7 +1639,7 @@ body.lb-open { overflow: hidden; }
   <div class="bar-in">
     <button class="bar-btn" id="tocbtn" aria-expanded="false" aria-controls="sheetbody"><span class="gl">⌃</span><span class="tx">Contents</span></button>
     <div class="chips" id="chips" role="list"></div>
-    <button class="bar-btn" id="dialbtn" aria-expanded="false" aria-controls="sheetbody"><span class="tx">Dials</span><span class="gl">⌃</span></button>
+    <button class="bar-btn" id="dialbtn" aria-expanded="false" aria-controls="sheetbody"><span class="tx">Assumptions</span><span class="gl">⌃</span></button>
   </div>
 </nav>
 
@@ -1655,24 +1831,37 @@ const FIGS = {
 };
 
 /* The dial set, for the bar's Dials sheet. Figures as the memorandum prints them. */
-const DIALS = [
-  ["Keys", "<span class='n'>60</span> — 17 Main House, 43 Stables and Courtyard; the courtyard, <span class='n'>12</span> keys, opening first"],
-  ["ADR", "<span class='n'>£1,000</span> → <span class='n'>£1,160</span>, year-1 money at 2026 prices"],
-  ["Occupancy", "<span class='n'>60–70%</span>, stabilised in year 7"],
-  ["Season", "Twelve months; underwritten on a year-round calendar"],
-  ["Revenue, year 7", "<span class='n'>£47.14m</span> = <span class='n'>£785,630</span> a key"],
-  ["GOP, year 7", "<span class='n'>£15.97m</span> = <span class='n'>33.88%</span>"],
-  ["Staff cost", "Index <span class='n'>1.20</span> on all seven direct-wage lines; no headcount is modelled"],
-  ["Cost of works", "<span class='n'>£170.9m</span> — hotel <span class='n'>£125.9m</span> at <span class='n'>£2.10m</span> a key, residences <span class='n'>£45.0m</span> at <span class='n'>£3.75m</span> a unit"],
-  ["Cost to open", "<span class='n'>£196.6m</span> = <span class='n'>£3.28m</span> a key"],
-  ["Yield on cost", "<span class='n'>5.57%</span> in year 7, a spread of <span class='n'>157bp</span> over the <span class='n'>4.00%</span> exit"],
-  ["Residences", "<span class='n'>12</span> at <span class='n'>£1,300</span>/sqft, <span class='n'>5,500</span> sqft average, escalating <span class='n'>3.0%</span> a year; absorption <span class='n'>3.75</span> a year, on 999-year leaseholds"],
-  ["Club", "<span class='n'>250</span> members at <span class='n'>£650</span> a month, <span class='n'>100</span> founders at <span class='n'>£25,000</span>"],
-  ["Programme", "<span class='n'>14</span> quarters of works, opening at T+3.5"],
-  ["Debt", "<span class='n'>55%</span> LTC senior; the refinancing at Q<span class='n'>26</span> draws <span class='n'>£124.8m</span> on a <span class='n'>1.25x</span> cover test"],
-  ["Exit", "<span class='n'>4.00%</span> on adjusted NOI with <span class='n'>6.8%</span> purchasers’ costs; hotel alone"],
-  ["Price", "<span class='n'>£50m</span> ruled; returns are outputs at it. Guidance is understood at about <span class='n'>£70m</span>"],
-  ["Returns", "<span class='n'>13.38%</span> levered and <span class='n'>1.86x</span> on <span class='n'>£110.9m</span> of peak equity"]
+const ASSUMPTIONS = [
+  {"g": "The asset", "k": "Price", "v": "<span class='n'>£50m</span>", "c": "Decision", "b": "Ruled, not solved: every return on this page is an output at it. Guidance is understood at about £70m, and the 13.00% bar solves at £51.7m, £1.74m above the ruled price."},
+  {"g": "The asset", "k": "Keys", "v": "<span class='n'>60</span>", "c": "Decision", "b": "17 Main House and 43 Stables and Courtyard, the vendor’s own scheduled scheme. 60 keys is the consensus across three of the four operator forecasts. Fifteen fewer keys take the revenue and leave the budget, because the capital cost is a schedule of buildings and estate rather than a price a key.", "w": "6.3pp", "s": [["45 keys", "7.04%"]]},
+  {"g": "The asset", "k": "Courtyard keys", "v": "<span class='n'>12</span>", "c": "Decision", "b": "The courtyard opens first and trades through the works. The consented courtyard count is 15, against the 43 the design statement schedules.", "w": "0.4pp", "s": [["24 keys", "13.52%"], ["43 keys", "13.75%"]]},
+  {"g": "The asset", "k": "Programme and hold", "v": "<span class='n'>14</span> quarters", "c": "Decision", "b": "Works run 14 quarters and the hotel opens at T+3.5; the hold is 8 years to a sale in quarter 32. A longer programme costs a little, because the schedule spends against its own dates.", "w": "0.2pp", "s": [["16 quarters", "13.29%"], ["18 quarters", "13.19%"]]},
+  {"g": "Rate and demand", "k": "ADR", "v": "<span class='n'>£1,000</span> → <span class='n'>£1,160</span>", "c": "Decision", "b": "Year-1 money at 2026 prices, reaching the year-7 figure on general inflation. It sits above every UK lead-in held and below the four cohort lead-ins of £1,372 and above; the four operator forecasts average £1,183 at their own stabilised year.", "w": "7.8pp", "s": [["£850", "9.74%"], ["£1,200", "17.52%"]]},
+  {"g": "Rate and demand", "k": "Occupancy", "v": "<span class='n'>60–70%</span>", "c": "Decision", "b": "Stabilised in trading year 7; 0.65 is the model input and the narrative interval is 60–70%. The four operator forecasts average 65.5%.", "w": "3.7pp", "s": [["0.60", "11.46%"], ["0.67", "14.13%"], ["0.70", "15.20%"]]},
+  {"g": "Rate and demand", "k": "Season", "v": "Twelve months", "c": "Decision", "b": "Underwritten on a year-round calendar. Of the comparable set, only one demonstrably year-round European estate hotel clears £1,000, and everything above £1,200 closes for two to seven months."},
+  {"g": "The revenue engines", "k": "The members’ club", "v": "<span class='n'>250</span> at <span class='n'>£650</span> a month", "c": "Decision", "b": "Plus 100 founder members at £25,000 and a £10,000 joining fee. The largest revenue lever in the model, and the fee has no filed comparable anywhere in the evidence estate.", "w": "3.6pp", "s": [["Off", "9.76%"], ["£490 a month", "12.67%"]]},
+  {"g": "The revenue engines", "k": "Exclusive-use buyouts", "v": "<span class='n'>15</span> at <span class='n'>£225,000</span>", "c": "Decision", "b": "A premium over the accommodation the buyout displaces. It has no filed comparable either, and with the club fee it carries about seven points of the return.", "w": "1.8pp", "s": [["Off", "11.58%"]]},
+  {"g": "The revenue engines", "k": "Corporate events", "v": "<span class='n'>15</span> at <span class='n'>£90,000</span>", "c": "Decision", "b": "Year-1 money, priced excluding rooms."},
+  {"g": "The revenue engines", "k": "Day meetings and private dining", "v": "<span class='n'>1.5</span> a day at <span class='n'>£950</span>", "c": "Decision", "b": "Twelve delegates a hire, against Beaverbrook’s filed room hire of £491,623 on 56 keys.", "w": "1.0pp", "s": [["Off", "12.43%"]]},
+  {"g": "The revenue engines", "k": "Regatta hospitality", "v": "<span class='n'>6</span> days", "c": "Decision", "b": "400 covers a day at £300 a head, the vendor’s own six-day format. It runs from year 1, through the works.", "w": "0.4pp", "s": [["Off", "12.98%"]]},
+  {"g": "What it earns", "k": "Revenue, year 7", "v": "<span class='n'>£47.14m</span>", "c": "Output", "b": "£785,630 a key, against an average of £450,300 across the four operator forecasts. Rooms £16.49m, food and beverage £21.41m, spa, club and other £9.23m."},
+  {"g": "What it earns", "k": "GOP, year 7", "v": "<span class='n'>£15.97m</span> = <span class='n'>33.88%</span>", "c": "Output", "b": "The margin is not the outlier in this underwrite; the revenue it is struck on is. The filed-accounts corpus prints 22.3 / 31.1 / 36.0% at its quartiles."},
+  {"g": "What it earns", "k": "NOI, year 7", "v": "<span class='n'>£10.94m</span> = <span class='n'>23.21%</span>", "c": "Output", "b": "After the operator’s base and incentive fees, which are charged inside the profit and loss account. Only Align’s own asset-management fee sits below it."},
+  {"g": "What it earns", "k": "Staff cost index", "v": "<span class='n'>1.20</span>", "c": "Decision", "b": "Applied to all seven direct-wage lines; undistributed costs are not scaled and no headcount is modelled. Per key the model spends more on undistributed expenses than all four operator forecasts.", "w": "6.5pp", "s": [["1.00", "17.50%"], ["1.10", "15.53%"], ["1.30", "11.03%"]]},
+  {"g": "The capital cost", "k": "Cost of works", "v": "<span class='n'>£170.9m</span>", "c": "Decision", "b": "Hotel £125.9m and residences £45.0m, from a 162-line ground-up budget priced after the site inspection of 17 August 2026: a quantity and a rate on every line. Chapter 04 carries every line and its basis."},
+  {"g": "The capital cost", "k": "Hotel works a key", "v": "<span class='n'>£2.10m</span>", "c": "Decision", "b": "£125.9m over 60 keys. Published conversion costs run £400–900k a key and top out at £1.84m at Le Grand Contrôle, so this sits above all of them; the buildings alone carry £1.50m a key and the estate adds £0.60m."},
+  {"g": "The capital cost", "k": "Loadings", "v": "<span class='n'>15%</span> / <span class='n'>9%</span> / <span class='n'>10%</span>", "c": "Decision", "b": "Preliminaries, fees and contingency on the hotel limb, which are Rocco Forte’s own loadings; the residential limb carries 12%, 8% and 5%."},
+  {"g": "The capital cost", "k": "Cost to open", "v": "<span class='n'>£196.6m</span> = <span class='n'>£3.28m</span> a key", "c": "Output", "b": "The works spent to opening plus the entry, 5% acquisition costs, the arrangement fee, capitalised interest and the pre-opening trading shortfall. It yields 5.57% in year 7, a spread of 157bp over the 4.00% exit."},
+  {"g": "Funding", "k": "Senior debt", "v": "<span class='n'>55%</span> LTC", "c": "Decision", "b": "Base rate 4.0% plus a 3.5% margin, rolling up for 14 quarters and peaking at £112.8m; the arrangement fee is 1%.", "w": "0.5pp", "s": [["Base rate 4.5%", "12.93%"]]},
+  {"g": "Funding", "k": "The refinancing", "v": "Q<span class='n'>26</span>, <span class='n'>£124.8m</span>", "c": "Decision", "b": "Sized to the lower of 55% loan to value at a 4.00% yield and 1.25x post-fee cover, margin 2.5%. The cover test binds. At 1.30x cover the equity requirement does not move.", "w": "0.1pp", "s": [["1.30x cover", "13.33%"], ["1.40x cover", "13.25%"]]},
+  {"g": "Funding", "k": "Equity", "v": "<span class='n'>£110.9m</span>", "c": "Output", "b": "Peak equity equals total equity: cash funds the later drawdowns, so nothing is called after the first distribution. Capital comes back in year 8."},
+  {"g": "Funding", "k": "Fees", "v": "<span class='n'>3.0%</span> / <span class='n'>7%</span> / <span class='n'>£350,000</span>", "c": "Decision", "b": "Operator base on total revenue and incentive on GOP, both inside the profit and loss account, plus Align’s escalating asset-management fee. Align funds no equity and its promote over 12% / 20% / 30% hurdles is carried at nil, so returns are pre-promote.", "w": "0.4pp", "s": [["Incentive 8%", "12.94%"]]},
+  {"g": "The residences", "k": "Product and price", "v": "<span class='n'>12</span> at <span class='n'>£1,300</span>/sqft", "c": "Market", "b": "5,500 sqft average, the vendor’s advised product. Savills recommends £1,934/sqft weighted, which it calls a 63% premium over the local top 5%; the RG9 prime reach prints a £1,107 median.", "w": "3.5pp", "s": [["£1,100/sqft", "11.65%"], ["£1,250/sqft", "12.95%"], ["£1,500/sqft", "15.14%"]]},
+  {"g": "The residences", "k": "Price growth", "v": "<span class='n'>3.0%</span>", "c": "Decision", "b": "Escalating to each sale quarter, above the 2.5% general inflation rate the model otherwise runs.", "w": "1.2pp", "s": [["Nil", "12.21%"], ["2.5%", "13.18%"]]},
+  {"g": "The residences", "k": "Absorption and tenure", "v": "<span class='n'>3.75</span> a year", "c": "Decision", "b": "Sales open in quarter 9 on 999-year leaseholds, ruled 18 August 2026 following Savills’ own assumption; the limb is net £46.2m after a 5% sales fee and £45.0m of all-in cost."},
+  {"g": "The exit", "k": "Exit yield", "v": "<span class='n'>4.00%</span>", "c": "Decision", "b": "On adjusted NOI of £10.80m with 6.8% purchasers’ costs, hotel alone. Every non-London country-house and resort trade held prints between 5.42% and 6.00%.", "w": "7.3pp", "s": [["3.50%", "16.44%"], ["3.75%", "14.88%"], ["4.25%", "11.94%"], ["4.75%", "9.18%"]]},
+  {"g": "The exit", "k": "Exit value", "v": "<span class='n'>£252.7m</span> = <span class='n'>£4.21m</span> a key", "c": "Output", "b": "Hotel alone. The exit is modelled as a sale of the holding company’s shares; an asset sale instead costs the return.", "w": "1.8pp", "s": [["Asset sale", "11.63%"]]},
+  {"g": "The exit", "k": "Returns", "v": "<span class='n'>13.38%</span> / <span class='n'>1.86x</span>", "c": "Output", "b": "Levered, on £110.9m of equity, for a levered profit of £95.3m. Unlevered 11.07% and 1.77x."}
 ];
 const DIAL_SRC = "Source: Align model, Financial Model v29, saved state 19 August 2026. Occupancy is an interval of 60–70% in narrative; 0.65 is the model input. The cost of works is the construction number, built line by line in chapter 04; cost to open is the all-in funded number, and it is the basis that compares with a third party’s all-in cost claim. The operator’s base and incentive fees sit inside the profit and loss account, so net operating income is after them. Align funds no equity and earns the £350,000 escalating asset-management fee and a promote over 12% / 20% / 30% hurdles carried at nil, so returns are pre-promote. Preliminary — subject to confirmatory DD.";
 
@@ -1689,23 +1878,7 @@ const PLATES = [
 ];
 
 /* The rate field — data and copy verbatim from slide rate-position. */
-const FIELD = {
-  text: "£1,000 sits above every UK lead-in held, below the four cohort lead-ins of £1,372 and above, and inside Borgo Egnazia’s £387–£1,029 seasonal range. It is underwritten on a year-round calendar.",
-  rows: [
-    { label: "Passalacqua (cohort)", min: 2558, max: 2558, slug: "passalacqua" },
-    { label: "Castello di Reschio (cohort)", min: 1507, max: 1507, slug: "reschio" },
-    { label: "Aman Rosa Alpina (cohort)", min: 1372, max: 1372, slug: "rosa-alpina" },
-    { label: "Borgo Egnazia (cohort)", min: 387, max: 1029, slug: "borgo-egnazia" },
-    { label: "Vestige Son Vell (cohort)", min: 670, max: 806 },
-    { label: "Heckfield Place (UK)", min: 750, max: 750, slug: "heckfield" },
-    { label: "Gleneagles (UK)", min: 595, max: 833, mid: 750 },
-    { label: "FS Hampshire (UK)", min: 620, max: 836, mid: 714 },
-    { label: "Chewton Glen (UK)", min: 485, max: 689, mid: 630 },
-    { label: "Coworth Park (UK)", min: 540, max: 720, mid: 620 },
-    { label: "Fawley Court — underwritten", min: 1000, max: 1000, subject: true }
-  ],
-  src: "Source: as pages 11 and 12 of the Investment Memorandum. Cohort rows are lead-in quotes at 6 August 2026 converted at €1 = £0.8575; UK rows are nightly lead-in medians, computed 3–6 August 2026. The five highest UK medians are plotted; the five held back all sit below £1,000 — Beaverbrook £566, Cliveden House £565, South Lodge £563, The Langley £457 and Lucknam Park £420, each in full on page 12. Le Grand Contrôle, Cipriani, Messardière, Pitrizza and La Bastide de Gordes are held to page 11: their bands run to £3,674–£8,568 and would set a scale on which nothing else is legible."
-};
+
 
 /* The entry ladder — every cell verbatim from slide ladder. */
 const LADDER = {
@@ -1724,7 +1897,7 @@ const LADDER = {
   underwritten: { adr: "£1,000", exit: "4.00%", psf: "£1,300",
     note: "Each lever column is the level at which the IRR reaches 13.00%, solved independently. A rung needing more than these carries a requirement" },
   note: "The guidance level. A rate half as much again as the highest UK lead-in, year-round against Reschio’s nine months; residences approaching Savills’ own £1,934",
-  src: "Source: Align model, Financial Model v29, solved on scratch copies 19 August 2026 — the IRR column by substitution into the price, the lever columns by bisection to a 13.00% levered IRR with each solved level read back through the model. Residential and rate evidence as cited in chapters 02 and 03."
+  src: "Source: Align model, Financial Model v29, solved on scratch copies 19 August 2026 — the IRR column by substitution into the price, the lever columns by bisection to a 13.00% levered IRR with each solved level read back through the model. Residential and rate evidence as cited in chapters 03 and 04."
 };
 
 /* The bridge — every figure verbatim from Model/docs/embassy-bridge-20260816.md */
@@ -2037,7 +2210,7 @@ const PNL_PROSE = {
      ["panes", { split, left:{h, b:[…]}, right:{h, b:[…]} }]
      ["exhibit", { h, b:[…] }]
      ["cards", [[heading, body], …]]  ["bullets", [html, …]]  ["plates", [i, …]]
-     ["strip"] ["rate"] ["ladder"] ["cases"] ["dials16"] ["wf", key] ["bridge"]
+     ["strip"] ["ratetable"] ["ladder"] ["assumptions"] ["wf", key] ["bridge"]
      ["qs"] ["asks"] ["keys"] ["cheat"] ["pnlcomp"] ["contact"]
    ══════════════════════════════════════════════════════════════════════ */
 
@@ -2107,51 +2280,41 @@ const CHAPTERS = [
       ["market"],
     ],
     reason: [] },
-  { id: "layers", title: "The Comparable Architecture", kicker: "Evidence",
-    figure: "Two layers · 19 properties", blurb: "Which property is used for which evidence, and what sits outside both layers.",
-    lead: [
-      ["panes",{"split":"50fr 50fr","left":{"h":"Layer 1 — European ceiling cohort · rate, capital cost, positioning","b":[["tbl",{"head":["Property","Setting","Evidences"],"rows":[[null,["Passalacqua","Lake Como villa","Rate p11 · ops p15 · capex p17"]],[null,["Castello di Reschio","Umbrian estate","Rate p11, the ceiling · residences p34"]],[null,["Le Grand Contrôle","Versailles palace","Rate p11 · ops p15 · capex p17"]],[null,["Château de la Messardière","Saint-Tropez hillside","Rate p11 · ops p15 · margin p30"]],[null,["Borgo Egnazia","Puglian resort village","Rate p11 · ops p15 · capex p17"]],[null,["Vestige Son Vell","Menorcan estate","Rate p11 · its season p14"]],[null,["Hotel Pitrizza","Costa Smeralda","Rate p11 · Smeralda ops p15, p30"]],[null,["Hotel Cipriani","Giudecca, Venice","Rate p11"]],[null,["Aman Rosa Alpina","Alta Badia, Dolomites","Rate p11 · its season p14"]],[null,["La Bastide de Gordes","Provençal hillside","Rate p11"]]]}]]},"right":{"h":"Layer 2 — UK country house · both a rate year and filed accounts","b":[["tbl",{"head":["Property","Operation","Evidences",{"t":"Accounts","a":"c"}],"rows":[[null,["Beaverbrook","Independent","Rate p12 · capex p17","Group"]],[null,["Chewton Glen","Iconic Luxury","Rate p12 · payroll p16","Entity"]],[null,["Cliveden House","Iconic Luxury","Rate p12 · payroll p16","Entity"]],[null,["Coworth Park","Dorchester","Rate p12","Group"]],[null,["Four Seasons Hampshire","Four Seasons","Rate p12","Group"]],[null,["Heckfield Place","Independent","Rate p12 · consent p40","Group"]],[null,["The Langley","Luxury Collection","Rate p12","Group"]],[null,["Lucknam Park","Relais &amp; Châteaux","Rate p12 · payroll p16","Entity"]],[null,["Gleneagles","Independent","Rate p12 · occupancy p16","Entity"]]]}]]}}],
-    ],
-    reason: [
-      ["para","Two layers, each property used for the evidence it holds. A wider UK base carries rate, occupancy, capex and sold-price evidence, named where it is used."],
-    ] },
   { id: "rate", title: "Rate", kicker: "Rate",
-    figure: "£1,000 against every rate held", blurb: "Where the underwritten rate sits against both layers, on one convention.",
+    figure: "Every rate held, hotel by hotel", blurb: "The annual and monthly rate collected on each hotel, filtered as the index is.",
     lead: [
-      ["rate"],
-      ["h","The European ceiling cohort"],
-      ["tbl",{"cls":"num wide","head":["Property",{"t":"Keys","a":"r"},{"t":"Lead-in rate","a":"r"},{"t":"Season","a":"c"},"Basis and window"],"rows":[["subject",["Fawley Court — underwritten","60","<span class='emph'>£1,000</span>","Year-round","Year-1 money, £1,160 by year 7. A decision taken on the evidence below"]],[null,["Passalacqua","24","£2,558","~9.5 mo","€2,980 lead-in double, taxes and fees in, next-60-days live quote, 6 Aug 2026"]],[null,["Le Grand Contrôle","14","£1,971–8,568","Year-round","Booking-engine calendar, lowest bookable room a night, to Aug 2027"]],[null,["Castello di Reschio","36","£1,507","~9 mo","€1,756 lead-in double, 6 Aug 2026; own engine ranges £1,395–4,032 across the year"]],[null,["Aman Rosa Alpina","51","£1,372","Dual season","From €1,600 on reopening 24 Jul 2025, against €545 before the rebuild"]],[null,["Château de la Messardière","~95","£986–2,573","~5.5 mo","Published B&amp;B bands, low to high season, tax excluded, 2026 season"]],[null,["Hotel Cipriani","95","£951–3,674","~7 mo","Aggregator room-type quotes, two observation windows, 6 Aug 2026"]],[null,["Vestige Son Vell","33–34","£670–806","~6.5 mo","Official from-rate with breakfast, plus one aggregator lead-in, 6 Aug 2026"]],[null,["Hotel Pitrizza","~65","£441","~4 mo","Lead-in per aggregator; top categories reach £4,824"]],[null,["Borgo Egnazia","~184","£387–1,029","Year-round","Shoulder-month to peak-summer lead-in, 6 Aug 2026"]],[null,["La Bastide de Gordes","~40","£556–3,871","~6–7 mo","Aggregator range across room types and seasons; no official rate card located"]]],"note":"Two of the ten trade year-round, and neither is a rural conversion. No property here is a year-round rural northern-European property pricing in the £950–1,200 band, so the underwritten positioning has no precedent in this cohort; at 60 keys the subject would also be its largest member bar Borgo Egnazia and Cipriani. Cases on pages 22 to 27."}],
-      ["h","The UK country-house set"],
-      ["tbl",{"cls":"num wide","head":["Property",{"t":"Set","a":"c"},{"t":"Median lead-in","a":"r"},{"t":"P25–P75","a":"r"},{"t":"Jun–Sep median","a":"r"},{"t":"Priced nights","a":"r"}],"rows":[["subject",["Fawley Court — underwritten","Subject","<span class='emph'>£1,000</span>","—","—","—"]],[null,["Heckfield Place","Core","£750","flat","£750","327"]],[null,["Gleneagles","Wider","£750","£595–833","£895","310"]],[null,["Four Seasons Hampshire","Core","£714","£620–836","£835","348"]],[null,["Chewton Glen","Core","£630","£485–689","£680","350"]],[null,["Coworth Park","Core","£620","£540–720","£740","304"]],[null,["Beaverbrook","Core","£566","£494–652","£638","334"]],[null,["Cliveden House","Core","£565","£450–680","£650","333"]],[null,["South Lodge","Wider","£563","£545–581","£563","357"]],[null,["The Langley","Core","£457","£457–583","£614","304"]],[null,["Lucknam Park","Core","£420","£419–461","£455","329"]]],"note":"The underwritten rate sits 30% above the highest lead-in here and 35% below Reschio. No UK evidence supports it. Support for £1,000 comes only from the European cohort, and every rung above the ruled price requires a rate above it. Cases on pages 18 to 20."}],
-    ],
-    reason: [
-      ["para","£1,000 sits above every UK lead-in held, below the four cohort lead-ins of £1,372 and above, and inside Borgo Egnazia’s £387–£1,029 seasonal range. It is underwritten on a year-round calendar."],
-      ["para","Ten properties read against the underwrite. Five of the UK country-house set, five of the European ceiling cohort, and Estelle Manor for the club engine. Every figure carries its basis, window and source."],
-    ] },
-  { id: "seasonality", title: "Seasonality", kicker: "Demand",
-    figure: "0.80 / 1.05 / 1.25 / 0.90", blurb: "The year-round case, against UK and cohort occupancy calendars.",
-    lead: [
-      ["panes",{"split":"50fr 50fr","left":{"h":"UK occupancy — every month of the year","b":[["tbl",{"cls":"num","head":["Series",{"t":"Low","a":"r"},{"t":"High","a":"r"},"Basis"],"rows":[["divider",["Monthly, for shape"]],[null,["England, all hotels","60–65%","83–86%","VisitEngland/Amadeus, 2023–25"]],[null,["South East England","63–64%","80–84%","Same survey, regional cut"]],[null,["Countryside destinations","55–59%","—","Destination-type cut, published for January alone, 2019–24"]],["subject",["Fawley Court — index","<span class='emph'>0.80</span>","<span class='emph'>1.25</span>","Quarterly index: 0.80, 1.05, 1.25, 0.90"]],["divider",["Annual, for level"]],[null,["UK luxury segment","69.8%","","HotStats via RSM, FY2024"]],[null,["London luxury","75–82%","","STR and HVS, 2023–25"]],["subject",["Fawley Court — underwritten","<span class='emph'>60–70%</span>","","Stabilised, year 7"]]]}]]},"right":{"h":"Cohort occupancy — seasonal calendars","b":[["tbl",{"cls":"num","head":["Series",{"t":"Low","a":"r"},{"t":"High","a":"r"},"Basis"],"rows":[["divider",["Monthly, for shape"]],[null,["Menorca 5-star","Unreported","88.5%","IBESTAT 2024; no open supply Nov–Apr"]],[null,["South Tyrol 5-star","9.8%","~76%","ASTAT 2024; annual 67.4% for the tier"]],[null,["Italy, all hotels","35.6%","55.2%","ISTAT 2024; calendar against open days"]],[null,["Belmond Italy","Closed in winter","","All seven properties, “closing for varying periods”, 10-K Item 2"]],["divider",["Annual, for level"]],[null,["Menorca 5-star","72.6%","","Equal to the six open months, 73.5%"]],[null,["Belmond Europe","56–64%","","SEC 10-K, Europe segment, FY2013–18"]]]}]]}}],
+      ["ratetable"],
     ],
     reason: [
     ] },
   { id: "operations", title: "Operations", kicker: "Operations",
-    figure: "(32)% to 36.5%", blurb: "What each layer files: revenue, margin, occupancy and staffing.",
+    figure: "Sixteen filers, one year-round analogue", blurb: "What each layer files: revenue, margin, occupancy and staffing.",
     lead: [
-      ["h","The European ceiling cohort"],
-      ["tbl",{"cls":"num wide","head":["Property or series",{"t":"Keys","a":"r"},{"t":"Revenue","a":"r"},"Margin",{"t":"Staff/key","a":"r"},"Basis"],"rows":[["subject",["Fawley Court — underwritten","60","<span class='emph'>£47.14m</span>","<span class='emph'>£15.97m = 33.88% GOP</span>","—","Year 7, Align model. Staff cost is indexed at 1.20; no headcount is modelled"]],[null,["Le Grand Contrôle","14","€16.3m (2024)","<span class='neg'>(32)% to (13)% EBITDA</span>","7.1–14.2","Filed French accounts; negative every year"]],[null,["Messardière","~95","€58.1m (2024)","36.5% EBITDA","—","Filed French accounts; 24.2% in 2019. ~5.5 months open"]],[null,["Borgo Egnazia","~184","€73.0m (2024)","10.8% net","4.16","Italian registry; no EBITDA. 765 staff at August peak"]],[null,["Smeralda portfolio","~395","€146.1m (2024)","25.8% EBITDA","1.5–2.0","Four hotels incl. Pitrizza; the only portfolio EBITDA disclosed"]],[null,["Passalacqua","24","In a €75.3m group","Group blend only","4.17","Group entity covers three hotels; the GM’s own count"]],[null,["Belmond Europe","—","—","29–35% EBITDA","—","SEC segment note, FY2013–18, audited, pre-corporate overhead"]]],"note":"Le Grand Contrôle has filed a negative EBITDA in every year on record, on rates of £1,971 to £8,568 across its booking calendar. Reported staffing is 4.17 staff a key at Passalacqua and 4.16 at Borgo Egnazia, against the 2.5 a key the Paris Palace tier is characterised as running (French trade press, 2026 — a characterisation, not a filed count)."}],
-      ["h","The UK country-house set"],
-      ["panes",{"split":"46fr 54fr","left":{"h":"Occupancy — named UK annual actuals","b":[["tbl",{"cls":"num","head":["Property",{"t":"Occupancy","a":"r"},"Vintage"],"rows":[["subject",["Fawley Court — underwritten","<span class='emph'>60–70%</span>","Stabilised, year 7"]],[null,["Gilpin Hotel &amp; Lake House","94%","FY2023A"]],[null,["Cameron House","79–84%","FY2014–17A"]],[null,["Cowley Manor","76–82%","FY2024–25A"]],[null,["The Belfry","~81%","FY2017–19A"]],[null,["Gleneagles","67–71%","FY2017–19A"]],[null,["Stoke Park","66–71%","FY2014–17A"]],[null,["Mar Hall","~65%","FY2018–19A"]],[null,["Fairmont St Andrews","39–58%","FY2021–23A, recovery"]]]}]]},"right":{"h":"GOP margin and payroll — filed accounts","b":[["tbl",{"cls":"num","head":["Line",{"t":"Value","a":"r"},"Basis"],"rows":[["subject",["Fawley Court — underwritten","<span class='emph'>33.88%</span>","GOP margin, year 7"]],["key",["Corpus p25 / p50 / p75","22.3 / 31.1 / 36.0%","GOP, 67 hotels, FY2012–25A"]],[null,["Careys Manor","~30%","GOP, FY2023A"]],[null,["Fairmont St Andrews","19.5–23.3%","GOP, FY2021–23A"]],[null,["Luton Hoo","10–15%","GOP, FY2018–20A"]],["divider",["Payroll, % of revenue"]],[null,["Cliveden House","30.0%","FY24A; FY23A 31.1%"]],[null,["Chewton Glen","34.5%","FY24A; FY23A 32.9%"]],[null,["Lucknam Park","40.1%","FY25A; FY24A 41.8%"]],[null,["Grantley Hall","51.5%","FY25A, full-estate staffing"]],[null,["The Newt in Somerset","71.1%","FY25A, whole estate incl. gardens"]]]}]]}}],
+      ["h", "The European ceiling cohort"],
+      ["tbl", {"cls": "num wide", "head": ["Property or series", {"t": "Keys", "a": "r"}, {"t": "Revenue", "a": "r"}, "Margin", {"t": "Staff/key", "a": "r"}, "Basis"], "rows": [["subject", ["Fawley Court — underwritten", "60", "<span class='emph'>£47.14m Y7 (£785,630/key)</span>", "<span class='emph'>£15.97m / £47.14m = 33.88% GOP</span>", "—", "Financial Model v29, Year 7; 365-day operation; staff cost index 1.20 and no headcount modelled"]], [null, ["Le Grand Contrôle", "14", "€16.3m FY2024", "EBE −€2.10m / €16.3m = −12.9%; FY2021–24 all negative: −€1.89m/€5.92m, −€2.02m/€13.7m, −€2.36m/€15.1m, −€2.10m/€16.3m", "7.1–14.2, flagged", "LOV &amp; DUCASSE, French statutory accounts FY2021–24 filed via Pappers; 100–199 employees is a 2023 band"]], [null, ["Château de la Messardière", "86", "€58.1m FY2024", "EBE €21.2m / €58.1m = 36.5%", "—", "SA Hotel Château de la Messardière, French statutory accounts FY2024 filed 21 July 2025; current Airelles page confirms 86 rooms; season about 5.5–6 months"]], [null, ["La Bastide de Gordes", "40", "€18.36m FY2024", "EBE €2.17m / €18.36m = 11.8%", "1.75–2.40, conflicting", "La Bastide de Gordes &amp; Spa, French statutory accounts FY2024 via Pappers/Verif; 70–96 employees from registry surfaces; about six months open"]], [null, ["Borgo Egnazia", "184", "€73.025m FY2024", "Net profit €7.903m / €73.025m = 10.8%; EBITDA not disclosed", "4.16 peak", "E.I.T. S.p.A. Italian Business Register data FY2024; 765 August-peak staff from Il Sole 24 Ore, 2024"]], [null, ["Smeralda portfolio — four hotels", "~395", "€142.691m registry / €146.1m UniOlbia FY2024", "EBITDA €37.7m / €146.1m = 25.8%", "1.52 annual average; 2.03 peak", "Sardegna Resorts S.r.l. FY2024 registry data and UniOlbia summary of filed accounts; 600 annual-average staff and 800 peak staff; not Pitrizza standalone"]], [null, ["Passalacqua", "24", "Within €75.3m FY2024 three-hotel group", "Group net profit €26.3m / €75.3m = 34.9%; property margin not held", "4.17", "Meta S.p.A. FY2024 filing covers Grand Hotel Tremezzo, Passalacqua and Sheraton Lake Como; 100 staff from GM interview, CNN, September 2023"]], [null, ["Belmond Europe owned-hotels segment", "—", "$212.379m FY2017; $238.440m FY2018", "$73.687m / $212.379m = 34.7%; $79.038m / $238.440m = 33.1% adjusted EBITDA", "—", "Belmond Ltd Forms 10-K FY2017 and FY2018, SEC Note 25 / Europe segment; segment, not property-level"]], [null, ["Royal Champagne", "47", "€20.636m FY2024", "EBE €1.23m / €20.636m = 5.96%", "2.70, using 127 staff / 47 keys", "Royal Champagne FY2024 French accounts filed via Pappers; 127-person headcount is dated 2022, not FY2024"]], [null, ["Ballyfin Demesne", "20–21", "€6.61m FY2024", "Loss after tax −€389,281 / €6.61m = −5.9%; GOP/EBITDA not held", "4.6–4.8", "Ballyfin Demesne Limited CRO FY2024 accounts; 96 employees and 20–21 keys"]], [null, ["Hotel Cipriani", "79 current; 103 older combined basis", "€41.329m FY2024", "EBITDA/GOP not disclosed", "0.63–1.25 registry band; unverified 228-person figure excluded", "Hotel Cipriani S.p.A. FY2024 Italian registry data; current Belmond count is 79, replacing the older 96-key figure"]], [null, ["Hotel Splendido", "54 operator count; 61 registry conflict", "€34.441m FY2024", "EBITDA/GOP not disclosed; net loss −€1.578m", "—", "Hotel Splendido S.p.A. FY2024 Italian registry data; operator and registry key counts remain unreconciled"]], [null, ["Belmond Villa San Michele", "39", "€14.368m FY2024", "Net loss −€7.453m; EBITDA/GOP not disclosed", "—", "Villa San Michele S.p.A. FY2024 Italian registry data; FY2024 predates the full reopening"]], [null, ["Hotel Caruso", "50", "€25.68m FY2024", "Reported EBITDA €6.816m / €25.68m = 26.5%; aggregator figure, not filed EBITDA", "—", "Hotel Caruso S.p.A. FY2024 Italian registry revenue; EBITDA from Xray Finance aggregator, FY2024"]], [null, ["Villa La Coste", "31", "€12.4m FY2024", "Operating loss −€0.568m / €12.4m = −4.6%; EBITDA/GOP not held", "—", "CLC Luxury Hotel SARL, French accounts FY2024 via Pappers; Pappers supports €12.4m, not €12.45m"]], [null, ["Castiglion del Bosco", "53", "€45.074m FY2024", "Net profit €3.575m / €45.074m = 7.9%; EBITDA/GOP not disclosed", "3.3–4.6, conflicting", "Castiglion del Bosco Hotel S.r.l. FY2024 Italian registry data; 175 versus 241 employees unresolved"]], [null, ["Amanzoe", "~40 pavilions plus villas", "€41.80m FY2023", "Property EBITDA/GOP not held", "—", "FY2023 turnover perimeter includes villa sales; no clean hotel-only filing"]]], "note": "Sixteen properties file something; not one of them files a hotel-level GOP on a year-round northern-European conversion. Royal Champagne is the closest analogue held, and it earns 5.96% on the same convention. The subject’s 33.88% is a modelled margin, not a demonstrated one."}],
+      ["h", "Occupancy, named annual actuals"],
+      ["tbl", {"cls": "num wide", "head": ["Property", {"t": "Occupancy", "a": "r"}, "Vintage and basis"], "rows": [["subject", ["Fawley Court — underwritten", "<span class='emph'>60–70%</span>", "Stabilised in trading year 7, Align model"]], [null, ["Belmond Europe owned-hotels segment", "56% / 62% / 64% / 64% / 63%", "FY2014 / FY2015 / FY2016 / FY2017 / FY2018A; Belmond 10-K Item 7, filed 2017–19"]], [null, ["Il San Pietro di Positano", "97%", "2024 GM interview; denominator and operating-period basis not stated"]], [null, ["Amanzoe", "71%", "2017 season; listed-owner annual report"]], [null, ["Château de la Messardière", "65%", "c.2016 director interview"]], [null, ["Ballyfin Demesne", "62.3–65.4% inferred", "2018 owner interview reported 4,500 room nights; inference from 20–21 keys and approximately 344 open days"]], [null, ["Hotel Caruso", "80%", "April 2023 MD interview; not an annual filed figure and denominator not stated"]], [null, ["Hotel Splendido", "75%", "Q2 2011 Orient-Express disclosure, including Splendido Mare; not an annual figure"]], [null, ["Hotel Cipriani", "73%", "Q2 2011 Orient-Express disclosure, including Palazzo Vendramin; not an annual figure"]], [null, ["Belmond Villa San Michele", "62%", "Q2 2011 Orient-Express disclosure; not an annual figure"]], ["divider", ["The United Kingdom, filed and reported annual actuals"]], [null, ["Gilpin Hotel &amp; Lake House", "94%", "FY2023A"]], [null, ["Cameron House", "79–84%", "FY2014–17A"]], [null, ["Cowley Manor", "76–82%", "FY2024–25A"]], [null, ["The Belfry", "~81%", "FY2017–19A"]], [null, ["Gleneagles", "67–71%", "FY2017–19A"]], [null, ["Stoke Park", "66–71%", "FY2014–17A"]], [null, ["Mar Hall", "~65%", "FY2018–19A"]], [null, ["Fairmont St Andrews", "39–58%", "FY2021–23A, recovery"]]], "note": "The audited series is Belmond’s: five years of European owned-hotel occupancy that never exceeds 64%. Most of the rest are interview or quarterly disclosures rather than annual filed figures, and each says so. The United Kingdom rows below the rule are filed annual actuals and are unchanged."}],
+      ["h", "Margin and payroll, filed accounts"],
+      ["tbl", {"cls": "num wide", "head": ["Line", {"t": "Value", "a": "r"}, "Basis"], "rows": [["subject", ["Fawley Court — GOP", "<span class='emph'>£15.97m / £47.14m = 33.88%</span>", "Financial Model v29, Year 7 underwrite; modelled, not filed"]], [null, ["Belmond Europe — adjusted EBITDA", "$67.590m / $199.251m = 33.9% FY2016; $73.687m / $212.379m = 34.7% FY2017; $79.038m / $238.440m = 33.1% FY2018", "Belmond Ltd Forms 10-K FY2016–18, Europe segment"]], [null, ["Le Grand Contrôle — EBE", "−€2.10m / €16.3m = −12.9% FY2024", "LOV &amp; DUCASSE French statutory accounts FY2024 via Pappers; payroll not disclosed in the filing"]], [null, ["Château de la Messardière — EBE and payroll", "EBE €21.2m / €58.1m = 36.5%; payroll €11.2m / €58.1m = 19.2% FY2024", "SA Hotel Château de la Messardière French accounts FY2024 via Pappers"]], [null, ["La Bastide de Gordes — EBE", "€2.17m / €18.36m = 11.8% FY2024", "La Bastide de Gordes &amp; Spa French accounts FY2024 via Pappers/Verif; payroll not held on a verified filed basis"]], [null, ["Royal Champagne — EBE and payroll", "EBE €1.23m / €20.636m = 5.96%; payroll €8.612m / €20.636m = 41.7% FY2024", "Royal Champagne French accounts FY2024 via Pappers; 127-person headcount is FY2022"]], [null, ["Borgo Egnazia — net margin and payroll", "Net profit €7.903m / €73.025m = 10.8%; personnel cost €13.851m / €73.025m = 19.0%; EBITDA/GOP not disclosed", "E.I.T. S.p.A. Italian Business Register FY2024; primary filing not purchased"]], [null, ["Smeralda portfolio — EBITDA and payroll", "EBITDA €37.7m / €146.1m = 25.8%; payroll €25.7m / €146.1m = 17.6% on UniOlbia basis versus €35.79m / €142.69m = 25.1% on registry basis; unreconciled", "Sardegna Resorts S.r.l. FY2024 filed-account summaries and registry data; four-hotel perimeter"]], [null, ["Cliveden House — EBITDA and payroll", "EBITDA £5.095m / £18.784m = 27.12%; payroll £5.638m / £18.784m = 30.0%", "SRE Hotels (Cliveden) Limited Companies House accounts FY2024, filed 7 August 2025"]], [null, ["Chewton Glen — operating profit and payroll", "Operating profit £4.27m / £21.83m = 19.6%; payroll £7.53m / £21.83m = 34.5%", "Chewton Glen Hotels Limited Companies House accounts FY2024; 321 average monthly employees"]], [null, ["Beaverbrook — adjusted EBITDA and payroll", "Adjusted EBITDA £3.601m / £28.850m = 12.48%; payroll £13.145m / £28.850m = 45.6%", "Beaverbrook Holdings Limited consolidated Companies House accounts, year ended March 2025"]], [null, ["Estelle Manor — adjusted EBITDA and payroll", "EBITDA −£2.751m / £44.392m = −6.20%; payroll £21.957m / £44.392m = 49.5%", "Estelle Manor Limited Companies House accounts FY2025, year ended 31 March 2025"]], ["divider", ["Held from the wider corpus, and from filings without a full revenue split"]], ["key", ["Align corpus p25 / p50 / p75", "22.3 / 31.1 / 36.0%", "GOP, 67 hotels, FY2012–25A"]], [null, ["Careys Manor", "~30%", "GOP, FY2023A"]], [null, ["Fairmont St Andrews", "19.5–23.3%", "GOP, FY2021–23A"]], [null, ["Luton Hoo", "10–15%", "GOP, FY2018–20A"]], [null, ["Lucknam Park", "40.1%", "Payroll share of revenue, FY25A; FY24A 41.8%"]], [null, ["Grantley Hall", "51.5%", "Payroll share of revenue, FY25A, full-estate staffing"]], [null, ["The Newt in Somerset", "71.1%", "Payroll share of revenue, FY25A, whole estate including gardens"]]], "note": "Every line above the rule now carries the absolutes it is struck on, so no percentage travels alone. Payroll runs from 19.0% at Borgo Egnazia, on a seasonal Puglian base, to 49.5% at Estelle Manor, which trades year-round on a membership model of the kind this underwrite assumes."}],
     ],
     reason: [
     ] },
   { id: "capex", title: "Conversion Capex", kicker: "Capital cost",
-    figure: "£2.10m a key", blurb: "The two bases the subject appears on, against every published conversion cost located.",
+    figure: "£2.10m a key, against nineteen held", blurb: "The two bases the subject appears on, against every conversion cost located.",
     lead: [
-      ["tbl",{"cls":"num","head":["Evidence",{"t":"Keys","a":"r"},{"t":"Per key","a":"r"},"Basis"],"rows":[["subject",["Fawley Court — hotel works, all-in","60","<span class='emph'>£2.10m</span>","£125.9m from a 162-line ground-up budget: quantity × rate a line, then 15% preliminaries, 9% fees and 10% contingency. Chapter 05 carries it"]],["subject",["Fawley Court — cost to open","60","<span class='emph'>£3.28m</span>","£196.6m: the above plus entry, acquisition costs, finance fees, capitalised interest and the pre-opening trading shortfall"]],[null,["Le Grand Contrôle","14","£2.07–3.37m","Press figures conflict at $39m, over $50m and €55m; a state concession"]],[null,["Beaverbrook","35","£2.57m","Press-reported floor at 2017 completion; 56 keys today"]],[null,["Grantley Hall","47","£1.49m","2019 outturn, including acquisition and expansion"]],[null,["Passalacqua","24","£0.62m","“More than $20m” per press; conversion works only, no acquisition"]]],"note":"Few conversion costs are published, and each figure above carries its own inclusion basis. None is published by Heckfield Place, Coworth Park, The Langley, Four Seasons Hampshire or Estelle Manor, or located for five of the cohort. Rayners Penn carries a 2025 consent-stage estimate of £2.73m a key over 33 keys, with the outturn unpublished. The subject’s own figure is no longer a price a key: it is a schedule of buildings and estate, and the buildings alone carry £1.50m a key with the estate adding £0.60m on top."}],
+      ["tbl", {"cls": "num wide", "head": ["Evidence", {"t": "Keys", "a": "r"}, {"t": "Per key", "a": "r"}, "Basis"], "rows": [["subject", ["Fawley Court — hotel works", "60", "<span class='emph'>£2.10m</span>", "£125.9m, 2026 Financial Model v29 Capex tab; 162-line ground-up works budget with 15% preliminaries, 9% fees and 10% contingency; works only, VAT and tender inflation excluded"]], [null, ["Fawley Court — cost to open", "60", "£3.28m", "£196.6m, 2026 Financial Model v29; hotel works plus £50m acquisition, 5% acquisition costs, finance fees, capitalised interest and pre-opening shortfall; all-in funded cost to opening"]], [null, ["Le Grand Contrôle", "14", "£2.07m–£3.37m; middle report &gt;£2.65m", "2018–21 works on three listed buildings, c.5,000 sqm. Press figures conflict: US$39m, &gt;US$50m and €55m; converted at US$1=£0.7426 and €1=£0.8575. Sources: CALQ project page, Pratique, Condé Nast Traveler; press-reported, not filed"]], [null, ["Château de la Messardière — all-in", "86 / 117", "£1.94m / £1.42m", "2019–21; €154m acquisition plus approximately €40m planned renovation, converted at €1=£0.8575. 117 keys bought; 86 rooms and suites now let. Sources: Groupe BPCE financing release, L’Hôtellerie-Restauration, CFNEWS; reported transaction plus planned works, not filed actual spend"]], [null, ["Beaverbrook", "35 at 2017 completion; 56 today", "£2.57m floor", "More than £90m reported over the 2011–17 restoration, covering the mansion and estate outbuildings; 2017 completion basis. Source: Forbes, 14 Nov 2018; press-reported, not filed"]], [null, ["Ballyfin Demesne", "20–21", "&gt;£1.77m on the US$50m report; &gt;£2.04m on the €50m report", "Restoration and hotel conversion before the 2011 opening; acquisition and works not split. Press figures and currency conflict: more than US$50m and more than €50m. Sources: Town &amp; Country, 2022; Irish Times, 2019; press-reported"]], [null, ["Grantley Hall", "47", "£1.49m", "2019 outturn including acquisition, restoration and expansion; citing Yorkshire Post; not split into works and acquisition"]], [null, ["Rayners Penn", "33", "£2.73m", "January 2025 consent-stage estimate for listed conversion, spa and restaurants; source: Hospitality Investor; outturn unpublished"]], [null, ["Royal Champagne", "47", "&gt;€1.06m / &gt;£0.91m", "More than €50m historic hotel-and-spa redevelopment, 2015–18; source: Vedomosti 2019; press-reported. The 2024 Pappers filing separately records €779,618 of tangible additions, not the historic conversion cost"]], [null, ["La Bastide de Gordes", "c.40", "€0.50m–€0.88m / £0.43m–£0.75m", "2014–17 works covering hotel, spa, pools, restaurants and public areas; press range €20m–€35m. Sources: L’Hôtellerie-Restauration 2016 and Forbes 2019; press-reported"]], [null, ["Belmond Villa San Michele", "39", "c.€0.77m / c.£0.66m", "2024–26, €30m press-estimated restyling covering rooms, spa, gardens and restaurant; source: T24 Economia; press-reported"]], [null, ["Passalacqua", "24", "&gt;US$0.83m / &gt;£0.62m; approximately €0.83m / £0.71m on the separate €20m report", "2019–22 conversion, fresco and garden restoration; press currencies conflict between “more than US$20m” and approximately €20m. Sources: LUXUO, Design &amp; Contract and 8 Real Estate; conversion works only, no acquisition"]], [null, ["Hotel Caruso", "54", "c.US$0.56m / c.£0.41m", "1999–2005 restoration including land, rooms, frescoes, salons, chapel, bar, reception and infinity pool; US$30m press report. SEC filings separately record approximately US$7m invested to date and EU grants; figures are different milestones, not a reconciled outturn"]], [null, ["Rosewood Schloss Fuschl — earlier renovation", "98", "at least €0.31m / at least £0.26m", "At least €30m spent in 2005–06 on the hotel, spa, Waldhaus, Jägerhaus and connecting works; source: ORF 2006; earlier renovation, not the 2024 Rosewood reopening"]], [null, ["Borgo Egnazia", "c.184", "n/c", "Approximately €150m, 2000–10, for 155 rooms, 29 villas, golf, spa and infrastructure; sources: The Independent and Treehouse Group; mixed new-build project total, not divisible to a clean hotel-only per-key figure"]], [null, ["Adare Manor", "104 after expansion", "n/c", "2016–17 restoration and expansion reports range from approximately €50m to over €100m; scope includes manor, new accommodation, spa, ballroom, golf and estate infrastructure. Sources: Irish Times and Independent; conflicting press reports, no hotel-only per-key figure"]], [null, ["Six Senses Antognolla", "71 keys plus 79 residences", "n/c", "€150m stated project investment, with later reports of €173m; scope includes hotel, residences, castle, golf and estate infrastructure. ANSA 2016 and Rizzani de Eccher project material; not a hotel-only build cost"]], [null, ["Six Senses Loire Valley / Les Bordes", "50 hotel rooms plus 52 residences", "n/c", "€270m announced 2023, with another report of at least €140m; scope includes hotel, residences, restaurants, pools, golf and estate infrastructure. Sources: Les Bordes announcement and Ecozoom; conflicting bundled project totals"]], [null, ["Sveti Stefan", "n/c", "n/c", "€56m contractor/lender-supervision figure for 2011–15 refurbishment of the island, Villa Miločer and infrastructure. Adriatic Properties separately claims more than €110m, while €110m is also a lease investment obligation; the latter is not evidence of spend. Sources: STMG capability statement, Vijesti, Europa Nostra"]]], "note": "Two subject rows on two bases, because they are not interchangeable: the works figure is the construction number and cost to open is the all-in funded number. Of the third-party figures, six carry conflicting press reports and five cover a scope too mixed to divide by keys at all, which is stated rather than resolved. Sterling conversions use the research convention of €1=£0.8575 and US$1=£0.7426, and nothing here is adjusted for inflation."}],
     ],
     reason: [
-      ["para","The subject appears on two bases. The works figure is the construction number, built line by line in chapter 04; cost to open is the all-in funded number, and it is the basis that compares with a third party’s all-in cost claim. On a like-for-like scope the comparison also cuts the subject’s way, and against it: these are refurbishments of trading hotels, and none of them discloses an estate line at all."],
+    ] },
+  { id: "exit", title: "Sales Evidence &amp; Exit Yield", kicker: "Transactions",
+    figure: "4.00% · £4.21m a key", blurb: "Every trade held, in the United Kingdom and across the cohort, against the yield and the value per key the underwrite exits on.",
+    lead: [
+      ["h", "The United Kingdom and trophy set"],
+      ["tbl", {"cls": "num wide", "head": ["Transaction", {"t": "Date", "a": "c"}, {"t": "Keys", "a": "r"}, {"t": "Per key", "a": "r"}, {"t": "Yield", "a": "r"}, "Basis"], "rows": [["subject", ["Fawley Court — underwritten exit", "~T+8", "60", "<span class='emph'>£4.21m</span>", "<span class='emph'>4.00%</span>", "Financial Model v29, 2026 basis: £252.7m hotel-only value on adjusted NOI of £10.80m; modelled exit, not a transaction"]], [null, ["Six Senses London", "2024", "109", "£1.65m", "Not published", "transaction record: £180m on 22 May 2024; urban London transaction, no yield in the held record"]], [null, ["The Mere Golf Resort", "2022", "81", "£424k", "6.00%", "Transaction database record; 2022 trade, with a separate 2018 trade at 7.0%; Cheshire resort"]], [null, ["Fonab Castle", "2022", "43", "£302k", "Not published", "Transaction database record; Perthshire castle hotel; no yield published"]], [null, ["Stoke Park", "2021", "49", "£1.16m", "5.42%", ": £57m on 30 Apr 2021, 49 keys; yield published in the transaction record; country house bought for refurbishment closure"]], [null, ["The Ritz London", "Mar 2020", "136", "£5.15m", "2.38%", ": £700m on 27 Mar 2020, 136 rooms; London trophy transaction, not operationally comparable"]], [null, ["Formby Hall", "2020", "76", "£316k", "5.80%", "Transaction database record; Merseyside golf resort; yield published in the held record"]], [null, ["Rusacks St Andrews", "2019", "70", "£643k", "Not published", "Transaction database record; £45m reported consideration; St Andrews links-front hotel, no yield published"]], [null, ["Gleneagles", "2015", "232", "c.£647k–c.£862k", "Not published", "Price reports conflict: approximately £150m in The Guardian and approximately £200m in The Caterer; 232 keys at trade. Verification rejects the previously carried 5.50% yield as unsupported"]], [null, ["Cliveden House", "2012", "41 at trade", "£756k", "Not published", ": £31m on 3 Sep 2012, 41 keys; 47 rooms and suites today; no yield published"]], [null, ["UK hotels — Colliers index print", "Q1 2025", "—", "—", "4.50%", "prime_yields: Colliers UK hotels market index, Q1 2025; calibrated index estimate, not a transaction. A separate Savills 2025 fixed-lease/strong-covenant chart read also shows 4.50%"]]], "note": "Four of the nine trades carry no published yield, and one more lost the yield it used to be shown with: the 5.50% previously carried against Gleneagles is not published in the sale reporting held. Every non-London country-house and resort trade that does print a yield sits between 5.42% and 6.00%, against the 4.00% the underwrite exits on. The 4.50% Q1 2025 print is an index estimate, not a trade."}],
+      ["h", "The European cohort"],
+      ["tbl", {"cls": "num wide", "head": ["Property", {"t": "Date", "a": "c"}, {"t": "Keys", "a": "r"}, {"t": "Price", "a": "r"}, {"t": "Per key", "a": "r"}, {"t": "Yield", "a": "r"}, "Basis"], "rows": [[null, ["Adare Manor", "2015", "62 at trade", "c.€30m", "c.€0.48m / c.£0.42m", "Not published", "JP McManus and family; Tizzard Holdings Unlimited Company, CRO 552867. Reported by Irish Times and corroborated by Knight Frank; hotel and golf resort, before the 2017 expansion"]], [null, ["Amanzoe", "1 Aug 2018", "c.40 pavilions plus villas", "€5.8m cash plus €76.5m assumed debt; c.€82.3m economic burden; implied EV c.€116m", "n/c", "Not published", "Grivalia Hospitality and Dolphin Capital Partners acquired 100% from Dolphin Capital Investors. Grivalia 2018 annual report; perimeter includes hotel, villas and approximately 1m sqm of land"]], [null, ["Belmond Castello di Casole", "7 Feb 2018", "39 hotel keys plus 48 residential plots", "€40.220m total transaction value", "c.€1.031m / c.£0.885m", "Not published", "Belmond acquired the two Italian owning companies from Erste Abwicklungsanstalt. SEC 8-K and 10-Q; consideration also disclosed as €38.287m cash, €1.003m contingent consideration and €0.930m costs. Per-key figure does not strip out land or residential value"]], [null, ["Château de la Messardière", "2019", "117 at trade", "€154m", "c.€1.316m / c.£1.129m", "Not published", "LOV Hotel Collection acquired from the Gibier family; buyer vehicle not published. Groupe BPCE financing release, L’Hôtellerie-Restauration and CFNEWS; restaurants, spa, pools and park included"]], [null, ["Passalacqua", "2018", "24", "€20m reserve/base; final price not disclosed", "€20m / 24 = €0.833m, at the reserve only", "Not published", "De Santis family acquisition at auction; no purchasing vehicle identified. Concierge Auctions and La Provincia di Como; reserve is not the sale price"]], [null, ["Castiglion del Bosco", "March 2022", "53 accommodation units", "€300m–€400m", "n/c", "Not published", "Sold by the Ferragamo family to an unnamed international family office; vehicle not published. La Nazione; whole estate including winery, golf and other assets, not a hotel transaction"]], [null, ["Son Bunyola", "2015", "Hotel not yet open; current record is 27 rooms plus villas", "£11m versus €15.3m", "n/c", "Not published", "Virgin Limited Edition / Richard Branson repurchase; sources conflict. Helen Cummins reports approximately £11m; Majorca Daily Bulletin reports €15.3m. Estate acquisition, not a hotel-only trade"]], [null, ["Hotel Pitrizza — Costa Smeralda portfolio", "19 Jun 2003", "Not separable", "€290m plus further consideration", "n/c", "Not published", "Starwood sold Pitrizza with three other hotels, marina, shipyard, golf club and undeveloped land to Colony Capital. HospitalityNet; portfolio price, not Pitrizza consideration"]], [null, ["Hotel Cipriani", "1976", "Not established at trade", "£900,000", "n/c", "Not published", "A Sea Containers group company reportedly bought Hotel Cipriani SRL. Belmond history and secondary reporting; buyer vehicle and keys at trade are not published"]]], "note": "Not one European trade publishes a yield, and most cover a perimeter wider than a hotel: Castello di Casole carries 48 residential plots, Amanzoe villas and land, Castiglion del Bosco a winery and a golf course. They frame what estate hotels of this class change hands for; none of them prices a 60-key hotel on its own. Ownership dates are held for Castello di Reschio, Six Senses Antognolla, Aman Rosa Alpina, Son Vell, Villa San Michele and Hotel Splendido, with no published consideration behind them."}],
+    ],
+    reason: [
     ] },
   { id: "pnl", title: "Estimated P&amp;Ls", kicker: "Operations",
     figure: "33.88% GOP, sixth of eleven", blurb: "Ten comparable hotels put through the same engine, ranked on GOP margin against the underwrite.",
@@ -2164,72 +2327,18 @@ const CHAPTERS = [
 },
 {
   id: "underwrite", num: "03", eyebrow: "Underwrite", title: "Underwrite",
-  blurb: "The dial set, the revenue engines, the margin frame, the capital stack and the residences.",
+  blurb: "The assumptions, the capital stack, the residences and what the equity returns.",
   figures: [["£47.14m","Year-7 revenue"],["33.88%","Year-7 GOP margin"]],
   views: [
-  { id: "", title: "The Dials", kicker: "Underwrite",
-    figure: "Seventeen dials at the ruled price", blurb: "",
+  { id: "", title: "Assumptions", kicker: "Underwrite",
+    figure: "Every assumption the model runs on", blurb: "",
     lead: [
-      ["dials16"],
+      ["assumptions"],
     ],
     reason: [
     ] },
-  { id: "dial-set", title: "The Dial Set", kicker: "Underwrite",
-    figure: "Ten dials, with basis", blurb: "Every dial, whether it is a market or a decision input, and the note that governs it.",
-    lead: [
-      ["tbl",{"cls":"num wide","head":["Dial","Underwritten",{"t":"Basis","a":"c"},"Note"],"rows":[
-        [null,["Keys","60, courtyard 12","Decision","The vendor’s own scheduled scheme: 17 Main House, 43 Stables and Courtyard, the courtyard opening first. The consented courtyard count is 15, and 60 keys is now the consensus across three of the four operator forecasts"]],
-        [null,["ADR","£1,000 → £1,160","Decision","Below the four cohort lead-ins of £1,372 and above; a third over the top UK median. The four operator forecasts average £1,183 at their own stabilised year"]],
-        [null,["Occupancy","0.65 [0.60–0.70]","Decision","Reached in trading year 7. The four operator forecasts average 65.5%, which is where the model already sits"]],
-        [null,["Cost of works","£170.9m — £125.9m hotel, £45.0m residences","Decision","A 162-line ground-up budget priced after the site inspection of 17 August 2026: a quantity and a rate on every line, then 15% preliminaries, 9% fees and 10% contingency on the hotel limb, which are Rocco Forte’s own loadings. Chapter 05 carries every line and its basis"]],
-        [null,["Staff cost index","1.20","Decision","All seven direct-wage lines; undistributed costs are not scaled. Per key the model spends more on undistributed expenses than all four operator forecasts"]],
-        [null,["Residences","12 at £1,300/sqft","Market","5,500 sqft average, the vendor’s advised product; prices escalate 3.0% a year to each sale quarter; absorption 3.75 a year, on 999-year leaseholds ruled 18 August 2026. The rate sits above the £1,100 cap the underwrite previously ruled and above the £1,250 it named as upside, and it has not yet been given its own evidence basis — an open item"]],
-        [null,["Fees","3.0% / 7% / 1.5%","Decision","Operator base on total revenue and incentive on GOP, both charged inside the profit and loss account, with brand charges on rooms. Align funds no equity and earns the £350,000 escalating AM fee and a promote over 12% / 20% / 30% hurdles carried at nil, so returns are pre-promote"]],
-        [null,["Debt","55% LTC senior; refinancing at Q26","Decision","Senior at base 4.0% plus 3.5%, PIK 14 quarters. The refinancing is sized to the lower of 55% LTV at a 4.00% yield and 1.25x post-fee cover, margin 2.5%; the cover test binds, drawing £124.8m against the £112.8m of senior it repays"]],
-        [null,["Exit","4.00%","Decision","On adjusted NOI with 6.8% purchasers’ costs; hotel alone"]],
-        [null,["Programme, hold","14 quarters, 8 years","Decision","Opening at T+3.5; the single-lever sensitivities move it"]]]}],
-    ],
-    reason: [
-    ] },
-  { id: "engines", title: "Revenue Engines", kicker: "Revenue",
-    figure: "£47.14m in year 7", blurb: "The five demand engines and the year-7 revenue mix.",
-    lead: [
-      ["tbl",{"cls":"num wide","head":["Engine","Underwritten, Y1 money",{"t":"Year 7","a":"r"},{"t":"Share","a":"r"},"Boundary"],"rows":[
-        [null,["Regatta hospitality","6 days × 400 covers × £300 a head","£0.60m","—","The vendor’s own six-day format; runs from year 1, through the works"]],
-        [null,["Exclusive-use buyouts","15 a year at a £225,000 premium over accommodation","—","—","The premium has no filed comparable anywhere in the evidence estate. Turning the buyouts off costs 1.80pp"]],
-        [null,["Corporate events","15 a year at £90,000","—","—","Subject prices exclude rooms"]],
-        [null,["Day meetings and private dining","1.5 hires a day at £950, twelve delegates","—","—","Against Beaverbrook’s filed room hire of £491,623 on 56 keys. Off, it costs 0.96pp"]],
-        [null,["The members’ club","250 members at £650 a month, 100 founders at £25,000","£2.48m","—","No filed comparable for the fee. Off, it costs 3.63pp — the largest revenue lever in the model"]],
-        ["divider",["Year-7 revenue mix"]],
-        [null,["Rooms","60 keys at £1,160, occupancy 0.65","£16.49m","35.0%","RevPAR £753, year-7 money"]],
-        [null,["Food and beverage","Restaurants, bar, tea, events, Regatta, the River Club","£21.41m","45.4%","2.93 times the four operator forecasts per key"]],
-        [null,["Spa, club, other","Spa, memberships, hire, other","£9.23m","19.6%","Partly a members’-club case, stated as one"]],
-        ["total",["Total revenue","Year 7, stabilised","<span class='emph'>£47.14m</span>","100%","£785,630 a key; the four operator forecasts average £450,300"]],
-        [null,["GOP and NOI","NOI after the operator’s fees","£15.97m / £10.94m","33.88% / 23.21%","The base and incentive fees are charged inside the P&amp;L, so this NOI is after them; only Align’s own £350,000 fee sits below it"]]]}],
-    ],
-    reason: [
-    ] },
-  { id: "margin", title: "The Margin Frame", kicker: "Margin",
-    figure: "33.88% at index 1.20", blurb: "The staff cost index against the GOP margin and the levered return it produces.",
-    lead: [
-      ["panes",{"split":"46fr 54fr","left":{"h":"The staff cost index, and what each setting returns","b":[["tbl",{"cls":"num","head":["Staff cost index",{"t":"Year-7 GOP margin","a":"r"},{"t":"Levered IRR at the price","a":"r"}],"rows":[[null,["1.00","37.53%","17.50%"]],[null,["1.10","35.70%","15.53%"]],["subject",["1.20 — underwritten","<span class='emph'>33.88%</span>","<span class='emph'>13.38%</span>"]],[null,["1.30","32.05%","11.03%"]],[null,["1.40","30.22%","8.44%"]],],"note":"The evidence beside runs 25.8% at Smeralda to 36.5% at Messardière, with Belmond’s audited segment at 33–35% and Le Grand Contrôle negative. The four operator forecasts for this asset average a 32.6% GOP margin, which is inside a point and a half of the underwrite."}]]},"right":{"h":"Where the margin sits against the evidence","b":[["tbl",{"cls":"num","head":["Series",{"t":"Margin","a":"r"},"Basis"],"rows":[
-        [null,["Villa d’Este","41.2%","EBITDA, FY2025 filed; the outer bound"]],
-        [null,["Rocco Forte, for this asset","37.7%","GOP, their own year-5 forecast, June 2026"]],
-        [null,["Messardière","36.5%","EBITDA, FY2024, ~5.5-month season"]],
-        ["key",["Align corpus p75","36.0%","GOP, 67 hotels, FY2012–25A"]],
-        ["subject",["Fawley Court — underwritten","<span class='emph'>33.88%</span>","GOP, year 7, Align model"]],
-        [null,["Belmond Europe","33–35%","Adjusted EBITDA, FY2016–18, audited"]],
-        [null,["Six Senses, for this asset","32.9%","GOP, their own year-5 forecast, March 2025"]],
-        ["key",["Align corpus p50","31.1%","GOP, 67 hotels, FY2012–25A"]],
-        [null,["Careys Manor","~30%","GOP, FY2023A; the highest UK country-house actual held"]],
-        [null,["Wellness resorts","26%","GOP, HotStats segment print, 2025"]],
-        [null,["Smeralda portfolio","25.8%","EBITDA, FY2024, four hotels"]]]}]]}}],
-    ],
-    reason: [
-      ["para","The staff cost index is the margin lever. The table shows the year-7 GOP margin and the levered IRR at each setting, against the evidence range beside it. The margin itself is not the outlier in this underwrite; the revenue it is struck on is."],
-    ] },
-  { id: "capital", title: "Capital &amp; Cost to Open", kicker: "Capital",
-    figure: "£196.6m to open", blurb: "What it costs to open and to exit, how it is funded, and how the exit value is struck.",
+  { id: "capital", title: "Capital", kicker: "Capital",
+    figure: "£196.6m to open · £110.9m of equity", blurb: "What it costs to open and to exit, how it is funded, and the year the capital comes back.",
     lead: [
       ["panes",{"split":"50fr 50fr","left":{"h":"Hotel cost to open and exit","b":[["tbl",{"cls":"num","head":["Line",{"t":"Amount","a":"r"}],"rows":[
         [null,["Purchase price","£50m"]],
@@ -2253,12 +2362,6 @@ const CHAPTERS = [
         [null,["Exit yield / purchasers’ costs","4.00% / 6.8%"]],
         ["total key",["Exit value, hotel alone","<span class='emph'>£252.7m</span>"]],
         [null,["Per key · unadjusted NOI on the gross value","£4.21m · 4.00%"]]]}]]}}],
-    ],
-    reason: [
-    ] },
-  { id: "profile", title: "Drawdown &amp; Return Profile", kicker: "Capital",
-    figure: "Peak equity £110.9m", blurb: "Equity in, cash out, and the year the capital comes back.",
-    lead: [
       ["wf","equity"],
       ["exhibit",{"h":"Annual flows, £m","b":[["tbl",{"cls":"num","head":["Period",{"t":"Equity in","a":"r"},{"t":"Distributed","a":"r"},{"t":"Senior","a":"r"},{"t":"Refi","a":"r"}],"rows":[[null,["Close","26.0","—","27.5","—"]],
         [null,["Y1","13.9","—","10.6","—"]],
@@ -2275,8 +2378,8 @@ const CHAPTERS = [
     reason: [
       ["bullets",["<b>Peak equity £110.9m</b> at quarter 12, the end of year 3, and equal to the total drawn: cash funds later drawdowns, so nothing is called after the first distribution. That equality holds only at the 1.25x cover test the refinancing is sized on.","<b>Capital comes back in year 8</b>: cumulative net equity is £31.9m at the end of year 7, and the 127.2 distributed in year 8 clears it.","<b>The refinancing more than clears the senior</b> — £124.8m drawn against the £112.8m balance it repays. The cover test that sizes it is set at 1.25x, and a lender holding 1.30x reopens a capital call."]],
     ] },
-  { id: "residences", title: "Residences — the Adopted Product", kicker: "Residences",
-    figure: "12 × 5,500 sqft at £1,300", blurb: "The vendor's own advised product, and the price the model now takes it at.",
+  { id: "residences", title: "Residences", kicker: "Residences",
+    figure: "12 × 5,500 sqft at £1,300", blurb: "The vendor&#39;s own advised product, the price the model takes it at, and what the sold-price register prints around it.",
     lead: [
       ["exhibit",{"h":"The underwrite against the vendor's own advice","b":[["tbl",{"cls":"num","head":["Line",{"t":"Underwritten","a":"r"},"Savills, for Cherrilow, October 2025"],"rows":[
         [null,["Units","<span class='emph'>12</span>","A maximum of 12: five 5-bed Meadows houses, seven 6-bed river houses"]],
@@ -2288,13 +2391,7 @@ const CHAPTERS = [
         ["total",["Net to the deal","<span class='emph'>£46.2m</span>","—"]],
         [null,["Absorption","3.75 a year","3 to 4 a year over three years"]],
         [null,["Tenure","999-year leasehold","Savills assumes 999-year long leaseholds"]]],"note":"Savills schedules 65,900 sqft; the model’s 5,500 sqft average gives 66,000 sqft, a difference of 100 sqft that is immaterial. Tenure was ruled at 999-year leasehold on 18 August 2026, following Savills’ own assumption. The £1,300 rate and the 3.0% growth both sit above what the underwrite has ruled — the rate above the £1,100 cap and the £1,250 named upside, the growth above the 2.5% general inflation the rest of the model runs on. Neither has been given its own evidence basis."}]]}],
-    ],
-    reason: [
-      ["cards",[["What the local evidence prints","RG9 prime sold evidence gives a £1,107 median and an upper quartile of £1,478; the one branded scheme held, Lakes by Yoo, prints £886."],["What Savills says of its number","£1,934/sqft is a 63% premium over the local top 5% at £1,186, which Savills calls unprecedented."],["What the rate is worth","At £1,100 the case returns 11.65% and at £1,250 12.95%, against 13.38% at the £1,300 the model holds. The limb is worth about 3.5 points across that band."],["What has to be true","Residential consent in a Grade II* registered park, where no UK precedent was located, and where no application has ever been made — and an evidence basis for £1,300 that the underwrite has not yet ruled."]]],
-    ] },
-  { id: "residences-evidence", title: "Residences — Sold Evidence", kicker: "Residences",
-    figure: "RG9 median £1,107", blurb: "What the sold-price register prints around the reach, and what it does not hold.",
-    lead: [
+      ["h","What the sold-price register prints"],
       ["tbl",{"cls":"num wide","head":["Evidence set",{"t":"n","a":"r"},{"t":"Median £/sqft","a":"r"},{"t":"P25–P75","a":"r"},"Basis"],"rows":[
         ["subject",["Fawley Court — underwritten","12","<span class='emph'>£1,300</span>","—","5,500 sqft average, escalating 3.0% a year to each sale quarter; absorption 3.75 a year"]],
         [null,["Savills recommendation","12","£1,934","£1,450–2,250","Weighted across 12 units, October 2025; a 63% premium over the local top 5% at £1,186/sqft"]],
@@ -2306,6 +2403,7 @@ const CHAPTERS = [
         ["total",["The limb, net","12","<span class='emph'>£46.2m</span>","—","Gross £95.9m escalated, less a 5% sales fee and £45.0m of all-in cost; the cost is itemised in chapter 04"]]],"note":"The sold-price register returned no branded-residence comparables, and the one UK scheme with resale activity, Hamilton Grand, is in Scotland and outside it. Absorption of 3.75 a year is a judgment input inside Savills’ 3 to 4."}],
     ],
     reason: [
+      ["cards",[["What the local evidence prints","RG9 prime sold evidence gives a £1,107 median and an upper quartile of £1,478; the one branded scheme held, Lakes by Yoo, prints £886."],["What Savills says of its number","£1,934/sqft is a 63% premium over the local top 5% at £1,186, which Savills calls unprecedented."],["What the rate is worth","At £1,100 the case returns 11.65% and at £1,250 12.95%, against 13.38% at the £1,300 the model holds. The limb is worth about 3.5 points across that band."],["What has to be true","Residential consent in a Grade II* registered park, where no UK precedent was located, and where no application has ever been made — and an evidence basis for £1,300 that the underwrite has not yet ruled."]]],
     ] },
 { id: "bridge", title: "The IRR Bridge", kicker: "The bridge",
     figure: "−40.26% → 13.38%", blurb: "",
@@ -2314,7 +2412,7 @@ const CHAPTERS = [
     ],
     reason: [
     ] },
-{ id: "cheat", title: "The Cheat Sheet", kicker: "Cheat sheet",
+{ id: "cheat", title: "Summary Financials", kicker: "Summary financials",
     figure: "Formula-linked to the model", blurb: "",
     lead: [
       ["cheat"],
@@ -2377,67 +2475,6 @@ const CHAPTERS = [
       ["para","Every rung is measured on the model at that entry. The rule marks the 13.00% bar; the lever columns show the level one input alone must reach to hold it."],
       ["src", LADDER.src],
     ] },
-  { id: "cases", title: "The Cases", kicker: "Cases",
-    figure: "13.38% against a downside of (8.31)%", blurb: "The case, a scope case and a downside, measured side by side.",
-    lead: [
-      ["tbl",{"cls":"num wide","head":["Measure, at the ruled price",{"t":"The case","a":"r"},{"t":"45-key scope case","a":"r"},{"t":"Trophy downside","a":"r"}],"rows":[
-        ["key",["Levered IRR","<span class='emph'>13.38%</span>","7.04%","<span class='neg'>(8.31)%</span>"]],
-        ["key",["Equity multiple","<span class='emph'>1.86x</span>","1.36x","0.70x"]],
-        [null,["Unlevered IRR","11.07%","7.81%","0.79%"]],
-        [null,["Year-7 revenue","£47.14m","£41.09m","£36.83m"]],
-        [null,["Year-7 GOP margin","33.88%","32.25%","30.51%"]],
-        [null,["Cost to open","£196.6m","£196.4m","£197.3m"]],
-        [null,["Peak equity","£110.9m","£110.9m","£111.2m"]],
-        [null,["Equity drawn in total","£110.9m","£120.5m","£141.6m"]],
-        [null,["Exit value","£252.7m","£203.4m","£150.1m"]],
-        [null,["Residences, net","£46.2m","£46.2m","£14.6m"]],
-        ["total",["Levered profit","<span class='emph'>£95.3m</span>","£42.9m","<span class='neg'>(£42.0m)</span>"]]],"note":"<b>What each column is.</b> <b>45-key scope case</b>: the same book with the key count set to 45. It costs more than a key count usually would, because the capital cost is a schedule of buildings and estate rather than a price a key: fifteen fewer keys take the revenue away and leave the budget where it was. No consented 45-key scheme is evidenced in the data room. <b>Trophy downside</b>: the same book re-cut at a £750 rate, an occupancy override reaching 0.55, residences at £850 a square foot, an exit at 4.375%, the buyouts and corporate events halved and Regatta covers at 200 a day."}],
-    ],
-    reason: [
-      ["src","Source: Align model, Financial Model v29 — the case, the same book at 45 keys, and the trophy-downside recipe, each measured at the ruled £50m price on 19 August 2026. Multiples are struck on equity drawn. Two older columns are not shown: a floor case built on Financial Model v12 and a flag-failure branch, both of which carry an earlier fee stack and an earlier capital cost, and neither of which can be reproduced on this version. They printed 6.56% and (31.20)% on their own books, and they are lineage references rather than cases of this underwrite."],
-    ] },
-  { id: "sensitivities", title: "Single-Lever Sensitivities", kicker: "Sensitivity",
-    figure: "ADR the largest lever, 7.8pp", blurb: "One dial at a time at the ruled price, measured on the model.",
-    lead: [
-      ["tbl",{"cls":"num wide","head":["Dial",{"t":"Weaker","a":"r"},{"t":"Underwritten","a":"r"},{"t":"Stronger","a":"r"},"Swing and note"],"rows":[
-        [null,["ADR, year 1","£850 → 9.74%","<span class='emph'>£1,000 → 13.38%</span>","£1,200 → 17.52%","7.8pp across the band. The four operator forecasts average £1,183 at their own stabilised year"]],
-        [null,["Exit yield","4.75% → 9.18%","<span class='emph'>4.00% → 13.38%</span>","3.50% → 16.44%","7.3pp. Every non-London trade held prints 5.42–6.00%"]],
-        [null,["Staff cost index","1.30 → 11.03%","<span class='emph'>1.20 → 13.38%</span>","1.00 → 17.50%","6.5pp. The margin frame runs it against the evidence"]],
-        [null,["Occupancy, stabilised","0.60 → 11.46%","<span class='emph'>0.65 → 13.38%</span>","0.70 → 15.20%","3.7pp. The narrative interval is 60–70%; the four operator forecasts average 65.5%, and 0.67 returns 14.13%"]],
-        [null,["The members’ club","Off → 9.76%","<span class='emph'>250 at £650 → 13.38%</span>","—","3.6pp, the largest of the demand engines and the largest revenue lever in the model. At £490 a month it returns 12.67%. No filed comparable exists for the fee"]],
-        [null,["Keys","45 → 7.04%","<span class='emph'>60 → 13.38%</span>","—","6.3pp. The capital cost is a schedule of buildings and estate, so fifteen fewer keys take the revenue and leave the budget"]],
-        [null,["Exclusive-use buyouts","Off → 11.58%","<span class='emph'>15 at £225,000 → 13.38%</span>","—","1.8pp. The premium has no filed comparable either"]],
-        [null,["Residences £/sqft","£1,100 → 11.65%","<span class='emph'>£1,300 → 13.38%</span>","£1,500 → 15.14%","3.5pp. Twelve units at 5,500 sqft; £100/sqft is £6.6m of gross before escalation"]],
-        [null,["Residential price growth","0% → 12.21%","<span class='emph'>3.0% → 13.38%</span>","—","1.0pp between nil and the 2.5% general inflation rate; the model runs 3.0%, above it"]],
-        [null,["Regatta","Off → 12.98%","<span class='emph'>6 days → 13.38%</span>","—","0.4pp, on the vendor’s own six-day format"]],
-        [null,["Courtyard keys","—","<span class='emph'>12 → 13.38%</span>","43 → 13.75%","0.2pp. The consented courtyard count is 15; 24 keys returns 13.52%"]],
-        [null,["Works programme","18 quarters → 13.19%","<span class='emph'>14 quarters → 13.38%</span>","—","A longer programme costs a little: 16 quarters returns 13.29%, because the schedule spends against its own dates"]],
-        [null,["Financing","SONIA 4.5% → 12.93%","<span class='emph'>4.0% → 13.38%</span>","—","The refinancing is sized on a 1.25x cover test; at 1.30x it returns 13.33% and at 1.40x 13.25%"]],
-        [null,["Operator incentive","8% → 12.94%","<span class='emph'>7% → 13.38%</span>","—","0.4pp. Subordinating the incentive rather than cutting it is the chip the HMA negotiation still holds"]]],"note":"The exit is modelled as a sale of the holding company’s shares, on which no corporate gain arises in the vehicle. Selling the asset instead, at 25% on the gain, returns 11.63% — -1.75pp against the case — and pays £17.6m of capital gains tax on the £70.5m gain, on top of the £4.81m of corporation tax the hold pays either way. It is the largest structuring exposure in the underwrite. Two further exposures are named rather than measured here: the lender cash-trap the model does not carry, and construction escalation, both of which the model review prices."}],
-    ],
-    reason: [
-      ["para","Each row moves one dial at the ruled £50m price and holds everything else. The IRR is measured on the model at every setting shown, on scratch copies, with the state restored and the baseline re-verified after each one."],
-      ["src","Source: Align model, Financial Model v29, measured on scratch copies 19 August 2026 by substitution, with every reported setting read back through the model and the baseline re-verified at 13.3837% afterwards. The occupancy rows move the stabilised plateau and its ramp year together and leave the construction years alone. The scheme rows move the twelve switches on the capital schedule, each of which carries its own cost and revenue. The tax row moves the capital-gains rate from nil to 25% and reads the corporation-tax and capital-gains rows of the cash flow."],
-    ] },
-  { id: "exit", title: "Exit Yield &amp; Value per Key", kicker: "Exit",
-    figure: "4.00% · £4.21m a key", blurb: "Every country-house, resort and trophy trade held with a published price.",
-    lead: [
-      ["tbl",{"cls":"num wide","head":["Evidence",{"t":"Date","a":"c"},{"t":"Keys","a":"r"},{"t":"Per key","a":"r"},{"t":"Yield","a":"r"},"Basis"],"rows":[
-        ["subject",["Fawley Court — exit","~T+8","60","<span class='emph'>£4.21m</span>","<span class='emph'>4.00%</span>","£252.7m hotel alone, on adjusted NOI of £10.80m over the gross-of-costs value"]],
-        [null,["Six Senses London","2024","109","£1.65m","—","The flag’s London debut, urban; no yield published"]],
-        [null,["The Mere Golf Resort","2022","81","£424k","6.00%","Cheshire resort; 7.0% at its own 2018 trade"]],
-        [null,["Fonab Castle","2022","43","£302k","—","Perthshire castle hotel; no yield published"]],
-        [null,["Stoke Park","2021","49","£1.16m","5.42%","Country house bought for refurbishment closure; the closest trade held"]],
-        [null,["The Ritz London","Mar 2020","136","£5.15m","2.38%","£700m over 136 keys; a London transaction, not operationally comparable"]],
-        [null,["Formby Hall","2020","76","£316k","5.80%","Golf resort, Merseyside"]],
-        [null,["Rusacks St Andrews","2019","70","£643k","—","St Andrews links-front; no yield published"]],
-        [null,["Gleneagles","2015","232","£647k","5.50%","A 232-key UK resort transaction"]],
-        [null,["Cliveden House","2012","41","£756k","—","Country house, prior cycle; 41 keys at the trade, 47 today"]],
-        [null,["UK hotels, index print","Q1 2025","—","—","4.50%","A published index level for UK hotels, not a transaction"]]],"note":"Four of the nine trades carry no published yield. Every country-house and resort trade here that does prints between 5.42% and 6.00%, and the only sub-3% yield is the London transaction at £5.15m a key. The underwritten 4.00% sits beyond that record on the yield, and £4.21m a key is above every trade held except that one. No trade held supports either level, and the gap widened with this version: the exit value rose with the capital cost while the evidence did not move."}],
-    ],
-    reason: [
-      ["src","Source: the transaction database, 426 UK trades of which 96 carry a published yield; shown are the country-house, resort and trophy trades with a published price. Colliers market index for the Q1 2025 print, an index level and not a trade. Align model for the subject. Transaction yields are as published at each trade and are not restated to a common basis; the subject is struck on adjusted NOI, after the operator and asset-management fees, over the gross-of-costs value."],
-    ] }
   ]
 },
 {
@@ -2489,7 +2526,7 @@ const CHAPTERS = [
     reason: [
     ] }
   ]
-},
+}
 ];
 
 /* Returns are read as part of the underwrite, not as a separate chapter. Keep
@@ -2950,11 +2987,53 @@ function stripHTML() {
   }).join("") + '</div><p class="strip-cap">Vendor data-room photography. Eight plates, with the interiors, sit under Photography.</p>';
 }
 
-/* the sixteen dials, as the underwrite's opening surface */
-function dials16HTML() {
-  return '<div class="tbl-scroll lab"><table class="tbl labeled"><tbody>'
-    + DIALS.map(([k, v]) => "<tr><td>" + k + "</td><td>" + v + "</td></tr>").join("")
-    + "</tbody></table></div>";
+/* ─────────────  the assumptions sheet  ─────────────
+
+   The master surface of the underwrite: every assumption the model runs on,
+   grouped, with its class, its basis and — where the model has been measured at
+   other settings — what moving it is worth. The swing column is the single-lever
+   sensitivity work, carried beside the assumption it belongs to rather than
+   held on a page of its own, so no assumption is read without its consequence.
+
+   Four tracks, so no column is left empty: the group rail, the assumption and its
+   basis, the value, and what it is worth. */
+
+const ASM_GROUPS = ASSUMPTIONS.reduce((a, r) => {
+  const g = a.find(x => x.g === r.g);
+  (g ? g.rows : (a.push({ g: r.g, rows: [] }), a[a.length - 1].rows)).push(r);
+  return a;
+}, []);
+/* the widest swing in the set scales every bar, so the bars rank the sheet */
+const ASM_MAXW = Math.max.apply(null, ASSUMPTIONS.filter(r => r.w).map(r => parseFloat(r.w)));
+const ASM_CLS = { Decision: "d", Market: "m", Output: "o" };
+
+function asmRowHTML(r) {
+  const worth = r.w
+    ? '<div class="asm-pp"><b>' + r.w.replace("pp", "") + "</b><span>pp</span></div>"
+      + '<div class="asm-bar"><i style="--f:' + (parseFloat(r.w) / ASM_MAXW).toFixed(3) + '"></i></div>'
+      + '<dl class="asm-s">' + r.s.map(([lab, irr]) =>
+          "<div><dt>" + lab + "</dt><dd>" + irr + "</dd></div>").join("") + "</dl>"
+    : '<p class="asm-nw">Not measured on its own</p>';
+  return '<article class="asm-r">'
+    + '<div class="asm-main"><h4 class="asm-k">' + r.k
+    + '<span class="asm-c ' + ASM_CLS[r.c] + '">' + r.c + "</span></h4>"
+    + '<p class="asm-b">' + r.b + "</p></div>"
+    + '<div class="asm-v">' + r.v + "</div>"
+    + '<div class="asm-w">' + worth + "</div></article>";
+}
+
+function assumptionsHTML() {
+  return '<div class="asm">'
+    + '<div class="asm-legend"><p>Thirty assumptions, grouped. <b>Decision</b> is ours to take, '
+    + '<b>Market</b> is taken from evidence, <b>Output</b> is what the model returns on the rest. '
+    + 'The right-hand column is what moving one assumption alone is worth to the levered return, '
+    + 'measured on the model at each setting shown.</p></div>'
+    + ASM_GROUPS.map((grp, i) =>
+        '<section class="asm-g st" style="--i:' + Math.min(i + 1, 8) + '">'
+        + '<div class="asm-rail"><h3>' + grp.g + "</h3>"
+        + "<p>" + grp.rows.length + " assumptions</p></div>"
+        + '<div class="asm-rows">' + grp.rows.map(asmRowHTML).join("") + "</div></section>").join("")
+    + '<p class="src asm-src">' + DIAL_SRC + "</p></div>";
 }
 
 function blockHTML(b) {
@@ -2990,10 +3069,10 @@ function blockHTML(b) {
   if (k === "plates") return platesHTML(b[1]);
   if (k === "strip") return stripHTML();
   if (k === "h") return '<h3 class="pane-h">' + b[1] + "</h3>";
-  if (k === "rate") return rateHTML();
+  if (k === "ratetable") return rateTableHTML();
   if (k === "ladder") return ladderHTML();
   if (k === "cases") return casesIndexHTML();
-  if (k === "dials16") return dials16HTML();
+  if (k === "assumptions") return assumptionsHTML();
   if (k === "bridge") return bridgeHTML();
   if (k === "read") return bridgeReadHTML();
   if (k === "wf") return b[1] === "equity" ? equityWfHTML() : "";
@@ -3023,59 +3102,120 @@ const DOM_MIN = 0, DOM_MAX = 3000;
 const domStep = () => (window.innerWidth < 700 ? 1000 : 500);
 const pos = v => ((Math.min(v, DOM_MAX) - DOM_MIN) / (DOM_MAX - DOM_MIN)) * 100;
 
-function fieldRow(r, i) {
-  const point = r.max <= r.min;
-  const tag = r.slug ? "button" : "div";
-  const cls = ["frow", r.subject ? "subject" : "", r.slug ? "link" : ""].filter(Boolean).join(" ");
-  const aria = r.slug
-    ? ' type="button" data-slug="' + r.slug + '" aria-label="' + r.label + ", " + (point ? money(r.min) : money(r.min) + " to " + money(r.max)) + '. Open case study."'
-    : ' tabindex="0" aria-label="' + r.label + ", " + (point ? money(r.min) : money(r.min) + " to " + money(r.max)) + '"';
-  let mark;
-  if (point) {
-    mark = '<span class="fdia" style="left:' + pos(r.min) + '%"></span>'
-      + '<span class="fval" style="left:calc(' + pos(r.min) + '% + 13px)">' + money(r.min) + "</span>";
-  } else {
-    const l = pos(r.min), w = pos(r.max) - pos(r.min);
-    mark = '<span class="fbar" data-w="' + w + '" style="left:' + l + "%;width:" + w + '%">'
-      + (r.mid != null ? '<span class="fmid" style="left:' + ((r.mid - r.min) / (r.max - r.min)) * 100 + '%"></span>' : "")
-      + "</span>"
-      + '<span class="fval r" style="left:calc(' + l + '% - 6px)">' + money(r.min) + "</span>"
-      + '<span class="fval" style="left:calc(' + (l + w) + '% + 7px)">' + money(r.max) + "</span>";
-  }
-  return "<" + tag + ' class="' + cls + '"' + aria + ' data-i="' + i + '">'
-    + '<span class="flabel">' + r.label + "</span>"
-    + '<span class="ftrack">' + mark + "</span></" + tag + ">";
+/* ─────────────  the rate tab  ─────────────
+
+   Every rate held on the set, on the index's own filters: a table by default,
+   because the question arriving at this tab is usually about one property and
+   one month, and the lead-in field behind a button, because the second question
+   is where the underwritten rate sits in the whole field. Both read MARKET, so
+   neither can drift from the collection; the subject's own rate is the model's.
+
+   The field's domain follows the filtered set rather than a fixed ceiling, so
+   filtering to the United Kingdom does not leave four fifths of the axis empty. */
+
+const RATE_STATE = { view: "table" };
+const rtNice = v => {
+  const steps = [250, 500, 1000, 1500, 2000, 2500, 3000, 4000, 5000, 6000, 8000];
+  return steps.find(x => x >= v) || Math.ceil(v / 1000) * 1000;
+};
+
+function rtRows() {
+  return mktRows().slice().sort(mktOrder);
 }
 
-function rateHTML() {
-  let g = "", t = "";
-  const step = domStep();
-  for (let v = DOM_MIN; v <= DOM_MAX; v += step) {
-    g += '<span class="fgrid" style="left:' + pos(v) + '%"></span>';
-    t += '<span class="ftick" style="left:' + pos(v) + '%">' + money(v) + "</span>";
+/* the table: the annual set on the left, the twelve months to the right of it,
+   the property column pinned so a month is always read against a name */
+function rtTableHTML(rows) {
+  const m = h => h.monthly_median || {};
+  const head = '<tr><th class="rt-nm">Property</th><th>Setting</th>'
+    + '<th class="r">Median</th><th class="r">Net of VAT</th><th class="r">P25</th><th class="r">P75</th>'
+    + '<th class="r">Low</th><th class="r">High</th><th class="c">Bookable</th>'
+    + '<th class="rt-mo r">' + MKT_M.join('</th><th class="rt-mo r">') + "</th></tr>";
+  const subject = '<tr class="subject"><th class="rt-nm">Fawley Court — underwritten</th>'
+    + "<td>Country estate</td>"
+    + '<td class="r">' + FIGS.adr_y1 + '</td><td class="r">—</td><td class="r">—</td><td class="r">—</td>'
+    + '<td class="r">—</td><td class="r">—</td><td class="c">12 of 12</td>'
+    + '<td class="rt-mo r sub-note" colspan="12">One rate across the year</td></tr>';
+  const body = rows.map(h => '<tr><th class="rt-nm">'
+    + '<button class="rt-go" data-hash="' + mktHash(h) + '">' + h.name + "</button></th>"
+    + "<td>" + MARKET.type_labels_short[h.type] + "</td>"
+    + '<td class="r em">' + mktGbp(h.median) + "</td>"
+    + '<td class="r">' + mktGbp(h.median_net_vat) + "</td>"
+    + '<td class="r">' + mktGbp(h.p25) + '</td><td class="r">' + mktGbp(h.p75) + "</td>"
+    + '<td class="r">' + mktGbp(h.min) + '</td><td class="r">' + mktGbp(h.max) + "</td>"
+    + '<td class="c">' + h.months_bookable + " of 12</td>"
+    + MKT_M.map(k => '<td class="rt-mo r' + (m(h)[k] ? "" : " off") + '">'
+        + (m(h)[k] ? mktGbp(m(h)[k]) : "—") + "</td>").join("") + "</tr>").join("");
+  return '<div class="tbl-scroll rt-scroll"><table class="tbl num rt"><thead>' + head
+    + "</thead><tbody>" + subject + body + "</tbody></table></div>";
+}
+
+/* the field: one row a property, the quartile band with the median marked,
+   and the underwritten rate ruled across all of them */
+function rtFieldHTML(rows) {
+  const top = rtNice(Math.max.apply(null, rows.map(h => h.p75).concat([1000])) * 1.04);
+  const pos = v => (Math.min(v, top) / top) * 100;
+  const step = top <= 1500 ? 250 : top <= 3000 ? 500 : 1000;
+  let grid = "", ticks = "";
+  for (let v = 0; v <= top; v += step) {
+    grid += '<span class="fgrid" style="left:' + pos(v) + '%"></span>';
+    ticks += '<span class="ftick" style="left:' + pos(v) + '%">' + money(v) + "</span>";
   }
+  const subject = '<div class="frow subject" tabindex="0" aria-label="Fawley Court, underwritten, '
+    + FIGS.adr_y1 + '"><span class="flabel">Fawley Court — underwritten</span>'
+    + '<span class="ftrack"><span class="fdia" style="left:' + pos(1000) + '%"></span>'
+    + '<span class="fval" style="left:calc(' + pos(1000) + '% + 13px)">' + FIGS.adr_y1
+    + "</span></span></div>";
+  const body = rows.map(h => {
+    const l = pos(h.p25), w = Math.max(0.4, pos(h.p75) - pos(h.p25));
+    return '<button type="button" class="frow link" data-hash="' + mktHash(h) + '" aria-label="'
+      + h.name + ", quartile band " + mktGbp(h.p25) + " to " + mktGbp(h.p75) + ", median "
+      + mktGbp(h.median) + '. Open the property page."><span class="flabel">' + h.name + "</span>"
+      + '<span class="ftrack"><span class="fbar" style="left:' + l + "%;width:" + w + '%">'
+      + '<span class="fmid" style="left:' + (((h.median - h.p25) / Math.max(1, h.p75 - h.p25)) * 100).toFixed(1)
+      + '%"></span></span>'
+      + '<span class="fval r" style="left:calc(' + l + '% - 6px)">' + mktGbp(h.p25) + "</span>"
+      + '<span class="fval" style="left:calc(' + (l + w) + '% + 7px)">' + mktGbp(h.p75) + "</span>"
+      + "</span></button>";
+  }).join("");
   return '<div class="field"><div class="field-legend">'
     + '<span class="k"><span class="sw subj dia"></span>Fawley Court, underwritten</span>'
-    + '<span class="k"><span class="sw dia"></span>a single quoted lead-in</span>'
-    + '<span class="k"><span class="sw"></span>a rate range; the UK bands are P25–P75 with the median marked</span>'
-    + '</div><div class="fieldbox">'
-    + '<div class="fgrid-layer" aria-hidden="true"><span></span><span class="plot">' + g + "</span></div>"
-    + '<div id="fieldrows" role="group" aria-label="Rate positioning, lead-in evidence">' + FIELD.rows.map(fieldRow).join("") + "</div>"
-    + '<div class="faxis"><span></span><span class="plot"><span class="fbase"></span>' + t + "</span></div></div>"
-    + '<div class="freadout idle" id="readout" aria-live="polite">Select a property to read its rate evidence. Five of the eleven open a case study.</div>'
-    + '<button class="tabletoggle" id="tbltoggle" aria-expanded="false"><span>Show as a table</span></button>'
-    + '<div id="tblwrap" hidden></div></div>';
+    + '<span class="k"><span class="sw"></span>the middle half of the collected year, P25 to P75, '
+    + "with the median marked</span></div>"
+    + '<div class="fieldbox"><div class="fgrid-layer" aria-hidden="true"><span></span>'
+    + '<span class="plot">' + grid + "</span></div>"
+    /* thirty-four rows put the axis a long way from the middle of the list, so
+       the scale is printed at both ends of it */
+    + '<div class="faxis top" aria-hidden="true"><span></span><span class="plot">'
+    + '<span class="fbase"></span>' + ticks + "</span></div>"
+    + '<div id="fieldrows" role="group" aria-label="Lead-in rate by property">'
+    + subject + body + "</div>"
+    + '<div class="faxis"><span></span><span class="plot"><span class="fbase"></span>' + ticks
+    + "</span></div></div></div>";
 }
 
-function fieldTable() {
-  const rows = FIELD.rows.map(r => {
-    const point = r.max <= r.min;
-    return '<tr class="' + (r.subject ? "subject" : "") + '"><td>' + r.label + "</td>"
-      + "<td>" + (point ? money(r.min) : money(r.min) + "–" + Number(r.max).toLocaleString("en-GB")) + "</td>"
-      + "<td>" + (r.mid != null ? money(r.mid) : "&mdash;") + "</td></tr>";
-  }).join("");
-  return '<div class="tbl-scroll"><table class="tbl num" style="max-width:720px">'
-    + "<thead><tr><th>Property</th><th>Lead-in</th><th>Median</th></tr></thead><tbody>" + rows + "</tbody></table></div>";
+function rtInner() {
+  const rows = rtRows();
+  if (!rows.length) return '<p class="mkt-empty">Nothing in the set matches that pair of filters.</p>';
+  return RATE_STATE.view === "field" ? rtFieldHTML(rows) : rtTableHTML(rows);
+}
+
+function rtHeadHTML() {
+  const n = rtRows().length;
+  const b = (v, label) => '<button class="rt-sw" data-rateview="' + v + '" aria-pressed="'
+    + (RATE_STATE.view === v ? "true" : "false") + '">' + label + "</button>";
+  return '<div class="rt-bar"><p class="rt-n">' + n + (n === 1 ? " property" : " properties")
+    + ' showing</p><div class="rt-swx" role="group" aria-label="How the rates are shown">'
+    + b("table", "Table") + b("field", "Chart") + "</div></div>";
+}
+
+function rateTableHTML() {
+  return '<div id="mkthead">' + mktHeadInner() + "</div>"
+    + '<div id="rthead">' + rtHeadHTML() + "</div>"
+    + '<div id="mktrate">' + rtInner() + "</div>"
+    + '<p class="src rt-src">' + MARKET.basis + " " + MARKET.vat_note
+    + " The underwritten rate is one rate across the year: the model carries its seasonality in "
+    + "occupancy rather than in rate. " + MARKET.cautions.join(" ") + "</p>";
 }
 
 /* ─────────────  waterfalls  ───────────── */
@@ -4623,34 +4763,48 @@ function keysHTML() {
 
 /* ─────────────  the cheat sheet  ───────────── */
 
-function csTable(cols, rows) {
-  return '<div class="tbl-scroll wide"><table class="tbl num"><thead><tr><th></th>'
-    + cols.map(c => '<th class="r">' + c + "</th>").join("") + "</tr></thead><tbody>"
+/* The summary tables read left to right and end on the answer: the stabilised
+   year in the profit and loss account, the whole hold in the cash flow. That
+   last column is tinted and ruled off, so the eye lands on it rather than
+   counting across. The explanation lines were withdrawn on 20 August; the notes
+   stay in the pack, and the basis is the assumptions sheet's job. */
+function csTable(cols, rows, marks) {
+  const last = cols.length - 1;
+  const cls = i => "r" + (i === last ? " ans" : "");
+  return '<div class="tbl-scroll wide"><table class="tbl num cs-t"><thead><tr><th></th>'
+    + cols.map((c, i) => '<th class="' + cls(i) + '">' + c + "</th>").join("") + "</tr></thead><tbody>"
     + rows.map(r => {
-        const [label, vals, bold, note] = r;
-        return '<tr class="' + (bold ? "total" : "") + '"><td>' + label + (note ? '<span class="ag-note">' + note + "</span>" : "") + "</td>"
-          + vals.map(v => '<td class="r">' + v + "</td>").join("") + "</tr>";
+        const [label, vals, bold] = r;
+        const rule = (marks || {})[label] ? " rule" : "";
+        return '<tr class="' + (bold ? "total" : "") + rule + '"><td>' + label + "</td>"
+          + vals.map((v, i) => '<td class="' + cls(i) + '">' + v + "</td>").join("") + "</tr>";
       }).join("") + "</tbody></table></div>";
 }
 
 function cheatHTML() {
   const C = CHEAT;
-  let h = '<div class="duo" style="--duo:minmax(0,60fr) minmax(0,40fr)">'
+  /* the eight headline figures are not eight equal boxes: the four that answer
+     the deal lead at full size, the four that qualify them sit under a rule */
+  const kpi = (i, cls) => {
+    const [l, v] = C.kpis[i];
+    return '<div class="cs-f ' + cls + '"><p class="l">' + l + '</p><p class="v">' + v + "</p></div>";
+  };
+  let h = '<div class="duo cs-top" style="--duo:minmax(0,58fr) minmax(0,42fr)">'
     + '<p class="lede">' + C.thesis + "</p>"
     + '<div><p class="src" style="border-top:0;padding-top:0;margin-top:0">' + C.meta + "</p>"
     + '<p class="src">' + C.assetLine + "</p></div></div>";
 
-  h += '<div class="kpis four" style="margin-top:clamp(20px,2.6vw,30px)">' + C.kpis.map(([l, v]) =>
-    '<div class="kpi"><div class="num">' + v + '</div><div class="cap">' + l + "</div></div>").join("") + "</div>";
+  h += '<div class="cs-spine">' + [0, 2, 5, 6].map(i => kpi(i, "lead")).join("") + "</div>"
+    + '<div class="cs-spine sub">' + [1, 3, 4, 7].map(i => kpi(i, "")).join("") + "</div>";
 
   h += '<div class="sec"><div class="sec-head"><h2 class="h2">Summary P&amp;L</h2><span class="n">Align model, year 1 to stabilisation</span></div>'
-    + csTable(C.operating.columns, C.operating.rows) + "</div>";
+    + csTable(C.operating.columns, C.operating.rows, { "Rooms revenue": 1, "GOP": 1 }) + "</div>";
 
   h += '<div class="sec"><div class="sec-head"><h2 class="h2">Summary Cash Flow</h2><span class="n">£m to investor · post-promote</span></div>'
-    + csTable(C.cashflow.columns, C.cashflow.rows)
-    + C.cashflow.funding.map(([t, c]) => '<p class="src" style="border-top:0;padding-top:6px">' + t + " <span class='muted'>" + c + "</span></p>").join("") + "</div>";
+    + csTable(C.cashflow.columns, C.cashflow.rows, { "Debt draw / (repay)": 1, "Net to investor": 1 })
+    + "</div>";
 
-  h += '<div class="sec"><div class="sec-head"><h2 class="h2">Sources &amp; Uses, Returns and Sensitivity</h2></div><div class="cs-grid">';
+  h += '<div class="sec"><div class="sec-head"><h2 class="h2">Sources &amp; Uses, Returns and Sensitivity</h2></div><div class="cs-grid two">';
   h += '<div class="cs-block"><h3 class="cs-h">Sources &amp; uses</h3><table class="tbl num">'
     + C.su.map(r => {
         if (r[0] === "sub") return '<tr class="divider"><td colspan="2">' + r[1] + "</td></tr>";
@@ -4658,11 +4812,11 @@ function cheatHTML() {
       }).join("") + "</table>"
     + C.yieldLines.map(([t]) => '<p class="cs-note">' + t + "</p>").join("") + "</div>";
 
-  h += '<div class="cs-block"><h3 class="cs-h">Returns &amp; promote</h3><table class="tbl num">'
+  h += '<div class="cs-block cs-col2"><h3 class="cs-h">Returns &amp; promote</h3><table class="tbl num">'
     + C.returns.map(r => '<tr class="' + (r[3] ? "total" : "") + '"><td>' + r[0] + '</td><td class="r">' + r[1] + "</td></tr>").join("")
-    + "</table></div>";
+    + "</table>";
 
-  h += '<div class="cs-block"><h3 class="cs-h">Sensitivity — investor post-promote IRR</h3>'
+  h += '<h3 class="cs-h cs-h2">Sensitivity — investor post-promote IRR</h3>'
     + '<table class="grid3"><thead><tr><th>IRR</th>' + C.sensitivity.cols.map(c => "<th>" + c + "</th>").join("") + "</tr></thead><tbody>"
     + C.sensitivity.rows.map((rl, ri) => "<tr><th>" + rl + "</th>"
         + C.sensitivity.grid[ri].map((v, ci) => '<td class="' + (ri === C.sensitivity.base[0] && ci === C.sensitivity.base[1] ? "base" : "")
@@ -4670,19 +4824,6 @@ function cheatHTML() {
     + "</tbody></table>"
     + '<p class="cs-note">' + C.sensitivity.caption + "</p>"
     + C.sensitivity.stress.map(([t]) => '<p class="cs-note">' + t + "</p>").join("") + "</div></div></div>";
-
-  h += '<div class="sec"><div class="sec-head"><h2 class="h2">Competitive Position &amp; Gap</h2></div>'
-    + '<p class="para">' + C.competitive.headline + "</p>"
-    + '<div class="tbl-scroll"><table class="tbl num"><thead><tr>'
-    + C.competitive.columns.map((c, i) => '<th class="' + (i ? "r" : "") + '">' + c + "</th>").join("") + "</tr></thead><tbody>"
-    + C.competitive.rows.map(r => '<tr class="' + (r[5] ? "subject" : "") + '">'
-        + r.slice(0, 5).map((c, i) => '<td class="' + (i ? "r" : "") + '">' + (c || "—") + "</td>").join("") + "</tr>").join("")
-    + "</tbody></table></div>"
-    + '<p class="src">' + C.competitive.caption + " " + C.competitive.notes.join(" ") + "</p>"
-    + '<p class="pane-h" style="margin-top:24px">The repositioning plan and demand mix</p>'
-    + '<div class="bullets" style="margin-top:14px">' + C.competitive.plan.map(([t, c]) =>
-        "<div><b>" + t + '</b><span class="ag-note">' + c + "</span></div>").join("") + "</div>"
-    + '<p class="src">' + C.competitive.constituents.join(" · ") + "</p></div>";
 
   h += '<div class="sec"><div class="sec-head"><h2 class="h2">Transaction Comps — Per-Key Evidence</h2></div>'
     + '<div class="tbl-scroll"><table class="tbl num"><thead><tr>'
@@ -4867,7 +5008,9 @@ function buildTOC() {
 function buildDials() {
   return '<p class="pane-h">The underwrite · ' + MODEL_NAME + ' at the ruled £50m</p>'
     + '<div class="dials"><div class="dial-grid">'
-    + DIALS.map(([k, v]) => '<div class="dial-row"><span class="k">' + k + '</span><span class="v">' + v + "</span></div>").join("")
+    + ASM_GROUPS.map(grp => '<p class="dial-gh">' + grp.g + "</p>"
+        + grp.rows.map(r => '<div class="dial-row"><span class="k">' + r.k + '</span><span class="v">'
+            + r.v + (r.w ? '<span class="dial-w">' + r.w + "</span>" : "") + "</span></div>").join("")).join("")
     + '</div><p class="src">' + DIAL_SRC + "</p></div>";
 }
 
@@ -4904,7 +5047,7 @@ let FIND_IX = null;
 /* every string a block holds, so a search reaches into the tables themselves —
    "EFG" has to find the charge on the title page, not just a section name */
 const BLOCK_KINDS = new Set(["lede", "para", "subhead", "src", "kpis", "tbl", "cards", "bullets",
-  "panes", "exhibit", "plates", "strip", "rate", "ladder", "cases", "dials16", "wf", "bridge",
+  "panes", "exhibit", "plates", "strip", "rate", "ratetable", "ladder", "cases", "assumptions", "wf", "bridge",
   "read", "qs", "asks", "keys", "cheat", "pnlcomp", "contact", "left", "right", "labeled", "num",
   "num wide", "wide", "subject", "total", "key", "divider", "note", "r", "c", "q", "subtotal"]);
 function harvest(v, out) {
@@ -4945,7 +5088,8 @@ function findIndex() {
   for (const l of CAPEX.lines) add("Cost line", l.desc,
     l.zone + " · " + (l.on ? CX.m0(l.live) : "switched off"), "#/c/capital/schedule",
     l.basis + " " + l.element + " " + l.source, { cxline: l.n });
-  for (const [k, v] of DIALS) add("Dial", k, plain(v), "#/c/underwrite");
+  for (const r of ASSUMPTIONS) add("Assumption", r.k, r.g + " · " + plain(r.v),
+    "#/c/underwrite", r.b + " " + (r.s || []).map(x => x.join(" ")).join(" "));
   for (const r of LADDER.rows) add("Entry", r.e + " entry — " + r.irr, r.note, "#/c/returns");
   for (const r of BRIDGE.rows) add("Bridge lever", r.lever, "Levered IRR " + r.irr + (r.d ? " · " + r.d + "pp" : ""), "#/c/underwrite/bridge");
   for (const [s, t, c] of CHEAT.watchpoints) add("Watchpoint", t, s + " · " + c, "#/c/underwrite/cheat");
@@ -5218,15 +5362,6 @@ document.addEventListener("click", e => {
     ladDetail(+lad.dataset.lad);
     return;
   }
-  const tt = t.closest("#tbltoggle");
-  if (tt) {
-    const w = $("#tblwrap"), on = w.hidden;
-    w.hidden = !on;
-    if (on && !w.innerHTML) w.innerHTML = fieldTable();
-    tt.firstElementChild.textContent = on ? "Hide the table" : "Show as a table";
-    tt.setAttribute("aria-expanded", String(on));
-    return;
-  }
   const anchorA = t.closest('a[href^="#"]:not([href^="#/"])');
   if (anchorA) {
     e.preventDefault();
@@ -5264,6 +5399,14 @@ document.addEventListener("click", e => {
     CXSTATE.open[n] = open;
     return;
   }
+  const rv = t.closest("[data-rateview]");
+  if (rv) {
+    RATE_STATE.view = rv.dataset.rateview;
+    const rh = $("#rthead"), rg = $("#mktrate");
+    if (rh) rh.innerHTML = rtHeadHTML();
+    if (rg) rg.innerHTML = rtInner();
+    return;
+  }
   const mt = t.closest("[data-mktab]");
   if (mt) {
     MKSTATE.tab = mt.dataset.mktab;
@@ -5287,12 +5430,14 @@ document.addEventListener("click", e => {
 });
 
 function rerenderMkt() {
-  const h = $("#mkthead"), g = $("#mktgrid");
+  const h = $("#mkthead"), g = $("#mktgrid") || $("#mktrate");
   if (!h || !g) return;
+  const rate = g.id === "mktrate";
   const y = window.scrollY;
   const paint = () => {
     h.innerHTML = mktHeadInner();
-    g.innerHTML = mktGridInner();
+    if (rate) { const rh = $("#rthead"); if (rh) rh.innerHTML = rtHeadHTML(); }
+    g.innerHTML = rate ? rtInner() : mktGridInner();
     window.scrollTo({ top: y, behavior: "instant" });
     g.classList.remove("swapping");
   };
@@ -5336,34 +5481,6 @@ document.addEventListener("input", e => {
   const v = e.target.value;
   qTimer = setTimeout(() => { QSTATE.q = v; rerenderQs(); }, 220);
 });
-
-/* rate-field readout */
-function readout(i) {
-  const el = $("#readout"); if (!el) return;
-  if (i == null) { el.className = "freadout idle"; el.textContent = "Select a property to read its rate evidence. Five of the eleven open a case study."; return; }
-  const r = FIELD.rows[i], point = r.max <= r.min;
-  const v = point ? money(r.min) : money(r.min) + " to " + money(r.max) + (r.mid != null ? ", median " + money(r.mid) : "");
-  el.className = "freadout";
-  el.innerHTML = "<b>" + r.label + '</b> &nbsp;<span class="v">' + v + "</span>" + (r.slug ? ' &nbsp;<span class="go">Open the case ›</span>' : "");
-}
-document.addEventListener("pointerover", e => {
-  const r = e.target.closest(".frow"); if (r) readout(+r.dataset.i);
-  const b = e.target.closest(".wfbar"); if (b) wfRead(b);
-});
-document.addEventListener("pointerout", e => {
-  const r = e.target.closest(".frow");
-  if (r && !e.relatedTarget?.closest?.(".frow")) readout(null);
-});
-document.addEventListener("focusin", e => {
-  const r = e.target.closest(".frow"); if (r) readout(+r.dataset.i);
-  const b = e.target.closest(".wfbar"); if (b) wfRead(b);
-});
-function wfRead(bar) {
-  const box = bar.closest(".wf")?.querySelector(".wf-read");
-  if (!box) return;
-  box.className = "wf-read";
-  box.innerHTML = bar.dataset.tip;
-}
 
 /* ─────────────  the lightbox  ───────────── */
 

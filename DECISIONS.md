@@ -579,3 +579,99 @@ retyped.
 pack. Its in-flight state failed the shared gate for about twenty minutes; this work waited
 rather than pushing through it or patching another session's chapter, and went out once its own
 gate cleared.
+
+## The restructure of 20 August 2026
+
+Angus's feedback, taken in one pass. What it removed, what it built, and the
+judgments taken inside it.
+
+**The contents rows are all one height.** Every description is held to two lines
+and the headline figures run across rather than stacking, so a chapter with three
+of them cannot outgrow one with two. A row that grows because its blurb ran on
+reads as emphasis it has not earned; the contents is a rhythm.
+
+**The Ultra Luxury Market lost two tabs and gained one.** The Comparable
+Architecture and Seasonality are cut. Sales Evidence & Exit Yield moves in from
+the Underwrite and now carries the European transaction evidence as well as the
+United Kingdom trades. Six tabs: the index, rate, operations, conversion capex,
+sales evidence, the estimated P&Ls.
+
+**Rate is a table by default and the field behind a button.** The question that
+arrives at this tab is usually about one property in one month, and that is a
+table; the second question is where the underwritten rate sits in the whole
+field, and that is the chart. Both read the pack, and both take the index's own
+filters — region, country and kind of place — from one piece of state, so the
+two surfaces cannot show different sets. The field's domain follows the filtered
+set rather than a fixed £3,000 ceiling, so filtering to the United Kingdom no
+longer leaves four fifths of the axis empty; it plots the middle half of each
+collected year, P25 to P75, with the median marked.
+
+The deck-authored eleven-row rate field is retired with it, and its gate with it.
+The replacement is pack-driven, so the market chapter's own gate covers it.
+
+**The Underwrite is six tabs.** Assumptions, Capital, Residences, the IRR Bridge,
+Summary Financials, Returns & the Entry Ladder. The Dial Set, Revenue Engines and
+the Margin Frame are cut; Capital & Cost to Open is folded into Drawdown, which
+becomes Capital; the two residences tabs are one; the Cases and the Single-Lever
+Sensitivities are cut.
+
+**The Dials become Assumptions, and the sheet is the master.** Thirty
+assumptions in eight groups, generated from the measured record by
+`tools/build-blocks.py` rather than typed, each carrying its class — Decision,
+Market or Output — its basis, and what moving it alone is worth to the levered
+return. That last column is the single-lever sensitivity work: cutting the tab
+would have lost it, so it travels with the assumption it belongs to instead, and
+no assumption is now read without its consequence. The bar's own sheet reads the
+same thirty, so the two cannot drift.
+
+The gate holds the shape rather than the strings: thirty rows, eight groups in
+order, none empty, a known class on each, forty-one model figures readable off
+this one surface, and every printed swing recomputed against the record's own
+sensitivity run.
+
+**The Summary Financials head is a spine, not eight tiles.** Four figures answer
+the deal — what it costs, what it costs to open, what it exits at, what it
+returns — at full size, and four qualify them under a rule. A grid of eight equal
+boxes gives no reading order at all. Both summary tables end on their answer
+column, the stabilised year and the whole hold, tinted and ruled off so the eye
+lands on it rather than counting across. Competitive Position is cut, and the
+cash flow's explanation lines with it: the basis is the assumptions sheet's job.
+
+**Two panes are two tracks again.** Every use of the paired-pane block passes its
+own `--split`, and the variable had stopped being read, so a pair of
+two-column tables ran the full width with the labels and the amounts at opposite
+edges. Honoured again from 1000px. Six views were affected; the merged Capital
+tab was the one that made it visible.
+
+**Our own file paths are not evidence.** The rebuilt evidence tables cite the
+filing, the registry and the year. The first render printed
+`Research/cohort-ops-airelles-france.md` on a client-facing page, and the builder
+now strips every such path.
+
+### What the audit caught that the figure gate could not
+
+Retiring the old rate field's table toggle also removed the click handlers that
+sat under it: the diligence register's filters, the whole capital-cost
+schedule's filters and line expanders, and the in-page anchor links. Every
+figure still verified; 8,656 checks passed on a page whose two biggest
+interactive surfaces were dead. `audit.py` found it in one run. **The figure gate
+and the behaviour audit are not substitutes, and a change that deletes code has
+to run both.**
+
+### The gate now checks arithmetic, not just membership
+
+The evidence tables print filed absolutes and the ratio struck on them, and a
+ratio is a calculation rather than a figure to be looked up. `verify.mjs`
+recomputes all 38 of them, recomputes every currency conversion at the research
+convention, and accepts a token whose numeral is a rounding of a number the
+research estate states. The research estate — the operations packs, the Belmond
+tables, the hotel pages, the transaction database and the cohort's staging layer
+— is a registered source in its own right from this date.
+
+### A second session, again
+
+The estate-model session was in this file throughout, adding an Estate Model
+chapter and an untracked 86MB `model/` folder. Angus confirmed it. This commit
+carries this work only and leaves that chapter out of the committed version,
+because its assets are not in the repository and the deployed page would fail on
+them; the working tree keeps it untouched for that session to ship itself.

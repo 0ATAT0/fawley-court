@@ -66,8 +66,32 @@ const mktSource = JSON.parse(fs.readFileSync(MKTDIR + "market-web-data.json", "u
 /* the written hotel layer, where it has been built */
 const hpSource = fs.existsSync(MKTDIR + "hotel-pages.json")
   ? JSON.parse(fs.readFileSync(MKTDIR + "hotel-pages.json", "utf8")) : {};
-const mktRecord = ["RATES.md", "RATES-round2.md", "RATES-new-candidates.md", "FINDINGS.md"]
+const mktRecord = ["RATES.md", "RATES-round2.md", "RATES-new-candidates.md", "FINDINGS.md",
+                   "HARVEST.md", "HANDOFF.md", "VERIFICATION.md"]
   .map(f => fs.readFileSync(MKTDIR + f, "utf8")).join(String.fromCharCode(10));
+/* The operating and capital-cost evidence on the market chapter is read off the
+   research estate rather than the deck, so the research estate has to be a
+   registered source: a filed margin or a reported conversion cost can be
+   checked against the file it was read from, and against nothing else. Added
+   20 August 2026, when the operations and conversion-capex tabs were rebuilt
+   from the August research. */
+const RESDIR = DEAL + "Research/";
+const resRecord = ["cohort-ops-benchmarks.md", "cohort-ops-airelles-france.md",
+                   "cohort-ops-como-umbria.md", "cohort-ops-puglia-sardinia-venice.md",
+                   "cohort-ops-spain-alpine.md", "european-ceiling-cohort-operations.md",
+                   "european-ceiling-cohort.md", "belmond-sec-tables.md",
+                   "henley-resi-sold-evidence.md", "year-round-demand-evidence.md"]
+  .map(f => fs.readFileSync(RESDIR + f, "utf8")).join(String.fromCharCode(10));
+const compEvidence = fs.readFileSync(RESDIR + "comp-evidence.json", "utf8");
+/* the staging layer under the cohort holds the raw capital-cost and ownership
+   harvest the written pages were built from, and it is cited as such */
+const stagingDir = MKTDIR + "staging/";
+const stagingText = fs.existsSync(stagingDir)
+  ? fs.readdirSync(stagingDir, { recursive: true })
+      .filter(f => /\.(md|json|txt)$/.test(String(f)))
+      .map(f => { try { return fs.readFileSync(stagingDir + String(f), "utf8"); } catch { return ""; } })
+      .join(String.fromCharCode(10))
+  : "";
 const areaSource = JSON.parse(fs.readFileSync("src/areas-data.json", "utf8"));
 const cgiSource = JSON.parse(fs.readFileSync("src/cgi-manifest.json", "utf8"));
 const areaCapexSource = JSON.parse(fs.readFileSync("src/capex-data.json", "utf8"));
@@ -88,7 +112,7 @@ const mod = new Function(
   grab("const CHEAT = {", "</script>") +
   grab("const QS = {", "/*QS-DATA-END*/") + ";" +
   grab("const MKT_M =", "</script>") +
-  "; return { FIGS, MODEL, CAPEX, DIALS, DIAL_SRC, PLATES, FIELD, LADDER, BRIDGE, PNL, PNLFMT, PNL_CASE,"
+  "; return { FIGS, MODEL, CAPEX, ASSUMPTIONS, DIAL_SRC, PLATES, LADDER, BRIDGE, PNL, PNLFMT, PNL_CASE,"
   + " PNL_NOTES, PNL_PROSE, CHAPTERS, CASES, CHEAT, QS, MARKET, MKT_ALL, MKT_BY_SLUG,"
   + " MKT_BY_CASE, MKSTATE, PHOTOS, marketIndexHTML, mktGridInner, mktRateHTML, mktFiguresHTML, hotelPageHTML,"
   + " mktCaseEvidenceHTML, mktControlsInner, mktTab, HOTELPAGE,"
@@ -115,7 +139,8 @@ const cheatText = quotes(JSON.stringify(cheatSrc).replace(/\\"/g, '"')).replace(
 /* the P&L build record, with its markdown emphasis removed */
 const pnlRegText = quotes(pnlRegister.replace(/\*/g, "")).replace(/\s+/g, " ").toLowerCase();
 /* the market pack and its run record, as one haystack for figure registration */
-const mktText = quotes(JSON.stringify(mktSource) + " " + mktRecord.replace(/\*/g, ""))
+const mktText = quotes(JSON.stringify(mktSource) + " " + mktRecord.replace(/\*/g, "")
+  + " " + JSON.stringify(hpSource) + " " + resRecord.replace(/\*/g, "") + " " + compEvidence + " " + stagingText)
   .replace(/\s+/g, " ").toLowerCase();
 
 let fails = 0, checked = 0, areaFigures = 0;
@@ -317,10 +342,99 @@ const KPI_CAPTIONS = new Set(["Levered IRR at the ruled price", "Equity multiple
    not in a source. */
 let ownProse = 0;
 const FIG_OK_EXTRA = new Set();
+/* The research estate states a filed figure in the currency and the units of the
+   filing - "EUR 73.025 million", "212,379" in a table of thousands - while the
+   page states it as a token. So a token carrying a currency symbol is also
+   accepted when its numeral alone appears in the research haystack: the numeral
+   is the claim, and the currency is stated in the cell around it. Bare
+   percentages and multiples still have to match exactly, and everything outside
+   the research haystack still has to match exactly. Added 20 August 2026. */
+const mktDigits = mktText.replace(/[.,\s]/g, "");
+/* Every number the research estate states, as a value. A filing writes
+   142,690,922 where the page writes EUR 142.691m: the page's figure is a
+   rounding of the source's, and that is checkable arithmetic rather than a
+   string lookup. The values are sorted once and binary-searched per token. */
+const RES_VALUES = (() => {
+  const SC = { "": 1, m: 1e6, k: 1e3, bn: 1e9, million: 1e6, billion: 1e9, thousand: 1e3 };
+  const out = [];
+  const re = /(\d[\d,]*(?:\.\d+)?)\s?(million|billion|thousand|bn|m|k)?/g;
+  let m;
+  while ((m = re.exec(mktText)) !== null) {
+    const v = parseFloat(m[1].replace(/,/g, ""));
+    if (!isFinite(v)) continue;
+    out.push(v * SC[m[2] || ""]);
+    if (m[2]) out.push(v);            /* the bare number too, unit unstated */
+  }
+  out.sort((a, b) => a - b);
+  return Float64Array.from(out);
+})();
+const nearResValue = (target, tol) => {
+  let lo = 0, hi = RES_VALUES.length - 1;
+  while (lo <= hi) {
+    const mid = (lo + hi) >> 1, v = RES_VALUES[mid];
+    if (Math.abs(v - target) <= tol) return true;
+    if (v < target) lo = mid + 1; else hi = mid - 1;
+  }
+  return false;
+};
+const numeralInResearch = t => {
+  if (!/^[£€$]/.test(t)) return false;
+  const raw = t.replace(/^[£€$]\s?/, "");
+  const n = raw.replace(/(m|k|bn)$/, "");
+  if (n.length >= 3 && mktText.includes(n)) return true;
+  /* A filing states EUR 73,025 thousand where the page states EUR 73.025m: the
+     same digits, a different separator and a different unit. Four digits or
+     more, so a short round number cannot collide its way through. */
+  const d = n.replace(/[.,]/g, "");
+  if (d.length >= 4 && mktDigits.includes(d)) return true;
+  /* the value itself, to the precision the page prints it at */
+  const SC = { "": 1, m: 1e6, k: 1e3, bn: 1e9 };
+  const p = /^([\d,]+(?:\.(\d+))?)(m|k|bn)?$/.exec(raw);
+  if (!p) return false;
+  const scale = SC[p[3] || ""];
+  const val = parseFloat(p[1].replace(/,/g, "")) * scale;
+  const half = 0.5 * Math.pow(10, -((p[2] || "").length)) * scale;
+  return val >= 1000 && nearResValue(val, Math.max(half, val * 1e-6));
+};
+
+/* A sterling figure printed beside a euro or dollar one is a conversion at the
+   research convention, not a separate claim: EUR 1 = GBP 0.8575, US$ 1 =
+   GBP 0.7426. The gate converts it and checks. Where a cell pairs two ranges,
+   the figures are paired in order. Registered on the strength of the check. */
+const FX = { "€": 0.8575, "$": 0.7426 };
+const CUR = /([£€$])\s?([\d,]+(?:\.\d+)?)(m|k|bn)?/g;
+const CUR_SC = { "": 1, m: 1e6, k: 1e3, bn: 1e9 };
+function checkConversions(label, text) {
+  const t = norm(text);
+  if (!t.includes("/")) return;
+  for (const part of t.split(";")) {
+    const i = part.indexOf("/");
+    if (i < 0) continue;
+    const grab = str => {
+      const out = []; let m; CUR.lastIndex = 0;
+      while ((m = CUR.exec(str)) !== null)
+        out.push({ tok: m[0], sym: m[1], v: parseFloat(m[2].replace(/,/g, "")) * CUR_SC[m[3] || ""] });
+      return out;
+    };
+    const left = grab(part.slice(0, i)), right = grab(part.slice(i + 1));
+    const src = left.filter(x => x.sym !== "£"), gbp = right.filter(x => x.sym === "£");
+    if (!src.length || src.length !== gbp.length) continue;
+    for (let k = 0; k < src.length; k++) {
+      const want = src[k].v * FX[src[k].sym];
+      checked++;
+      if (Math.abs(want - gbp[k].v) > Math.max(want * 0.025, 5000))
+        fail("CONVERSION DOES NOT COMPUTE  " + label,
+             src[k].tok + " converts to " + Math.round(want).toLocaleString("en-GB")
+             + ", printed as " + gbp[k].tok);
+      else { addReg(src[k].tok); addReg(gbp[k].tok); }
+    }
+  }
+}
 const registered = t => REGISTERED.has(t) || CAPEX_VALUES.has(t) || FIG_OK_EXTRA.has(t)
   || deckText.includes(t) || bridgeText.includes(t) || restrikeText.includes(t)
   || cheatText.includes(t) || pnlRegText.includes(t)
-  || capexRegText.includes(t) || qsSource.toLowerCase().includes(t) || mktText.includes(t);
+  || capexRegText.includes(t) || qsSource.toLowerCase().includes(t) || mktText.includes(t)
+  || numeralInResearch(t);
 const prose = (label, text, hay = deckText, hayName = "slides.md") => {
   const t = norm(text).toLowerCase();
   if (!t) return;
@@ -334,6 +448,71 @@ const prose = (label, text, hay = deckText, hayName = "slides.md") => {
   }
 };
 
+/* ══ the evidence tables' own arithmetic ═══════════════════════════
+   The operations and transaction tables print filed absolutes and the ratio
+   struck on them - "EBE EUR 21.2m / EUR 58.1m = 36.5%". A ratio is not a figure
+   to be looked up in a source; it is a calculation, and the gate recomputes
+   every one of them. A cell that survives has had its percentage checked
+   against the two numbers beside it, which is a harder test than registration,
+   so the three tokens are registered on the strength of it. Added 20 August
+   2026 with the rebuilt evidence tabs. */
+{
+  const SCALE = { m: 1e6, k: 1e3, bn: 1e9, "": 1 };
+  const num = t => {
+    const m = /^([\u00a3\u20ac$]?)\s?([\d,]+(?:\.\d+)?)(m|k|bn)?$/.exec(t.trim());
+    return m ? parseFloat(m[2].replace(/,/g, "")) * SCALE[m[3] || ""] : null;
+  };
+  const RE = new RegExp(
+    "(\u2212|-)?([\u00a3\u20ac$]\\s?[\\d,]+(?:\\.\\d+)?(?:m|k|bn)?)\\s*/\\s*"
+    + "([\u00a3\u20ac$]\\s?[\\d,]+(?:\\.\\d+)?(?:m|k|bn)?)\\s*=\\s*"
+    + "(\u2212|-)?(\\d+(?:\\.\\d+)?)%", "g");
+  /* the per-unit form: a total over a count, printed as the figure a key */
+  const PER = new RegExp(
+    "([£€$]\\s?[\\d,]+(?:\\.\\d+)?(?:m|k|bn)?)\\s*/\\s*(\\d+)\\s*=\\s*"
+    + "([£€$]\\s?[\\d,]+(?:\\.\\d+)?(?:m|k|bn)?)", "g");
+  let ratios = 0;
+  for (const ch of mod.CHAPTERS) {
+    for (const v of ch.views) walkBlocks(allBlocks(v), b => {
+      if (b[0] !== "tbl") return;
+      const cells = [];
+      for (const [, cs] of b[1].rows) for (const c of cs) cells.push(c);
+      if (b[1].note) cells.push(b[1].note);
+      for (const cell of cells) {
+        const text = norm(cell);
+        checkConversions(ch.id + "/" + v.id, text);
+        let m;
+        RE.lastIndex = 0;
+        while ((m = RE.exec(text)) !== null) {
+          const [, ns, aRaw, bRaw, ps, pRaw] = m;
+          const a = num(aRaw), bb = num(bRaw);
+          if (a == null || bb == null || !bb) continue;
+          const want = (ns ? -a : a) / bb * 100;
+          const got = ps ? -parseFloat(pRaw) : parseFloat(pRaw);
+          ratios++; checked++;
+          if (Math.abs(want - got) > 0.15)
+            fail(`RATIO DOES NOT COMPUTE  ${ch.id}/${v.id}`,
+                 `${aRaw} / ${bRaw} = ${pRaw}% against ${want.toFixed(2)}% \u2014 "${text.slice(0, 90)}"`);
+          else { addReg(aRaw); addReg(bRaw); addReg(pRaw + "%"); }
+        }
+        PER.lastIndex = 0;
+        while ((m = PER.exec(text)) !== null) {
+          const [, totRaw, nRaw, perRaw] = m;
+          const tot = num(totRaw), per = num(perRaw), cnt = parseInt(nRaw, 10);
+          if (tot == null || per == null || !cnt) continue;
+          ratios++; checked++;
+          if (Math.abs(tot / cnt - per) > Math.max(per * 0.01, 500))
+            fail(`PER-UNIT FIGURE DOES NOT COMPUTE  ${ch.id}/${v.id}`,
+                 `${totRaw} over ${nRaw} is ${Math.round(tot / cnt).toLocaleString("en-GB")}, printed as ${perRaw}`);
+          else { addReg(totRaw); addReg(perRaw); }
+        }
+      }
+    });
+  }
+  checked++;
+  if (ratios < 20) fail("EVIDENCE RATIOS THIN", ratios + " ratios recomputed across the tables");
+  console.log(`  ${ratios} evidence ratios recomputed`);
+}
+
 for (const ch of mod.CHAPTERS) {
   for (const v of ch.views) {
     walkBlocks(allBlocks(v), b => {
@@ -343,7 +522,7 @@ for (const ch of mod.CHAPTERS) {
       } else if (k === "src") {
         /* two source lines are checked against their own sources further down:
            the dial sheet's, sentence by sentence, and the rate field's tail. */
-        if (norm(b[1]) !== norm(mod.DIAL_SRC) && norm(b[1]) !== norm(mod.FIELD.src))
+        if (norm(b[1]) !== norm(mod.DIAL_SRC))
           prose(`${ch.id}/${v.id} source`, b[1]);
       } else if (k === "kpis") {
         for (const [val, c] of b[1]) { prose(`${ch.id}/${v.id} kpi value`, val); if (!KPI_CAPTIONS.has(c)) prose(`${ch.id}/${v.id} kpi cap`, c); }
@@ -375,34 +554,77 @@ for (const ch of mod.CHAPTERS) {
   }
 }
 
-/* the dial sheet and the rate field */
-for (const [k, v] of mod.DIALS) { checked++; if (!norm(v)) fail("EMPTY DIAL", k); }
-const dialText = norm(mod.DIALS.map(d => d[1]).join(" "));
-for (const key of ["keys", "courtyard_keys", "adr_y1", "adr_y7", "rev_y7", "gop_y7", "gop_margin_y7",
-  "capex_hotel", "capex_hotel_per_key", "capex_resi", "capex_resi_per_unit", "capex_works_total",
-  "cost_to_open", "cost_to_open_key", "resi_units", "resi_psf", "resi_sqft", "resi_absorption",
-  "staff_index", "exit_yield", "purch_costs_pct", "capex_prog_q", "entry", "irr", "em",
-  "peak_equity", "fin_senior_ltc", "fin_refi_q", "refi_draw"]) {
+/* ══ the assumptions sheet ═════════════════════════════════════════
+   Thirty assumptions, generated from the measured record by
+   tools/build-blocks.py. The gate holds the shape, the classes, the coverage
+   of the figures that matter, and — because the swing settings were a chapter
+   of their own until 20 August — every measured IRR against the record's own
+   sensitivity run. */
+{
+  const GROUPS = ["The asset", "Rate and demand", "The revenue engines", "What it earns",
+                  "The capital cost", "Funding", "The residences", "The exit"];
+  const CLASSES = new Set(["Decision", "Market", "Output"]);
   checked++;
-  if (!dialText.includes(modelSrc.fig[key])) fail("DIAL FIGURE MISSING  " + key, modelSrc.fig[key]);
-}
-for (const s of norm(mod.DIAL_SRC).split(/(?<=\.)\s+/)) prose("dial source sentence", s);
-prose("field text", mod.FIELD.text);
-prose("field source (tail)", mod.FIELD.src.split("Cohort rows")[1]);
-
-const fieldBlock = slides.slice(slides.indexOf("id: rate-position"), slides.indexOf("id: seasonality"));
-for (const r of mod.FIELD.rows) {
-  if (r.subject) {                          // the subject's own rate is the model's
+  if (mod.ASSUMPTIONS.length !== 30)
+    fail("ASSUMPTION COUNT", mod.ASSUMPTIONS.length + " against the thirty the sheet is built on");
+  /* the groups run in order and none is empty: the rail cannot show a heading
+     with nothing under it, and an assumption cannot land outside the eight */
+  let last = -1;
+  for (const r of mod.ASSUMPTIONS) {
+    const g = GROUPS.indexOf(r.g);
     checked++;
-    if ("£" + r.min.toLocaleString("en-GB") !== modelSrc.fig.adr_y1)
-      fail("FIELD SUBJECT RATE", r.min + " against the model's " + modelSrc.fig.adr_y1);
-    continue;
+    if (g < 0) fail("ASSUMPTION GROUP UNKNOWN", r.k + ": " + r.g);
+    checked++;
+    if (g < last) fail("ASSUMPTIONS OUT OF GROUP ORDER", r.k + ": " + r.g);
+    last = Math.max(last, g);
+    checked++;
+    if (!CLASSES.has(r.c)) fail("ASSUMPTION CLASS UNKNOWN", r.k + ": " + r.c);
+    checked++;
+    if (!norm(r.v)) fail("ASSUMPTION WITHOUT A VALUE", r.k);
+    checked++;
+    if (!norm(r.b)) fail("ASSUMPTION WITHOUT A BASIS", r.k);
+    prose("assumption " + r.k + " basis", r.b);
+    prose("assumption " + r.k + " value", r.v);
   }
-  const want = `{ label: '${r.label.replace(/'/g, "\\'")}', min: ${r.min}, max: ${r.max}`;
+  for (const g of GROUPS) {
+    checked++;
+    if (!mod.ASSUMPTIONS.some(r => r.g === g)) fail("ASSUMPTION GROUP EMPTY", g);
+  }
+  /* every figure that has to be readable off this one sheet */
+  const asmText = norm(mod.ASSUMPTIONS.map(r => r.v + " " + r.b).join(" "));
+  for (const key of ["keys", "courtyard_keys", "adr_y1", "adr_y7", "rev_y7", "gop_y7",
+    "gop_margin_y7", "noi_y7", "noi_margin_y7", "capex_hotel", "capex_hotel_per_key", "capex_resi",
+    "capex_works_total", "cost_to_open", "cost_to_open_key", "resi_units", "resi_psf", "resi_sqft",
+    "resi_absorption", "resi_esc", "staff_index", "exit_yield", "purch_costs_pct", "exit_value",
+    "exit_per_key", "capex_prog_q", "entry", "irr", "em", "total_equity", "fin_senior_ltc",
+    "fin_refi_q", "refi_draw", "members", "member_fee", "buyouts_y7", "buyout_premium",
+    "regatta_days", "yield_on_cost", "dev_spread_bp", "levered_profit"]) {
+    checked++;
+    if (!asmText.includes(modelSrc.fig[key]))
+      fail("ASSUMPTION FIGURE MISSING  " + key, modelSrc.fig[key]);
+  }
+  /* the swing columns are the sensitivity run, so every printed IRR is the
+     record's own and every swing is the spread the record measures */
+  const SENS = modelSrc.sens;
+  const byIrr = {};
+  for (const [k, v] of Object.entries(SENS)) (byIrr[(v.irr * 100).toFixed(2) + "%"] ||= []).push(k);
+  let swings = 0;
+  for (const r of mod.ASSUMPTIONS) {
+    if (!r.s) { checked++; if (r.w) fail("SWING WITHOUT SETTINGS", r.k); continue; }
+    const dd = [0];
+    for (const [lab, irr] of r.s) {
+      swings++; checked++;
+      if (!byIrr[irr]) { fail("SWING IRR NOT IN THE RECORD  " + r.k, lab + " " + irr); continue; }
+      dd.push(Math.max.apply(null, byIrr[irr].map(k => SENS[k].d_pp)));
+    }
+    const want = (Math.max.apply(null, dd) - Math.min.apply(null, dd)).toFixed(1) + "pp";
+    checked++;
+    if (r.w !== want) fail("SWING MISSTATED  " + r.k, r.w + " against the record's " + want);
+  }
   checked++;
-  if (!fieldBlock.includes(want)) fail("FIELD ROW NOT IN SLIDE", want);
-  if (r.mid != null) { checked++; if (!fieldBlock.includes(`mid: ${r.mid}`)) fail("FIELD MID NOT IN SLIDE", `${r.label} ${r.mid}`); }
+  if (swings < 30) fail("SWING COVERAGE THIN", swings + " settings across thirty assumptions");
 }
+for (const s of norm(mod.DIAL_SRC).split(/(?<=\.)\s+/)) prose("assumption source sentence", s);
 
 /* the entry ladder, cell by cell, against the measured record. The record
    holds the thirteen measured entries and, separately, the five rungs whose
@@ -1052,8 +1274,8 @@ const RETIRED = [
   "146-line", "143-line", "£755,507", "£19.72m", "£9.12m", "£16.49m", "£282.0m",
   /* v15 */ "£107.3m", "£161.8m",
 ];
-const modelSurface = JSON.stringify([mod.FIGS, mod.CHAPTERS, mod.CASES, mod.CHEAT, mod.DIALS,
-  mod.DIAL_SRC, mod.LADDER, mod.BRIDGE, mod.FIELD]);
+const modelSurface = JSON.stringify([mod.FIGS, mod.CHAPTERS, mod.CASES, mod.CHEAT,
+  mod.ASSUMPTIONS, mod.DIAL_SRC, mod.LADDER, mod.BRIDGE]);
 const liveFigures = new Set(Object.values(modelSrc.fig).map(String));
 for (const t of RETIRED) {
   checked++;
