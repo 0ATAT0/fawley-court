@@ -16,9 +16,8 @@ CHAPTERS = {
     "asset": ["", "photography", "title", "planning", "scheme", "counterparty"],
     "market": ["", "layers", "rate", "seasonality", "operations", "capex", "pnl"],
     "underwrite": ["", "dial-set", "engines", "margin", "capital", "profile", "residences",
-                   "residences-evidence", "bridge", "cheat"],
+                   "residences-evidence", "bridge", "cheat", "returns", "cases", "sensitivities", "exit"],
     "capital": ["", "schedule", "areas", "phasing", "residences"],
-    "returns": ["", "cases", "sensitivities", "exit"],
     "dd": ["", "asks", "keys", "room", "gates", "closing"],
     "market": [""],
 }
@@ -178,7 +177,7 @@ async def main():
                 findings.setdefault("capex line", []).append([sname, "a line did not open"])
             await page.fill("#cxsearch", ""); await page.wait_for_timeout(400)
 
-            await page.goto(BASE + "#/c/returns", wait_until="networkidle")
+            await page.goto(BASE + "#/c/underwrite/returns", wait_until="networkidle")
             await page.click('[data-lad="4"]'); await page.wait_for_timeout(300)
             txt = await page.locator("#laddetail").inner_text()
             if _TOP_RUNG not in txt:        # the £70m rung, off the measured record

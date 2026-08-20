@@ -2098,7 +2098,7 @@ const CHAPTERS = [
 },
 {
   id: "market", num: "02", eyebrow: "Ultra Luxury Market", title: "The Ultra Luxury Market",
-  blurb: "",
+  blurb: "The rate, calendar, operating and conversion evidence that frames the underwrite.",
   figures: [["34","Hotels with a forward-year series"],["10","Bookable in all twelve months"]],
   views: [
   { id: "", title: "The Index", kicker: "Market",
@@ -2163,7 +2163,7 @@ const CHAPTERS = [
   ]
 },
 {
-  id: "underwrite", num: "03", eyebrow: "The Underwrite", title: "The Underwrite",
+  id: "underwrite", num: "03", eyebrow: "Underwrite", title: "Underwrite",
   blurb: "The dial set, the revenue engines, the margin frame, the capital stack and the residences.",
   figures: [["£47.14m","Year-7 revenue"],["33.88%","Year-7 GOP margin"]],
   views: [
@@ -2324,7 +2324,7 @@ const CHAPTERS = [
 ]
 },
 {
-  id: "capital", num: "04", eyebrow: "Capital cost", title: "The Capital Cost",
+  id: "capital", num: "04", eyebrow: "Capital cost", title: "Capital Cost",
   blurb: "The ground-up budget behind £" + (CAPEX.summary.works_total / 1e6).toFixed(1) + "m of works, priced line by line.",
   noLede: true,
   figures: [["£" + (CAPEX.summary.hotel.total / 1e6).toFixed(1) + "m", "Hotel works · £" + (CAPEX.summary.hotel.per_key / 1e6).toFixed(2) + "m a key"], ["£" + (CAPEX.summary.resi.total / 1e6).toFixed(1) + "m", "Residences · £" + (CAPEX.summary.resi.per_unit / 1e6).toFixed(2) + "m a unit"]],
@@ -2367,7 +2367,7 @@ const CHAPTERS = [
   blurb: "The three cases, the exit evidence, every rung of the entry ladder and the single-lever sensitivities.",
   figures: [["13.38% / 1.86x","At the ruled £50m"],["£51.7m","Where 13.00% solves"]],
   views: [
-  { id: "", title: "Returns &amp; the Entry Ladder", kicker: "Returns",
+  { id: "returns", title: "Returns &amp; the Entry Ladder", kicker: "Returns",
     figure: "13.38% / 1.86x at £50m", blurb: "",
     lead: [
       ["kpis",[["13.38%","Levered IRR at the ruled price"],["1.86x","Equity multiple"],["£110.9m","Peak equity"],["£95.3m","Levered profit"]]],
@@ -2491,6 +2491,17 @@ const CHAPTERS = [
   ]
 },
 ];
+
+/* Returns are read as part of the underwrite, not as a separate chapter. Keep
+   the source data together above, then compose the navigation here so the tab
+   order is explicit and the book cannot drift into two chapters again. */
+{
+  const returns = CHAPTERS.find(c => c.id === "returns");
+  const underwrite = CHAPTERS.find(c => c.id === "underwrite");
+  underwrite.views.push(...returns.views);
+  CHAPTERS.splice(CHAPTERS.indexOf(returns), 1);
+  CHAPTERS.forEach((c, i) => { c.num = String(i + 1).padStart(2, "0"); });
+}
 </script>
 <script>
 /* ══════════════════════════════════════════════════════════════════════
@@ -5071,6 +5082,10 @@ function route() {
 
   if (parts[0] === "areas") {                       /* the tab's old home */
     location.replace("#/c/capital/areas" + (parts[1] ? "/" + parts[1] : ""));
+    return;
+  } else if (parts[0] === "c" && parts[1] === "returns") {
+    /* The former chapter is now an Underwrite tab; retain shared deep links. */
+    location.replace("#/c/underwrite/" + (parts[2] || "returns"));
     return;
   } else if (parts[0] === "h" && BY_SLUG[parts[1]]) {
     const c = BY_SLUG[parts[1]];
