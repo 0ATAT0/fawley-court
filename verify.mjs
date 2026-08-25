@@ -51,12 +51,28 @@ const slides = fs.readFileSync(DECK + "slides.md", "utf8");
 const figs = JSON.parse(fs.readFileSync(DECK + "figures.json", "utf8"));
 const cheatSrc = JSON.parse(fs.readFileSync(DEAL + "Model/docs/cheat-web-data.json", "utf8"));
 /* the v16 sources of record: the measured figure set and the capital-cost pack */
-const modelSrc = JSON.parse(fs.readFileSync(DEAL + "Model/docs/v29-figures.json", "utf8"));
+/* The record this build is gated against. Resolved rather than named, so the next
+   re-strike is a new file in Model/docs and not an edit here: the highest-numbered
+   vNN-figures.json wins, and FAWLEY_MODEL_RECORD overrides it outright. */
+const MODEL_RECORD = process.env.FAWLEY_MODEL_RECORD || (() => {
+  const dir = DEAL + "Model/docs/";
+  const hits = fs.readdirSync(dir).map(f => [/^v(\d+)-figures\.json$/.exec(f), f])
+    .filter(([m]) => m).map(([m, f]) => [Number(m[1]), dir + f]).sort((a, b) => a[0] - b[0]);
+  if (!hits.length) { console.error("no vNN-figures.json in " + dir); process.exit(1); }
+  return hits[hits.length - 1][1];
+})();
+const modelSrc = JSON.parse(fs.readFileSync(MODEL_RECORD, "utf8"));
 const capexSrc = JSON.parse(fs.readFileSync(DEAL + "Model/capex/capex-web-data.json", "utf8"));
-const bridgeMd29 = fs.readFileSync(DEAL + "Model/docs/embassy-bridge-v29-20260819.md", "utf8");
+/* Companions to MODEL_RECORD, resolved the same way so a re-strike does not
+   leave the gate reading a superseded version's write-up. */
+const _pick = (re_) => { const dir = DEAL + "Model/docs/";
+  const hits = fs.readdirSync(dir).filter(f => re_.test(f)).sort();
+  if (!hits.length) { console.error("no match for " + re_ + " in " + dir); process.exit(1); }
+  return dir + hits[hits.length - 1]; };
+const bridgeMd29 = fs.readFileSync(_pick(/^embassy-bridge-v\d+-\d+\.md$/), "utf8");
 const capexRegister = fs.readFileSync(DEAL + "Model/capex/REGISTER.md", "utf8")
   + "\n" + fs.readFileSync(DEAL + "Model/capex/PROPOSAL.md", "utf8");
-const restrikeMd = fs.readFileSync(DEAL + "Model/docs/v29-portal-restrike-20260819.md", "utf8");
+const restrikeMd = fs.readFileSync(_pick(/^v\d+-portal-restrike-\d+\.md$/), "utf8");
 const qsSource = fs.readFileSync(DEAL + "Research/vendor-qs-crosscheck-20260816.md", "utf8");
 const pnlSource = JSON.parse(fs.readFileSync(PNLDIR + "web-data.json", "utf8"));
 const pnlRegister = fs.readFileSync(PNLDIR + "REGISTER.md", "utf8");
@@ -778,11 +794,15 @@ for (const ch of mod.CHAPTERS) {
 /* Chapter blurbs, view titles and the headline figures on the contents are the
    portal's own copy. The words are ours; the numbers are not — every token in
    them must already be registered somewhere. */
+/* Tokens that are not model figures at all: counts, the rooms seasonality, a
+   band quoted from outside. Every model figure was struck out of this list on
+   25 August 2026 -- it had been carrying v16's own headline return, capital
+   cost and equity for three versions, so a retired figure in a chapter blurb
+   was indistinguishable from a live one. A model figure belongs in the record,
+   never here. */
 const NAV_OK = new Set(["10", "11", "13", "16", "12", "8", "6", "7", "5", "4", "39", "87", "26",
-  "1", "2", "3", "9", "19", "100", "0.80", "1.05", "1.25", "0.90", "33.96%", "1.84x", "12.99%",
-  "146", "14", "£8–12m", "43.3%", "£2.06m", "£3.70m", "£123.6m",
-  "£44.4m", "£168.0m", "£194.2m", "£248.0m", "£45.33m", "£4.13m", "£49.97m", "£109.8m",
-  "−34.31%", "+12.99%", "+47.31pp", "9.07", "(9.07)%", "7.5pp", "12m"]);
+  "1", "2", "3", "9", "19", "100", "0.80", "1.05", "1.25", "0.90",
+  "146", "14", "£8–12m", "43.3%", "12m"]);
 const navToken = (label, s) => {
   for (const t of tok(s)) {
     checked++;
@@ -893,6 +913,26 @@ const blockFor = slug => {
 };
 const BLOCK = Object.fromEntries(mod.CASES.map(c => [c.slug, blockFor(c.slug)]));
 
+/* A case plate sets a comparable against the subject, and the subject cell is
+   ours. It used to be checked whole against a hand-kept list of approved cell
+   strings -- which meant that on every re-strike the list still approved the
+   previous version's cells and nothing else, and the true cell failed. That is
+   the retired-figure defect in a third place. It is checked token by token now:
+   a figure in a subject cell has to be a figure the live model produces, and
+   the only things named here are not model figures at all. */
+const SUBJ_NOT_MODEL = new Set([
+  "twelve", "twelve months", "1.20", "3.75", "250", "100", "999", "17", "43", "12", "5,500",
+  "t+3.5", "3.5", "2.5%", "365",
+]);
+function subjectCell(label, subj) {
+  for (const t of tok(subj)) {
+    checked++;
+    if (!FIG_VALUES.has(t) && !CAPEX_VALUES.has(t) && !EXTRA_OK.has(t)
+        && !SUBJ_NOT_MODEL.has(t))
+      fail(`SUBJECT CELL UNAPPROVED  ${label}`, `token "${t}" in "${norm(subj)}"`);
+  }
+}
+
 for (const c of mod.CASES) {
   verbatim(`${c.slug} name`, c.name);
   for (const [k, v] of c.record) verbatim(`${c.slug} record/${k}`, v);
@@ -906,27 +946,9 @@ for (const c of mod.CASES) {
       if (!BLOCK[c.slug].includes(t)) fail(`FIGURE NOT IN SLIDE  ${c.slug} against/${k}`, `token "${t}"`);
     }
     checked++;
-    if (!SUBJ_OK().has(norm(subj).toLowerCase())) fail(`SUBJECT CELL UNAPPROVED  ${c.slug}/${k}`, `"${norm(subj)}"`);
+    subjectCell(`${c.slug}/${k}`, subj);
   }
 }
-function SUBJ_OK() {
-  return new Set([
-    "£1,000 underwritten", "60", "twelve months",
-    "£785,630 · £47.14m, year 7",
-    "33.88% gop · £15.97m, year 7",
-    "33.88% gop · year 7",
-    "£2.10m a key works · £125.9m",
-    "staff cost index 1.20; no headcount is modelled",
-    "not computable on a like basis", "12 at £1,300/sqft, 5,500 sqft average",
-    "3.75 a year",
-    "250 members at £650 a month, 100 founders at £25,000",
-    "14 quarters of works, opening at t+3.5",
-    "60: 17 main house, 43 stables and courtyard",
-    "£1,000 underwritten, across all twelve months",
-    "£47.14m revenue, £15.97m gop, year 7"
-  ]);
-}
-
 /* ══ C. the bridge ═════════════════════════════════════════════════ */
 
 const bridgeTable = bridgeMd29.slice(bridgeMd29.indexOf("| # | Lever"), bridgeMd29.indexOf("Net:"));
@@ -1240,11 +1262,28 @@ if (Math.abs(phaseSum - cap.phasing.reconciles_to_net_lines) > 1)
 checked++;
 if (cap.lines.length !== cap.meta.n_lines) fail("CAPEX LINE COUNT", cap.lines.length + " lines, pack declares " + cap.meta.n_lines);
 /* every line carries its basis and its evidence class */
+/* The stable ID is what identifies a line. It has to be present, whole and
+   unique, or nothing downstream can quote a line safely. */
+{
+  const ids = cap.lines.map(l => l.id);
+  checked++;
+  if (ids.some(i => !Number.isInteger(i)))
+    fail("CAPEX LINE WITHOUT AN ID", "every line needs Capex!D; the pack has "
+      + ids.filter(i => !Number.isInteger(i)).length + " without one");
+  checked++;
+  if (new Set(ids).size !== ids.length)
+    fail("CAPEX IDS ARE NOT UNIQUE", new Set(ids).size + " distinct over " + ids.length + " lines");
+}
 for (const l of cap.lines) {
   checked++;
-  if (!l.basis || String(l.basis).trim().length < 20) fail("CAPEX LINE WITHOUT BASIS", "#" + l.n + " " + l.desc);
+  if (!l.basis || String(l.basis).trim().length < 20) fail("CAPEX LINE WITHOUT BASIS", "ID " + l.id + "  " + l.desc);
   checked++;
-  if (!["MEASURED", "BENCHMARK", "ALLOWANCE"].includes(l.source)) fail("CAPEX LINE WITHOUT CLASS", "#" + l.n);
+  /* RULED joined the three on v31: a scope the principal instructed, priced on
+     the schedule's own rates or on an allowance. The workbook's "#" column
+     repeats across zones and is out of row order, so a failure names the stable
+     ID at Capex!D instead. */
+  if (!["MEASURED", "BENCHMARK", "ALLOWANCE", "RULED"].includes(l.source))
+    fail("CAPEX LINE WITHOUT CLASS", "ID " + l.id + "  " + l.desc);
 }
 
 /* ══ I. estate areas — evaluate the deferred renderer against its pack ══ */
@@ -1341,30 +1380,83 @@ else {
 
 /* ══ the retired figures ═══════════════════════════════════════════
 
-   The portal was cut on v15, re-struck onto v16 and now onto v29. Each of
-   those records was a registered source in its turn, so a figure left behind
-   from an earlier one passes every check that asks "is this a real number
-   somewhere". These are the headline figures of the retired versions, and none
-   of them may appear on a model-figure surface: the chapters, the case plates,
-   the cheat sheet, the dial sheet, the ladder, the bridge or the figures map.
-   Comparable packs are excluded, where the same string can be another hotel's
-   honest number. */
+   Every version's record was a registered source in its turn, so a figure left
+   behind from an earlier one passes every check that asks "is this a real
+   number somewhere". None of them may appear on a model-figure surface: the
+   chapters, the case plates, the cheat sheet, the dial sheet, the ladder, the
+   bridge or the figures map. Comparable packs are excluded, where the same
+   string can be another hotel's honest number.
 
-const RETIRED = [
-  /* v16 */ "12.99%", "12.9930%", "1.84x", "£109.8m", "£92.5m", "£123.6m", "£44.4m",
-  "£168.0m", "£194.2m", "£45.33m", "33.96%", "£248.0m", "£4.13m", "10.87%", "1.76x",
-  "£116.9m", "£3.24m", "£2.06m", "£3.70m", "£15.39m", "£10.74m", "23.69%", "£46.7m",
-  "£95.9m", "£111.9m", "£95.5m", "£121.5m", "£11.01m", "£10.59m", "£264.8m", "£49.97m",
-  "146-line", "143-line", "£755,507", "£19.72m", "£9.12m", "£16.49m", "£282.0m",
-  /* v15 */ "£107.3m", "£161.8m",
+   The list is DERIVED from every vNN-figures.json on disk except the one this
+   build is struck against, so a re-strike does not depend on someone
+   remembering to add the outgoing version's headlines by hand — which is the
+   step that failed and let a v16 figure survive inside a v29 chapter. Only
+   tokens that read as a figure are taken (money, percent, multiple, per-key,
+   line counts); a bare "8" or "12" would be a false positive on any page.
+   A token the current model has come back to is skipped below. v15 predates
+   the JSON records, so its two headline figures stay listed by hand. */
+
+const FIGURE_LIKE = /^\(?£[\d,.]+[mkbn]?\)?$|^\(?[\d.]+%\)?$|^[\d.]+x$|^[\d.]+bp$|^\d+-line$|^£[\d,]{4,}$/;
+const RETIRED_DERIVED = (() => {
+  const dir = DEAL + "Model/docs/";
+  const out = new Set();
+  for (const f of fs.readdirSync(dir)) {
+    if (!/^v\d+-figures\.json$/.test(f)) continue;
+    if (dir + f === MODEL_RECORD) continue;            /* the live record is not retired */
+    const rec = JSON.parse(fs.readFileSync(dir + f, "utf8"));
+    for (const v of Object.values(rec.fig || {})) {
+      const t = typeof v === "object" && v !== null ? v.text : v;
+      if (typeof t === "string" && FIGURE_LIKE.test(t)) out.add(t);
+    }
+  }
+  return [...out];
+})();
+
+const RETIRED = [...RETIRED_DERIVED,
+  /* v15 — no JSON record exists for it */ "£107.3m", "£161.8m",
 ];
+/* The evidence ledgers are other people's filed figures, and one of them can be
+   the same string as a figure this model has retired -- Chewton Glen's 19.6%
+   filed operating margin was ours once. Only the rows the pack marks as the
+   subject are ours, so only they are read for a retired figure; every other row
+   is checked as evidence, against its own source and its own arithmetic. */
+const evidSubject = Object.fromEntries(Object.entries(mod.EVID).map(
+  ([k, v]) => [k, (v.rows || []).filter(r => r && r.subject)]));
 const modelSurface = JSON.stringify([mod.FIGS, mod.CHAPTERS, mod.CASES, mod.CHEAT,
-  mod.ASSUMPTIONS, mod.EVID, mod.DIAL_SRC, mod.LADDER, mod.BRIDGE]);
+  mod.ASSUMPTIONS, evidSubject, mod.DIAL_SRC, mod.LADDER, mod.BRIDGE]);
 const liveFigures = new Set(Object.values(modelSrc.fig).map(String));
+
+/* A raw substring test reads a retired figure inside a longer number: "26%"
+   matched the bridge's own "-40.26%", and "8%" matched a comparable's "34.08%"
+   on a hotel page. Both are false, and a gate that cries wolf is one nobody
+   reads. A hit counts only where the token stands on its own -- no digit,
+   decimal point or comma leaning against either end of it. */
+const hits = (hay, tok) => {
+  const out = [];
+  let i = -1;
+  while ((i = hay.indexOf(tok, i + 1)) !== -1) {
+    const before = hay[i - 1] || "", after = hay[i + tok.length] || "";
+    if (!/[\d.,]/.test(before) && !/\d/.test(after)) out.push(i);
+  }
+  return out;
+};
+
+/* A retired model figure and an outside party's honest figure can be the same
+   string. Savills' £127.5m gross development value is not our old cost to open,
+   and it is quoted with its author beside it on the residences page. An
+   occurrence is forgiven only where the attribution sits with it; a bare one
+   still fails. */
+const RETIRED_ATTRIBUTED = [
+  { token: "£127.5m", by: "Savills" },
+];
+const attributed = (hay, tok, at) => RETIRED_ATTRIBUTED.some(e =>
+  e.token === tok && hay.slice(Math.max(0, at - 240), at + 240).includes(e.by));
+
 for (const t of RETIRED) {
   checked++;
   if (liveFigures.has(t)) continue;          /* the model has come back to it */
-  if (modelSurface.includes(t))
+  const bare = hits(modelSurface, t).filter(at => !attributed(modelSurface, t, at));
+  if (bare.length)
     fail("RETIRED FIGURE STILL ON THE PAGE", `"${t}" is from a superseded version of the model`);
 }
 
@@ -1376,8 +1468,9 @@ for (const [slug, rec] of Object.entries(hpSource)) {
   for (const row of rec.against || []) {
     if (!row || row.length < 3 || typeof row[2] !== "string") continue;
     checked++;
-    const stale = RETIRED.find(t => row[2].includes(t)
-      || row[2].includes(t.replace("£", "GBP ")) || row[2].includes(t.replace("£", "GBP")));
+    const stale = RETIRED.find(t => hits(row[2], t).length
+      || hits(row[2], t.replace("£", "GBP ")).length
+      || hits(row[2], t.replace("£", "GBP")).length);
     if (stale && !liveFigures.has(stale))
       fail(`HOTEL PAGE SUBJECT CELL IS STALE  ${slug}/${row[0]}`,
         `"${row[2]}" carries ${stale} — run python tools/restrike-hotelpages.py, then tools/inline-hotelpages.py`);

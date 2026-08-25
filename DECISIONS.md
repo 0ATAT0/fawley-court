@@ -675,3 +675,113 @@ chapter and an untracked 86MB `model/` folder. Angus confirmed it. This commit
 carries this work only and leaves that chapter out of the committed version,
 because its assets are not in the repository and the deployed page would fail on
 them; the working tree keeps it untouched for that session to ship itself.
+
+## The model record is resolved, not named (25 August 2026)
+
+The portal has been struck on v15, v16, v29 and now v31. Each time, seven tools
+and the gate named the record in a string literal and each time someone edited
+all eight by hand.
+
+`tools/build-blocks.py`, `tools/inline-model.py` and `verify.mjs` now resolve the
+**highest-numbered `vNN-figures.json`** in `Model/docs`, with
+`FAWLEY_MODEL_RECORD` as an outright override. The gate resolves its bridge and
+re-strike companions the same way, and `build-blocks.py` derives `MODEL_NAME`
+from the record instead of holding a literal. **The next re-strike is a new file
+in `Model/docs`, not an edit here.**
+
+The one-shot migration tools — `restrike-chapters.py`, `restrike-verify.py`,
+`patch-verify-*.py` — were deliberately left naming v29. They are v16→v29
+migrations whose replacements assert counts against source text that has since
+moved. They are lineage; re-running them fails by design.
+
+## The retired-figure list is derived (25 August 2026)
+
+It was a hand-kept array, and moving to v31 showed it still held only v15 and
+v16 tokens: v29's were never added when v29 shipped. That is the same failure
+the check exists to prevent.
+
+It is now built from every `vNN-figures.json` on disk except the live one,
+filtered to tokens that read as a figure — money, percent, multiple, per-key,
+line counts — because a bare "8" or "12" would fail honestly-used numbers. A
+token the live record has come back to is skipped, as before.
+
+Switching it on took the gate from 9,081 checks to 9,203 and surfaced 68 stale
+figures the hand list had missed. If a token it flags turns out to be an honest
+current figure, the fix is to make sure it is in the live record, not to add an
+exception here.
+
+## The v32 re-strike, and three allowlists that were the same defect (25 August 2026)
+
+The portal moved to Financial Model v32 — 72 keys, 14.71% / 1.91x at the ruled
+£50m. The gate opened at 249 failures and the shape of them is the point: two
+thirds were surfaces that should never have been hand-written, and the rest were
+three separate allowlists each quietly approving the previous version.
+
+1. **The Capital view is generated now.** Both funding tables, the annual flows
+   and the three readings under them were typed on v29 — twenty-five cells, every
+   one of them in the record. `tools/build-blocks.py` writes the whole view
+   between `/*CAPITAL-VIEW-START*/` markers, so it is a rerun rather than a
+   rewrite. Its closing bullet loses the line about a lender at 1.30x reopening a
+   capital call: that was a v20–v21 measurement and does not hold on this book.
+
+2. **The comparative P&L's subject column is generated**, by
+   `Research/comp-pnls/build-subject.py`. It is the eleventh column of a table
+   whose other ten are outside evidence, and it had been retyped at each of the
+   last three re-strikes. The register carries the amendment; the pack is now
+   read from the measured record.
+
+3. **The market chapter's subject rows are generated**, by the evidence builder
+   itself. The two research passes stay the research record; the subject row is
+   rebuilt from the record and the capex pack every time the builder runs, so the
+   chapter cannot argue a superseded underwrite beside current evidence.
+
+4. **The hotel-page re-strike is derived, and shared.** It held a hand-written
+   list of old-to-new pairs written for v16→v29, which matched nothing at all on
+   this pass while the gate went on reporting stale cells. `tools/restrike_map.py`
+   builds the map from the records themselves: for each figure key the live record
+   and a superseded one share, the old value maps to the live one. Keyed by
+   concept, so revenue a key stays revenue a key. `restrike-hotelpages.py` and the
+   new `restrike-cases.py` both read it.
+
+5. **Three allowlists were the retired-figure defect in three more places.**
+   `NAV_OK` still held v16's return, capital cost and equity; `SUBJ_OK` approved
+   whole v29 cell strings, so on every re-strike the true cell failed and the
+   previous version's passed; and the P&L pack's own subject block was outside
+   both. NAV_OK is pruned to tokens that are not model figures at all, SUBJ_OK is
+   replaced by a token check against the live record, and the third is generated.
+
+6. **The gate cried wolf twice and now does not.** A retired figure was matched
+   as a raw substring, so "26%" matched the bridge's own "−40.26%" and "8%"
+   matched a comparable's "34.08%". A hit counts only where the token stands on
+   its own. And an outside party's honest figure can be the same string as one of
+   ours — Savills' £127.5m gross development value, Chewton Glen's 19.6% filed
+   operating margin — so the evidence ledgers are read for retired figures only
+   in the rows the pack marks as the subject, and one attribution is named
+   explicitly.
+
+7. **A gate that passes is not a page that works.** Deriving the version label
+   moved `MODEL_NAME` into a chapter's source line, but the shell defined it three
+   hundred lines below `CHAPTERS`, so the page threw on load and rendered nothing.
+   The figure gate passed 9,330 checks on it, because the harness had been taught
+   to define `MODEL_NAME` itself. **The harness must not supply what the page
+   fails to define**; the definition moved to sit with `MODEL` instead, and the
+   harness line came out. `audit.py` found it in one run, as it did in August.
+
+8. **Two prose cells were corrected in the workbook itself.** The v32 Cheat Sheet
+   header named Financial Model v29 and one watchpoint title still read
+   "Residences at £1,300/sqft" beside a body saying £1,500 was adopted. Both were
+   corrected on a scratch copy and deployed by file copy: 55,703 cells compared,
+   two differences, no number among them, checks 25 of 25 and the return unmoved
+   at 14.7079%. A version label is not a figure, which is why nothing mechanical
+   had caught either.
+
+**Gates:** verify.mjs 9,330 checks / 0 failures, negative-tested by putting v29's
+headline back and watching it fail three ways; audit.py clean, after lifting the
+evidence-class label off `--muted-2` at 4.45:1 to `--muted` at 5.07:1;
+offline.py clean; eleven routes rendered at four widths.
+
+**Left standing, and named rather than buried:** the twelve capex lines Chris
+King instructed carry a fourth evidence class, RULED, which the model introduced
+and the page now defines — £11.20m of net cost in a class the chapter had never
+explained. And the diligence chapter's closing page runs a paragraph at a measure
+with the right half of the page empty, which is the defect the house rule names.

@@ -2,84 +2,46 @@
 """Re-strike the underwrite's own figures inside the hotel-pages pack.
 
 Each written hotel page reads a comparable against the subject, and the subject
-column is the underwrite's figure. Twenty of those cells were cut on v16 and
-were still printing the earlier revenue, margin and capital cost beside
-thirty-four comparables. The comparable's own numbers are untouched; only the
-subject column moves.
+column is the underwrite's figure. The comparable's own numbers are never
+touched; only the subject column and prose that names Fawley move.
+
+This tool used to hold a hand-written list of old-to-new pairs, pinned to one
+version of the record. That is the failure the derived retired-figure list in
+`verify.mjs` exists to prevent, in a second place: the list was written for
+v16 to v29 and matched nothing at all on the next re-strike, while the gate went
+on reporting stale cells.
+
+It is derived now. Every `vNN-figures.json` in `Model/docs` except the live one
+is a superseded record; for each figure key the two records share, the old value
+maps to the live value. So the mapping is by concept -- revenue a key stays
+revenue a key -- and a new version needs no edit here.
 
     python tools/restrike-hotelpages.py
 
-Writes the pack in Research/cohort-2026-08/, then re-inline with
-tools/inline-hotelpages.py.
+Writes the staging pack in Research/cohort-2026-08/staging/pages, then re-inline
+with tools/inline-hotelpages.py.
 """
-import json, os, pathlib, re
+import json, os, pathlib, re, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from restrike_map import (DEAL, DOCS, LIVE_PATH, F, SWAP, AMBIGUOUS, KEY_ROWS,
+                          PRICE_ROWS, PPK, PPK_LIVE, KEY_PHRASE, sub_cell,
+                          sub_prose)
 
-DEAL = pathlib.Path(os.environ.get(
-    "FAWLEY_DEAL_ROOT",
-    r"D:\OneDrive - Strand Labs\2. Clients\Align\2. Live Deals\Fawley Court"))
 PAGES = DEAL / "Research" / "cohort-2026-08" / "staging" / "pages"
-REC = json.loads((DEAL / "Model" / "docs" / "v29-figures.json").read_text(encoding="utf-8"))
-F = REC["fig"]
-
-# the subject figures, old to new
-SWAP = [
-    ("£45.33m", F["rev_y7"]),
-    ("£15.39m", F["gop_y7"]),
-    ("£123.6m", F["capex_hotel"]),
-    ("£194.2m", F["cost_to_open"]),
-    ("£248.0m", F["exit_value"]),
-    ("£109.8m", F["peak_equity"]),
-    ("33.96%", F["gop_margin_y7"]),
-    ("12.99%", F["irr"]),
-    ("£2.06m", F["capex_hotel_per_key"]),
-    ("£756k", F["rev_per_key_y7"]),
-    ("£785,630 · ", F["rev_per_key_y7"] + " · "),   # an earlier pass wrote the long form
-    ("v16 hotel works", "hotel works"),
-    # some cells write the currency as GBP rather than a symbol
-    ("GBP 2.06m", "GBP " + F["capex_hotel_per_key"].replace("£", "")),
-    ("GBP 123.6m", "GBP " + F["capex_hotel"].replace("£", "")),
-    ("GBP 45.33m", "GBP " + F["rev_y7"].replace("£", "")),
-    ("GBP 15.39m", "GBP " + F["gop_y7"].replace("£", "")),
-    ("GBP 194.2m", "GBP " + F["cost_to_open"].replace("£", "")),
-    ("GBP 756,000", "GBP " + F["rev_per_key_y7"].replace("£", "")),
-    ("GBP 756k", "GBP " + F["rev_per_key_y7"].replace("£", "")),
-]
-
-
-# The written prose names the subject too. Only phrases that name Fawley are
-# touched, so a comparable's own figure can never be rewritten by accident.
-PROSE_SWAP = [
-    ("Fawley's 33.96% GOP", "Fawley's {gop}" + " GOP"),
-    ("Fawley Court's 33.96% GOP", "Fawley Court's {gop}" + " GOP"),
-    ("Fawley's £756k Year 7 revenue a key", "Fawley's {rk} Year 7 revenue a key"),
-    ("Fawley's £756k", "Fawley's {rk}"),
-    ("Fawley's £1,000 underwriting figure", "Fawley's £1,000 underwriting figure"),
-    ("Year 7 revenue a key or 33.96% GOP", "Year 7 revenue a key or {gop} GOP"),
-    ("Fawley's underwritten 33.96% GOP", "Fawley's underwritten {gop} GOP"),
-    ("against Fawley's underwritten £756k", "against Fawley's underwritten {rk}"),
-]
-
-
-def swap_prose(v):
-    if not isinstance(v, str) or "Fawley" not in v:
-        return v
-    for old, new in PROSE_SWAP:
-        v = v.replace(old, new.format(gop=F["gop_margin_y7"], rk=F["rev_per_key_y7"]))
-    return v
-
 
 def walk(o):
     if isinstance(o, dict):
-        return {k: walk(x) for k, x in o.items()}
+        return {k: walk(v) for k, v in o.items()}
     if isinstance(o, list):
-        return [walk(x) for x in o]
-    return swap_prose(o)
+        return [walk(v) for v in o]
+    return sub_prose(o)
 
 
 def main():
-    """The assembled pack is rebuilt from these staging files every time the
-    inline tool runs, so the subject figures have to be corrected here."""
-    hits = files = 0
+    print(f"record {LIVE_PATH.name}: {len(SWAP)} retired figures map onto it")
+    for old, news in AMBIGUOUS:
+        print(f"  ambiguous, left alone: {old} -> {news}")
+    hits = files = keyfix = prose = 0
     for path in sorted(PAGES.glob("*.json")):
         rec = json.loads(path.read_text(encoding="utf-8"))
         moved = False
@@ -87,20 +49,39 @@ def main():
             if len(row) < 3 or not isinstance(row[2], str):
                 continue
             before = row[2]
-            for old, new in SWAP:
-                row[2] = row[2].replace(old, new)
+            row[2] = sub_cell(row[2])
+            if any(k in str(row[0]).strip().lower() for k in PRICE_ROWS):
+                row[2] = PPK.sub(PPK_LIVE, row[2])
+            if str(row[0]).strip().lower() in KEY_ROWS and row[2].strip() != F["keys"]:
+                if re.fullmatch(r"[\d,]+", row[2].strip()):
+                    row[2] = F["keys"]
+                    keyfix += 1
             if row[2] != before:
                 hits += 1
                 moved = True
-                print(f"  {path.stem:28s} {str(row[0])[:30]:32s} {before[:40]}  ->  {row[2][:40]}")
+                print(f"  {path.stem:28s} {str(row[0])[:26]:28s} {before[:34]}  ->  {row[2][:34]}")
         prosed = walk(rec)
         if prosed != rec:
-            moved = True
-            rec = prosed
+            rec, moved = prosed, True
+            prose += 1
         if moved:
             path.write_text(json.dumps(rec, ensure_ascii=False, indent=1), encoding="utf-8")
             files += 1
-    print(f"{hits} subject cells re-struck across {files} staged pages in {PAGES}")
+    print(f"{hits} subject cells re-struck ({keyfix} key counts) and prose moved on "
+          f"{prose} pages, across {files} staged files in {PAGES}")
+
+    # anything a rule could not reach is named rather than left silent.
+    left = 0
+    for path in sorted(PAGES.glob("*.json")):
+        rec = json.loads(path.read_text(encoding="utf-8"))
+        for row in rec.get("against", []):
+            if len(row) < 3 or not isinstance(row[2], str):
+                continue
+            for old in SWAP:
+                if old in row[2] or old.replace("£", "GBP ") in row[2]:
+                    print(f"  STILL STALE  {path.stem}/{row[0]}: {row[2][:60]}")
+                    left += 1
+    print(f"{left} subject cells still carry a retired figure")
 
 
 if __name__ == "__main__":

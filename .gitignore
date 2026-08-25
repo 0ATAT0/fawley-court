@@ -5,3 +5,6 @@ src/_all.js
 
 # agents' scratch downloads while a research run is in flight
 img/comps/_dl/
+
+# python bytecode from the tools
+tools/__pycache__/

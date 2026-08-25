@@ -14,12 +14,34 @@ in separately by inline-model.py and inline-cheat.py.
 """
 import json, os, re, sys
 
+# The record of the model this build is struck against. Resolved rather than
+# named, so the next re-strike is a new file in Model/docs and not an edit to
+# every tool: the highest-numbered vNN-figures.json wins, and FAWLEY_MODEL_RECORD
+# overrides it outright.
+def _model_record(deal):
+    import os, re as _re, pathlib as _p
+    override = os.environ.get("FAWLEY_MODEL_RECORD")
+    if override:
+        return _p.Path(override)
+    docs = _p.Path(deal) / "Model" / "docs"
+    found = sorted(
+        ((int(_re.match(r"v(\d+)-figures\.json$", f.name).group(1)), f)
+         for f in docs.glob("v*-figures.json")
+         if _re.match(r"v(\d+)-figures\.json$", f.name)),
+        key=lambda t: t[0])
+    if not found:
+        raise SystemExit("no vNN-figures.json in %s" % docs)
+    return found[-1][1]
+
+
+
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEAL = os.environ.get(
     "FAWLEY_DEAL_ROOT",
     r"D:\OneDrive - Strand Labs\2. Clients\Align\2. Live Deals\Fawley Court")
 IDX = os.path.join(HERE, "index.html")
-REC = json.load(open(os.path.join(DEAL, "Model", "docs", "v29-figures.json"), encoding="utf-8"))
+REC_PATH = _model_record(DEAL)
+REC = json.loads(REC_PATH.read_text(encoding="utf-8"))
 
 F = REC["fig"]
 LAD = {int(r["price"] / 1e6): r for r in REC["ladder"]}
@@ -507,6 +529,96 @@ def eq_block():
     return "const EQ = [\n" + "\n".join(rows) + "\n];"
 
 
+# ══ 7. the Capital view ═══════════════════════════════════════════════
+# Both funding tables, the annual flows and the three readings under them.
+# Every cell of this view was typed by hand on an earlier version and every one
+# of them went stale in the next re-strike. All of it is in the record, so the
+# view is generated like the other blocks.
+MIDDOT, RSQUO, POUND = "\u00b7", "\u2019", "\u00a3"
+emph = lambda s: "<span class='emph'>" + s + "</span>"
+wrap_neg = lambda s: ("<span class='neg'>" + s + "</span>") if s.startswith("(") else s
+
+CAP_BULLETS = [
+    "<b>Peak equity {peak}</b> at the trough of the drawdown, and equal to the total "
+    "drawn: cash funds later drawdowns, so nothing is called after the first "
+    "distribution. That equality holds only at the {icr} cover test the refinancing is "
+    "sized on.",
+    "<b>Capital comes back in year 8</b>: cumulative net equity is {cum} at the end of "
+    "year 7, and the {y8} distributed in year 8 clears it.",
+    "<b>The refinancing more than clears the senior</b> {dash} {refi} drawn against the "
+    "{senior} balance it repays. The cover test that sizes it is set at {icr}.",
+]
+
+
+def capital_block():
+    left = [
+        [None, ["Purchase price", F["entry"]]],
+        [None, ["Acquisition costs at " + F["acq_costs_pct"], D["acq_costs_amount"]]],
+        [None, ["Hotel works spent to opening", F["co_capex"]]],
+        [None, ["Arrangement fee", F["co_arrfee"]]],
+        [None, ["Capitalised interest, to opening", F["co_interest"]]],
+        [None, ["Pre-opening operating shortfall", F["co_shortfall"]]],
+        ["total key", ["Cost to open", emph(F["cost_to_open"])]],
+        ["total key", ["Hotel cost to exit", emph(F["all_in_to_exit"])]],
+        [None, ["Residential build, all in", F["capex_resi"]]],
+        [None, ["Residential sales fee, " + F["resi_fee_pct"] + " of gross proceeds",
+                F["resi_sales_fee"]]],
+        ["total key", ["Total project cost through exit", emph(D["total_project_cost"])]],
+    ]
+    right = [
+        [None, ["Equity drawn over the hold, which is also peak equity", F["total_equity"]]],
+        [None, ["Senior drawn over the works, cumulative", F["senior_drawn_total"]]],
+        [None, ["Peak senior balance, at opening", F["senior_peak"]]],
+        ["key", ["Refinancing drawn at Q" + F["fin_refi_q"], emph(F["refi_draw"])]],
+        [None, ["Exit-year NOI, after the operator" + RSQUO + "s fees", F["exit_noi"]]],
+        [None, ["Less Align" + RSQUO + "s asset-management fee",
+                "<span class='neg'>(" + F["exit_am_fee"] + ")</span>"]],
+        ["subtotal", ["Adjusted NOI at exit", F["exit_adjnoi"]]],
+        [None, ["Exit yield / purchasers" + RSQUO + " costs",
+                F["exit_yield"] + " / " + F["purch_costs_pct"]]],
+        ["total key", ["Exit value, hotel alone", emph(F["exit_value"])]],
+        [None, ["Per key " + MIDDOT + " unadjusted NOI on the gross value",
+                F["exit_per_key"] + " " + MIDDOT + " " + F["exit_noi_on_gross"]]],
+    ]
+    flows = [[None, [f["period"], f["equity_in"], f["distributed"],
+                     wrap_neg(f["senior"]), wrap_neg(f["refi"])]] for f in REC["flows"]]
+    T = REC["flow_totals"]
+    flows.append(["total", ["Drawn over the hold", emph(T["equity_in"]), MDASH,
+                            T["senior"], T["refi"]]])
+    flows.append([None, ["Returned over the hold", MDASH, T["distributed"],
+                         wrap_neg(T["senior_repaid"]), wrap_neg(T["refi_repaid"])]])
+
+    y8 = next(f["distributed"] for f in REC["flows"] if f["period"] == "Y8")
+    bullets = [b.format(peak=F["peak_equity"], icr=F["refi_min_icr"], cum=D["cum_equity_y7"],
+                        y8=POUND + y8 + "m", refi=F["refi_draw"], senior=F["senior_peak"],
+                        dash=MDASH) for b in CAP_BULLETS]
+
+    tbl = lambda rows: ('[["tbl",{"cls":"num","head":["Line",{"t":"Amount","a":"r"}],"rows":['
+                        + ",".join(js(r) for r in rows) + ']}]]')
+    ftbl = ('[["tbl",{"cls":"num","head":["Period",{"t":"Equity in","a":"r"},'
+            '{"t":"Distributed","a":"r"},{"t":"Senior","a":"r"},{"t":"Refi","a":"r"}],"rows":['
+            + ",".join(js(r) for r in flows) + ']}]]')
+
+    out = ["/*CAPITAL-VIEW-START*/",
+           '  { id: "capital", title: "Capital", kicker: "Capital",',
+           "    figure: " + js(F["cost_to_open"] + " to open " + MIDDOT + " "
+                               + F["total_equity"] + " of equity") + ",",
+           '    blurb: "What it costs to open and to exit, how it is funded, and the year '
+           'the capital comes back.",',
+           "    lead: [",
+           '      ["panes",{"split":"50fr 50fr","left":{"h":"Hotel cost to open and exit","b":'
+           + tbl(left) + '},"right":{"h":"How it is funded, and the exit","b":'
+           + tbl(right) + "}}],",
+           '      ["wf","equity"],',
+           '      ["exhibit",{"h":"Annual flows, ' + POUND + 'm","b":' + ftbl + "}],",
+           "    ],",
+           "    reason: [",
+           '      ["bullets",' + js(bullets) + "],",
+           "    ] },",
+           "/*CAPITAL-VIEW-END*/"]
+    return chr(10).join(out)
+
+
 # ══ splice ════════════════════════════════════════════════════════════
 BLOCKS = [
     ("const FIGS = {", "};", figs_block),
@@ -515,10 +627,16 @@ BLOCKS = [
     ("const LADDER = {", "};", ladder_block),
     ("const BRIDGE = {", "};", bridge_block),
     ("const EQ = [", "];", eq_block),
+    ("/*CAPITAL-VIEW-START*/", "/*CAPITAL-VIEW-END*/", capital_block),
 ]
 
-MODEL_NAME = "Financial Model v29"
-SAVED = "19 August 2026"
+MODEL_NAME = REC["meta"]["model"].split(" - ", 1)[-1].replace(".xlsx", "")
+# The saved state the record was measured on, from the record rather than typed:
+# it was still saying 19 August three versions later.
+_MONTHS = ["January", "February", "March", "April", "May", "June", "July",
+           "August", "September", "October", "November", "December"]
+_y, _m, _d = (int(x) for x in REC["meta"]["measured"].split("-"))
+SAVED = "%d %s %d" % (_d, _MONTHS[_m - 1], _y)
 
 
 def splice(src, start, end, text):

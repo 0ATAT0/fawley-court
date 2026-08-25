@@ -1,43 +1,44 @@
 {
  "meta": {
-  "source": "Model/Fawley Court - Financial Model v29.xlsx, Capex tab",
-  "snapshot_sha256": "fbca82156a0c56526ca287f944384e0d52af81c2d1ee0f899d1ea0e9dea970aa",
+  "source": "Model/Fawley Court - Financial Model v32.xlsx, Capex tab",
+  "snapshot_sha256": "26af91c6522a0fb6ed6a8ba8df4e26840dcbadc5131e0a28656bf69fb3ae1b57",
   "register": "Model/capex/REGISTER.md and Model/capex/PROPOSAL.md",
   "measured": "2026-08-18",
   "entry": "£50m",
-  "n_lines": 162,
+  "n_lines": 174,
   "note": "The schedule is a first-principles estimate built by a non-quantity-surveyor on what the data room contains, named public rates, and stated allowances where nothing else exists. There is no forward cost plan, no measured survey, no ground investigation and no MEP survey anywhere in the room."
  },
  "summary": {
   "hotel": {
-   "net": 99689989.0,
-   "prelims": 6548622.75,
-   "fees": 9082234.0575,
-   "contingency": 10623861.175,
-   "total": 125944706.9825,
-   "per_key": 2099078.4497083332,
+   "net": 101963437.84615384,
+   "prelims": 7103109.0,
+   "fees": 9321628.216153845,
+   "contingency": 10906654.684615385,
+   "total": 129294829.74692307,
+   "per_key": 1795761.5242628204,
    "prelims_pct": 0.15,
    "fees_pct": 0.09,
    "cont_pct": 0.1
   },
   "resi": {
-   "net": 39343413.260000005,
+   "net": 38455413.260000005,
    "prelims": 766486.7999999999,
    "fees": 2849910.1440000003,
-   "contingency": 2005495.0030000003,
-   "total": 44965305.207,
-   "per_unit": 3747108.76725,
+   "contingency": 1961095.0030000003,
+   "total": 44032905.207,
+   "per_unit": 3669408.76725,
    "prelims_pct": 0.12,
    "fees_pct": 0.08,
    "cont_pct": 0.05
   },
-  "works_total": 170910012.1895,
-  "keys": 60,
+  "works_total": 173327734.95392308,
+  "keys": 72,
   "units": 12
  },
  "lines": [
   {
    "n": 1,
+   "id": 1,
    "desc": "Soft strip and FF&E strip-out, whole house",
    "zone": "1. Main House",
    "element": "Shell & structure",
@@ -61,6 +62,7 @@
   },
   {
    "n": 2,
+   "id": 2,
    "desc": "Residual asbestos - survey, opening-up finds, licensed removal",
    "zone": "1. Main House",
    "element": "Shell & structure",
@@ -84,6 +86,7 @@
   },
   {
    "n": 3,
+   "id": 3,
    "desc": "Structural alteration - 4 new keys, en-suites, service risers (1F/2F)",
    "zone": "1. Main House",
    "element": "Shell & structure",
@@ -107,6 +110,7 @@
   },
   {
    "n": 4,
+   "id": 4,
    "desc": "Structural alteration - lower ground and ground floor (kitchen, BOH, goods route)",
    "zone": "1. Main House",
    "element": "Shell & structure",
@@ -130,6 +134,7 @@
   },
   {
    "n": 5,
+   "id": 5,
    "desc": "Second passenger / service lift, new shaft through Grade I fabric",
    "zone": "1. Main House",
    "element": "Shell & structure",
@@ -153,6 +158,7 @@
   },
   {
    "n": 6,
+   "id": 6,
    "desc": "Envelope and roof - residual repairs and opening-up",
    "zone": "1. Main House",
    "element": "Shell & structure",
@@ -176,6 +182,7 @@
   },
   {
    "n": 7,
+   "id": 7,
    "desc": "MEP adaptation for hotel use - power, data, public health, controls, BMS",
    "zone": "1. Main House",
    "element": "MEP",
@@ -199,6 +206,7 @@
   },
   {
    "n": 8,
+   "id": 8,
    "desc": "Comfort cooling - indoor units, pipework, condensate (17 keys, floors 1-2)",
    "zone": "1. Main House",
    "element": "MEP",
@@ -222,6 +230,7 @@
   },
   {
    "n": 9,
+   "id": 9,
    "desc": "Comfort cooling - new vertical risers through Grade I fabric",
    "zone": "1. Main House",
    "element": "MEP",
@@ -245,6 +254,7 @@
   },
   {
    "n": 10,
+   "id": 10,
    "desc": "Comfort cooling - external condenser plant, acoustic enclosure, heritage screening",
    "zone": "1. Main House",
    "element": "MEP",
@@ -268,6 +278,7 @@
   },
   {
    "n": 11,
+   "id": 11,
    "desc": "Comfort cooling - electrical supply, distribution, controls integration",
    "zone": "1. Main House",
    "element": "MEP",
@@ -291,6 +302,7 @@
   },
   {
    "n": 12,
+   "id": 12,
    "desc": "Comfort cooling - making good, lime plaster and joinery reinstatement",
    "zone": "1. Main House",
    "element": "MEP",
@@ -314,6 +326,7 @@
   },
   {
    "n": 13,
+   "id": 13,
    "desc": "Comfort cooling - heritage design, LBC application, method statements",
    "zone": "1. Main House",
    "element": "MEP",
@@ -337,6 +350,7 @@
   },
   {
    "n": 14,
+   "id": 14,
    "desc": "Fire suppression, detection, emergency lighting and signage",
    "zone": "1. Main House",
    "element": "MEP",
@@ -360,6 +374,7 @@
   },
   {
    "n": 15,
+   "id": 15,
    "desc": "Guestroom fit-out, first and second floors",
    "zone": "1. Main House",
    "element": "Fit-out",
@@ -383,6 +398,7 @@
   },
   {
    "n": 16,
+   "id": 16,
    "desc": "Public areas - restaurant, bar, lounge, reception, private dining",
    "zone": "1. Main House",
    "element": "Fit-out",
@@ -406,9 +422,10 @@
   },
   {
    "n": 17,
+   "id": 17,
    "desc": "F&B terraces - east/river and south/parkland",
    "zone": "1. Main House",
-   "element": "Fit-out",
+   "element": "Externals",
    "limb": "hotel",
    "on": 1,
    "qty": 328.0,
@@ -429,6 +446,7 @@
   },
   {
    "n": 18,
+   "id": 18,
    "desc": "Main production kitchen - relocation and extension",
    "zone": "1. Main House",
    "element": "Fit-out",
@@ -452,6 +470,7 @@
   },
   {
    "n": 19,
+   "id": 19,
    "desc": "Back of house - housekeeping, stores, staff facility, goods-in, laundry",
    "zone": "1. Main House",
    "element": "Fit-out",
@@ -475,6 +494,7 @@
   },
   {
    "n": 20,
+   "id": 20,
    "desc": "Circulation, corridors and making good to lime plaster",
    "zone": "1. Main House",
    "element": "Fit-out",
@@ -498,6 +518,7 @@
   },
   {
    "n": 21,
+   "id": 21,
    "desc": "New wing F&B ballroom / lounge (new build)",
    "zone": "1. Main House",
    "element": "Shell & structure",
@@ -521,6 +542,7 @@
   },
   {
    "n": 22,
+   "id": 22,
    "desc": "Guestroom FF&E, 17 keys",
    "zone": "1. Main House",
    "element": "FF&E",
@@ -528,9 +550,9 @@
    "on": 1,
    "qty": 17.0,
    "unit": "key",
-   "rate": 75000.0,
-   "net": 1275000.0,
-   "live": 1275000.0,
+   "rate": 52000.0,
+   "net": 884000.0,
+   "live": 884000.0,
    "prelims": 0,
    "fees": 1,
    "source": "BENCHMARK",
@@ -544,6 +566,7 @@
   },
   {
    "n": 23,
+   "id": 23,
    "desc": "Public area and F&B FF&E - internal",
    "zone": "1. Main House",
    "element": "FF&E",
@@ -567,6 +590,7 @@
   },
   {
    "n": 24,
+   "id": 24,
    "desc": "Terrace and external FF&E, Main House",
    "zone": "1. Main House",
    "element": "FF&E",
@@ -574,9 +598,9 @@
    "on": 1,
    "qty": 328.0,
    "unit": "m2",
-   "rate": 350.0,
-   "net": 114800.0,
-   "live": 114800.0,
+   "rate": 1440.0,
+   "net": 472320.0,
+   "live": 472320.0,
    "prelims": 0,
    "fees": 1,
    "source": "ALLOWANCE",
@@ -590,6 +614,7 @@
   },
   {
    "n": 25,
+   "id": 25,
    "desc": "Art, antiques and decorative works",
    "zone": "1. Main House",
    "element": "FF&E",
@@ -613,6 +638,247 @@
   },
   {
    "n": 26,
+   "id": 26,
+   "desc": "Basement guest amenity - structural alteration and making good, gym, screening room and wine vault",
+   "zone": "1. Main House",
+   "element": "Shell & structure",
+   "limb": "hotel",
+   "on": 1,
+   "qty": 320.0,
+   "unit": "m2",
+   "rate": 950.0,
+   "net": 304000.0,
+   "live": 304000.0,
+   "prelims": 1,
+   "fees": 1,
+   "source": "RULED",
+   "risk": "HERITAGE",
+   "hotel_pct": 1.0,
+   "start": 5,
+   "dur": 10,
+   "end": 14,
+   "basis": "Chris King, 20 Aug 2026: the existing basement needs a gym, screening room, private dining with wine vault fit-out and storage. The area is an allowance read against the EPR basement plan (Aida pack, 21 Aug 2026), which already shows the Vaults, wine cellars and house kitchen. Rate at this schedule's Main House lower-ground alteration convention.",
+   "group": null
+  },
+  {
+   "n": 27,
+   "id": 27,
+   "desc": "Basement guest amenity - MEP: ventilation, cooling, power, AV and wine-vault environmental control",
+   "zone": "1. Main House",
+   "element": "MEP",
+   "limb": "hotel",
+   "on": 1,
+   "qty": 320.0,
+   "unit": "m2",
+   "rate": 1100.0,
+   "net": 352000.0,
+   "live": 352000.0,
+   "prelims": 1,
+   "fees": 1,
+   "source": "RULED",
+   "risk": "MEPFIT",
+   "hotel_pct": 1.0,
+   "start": 5,
+   "dur": 10,
+   "end": 14,
+   "basis": "Chris King, 20 Aug 2026. Above the Main House MEP adaptation rate of GBP 725/m2 for a screening room and a controlled wine environment. An allowance.",
+   "group": null
+  },
+  {
+   "n": 28,
+   "id": 28,
+   "desc": "Basement guest amenity - fit-out: gym, screening room, wine vault and private dining",
+   "zone": "1. Main House",
+   "element": "Fit-out",
+   "limb": "hotel",
+   "on": 1,
+   "qty": 320.0,
+   "unit": "m2",
+   "rate": 3600.0,
+   "net": 1152000.0,
+   "live": 1152000.0,
+   "prelims": 1,
+   "fees": 1,
+   "source": "RULED",
+   "risk": "MEPFIT",
+   "hotel_pct": 1.0,
+   "start": 7,
+   "dur": 8,
+   "end": 14,
+   "basis": "Chris King, 20 Aug 2026. Above the Main House public-area fit-out of GBP 1,900/m2, at the specialist convention, for a screening room and wine vault. An allowance.",
+   "group": null
+  },
+  {
+   "n": 29,
+   "id": 29,
+   "desc": "Rear stairwell removal and 10-person passenger lift through Grade I fabric",
+   "zone": "1. Main House",
+   "element": "Shell & structure",
+   "limb": "hotel",
+   "on": 1,
+   "qty": 1.0,
+   "unit": "no",
+   "rate": 420000.0,
+   "net": 420000.0,
+   "live": 420000.0,
+   "prelims": 1,
+   "fees": 1,
+   "source": "RULED",
+   "risk": "HERITAGE",
+   "hotel_pct": 1.0,
+   "start": 5,
+   "dur": 10,
+   "end": 14,
+   "basis": "Chris King, 20 Aug 2026, who himself questions whether a 10-person car is excessive and would rather keep a staircase here if space allows. Priced above the second passenger lift at GBP 320,000 for the larger car and the stairwell removal. A structural engineer decides whether the staircase can stay.",
+   "group": null
+  },
+  {
+   "n": 30,
+   "id": 30,
+   "desc": "Mirror wing - new build shell, 9 keys over lower ground, ground and first",
+   "zone": "1. Main House",
+   "element": "Shell & structure",
+   "limb": "hotel",
+   "on": 1,
+   "qty": 780.0,
+   "unit": "m2",
+   "rate": 3380.0,
+   "net": 2636400.0,
+   "live": 2636400.0,
+   "prelims": 0,
+   "fees": 1,
+   "source": "RULED",
+   "risk": "NEWBUILD",
+   "hotel_pct": 1.0,
+   "start": 5,
+   "dur": 10,
+   "end": 14,
+   "basis": "Chris King, 20 Aug 2026: a wing mirroring the existing one, 9 keys, more if the land at the rear falls away to allow a lower-ground floor. The composition is shown in the John Watson watercolour (Aida pack, 21 Aug 2026). Area is an allowance: 9 keys at about 60 m2 net over three floors at 70 per cent efficiency. The rate is this schedule's own Main House new-build rate of GBP 6,900/m2, split 3,380 / 1,450 / 2,070 across shell, MEP and fit-out; that composite is prelims-inclusive, so the prelims flag is off. NOT CONSENTED - a new wing on a Grade I house is a separate application and a separate listed building consent.",
+   "group": null
+  },
+  {
+   "n": 31,
+   "id": 31,
+   "desc": "Mirror wing - MEP",
+   "zone": "1. Main House",
+   "element": "MEP",
+   "limb": "hotel",
+   "on": 1,
+   "qty": 780.0,
+   "unit": "m2",
+   "rate": 1450.0,
+   "net": 1131000.0,
+   "live": 1131000.0,
+   "prelims": 0,
+   "fees": 1,
+   "source": "RULED",
+   "risk": "NEWBUILD",
+   "hotel_pct": 1.0,
+   "start": 6,
+   "dur": 9,
+   "end": 14,
+   "basis": "See the mirror wing shell line. A split of the GBP 6,900/m2 composite.",
+   "group": null
+  },
+  {
+   "n": 32,
+   "id": 32,
+   "desc": "Mirror wing - guestroom and circulation fit-out",
+   "zone": "1. Main House",
+   "element": "Fit-out",
+   "limb": "hotel",
+   "on": 1,
+   "qty": 780.0,
+   "unit": "m2",
+   "rate": 2070.0,
+   "net": 1614600.0,
+   "live": 1614600.0,
+   "prelims": 0,
+   "fees": 1,
+   "source": "RULED",
+   "risk": "NEWBUILD",
+   "hotel_pct": 1.0,
+   "start": 8,
+   "dur": 7,
+   "end": 14,
+   "basis": "See the mirror wing shell line. A split of the GBP 6,900/m2 composite.",
+   "group": null
+  },
+  {
+   "n": 33,
+   "id": 33,
+   "desc": "Existing wing - 3 new keys at ground floor: structural alteration and services",
+   "zone": "1. Main House",
+   "element": "Shell & structure",
+   "limb": "hotel",
+   "on": 1,
+   "qty": 165.0,
+   "unit": "m2",
+   "rate": 1205.0,
+   "net": 198825.0,
+   "live": 198825.0,
+   "prelims": 1,
+   "fees": 1,
+   "source": "RULED",
+   "risk": "HERITAGE",
+   "hotel_pct": 1.0,
+   "start": 5,
+   "dur": 10,
+   "end": 14,
+   "basis": "Chris King, 20 Aug 2026: three more rooms at ground floor in the existing wing, currently the TV room and the rooms adjoining it. Three keys at 55 m2. The rate is this schedule's Main House structural alteration at GBP 480/m2 plus MEP adaptation at GBP 725/m2.",
+   "group": null
+  },
+  {
+   "n": 34,
+   "id": 34,
+   "desc": "Existing wing - 3 new keys at ground floor: guestroom fit-out",
+   "zone": "1. Main House",
+   "element": "Fit-out",
+   "limb": "hotel",
+   "on": 1,
+   "qty": 165.0,
+   "unit": "m2",
+   "rate": 3150.0,
+   "net": 519750.0,
+   "live": 519750.0,
+   "prelims": 1,
+   "fees": 1,
+   "source": "RULED",
+   "risk": "MEPFIT",
+   "hotel_pct": 1.0,
+   "start": 7,
+   "dur": 8,
+   "end": 14,
+   "basis": "Chris King, 20 Aug 2026. The rate is this schedule's Main House guestroom fit-out.",
+   "group": null
+  },
+  {
+   "n": 35,
+   "id": 35,
+   "desc": "Mirror wing and existing wing - guestroom FF&E, 12 keys",
+   "zone": "1. Main House",
+   "element": "FF&E",
+   "limb": "hotel",
+   "on": 1,
+   "qty": 12.0,
+   "unit": "key",
+   "rate": 52000.0,
+   "net": 624000.0,
+   "live": 624000.0,
+   "prelims": 0,
+   "fees": 1,
+   "source": "RULED",
+   "risk": "FFE",
+   "hotel_pct": 1.0,
+   "start": 11,
+   "dur": 4,
+   "end": 14,
+   "basis": "Twelve keys at the Main House guestroom FF&E rate as revised by Lisa King and Francesca King, 24 Aug 2026.",
+   "group": null
+  },
+  {
+   "n": 26,
+   "id": 36,
    "desc": "Demolition of derelict structures, sheds and hardstanding; arisings",
    "zone": "2. North Courtyard",
    "element": "Shell & structure",
@@ -636,6 +902,7 @@
   },
   {
    "n": 27,
+   "id": 37,
    "desc": "Retained historic boundary wall - cut down, reinforce, form base of new building",
    "zone": "2. North Courtyard",
    "element": "Shell & structure",
@@ -659,6 +926,7 @@
   },
   {
    "n": 28,
+   "id": 38,
    "desc": "New-build courtyard ranges - substructure, frame, envelope, roof",
    "zone": "2. North Courtyard",
    "element": "Shell & structure",
@@ -682,6 +950,7 @@
   },
   {
    "n": 29,
+   "id": 39,
    "desc": "New-build courtyard ranges - mechanical, electrical, public health, comfort cooling",
    "zone": "2. North Courtyard",
    "element": "MEP",
@@ -705,6 +974,7 @@
   },
   {
    "n": 30,
+   "id": 40,
    "desc": "New-build courtyard ranges - guestroom and circulation fit-out",
    "zone": "2. North Courtyard",
    "element": "Fit-out",
@@ -728,6 +998,7 @@
   },
   {
    "n": 31,
+   "id": 41,
    "desc": "Passenger lift to upper-ground guest rooms",
    "zone": "2. North Courtyard",
    "element": "MEP",
@@ -751,16 +1022,17 @@
   },
   {
    "n": 32,
-   "desc": "Guestroom FF&E, 20 keys",
+   "id": 42,
+   "desc": "Guestroom FF&E, 20 keys, including Art",
    "zone": "2. North Courtyard",
    "element": "FF&E",
    "limb": "hotel",
    "on": 1,
    "qty": 20.0,
    "unit": "key",
-   "rate": 62000.0,
-   "net": 1240000.0,
-   "live": 1240000.0,
+   "rate": 67000.0,
+   "net": 1340000.0,
+   "live": 1340000.0,
    "prelims": 0,
    "fees": 1,
    "source": "BENCHMARK",
@@ -774,7 +1046,8 @@
   },
   {
    "n": 33,
-   "desc": "Courtyard reception and circulation FF&E",
+   "id": 43,
+   "desc": "Courtyard reception and circulation FF&E, including Art",
    "zone": "2. North Courtyard",
    "element": "FF&E",
    "limb": "hotel",
@@ -797,6 +1070,7 @@
   },
   {
    "n": 34,
+   "id": 44,
    "desc": "Strip-out of derelict service-yard structures, vegetation and concrete yard",
    "zone": "3. South Courtyard",
    "element": "Shell & structure",
@@ -820,6 +1094,7 @@
   },
   {
    "n": 35,
+   "id": 45,
    "desc": "Retained historic walls - repair, strengthen, reinforce to LBC condition 6",
    "zone": "3. South Courtyard",
    "element": "Shell & structure",
@@ -843,6 +1118,7 @@
   },
   {
    "n": 36,
+   "id": 46,
    "desc": "Conversion of retained fabric to keys - structure and envelope",
    "zone": "3. South Courtyard",
    "element": "Shell & structure",
@@ -866,6 +1142,7 @@
   },
   {
    "n": 37,
+   "id": 47,
    "desc": "Conversion of retained fabric to keys - MEP and comfort cooling",
    "zone": "3. South Courtyard",
    "element": "MEP",
@@ -889,6 +1166,7 @@
   },
   {
    "n": 38,
+   "id": 48,
    "desc": "Conversion of retained fabric to keys - guestroom fit-out",
    "zone": "3. South Courtyard",
    "element": "Fit-out",
@@ -912,6 +1190,7 @@
   },
   {
    "n": 39,
+   "id": 49,
    "desc": "New build within and above retained walls - structure and envelope",
    "zone": "3. South Courtyard",
    "element": "Shell & structure",
@@ -935,6 +1214,7 @@
   },
   {
    "n": 40,
+   "id": 50,
    "desc": "New build within and above retained walls - MEP and comfort cooling",
    "zone": "3. South Courtyard",
    "element": "MEP",
@@ -958,6 +1238,7 @@
   },
   {
    "n": 41,
+   "id": 51,
    "desc": "New build within and above retained walls - guestroom fit-out",
    "zone": "3. South Courtyard",
    "element": "Fit-out",
@@ -981,6 +1262,7 @@
   },
   {
    "n": 42,
+   "id": 52,
    "desc": "Passenger lift to upper-ground guest rooms",
    "zone": "3. South Courtyard",
    "element": "MEP",
@@ -1004,6 +1286,7 @@
   },
   {
    "n": 43,
+   "id": 53,
    "desc": "Pool house - double-height hall, patent glazing roof, plunge pool, plant enclosure",
    "zone": "3. South Courtyard",
    "element": "Shell & structure",
@@ -1027,6 +1310,7 @@
   },
   {
    "n": 44,
+   "id": 54,
    "desc": "Pool water treatment, air handling, dehumidification and heat recovery",
    "zone": "3. South Courtyard",
    "element": "MEP",
@@ -1050,6 +1334,7 @@
   },
   {
    "n": 45,
+   "id": 55,
    "desc": "Gym and sauna - double-height, east range",
    "zone": "3. South Courtyard",
    "element": "Shell & structure",
@@ -1073,6 +1358,7 @@
   },
   {
    "n": 46,
+   "id": 56,
    "desc": "Arcades and colonnades - segmental brick arches, lead roofs, timber soffits",
    "zone": "3. South Courtyard",
    "element": "Fit-out",
@@ -1096,9 +1382,10 @@
   },
   {
    "n": 47,
+   "id": 57,
    "desc": "Iron gates - access control to the courtyards",
    "zone": "3. South Courtyard",
-   "element": "Fit-out",
+   "element": "Externals",
    "limb": "hotel",
    "on": 1,
    "qty": 3.0,
@@ -1119,6 +1406,7 @@
   },
   {
    "n": 48,
+   "id": 58,
    "desc": "Courtyard landscape - water channel, hedging, stone paving set in sand, grass",
    "zone": "3. South Courtyard",
    "element": "Externals",
@@ -1142,16 +1430,17 @@
   },
   {
    "n": 49,
-   "desc": "Guestroom FF&E, 23 keys",
+   "id": 59,
+   "desc": "Guestroom FF&E, 23 keys, including Art",
    "zone": "3. South Courtyard",
    "element": "FF&E",
    "limb": "hotel",
    "on": 1,
    "qty": 23.0,
    "unit": "key",
-   "rate": 62000.0,
-   "net": 1426000.0,
-   "live": 1426000.0,
+   "rate": 67000.0,
+   "net": 1541000.0,
+   "live": 1541000.0,
    "prelims": 0,
    "fees": 1,
    "source": "BENCHMARK",
@@ -1165,16 +1454,17 @@
   },
   {
    "n": 50,
+   "id": 60,
    "desc": "Pool, gym, sauna - FF&E and fitness equipment",
    "zone": "3. South Courtyard",
    "element": "FF&E",
    "limb": "hotel",
-   "on": 1,
+   "on": 0,
    "qty": 1.0,
    "unit": "item",
    "rate": 420000.0,
    "net": 420000.0,
-   "live": 420000.0,
+   "live": 0.0,
    "prelims": 0,
    "fees": 1,
    "source": "ALLOWANCE",
@@ -1188,6 +1478,7 @@
   },
   {
    "n": 51,
+   "id": 61,
    "desc": "Strip-out - internal partitions, stairs, lath and plaster ceilings, first-floor structure",
    "zone": "4. Riding School",
    "element": "Shell & structure",
@@ -1211,6 +1502,7 @@
   },
   {
    "n": 52,
+   "id": 62,
    "desc": "Demolish lean-to laundry and WC block and the glazed yard roof",
    "zone": "4. Riding School",
    "element": "Shell & structure",
@@ -1234,6 +1526,7 @@
   },
   {
    "n": 53,
+   "id": 63,
    "desc": "Roof structure - replace 2 trusses and 30% of rafters, purlins and ridge boards; ply sarking",
    "zone": "4. Riding School",
    "element": "Shell & structure",
@@ -1257,6 +1550,7 @@
   },
   {
    "n": 54,
+   "id": 64,
    "desc": "Roof covering - slates carefully removed and relaid, matching supplements, insulation",
    "zone": "4. Riding School",
    "element": "Shell & structure",
@@ -1280,6 +1574,7 @@
   },
   {
    "n": 55,
+   "id": 65,
    "desc": "Structural reinforcement following removal of stabilising cross walls",
    "zone": "4. Riding School",
    "element": "Shell & structure",
@@ -1303,6 +1598,7 @@
   },
   {
    "n": 56,
+   "id": 66,
    "desc": "External brickwork repair, tuck pointing and lime mortar repointing",
    "zone": "4. Riding School",
    "element": "Shell & structure",
@@ -1326,6 +1622,7 @@
   },
   {
    "n": 57,
+   "id": 67,
    "desc": "Fenestration - reinstate Wyatt lunettes and Diocletian windows, brick infills, south doors",
    "zone": "4. Riding School",
    "element": "Shell & structure",
@@ -1349,6 +1646,7 @@
   },
   {
    "n": 58,
+   "id": 68,
    "desc": "Cast aluminium rainwater goods, additional downpipes, timber eaves boxing",
    "zone": "4. Riding School",
    "element": "Shell & structure",
@@ -1372,6 +1670,7 @@
   },
   {
    "n": 59,
+   "id": 69,
    "desc": "Below-ground drainage investigation and foundation repair",
    "zone": "4. Riding School",
    "element": "Shell & structure",
@@ -1395,6 +1694,7 @@
   },
   {
    "n": 60,
+   "id": 70,
    "desc": "New mezzanine structure, 230 m2",
    "zone": "4. Riding School",
    "element": "Shell & structure",
@@ -1418,6 +1718,7 @@
   },
   {
    "n": 61,
+   "id": 71,
    "desc": "MEP - restaurant services, heating and cooling, kitchen services, life safety",
    "zone": "4. Riding School",
    "element": "MEP",
@@ -1441,7 +1742,8 @@
   },
   {
    "n": 62,
-   "desc": "Event volume and all-day dining fit-out - demountable, ground floor",
+   "id": 72,
+   "desc": "Event volume and all-day dining fit-out",
    "zone": "4. Riding School",
    "element": "Fit-out",
    "limb": "hotel",
@@ -1464,6 +1766,7 @@
   },
   {
    "n": 63,
+   "id": 73,
    "desc": "Finishing / show kitchen at the apsidal east end",
    "zone": "4. Riding School",
    "element": "Fit-out",
@@ -1487,6 +1790,7 @@
   },
   {
    "n": 64,
+   "id": 74,
    "desc": "Guest WCs, west end",
    "zone": "4. Riding School",
    "element": "Fit-out",
@@ -1510,6 +1814,7 @@
   },
   {
    "n": 65,
+   "id": 75,
    "desc": "Demountable furniture, event and dining FF&E",
    "zone": "4. Riding School",
    "element": "FF&E",
@@ -1517,9 +1822,9 @@
    "on": 1,
    "qty": 411.0,
    "unit": "m2",
-   "rate": 700.0,
-   "net": 287700.0,
-   "live": 287700.0,
+   "rate": 2900.0,
+   "net": 1191900.0,
+   "live": 1191900.0,
    "prelims": 0,
    "fees": 1,
    "source": "BENCHMARK",
@@ -1533,6 +1838,7 @@
   },
   {
    "n": 66,
+   "id": 76,
    "desc": "Dairy Range and Chapel - conservation restoration of retained fabric",
    "zone": "5. Chapel, Clock & Water Towers",
    "element": "Shell & structure",
@@ -1556,6 +1862,7 @@
   },
   {
    "n": 67,
+   "id": 77,
    "desc": "Water tower - fabric repair, remove timber and plastic additions, brickwork",
    "zone": "5. Chapel, Clock & Water Towers",
    "element": "Shell & structure",
@@ -1579,6 +1886,7 @@
   },
   {
    "n": 68,
+   "id": 78,
    "desc": "Water tower - clock, glazed roof, lead gables, tank railings",
    "zone": "5. Chapel, Clock & Water Towers",
    "element": "Shell & structure",
@@ -1602,6 +1910,7 @@
   },
   {
    "n": 69,
+   "id": 79,
    "desc": "Water tower - estate office fit-out and services",
    "zone": "5. Chapel, Clock & Water Towers",
    "element": "Fit-out",
@@ -1625,6 +1934,7 @@
   },
   {
    "n": 70,
+   "id": 80,
    "desc": "Old Stable Block - roof replacement, timber frame repair, fabric works",
    "zone": "5. Chapel, Clock & Water Towers",
    "element": "Shell & structure",
@@ -1648,6 +1958,7 @@
   },
   {
    "n": 71,
+   "id": 81,
    "desc": "Old Stable Block - prep kitchen, staff canteen and laundry fit-out and services",
    "zone": "5. Chapel, Clock & Water Towers",
    "element": "Fit-out",
@@ -1671,6 +1982,7 @@
   },
   {
    "n": 72,
+   "id": 82,
    "desc": "Listed estate structures - gothic ruin, covered bridge, sundial, urn, balustrade, terrace walls",
    "zone": "5. Chapel, Clock & Water Towers",
    "element": "Shell & structure",
@@ -1694,6 +2006,7 @@
   },
   {
    "n": 73,
+   "id": 83,
    "desc": "Greenhouse - demolition",
    "zone": "5. Chapel, Clock & Water Towers",
    "element": "Shell & structure",
@@ -1717,6 +2030,7 @@
   },
   {
    "n": 74,
+   "id": 84,
    "desc": "Chapel meeting rooms and estate office FF&E",
    "zone": "5. Chapel, Clock & Water Towers",
    "element": "FF&E",
@@ -1740,6 +2054,7 @@
   },
   {
    "n": 75,
+   "id": 85,
    "desc": "Concert Hall - restoration of fabric, roof, envelope and structure, dry use",
    "zone": "6. Spa",
    "element": "Shell & structure",
@@ -1763,6 +2078,7 @@
   },
   {
    "n": 76,
+   "id": 86,
    "desc": "Concert Hall - MEP for dry use: heating, ventilation, lighting, power, acoustics",
    "zone": "6. Spa",
    "element": "MEP",
@@ -1786,6 +2102,7 @@
   },
   {
    "n": 77,
+   "id": 87,
    "desc": "Concert Hall - fit-out: relaxation hall, movement studio, reception and retail",
    "zone": "6. Spa",
    "element": "Fit-out",
@@ -1809,16 +2126,17 @@
   },
   {
    "n": 78,
+   "id": 88,
    "desc": "New spa building - substructure, frame, envelope, roof and pool tank",
    "zone": "6. Spa",
    "element": "Shell & structure",
    "limb": "hotel",
    "on": 1,
-   "qty": 1690.0,
+   "qty": 729.0,
    "unit": "m2",
    "rate": 2338.4615384615386,
-   "net": 3952000.0,
-   "live": 3952000.0,
+   "net": 1704738.4615384615,
+   "live": 1704738.4615384615,
    "prelims": 0,
    "fees": 1,
    "source": "BENCHMARK",
@@ -1832,16 +2150,17 @@
   },
   {
    "n": 79,
+   "id": 89,
    "desc": "New spa building - MEP, pool water treatment, air handling and thermal plant",
    "zone": "6. Spa",
    "element": "MEP",
    "limb": "hotel",
    "on": 1,
-   "qty": 1690.0,
+   "qty": 729.0,
    "unit": "m2",
    "rate": 1661.5384615384614,
-   "net": 2808000.0,
-   "live": 2808000.0,
+   "net": 1211261.5384615385,
+   "live": 1211261.5384615385,
    "prelims": 0,
    "fees": 1,
    "source": "BENCHMARK",
@@ -1855,16 +2174,17 @@
   },
   {
    "n": 80,
+   "id": 90,
    "desc": "New spa building - fit-out: treatment rooms, thermal suite, changing and gym",
    "zone": "6. Spa",
    "element": "Fit-out",
    "limb": "hotel",
    "on": 1,
-   "qty": 1690.0,
+   "qty": 729.0,
    "unit": "m2",
    "rate": 2153.846153846154,
-   "net": 3640000.0,
-   "live": 3640000.0,
+   "net": 1570153.8461538462,
+   "live": 1570153.8461538462,
    "prelims": 0,
    "fees": 1,
    "source": "BENCHMARK",
@@ -1878,16 +2198,17 @@
   },
   {
    "n": 81,
-   "desc": "Spa FF&E, treatment equipment and thermal experiences",
+   "id": 91,
+   "desc": "Spa FF&E",
    "zone": "6. Spa",
    "element": "FF&E",
    "limb": "hotel",
    "on": 1,
-   "qty": 2000.0,
+   "qty": 1200.0,
    "unit": "m2",
    "rate": 1500.0,
-   "net": 3000000.0,
-   "live": 3000000.0,
+   "net": 1800000.0,
+   "live": 1800000.0,
    "prelims": 0,
    "fees": 1,
    "source": "ALLOWANCE",
@@ -1901,6 +2222,7 @@
   },
   {
    "n": 156,
+   "id": 92,
    "desc": "Spa garden - vitality pool, cold plunge, hydrotherapy, terraces, planting, screening",
    "zone": "6. Spa",
    "element": "Externals",
@@ -1924,9 +2246,10 @@
   },
   {
    "n": 157,
+   "id": 93,
    "desc": "Spa garden - outdoor sauna cabin, cold plunge plant and equipment",
    "zone": "6. Spa",
-   "element": "FF&E",
+   "element": "MEP",
    "limb": "hotel",
    "on": 1,
    "qty": 1.0,
@@ -1947,6 +2270,7 @@
   },
   {
    "n": 82,
+   "id": 94,
    "desc": "Existing lodges - Grade II refurbishment (North Lodge, South Lodge)",
    "zone": "7. Staff Accommodation",
    "element": "Shell & structure",
@@ -1970,16 +2294,17 @@
   },
   {
    "n": 83,
+   "id": 95,
    "desc": "New gatehouses and lodge extensions",
    "zone": "7. Staff Accommodation",
    "element": "Shell & structure",
    "limb": "hotel",
-   "on": 1,
+   "on": 0,
    "qty": 300.0,
    "unit": "m2",
    "rate": 2800.0,
    "net": 840000.0,
-   "live": 840000.0,
+   "live": 0.0,
    "prelims": 0,
    "fees": 1,
    "source": "BENCHMARK",
@@ -1993,7 +2318,8 @@
   },
   {
    "n": 84,
-   "desc": "Staff accommodation fit-out and furnishing",
+   "id": 96,
+   "desc": "Staff accommodation fit-out",
    "zone": "7. Staff Accommodation",
    "element": "Fit-out",
    "limb": "hotel",
@@ -2016,6 +2342,7 @@
   },
   {
    "n": 85,
+   "id": 97,
    "desc": "Listed gates, railings and gate piers - restoration at both lodges",
    "zone": "7. Staff Accommodation",
    "element": "Externals",
@@ -2038,7 +2365,56 @@
    "group": null
   },
   {
+   "n": 98,
+   "id": 98,
+   "desc": "House adjoining the estate - acquisition, in lieu of new gatehouses",
+   "zone": "7. Staff Accommodation",
+   "element": "Shell & structure",
+   "limb": "hotel",
+   "on": 1,
+   "qty": 1.0,
+   "unit": "item",
+   "rate": 1500000.0,
+   "net": 1500000.0,
+   "live": 1500000.0,
+   "prelims": 0,
+   "fees": 0,
+   "source": "RULED",
+   "risk": "ACQUISITION",
+   "hotel_pct": 1.0,
+   "start": 1,
+   "dur": 2,
+   "end": 2,
+   "basis": "Chris King, 19 Aug 2026 comment (d): buy the house next door for about GBP 1.5m and spend GBP 0.75m on it rather than building gatehouses, which also helps the planning balance with the council. Sch_Gatehouses is switched off against this. The purchase is carried as a cost and no residual value is credited at exit, so the treatment is conservative. Price and availability are both unconfirmed.",
+   "group": null
+  },
+  {
+   "n": 99,
+   "id": 99,
+   "desc": "House adjoining the estate - refurbishment to staff accommodation",
+   "zone": "7. Staff Accommodation",
+   "element": "Fit-out",
+   "limb": "hotel",
+   "on": 1,
+   "qty": 1.0,
+   "unit": "item",
+   "rate": 750000.0,
+   "net": 750000.0,
+   "live": 750000.0,
+   "prelims": 1,
+   "fees": 1,
+   "source": "RULED",
+   "risk": "MEPFIT",
+   "hotel_pct": 1.0,
+   "start": 3,
+   "dur": 6,
+   "end": 8,
+   "basis": "Chris King, 19 Aug 2026 comment (d). An allowance, not a measured quantity.",
+   "group": null
+  },
+  {
    "n": 147,
+   "id": 100,
    "desc": "Staff village, Meadows North - accommodation blocks, 55 beds",
    "zone": "7. Staff Accommodation",
    "element": "Shell & structure",
@@ -2062,6 +2438,7 @@
   },
   {
    "n": 148,
+   "id": 101,
    "desc": "Staff village - access road spur, parking, services and drainage",
    "zone": "7. Staff Accommodation",
    "element": "Infrastructure",
@@ -2085,7 +2462,8 @@
   },
   {
    "n": 149,
-   "desc": "Staff village - FF&E and equipment",
+   "id": 102,
+   "desc": "Staff village - FF&E ",
    "zone": "7. Staff Accommodation",
    "element": "FF&E",
    "limb": "hotel",
@@ -2108,6 +2486,7 @@
   },
   {
    "n": 150,
+   "id": 103,
    "desc": "Staff village - planning, BNG and statutory - OFF, covered by the estate-wide lines",
    "zone": "7. Staff Accommodation",
    "element": "Statutory",
@@ -2131,6 +2510,7 @@
   },
   {
    "n": 86,
+   "id": 104,
    "desc": "Covered walkway - Main House to courtyards - OFF, buggy transfer instead and a consent risk in the registered park",
    "zone": "8. Estate & Public Realm",
    "element": "Externals",
@@ -2154,6 +2534,7 @@
   },
   {
    "n": 87,
+   "id": 105,
    "desc": "Arrival court, forecourt resurfacing, turning head and porte-cochere works",
    "zone": "8. Estate & Public Realm",
    "element": "Externals",
@@ -2177,6 +2558,7 @@
   },
   {
    "n": 88,
+   "id": 106,
    "desc": "Estate drives and carriageway upgrade to hotel loading",
    "zone": "8. Estate & Public Realm",
    "element": "Externals",
@@ -2200,6 +2582,7 @@
   },
   {
    "n": 89,
+   "id": 107,
    "desc": "North and South pleasure garden reinstatement",
    "zone": "8. Estate & Public Realm",
    "element": "Externals",
@@ -2223,6 +2606,7 @@
   },
   {
    "n": 90,
+   "id": 108,
    "desc": "Parkland reinstatement - Capability Brown designed landscape - phase 1 only, 12 ha of 24, balance from operating cash after opening",
    "zone": "8. Estate & Public Realm",
    "element": "Externals",
@@ -2246,6 +2630,7 @@
   },
   {
    "n": 91,
+   "id": 109,
    "desc": "Landscape avenue reinstatement - DEFERRED beyond the hold, grant routes to be tested",
    "zone": "8. Estate & Public Realm",
    "element": "Externals",
@@ -2269,6 +2654,7 @@
   },
   {
    "n": 92,
+   "id": 110,
    "desc": "Wartime and non-listed building removal, hardstanding breakout",
    "zone": "8. Estate & Public Realm",
    "element": "Externals",
@@ -2292,6 +2678,7 @@
   },
   {
    "n": 93,
+   "id": 111,
    "desc": "Loggia and pergola - new build and reinstatement",
    "zone": "8. Estate & Public Realm",
    "element": "Externals",
@@ -2315,6 +2702,7 @@
   },
   {
    "n": 94,
+   "id": 112,
    "desc": "Tree works, BS5837 protection and replanting",
    "zone": "8. Estate & Public Realm",
    "element": "Externals",
@@ -2338,6 +2726,7 @@
   },
   {
    "n": 95,
+   "id": 113,
    "desc": "External lighting - zoned to arrival, courtyards and night routes, dark-sky compliant",
    "zone": "8. Estate & Public Realm",
    "element": "Externals",
@@ -2361,6 +2750,7 @@
   },
   {
    "n": 96,
+   "id": 114,
    "desc": "External signage and wayfinding",
    "zone": "8. Estate & Public Realm",
    "element": "Externals",
@@ -2384,6 +2774,7 @@
   },
   {
    "n": 97,
+   "id": 115,
    "desc": "Estate security - CCTV, gates, perimeter, ANPR, control room",
    "zone": "8. Estate & Public Realm",
    "element": "Externals",
@@ -2407,6 +2798,7 @@
   },
   {
    "n": 98,
+   "id": 116,
    "desc": "External FF&E - loggia, gardens, parkland and event furniture",
    "zone": "8. Estate & Public Realm",
    "element": "FF&E",
@@ -2430,16 +2822,17 @@
   },
   {
    "n": 158,
-   "desc": "Tennis court - excavation, drainage, base, surface, fencing, dark-sky lighting",
+   "id": 117,
+   "desc": "Tennis courts - 2 no, excavation, drainage, base, surface, fencing, dark-sky lighting",
    "zone": "8. Estate & Public Realm",
    "element": "Externals",
    "limb": "hotel",
    "on": 1,
-   "qty": 1.0,
+   "qty": 2.0,
    "unit": "no",
    "rate": 165000.0,
-   "net": 165000.0,
-   "live": 165000.0,
+   "net": 330000.0,
+   "live": 330000.0,
    "prelims": 0,
    "fees": 1,
    "source": "ALLOWANCE",
@@ -2453,6 +2846,7 @@
   },
   {
    "n": 159,
+   "id": 118,
    "desc": "Padel courts - 2 no panoramic glass courts, bases, surfacing and lighting",
    "zone": "8. Estate & Public Realm",
    "element": "Externals",
@@ -2476,6 +2870,7 @@
   },
   {
    "n": 160,
+   "id": 119,
    "desc": "Courts - enabling, levels, retaining, drainage, access path and screen planting",
    "zone": "8. Estate & Public Realm",
    "element": "Externals",
@@ -2499,6 +2894,7 @@
   },
   {
    "n": 161,
+   "id": 120,
    "desc": "Courts - pavilion store, seating, WCs and equipment",
    "zone": "8. Estate & Public Realm",
    "element": "Fit-out",
@@ -2522,6 +2918,7 @@
   },
   {
    "n": 99,
+   "id": 121,
    "desc": "Formal parking - bound permeable surfacing, screening, drainage, lighting",
    "zone": "9. Infrastructure",
    "element": "Externals",
@@ -2545,6 +2942,7 @@
   },
   {
    "n": 100,
+   "id": 122,
    "desc": "Event overflow parking - grass-reinforced parkland",
    "zone": "9. Infrastructure",
    "element": "Externals",
@@ -2568,6 +2966,7 @@
   },
   {
    "n": 101,
+   "id": 123,
    "desc": "Electric vehicle charging - 20 bays and supply",
    "zone": "9. Infrastructure",
    "element": "Externals",
@@ -2591,6 +2990,7 @@
   },
   {
    "n": 102,
+   "id": 124,
    "desc": "Cycle storage",
    "zone": "9. Infrastructure",
    "element": "Externals",
@@ -2614,6 +3014,7 @@
   },
   {
    "n": 103,
+   "id": 125,
    "desc": "Package sewage treatment plant, c.900 PE, tertiary treatment",
    "zone": "9. Infrastructure",
    "element": "Infrastructure",
@@ -2637,6 +3038,7 @@
   },
   {
    "n": 104,
+   "id": 126,
    "desc": "Foul collection network and rising mains across the estate",
    "zone": "9. Infrastructure",
    "element": "Infrastructure",
@@ -2660,6 +3062,7 @@
   },
   {
    "n": 105,
+   "id": 127,
    "desc": "Foul pumping stations",
    "zone": "9. Infrastructure",
    "element": "Infrastructure",
@@ -2683,6 +3086,7 @@
   },
   {
    "n": 106,
+   "id": 128,
    "desc": "Environment Agency discharge permit, water-quality and nutrient assessment",
    "zone": "9. Infrastructure",
    "element": "Infrastructure",
@@ -2706,6 +3110,7 @@
   },
   {
    "n": 107,
+   "id": 129,
    "desc": "Cess pit decommissioning",
    "zone": "9. Infrastructure",
    "element": "Infrastructure",
@@ -2729,6 +3134,7 @@
   },
   {
    "n": 108,
+   "id": 130,
    "desc": "Surface water - attenuation, swales, filter drains, outfalls, flow control",
    "zone": "9. Infrastructure",
    "element": "Infrastructure",
@@ -2752,6 +3158,7 @@
   },
   {
    "n": 109,
+   "id": 131,
    "desc": "Flood mitigation - riverside and Meadows only, flood-resilient construction",
    "zone": "9. Infrastructure",
    "element": "Infrastructure",
@@ -2775,6 +3182,7 @@
   },
   {
    "n": 110,
+   "id": 132,
    "desc": "DNO connection and 11kV substations",
    "zone": "9. Infrastructure",
    "element": "Infrastructure",
@@ -2798,6 +3206,7 @@
   },
   {
    "n": 111,
+   "id": 133,
    "desc": "HV/LV private network, ring main units and estate distribution",
    "zone": "9. Infrastructure",
    "element": "Infrastructure",
@@ -2821,6 +3230,7 @@
   },
   {
    "n": 112,
+   "id": 134,
    "desc": "Standby generation and UPS - single set, life-safety and critical loads",
    "zone": "9. Infrastructure",
    "element": "Infrastructure",
@@ -2844,6 +3254,7 @@
   },
   {
    "n": 113,
+   "id": 135,
    "desc": "Energy centre - ground and water-source heat pumps, thermal store, plantroom",
    "zone": "9. Infrastructure",
    "element": "Infrastructure",
@@ -2867,6 +3278,7 @@
   },
   {
    "n": 114,
+   "id": 136,
    "desc": "Potable water - incoming main upgrade, storage, boosting, estate network",
    "zone": "9. Infrastructure",
    "element": "Infrastructure",
@@ -2890,6 +3302,7 @@
   },
   {
    "n": 115,
+   "id": 137,
    "desc": "Telecoms - incoming fibre, estate ducting, distributed antenna and Wi-Fi backbone",
    "zone": "9. Infrastructure",
    "element": "Infrastructure",
@@ -2913,6 +3326,7 @@
   },
   {
    "n": 116,
+   "id": 138,
    "desc": "Acoustic mitigation - boundary treatment, planting, glazing upgrades (A4155)",
    "zone": "9. Infrastructure",
    "element": "Infrastructure",
@@ -2936,6 +3350,7 @@
   },
   {
    "n": 117,
+   "id": 139,
    "desc": "Ground investigation and contamination remediation allowance",
    "zone": "9. Infrastructure",
    "element": "Infrastructure",
@@ -2959,6 +3374,7 @@
   },
   {
    "n": 118,
+   "id": 140,
    "desc": "Site-wide enabling, temporary works, haul roads and contractor compound - halved, the balance sits in the 15% contractor prelims",
    "zone": "9. Infrastructure",
    "element": "Infrastructure",
@@ -2982,6 +3398,7 @@
   },
   {
    "n": 119,
+   "id": 141,
    "desc": "River wall and bank erosion works",
    "zone": "10. River Club & Long Water",
    "element": "Infrastructure",
@@ -3005,6 +3422,7 @@
   },
   {
    "n": 120,
+   "id": 142,
    "desc": "Long Water bank strengthening",
    "zone": "10. River Club & Long Water",
    "element": "Infrastructure",
@@ -3028,6 +3446,7 @@
   },
   {
    "n": 121,
+   "id": 143,
    "desc": "Dredging - Long Water, inlet and mooring frontage",
    "zone": "10. River Club & Long Water",
    "element": "Infrastructure",
@@ -3051,6 +3470,7 @@
   },
   {
    "n": 122,
+   "id": 144,
    "desc": "Riverside floating restaurant - marine structure, services, moorings",
    "zone": "10. River Club & Long Water",
    "element": "Shell & structure",
@@ -3074,6 +3494,7 @@
   },
   {
    "n": 123,
+   "id": 145,
    "desc": "Regatta marquee - permanent base, slab, anchors, services for 200-500 pax",
    "zone": "10. River Club & Long Water",
    "element": "Infrastructure",
@@ -3097,6 +3518,7 @@
   },
   {
    "n": 124,
+   "id": 146,
    "desc": "Landing stages, pontoons and boathouse repair",
    "zone": "10. River Club & Long Water",
    "element": "Externals",
@@ -3120,6 +3542,7 @@
   },
   {
    "n": 125,
+   "id": 147,
    "desc": "Environment Agency permits, river-corridor ecology and WFD assessment",
    "zone": "10. River Club & Long Water",
    "element": "Infrastructure",
@@ -3143,6 +3566,7 @@
   },
   {
    "n": 151,
+   "id": 148,
    "desc": "River Club building - raised deck above flood level, frame, envelope and roof",
    "zone": "10. River Club & Long Water",
    "element": "Shell & structure",
@@ -3166,6 +3590,7 @@
   },
   {
    "n": 152,
+   "id": 149,
    "desc": "River Club building - MEP, kitchen services, public health and power to the frontage",
    "zone": "10. River Club & Long Water",
    "element": "MEP",
@@ -3189,6 +3614,7 @@
   },
   {
    "n": 153,
+   "id": 150,
    "desc": "River Club building - fit-out: restaurant, bar, WCs and back of house",
    "zone": "10. River Club & Long Water",
    "element": "Fit-out",
@@ -3212,6 +3638,7 @@
   },
   {
    "n": 154,
+   "id": 151,
    "desc": "River Club building - FF&E",
    "zone": "10. River Club & Long Water",
    "element": "FF&E",
@@ -3235,6 +3662,7 @@
   },
   {
    "n": 155,
+   "id": 152,
    "desc": "Long Water - isolation sluice, water treatment, regeneration zones, steps and changing",
    "zone": "10. River Club & Long Water",
    "element": "Externals",
@@ -3258,16 +3686,17 @@
   },
   {
    "n": 130,
-   "desc": "Operating supplies and equipment, 60 keys",
+   "id": 153,
+   "desc": "Operating supplies and equipment, per key",
    "zone": "11. OS&E",
    "element": "OS&E",
    "limb": "hotel",
    "on": 1,
-   "qty": 60.0,
+   "qty": 72.0,
    "unit": "key",
-   "rate": 14500.0,
-   "net": 870000.0,
-   "live": 870000.0,
+   "rate": 5500.0,
+   "net": 396000.0,
+   "live": 396000.0,
    "prelims": 0,
    "fees": 1,
    "source": "BENCHMARK",
@@ -3281,6 +3710,7 @@
   },
   {
    "n": 131,
+   "id": 154,
    "desc": "Kitchen and F&B operating equipment - two production kitchens, finishing kitchen, banqueting",
    "zone": "11. OS&E",
    "element": "OS&E",
@@ -3304,6 +3734,7 @@
   },
   {
    "n": 132,
+   "id": 155,
    "desc": "IT, PMS, POS, network, AV and guest technology",
    "zone": "11. OS&E",
    "element": "OS&E",
@@ -3327,9 +3758,10 @@
   },
   {
    "n": 133,
+   "id": 156,
    "desc": "Spa and leisure operating equipment",
    "zone": "11. OS&E",
-   "element": "OS&E",
+   "element": "MEP",
    "limb": "hotel",
    "on": 1,
    "qty": 1.0,
@@ -3350,6 +3782,7 @@
   },
   {
    "n": 134,
+   "id": 157,
    "desc": "Grounds plant, estate vehicles, buggies and boats",
    "zone": "11. OS&E",
    "element": "OS&E",
@@ -3373,6 +3806,7 @@
   },
   {
    "n": 135,
+   "id": 158,
    "desc": "Community Infrastructure Levy - hotel (Class C1)",
    "zone": "12. Planning & Statutory",
    "element": "Statutory",
@@ -3396,6 +3830,7 @@
   },
   {
    "n": 137,
+   "id": 159,
    "desc": "Section 106 allowance",
    "zone": "12. Planning & Statutory",
    "element": "Statutory",
@@ -3419,6 +3854,7 @@
   },
   {
    "n": 138,
+   "id": 160,
    "desc": "Biodiversity net gain",
    "zone": "12. Planning & Statutory",
    "element": "Statutory",
@@ -3442,6 +3878,7 @@
   },
   {
    "n": 139,
+   "id": 161,
    "desc": "Planning and consent process - FUL, LBC and residential applications with supporting studies",
    "zone": "12. Planning & Statutory",
    "element": "Statutory",
@@ -3449,9 +3886,9 @@
    "on": 1,
    "qty": 1.0,
    "unit": "item",
-   "rate": 3200000.0,
-   "net": 3200000.0,
-   "live": 3200000.0,
+   "rate": 980000.0,
+   "net": 980000.0,
+   "live": 980000.0,
    "prelims": 0,
    "fees": 0,
    "source": "ALLOWANCE",
@@ -3465,6 +3902,7 @@
   },
   {
    "n": 140,
+   "id": 162,
    "desc": "Pre-commencement condition discharge",
    "zone": "12. Planning & Statutory",
    "element": "Statutory",
@@ -3488,6 +3926,7 @@
   },
   {
    "n": 141,
+   "id": 163,
    "desc": "Archaeology - evaluation and watching brief",
    "zone": "12. Planning & Statutory",
    "element": "Statutory",
@@ -3511,6 +3950,7 @@
   },
   {
    "n": 162,
+   "id": 164,
    "desc": "Bats and protected species - licensing, mitigation roosts, supervision",
    "zone": "12. Planning & Statutory",
    "element": "Statutory",
@@ -3534,6 +3974,7 @@
   },
   {
    "n": 142,
+   "id": 165,
    "desc": "Building control, fire engineering and Building Safety Act gateways",
    "zone": "12. Planning & Statutory",
    "element": "Statutory",
@@ -3557,6 +3998,7 @@
   },
   {
    "n": 143,
+   "id": 166,
    "desc": "Surveys the data room lacks",
    "zone": "12. Planning & Statutory",
    "element": "Statutory",
@@ -3580,6 +4022,7 @@
   },
   {
    "n": 126,
+   "id": 167,
    "desc": "Residential estate road and private drive to 12 plots",
    "zone": "13. Residential infrastructure",
    "element": "Externals",
@@ -3603,6 +4046,7 @@
   },
   {
    "n": 127,
+   "id": 168,
    "desc": "Plot service connections - power, water, foul, telecoms (12 plots)",
    "zone": "13. Residential infrastructure",
    "element": "Infrastructure",
@@ -3626,6 +4070,7 @@
   },
   {
    "n": 128,
+   "id": 169,
    "desc": "Plot preparation - levels, cut and fill, ground works in Flood Zone 3 meadows",
    "zone": "13. Residential infrastructure",
    "element": "Infrastructure",
@@ -3649,6 +4094,7 @@
   },
   {
    "n": 129,
+   "id": 170,
    "desc": "Residential landscape framework, screening planting and boundary treatments",
    "zone": "13. Residential infrastructure",
    "element": "Externals",
@@ -3672,6 +4118,7 @@
   },
   {
    "n": 144,
+   "id": 171,
    "desc": "Residences shell and structure - 12 units x 5,500 sqft",
    "zone": "14. Residences build",
    "element": "Shell & structure",
@@ -3695,6 +4142,7 @@
   },
   {
    "n": 145,
+   "id": 172,
    "desc": "Residences curtilage externals - gardens, drives, boundaries within plots",
    "zone": "14. Residences build",
    "element": "Externals",
@@ -3718,6 +4166,7 @@
   },
   {
    "n": 146,
+   "id": 173,
    "desc": "Residences fit-out - furnished to hotel standard",
    "zone": "14. Residences build",
    "element": "Fit-out",
@@ -3741,6 +4190,7 @@
   },
   {
    "n": 136,
+   "id": 174,
    "desc": "Community Infrastructure Levy - residences (Class C3)",
    "zone": "15. Residential statutory",
    "element": "Statutory",
@@ -3766,49 +4216,50 @@
  "zones_hotel": [
   {
    "label": "1. Main House",
-   "total": 16308515.0,
+   "total": 25227610.0,
    "elements": {
-    "Shell & structure": 2146705.0,
-    "MEP": 3993085.0,
-    "Fit-out": 7536525.0,
-    "FF&E": 2632200.0
+    "Shell & structure": 5705930.0,
+    "MEP": 5476085.0,
+    "Fit-out": 10544075.0,
+    "Externals": 278800.0,
+    "FF&E": 3222720.0
    },
    "start": 5,
    "end": 14
   },
   {
    "label": "2. North Courtyard",
-   "total": 10161976.0,
+   "total": 10261976.0,
    "elements": {
     "Shell & structure": 3436120.0,
     "MEP": 2454864.0,
     "Fit-out": 2910992.0,
-    "FF&E": 1360000.0
+    "FF&E": 1460000.0
    },
    "start": 4,
    "end": 14
   },
   {
    "label": "3. South Courtyard",
-   "total": 14754698.0,
+   "total": 14449698.0,
    "elements": {
     "Shell & structure": 4865586.0,
     "MEP": 3143495.0,
-    "Fit-out": 4525617.0,
-    "Externals": 374000.0,
-    "FF&E": 1846000.0
+    "Fit-out": 4411617.0,
+    "Externals": 488000.0,
+    "FF&E": 1541000.0
    },
    "start": 2,
    "end": 13
   },
   {
    "label": "4. Riding School",
-   "total": 3731110.0,
+   "total": 4635310.0,
    "elements": {
     "Shell & structure": 1543010.0,
     "MEP": 929450.0,
     "Fit-out": 970950.0,
-    "FF&E": 287700.0
+    "FF&E": 1191900.0
    },
    "start": 4,
    "end": 10
@@ -3826,12 +4277,12 @@
   },
   {
    "label": "6. Spa",
-   "total": 17467300.0,
+   "total": 10353453.846153846,
    "elements": {
-    "Shell & structure": 5412100.0,
-    "MEP": 3373200.0,
-    "Fit-out": 4582000.0,
-    "FF&E": 3180000.0,
+    "Shell & structure": 3164838.4615384615,
+    "MEP": 1956461.5384615385,
+    "Fit-out": 2512153.846153846,
+    "FF&E": 1800000.0,
     "Externals": 920000.0
    },
    "start": 5,
@@ -3839,23 +4290,23 @@
   },
   {
    "label": "7. Staff Accommodation",
-   "total": 4844880.0,
+   "total": 6254880.0,
    "elements": {
-    "Shell & structure": 3806100.0,
-    "Fit-out": 111280.0,
+    "Shell & structure": 4466100.0,
+    "Fit-out": 861280.0,
     "Externals": 185000.0,
     "Infrastructure": 550000.0,
     "FF&E": 192500.0,
     "Statutory": 0.0
    },
-   "start": 2,
+   "start": 1,
    "end": 13
   },
   {
    "label": "8. Estate & Public Realm",
-   "total": 5371500.0,
+   "total": 5536500.0,
    "elements": {
-    "Externals": 5006500.0,
+    "Externals": 5171500.0,
     "FF&E": 280000.0,
     "Fit-out": 85000.0
    },
@@ -3888,18 +4339,19 @@
   },
   {
    "label": "11. OS&E",
-   "total": 3788000.0,
+   "total": 3314000.0,
    "elements": {
-    "OS&E": 3788000.0
+    "OS&E": 3004000.0,
+    "MEP": 310000.0
    },
    "start": 12,
    "end": 14
   },
   {
    "label": "12. Planning & Statutory",
-   "total": 4975400.0,
+   "total": 3643400.0,
    "elements": {
-    "Statutory": 4975400.0
+    "Statutory": 3643400.0
    },
    "start": 1,
    "end": 14
@@ -3950,44 +4402,46 @@
  "analysis": {
   "by_class": {
    "MEASURED": 16555448.26,
-   "ALLOWANCE": 48709640.0,
-   "BENCHMARK": 66803824.0
+   "ALLOWANCE": 46280160.0,
+   "BENCHMARK": 60304177.84615385,
+   "RULED": 11202575.0
   },
   "by_risk": {
-   "HERITAGE": 16031799.0,
-   "MEPFIT": 15043150.0,
-   "STATUTORY": 6927823.26,
-   "EXTERNAL": 11109450.0,
-   "NEWBUILD": 51718050.0,
-   "FFE": 19187680.0,
-   "INFRA": 12050960.0
+   "HERITAGE": 16954624.0,
+   "MEPFIT": 17816900.0,
+   "STATUTORY": 5595823.26,
+   "EXTERNAL": 11274450.0,
+   "NEWBUILD": 50346203.84615385,
+   "FFE": 18803400.0,
+   "INFRA": 12050960.0,
+   "ACQUISITION": 1500000.0
   },
   "by_zone": {
-   "1. Main House": 16308515.0,
-   "2. North Courtyard": 10161976.0,
-   "3. South Courtyard": 14754698.0,
-   "4. Riding School": 3731110.0,
+   "1. Main House": 25227610.0,
+   "2. North Courtyard": 10261976.0,
+   "3. South Courtyard": 14449698.0,
+   "4. Riding School": 4635310.0,
    "5. Chapel, Clock & Water Towers": 3771000.0,
-   "6. Spa": 17467300.0,
-   "7. Staff Accommodation": 4844880.0,
-   "8. Estate & Public Realm": 5371500.0,
+   "6. Spa": 10353453.846153846,
+   "7. Staff Accommodation": 6254880.0,
+   "8. Estate & Public Realm": 5536500.0,
    "9. Infrastructure": 8030610.0,
    "10. River Club & Long Water": 6485000.0,
-   "11. OS&E": 3788000.0,
-   "12. Planning & Statutory": 4975400.0,
+   "11. OS&E": 3314000.0,
+   "12. Planning & Statutory": 3643400.0,
    "13. Residential infrastructure": 2348000.0,
    "14. Residences build": 28428000.0,
    "15. Residential statutory": 1602923.26
   },
   "by_element": {
-   "Shell & structure": 46317101.0,
-   "MEP": 14535614.0,
-   "Fit-out": 27225364.0,
-   "FF&E": 10403400.0,
-   "Externals": 11015650.0,
+   "Shell & structure": 48289064.461538464,
+   "MEP": 14911875.538461538,
+   "Fit-out": 28799067.846153848,
+   "Externals": 11573450.0,
+   "FF&E": 10313120.0,
    "Infrastructure": 12205460.0,
-   "Statutory": 6578323.26,
-   "OS&E": 3788000.0
+   "Statutory": 5246323.26,
+   "OS&E": 3004000.0
   }
  },
  "phasing": {
@@ -4015,20 +4469,20 @@
   ],
   "hotel": [
    0.0,
-   1698597.6785714286,
-   3542697.3928571427,
-   4059028.4642857146,
-   6010691.178571428,
-   8766885.17857143,
-   9258232.400793653,
-   9892859.186507938,
-   9783684.424603175,
-   7173062.460317462,
-   7208443.88888889,
-   8232782.341269841,
-   8428702.007936507,
-   8080139.507936508,
-   6593282.88888889,
+   2258311.964285715,
+   4102411.678571429,
+   3873742.75,
+   5825405.464285714,
+   8381337.3489010995,
+   8998351.23778999,
+   9798375.344932849,
+   10411543.440170942,
+   7708921.475885226,
+   7864302.904456655,
+   8459871.356837608,
+   8497791.023504276,
+   8149228.523504275,
+   6672943.333028084,
    278300.0,
    278300.0,
    278300.0,
@@ -4059,20 +4513,20 @@
   ],
   "total": [
    0.0,
-   1698597.6785714286,
-   3542697.3928571427,
-   4059028.4642857146,
-   6010691.178571428,
-   8766885.17857143,
-   9258232.400793653,
-   9892859.186507938,
-   11722036.256031746,
-   12246491.031746034,
-   12281872.46031746,
-   13306210.912698412,
-   13502130.579365078,
-   13153568.079365078,
-   11666711.46031746,
+   2258311.964285715,
+   4102411.678571429,
+   3873742.75,
+   5825405.464285714,
+   8381337.3489010995,
+   8998351.23778999,
+   9798375.344932849,
+   12349895.271599513,
+   12782350.047313798,
+   12937731.475885225,
+   13533299.928266179,
+   13571219.594932847,
+   13222657.094932847,
+   11746371.904456655,
    278300.0,
    278300.0,
    278300.0,
@@ -4081,27 +4535,27 @@
   ],
   "cumulative": [
    0.0,
-   1698597.6785714286,
-   5241295.071428571,
-   9300323.535714285,
-   15311014.714285713,
-   24077899.89285714,
-   33336132.293650795,
-   43228991.48015873,
-   54951027.736190476,
-   67197518.76793651,
-   79479391.22825398,
-   92785602.1409524,
-   106287732.72031747,
-   119441300.79968254,
-   131108012.26,
-   131386312.26,
-   131664612.26,
-   131942912.26,
-   132005912.26,
-   132068912.26
+   2258311.964285715,
+   6360723.642857144,
+   10234466.392857144,
+   16059871.857142858,
+   24441209.20604396,
+   33439560.443833947,
+   43237935.788766794,
+   55587831.0603663,
+   68370181.1076801,
+   81307912.58356532,
+   94841212.5118315,
+   108412432.10676435,
+   121635089.2016972,
+   133381461.10615386,
+   133659761.10615386,
+   133938061.10615386,
+   134216361.10615386,
+   134279361.10615385,
+   134342361.10615385
   ],
-  "total_spend": 132068912.26,
-  "reconciles_to_net_lines": 132068912.26
+  "total_spend": 134342361.10615385,
+  "reconciles_to_net_lines": 134342361.11
  }
 }

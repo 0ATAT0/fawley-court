@@ -1,17 +1,18 @@
 {
  "meta": {
-  "source": "Model/Fawley Court - Financial Model v29.xlsx, Capex tab",
-  "model_sha": "fbca82156a0c56526ca287f944384e0d52af81c2d1ee0f899d1ea0e9dea970aa",
-  "figures": "Fawley Court - Financial Model v29.xlsx",
+  "source": "Model/Fawley Court - Financial Model v32.xlsx, Capex tab",
+  "model_sha": "ef6e5a77163971f7398f2c9c181c876bf35f2ad07a3684fe742a5990540b5967",
+  "figures": "Fawley Court - Financial Model v32.xlsx",
   "measured": "2026-08-18",
+  "n_lines": 174,
   "note": "Each area joins the capital-cost schedule to the imagery and to what the place earns. Loaded cost applies the limb's own prelims, fees and contingency to that area's net. The images are indicative and nothing here is designed or consented.",
-  "covered": 124062257.66,
-  "works_total": 170910012.1895,
-  "uncovered": 46847754.53
+  "covered": 127630473.97,
+  "works_total": 173327734.95392308,
+  "uncovered": 45697260.98
  },
  "loading": {
-  "hotel": 1.263364,
-  "resi": 1.142893
+  "hotel": 1.268051,
+  "resi": 1.145038
  },
  "areas": [
   {
@@ -21,18 +22,19 @@
     "1. Main House"
    ],
    "limb": "hotel",
-   "net": 16308515.0,
-   "loaded": 20603584.81,
-   "share_of_works": 0.12055,
-   "n_lines": 25,
-   "n_live": 24,
+   "net": 25227610.0,
+   "loaded": 31989893.72,
+   "share_of_works": 0.18456,
+   "n_lines": 35,
+   "n_live": 34,
    "start_q": 5,
    "end_q": 14,
    "elements": {
-    "Fit-out": 7536525.0,
-    "MEP": 3993085.0,
-    "FF&E": 2632200.0,
-    "Shell & structure": 2146705.0
+    "Fit-out": 10544075.0,
+    "Shell & structure": 5705930.0,
+    "MEP": 5476085.0,
+    "FF&E": 3222720.0,
+    "Externals": 278800.0
    },
    "top_lines": [
     {
@@ -56,6 +58,26 @@
      "risk": "MEPFIT"
     },
     {
+     "n": 30,
+     "desc": "Mirror wing - new build shell, 9 keys over lower ground, ground and first",
+     "qty": 780.0,
+     "unit": "m2",
+     "rate": 3380.0,
+     "net": 2636400.0,
+     "source": "RULED",
+     "risk": "NEWBUILD"
+    },
+    {
+     "n": 32,
+     "desc": "Mirror wing - guestroom and circulation fit-out",
+     "qty": 780.0,
+     "unit": "m2",
+     "rate": 2070.0,
+     "net": 1614600.0,
+     "source": "RULED",
+     "risk": "NEWBUILD"
+    },
+    {
      "n": 18,
      "desc": "Main production kitchen - relocation and extension",
      "qty": 380.0,
@@ -66,33 +88,13 @@
      "risk": "MEPFIT"
     },
     {
-     "n": 22,
-     "desc": "Guestroom FF&E, 17 keys",
-     "qty": 17.0,
-     "unit": "key",
-     "rate": 75000.0,
-     "net": 1275000.0,
-     "source": "BENCHMARK",
-     "risk": "FFE"
-    },
-    {
-     "n": 16,
-     "desc": "Public areas - restaurant, bar, lounge, reception, private dining",
-     "qty": 512.0,
+     "n": 28,
+     "desc": "Basement guest amenity - fit-out: gym, screening room, wine vault and private dining",
+     "qty": 320.0,
      "unit": "m2",
-     "rate": 1900.0,
-     "net": 972800.0,
-     "source": "MEASURED",
-     "risk": "MEPFIT"
-    },
-    {
-     "n": 19,
-     "desc": "Back of house - housekeeping, stores, staff facility, goods-in, laundry",
-     "qty": 620.0,
-     "unit": "m2",
-     "rate": 1250.0,
-     "net": 775000.0,
-     "source": "ALLOWANCE",
+     "rate": 3600.0,
+     "net": 1152000.0,
+     "source": "RULED",
      "risk": "MEPFIT"
     }
    ],
@@ -143,19 +145,19 @@
     "3. South Courtyard"
    ],
    "limb": "hotel",
-   "net": 24916674.0,
-   "loaded": 31478819.86,
-   "share_of_works": 0.18418,
+   "net": 24711674.0,
+   "loaded": 31335660.61,
+   "share_of_works": 0.18079,
    "n_lines": 25,
-   "n_live": 22,
+   "n_live": 21,
    "start_q": 2,
    "end_q": 14,
    "elements": {
     "Shell & structure": 8301706.0,
-    "Fit-out": 7436609.0,
+    "Fit-out": 7322609.0,
     "MEP": 5598359.0,
-    "FF&E": 3206000.0,
-    "Externals": 374000.0
+    "FF&E": 3001000.0,
+    "Externals": 488000.0
    },
    "top_lines": [
     {
@@ -249,20 +251,30 @@
     "4. Riding School"
    ],
    "limb": "hotel",
-   "net": 3731110.0,
-   "loaded": 4713748.7,
-   "share_of_works": 0.02758,
+   "net": 4635310.0,
+   "loaded": 5877809.05,
+   "share_of_works": 0.03391,
    "n_lines": 15,
    "n_live": 14,
    "start_q": 4,
    "end_q": 10,
    "elements": {
     "Shell & structure": 1543010.0,
+    "FF&E": 1191900.0,
     "Fit-out": 970950.0,
-    "MEP": 929450.0,
-    "FF&E": 287700.0
+    "MEP": 929450.0
    },
    "top_lines": [
+    {
+     "n": 65,
+     "desc": "Demountable furniture, event and dining FF&E",
+     "qty": 411.0,
+     "unit": "m2",
+     "rate": 2900.0,
+     "net": 1191900.0,
+     "source": "BENCHMARK",
+     "risk": "FFE"
+    },
     {
      "n": 61,
      "desc": "MEP - restaurant services, heating and cooling, kitchen services, life safety",
@@ -275,7 +287,7 @@
     },
     {
      "n": 62,
-     "desc": "Event volume and all-day dining fit-out - demountable, ground floor",
+     "desc": "Event volume and all-day dining fit-out",
      "qty": 411.0,
      "unit": "m2",
      "rate": 1450.0,
@@ -292,16 +304,6 @@
      "net": 288600.0,
      "source": "MEASURED",
      "risk": "HERITAGE"
-    },
-    {
-     "n": 65,
-     "desc": "Demountable furniture, event and dining FF&E",
-     "qty": 411.0,
-     "unit": "m2",
-     "rate": 700.0,
-     "net": 287700.0,
-     "source": "BENCHMARK",
-     "risk": "FFE"
     },
     {
      "n": 57,
@@ -354,58 +356,48 @@
     "6. Spa"
    ],
    "limb": "hotel",
-   "net": 17467300.0,
-   "loaded": 22067551.64,
-   "share_of_works": 0.12912,
+   "net": 10353453.85,
+   "loaded": 13128706.53,
+   "share_of_works": 0.07574,
    "n_lines": 9,
    "n_live": 9,
    "start_q": 5,
    "end_q": 14,
    "elements": {
-    "Shell & structure": 5412100.0,
-    "Fit-out": 4582000.0,
-    "MEP": 3373200.0,
-    "FF&E": 3180000.0,
+    "Shell & structure": 3164838.46,
+    "Fit-out": 2512153.85,
+    "MEP": 1956461.54,
+    "FF&E": 1800000.0,
     "Externals": 920000.0
    },
    "top_lines": [
     {
+     "n": 81,
+     "desc": "Spa FF&E",
+     "qty": 1200.0,
+     "unit": "m2",
+     "rate": 1500.0,
+     "net": 1800000.0,
+     "source": "ALLOWANCE",
+     "risk": "FFE"
+    },
+    {
      "n": 78,
      "desc": "New spa building - substructure, frame, envelope, roof and pool tank",
-     "qty": 1690.0,
+     "qty": 729.0,
      "unit": "m2",
      "rate": 2338.4615384615386,
-     "net": 3952000.0,
+     "net": 1704738.46,
      "source": "BENCHMARK",
      "risk": "NEWBUILD"
     },
     {
      "n": 80,
      "desc": "New spa building - fit-out: treatment rooms, thermal suite, changing and gym",
-     "qty": 1690.0,
+     "qty": 729.0,
      "unit": "m2",
      "rate": 2153.846153846154,
-     "net": 3640000.0,
-     "source": "BENCHMARK",
-     "risk": "NEWBUILD"
-    },
-    {
-     "n": 81,
-     "desc": "Spa FF&E, treatment equipment and thermal experiences",
-     "qty": 2000.0,
-     "unit": "m2",
-     "rate": 1500.0,
-     "net": 3000000.0,
-     "source": "ALLOWANCE",
-     "risk": "FFE"
-    },
-    {
-     "n": 79,
-     "desc": "New spa building - MEP, pool water treatment, air handling and thermal plant",
-     "qty": 1690.0,
-     "unit": "m2",
-     "rate": 1661.5384615384614,
-     "net": 2808000.0,
+     "net": 1570153.85,
      "source": "BENCHMARK",
      "risk": "NEWBUILD"
     },
@@ -418,6 +410,16 @@
      "net": 1460100.0,
      "source": "ALLOWANCE",
      "risk": "HERITAGE"
+    },
+    {
+     "n": 79,
+     "desc": "New spa building - MEP, pool water treatment, air handling and thermal plant",
+     "qty": 729.0,
+     "unit": "m2",
+     "rate": 1661.5384615384614,
+     "net": 1211261.54,
+     "source": "BENCHMARK",
+     "risk": "NEWBUILD"
     },
     {
      "n": 77,
@@ -477,8 +479,8 @@
    ],
    "limb": "hotel",
    "net": 6485000.0,
-   "loaded": 8192913.18,
-   "share_of_works": 0.04794,
+   "loaded": 8223310.13,
+   "share_of_works": 0.04744,
    "n_lines": 12,
    "n_live": 11,
    "start_q": 3,
@@ -586,8 +588,8 @@
    ],
    "limb": "resi",
    "net": 32378923.26,
-   "loaded": 37005639.47,
-   "share_of_works": 0.21652,
+   "loaded": 37075093.93,
+   "share_of_works": 0.2139,
    "n_lines": 8,
    "n_live": 8,
    "start_q": 8,
@@ -688,7 +690,7 @@
     }
    ],
    "what": "Twelve houses on the Savills-advised plots, sold rather than operated.",
-   "works": "Estate road and services to twelve plots, the houses themselves, the landscape framework and the statutory provision. The figures on this page are the itemised residential lines alone. The limb also carries a share of the estate infrastructure the houses use, which is why chapter 05 shows the residential budget at £44.97m and £3.75m a unit against the £37.01m and £3.08m here.",
+   "works": "Estate road and services to twelve plots, the houses themselves, the landscape framework and the statutory provision. The figures on this page are the itemised residential lines alone. The limb also carries a share of the estate infrastructure the houses use, which is why chapter 05 shows the residential budget at £44.03m and £3.67m a unit against the £37.08m and £3.09m here.",
    "earns": "Sale proceeds across a single tranche at an absorption of 3.75 a year, not rental income. Both Six Senses and Rocco Forte assume a branded rental pool instead.",
    "watch": "No residential application has ever been made on this estate. Planning is at pre-application, and twelve units sits above the affordable-housing threshold."
   }

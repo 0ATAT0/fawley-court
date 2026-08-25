@@ -1,52 +1,52 @@
 {
  "pack": {
-  "source": "Fawley Court - Financial Model v29.xlsx, Cheat Sheet tab",
-  "snapshot_sha256": "fbca82156a0c56526ca287f944384e0d52af81c2d1ee0f899d1ea0e9dea970aa",
+  "source": "Fawley Court - Financial Model v32.xlsx, Cheat Sheet tab",
+  "snapshot_sha256": "26af91c6522a0fb6ed6a8ba8df4e26840dcbadc5131e0a28656bf69fb3ae1b57",
   "basis": "Every printed value is the sheet's own render; every note is the sheet's own off-page register, keyed by the cell it annotates."
  },
  "title": "Fawley Court — Investor Cheat Sheet",
- "meta": "As of 19 Aug 2026 · Financial Model v29 — 23 of 23 checks OK, 0 formula errors · Freehold: Cherrilow Ltd (Jersey), EFG charge on all titles · Grade I, registered park · Henley-on-Thames RG9 · Marketed by CBRE, guidance understood c.£70m · Pre-offer, DD open",
+ "meta": "As of 25 Aug 2026 · Financial Model v32 — 25 of 25 checks OK, 0 formula errors · Freehold: Cherrilow Ltd (Jersey), EFG charge on all titles · Grade I, registered park · Henley-on-Thames RG9 · Marketed by CBRE, guidance understood c.£70m · Pre-offer, DD open",
  "assetLine": "60 keys (17 Main House + 43 courtyard — the vendor's EPR scheme; 12 early-open Y3) · 2 restaurants + bar + afternoon tea · spa · Regatta 6d x 400 covers · club 250 members · 12 residences x 5,500 sqft · Grade I, 1684 · ~2km Thames frontage",
- "thesis": "Buy the Grade I estate at £50m (ruled), convert to a 60-key flagged country-house hotel, sell the vendor's own 12 residences, and exit the hotel at 4.00% adj-NOI — 13.4% / 1.86x on £110.9m of equity.",
+ "thesis": "Buy the Grade I estate at £50m (ruled), convert to a 60-key flagged country-house hotel, sell the vendor's own 12 residences, and exit the hotel at 4.00% adj-NOI — 14.7% / 1.91x on £112.1m of equity.",
  "kpis": [
   [
    "PRICE — RULED ENTRY",
-   "£50m / £833k per key",
+   "£50m / £694k per key",
    "Ruled 16 Aug 2026 and unchanged since. The estate is being marketed: CBRE prepared an information memorandum for the vendor, and Six Senses, Belmond and Rocco Forte have all worked from it. Agent guidance is understood at about £70m. Acquisition costs of 5.00% sit ON TOP: total acquisition cost £52.5m."
   ],
   [
    "EQUITY — PARTNER 100%",
-   "£110.9m",
-   "Total equity = peak equity = £110,910,483. The cash reserve funds later drawdowns, so equity is called only in periods 0-12 and none after the first distribution. The two figures parted company at v20 and closed again at v22, when the refinancing covenant was sized at 1.25x. A lender holding 1.30x no longer reopens them on this book: the refinancing draws £120.0m rather than £124.8m, the equity requirement is unchanged and the return falls to 13.33%. The £3.45m capital call the v22 record warned about was a v20-v21 measurement and does not survive here. Align contributes no equity: its economics are the AM fee plus a promote once structured."
+   "£112.1m",
+   "Total equity = peak equity = £112,136,515. The cash reserve funds later drawdowns, so equity is called only in periods 0-12 and none after the first distribution. A lender holding 1.30x does not reopen them on this book: the refinancing draws £117.6m rather than £122.3m, and the return falls to 14.65%. Align contributes no equity: its economics are the AM fee plus a promote once structured."
   ],
   [
    "WORKS / COST TO OPEN",
-   "£170.9m / £196.6m",
-   "Total cost of works £170.9m = hotel £125.9m (£2.10m/key) plus residential £45.0m (£3.75m/unit), both from the 162-line ground-up schedule on the Capex tab. Cost to open £196.6m (£3.28m/key) is the like-basis anchor against any third-party all-in cost claim: acquisition plus capex spent to opening plus arrangement fees plus capitalised interest plus the pre-opening shortfall."
+   "£173.3m / £201.6m",
+   "Total cost of works £173.3m = hotel £129.3m (£1.80m/key) plus residential £44.0m (£3.67m/unit), both from the 174-line ground-up schedule on the Capex tab. Cost to open £201.6m (£2.80m/key) is the like-basis anchor against any third-party all-in cost claim: acquisition plus capex spent to opening plus arrangement fees plus capitalised interest plus the pre-opening shortfall."
   ],
   [
    "YIELD ON COST — Y7 NOI / CTO",
-   "5.6%",
-   "Y7 NOI £10.94m over cost to open £196.6m, a yield on cost of 5.57% and a spread of 157bp over the 4.00% exit. The P&amp;L NOI line is POST operator base and incentive fees (they sit in fixed charges); only the Align AM fee is below it, in the cash flow. Ramp on the same basis: Y4 2.4% · Y5 4.1% · Y6 5.2% · Y7 5.57%."
+   "5.4%",
+   "Y7 NOI £10.82m over cost to open £201.6m, a yield on cost of 5.36% and a spread of 136bp over the 4.00% exit. The P&amp;L NOI line is POST operator base and incentive fees (they sit in fixed charges); only the Align AM fee is below it, in the cash flow. Ramp on the same basis: Y4 1.9% · Y5 3.9% · Y6 5.0% · Y7 5.36%."
   ],
   [
    "RESIDENCES — NET (12 UNITS)",
-   "£46.2m",
-   "12 units x 5,500 sqft x £1,300/sqft with 3.0% p.a. price escalation to each sale quarter: gross £95.9m less a 5% all-in sales fee of £4.80m less the £45.0m itemised build = £46.2m net. NOTE the £1,300/sqft basis sits ABOVE the £1,100 ruled cap and the £1,250 named upside and needs a ruled evidence basis (Savills advised £1,934/sqft weighted for Cherrilow, Oct 2025). Tenure was ruled at 999-year leasehold on 18 Aug 2026. This tile replaces the contract's stabilised cash-on-cash tile: pre-refinancing distributions are dominated by residence completions, so a clean operating cash-on-cash does not exist on this deal."
+   "£61.1m",
+   "12 units x 5,500 sqft x £1,500/sqft with 3.0% p.a. price escalation to each sale quarter: gross £110.7m less a 5% all-in sales fee of £5.53m less the £44.0m itemised build = £61.1m net. £1,500/sqft was ruled 24 Aug 2026 on Chris King's brand and location premium; it sits above the £1,100 ruled cap and the £1,250 named upside that preceded it, and 22% below Savills' £1,934/sqft weighted for Cherrilow, Oct 2025. Tenure was ruled at 999-year leasehold on 18 Aug 2026. This tile replaces the contract's stabilised cash-on-cash tile: pre-refinancing distributions are dominated by residence completions, so a clean operating cash-on-cash does not exist on this deal."
   ],
   [
    "EXIT — VALUE / YIELD",
-   "£252.7m / 4.00%",
-   "Hotel alone at 4.00% on ADJUSTED NOI, grossed for 6.8% purchasers' costs. Adjusted NOI £10.80m = exit-year NOI £11.21m (already net of the operator base and incentive fees) less the escalated Align AM fee £0.42m. £4.21m per stabilised key. Residence proceeds run through the limb and never enter the exit value."
+   "£250.3m / 4.00%",
+   "Hotel alone at 4.00% on ADJUSTED NOI, grossed for 6.8% purchasers' costs. Adjusted NOI £10.69m = exit-year NOI £11.11m (already net of the operator base and incentive fees) less the escalated Align AM fee £0.42m. £3.48m per stabilised key. Residence proceeds run through the limb and never enter the exit value."
   ],
   [
    "INVESTOR IRR / MULTIPLE",
-   "13.4% / 1.86x",
-   "Post-promote, reserve-aware distributions, 8-year hold. Unlevered 11.07%; levered pre-promote and pre-reserve 13.64%."
+   "14.7% / 1.91x",
+   "Post-promote, reserve-aware distributions, 8-year hold. Unlevered 11.65%; levered pre-promote and pre-reserve 14.99%."
   ],
   [
    "INVESTOR PROFIT (PROMOTE TBD)",
-   "£95.3m",
+   "£102.2m",
    "Promote structure not yet set: the model carries hurdles at 12% / 20% / 30% IRR with carry percentages unset (nil), so the full profit currently prints to the investor."
   ]
  ],
@@ -66,9 +66,9 @@
      "-",
      "-",
      "12",
-     "60",
-     "60",
-     "60"
+     "72",
+     "72",
+     "72"
     ],
     false,
     null
@@ -79,7 +79,7 @@
      "-",
      "-",
      "35%",
-     "35%",
+     "36%",
      "50%",
      "65%"
     ],
@@ -105,7 +105,7 @@
      "-",
      "-",
      "£367",
-     "£381",
+     "£384",
      "£551",
      "£753"
     ],
@@ -118,9 +118,9 @@
      "-",
      "-",
      "£1.6m",
-     "£7.2m",
-     "£12.1m",
-     "£16.5m"
+     "£8.1m",
+     "£14.5m",
+     "£19.8m"
     ],
     false,
     null
@@ -130,10 +130,10 @@
     [
      "-",
      "-",
-     "£1.9m",
-     "£11.1m",
-     "£16.3m",
-     "£21.4m"
+     "£1.7m",
+     "£12.9m",
+     "£17.6m",
+     "£21.7m"
     ],
     false,
     null
@@ -145,8 +145,8 @@
      "-",
      "£0.1m",
      "£7.8m",
-     "£8.5m",
-     "£8.6m"
+     "£8.6m",
+     "£8.7m"
     ],
     false,
     null
@@ -156,10 +156,10 @@
     [
      "-",
      "-",
-     "£3.5m",
-     "£26.4m",
-     "£37.4m",
-     "£47.1m"
+     "£3.4m",
+     "£29.1m",
+     "£41.1m",
+     "£50.8m"
     ],
     true,
     null
@@ -167,12 +167,12 @@
    [
     "GOP",
     [
+     "(£0.5m)",
+     "(£0.6m)",
      "(£0.4m)",
-     "(£0.4m)",
-     "£0.2m",
-     "£7.8m",
+     "£7.1m",
      "£12.1m",
-     "£16.0m"
+     "£16.2m"
     ],
     false,
     null
@@ -182,10 +182,10 @@
     [
      "-",
      "-",
-     "5.4%",
+     "(11.5%)",
+     "24.3%",
      "29.5%",
-     "32.5%",
-     "33.9%"
+     "31.8%"
     ],
     false,
     null
@@ -193,12 +193,12 @@
    [
     "NOI (post operator fees)",
     [
-     "(£1.1m)",
-     "(£1.1m)",
-     "(£0.8m)",
-     "£4.8m",
-     "£8.1m",
-     "£10.9m"
+     "(£1.2m)",
+     "(£1.3m)",
+     "(£1.3m)",
+     "£3.9m",
+     "£7.8m",
+     "£10.8m"
     ],
     false,
     null
@@ -208,10 +208,10 @@
     [
      "-",
      "-",
-     "(22.0%)",
-     "18.1%",
-     "21.6%",
-     "23.2%"
+     "(39.6%)",
+     "13.4%",
+     "18.9%",
+     "21.3%"
     ],
     false,
     null
@@ -247,12 +247,12 @@
     "Hotel NOI (post-fee)",
     [
      "-",
-     "(£1.1m)",
-     "(£1.1m)",
-     "(£0.8m)",
-     "£4.8m",
-     "£8.1m",
-     "£42.2m"
+     "(£1.2m)",
+     "(£1.3m)",
+     "(£1.3m)",
+     "£3.9m",
+     "£7.8m",
+     "£39.8m"
     ],
     false,
     null
@@ -278,9 +278,9 @@
      "-",
      "-",
      "-",
-     "(£4.2m)",
-     "(£8.5m)",
-     "(£37.5m)"
+     "(£4.3m)",
+     "(£8.6m)",
+     "(£37.7m)"
     ],
     false,
     "Cash-paid senior plus refinancing interest only. Senior interest rolls up (PIK) for the first 14 quarters and is repaid inside the senior balance at the Q26 refinancing. SONIA 4.00% plus a 3.50% senior margin; the refinancing runs at SONIA plus 2.50%."
@@ -289,12 +289,12 @@
     "Hotel capex",
     [
      "-",
-     "(£19.3m)",
-     "(£47.6m)",
-     "(£39.2m)",
-     "(£19.2m)",
+     "(£20.4m)",
+     "(£47.7m)",
+     "(£41.3m)",
+     "(£19.5m)",
      "(£0.5m)",
-     "(£125.9m)"
+     "(£129.3m)"
     ],
     false,
     null
@@ -303,29 +303,29 @@
     "Residences (net)",
     [
      "-",
-     "(£3.7m)",
-     "(£5.7m)",
+     "(£3.2m)",
+     "(£5.3m)",
      "(£23.6m)",
-     "£51.5m",
-     "£27.7m",
-     "£46.2m"
+     "£61.3m",
+     "£32.0m",
+     "£61.1m"
     ],
     false,
-    "Gross sale proceeds less 5% sales fees less the itemised build cost. The whole-hold total is the £46.2m net contribution. A single tranche of 12 completes at T+3.5; proceeds land in Y4-Y5 on 3.75/yr absorption."
+    "Gross sale proceeds less 5% sales fees less the itemised build cost. The whole-hold total is the £61.1m net contribution. A single tranche of 12 completes at T+3.5; proceeds land in Y4-Y5 on 3.75/yr absorption."
    ],
    [
     "Debt draw / (repay)",
     [
      "£26.5m",
-     "£10.6m",
+     "£11.2m",
      "£26.2m",
-     "£21.6m",
-     "£10.6m",
+     "£22.7m",
+     "£10.7m",
      "£0.3m",
-     "(£18.2m)"
+     "(£18.5m)"
     ],
     false,
-    "Senior plus refinancing: drawdowns less arrangement fees less repayments. The senior arrangement fee is charged day one on the committed facility. The Q26 refinancing draws £124.8m and fully retires the £112.8m senior balance with headroom."
+    "Senior plus refinancing: drawdowns less arrangement fees less repayments. The senior arrangement fee is charged day one on the committed facility. The Q26 refinancing draws £122.3m and fully retires the £114.9m senior balance with headroom."
    ],
    [
     "Exit (net)",
@@ -336,7 +336,7 @@
      "-",
      "-",
      "-",
-     "£249.0m"
+     "£246.5m"
     ],
     false,
     null
@@ -349,11 +349,11 @@
      "-",
      "-",
      "-",
-     "(£3.2m)",
-     "(£4.8m)"
+     "(£2.7m)",
+     "(£4.2m)"
     ],
     false,
-    "Corporation tax at 25% on taxable income after the loss pool, £4.81m over the hold; no CGT, because the exit is a sale of the SPV's shares on an SSE basis (the CGT rate is set to zero). Selling the asset instead returns 11.63%, -1.75pp against the case, and pays £17.6m of capital gains tax."
+    "Corporation tax at 25% on taxable income after the loss pool, £4.17m over the hold, after the FF&amp;E and OS&amp;E capital-allowance pool was wired to the schedule. No CGT, because the exit is a sale of the SPV's shares on an SSE basis (the CGT rate is set to zero). Selling the asset instead returns 13.14%, -1.57pp against the case, and pays £16.2m of capital gains tax. THE WHOLE TAX SCHEDULE IS A PLACEHOLDER pending counsel."
    ],
    [
     "Cash reserve mvmt",
@@ -374,25 +374,25 @@
     [
      "(£26.0m)",
      "(£13.9m)",
-     "(£28.7m)",
-     "(£42.4m)",
-     "£39.1m",
-     "£23.5m",
-     "£95.3m"
+     "(£28.4m)",
+     "(£43.9m)",
+     "£47.7m",
+     "£27.8m",
+     "£102.2m"
     ],
     true,
-    "Post-promote, reserve-aware. The whole-hold total is the investor profit of £95.3m. Y6-Y8 sit outside these columns but inside the total: £1.0m, £15.4m and £127.2m at exit."
+    "Post-promote, reserve-aware. The whole-hold total is the investor profit of £102.2m."
    ],
    [
     "Cumulative",
     [
      "(£26.0m)",
      "(£39.8m)",
-     "(£68.5m)",
-     "(£110.9m)",
-     "(£71.8m)",
-     "(£48.4m)",
-     "£95.3m"
+     "(£68.2m)",
+     "(£112.1m)",
+     "(£64.4m)",
+     "(£36.6m)",
+     "£102.2m"
     ],
     true,
     "The trough is peak equity of £(110.9)m at Y3; all equity is called in periods 0-12."
@@ -400,11 +400,11 @@
   ],
   "funding": [
    [
-    "Works £170.9m = hotel £125.9m (£2.10m/key) + residential £45.0m (£3.75m/unit) — 162 ground-up lines",
-    "Attribution is structural: the hotel matrix and the quarterly rows count the hotel share only; the residential limb carries its own itemised build plus its share of shared estate and infrastructure plus residential CIL. Loadings: hotel 15% preliminaries / 9% fees / 10% contingency, residential 12% / 8% / 5%, the hotel set being Rocco Forte's own. Of net construction 48.5% is BENCHMARK class, 39.5% ALLOWANCE and 12.1% MEASURED. VAT and tender inflation are deliberately excluded and stated."
+    "Works £173.3m = hotel £129.3m (£1.80m/key) + residential £44.0m (£3.67m/unit) — 174 ground-up lines",
+    "Attribution is structural: the hotel matrix and the quarterly rows count the hotel share only; the residential limb carries its own itemised build plus its share of shared estate and infrastructure plus residential CIL. Loadings are UNCHANGED from the team's file: hotel 15% preliminaries / 9% fees / 10% contingency, residential 12% / 8% / 5%. Lisa King's note at Capex C23 and C34 proposes a different stack; she left all six loading cells untouched, so it is a question to Richard Dray, not a decision. Of live net construction 43.3% is BENCHMARK, 36.7% is ALLOWANCE, 11.9% is MEASURED, 8.0% is RULED. VAT and tender inflation are deliberately excluded and stated."
    ],
    [
-    "Refi Q26: min(55% LTV at 4.00%, 1.25x post-fee ICR) = £124.8m drawn, retiring the £112.8m senior balance",
+    "Refi Q26: min(55% LTV at 4.00%, 1.25x post-fee ICR) = £122.3m drawn, retiring the £114.9m senior balance",
     "The ICR leg binds; LTV would only start binding below roughly 45%. Raising the LTV or cutting the valuation yield only raises a ceiling that is not in use - the dial is the covenant or the post-fee NOI. The covenant is carried at 1.25x and is a lender conversation rather than a modelling input."
    ]
   ]
@@ -429,25 +429,25 @@
   [
    "row",
    "Works capex spent to opening",
-   "£124.7m",
-   "£124.7m of the £125.9m hotel budget is spent by the opening quarter; the balance is trailing estate scope that legitimately runs past opening."
+   "£128.1m",
+   "£128.1m of the £129.3m hotel budget is spent by the opening quarter; the balance is trailing estate scope that legitimately runs past opening."
   ],
   [
    "row",
    "Finance to open (fees + interest)",
-   "£17.0m",
-   "The senior arrangement fee of £0.97m is charged day one on the committed facility, plus PIK and cash interest accrued to opening of £16.02m."
+   "£17.2m",
+   "The senior arrangement fee of £0.99m is charged day one on the committed facility, plus PIK and cash interest accrued to opening of £16.24m."
   ],
   [
    "row",
    "Pre-opening operating shortfall",
-   "£2.4m",
+   "£3.8m",
    null
   ],
   [
    "total",
    "Cost to open",
-   "£196.6m",
+   "£201.6m",
    "Sums the five lines above. The Checks tab ties this total to KPI_CostToOpen, which is built independently on the Dashboard."
   ],
   [
@@ -457,19 +457,19 @@
   [
    "row",
    "Senior debt at opening (incl. PIK)",
-   "£112.1m",
-   "55% LTC on price plus capex drawn, SONIA 4.00% plus a 3.50% development margin, interest rolled up (PIK) for 14 quarters. £96.8m is drawn over the works and the balance peaks at £112.8m before the refinancing retires it."
+   "£114.2m",
+   "55% LTC on price plus capex drawn, SONIA 4.00% plus a 3.50% development margin, interest rolled up (PIK) for 14 quarters. £98.6m is drawn over the works and the balance peaks at £114.9m before the refinancing retires it."
   ],
   [
    "row",
    "Investor equity — balance to opening",
-   "£84.5m",
-   "The residual of cost to open after senior debt. It is NOT the whole equity cheque: total equity of £110.9m also funds the £45.0m residential build, whose proceeds return from Y4."
+   "£87.4m",
+   "The residual of cost to open after senior debt. It is NOT the whole equity cheque: total equity of £112.1m also funds the £44.0m residential build, whose proceeds return from Y4."
   ],
   [
    "total",
    "Total sources",
-   "£196.6m",
+   "£201.6m",
    null
   ],
   [
@@ -479,28 +479,28 @@
   [
    "row",
    "Residences build (equity-funded)",
-   "£45.0m",
-   "£45.0m built across Y1-Y5 inside the equity envelope; gross proceeds of £95.9m return from T+3.5 on 3.75/yr absorption."
+   "£44.0m",
+   "£44.0m built across Y1-Y5 inside the equity envelope; gross proceeds of £110.7m return from T+3.5 on 3.75/yr absorption."
   ],
   [
    "total",
    "Total equity = peak equity",
-   "£110.9m",
-   "£110,910,483. Equal by construction, and it stays equal at a 1.30x covenant as well: the cash reserve funds later drawdowns, so no equity is called after the first distribution."
+   "£112.1m",
+   "£112,136,515. Equal by construction, and it stays equal at a 1.30x covenant as well: the cash reserve funds later drawdowns, so no equity is called after the first distribution."
   ]
  ],
  "yieldLines": [
   [
-   "YoC (NOI post op fees / CTO): Y4 2.4% · Y5 4.1% · Y7 5.6%",
+   "YoC (NOI post op fees / CTO): Y4 1.9% · Y5 3.9% · Y7 5.4%",
    null
   ],
   [
-   "Dists: £39.1m Y4 · £23.5m Y5 · £127.2m at exit",
+   "Dists: £47.7m Y4 · £27.8m Y5 · £127.3m at exit",
    "No clean operating cash-on-cash exists pre-refinancing: the Y4-Y5 distributions are dominated by residence proceeds, and the refinancing recycles the senior at Q26. The Y6 and Y7 distributions are £1.0m and £15.4m."
   ],
   [
    "No going-in yield (dark asset); exit 4.00% on adjusted NOI + 6.8% purchasers' costs",
-   "Adjusted exit NOI of £10.80m = exit-year NOI £11.21m (already net of the 3.0% operator base fee and the 7% GOP incentive, both inside the P&amp;L) less the escalated Align AM fee of £0.42m. Always name the basis on any NOI-after-fees claim."
+   "Adjusted exit NOI of £10.69m = exit-year NOI £11.11m (already net of the 3.0% operator base fee and the 7% GOP incentive, both inside the P&amp;L) less the escalated Align AM fee of £0.42m. Always name the basis on any NOI-after-fees claim."
   ]
  ],
  "returns": [
@@ -512,31 +512,31 @@
   ],
   [
    "Exit value / per key",
-   "£252.7m / £4.21m",
+   "£250.3m / £3.48m",
    null,
    false
   ],
   [
    "Unlevered IRR",
-   "11.1%",
+   "11.6%",
    null,
    false
   ],
   [
    "Levered pre-promote (pre-reserve)",
-   "13.6%",
+   "15.0%",
    "The raw levered cash flow IRR before the reserve re-times distributions. The gap to the row below is reserve timing, not promote - the carries are nil.",
    false
   ],
   [
    "Investor post-promote",
-   "13.4% / 1.86x",
+   "14.7% / 1.91x",
    null,
    false
   ],
   [
    "Investor profit",
-   "£95.3m",
+   "£102.2m",
    null,
    true
   ],
@@ -560,19 +560,19 @@
   ],
   "grid": [
    [
-    "16.0%",
-    "14.9%",
-    "13.8%"
+    "17.3%",
+    "16.2%",
+    "15.0%"
+   ],
+   [
+    "15.9%",
+    "14.7%",
+    "13.6%"
    ],
    [
     "14.5%",
-    "13.4%",
-    "12.3%"
-   ],
-   [
-    "13.1%",
-    "11.9%",
-    "10.8%"
+    "13.3%",
+    "12.2%"
    ]
   ],
   "base": [
@@ -582,12 +582,12 @@
   "caption": "Exit yield down / Purchase price across  ·  base case £50m x 4.00%",
   "stress": [
    [
-    "Stabilised occupancy 0.65 → 0.60: 13.38% → 11.46% · interval carried 0.60–0.70",
-    "Measured 19 Aug 2026 on a scratch copy of Financial Model v29 at the £50m entry: the stabilised occupancy plateau moved to 0.60 with the ramp year at 0.57, Excel-true full recalculation, KPI_LeveredIRR 11.46%. At 0.70 it returns 15.20%."
+    "Stabilised occupancy 0.65 → 0.60: 14.71% → 12.51% · interval carried 0.60–0.70",
+    "Measured on a scratch copy of Financial Model v32 at the £50m entry: the stabilised occupancy plateau moved to 0.60 with the ramp year at 0.57, Excel-true full recalculation, KPI_LeveredIRR 12.51%. At 0.70 it returns 16.76%."
    ],
    [
-    "ADR Y1 £1,000: £850 → 9.74% · £1,200 → 17.52% — the largest single lever",
-    "Measured 19 Aug 2026 on scratch copies of v29 at the £50m entry on Case_ADR_Y1: £850 returns 9.74% and £1,200 returns 17.52%."
+    "ADR Y1 £1,000: £850 → 10.37% · £1,200 → 19.47% — the largest single lever",
+    "Measured on scratch copies of v32 at the £50m entry on Case_ADR_Y1: £850 returns 10.37% and £1,200 returns 19.47%."
    ]
   ]
  },
@@ -662,16 +662,16 @@
   ],
   "plan": [
    [
-    "• 60-key flag (17 Main + 43 courtyard, EPR scheme); 12 keys early Y3; full keys T+3.25",
+    "• 72-key flag (17 Main House + 43 courtyard + 12 mirror wing); 12 keys early Y3; full keys T+3.25",
     "Full keys trade from T+3.25; works complete at T+3.5 (trailing capex by design). The capex programme is 14 quarters; the opening quarter is the later of the programme end and the first full-keys quarter."
    ],
    [
-    "• Demand engines, all vendor-ask: Regatta 6d x 400 x £300 · 15 exclusive-use buyouts at £225k + 15 corporate at £90k · day meetings 1.5/day · club 250 members at £650/mth",
+    "• Demand engines, all vendor-ask: Regatta 6d x 400 x £300 · 10 exclusive-use buyouts at £225k + 10 corporate at £90k · day meetings 1.5/day · club 250 members at £650/mth",
     "Every engine dial is a MARKET/DECISION default pending vendor trading actuals (River Club pricing and covers, buyouts, film). Club: 250 members at £650/month, 100 founders at £25,000, a £10,000 standard joining fee and 7.5% churn. Regatta runs the vendor's own 6-day format at 400 covers a day. Neither the club fee nor the £225,000 buyout premium has a filed comparable, and between them they carry roughly seven points of return."
    ],
    [
-    "• Sell the vendor's Savills-advised 12 residences at £1,300/sqft + 3.0% escalation",
-    "Single tranche, completions T+3.5, absorption 3.75/yr. £1,300/sqft sits ABOVE the £1,100 ruled cap and the £1,250 named upside - an open evidence ruling. Savills advised £1,934/sqft weighted (Oct 2025, for Cherrilow) on a £127.5m GDV. Tenure was ruled at 999-year leasehold on 18 Aug 2026, following Savills' own assumption."
+    "• Sell the vendor's Savills-advised 12 residences at £1,500/sqft + 3.0% escalation",
+    "Single tranche, completions T+3.5, absorption 3.75/yr. £1,500/sqft was ruled 24 Aug 2026 on the brand and location premium Chris King reads from the Savills note, above the £1,100 ruled cap and the £1,250 named upside that preceded it. Savills advised £1,934/sqft weighted (Oct 2025, for Cherrilow) on a £127.5m GDV, so the underwrite still sits 22% below the vendor's own adviser. Tenure was ruled at 999-year leasehold on 18 Aug 2026, following Savills' own assumption."
    ],
    [
     "• Exit the stabilised hotel alone at 4.00% adj-NOI; residence proceeds via the limb",
@@ -758,14 +758,14 @@
    [
     "Fawley Court — entry",
     "2026",
-    "60",
+    "72",
     "£50m",
-    "£833k",
+    "£694k",
     null,
     true
    ]
   ],
-  "caption": "Per key = price / keys at trade. Entry £833k/key mid-set; exit £4.21m/key above every trade but The Ritz. Fonab £302k, Formby £316k omitted.",
+  "caption": "Per key = price / keys at trade. Entry £694k/key mid-set; exit £3.48m/key above every trade but The Ritz. Fonab £302k, Formby £316k omitted.",
   "captionNote": "Source: the transaction database - 426 UK trades, 96 with published yields; country-house, resort and trophy trades with a published price. Yields as published, not restated: every non-London trade with a yield prints 5.42-6.00% against the underwritten 4.00% exit, and no trade held supports either the exit yield or the exit per-key. Stated candidly in the IM."
  },
  "terms": [
@@ -777,7 +777,7 @@
    "row",
    "Structure",
    "Asset in · SPV-share exit (SSE)",
-   "Buy the asset (SDLT sits inside the 5.00% acquisition costs; capital allowances retained), then sell the SPV's shares at exit so no corporate gain arises. The buyer's roughly 5% SDLT saving funds any latent-gain discount. Selling the asset instead was measured at -1.75pp on this version."
+   "Buy the asset (SDLT sits inside the 5.00% acquisition costs; capital allowances retained), then sell the SPV's shares at exit so no corporate gain arises. Selling the asset instead was measured at -1.57pp on this version. Interest is assumed 100% deductible with no Corporate Interest Restriction analysis, hotel losses are pooled against residential development profits, and Tax_FFEShelterPct sits at 100% over the newly wired pool. Counsel settles all of it."
   ],
   [
    "row",
@@ -821,7 +821,7 @@
    "row",
    "Named upside — not in base",
    "Subordination · resi mix · keys",
-   "Three quantified-but-unadopted levers: subordinating the operator incentive to an owner's priority return (worth +1.17pp on the v13 basis, not re-measured here); £1,250/sqft on the riverside residence mix; and courtyard early-opening above 12 keys (evidence range 15-43). None is in the base. The occupancy credit the four operator forecasts support is also unspent."
+   "Three quantified-but-unadopted levers: subordinating the operator incentive to an owner's priority return (worth +1.17pp on the v13 basis, not re-measured here); residences at Savills' own £1,934/sqft against the £1,500 adopted (not measured); and courtyard early-opening above 12 keys (evidence range 15-43). None is in the base. Mark Green's £4,400/m2 turnkey spa rate is also unadopted: only Chris King's 1,200 m2 area is taken, priced on this schedule's own rates."
   ]
  ],
  "watchpoints": [
@@ -832,13 +832,13 @@
   ],
   [
    "OPEN",
-   "Residences at £1,300/sqft sit above the £1,100 ruled cap",
-   "The underwrite adopts £1,300/sqft plus 3.0% p.a. escalation - above both the £1,100 ruled cap and the £1,250 named upside. It needs a ruled evidence basis before it travels into any published material. Savills advised £1,934/sqft weighted (Oct 2025, for Cherrilow). Tenure was ruled at 999-year leasehold on 18 Aug 2026."
+   "Residences at £1,500/sqft sit above the £1,100 cap the underwrite had worked to",
+   "The underwrite adopts £1,500/sqft plus 3.0% p.a. escalation, ruled 24 Aug 2026 on the brand and location premium Chris King reads from the Savills note. That is above the £1,100 ruled cap and the £1,250 named upside that preceded it, and still 22% below Savills' own £1,934/sqft weighted (Oct 2025, for Cherrilow). It needs a ruled evidence basis before it travels into any published material. Tenure was ruled at 999-year leasehold on 18 Aug 2026."
   ],
   [
    "OPEN",
-   "Works £170.9m built first-principles by a non-QS; 40% allowance class",
-   "The 162-line schedule replaced a five-input lump that was structured pre-DD and never revisited. Of net construction 48.5% is BENCHMARK class, 39.5% ALLOWANCE and 12.1% MEASURED. VAT and tender inflation are deliberately excluded and stated. A QS view on the outer buildings and the 60-key physical scope is an open DD item, and s106 is flagged as up-risk because 12 units exceeds the affordable-housing threshold. The contingency was cut from 15% to 10% in the reduction, which is the least defensible part of it on a site with no Phase 2 contamination study."
+   "Works £173.3m built first-principles by a non-QS; 37% allowance class. The mirror wing is an allowance and is not consented.",
+   "The 174-line schedule replaced a five-input lump that was structured pre-DD and never revisited. Of live net construction 43.3% is BENCHMARK, 36.7% is ALLOWANCE, 11.9% is MEASURED, 8.0% is RULED. VAT and tender inflation are deliberately excluded and stated. A QS view on the outer buildings and the physical scope is an open DD item, and s106 is flagged as up-risk because 12 units exceeds the affordable-housing threshold. Contingency sits at 10% - the team's own figure, unchanged; Lisa King's note proposes 5% and that is Richard Dray's to rule."
   ],
   [
    "DD",
@@ -858,6 +858,6 @@
  ],
  "footer": [
   "Preliminary — subject to confirmatory DD: building survey, measured survey (Main House GIA bases conflict, 2,202 v 3,855 sqm), FF&amp;E condition, HMA and franchise terms, planning (23/07589/FUL), title and EFG consent, TUPE, SPV tax. Align contributes no equity: AM fee plus promote.",
-  "Model: Fawley Court — Financial Model v29.xlsx (19 Aug 2026; 0 formula errors, ALL CHECKS PASS = YES). v29 is the underwrite of record. It carries the 162-line ground-up capital budget, the operator fees inside the P&amp;L, the loadings at 15% preliminaries / 9% fees / 10% contingency, and the twelve scheme switches, so NOI, margins and the capital cost all sit on a different basis from v15 and v16."
+  "Model: Fawley Court — Financial Model v32.xlsx (25 Aug 2026; 0 formula errors, ALL CHECKS PASS = YES). v32 is the underwrite of record and it is built on the team's own LIVE file, not on ours. It carries the 174-line ground-up capital budget, the operator fees inside the P&amp;L, loadings of 15% preliminaries / 9% professional fees / 10% contingency on the hotel and 12% / 8% / 5% on the residential limb, and thirteen scheme switches including the mirror wing. See the Change Log tab for every change against the file the team holds."
  ]
 }

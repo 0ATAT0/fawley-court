@@ -12,12 +12,33 @@ is not in it.
 """
 import argparse, json, os, pathlib, sys
 
+# The record of the model this build is struck against. Resolved rather than
+# named, so the next re-strike is a new file in Model/docs and not an edit to
+# every tool: the highest-numbered vNN-figures.json wins, and FAWLEY_MODEL_RECORD
+# overrides it outright.
+def _model_record(deal):
+    import os, re as _re, pathlib as _p
+    override = os.environ.get("FAWLEY_MODEL_RECORD")
+    if override:
+        return _p.Path(override)
+    docs = _p.Path(deal) / "Model" / "docs"
+    found = sorted(
+        ((int(_re.match(r"v(\d+)-figures\.json$", f.name).group(1)), f)
+         for f in docs.glob("v*-figures.json")
+         if _re.match(r"v(\d+)-figures\.json$", f.name)),
+        key=lambda t: t[0])
+    if not found:
+        raise SystemExit("no vNN-figures.json in %s" % docs)
+    return found[-1][1]
+
+
+
 DEFAULT_DEAL = r"D:\OneDrive - Strand Labs\2. Clients\Align\2. Live Deals\Fawley Court"
 ap = argparse.ArgumentParser()
 ap.add_argument("--deal", default=os.environ.get("FAWLEY_DEAL_ROOT", DEFAULT_DEAL))
 args = ap.parse_args()
 
-src = pathlib.Path(args.deal) / "Model" / "docs" / "v29-figures.json"
+src = _model_record(args.deal)
 if not src.exists():
     sys.exit(f"figure record not found: {src}")
 
