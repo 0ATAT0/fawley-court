@@ -1,7 +1,7 @@
 {
  "pack": {
   "source": "Fawley Court - Financial Model v32.xlsx, Cheat Sheet tab",
-  "snapshot_sha256": "26af91c6522a0fb6ed6a8ba8df4e26840dcbadc5131e0a28656bf69fb3ae1b57",
+  "snapshot_sha256": "102a1dbb6c6e9d6b5cfd16ce6b86242a2fbe0f61b8e026c7a2fdab58cba3464d",
   "basis": "Every printed value is the sheet's own render; every note is the sheet's own off-page register, keyed by the cell it annotates."
  },
  "title": "Fawley Court — Investor Cheat Sheet",

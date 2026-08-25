@@ -1,10 +1,10 @@
 {
  "meta": {
   "model": "Fawley Court - Financial Model v32.xlsx",
-  "snapshot_sha256": "26af91c6522a0fb6ed6a8ba8df4e26840dcbadc5131e0a28656bf69fb3ae1b57",
+  "snapshot_sha256": "102a1dbb6c6e9d6b5cfd16ce6b86242a2fbe0f61b8e026c7a2fdab58cba3464d",
   "measured_source": "v32-measure-src.xlsx",
   "measured_source_sha256": "a1562ba6449008d51fab63bba022b46bf74bc0e3507afd75981ec4bcebb0ff65",
-  "tie_out": "83 of 83 raw entries re-read from the deal-record workbook by named range and identical, so the measured copy and the deal record hold the same book. The Cheat Sheet header and one watchpoint title were corrected on 25 Aug from naming v29 to naming v32, two cells of 55,703 and no number among them; the sha above is the corrected book, 7ffe4ac83bdf the one measured.",
+  "tie_out": "83 of 83 raw entries re-read from the deal-record workbook by named range and identical, so the measured copy and the deal record hold the same book. The Cheat Sheet header and one watchpoint title were corrected on 25 Aug from naming v29 to naming v32, two cells of 55,703 and no number among them; the sha above is the corrected book, 7ffe4ac83bdf the one measured. On 25 Aug 22:12 five stale basis sentences in Capex!W were corrected by the team-facing session and LIVE republished; 55,703 cells re-compared, five differences, all prose, the return identical to the last digit. The sha above is that book; 26af91c6522a0fb6 the one before it.",
   "measured": "2026-08-25",
   "entry": "£50m",
   "basis": "Every figure measured on a scratch copy of the saved model in one Excel session, inputs restored between scenarios. Solves are bisections with the achieved value recorded.",

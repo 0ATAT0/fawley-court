@@ -1,7 +1,7 @@
 {
  "meta": {
   "source": "Model/Fawley Court - Financial Model v32.xlsx, Capex tab",
-  "snapshot_sha256": "26af91c6522a0fb6ed6a8ba8df4e26840dcbadc5131e0a28656bf69fb3ae1b57",
+  "snapshot_sha256": "102a1dbb6c6e9d6b5cfd16ce6b86242a2fbe0f61b8e026c7a2fdab58cba3464d",
   "register": "Model/capex/REGISTER.md and Model/capex/PROPOSAL.md",
   "measured": "2026-08-18",
   "entry": "£50m",
@@ -2145,7 +2145,7 @@
    "start": 5,
    "dur": 10,
    "end": 14,
-   "basis": "New spa building beside the Concert Hall, 1,690 m2, built from a space schedule rather than a blended rate: pool hall 20 x 8 m plus surround 420 m2 at GBP 8,250/m2; thermal suite 200 m2 at GBP 9,000/m2; twelve treatment rooms 420 m2 at GBP 6,250/m2; changing and lockers 160 m2 at GBP 5,000/m2; gym 240 m2 at GBP 4,000/m2; plant and back of house 250 m2 at GBP 3,000/m2. Net GBP 10,400,000, a blended GBP 6,153/m2, apportioned to elements on the standard 38 shell / 27 MEP / 35 fit-out split. Relaxation, movement studio and reception - a further 310 m2 - are absorbed by the restored church, giving about 2,000 m2 of wellness in total. RATES ARE PRICED AS AN EXPERT CONTRACTOR WOULD (ruled 18 Aug 2026 - an excellent spa, not a blended allowance), and are prelims-inclusive. Consent: no application exists for anything at the Concert Hall, and a new building of this scale beside a listed church inside a Grade II* registered park on the Heritage at Risk register is a consent question before it is a cost question.",
+   "basis": "New spa building beside the Concert Hall, 729 m2. Chris King ruled the spa at 1,200 m2 on 20 Aug 2026, of which the 471 m2 Concert Hall is already built, so 729 m2 is the new-build residual. The rate is carried unchanged from the space schedule that priced the original 1,690 m2 building: pool hall and surround at GBP 8,250/m2, thermal suite GBP 9,000/m2, twelve treatment rooms GBP 6,250/m2, changing GBP 5,000/m2, gym GBP 4,000/m2, plant and back of house GBP 3,000/m2 - a blended GBP 6,153/m2 apportioned 38 shell / 27 MEP / 35 fit-out. RATES ARE PRICED AS AN EXPERT CONTRACTOR WOULD (ruled 18 Aug 2026 - an excellent spa, not a blended allowance), and are prelims-inclusive. Mark Green's GBP 4,400/m2 turnkey rate is NOT adopted: only Chris's area is taken, and the schedule's own rates imply about GBP 6,494/m2 across the 1,200 m2 net of the spa garden and the Concert Hall's heritage restoration, which sits inside the GBP 4,400-7,000 band Mark Green and Adrian have given. Consent: no application exists for anything at the Concert Hall, and a new building beside a listed church inside a Grade II* registered park on the Heritage at Risk register is a consent question before it is a cost question.",
    "group": null
   },
   {
@@ -2169,7 +2169,7 @@
    "start": 5,
    "dur": 10,
    "end": 14,
-   "basis": "Quantity: 1,690 m2. Rate: 27% of the GBP 6,153/m2 space-schedule blend. Includes pool water treatment, air handling with dehumidification and heat recovery, and the thermal-suite plant.",
+   "basis": "Quantity: 729 m2, the new-build residual of Chris King's 1,200 m2 spa once the 471 m2 Concert Hall is counted. Rate: 27% of the GBP 6,153/m2 space-schedule blend, unchanged. Includes pool water treatment, air handling with dehumidification and heat recovery, and the thermal-suite plant.",
    "group": null
   },
   {
@@ -2193,7 +2193,7 @@
    "start": 5,
    "dur": 10,
    "end": 14,
-   "basis": "Quantity: 1,690 m2. Rate: 35% of the GBP 6,153/m2 space-schedule blend.",
+   "basis": "Quantity: 729 m2, the new-build residual of Chris King's 1,200 m2 spa. Rate: 35% of the GBP 6,153/m2 space-schedule blend, unchanged.",
    "group": null
   },
   {
@@ -2217,7 +2217,7 @@
    "start": 11,
    "dur": 4,
    "end": 14,
-   "basis": "Quantity: about 2,000 m2 of wellness - 1,690 m2 of new building plus the 310 m2 of the restored church given to relaxation, studio and reception. Rate raised from GBP 850/m2 to GBP 1,500/m2 to match the specification: no spa equipment schedule exists anywhere in the data room.",
+   "basis": "Quantity: 1,200 m2, Chris King's ruled spa area of 20 Aug 2026, covering the 729 m2 of new building and the 471 m2 of restored church given to relaxation, studio and reception. Rate GBP 1,500/m2, raised from GBP 850 at v18 to match the specification and unchanged since: no spa equipment schedule exists anywhere in the data room. ELEMENT OPEN: Lisa King asked on 20 Aug whether all spa equipment, inside and out, should sit under MEP rather than FF&E. It is not cosmetic - FF&E and OS&E drive the capital allowance pool through Capex_FFEPct - and it is unresolved.",
    "group": null
   },
   {
@@ -2313,7 +2313,7 @@
    "start": 3,
    "dur": 7,
    "end": 9,
-   "basis": "SWITCHED ON (ruled 18 Aug 2026). Not arrival theatre - the last remaining staff accommodation in a scheme that has none. Simpson's 2021 courtyard scheme housed staff in twelve flats (six one-bed, six two-bed) consented under 23/07589/FUL; EPR's 2025 scheme replaced those flats with guest rooms and put nothing back. Quantity: North Lodge extension 75 + new north gatehouses 2 x 90 + new south gatehouses 2 x 90 + new South Lodge 60 = 495 m2 (EPR Proposed Area Schedule, sheet 'Area Schedule ' A64:C68). Rate: costmodelling.com UK building costs, released 1 Jul 2026 (index 233, 3Q2026, UK national average, GIFA, prelims and OH&P inclusive) one-off detached house GBP 2,480-2,760/m2, midpoint GBP 2,620, x 1.10 South",
+   "basis": "SWITCHED OFF (Chris King, 19 Aug 2026 comment (d), ruled 25 Aug): the house adjoining the estate replaces the gatehouses, bought for GBP 1.5m and refurbished for GBP 0.75m, which he judges also helps the planning balance with the council. Sch_Gatehouses is 0 and this line is not in the budget; the detail below is retained so the option can be re-enabled. Original basis, 18 Aug 2026: Not arrival theatre - the last remaining staff accommodation in a scheme that has none. Simpson's 2021 courtyard scheme housed staff in twelve flats (six one-bed, six two-bed) consented under 23/07589/FUL; EPR's 2025 scheme replaced those flats with guest rooms and put nothing back. Quantity: North Lodge extension 75 + new north gatehouses 2 x 90 + new south gatehouses 2 x 90 + new South Lodge 60 = 495 m2 (EPR Proposed Area Schedule, sheet 'Area Schedule ' A64:C68). Rate: costmodelling.com UK building costs, released 1 Jul 2026 (index 233, 3Q2026, UK national average, GIFA, prelims and OH&P inclusive) one-off detached house GBP 2,480-2,760/m2, midpoint GBP 2,620, x 1.10 South",
    "group": null
   },
   {
