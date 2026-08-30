@@ -44,11 +44,12 @@
    "prop.courtyard-pool",
    "prop.south-wing",
    "prop.floating-bar",
-   "water.thames"
+   "water.thames",
+   "prop.staff-village",
+   "prop.staff-village-landscape",
+   "prop.residences"
   ],
   "3": [
-   "prop.residences",
-   "prop.staff-village",
    "bldg.follies-east-park"
   ],
   "4": [
@@ -71,62 +72,23 @@
   "tone_mapping": "ACESFilmic",
   "exposure": 0.62,
   "realtime_shadows": true,
-  "terrain_albedo_has_baked_canopy_shadow": true,
-  "_conflict": "Both of the two lines above are true today, so everything under a tree is darkened twice - once in the baked albedo and again by the shadow map. STANDARD.md R20 covers it."
+  "terrain_albedo_has_baked_canopy_shadow": false,
+  "_note": "Terrain albedo excludes the baked canopy/building shadow factor. The viewer's shadow map is the only shadow treatment."
  },
  "overlay_layers": [
   "area",
   "marker",
   "anchor"
  ],
+ "hidden": [],
  "objects": [
   {
-   "id": "adj.a4155-nw-1",
-   "kind": "reconstruction",
-   "asset": null,
-   "x": -316.72,
-   "y": 547.02,
-   "rot_deg": -59.18,
-   "ground": 37.269,
-   "scale": [
-    1,
-    1,
-    1
-   ],
-   "existing": true,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 4,
-   "layer": "building",
-   "name": "Property west of the A4155 (north)"
-  },
-  {
-   "id": "adj.a4155-nw-2",
-   "kind": "reconstruction",
-   "asset": null,
-   "x": -353.42,
-   "y": 551.48,
-   "rot_deg": 75.51,
-   "ground": 37.44,
-   "scale": [
-    1,
-    1,
-    1
-   ],
-   "existing": true,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 4,
-   "layer": "building",
-   "name": "Property west of the A4155 (west)"
-  },
-  {
    "id": "adj.a4155-nw-3",
-   "kind": "reconstruction",
-   "asset": null,
-   "x": -262.25,
-   "y": 509.27,
-   "rot_deg": -7.49,
+   "kind": "asset",
+   "asset": "a4155-nw-3",
+   "x": -262.328,
+   "y": 509.231,
+   "rot_deg": 4.764,
    "ground": 35.458,
    "scale": [
     1,
@@ -141,49 +103,9 @@
    "name": "Property west of the A4155 (south)"
   },
   {
-   "id": "adj.fawley-court-farm",
-   "kind": "reconstruction",
-   "asset": null,
-   "x": -109.94,
-   "y": 225.7,
-   "rot_deg": -8.85,
-   "ground": 33.298,
-   "scale": [
-    1,
-    1,
-    1
-   ],
-   "existing": true,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 4,
-   "layer": "building",
-   "name": "Fawley Court Farm group (White Cottage / Old Forge)"
-  },
-  {
-   "id": "adj.kitchen-garden-glasshouses",
-   "kind": "reconstruction",
-   "asset": null,
-   "x": -93.06,
-   "y": 277.32,
-   "rot_deg": 3.81,
-   "ground": 33.431,
-   "scale": [
-    1,
-    1,
-    1
-   ],
-   "existing": true,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 4,
-   "layer": "building",
-   "name": "Kitchen garden glasshouses (garden centre)"
-  },
-  {
    "id": "adj.remenham-1",
-   "kind": "reconstruction",
-   "asset": null,
+   "kind": "asset",
+   "asset": "riverside-barns-north",
    "x": 471.83,
    "y": 5.34,
    "rot_deg": 44.77,
@@ -202,8 +124,8 @@
   },
   {
    "id": "adj.remenham-2",
-   "kind": "reconstruction",
-   "asset": null,
+   "kind": "asset",
+   "asset": "riverside-barns-south",
    "x": 487.25,
    "y": -24.35,
    "rot_deg": 36.16,
@@ -222,8 +144,8 @@
   },
   {
    "id": "adj.remenham-3",
-   "kind": "reconstruction",
-   "asset": null,
+   "kind": "asset",
+   "asset": "remenham-lane-north-west",
    "x": 511.02,
    "y": 88.61,
    "rot_deg": -3.09,
@@ -242,8 +164,8 @@
   },
   {
    "id": "adj.remenham-4",
-   "kind": "reconstruction",
-   "asset": null,
+   "kind": "asset",
+   "asset": "remenham-lane-central-cottages",
    "x": 508.27,
    "y": 39.79,
    "rot_deg": -57.93,
@@ -262,8 +184,8 @@
   },
   {
    "id": "adj.remenham-5",
-   "kind": "reconstruction",
-   "asset": null,
+   "kind": "asset",
+   "asset": "remenham-lane-east-cottage",
    "x": 589.88,
    "y": -30.07,
    "rot_deg": -45.61,
@@ -282,8 +204,8 @@
   },
   {
    "id": "adj.remenham-6",
-   "kind": "reconstruction",
-   "asset": null,
+   "kind": "asset",
+   "asset": "riverside-ancillary",
    "x": 492.9,
    "y": -56.93,
    "rot_deg": -11.96,
@@ -302,8 +224,8 @@
   },
   {
    "id": "adj.remenham-7",
-   "kind": "reconstruction",
-   "asset": null,
+   "kind": "asset",
+   "asset": "remenham-parish-hall",
    "x": 553.43,
    "y": 106.82,
    "rot_deg": -9.94,
@@ -322,8 +244,8 @@
   },
   {
    "id": "adj.remenham-8",
-   "kind": "reconstruction",
-   "asset": null,
+   "kind": "asset",
+   "asset": "st-nicholas-remenham",
    "x": 555.6,
    "y": -48.82,
    "rot_deg": 34.19,
@@ -341,52 +263,12 @@
    "name": "Remenham buildings (east bank)"
   },
   {
-   "id": "adj.remenham-club",
-   "kind": "reconstruction",
-   "asset": null,
-   "x": 245.32,
-   "y": -539.16,
-   "rot_deg": -18.25,
-   "ground": 31.567,
-   "scale": [
-    1,
-    1,
-    1
-   ],
-   "existing": true,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 4,
-   "layer": "building",
-   "name": "Remenham Club"
-  },
-  {
-   "id": "adj.upper-thames-rc",
-   "kind": "reconstruction",
-   "asset": null,
-   "x": 230.73,
-   "y": -597.65,
-   "rot_deg": 0.43,
-   "ground": 31.561,
-   "scale": [
-    1,
-    1,
-    1
-   ],
-   "existing": true,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 4,
-   "layer": "building",
-   "name": "Upper Thames Rowing Club"
-  },
-  {
    "id": "bldg.church-st-anne",
    "kind": "asset",
    "asset": "church-st-anne",
-   "x": -87.187,
-   "y": -121.267,
-   "rot_deg": 90.93,
+   "x": -76.118303,
+   "y": -122.92438,
+   "rot_deg": 161.79,
    "ground": 34.07,
    "scale": [
     1,
@@ -394,20 +276,20 @@
     1
    ],
    "existing": true,
-   "basis": "drawing",
-   "basis_note": "drawn area 473 m2 against the 471 m2 the capex schedules; 3.9 m from LIDAR, and the 143 m2 LIDAR footprint is canopy-clipped",
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-74.471 y=-122.677 rot=159.89",
    "tier": 2,
    "layer": "building",
    "name": "Church of St Anne (Concert Hall)"
   },
   {
-   "id": "bldg.dairy-chapel",
+   "id": "bldg.follies-east-park",
    "kind": "asset",
-   "asset": "dairy-chapel",
-   "x": -18.927,
-   "y": 57.97,
-   "rot_deg": 72.89,
-   "ground": 33.668,
+   "asset": "follies-east-park",
+   "x": 240.301,
+   "y": -196.527,
+   "rot_deg": 53.29,
+   "ground": 31.3,
    "scale": [
     1,
     1,
@@ -415,30 +297,10 @@
    ],
    "existing": true,
    "basis": "hand-set",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 1,
-   "layer": "building",
-   "name": "Dairy & Chapel range"
-  },
-  {
-   "id": "bldg.follies-east-park",
-   "kind": "asset",
-   "asset": "follies-east-park",
-   "x": 256.34,
-   "y": -212.18,
-   "rot_deg": 53.29,
-   "ground": 31.38,
-   "scale": [
-    1,
-    1,
-    1
-   ],
-   "existing": true,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained | hand-modelled asset bound follies-east-park, verified against the surveyed outline and seated at zero",
+   "basis_note": "moved by fcm set from x=246.457 y=-205.0 rot=53.29",
    "tier": 3,
    "layer": "building",
-   "name": "East Park follies (Gothic Ruin / Covered Bridge)"
+   "name": "East Park Gothic Ruin"
   },
   {
    "id": "bldg.main-house",
@@ -446,8 +308,8 @@
    "asset": "main-house",
    "x": 2.953,
    "y": -1.172,
-   "rot_deg": -17.11,
-   "ground": 33.129,
+   "rot_deg": -18.21,
+   "ground": 33.249,
    "scale": [
     1,
     1,
@@ -464,10 +326,10 @@
    "id": "bldg.main-house-north-wing",
    "kind": "asset",
    "asset": "main-house-north-wing",
-   "x": -17.9,
-   "y": 32.82,
-   "rot_deg": -14.0,
-   "ground": 33.131,
+   "x": -16.427,
+   "y": 33.8295,
+   "rot_deg": -18.21,
+   "ground": 33.237,
    "scale": [
     1,
     1,
@@ -475,15 +337,15 @@
    ],
    "existing": true,
    "basis": "hand-set",
-   "basis_note": "rotation pinned from the estate-agent aerial: the 13.34 m square wing block is parallel to the Main House (-14.0 vs -17.11 degrees), while the -58.11 degree PCA axis belonged to the combined wing-and-link footprint and rotated the block 44 degrees off the formal composition",
+   "basis_note": "moved by fcm set from x=-17.241 y=33.216 rot=-15.1",
    "tier": 1,
    "layer": "building",
    "name": "Main House north service wing"
   },
   {
    "id": "bldg.meadows-farm",
-   "kind": "reconstruction",
-   "asset": null,
+   "kind": "asset",
+   "asset": "meadows-farm",
    "x": -290.73,
    "y": -426.87,
    "rot_deg": -82.97,
@@ -502,8 +364,8 @@
   },
   {
    "id": "bldg.meadows-farm-barn",
-   "kind": "reconstruction",
-   "asset": null,
+   "kind": "asset",
+   "asset": "meadows-farm-barn",
    "x": -270.98,
    "y": -425.09,
    "rot_deg": -86.09,
@@ -527,7 +389,7 @@
    "x": -220.43,
    "y": 572.06,
    "rot_deg": 5.49,
-   "ground": 35.237,
+   "ground": 35.38,
    "scale": [
     1,
     1,
@@ -541,32 +403,12 @@
    "name": "North Lodge"
   },
   {
-   "id": "bldg.old-stable-block",
-   "kind": "asset",
-   "asset": "old-stable-block",
-   "x": -6.207,
-   "y": 144.764,
-   "rot_deg": 72.89,
-   "ground": 33.146,
-   "scale": [
-    1,
-    1,
-    1
-   ],
-   "existing": true,
-   "basis": "hand-set",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 1,
-   "layer": "building",
-   "name": "Old Stable Block"
-  },
-  {
    "id": "bldg.riding-school",
    "kind": "asset",
    "asset": "riding-school",
-   "x": -52.533,
-   "y": 97.265,
-   "rot_deg": 72.65,
+   "x": -61.804,
+   "y": 98.99,
+   "rot_deg": 71.79,
    "ground": 33.437,
    "scale": [
     1,
@@ -575,7 +417,7 @@
    ],
    "existing": true,
    "basis": "hand-set",
-   "basis_note": "drawn 36.9 x 12.5 m against 37 x 13 in the Civic Engineers structural report; the 12.4 m separation is the LIDAR component including the lean-to that line 52 demolishes",
+   "basis_note": "moved by fcm set from x=-61.804 y=98.989 rot=71.79",
    "tier": 2,
    "layer": "building",
    "name": "Riding School"
@@ -583,10 +425,10 @@
   {
    "id": "bldg.service-outbuildings",
    "kind": "asset",
-   "asset": "service-outbuildings",
-   "x": -59.822,
-   "y": 163.046,
-   "rot_deg": -16.22,
+   "asset": "service-yard-outbuildings",
+   "x": -52.895,
+   "y": 172.703,
+   "rot_deg": 71.23,
    "ground": 33.579,
    "scale": [
     1,
@@ -595,7 +437,7 @@
    ],
    "existing": true,
    "basis": "hand-set",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained | hand-modelled asset bound service-outbuildings, verified against the surveyed outline and seated at zero",
+   "basis_note": "moved by fcm set from x=-52.895 y=172.703 rot=71.23",
    "tier": 2,
    "layer": "building",
    "name": "Service yard outbuildings (north)"
@@ -604,8 +446,8 @@
    "id": "bldg.south-buildings",
    "kind": "asset",
    "asset": "south-buildings",
-   "x": -113.914,
-   "y": -65.426,
+   "x": -121.98,
+   "y": -59.58,
    "rot_deg": 105.66,
    "ground": 33.869,
    "scale": [
@@ -614,79 +456,19 @@
     1
    ],
    "existing": true,
-   "basis": "drawing",
-   "basis_note": "drawn 1,120 m2 against 1,380 LIDAR, 5.7 m from LIDAR | hand-modelled asset bound south-buildings, verified against the surveyed outline and seated at zero",
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-123.557 y=-57.327 rot=105.66",
    "tier": 2,
    "layer": "building",
    "name": "South Buildings (derelict service range)"
   },
   {
-   "id": "bldg.south-courtyard-ranges",
-   "kind": "asset",
-   "asset": "south-courtyard-ranges",
-   "x": -28.695,
-   "y": 85.381,
-   "rot_deg": 72.89,
-   "ground": 33.471,
-   "scale": [
-    1,
-    1,
-    1
-   ],
-   "existing": true,
-   "basis": "hand-set",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained | hand-modelled asset bound south-courtyard-ranges, verified against the surveyed outline and seated at zero",
-   "tier": 1,
-   "layer": "building",
-   "name": "South Courtyard retained ranges"
-  },
-  {
-   "id": "bldg.water-tower",
-   "kind": "asset",
-   "asset": "water-tower",
-   "x": 2.239,
-   "y": 150.835,
-   "rot_deg": -17.12,
-   "ground": 32.487,
-   "scale": [
-    1,
-    1,
-    1
-   ],
-   "existing": true,
-   "basis": "hand-set",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 1,
-   "layer": "building",
-   "name": "Water Tower"
-  },
-  {
    "id": "bldg.workshop-shed",
    "kind": "asset",
    "asset": "workshop-shed",
-   "x": -30.82,
-   "y": 180.952,
-   "rot_deg": -5.16,
-   "ground": 33.368,
-   "scale": [
-    1,
-    1,
-    1
-   ],
-   "existing": true,
-   "basis": "hand-set",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained | hand-modelled asset bound workshop-shed, verified against the surveyed outline and seated at zero",
-   "tier": 2,
-   "layer": "building",
-   "name": "Workshop / timber store shed"
-  },
-  {
-   "id": "bldg.yard-structure-south",
-   "kind": "asset",
-   "asset": "yard-structure-south",
-   "x": -57.621,
-   "y": 127.925,
-   "rot_deg": 76.96,
+   "x": -23.011,
+   "y": 185.733,
+   "rot_deg": 64.44,
    "ground": 33.467,
    "scale": [
     1,
@@ -695,27 +477,67 @@
    ],
    "existing": true,
    "basis": "hand-set",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained | hand-modelled asset bound yard-structure-south, verified against the surveyed outline and seated at zero",
+   "basis_note": "moved by fcm set from x=-23.011 y=185.733 rot=64.44",
+   "tier": 2,
+   "layer": "building",
+   "name": "Workshop / timber store shed"
+  },
+  {
+   "id": "bldg.yard-structure-south",
+   "kind": "asset",
+   "asset": "service-yard-range",
+   "x": -52.249,
+   "y": 134.126,
+   "rot_deg": 71.79,
+   "ground": 33.467,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-52.249 y=134.126 rot=71.79",
    "tier": 2,
    "layer": "building",
    "name": "Service yard structure (south)"
   },
   {
-   "id": "prop.gatehouses.0",
+   "id": "prop.courts",
    "kind": "asset",
-   "asset": "gatehouse",
-   "x": -228,
-   "y": 540,
-   "rot_deg": -25,
-   "ground": 34.99,
+   "asset": "courts",
+   "x": 33.503,
+   "y": 217.113,
+   "rot_deg": -18.21,
+   "ground": 33.33,
    "scale": [
     1,
     1,
     1
    ],
    "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=35.0 y=227.0 rot=-18.21",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Tennis & padel courts, pavilion"
+  },
+  {
+   "id": "prop.gatehouses.0",
+   "kind": "asset",
+   "asset": "gatehouse",
+   "x": -260.738,
+   "y": 479.073,
+   "rot_deg": -91.534,
+   "ground": 35.086,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "road-register",
+   "basis_note": "wave 4: 3.000 m clear of the CURRENT registered carriageway edge, square to the drive, door to the road (tools/gatehouse_ground.py)",
    "tier": 2,
    "layer": "proposed",
    "name": "Gatehouses & lodge extensions"
@@ -724,18 +546,18 @@
    "id": "prop.gatehouses.1",
    "kind": "asset",
    "asset": "gatehouse",
-   "x": -213,
-   "y": 530,
-   "rot_deg": -25,
-   "ground": 34.31,
+   "x": -278.391,
+   "y": 479.546,
+   "rot_deg": 88.466,
+   "ground": 34.561,
    "scale": [
     1,
     1,
     1
    ],
    "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
+   "basis": "road-register",
+   "basis_note": "wave 4: 3.000 m clear of the CURRENT registered carriageway edge, square to the drive, door to the road (tools/gatehouse_ground.py)",
    "tier": 2,
    "layer": "proposed",
    "name": "Gatehouses & lodge extensions"
@@ -744,18 +566,18 @@
    "id": "prop.gatehouses.2",
    "kind": "asset",
    "asset": "gatehouse",
-   "x": -296,
-   "y": -160,
-   "rot_deg": 8,
-   "ground": 33.15,
+   "x": -291.143,
+   "y": -176.518,
+   "rot_deg": 67.078,
+   "ground": 33.289,
    "scale": [
     1,
     1,
     1
    ],
    "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
+   "basis": "road-register",
+   "basis_note": "wave 4: 3.000 m clear of the CURRENT registered carriageway edge, square to the drive, door to the road (tools/gatehouse_ground.py)",
    "tier": 2,
    "layer": "proposed",
    "name": "Gatehouses & lodge extensions"
@@ -764,9 +586,9 @@
    "id": "prop.gatehouses.3",
    "kind": "asset",
    "asset": "gatehouse",
-   "x": -282,
-   "y": -168,
-   "rot_deg": 8,
+   "x": -261.277,
+   "y": -185.887,
+   "rot_deg": -112.922,
    "ground": 33.48,
    "scale": [
     1,
@@ -774,8 +596,8 @@
     1
    ],
    "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-274.877 y=-183.397 rot=-112.922",
    "tier": 2,
    "layer": "proposed",
    "name": "Gatehouses & lodge extensions"
@@ -787,7 +609,7 @@
    "x": -258,
    "y": -266,
    "rot_deg": 20,
-   "ground": 32.35,
+   "ground": 32.494,
    "scale": [
     1,
     1,
@@ -803,10 +625,10 @@
   {
    "id": "prop.north-courtyard",
    "kind": "asset",
-   "asset": "courtyard-north",
-   "x": -42.424,
-   "y": 147.528,
-   "rot_deg": 72.89,
+   "asset": "north-courtyard",
+   "x": -25.852,
+   "y": 151.657,
+   "rot_deg": 87.8,
    "ground": 33.55,
    "scale": [
     1,
@@ -815,278 +637,614 @@
    ],
    "existing": false,
    "basis": "hand-set",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
+   "basis_note": "moved by fcm set from x=-25.852 y=151.657 rot=87.8",
    "tier": 1,
    "layer": "proposed",
    "name": "North Courtyard new ranges (consented)"
   },
   {
-   "id": "prop.residences.0",
-   "kind": "asset",
-   "asset": "residence-a",
-   "x": -284,
-   "y": -446,
-   "rot_deg": 10,
-   "ground": 32.89,
-   "scale": [
-    1,
-    1,
-    1
-   ],
-   "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 3,
-   "layer": "proposed",
-   "name": "Branded residences (12, Savills zones)"
-  },
-  {
    "id": "prop.residences.1",
    "kind": "asset",
-   "asset": "residence-b",
-   "x": -216,
-   "y": -484,
-   "rot_deg": 4,
-   "ground": 32.55,
+   "asset": "residence",
+   "x": -82.18,
+   "y": -222.16,
+   "rot_deg": -18.161,
+   "ground": 32.983,
    "scale": [
     1,
     1,
     1
    ],
    "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 3,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-246.719 y=-206.802 rot=169.956",
+   "tier": 2,
    "layer": "proposed",
-   "name": "Branded residences (12, Savills zones)"
+   "name": "Branded residences (12, Savills zones)",
+   "plot": {
+    "centre": [
+     -242.87,
+     -210.53
+    ],
+    "width_m": 47.0,
+    "depth_m": 52.0,
+    "rot_deg": 169.956,
+    "garden_bearing_deg": 190.0,
+    "corners": [
+     [
+      -215.2,
+      -189.03
+     ],
+     [
+      -261.47,
+      -180.83
+     ],
+     [
+      -270.54,
+      -232.03
+     ],
+     [
+      -224.26,
+      -240.23
+     ]
+    ]
+   }
   },
   {
    "id": "prop.residences.10",
    "kind": "asset",
-   "asset": "residence-b",
-   "x": 46,
-   "y": -556,
-   "rot_deg": -6,
-   "ground": 32.57,
+   "asset": "residence",
+   "x": -90.27,
+   "y": -569.12,
+   "rot_deg": 171.768,
+   "ground": 32.392,
    "scale": [
     1,
     1,
     1
    ],
    "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 3,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-81.063 y=-491.736 rot=165.864",
+   "tier": 2,
    "layer": "proposed",
-   "name": "Branded residences (12, Savills zones)"
+   "name": "Branded residences (12, Savills zones)",
+   "plot": {
+    "centre": [
+     -77.49,
+     -495.73
+    ],
+    "width_m": 47.0,
+    "depth_m": 52.0,
+    "rot_deg": 165.864,
+    "garden_bearing_deg": 194.1,
+    "corners": [
+     [
+      -48.35,
+      -476.26
+     ],
+     [
+      -93.93,
+      -464.78
+     ],
+     [
+      -106.63,
+      -515.21
+     ],
+     [
+      -61.05,
+      -526.68
+     ]
+    ]
+   }
   },
   {
    "id": "prop.residences.11",
    "kind": "asset",
-   "asset": "residence-a",
-   "x": 116,
-   "y": -584,
-   "rot_deg": -12,
-   "ground": 31.22,
+   "asset": "residence",
+   "x": -126.84,
+   "y": -506.74,
+   "rot_deg": -8.232,
+   "ground": 32.86,
    "scale": [
     1,
     1,
     1
    ],
    "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 3,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-134.345 y=-479.421 rot=168.422",
+   "tier": 2,
    "layer": "proposed",
-   "name": "Branded residences (12, Savills zones)"
+   "name": "Branded residences (12, Savills zones)",
+   "plot": {
+    "centre": [
+     -131.2,
+     -486.19
+    ],
+    "width_m": 47.0,
+    "depth_m": 58.0,
+    "rot_deg": 168.422,
+    "garden_bearing_deg": 191.6,
+    "corners": [
+     [
+      -102.36,
+      -462.5
+     ],
+     [
+      -148.4,
+      -453.06
+     ],
+     [
+      -160.04,
+      -509.88
+     ],
+     [
+      -114.0,
+      -519.32
+     ]
+    ]
+   }
+  },
+  {
+   "id": "prop.residences.12",
+   "kind": "asset",
+   "asset": "residence",
+   "x": -161.53,
+   "y": -558.81,
+   "rot_deg": 171.768,
+   "ground": 32.585,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-90.761 y=-332.702 rot=168.974",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Branded residences (12, Savills zones)",
+   "plot": {
+    "centre": [
+     -87.55,
+     -339.44
+    ],
+    "width_m": 40.0,
+    "depth_m": 58.0,
+    "rot_deg": 168.974,
+    "garden_bearing_deg": 191.0,
+    "corners": [
+     [
+      -62.37,
+      -314.8
+     ],
+     [
+      -101.63,
+      -307.15
+     ],
+     [
+      -112.73,
+      -364.08
+     ],
+     [
+      -73.47,
+      -371.73
+     ]
+    ]
+   }
   },
   {
    "id": "prop.residences.2",
    "kind": "asset",
-   "asset": "residence-a",
-   "x": -280,
-   "y": -536,
-   "rot_deg": 12,
-   "ground": 32.07,
+   "asset": "residence",
+   "x": -30.87,
+   "y": -238.99,
+   "rot_deg": -18.161,
+   "ground": 32.871,
    "scale": [
     1,
     1,
     1
    ],
    "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 3,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-135.909 y=-323.9 rot=168.974",
+   "tier": 2,
    "layer": "proposed",
-   "name": "Branded residences (12, Savills zones)"
+   "name": "Branded residences (12, Savills zones)",
+   "plot": {
+    "centre": [
+     -132.89,
+     -331.62
+    ],
+    "width_m": 40.0,
+    "depth_m": 60.0,
+    "rot_deg": 168.974,
+    "garden_bearing_deg": 191.0,
+    "corners": [
+     [
+      -107.52,
+      -306.0
+     ],
+     [
+      -146.79,
+      -298.35
+     ],
+     [
+      -158.26,
+      -357.24
+     ],
+     [
+      -119.0,
+      -364.89
+     ]
+    ]
+   }
   },
   {
    "id": "prop.residences.3",
    "kind": "asset",
-   "asset": "residence-b",
-   "x": -208,
-   "y": -570,
-   "rot_deg": 6,
-   "ground": 32.05,
+   "asset": "residence",
+   "x": -125.33,
+   "y": -267.47,
+   "rot_deg": 161.839,
+   "ground": 33.354,
    "scale": [
     1,
     1,
     1
    ],
    "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 3,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-193.543 y=-216.216 rot=169.956",
+   "tier": 2,
    "layer": "proposed",
-   "name": "Branded residences (12, Savills zones)"
+   "name": "Branded residences (12, Savills zones)",
+   "plot": {
+    "centre": [
+     -189.52,
+     -218.96
+    ],
+    "width_m": 47.0,
+    "depth_m": 50.0,
+    "rot_deg": 169.956,
+    "garden_bearing_deg": 190.0,
+    "corners": [
+     [
+      -162.02,
+      -198.44
+     ],
+     [
+      -208.3,
+      -190.25
+     ],
+     [
+      -217.02,
+      -239.48
+     ],
+     [
+      -170.74,
+      -247.68
+     ]
+    ]
+   }
   },
   {
    "id": "prop.residences.4",
    "kind": "asset",
-   "asset": "residence-b",
-   "x": 12,
-   "y": -342,
-   "rot_deg": -18,
-   "ground": 32.43,
+   "asset": "residence",
+   "x": -126.01,
+   "y": -367.43,
+   "rot_deg": -8.227,
+   "ground": 32.591,
    "scale": [
     1,
     1,
     1
    ],
    "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 3,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-116.388 y=-270.147 rot=-11.026",
+   "tier": 2,
    "layer": "proposed",
-   "name": "Branded residences (12, Savills zones)"
+   "name": "Branded residences (12, Savills zones)",
+   "plot": {
+    "centre": [
+     -119.79,
+     -264.39
+    ],
+    "width_m": 40.0,
+    "depth_m": 56.0,
+    "rot_deg": -11.026,
+    "garden_bearing_deg": 11.0,
+    "corners": [
+     [
+      -144.78,
+      -288.04
+     ],
+     [
+      -105.52,
+      -295.69
+     ],
+     [
+      -94.81,
+      -240.73
+     ],
+     [
+      -134.07,
+      -233.08
+     ]
+    ]
+   }
   },
   {
    "id": "prop.residences.5",
    "kind": "asset",
-   "asset": "residence-a",
-   "x": 84,
-   "y": -372,
-   "rot_deg": -24,
-   "ground": 31.27,
+   "asset": "residence",
+   "x": -125.06,
+   "y": -424.65,
+   "rot_deg": 171.773,
+   "ground": 32.826,
    "scale": [
     1,
     1,
     1
    ],
    "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 3,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-129.943 y=-420.668 rot=-10.877",
+   "tier": 2,
    "layer": "proposed",
-   "name": "Branded residences (12, Savills zones)"
+   "name": "Branded residences (12, Savills zones)",
+   "plot": {
+    "centre": [
+     -133.36,
+     -414.92
+    ],
+    "width_m": 47.0,
+    "depth_m": 56.0,
+    "rot_deg": -10.877,
+    "garden_bearing_deg": 10.9,
+    "corners": [
+     [
+      -161.72,
+      -437.98
+     ],
+     [
+      -115.56,
+      -446.85
+     ],
+     [
+      -105.0,
+      -391.85
+     ],
+     [
+      -151.15,
+      -382.99
+     ]
+    ]
+   }
   },
   {
    "id": "prop.residences.6",
    "kind": "asset",
-   "asset": "residence-b",
-   "x": 32,
-   "y": -420,
-   "rot_deg": -12,
-   "ground": 31.95,
+   "asset": "residence",
+   "x": -56.92,
+   "y": -289.91,
+   "rot_deg": 161.839,
+   "ground": 32.234,
    "scale": [
     1,
     1,
     1
    ],
    "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 3,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-45.612 y=-341.493 rot=168.974",
+   "tier": 2,
    "layer": "proposed",
-   "name": "Branded residences (12, Savills zones)"
+   "name": "Branded residences (12, Savills zones)",
+   "plot": {
+    "centre": [
+     -42.21,
+     -347.25
+    ],
+    "width_m": 40.0,
+    "depth_m": 56.0,
+    "rot_deg": 168.974,
+    "garden_bearing_deg": 191.0,
+    "corners": [
+     [
+      -17.22,
+      -323.6
+     ],
+     [
+      -56.48,
+      -315.95
+     ],
+     [
+      -67.19,
+      -370.91
+     ],
+     [
+      -27.93,
+      -378.56
+     ]
+    ]
+   }
   },
   {
    "id": "prop.residences.7",
    "kind": "asset",
-   "asset": "residence-a",
-   "x": 28,
-   "y": -482,
-   "rot_deg": -8,
-   "ground": 32.24,
+   "asset": "residence",
+   "x": -54.75,
+   "y": -377.73,
+   "rot_deg": -8.227,
+   "ground": 32.186,
    "scale": [
     1,
     1,
     1
    ],
    "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 3,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-26.091 y=-287.74 rot=-11.026",
+   "tier": 2,
    "layer": "proposed",
-   "name": "Branded residences (12, Savills zones)"
+   "name": "Branded residences (12, Savills zones)",
+   "plot": {
+    "centre": [
+     -29.11,
+     -280.02
+    ],
+    "width_m": 40.0,
+    "depth_m": 60.0,
+    "rot_deg": -11.026,
+    "garden_bearing_deg": 11.0,
+    "corners": [
+     [
+      -54.48,
+      -305.64
+     ],
+     [
+      -15.21,
+      -313.29
+     ],
+     [
+      -3.74,
+      -254.4
+     ],
+     [
+      -43.0,
+      -246.75
+     ]
+    ]
+   }
   },
   {
    "id": "prop.residences.8",
    "kind": "asset",
-   "asset": "residence-b",
-   "x": 100,
-   "y": -500,
-   "rot_deg": -14,
-   "ground": 31.98,
+   "asset": "residence",
+   "x": -71.62,
+   "y": -432.38,
+   "rot_deg": 171.773,
+   "ground": 32.375,
    "scale": [
     1,
     1,
     1
    ],
    "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 3,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-71.239 y=-278.938 rot=-11.026",
+   "tier": 2,
    "layer": "proposed",
-   "name": "Branded residences (12, Savills zones)"
+   "name": "Branded residences (12, Savills zones)",
+   "plot": {
+    "centre": [
+     -74.45,
+     -272.2
+    ],
+    "width_m": 40.0,
+    "depth_m": 58.0,
+    "rot_deg": -11.026,
+    "garden_bearing_deg": 11.0,
+    "corners": [
+     [
+      -99.63,
+      -296.84
+     ],
+     [
+      -60.37,
+      -304.49
+     ],
+     [
+      -49.27,
+      -247.56
+     ],
+     [
+      -88.53,
+      -239.91
+     ]
+    ]
+   }
   },
   {
    "id": "prop.residences.9",
    "kind": "asset",
-   "asset": "residence-a",
-   "x": 156,
-   "y": -536,
-   "rot_deg": -18,
-   "ground": 31.19,
+   "asset": "residence",
+   "x": -73.39,
+   "y": -514.48,
+   "rot_deg": -8.232,
+   "ground": 32.262,
    "scale": [
     1,
     1,
     1
    ],
    "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 3,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-58.163 y=-437.184 rot=-14.136",
+   "tier": 2,
    "layer": "proposed",
-   "name": "Branded residences (12, Savills zones)"
+   "name": "Branded residences (12, Savills zones)",
+   "plot": {
+    "centre": [
+     -61.98,
+     -434.16
+    ],
+    "width_m": 47.0,
+    "depth_m": 50.0,
+    "rot_deg": -14.136,
+    "garden_bearing_deg": 14.1,
+    "corners": [
+     [
+      -90.87,
+      -452.66
+     ],
+     [
+      -45.3,
+      -464.14
+     ],
+     [
+      -33.09,
+      -415.65
+     ],
+     [
+      -78.66,
+      -404.17
+     ]
+    ]
+   }
   },
   {
    "id": "prop.river-club",
    "kind": "asset",
    "asset": "river-club",
-   "x": 277,
-   "y": -148,
-   "rot_deg": 155,
-   "ground": 31.29,
+   "x": 285.328,
+   "y": -124.397,
+   "rot_deg": 72.739,
+   "ground": 31.4,
    "scale": [
     1,
     1,
     1
    ],
    "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
+   "basis": "designed",
+   "basis_note": "placement computed by river_club_design.place() from two measured lines: the canal's south-west bank and the designed Thames bank",
    "tier": 2,
    "layer": "proposed",
-   "name": "River Club building (~400 m2)"
+   "name": "River Club building (396 m2 + veranda)"
   },
   {
    "id": "prop.south-courtyard",
    "kind": "asset",
-   "asset": "courtyard-south",
-   "x": -42.514,
-   "y": 81.407,
-   "rot_deg": 72.89,
+   "asset": "south-courtyard",
+   "x": -14.48,
+   "y": 92.128,
+   "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
     1,
@@ -1095,7 +1253,7 @@
    ],
    "existing": false,
    "basis": "hand-set",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
+   "basis_note": "moved by fcm set from x=-14.48 y=92.127 rot=71.79",
    "tier": 1,
    "layer": "proposed",
    "name": "South Courtyard new build (consented)"
@@ -1103,19 +1261,19 @@
   {
    "id": "prop.spa-building",
    "kind": "asset",
-   "asset": "spa-pavilion",
-   "x": -126,
-   "y": -92,
-   "rot_deg": -12,
-   "ground": 33.77,
+   "asset": "spa-linear",
+   "x": -68.171288,
+   "y": -89.585566,
+   "rot_deg": -18.21,
+   "ground": 33.75,
    "scale": [
     1,
     1,
     1
    ],
    "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-65.423 y=-89.62 rot=-20.11",
    "tier": 2,
    "layer": "proposed",
    "name": "New spa building (~1,690 m2)"
@@ -1123,122 +1281,202 @@
   {
    "id": "prop.staff-village.0",
    "kind": "asset",
-   "asset": "staff-block",
-   "x": -270,
-   "y": -302,
-   "rot_deg": 14,
-   "ground": 32.63,
+   "asset": "village-entrance-range",
+   "x": -260.744,
+   "y": -340.809,
+   "rot_deg": 80.819,
+   "ground": 33.195,
    "scale": [
     1,
     1,
     1
    ],
    "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 3,
+   "basis": "designed",
+   "basis_note": "Entrance range, carriage arch and bellcote. Set out in the square's own frame by tools/staff_village_layout.py from the measured site in staff-village-source.json; its orientation is the perpendicular to the live residence-spine axis chosen by the measured approach/residence test - the entrance faces the approach and away from the plots - at 80.819 deg. Footprint 300 m2; the six together are 1120 m2 over two storeys, which ties to capex line 147's 2240 m2.",
+   "tier": 2,
    "layer": "proposed",
    "name": "Staff village, Meadows North (80 beds)"
   },
   {
    "id": "prop.staff-village.1",
    "kind": "asset",
-   "asset": "staff-block",
-   "x": -242,
-   "y": -310,
-   "rot_deg": 14,
-   "ground": 32.69,
+   "asset": "village-range-rendered",
+   "x": -245.468,
+   "y": -371.641,
+   "rot_deg": 170.819,
+   "ground": 33.428,
    "scale": [
     1,
     1,
     1
    ],
    "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 3,
+   "basis": "designed",
+   "basis_note": "West range, rendered, three dormers. Set out in the square's own frame by tools/staff_village_layout.py from the measured site in staff-village-source.json; its orientation is the perpendicular to the live residence-spine axis chosen by the measured approach/residence test - the entrance faces the approach and away from the plots - at 80.819 deg. Footprint 260 m2; the six together are 1120 m2 over two storeys, which ties to capex line 147's 2240 m2.",
+   "tier": 2,
    "layer": "proposed",
    "name": "Staff village, Meadows North (80 beds)"
   },
   {
    "id": "prop.staff-village.2",
    "kind": "asset",
-   "asset": "staff-block",
-   "x": -274,
-   "y": -328,
-   "rot_deg": 14,
-   "ground": 32.67,
+   "asset": "village-house-gabled",
+   "x": -244.191,
+   "y": -313.601,
+   "rot_deg": 80.819,
+   "ground": 32.994,
    "scale": [
     1,
     1,
     1
    ],
    "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 3,
+   "basis": "designed",
+   "basis_note": "North-east house, gable to the square. Set out in the square's own frame by tools/staff_village_layout.py from the measured site in staff-village-source.json; its orientation is the perpendicular to the live residence-spine axis chosen by the measured approach/residence test - the entrance faces the approach and away from the plots - at 80.819 deg. Footprint 130 m2; the six together are 1120 m2 over two storeys, which ties to capex line 147's 2240 m2.",
+   "tier": 2,
    "layer": "proposed",
    "name": "Staff village, Meadows North (80 beds)"
   },
   {
    "id": "prop.staff-village.3",
    "kind": "asset",
-   "asset": "staff-block",
-   "x": -246,
-   "y": -336,
-   "rot_deg": 14,
-   "ground": 32.87,
+   "asset": "village-house-gabled",
+   "x": -228.396,
+   "y": -316.154,
+   "rot_deg": 80.819,
+   "ground": 32.951,
    "scale": [
     1,
     1,
     1
    ],
    "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 3,
+   "basis": "designed",
+   "basis_note": "South-east house, gable to the square. Set out in the square's own frame by tools/staff_village_layout.py from the measured site in staff-village-source.json; its orientation is the perpendicular to the live residence-spine axis chosen by the measured approach/residence test - the entrance faces the approach and away from the plots - at 80.819 deg. Footprint 130 m2; the six together are 1120 m2 over two storeys, which ties to capex line 147's 2240 m2.",
+   "tier": 2,
    "layer": "proposed",
    "name": "Staff village, Meadows North (80 beds)"
   },
   {
    "id": "prop.staff-village.4",
    "kind": "asset",
-   "asset": "staff-block",
-   "x": -270,
-   "y": -358,
-   "rot_deg": 14,
-   "ground": 32.6,
+   "asset": "village-range-brick",
+   "x": -222.692,
+   "y": -356.076,
+   "rot_deg": 80.819,
+   "ground": 33.107,
    "scale": [
     1,
     1,
     1
    ],
    "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 3,
+   "basis": "designed",
+   "basis_note": "South range, brick, two dormers. Set out in the square's own frame by tools/staff_village_layout.py from the measured site in staff-village-source.json; its orientation is the perpendicular to the live residence-spine axis chosen by the measured approach/residence test - the entrance faces the approach and away from the plots - at 80.819 deg. Footprint 200 m2; the six together are 1120 m2 over two storeys, which ties to capex line 147's 2240 m2.",
+   "tier": 2,
    "layer": "proposed",
    "name": "Staff village, Meadows North (80 beds)"
   },
   {
    "id": "prop.staff-village.5",
    "kind": "asset",
-   "asset": "staff-block",
-   "x": -242,
-   "y": -366,
-   "rot_deg": 14,
-   "ground": 32.84,
+   "asset": "village-common",
+   "x": -219.501,
+   "y": -336.332,
+   "rot_deg": 170.819,
+   "ground": 33.091,
    "scale": [
     1,
     1,
     1
    ],
    "existing": false,
-   "basis": "lidar",
-   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
-   "tier": 3,
+   "basis": "designed",
+   "basis_note": "Common building: laundry, stores and common room. Set out in the square's own frame by tools/staff_village_layout.py from the measured site in staff-village-source.json; its orientation is the perpendicular to the live residence-spine axis chosen by the measured approach/residence test - the entrance faces the approach and away from the plots - at 80.819 deg. Footprint 100 m2; the six together are 1120 m2 over two storeys, which ties to capex line 147's 2240 m2.",
+   "tier": 2,
    "layer": "proposed",
    "name": "Staff village, Meadows North (80 beds)"
+  },
+  {
+   "id": "prop.covered-walkway",
+   "kind": "asset",
+   "asset": "covered-walkway",
+   "x": -19.1,
+   "y": 50.405,
+   "rot_deg": -80.84,
+   "ground": 33.3,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-19.065 y=50.189 rot=-80.84",
+   "tier": 1,
+   "layer": "proposed",
+   "name": "Covered walkway, house to courtyards"
+  },
+  {
+   "id": "site.entrance-gates.1",
+   "kind": "asset",
+   "asset": "gateway",
+   "x": -269.565,
+   "y": 479.309,
+   "rot_deg": 88.466,
+   "ground": 35.086,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "road-register gateway.north-lodge",
+   "tier": 2,
+   "layer": "phase4",
+   "name": "North Lodge gates and railings",
+   "element": "site.entrance-gates"
+  },
+  {
+   "id": "site.entrance-gates.2",
+   "kind": "asset",
+   "asset": "gateway",
+   "x": -283.01,
+   "y": -179.957,
+   "rot_deg": -112.922,
+   "ground": 35.086,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "road-register gateway.west-entrance",
+   "tier": 2,
+   "layer": "phase4",
+   "name": "South Lodge gates",
+   "element": "site.entrance-gates"
+  },
+  {
+   "id": "prop.south-wing-keys",
+   "kind": "asset",
+   "asset": "south-wing",
+   "x": -33.4226,
+   "y": -17.8307,
+   "rot_deg": -18.21,
+   "ground": 33.237,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-33.71299043650093 y=-16.854389017953274 rot=-21.32",
+   "tier": 1,
+   "layer": "proposed",
+   "name": "Main House south wing - twelve hotel keys (mirror of the north wing)"
   }
  ],
  "drives": [],
@@ -1247,27 +1485,14 @@
   {
    "id": "prop.spa-garden",
    "rect": [
-    476448,
-    184106,
-    40,
-    20,
-    0
+    476459,
+    184137,
+    24,
+    61,
+    -28.15
    ],
    "tier": 3,
    "name": "Spa garden (~800 m2)",
-   "overlay": true
-  },
-  {
-   "id": "prop.covered-walkway",
-   "rect": [
-    476498,
-    184262,
-    10,
-    70,
-    -15
-   ],
-   "tier": 3,
-   "name": "Covered walkway, house to courtyards",
    "overlay": true
   },
   {
@@ -1437,6 +1662,19 @@
    ],
    "tier": 2,
    "name": "Residential estate road & drives",
+   "overlay": true
+  },
+  {
+   "id": "area.estate-drives",
+   "rect": [
+    476300,
+    184280,
+    380,
+    16,
+    -52
+   ],
+   "tier": 2,
+   "name": "Estate drives & carriageway upgrade",
    "overlay": true
   }
  ],

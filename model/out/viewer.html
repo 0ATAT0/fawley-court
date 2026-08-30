@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 <script type="importmap">
-{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}
+{"imports":{"three":"./vendor/three/three.module.js","three/addons/":"./vendor/three/addons/"}}
 </script>
 <script src="estate-data.js"></script>
 <style>
@@ -108,6 +108,18 @@ body.railmin #status,body.railmin #prog{left:16px}
 #card td.n{color:var(--muted);width:26px}
 #card tr.off td{color:#b6bac1}
 #card .qtr{font-size:12.5px;color:var(--muted);margin-top:8px}
+#card .demo{margin:2px 0 12px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--ground)}
+#card .demo .row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+#card .demo .lbl{font:600 13px var(--sans);color:var(--navy)}
+#card .demo button{border:1px solid var(--line);background:#fff;border-radius:20px;
+  padding:4px 12px;font:600 12px var(--sans);cursor:pointer;color:var(--navy)}
+#card .demo button.on{border-color:var(--green);color:#047857;background:#ecfdf5}
+#card .demo button.off{border-color:#fca5a5;color:#b91c1c;background:#fef2f2}
+#card .demo .why{color:var(--muted);font-size:12px;margin-top:7px;line-height:1.45}
+#demolist .drow{display:flex;align-items:center;justify-content:space-between;gap:8px;
+  font-size:12.5px;color:var(--charcoal);padding:2px 0}
+#demolist button{border:1px solid var(--line);background:#fff;border-radius:20px;
+  padding:3px 10px;font:600 11.5px var(--sans);cursor:pointer;color:var(--navy)}
 
 #prog{position:fixed;left:340px;right:16px;bottom:14px;transition:right .25s;background:var(--card);
   border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 28px rgba(15,23,42,.10);
@@ -287,10 +299,11 @@ html[data-variants="1"] #variants{display:block}
         <label><input type="checkbox" data-l="area"> Ground works</label>
         <label><input type="checkbox" data-l="marker"> Site markers</label>
         <label><input type="checkbox" data-l="anchor"> Survey anchor</label>
+        <label><input type="checkbox" data-l="precinct" checked> House precinct</label>
         <label><input type="checkbox" data-l="vegetation" checked> Trees</label>
         <label><input type="checkbox" data-l="water" checked> Water</label>
-        <label><input type="checkbox" data-l="offestate"> Off-estate</label>
-        <label class="keep"><input type="checkbox" data-l="hideoff"> Hide switched-off</label>
+        <label><input type="checkbox" data-l="offestate" checked> Off-estate</label>
+        <label class="keep"><input type="checkbox" data-l="hideoff" checked> Hide switched-off</label>
         <label><input type="checkbox" data-l="ao" checked> Ambient occlusion</label>
       </div>
     </div>
@@ -303,6 +316,13 @@ html[data-variants="1"] #variants{display:block}
       <h2>Scheme switches</h2>
       <div id="switches"></div>
       <button class="reset" id="resetsw">Reset to the model's states</button>
+    </div>
+    <!-- Shown only while something is switched to demolished.  A hidden mesh
+         cannot be ray-cast, so without this there would be no way back to the
+         card that turned it off. -->
+    <div class="sect" id="demosect" style="display:none">
+      <h2>Demolished</h2>
+      <div id="demolist"></div>
     </div>
   </div>
 </aside>
@@ -377,6 +397,165 @@ const PQ = Math.max(PROG_Q,
 
 const swState = {};
 E.schemes.forEach(s => swState[s.switch] = !!s.state);
+/* Scheme off-worlds (28 Aug 2026): switch-ground.json is the closed list of every mesh and
+   dressing rule that exists BECAUSE OF a scheme. Off hides all of it and shows the survey
+   ground under any baked grade. Existing fabric with a modification switch stays. */
+let switchGround = {schemes:{}};
+let meshSwitch = {}, dressingSwitch = {};
+function installSwitchGround(doc){
+  switchGround = doc || {schemes:{}}; meshSwitch = {}; dressingSwitch = {};
+  Object.entries(switchGround.schemes || {}).forEach(([sw, row]) => {
+    (row.mesh_bindings || []).forEach(name => { meshSwitch[name] = sw; });
+    (row.dressing_rules || []).forEach(rule => { dressingSwitch[rule] = sw; });
+  });
+}
+const switchGroundReady = fetch('../switch-ground.json').then(r => {
+  if (!r.ok) throw new Error('switch-ground.json ' + r.status); return r.json();
+}).then(installSwitchGround).catch(e => console.error('[fcm] no off-world register', e));
+
+/* ================= DEMOLITION TOGGLE =============================================
+   21 Aug 2026, Angus: "the building has a clickbox and a pop up. Add to the popup an
+   on off button. Whatever its set to is remembered across rebuilds."
+
+   This is NOT a scheme switch and must not be confused with one. The twelve scheme
+   switches move money: flipping one turns capex lines on and off and the header
+   retallies against the workbook. Demolition moves no money at all - line 92 pays
+   GBP 948,600 loaded to pull South Buildings down, and it pays that BECAUSE the
+   building comes down, so the works total and the tie-out are untouched here. The
+   only thing this changes is whether you are looking at the estate before the
+   demolition or after it.
+
+   ONE ELEMENT for now, deliberately. A general existing/consented/proposed state on
+   every element is the real version of this and Angus is thinking about it; putting
+   a half-considered version on all 68 physical elements would prejudge that.
+
+   The state lives in this browser, which is what "remembered across rebuilds" needs:
+   a rebuild rewrites estate-data.js and the GLBs and never touches localStorage. It
+   does NOT travel to another browser and it is NOT seen by tools/shoot_viewer.mjs,
+   so a station render always shows the building standing. That is stated on the card
+   rather than left to be discovered.
+   ================================================================================ */
+const DEMOLISHABLE = {
+  'bldg.south-buildings': {
+    off: 'Demolished — the site reinstated as parkland',
+    on:  'Standing — the derelict range as surveyed',
+    why: 'The EPR masterplan labels this site "Volume of demolition" and draws it as '
+       + 'reinstated parkland; the six 2015–18 consents to rebuild here have all '
+       + 'lapsed. Nothing is proposed on the site. Switching it off shows the estate '
+       + 'after line 92 has been spent, so the works total does not move.'
+  },
+  /* The two service-yard sheds, added 28 Aug 2026. The consent demolishes both and our
+     scheme keeps both, so which you are looking at is a VIEWING question, not a priced
+     one - and this is the mechanism for that. They are deliberately NOT scheme switches:
+     the twelve schemes are read mechanically out of the workbook's Capex tab rows 39-50,
+     and a thirteenth invented here would be wiped by the next extraction and would put a
+     switch in the viewer with no money behind it. Angus, 28 Aug: "the sheds dont need to
+     be capex budget linked, just a toggle when clicking on them". */
+  'bldg.service-outbuildings': {
+    defaultOff: true,
+    off: 'Demolished — as the consent has it',
+    on:  'Standing — retained as lodges',
+    why: 'The consented roof plan’s own demolition poché covers this shed, and '
+       + 'capex line 26 pays to remove it. Our scheme keeps it: under the smaller staff '
+       + 'option the service yard stays a service yard, with lodges. Both readings are '
+       + 'real, so this switches between them. The works total does not move either way.'
+  },
+  'bldg.workshop-shed': {
+    defaultOff: true,
+    off: 'Demolished — as the consent has it',
+    on:  'Standing — retained as lodges',
+    why: 'The white-roofed modern shed on the service yard’s north side. The '
+       + 'consent’s demolition poché covers it and capex line 26 pays to '
+       + 'remove it; our smaller staff option retains it. The works total does not move '
+       + 'either way.'
+  }
+};
+/* Angus, 28 Aug 2026: "service yard buildings to be off by defaul". So the two sheds
+   start demolished and the south range starts standing, and the state is stored as an
+   OBJECT of explicit true/false rather than as a list of the ids that are off. A list
+   cannot tell "this viewer has never chosen" from "this viewer chose to keep them", so
+   with a default-off entry a list would re-hide a shed the user had just restored on
+   every reload. The key is versioned so one old list-format value is dropped once
+   rather than being misread as a set of deliberate choices. */
+const DEMO_KEY = 'fcm.demolished.v2';
+const demoState = {};
+(function loadDemo(){
+  let raw = null;
+  try { raw = localStorage.getItem(DEMO_KEY); } catch(e){}
+  let saved = {};
+  if (raw){ try { saved = JSON.parse(raw) || {}; } catch(e){ saved = {}; } }
+  if (typeof saved !== 'object' || Array.isArray(saved)) saved = {};
+  /* only ids this build still knows about, so a removed element cannot leave a
+     ghost entry that hides nothing and can never be cleared */
+  Object.keys(DEMOLISHABLE).forEach(id => {
+    if (!elements[id]) return;
+    const chosen = Object.prototype.hasOwnProperty.call(saved, id) ? !!saved[id] : null;
+    const off = chosen === null ? !!DEMOLISHABLE[id].defaultOff : chosen;
+    if (off) demoState[id] = true;
+  });
+})();
+function saveDemo(){
+  const out = {};
+  Object.keys(DEMOLISHABLE).forEach(id => { out[id] = !!demoState[id]; });
+  try { localStorage.setItem(DEMO_KEY, JSON.stringify(out)); } catch(e){}
+}
+function isDemolished(eid){ return !!demoState[eid]; }
+/* the apron names belonging to whatever is demolished right now */
+let demolishedAprons = new Set();
+function apronName(eid){
+  const i = eid.indexOf('.');
+  if (i < 0) return null;
+  /* THREE.JS STRIPS DOTS FROM glTF NODE NAMES - ARCHITECTURE.md records it, and the first
+     version of this function was written without it, so it compared
+     "ground.courtyard.apron.service-outbuildings" against a mesh three.js had already
+     renamed "groundcourtyardapronservice-outbuildings" and silently matched nothing.
+     Angus found it by picking the apron that was still lying in the yard with both sheds
+     switched off, and his own pick text carried the stripped name. Matching is done on the
+     stripped form for exactly that reason. */
+  return ('ground.courtyard.apron.' + eid.slice(i + 1)).replace(/\./g, '');
+}
+function refreshDemolishedAprons(){
+  demolishedAprons = new Set(Object.keys(demoState)
+    .filter(id => demoState[id]).map(apronName).filter(Boolean));
+}
+refreshDemolishedAprons();
+function setDemolished(eid, off){
+  if (!DEMOLISHABLE[eid]) return;
+  if (off) demoState[eid] = true; else delete demoState[eid];
+  refreshDemolishedAprons();
+  saveDemo();
+  applyLayers();
+  renderDemoRail();
+  /* the pointer has not moved, so the hover tooltip would go on naming a
+     building that is no longer under it until the mouse is nudged */
+  if (hovered === eid && off){ hovered = null; tip.style.display = 'none'; }
+  if (selected === eid){
+    if (off) highlight(eid, false);          /* nothing left to tint */
+    showCard(elements[eid]);
+  }
+}
+function renderDemoRail(){
+  const ids = Object.keys(demoState).filter(id => demoState[id]);
+  const sect = document.getElementById('demosect');
+  const list = document.getElementById('demolist');
+  if (!sect || !list) return;
+  sect.style.display = ids.length ? '' : 'none';
+  /* The sidebar is minimised by default and hides its whole scroll area when it
+     is, so a restore control living only in there would be invisible at exactly
+     the moment it is needed - after a reload with the building already gone.
+     Something demolished therefore opens the sidebar. */
+  if (ids.length && document.getElementById('rail').classList.contains('min')) setRailMin(false);
+  list.innerHTML = ids.map(id =>
+    `<div class="drow"><span>${elements[id] ? elements[id].name : id}</span>
+      <button data-restore="${id}">Restore</button></div>`).join('');
+  list.querySelectorAll('button[data-restore]').forEach(b =>
+    b.addEventListener('click', () => {
+      const id = b.dataset.restore;
+      setDemolished(id, false);
+      if (selected !== id){ if (selected) highlight(selected, false);
+        selected = id; highlight(id, true); showCard(elements[id]); }
+    }));
+}
 
 /* ------- cost engine (mirrors the workbook two-limb loading exactly) ------- */
 const HL = E.loading.hotel, RL = E.loading.resi;
@@ -459,8 +638,18 @@ document.getElementById('resetsw').addEventListener('click', () => {
 /* ------- scene ------- */
 const app = document.getElementById('app');
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(46, innerWidth/innerHeight, 0.5, 6000);
-const renderer = new THREE.WebGLRenderer({antialias:true, powerPreference:'high-performance'});
+/* near 0.5 -> 2.0 (20 Aug 2026): at 0.5 the depth ratio was 12,000:1 and
+   surfaces 6 cm apart z-fought into speckle from birdseye range. Orbit's
+   minDistance is 6, so nothing legitimate sits inside 2 m. */
+const camera = new THREE.PerspectiveCamera(46, innerWidth/innerHeight, 2.0, 6000);
+/* ?logdepth=1 switches to a logarithmic depth buffer: at 1,700 m the standard
+   24-bit perspective depth resolves ~9 cm, so wall thicknesses fight at range
+   (measured by render_verify's near/far pair, 20 Aug 2026); log depth resolves
+   ~1 mm at that distance. A URL switch, not the default, until the A/B is
+   measured - GTAO reads depth its own way and must be proven unbroken first. */
+const LOG_DEPTH = new URLSearchParams(location.search).get('logdepth') === '1';
+const renderer = new THREE.WebGLRenderer({antialias:true, powerPreference:'high-performance',
+                                          logarithmicDepthBuffer: LOG_DEPTH});
 renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
 renderer.setSize(innerWidth, innerHeight);
 renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -591,6 +780,7 @@ const THEMES = {
 let themeName = 'estate';
 let estateTerrainTex = null;
 let museumTerrainTex = null;
+let surveyTerrainTex = null;   /* the off-world ground texture, 28 Aug 2026 */
 
 /* ================= VARIANT HARNESS =================================================
    Two orthogonal axes. A treatment says what the model is MADE OF; a light says how it
@@ -1019,9 +1209,18 @@ function paintScene(T){
   meshLayer.forEach((layer, o) => {
     const mats = Array.isArray(o.material) ? o.material : [o.material];
     if (layer === 'terrain'){
-      const map = (T.useMuseumMap && museumTerrainTex) ? museumTerrainTex
-                                                       : estateTerrainTex;
-      if (map) mats.forEach(m => { m.map = map; m.needsUpdate = true; });
+      /* Only the terrain sheet itself carries the baked albedo. Phase 4 ground
+         surfaces share the layer for toggling but have no UVs: forcing the map
+         onto them made refreshBaseColors discard their slot colour below (map
+         wins, colour set white), so every court, drive and lawn rendered
+         white-grey whatever the registry said. Found by ray-cast - the court's
+         material read colour [1,1,1] - not by looking. */
+      const map = (o.userData.schemeRole === 'survey-ground' && surveyTerrainTex)
+        ? surveyTerrainTex
+        : ((T.useMuseumMap && museumTerrainTex) ? museumTerrainTex : estateTerrainTex);
+      if (map && (o.name.replace(/\./g, '') === 'terrain' || o.userData.schemeRole === 'survey-ground'
+                  || /^schemeground/.test(o.name.replace(/[.\-]/g, ''))))
+        mats.forEach(m => { m.map = map; m.needsUpdate = true; });
     }
     if (layer === 'vegetation'){
       mats.forEach(m => {
@@ -1043,6 +1242,31 @@ orbit.maxPolarAngle = Math.PI*.49; orbit.minDistance = 6; orbit.maxDistance = 28
 const fly = new FlyControls(camera, renderer.domElement);
 fly.movementSpeed = 70; fly.rollSpeed = .22; fly.dragToLook = true; fly.enabled = false;
 
+/* WASD glide in ORBIT mode (20 Aug 2026): pans camera and target together on
+   the ground plane, speed scaled by height, so the scene can be crossed
+   without switching to fly mode. Fly mode (M) keeps its own controls. */
+const wasd = {w:false, a:false, s:false, d:false};
+addEventListener('keydown', e => {
+  if (e.target && /INPUT|TEXTAREA/.test(e.target.tagName)) return;
+  const k = e.key.toLowerCase();
+  if (k in wasd) wasd[k] = true;
+});
+addEventListener('keyup', e => { const k = e.key.toLowerCase(); if (k in wasd) wasd[k] = false; });
+function wasdGlide(dt){
+  if (fly.enabled || !(wasd.w || wasd.a || wasd.s || wasd.d)) return;
+  const speed = Math.max(12, camera.position.distanceTo(orbit.target) * 0.6) * dt;
+  const fwd = new THREE.Vector3().subVectors(orbit.target, camera.position);
+  fwd.y = 0; fwd.normalize();
+  const right = new THREE.Vector3(fwd.z, 0, -fwd.x);
+  const move = new THREE.Vector3();
+  if (wasd.w) move.add(fwd);
+  if (wasd.s) move.sub(fwd);
+  if (wasd.a) move.add(right);
+  if (wasd.d) move.sub(right);
+  move.normalize().multiplyScalar(speed);
+  camera.position.add(move); orbit.target.add(move);
+}
+
 const VIEWS = {
   whole:[[-430,470,640],[130,30,-40]],
   house:[[235,95,95],[-5,40,-10]],
@@ -1061,7 +1285,7 @@ const meshesByElement = {};
 const meshLayer = new Map();
 let modelRoot = null;
 const draco = new DRACOLoader();
-draco.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/libs/draco/');
+draco.setDecoderPath('vendor/draco/');
 const loader = new GLTFLoader(); loader.setDRACOLoader(draco);
 const texLoader = new THREE.TextureLoader();
 let waterNormalTex = null;
@@ -1164,7 +1388,7 @@ function refreshBaseColors(){
         m.envMapIntensity = 1.3; }
       return true;
     };
-    if (layer==='terrain' || layer==='phase4'){
+    if (layer==='terrain' || layer==='phase4' || layer==='precinct'){
       /* Phase 4 ground, masonry and vegetation carry semantic material names from the
          same registry as the rest of the model. They are source geometry, not a treatment
          exception: repaint them under estate/drawing and apply fabric maps where declared. */
@@ -1215,6 +1439,16 @@ function refreshBaseColors(){
     o.userData.baseColors = mats.map(m => m.color.clone());
   });
 }
+/* One auditable shadow policy for every mesh class.  PBR fabric must receive as well
+   as cast; disabling receiveShadow on buildings removed contact and self-shadow cues. */
+function applyShadowPolicy(o, layer){
+  const fabric = layer==='building' || layer==='proposed' || layer==='vegetation' ||
+                 layer==='prop' || layer==='phase4' || layer==='precinct' ||
+                 layer==='offestate';
+  o.castShadow = fabric || layer==='marker';
+  o.receiveShadow = fabric || layer==='terrain' || layer==='water' ||
+                    layer==='area' || layer==='feature';
+}
 function accept(gltf){
   modelRoot = gltf.scene;
   const imported = [];
@@ -1237,6 +1471,7 @@ function accept(gltf){
     if (!o.isMesh) return;
     const meta = nodeMeta(o);
     const layer = classify(meta); meshLayer.set(o, layer);
+    applyShadowPolicy(o, layer);
     const ckey = meta.extras.element || meta.name;
     o.material = Array.isArray(o.material) ? o.material.map(m=>cloneFor(ckey,m))
                                            : cloneFor(ckey, o.material);
@@ -1244,6 +1479,13 @@ function accept(gltf){
     mats.forEach(m => { m.envMapIntensity = 0.55; });
     mats.forEach(m => { if (m.map && m.name === 'wallbrick') m.userData.savedMap = m.map; });
     const eid = meta.extras.element || meta.name;
+    /* Existing fabric can carry a modification switch and must remain. Only the closed
+       node list (or the build's own extras) makes physical geometry disappear. */
+    /* A cloned prop has camelCase userData on its placement root.  Preserve it when
+       classifying the child meshes; otherwise placeProps binds it and this line erases it. */
+    o.userData.schemeSwitch = meta.extras.switch || meta.extras.schemeSwitch || meshSwitch[meta.name] ||
+      meshSwitch[meta.name.replace(/\.\d+$/, '')] || null;
+    o.userData.schemeRole = meta.extras.scheme_role || meta.extras.schemeRole || 'scheme-work';
     if (elements[eid]){
       o.userData.eid = eid;
       (meshesByElement[eid] = meshesByElement[eid]||[]).push(o);
@@ -1252,14 +1494,8 @@ function accept(gltf){
       o.userData.isLeaf = !/trunks/.test(meta.name);
     }
     if (layer==='terrain'){
-      o.receiveShadow = true;
       mats.forEach(m => { if (m.map){ estateTerrainTex = estateTerrainTex || m.map;
         m.map.anisotropy = 8; } });
-    } else if (layer==='building'||layer==='proposed'||layer==='vegetation'||
-               layer==='marker'){
-      o.castShadow = true; o.receiveShadow = false;
-    } else if (layer==='water'){
-      o.receiveShadow = true;
     }
     o.userData.baseOpacities = mats.map(m => m.opacity);
   });
@@ -1278,11 +1514,16 @@ function accept(gltf){
   }, undefined, () => console.warn('[fcm] missing terrain texture ' + url));
   loadTerrainTex('terrain_albedo_estate.webp', t => { estateTerrainTex = t; });
   loadTerrainTex('terrain_albedo_museum.webp', t => { museumTerrainTex = t; });
+  loadTerrainTex('terrain_albedo_survey.webp', t => { surveyTerrainTex = t; });
   document.getElementById('status').textContent =
     'Click a building, ground work or marker for its capex. Drag to orbit · wheel to zoom.';
   setTimeout(()=>document.getElementById('status').style.display='none', 9000);
   refreshBaseColors();
-  onStateChange(); applyLayers();
+  onStateChange(); applyLayers(); renderDemoRail();
+  /* Pre-compile every shader while the loading state still owns the screen,
+     instead of stalling the first rendered frame (20 Aug 2026). */
+  if (renderer.compileAsync) renderer.compileAsync(scene, camera).catch(()=>{});
+  else renderer.compile(scene, camera);
 }
 /* ================= SPLIT LOAD: static geometry + placed assets =====================
    The model used to arrive as one 11 MB file with every building's position baked into
@@ -1306,9 +1547,51 @@ function accept(gltf){
    and handed to accept(), so classification, material cloning, the element binding that
    carries the capex, layers and the treatment switch all work exactly as before.
 */
-const SPLIT = {static: 'static.glb', assets: 'assets.glb', spec: '../scene.json',
-               props: 'props.glb', dressing: 'props-placement.json',
-               legacy: 'fawley-estate.glb'};
+const OUT_SPLIT = {static: 'static.glb', assets: 'assets.glb', spec: '../scene.json',
+                   props: 'props.glb', dressing: 'props-placement.json',
+                   legacy: 'fawley-estate.glb'};
+let SPLIT = Object.assign({}, OUT_SPLIT);
+const USE_PROMOTED_RUN = new URLSearchParams(location.search).get('runs') === '1';
+
+/* Step 8 of the concurrency migration stays opt-in until two clean full builds and
+   viewer sweeps have earned making it the default.  Keep this pure: the test below
+   feeds a synthetic current.json to the exact resolution logic without loading GLBs. */
+function splitFromRunPointer(pointer){
+  const run = pointer && pointer.run;
+  const artefacts = pointer && pointer.artefacts;
+  if (typeof run !== 'string' || !/^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(run)
+      || !artefacts || !artefacts['static.glb'] || !artefacts['assets.glb']) return null;
+  const root = 'runs/' + encodeURIComponent(run) + '/';
+  return Object.assign({}, OUT_SPLIT, {
+    static: root + 'static.glb',
+    assets: root + 'assets.glb',
+    legacy: root + 'fawley-estate.glb',
+    run,
+  });
+}
+
+async function resolvePromotedSplit(){
+  if (!USE_PROMOTED_RUN){
+    window.__fcmRunPointer = {mode: 'out', optIn: false};
+    return;
+  }
+  try {
+    const response = await fetch('current.json', {cache: 'no-store'});
+    if (!response.ok) throw new Error('current.json HTTP ' + response.status);
+    const pointer = await response.json();
+    const resolved = splitFromRunPointer(pointer);
+    if (!resolved) throw new Error('current.json has no complete promoted split run');
+    SPLIT = resolved;
+    window.__fcmRunPointer = {mode: 'promoted', run: resolved.run,
+                              generation: pointer.generation};
+    console.info('[fcm] serving promoted run ' + resolved.run + ' (generation ' + pointer.generation + ')');
+  } catch (e) {
+    /* Deliberately loud: a missing pointer must never masquerade as a promoted run. */
+    SPLIT = Object.assign({}, OUT_SPLIT);
+    window.__fcmRunPointer = {mode: 'out-fallback', reason: String(e.message || e)};
+    console.error('[fcm] RUN POINTER UNAVAILABLE — serving out/ fallback: ' + (e.message || e));
+  }
+}
 
 /* PROPS ARE A SEPARATE LIBRARY AND A SEPARATE PLACEMENT FILE, deliberately.
    scene.json is the layout of things placed by JUDGEMENT - 58 buildings, each one a
@@ -1324,16 +1607,73 @@ const SPLIT = {static: 'static.glb', assets: 'assets.glb', spec: '../scene.json'
    the moment somebody has not run the generator, so absence is normal here and is
    reported rather than thrown. */
 
-/* Ray-cast the terrain for a ground level. Used only where scene.json has none. */
+/* Ray-cast the BUILT GROUND for a level. Used only where a placement has none.
+
+   CORRECTED 29 Aug 2026, and the defect was measured by estate-review-6 before it was
+   fixed: this collected targets by the NAME test /^terrain/ alone, so a prop standing on
+   paving was seated on the terrain UNDER that paving. Five of the six entrance-front
+   planters stood 42 to 82 mm below the court they are on, median 58.5 mm, because
+   phase4_hardstanding seats the court at built terrain + 0.040 m plus a crown of up to
+   0.045 m near a drive medial. Regenerating out/props-placement.json does not touch it:
+   the file carries ground: null on every land placement precisely so that the viewer
+   decides, and the viewer was deciding wrongly.
+
+   WHAT IS A TARGET is derived, not named. A treated surface is anything carrying a
+   `surface_*` material that is not on a solid layer - which is the same derivation R16 and
+   R17 were regraded to on 21 Aug 2026, for the same reason: their hand-maintained name
+   table went stale twice and reported 7,519 m2 of built hardstanding as bare ground. A
+   name test against a generated convention has to know the whole convention, and this one
+   would have had to know `ground.courtyard.*`, `phase4.*` and `gatehouse-ground.*` and
+   every suffix any of them ever grows.
+
+   THE SOLID-LAYER TEST IS NOT OPTIONAL, twice over. R17's own first derivation omitted it
+   and caught twelve residences and the spa, because those assets carry a bit of paving
+   inside them; and the overlay meshes on layer `area` float ABOVE the paving -
+   area.arrival-court measures 33.383 over a court at 33.215, 168 mm proud - so a
+   highest-hit rule that could select one would RAISE every forecourt prop 168 mm instead
+   of sinking it 58, which is worse than the defect. They carry material `area` on layer
+   `area` and are excluded here by the selector rather than by being hidden: groundAt
+   traverses regardless of layerState.
+
+   HIGHEST hit, not first: a prop stands on whatever is on top in its own column.
+
+   R42 in tools/fcm_check.py pins the marker below and measures every land placement
+   against this selector, so if the convention is ever narrowed again the rule fires. */
 const _groundRay = new THREE.Raycaster();
 const _down = new THREE.Vector3(0, -1, 0);
+const GROUND_SEAT_SOLID_LAYERS = ['building', 'proposed', 'vegetation', 'area', 'marker'];
+/* fcm:ground-seat-selector v3 = the terrain LAYER + surface_* meshes off any solid layer
+
+   v2 tested the NAME /^terrain/ and that was the kerb lesson a third time in three days.
+   The terrain is not one sheet and not one prefix: a scheme that grades the ground emits
+   `scheme-ground.<switch>` and `survey-ground.<switch>` beside it, and those two carry the
+   `terrain` material on the `terrain` layer under names that begin with neither. Measured:
+   the sixteen River Club terrace props stand over scheme-ground.Sch_RiverClub at 31.400 and
+   survey-ground.Sch_RiverClub at 31.269, and v2 could see neither - groundAt would have
+   returned 0 and dropped every one of them 31 m to sea level.
+
+   So the test is the declared LAYER, which all three sheets carry and which is what
+   render_verify's own ground population already keys on, with the name kept only as a
+   fallback for a mesh that reaches the viewer with no extras at all. */
+function isBuiltGround(o){
+  if (!o.isMesh) return false;
+  const layer = classify(nodeMeta(o));
+  if (layer === 'terrain') return true;
+  if (/^terrain/.test(o.name || '')) return true;
+  if (GROUND_SEAT_SOLID_LAYERS.indexOf(layer) >= 0) return false;
+  const mats = Array.isArray(o.material) ? o.material : [o.material];
+  return mats.some(m => m && /^surface_/.test((m.name || '').split('.')[0]));
+}
 function groundAt(root, x, z){
   const targets = [];
-  root.traverse(o => { if (o.isMesh && /^terrain/.test(o.name || '')) targets.push(o); });
+  root.traverse(o => { if (isBuiltGround(o)) targets.push(o); });
   if (!targets.length) return 0;
   _groundRay.set(new THREE.Vector3(x, 500, z), _down);
-  const hit = _groundRay.intersectObjects(targets, false)[0];
-  return hit ? hit.point.y : 0;
+  const hits = _groundRay.intersectObjects(targets, false);
+  if (!hits.length) return 0;
+  let top = hits[0].point.y;
+  for (let i = 1; i < hits.length; i++) if (hits[i].point.y > top) top = hits[i].point.y;
+  return top;
 }
 
 function placeAssets(staticScene, assetScene, spec){
@@ -1411,6 +1751,10 @@ function placeProps(staticScene, propScene, dressing){
       asset: key,
       prop: key,
       rule: o.rule || null,
+      /* scheme_switch is emitted redundantly by dress_scene.py.  The live rule map
+         remains the authority, so a stale derived file cannot keep a prop alive. */
+      schemeSwitch: dressingSwitch[o.rule] || o.scheme_switch || null,
+      schemeRole: 'scheme-work',
       placement_basis: 'generated',
     });
     let gy = (o.ground === null || o.ground === undefined)
@@ -1441,7 +1785,7 @@ async function loadSplit(){
   const json = async (u) => { const r = await fetch(u); if (!r.ok) throw new Error(u); return r.json(); };
   try {
     const [stat, assets, spec] = await Promise.all([
-      get(SPLIT.static), get(SPLIT.assets), json(SPLIT.spec)]);
+      get(SPLIT.static), get(SPLIT.assets), json(SPLIT.spec), switchGroundReady]);
     const report = placeAssets(stat.scene, assets.scene, spec);
     /* The props library and the generated dressing are BOTH optional and are fetched
        after the model, not with it. A missing props.glb means the library has not been
@@ -1458,6 +1802,17 @@ async function loadSplit(){
     }
     window.__fcmSplit = Object.assign({mode: 'split', props: propReport}, report);
     accept(stat);
+    /* Instant cuts (20 Aug 2026): a name in scene.json "hidden" removes the
+       object on refresh, no rebuild - a cut must be an authoring-loop edit,
+       not a two-minute bake. Names compare dot-stripped, because three.js
+       strips dots from glTF node names. */
+    const hidden = (spec.hidden || []).map(n => n.replace(/\./g, ''));
+    if (hidden.length){
+      stat.scene.traverse(o => {
+        if (o.name && hidden.includes(o.name.replace(/\./g, ''))) o.visible = false;
+      });
+      console.log('[fcm] hidden by scene.json:', hidden.length);
+    }
     return true;
   } catch (e){
     /* One file missing and the whole split is unusable, so say so loudly and fall back
@@ -1468,10 +1823,10 @@ async function loadSplit(){
   }
 }
 
-loadSplit().then(ok => { if (ok) return;
-loader.load(SPLIT.legacy, accept, undefined, err => {
-  console.warn(err); document.getElementById('drop').classList.add('show');
-});
+resolvePromotedSplit().then(() => loadSplit()).then(ok => { if (ok) return;
+  loader.load(SPLIT.legacy, accept, undefined, err => {
+    console.warn(err); document.getElementById('drop').classList.add('show');
+  });
 });
 const drop = document.getElementById('drop');
 addEventListener('dragover', e=>e.preventDefault());
@@ -1482,7 +1837,18 @@ addEventListener('drop', e => { e.preventDefault();
 
 /* ------- layers ------- */
 const layerState = {building:true, proposed:true, area:false, marker:false,
-                    vegetation:true, water:true, offestate:false, hideoff:false,
+                    vegetation:true, water:true, offestate:true, hideoff:true,
+                    /* Phase 4 source planting, boundaries and masonry carry layer=phase4
+                       and had NO toggle at all, so `layerState[layer] !== false` was
+                       undefined-and-therefore-true and nothing could ever hide them. The
+                       measured hedges and source specimen trees stayed visible in every
+                       judging render even with Trees off. Added 21 Aug 2026 on Angus's
+                       instruction; `--layers -phase4` now works. */
+                    phase4:true,
+                    /* The Main House precinct - the walled formal garden built from the
+                       drawn plan on 20 Aug 2026. On its own toggle so it can be judged
+                       against the state before it without rebuilding. */
+                    precinct:true,
                     /* The survey anchor is a 20 m red pole at SU 76520 84214. It was
                        forced visible, so it stood up through the roof of the Main
                        House in every view anyone ever looked at, including the ones
@@ -1499,9 +1865,28 @@ function applyLayers(){
       vis = (el && el.class==='off-estate') ? layerState.offestate : layerState.building;
     }
     else vis = layerState[layer] !== false;
-    if (vis && layer==='proposed' && layerState.hideoff){
-      const el = elements[o.userData.eid];
-      if (el && el.switch && !swState[el.switch]) vis = false;
+    const sw = o.userData.schemeSwitch;
+    if (vis && sw) {
+      const on = !!swState[sw];
+      vis = o.userData.schemeRole === 'survey-ground' ? !on : on;
+    }
+    /* demolished means gone, not ghosted - Angus's choice, and it is what the
+       masterplan draws: open parkland where the range stood */
+    if (vis && o.userData.eid && isDemolished(o.userData.eid)) vis = false;
+    /* ...and so does the ground laid against it. Angus, 28 Aug: "when off the areas
+       around them need to go as well" - he had switched both sheds off and their gravel
+       aprons were still lying there in the yard. The apron carries no element id of its
+       own (it is ground infrastructure, like terrain.skirt), so it is matched by the name
+       tools/courtyard_ground.py gives it: "ground.courtyard.apron." + the element id less
+       its bldg./prop. prefix. Producer and consumer are named here together on purpose. */
+    /* ...and the KERB that edges it, 29 Aug 2026.  The apron surface hid with its building
+       and its kerb did not, because the kerb mesh is named "<surface>.kerbs" and this tested
+       the surface name exactly - so switching a shed off left a white kerb outline lying in
+       the grass exactly where the building had been, which Angus photographed. Matching the
+       apron name as a PREFIX takes the surface and its kerb together. */
+    if (vis && demolishedAprons.size){
+      const bare = (o.name || '').replace(/\./g, '');
+      for (const a of demolishedAprons){ if (bare === a || bare.startsWith(a)){ vis = false; break; } }
     }
     o.visible = vis;
   });
@@ -2100,6 +2485,16 @@ function showCard(el){
   const body = document.getElementById('cBody');
   const ls = el.capex_lines||[];
   let html = '';
+  const dem = DEMOLISHABLE[el.id];
+  if (dem){
+    const off = isDemolished(el.id);
+    html += `<div class="demo"><div class="row">
+        <span class="lbl">${off ? dem.off : dem.on}</span>
+        <button id="cDemo" class="${off?'off':'on'}">${off ? 'Rebuild' : 'Demolish'}</button>
+      </div><div class="why">${dem.why} The setting is remembered in this browser
+      across rebuilds; it is not part of the model files, so station renders always
+      show the building standing.</div></div>`;
+  }
   const cost = elementCost(el);
   if (ls.length){
     html += `<div class="cost">${fmtK(cost)}</div>
@@ -2124,6 +2519,8 @@ function showCard(el){
   if (el.cross_ref_lines && el.cross_ref_lines.length)
     html += `<div class="note basis">cost carried on lines ${el.cross_ref_lines.join(', ')} under another element (see binding notes)</div>`;
   body.innerHTML = html;
+  const btn = document.getElementById('cDemo');
+  if (btn) btn.addEventListener('click', () => setDemolished(el.id, !isDemolished(el.id)));
   card.classList.add('show');
 }
 
@@ -2169,7 +2566,7 @@ function tick(){
      settling its damping between the click and the note, so the frame filed with the
      finding would be a slightly different view from the pose recorded beside it - and
      OrbitControls.update() would also level any roll a fly-mode view was carrying. */
-  if (!markOn){ if (fly.enabled) fly.update(dt); else orbit.update(); }
+  if (!markOn){ if (fly.enabled) fly.update(dt); else { wasdGlide(dt); orbit.update(); } }
   hudFrame = (hudFrame + 1) % 8;
   if (hudFrame === 0) updateHud();
   if (aoOn && composer) composer.render();
@@ -2277,6 +2674,7 @@ window.__fcm = {
       light: lightName,
       variantsLoaded: !!window.__fcmVariants,
       loadMode: (window.__fcmSplit || {}).mode || 'pending',
+      runPointer: window.__fcmRunPointer || {mode: 'pending'},
       placedAssets: (window.__fcmSplit || {}).placed || 0,
       mode: mode,
       mark: markOn            /* OFF unless a human asked for it; see the interpreter */
@@ -2381,6 +2779,17 @@ window.__fcm = {
     if (box) box.checked = !!on;
     return true;
   },
+  /* Public, synchronous switch hook for render gates.  It takes the identical
+     onStateChange path as the rail, rather than editing swState behind the viewer. */
+  setSwitch(name, on){
+    if (!Object.prototype.hasOwnProperty.call(swState, name)) return false;
+    swState[name] = !!on;
+    const box = document.querySelector('#switches input[data-sw="' + name + '"]');
+    if (box) box.checked = !!on;
+    onStateChange();
+    return true;
+  },
+  switches(){ return Object.assign({}, swState); },
   layers(){ return Object.assign({ao: aoOn}, layerState); },
   /* draw and read back in one synchronous task */
   capture(){

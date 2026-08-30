@@ -1,14 +1,11 @@
 {
- "_": "THE MATERIAL REGISTRY. 34 semantic slots, one definition each, and one block of values per treatment. Nothing in the model may carry a colour that is not defined here.",
-
+ "_": "THE MATERIAL REGISTRY. 48 semantic slots, one definition each, and one block of values per treatment. Nothing in the model may carry a colour that is not defined here.",
  "_why": "Before this file the model carried 164 materials wearing 34 names, and the same name meant different things in different places: wall_brick had EIGHT different definitions, door seven, roof_slate six. Four modelling libraries had each chosen their own values. That is why a change to 'the brick' had to be made eight times and still came out inconsistent, and it is the reason a treatment could not be switched at all - there was nothing to switch. Semantic tokens are the precondition for options, not a consequence of them.",
-
  "_axes": {
   "treatment": "What the model is made of. drawing | estate | estate-rake | estate-wash | estate-wear | fabric",
   "light": "How it is lit. overcast | raking | bright",
   "_note": "The two are orthogonal on purpose: a treatment never encodes light, a light never encodes material. Three of each compose into nine looks for six units of work. Selected combination is URL-addressable in the viewer as ?variants=1&treatment=estate&light=raking"
  },
-
  "_directions": {
   "drawing": "White card. The architectural model register - material read by tone and shadow alone, near-monochrome, the light doing all the work. What a museum model of the estate would look like.",
   "estate": "Painted. The real materials as considered flat colour: Berkshire red brick, Welsh slate, Portland ashlar, lead. No texture, but every value chosen against the real thing.",
@@ -20,242 +17,2277 @@
   "raking": "Low sun, late in the day. Long shadows, warm key against a cool sky fill. Shows landform, roof pitch and depth of modelling - the light a detailer judges by.",
   "bright": "High sun, clear day. Short crisp shadows, strong contrast, saturated greens. The estate at its most legible."
  },
-
- "_slot_note": "role says what the slot is FOR. texture names a set in textures/ for the fabric treatment; null means the slot is untextured in every treatment (vertex-coloured foliage, overlay, ghosted massing). tile_m is the physical size of one texture repeat in metres - a brick course must read at the right size or the building looks like a doll's house.",
-
+ "_slot_note": "role says what the slot is FOR. texture names a set in textures/ for the fabric treatment; null means the slot is untextured in every treatment (vertex-coloured foliage, overlay, ghosted massing). tile_m is the physical size of one texture repeat in metres - a brick course must read at the right size or the building looks like a doll's house. RECORD: the brick TILE defect is estate-wide and is NOT fixed here. handmade-red-brick carries 40 courses and is stretched over 2.0 m, giving a 50 mm course where a real brick with its bed joint is 75 mm; make_textures.py declares that material as 4 x 3 m. Every other brick building is drawn about a third too small. Angus has ruled not to change it now.",
  "slots": {
-  "wall_brick":     {"role": "Principal walling brick - Main House, courtyards, stables", "texture": "handmade-red-brick", "tile_m": 2.0},
-  "wall_stone":     {"role": "Dressed stone walling", "texture": "ashlar-stone", "tile_m": 2.4},
-  "wall_render":    {"role": "Rendered or limewashed walling", "texture": "smooth-lime-render", "tile_m": 3.0},
-  "wallplain":      {"role": "Reconstruction walling - LIDAR-derived buildings", "texture": "handmade-red-brick", "tile_m": 2.0},
-  "wallbrick":      {"role": "Legacy tiled brick on reconstructions", "texture": "handmade-red-brick", "tile_m": 2.0},
-  "wall_off":       {"role": "Off-estate walling, deliberately muted (tier 4)", "texture": null, "tile_m": 0},
-  "stone":          {"role": "Rubble stone, garden and boundary walls", "texture": "rubble-stone", "tile_m": 2.0},
-  "stone_detail":   {"role": "Cornices, quoins, copings, plinths, balustrade", "texture": "ashlar-stone", "tile_m": 1.2},
-  "roof_slate":     {"role": "Slate roof covering", "texture": "welsh-slate-roof", "tile_m": 1.6},
-  "roof":           {"role": "Reconstruction roof covering", "texture": "welsh-slate-roof", "tile_m": 1.6},
-  "roof_lead":      {"role": "Lead flats, valleys, flashings, the Main House deck", "texture": "lead-roof-flashing", "tile_m": 1.5},
-  "roof_off":       {"role": "Off-estate roofs, muted (tier 4)", "texture": null, "tile_m": 0},
-  "prop_roof":      {"role": "Proposed-massing roof", "texture": "welsh-slate-roof", "tile_m": 1.6},
-  "timber":         {"role": "Weatherboarding, structural timber", "texture": "oak-weatherboard", "tile_m": 1.8},
-  "frame":          {"role": "Window frames, glazing bars", "texture": "painted-timber-joinery", "tile_m": 1.0},
-  "door":           {"role": "Door leaves", "texture": "painted-timber-joinery", "tile_m": 1.0},
-  "glass":          {"role": "Glazing", "texture": null, "tile_m": 0},
-  "metal":          {"role": "Ironwork, railings, rainwater goods, roof metalwork", "texture": "patinated-copper", "tile_m": 1.0},
-  "gravel":         {"role": "Drives and the forecourt apron", "texture": "loose-gravel", "tile_m": 2.5},
-  "earth":          {"role": "Terrain skirt, exposed ground, tracks", "texture": "compacted-earth-path", "tile_m": 3.0},
-  "terrain":        {"role": "The ground sheet - carries its own baked albedo today", "texture": "mown-lawn", "tile_m": 6.0},
-  "surface_pale_gravel_hardstanding": {"role": "Measured compound Main House and western-service hardstanding", "texture": "loose-gravel", "tile_m": 2.5},
-  "surface_bound_macadam_hardstanding": {"role": "Bound macadam drives in phase4.hardstanding.drives; photographed estate approach, gate and apron surfaces", "texture": null, "tile_m": 0},
-  "surface_formal_lawn": {"role": "Main House formal lawns and shaped lawn island", "texture": "mown-lawn-mower-stripe", "tile_m": 4.0},
-  "surface_planted_beds": {"role": "Source-supported planted beds and parterre", "texture": "woodland-floor", "tile_m": 4.0},
-  "surface_service_hardstanding": {"role": "Separate east-side service court only", "texture": "bound-resin-gravel", "tile_m": 2.0},
-  "surface_rough_parkland": {"role": "Rough parkland beyond formal landscape edges", "texture": "rough-meadow-grass", "tile_m": 4.0},
-  "hedge":          {"role": "Hedgerow and garden hedge", "texture": null, "tile_m": 0},
-  "trunk":          {"role": "Tree trunks and branches", "texture": null, "tile_m": 0},
-  "leaf_broadleaf": {"role": "Broadleaf canopy - vertex-coloured, never textured", "texture": null, "tile_m": 0},
-  "leaf_veteran":   {"role": "Veteran parkland canopy", "texture": null, "tile_m": 0},
-  "leaf_poplar":    {"role": "Poplar canopy - the canal avenue", "texture": null, "tile_m": 0},
-  "leaf_cedar":     {"role": "Cedar canopy", "texture": null, "tile_m": 0},
-  "water":          {"role": "The Thames", "texture": "still-water-long-water", "tile_m": 12.0},
-  "longwater":      {"role": "The Long Water canal", "texture": "still-water-long-water", "tile_m": 8.0},
-  "proposed_on":    {"role": "Proposed massing, scheme switched ON", "texture": null, "tile_m": 0},
-  "proposed_off":   {"role": "Proposed massing, scheme switched OFF - ghosted", "texture": null, "tile_m": 0},
-  "area":           {"role": "OVERLAY. Capex ground-works patch. Never fabric.", "texture": null, "tile_m": 0},
-  "marker":         {"role": "OVERLAY. Undesigned site marker pin.", "texture": null, "tile_m": 0},
-  "anchor":         {"role": "OVERLAY. Survey anchor at SU 76520 84214.", "texture": null, "tile_m": 0}
+  "wall_brick": {
+   "role": "Principal walling brick - Main House, courtyards, stables",
+   "texture": "handmade-red-brick",
+   "tile_m": 2.0
+  },
+  "wall_brick_courtyard": {
+   "role": "RETIRED BY RULING, 28 Aug 2026 - registered, bound by nothing, and must stay that way",
+   "_retired": "This was the courtyard precinct's own weathered-stock brick, and it stood for one evening. Angus reversed it: \"I specifically requested a different texture to that of the main house but the courtyard buildings and service yard should match the main house. Same brick and matching stone and portico colour.\" The precinct draws wall_brick now, and the only references left to this slot are its own registration - this file, the two treatment files, and the note in assets/kit/courtyard_style.py. IT IS KEPT RATHER THAN DELETED because deleting a registered slot is a change the treatments and courtyard_style's own 'every material is a registry slot' check all read, and because the decision to leave it registered and unused is itself on the record in COURTYARD.md. DO NOT BIND IT: a future session that finds an unused brick slot and puts it to work would quietly reintroduce the second brick he had just removed, and nobody would catch it in a render because a weathered stock at a 3.0 m tile looks like a brick. Flagged by estate-review-6, 29 Aug 2026, on the same argument as the do-not-merge note on wall_stone and stone_detail.",
+   "texture": "brick-weathered-stock",
+   "tile_m": 3.0
+  },
+  "wall_stone": {
+   "role": "Dressed stone walling",
+   "_retired_sandy": "THE SANDY VALUE IS RETIRED, Angus 29 Aug 2026, and this slot now carries stone_detail's pale colour in every treatment. His reason, given 30 Aug: the courtyard rebuild used the white for its French features, that white is closer to the Main House than the sandy some of the house's own features carried, and the task was to bring the HOUSE to the courtyard's white - \"so no sandy\". Measured, and it is why the ruling bites here rather than in an asset: dressed stone by surface area is 11,600 m2 sandy against 1,473 pale on the Main House and 2,689 against 122 on its north wing, but 813 against 6,086 on the south courtyard and 3,305 against 6,427 on the north. The courtyard was already pale; the house was not. One colour changes 14,289 m2 of house and wing without touching a single asset. STANDARD.md's own primary-photograph line has described those surrounds as PALE since 19 August and no provenance exists anywhere for the sandy value. THE RULING WAS RECORDED AS DONE ON 29 AUG AND NEVER APPLIED - COURTYARD.md said \"in all four treatments\" while the number had not moved since the first commit. DO NOT MERGE THIS SLOT WITH stone_detail: they now hold the same colour and differ by tile scale, 2.4 m against 1.2 m, and collapsing them would halve the ashlar on twelve assets.",
+   "texture": "ashlar-stone",
+   "tile_m": 2.4
+  },
+  "wall_render": {
+   "role": "Rendered or limewashed walling",
+   "texture": "smooth-lime-render",
+   "tile_m": 3.0
+  },
+  "wallplain": {
+   "role": "Reconstruction walling - LIDAR-derived buildings",
+   "texture": "handmade-red-brick",
+   "tile_m": 2.0
+  },
+  "wallbrick": {
+   "role": "Legacy tiled brick on reconstructions",
+   "texture": "handmade-red-brick",
+   "tile_m": 2.0
+  },
+  "wall_off": {
+   "role": "Off-estate walling, deliberately muted (tier 4)",
+   "texture": null,
+   "tile_m": 0
+  },
+  "stone": {
+   "role": "Rubble stone, garden and boundary walls",
+   "texture": "rubble-stone",
+   "tile_m": 2.0
+  },
+  "stone_detail": {
+   "role": "Cornices, quoins, copings, plinths, balustrade",
+   "texture": "ashlar-stone",
+   "tile_m": 1.2
+  },
+  "roof_slate": {
+   "role": "Slate roof covering",
+   "texture": "welsh-slate-roof",
+   "tile_m": 1.6
+  },
+  "roof": {
+   "role": "Reconstruction roof covering",
+   "texture": "welsh-slate-roof",
+   "tile_m": 1.6
+  },
+  "roof_lead": {
+   "role": "Lead flats, valleys, flashings, the Main House deck",
+   "texture": "lead-roof-flashing",
+   "tile_m": 1.5
+  },
+  "roof_off": {
+   "role": "Off-estate roofs, muted (tier 4)",
+   "texture": null,
+   "tile_m": 0
+  },
+  "prop_roof": {
+   "role": "Proposed-massing roof",
+   "texture": "welsh-slate-roof",
+   "tile_m": 1.6
+  },
+  "timber": {
+   "role": "Weatherboarding, structural timber",
+   "texture": "oak-weatherboard",
+   "tile_m": 1.8
+  },
+  "frame": {
+   "role": "Window frames, glazing bars",
+   "texture": "painted-timber-joinery",
+   "tile_m": 1.0
+  },
+  "door": {
+   "role": "Door leaves",
+   "texture": "painted-timber-joinery",
+   "tile_m": 1.0
+  },
+  "glass": {
+   "role": "Glazing",
+   "texture": null,
+   "tile_m": 0
+  },
+  "metal": {
+   "role": "Ironwork, railings, rainwater goods, roof metalwork",
+   "texture": "patinated-copper",
+   "tile_m": 1.0
+  },
+  "gravel": {
+   "role": "Drives and the forecourt apron",
+   "texture": "loose-gravel",
+   "tile_m": 2.5
+  },
+  "earth": {
+   "role": "Terrain skirt, exposed ground, tracks",
+   "texture": "compacted-earth-path",
+   "tile_m": 3.0
+  },
+  "terrain": {
+   "role": "The ground sheet - carries its own baked albedo today",
+   "texture": "mown-lawn",
+   "tile_m": 6.0
+  },
+  "surface_pale_gravel_hardstanding": {
+   "role": "Measured compound Main House and western-service hardstanding",
+   "texture": "loose-gravel",
+   "tile_m": 2.5
+  },
+  "surface_bound_macadam_hardstanding": {
+   "role": "Bound macadam drives in phase4.hardstanding.drives; photographed estate approach, gate and apron surfaces",
+   "texture": null,
+   "tile_m": 0
+  },
+  "surface_formal_lawn": {
+   "role": "Main House formal lawns and shaped lawn island",
+   "texture": "mown-lawn-mower-stripe",
+   "tile_m": 4.0
+  },
+  "surface_planted_beds": {
+   "role": "Source-supported planted beds and parterre",
+   "texture": "woodland-floor",
+   "tile_m": 4.0
+  },
+  "surface_service_hardstanding": {
+   "role": "Separate east-side service court only",
+   "texture": "bound-resin-gravel",
+   "tile_m": 2.0
+  },
+  "surface_rough_parkland": {
+   "role": "Rough parkland beyond formal landscape edges",
+   "texture": "rough-meadow-grass",
+   "tile_m": 4.0
+  },
+  "hedge": {
+   "role": "Hedgerow and garden hedge",
+   "texture": null,
+   "tile_m": 0
+  },
+  "trunk": {
+   "role": "Tree trunks and branches",
+   "texture": null,
+   "tile_m": 0
+  },
+  "leaf_broadleaf": {
+   "role": "Broadleaf canopy - vertex-coloured, never textured",
+   "texture": null,
+   "tile_m": 0
+  },
+  "leaf_veteran": {
+   "role": "Veteran parkland canopy",
+   "texture": null,
+   "tile_m": 0
+  },
+  "leaf_poplar": {
+   "role": "Poplar canopy - the canal avenue",
+   "texture": null,
+   "tile_m": 0
+  },
+  "leaf_cedar": {
+   "role": "Cedar canopy",
+   "texture": null,
+   "tile_m": 0
+  },
+  "water": {
+   "role": "The Thames",
+   "texture": "still-water-long-water",
+   "tile_m": 12.0
+  },
+  "longwater": {
+   "role": "The Long Water canal",
+   "texture": "still-water-long-water",
+   "tile_m": 8.0
+  },
+  "proposed_on": {
+   "role": "Proposed massing, scheme switched ON",
+   "texture": null,
+   "tile_m": 0
+  },
+  "proposed_off": {
+   "role": "Proposed massing, scheme switched OFF - ghosted",
+   "texture": null,
+   "tile_m": 0
+  },
+  "area": {
+   "role": "OVERLAY. Capex ground-works patch. Never fabric.",
+   "texture": null,
+   "tile_m": 0
+  },
+  "marker": {
+   "role": "OVERLAY. Undesigned site marker pin.",
+   "texture": null,
+   "tile_m": 0
+  },
+  "anchor": {
+   "role": "OVERLAY. Survey anchor at SU 76520 84214.",
+   "texture": null,
+   "tile_m": 0
+  },
+  "metal_pale": {
+   "role": "River Club: off-white anodised metalwork - columns, roof fascia and soffit trim, balustrade, bar frame",
+   "texture": null,
+   "tile_m": 0
+  },
+  "metal_dark": {
+   "role": "River Club: dark bronze-grey metalwork - glazing mullions and transoms, bollards, sluice gate, rubbing strake",
+   "texture": null,
+   "tile_m": 0
+  },
+  "stone_pale": {
+   "role": "River Club: pale limestone - plinth, copings, quay wall, sluice dam, swim steps, paving, service pod cladding",
+   "texture": "ashlar-stone",
+   "tile_m": 1.4
+  },
+  "deck_timber": {
+   "role": "River Club: dark oiled deck boarding",
+   "texture": "oak-weatherboard",
+   "tile_m": 1.2
+  },
+  "glass_clear": {
+   "role": "River Club: low-iron glazing, clearer and less green than the estate's glass",
+   "texture": null,
+   "tile_m": 0
+  },
+  "roof_seam": {
+   "role": "River Club: grey standing-seam aluminium roof",
+   "texture": "lead-roof-flashing",
+   "tile_m": 1.5
+  },
+  "surface_public_highway": {
+   "role": "The A4155 carriageway. A public highway, deliberately a colder and darker grey than the estate's own macadam drives so the two read apart at a glance",
+   "texture": null,
+   "tile_m": 0
+  },
+  "road_marking": {
+   "role": "White thermoplastic road marking - the A4155 centre line. Off-white and slightly worn, never pure white, which reads as a light source at distance",
+   "texture": null,
+   "tile_m": 0
+  }
  },
-
  "treatments": {
   "estate": {
    "_": "The baseline. Values are the modal definition of each name as it stands in the GLB today, collapsed to one per slot. This is the current look made consistent, not yet the current look made good - the design pass is separate.",
    "_baseline_from": "out/fawley-estate.glb, 19 Aug, modal value per name across 164 materials",
-   "wall_brick":     {"colour": [0.2705, 0.1022, 0.0595], "roughness": 0.90, "metallic": 0.00, "alpha": 1.0},
-   "wall_stone":     {"colour": [0.4550, 0.4280, 0.3680], "roughness": 0.87, "metallic": 0.00, "alpha": 1.0},
-   "wall_render":    {"colour": [0.5850, 0.5620, 0.5080], "roughness": 0.90, "metallic": 0.00, "alpha": 1.0},
-   "wallplain":      {"colour": [0.4280, 0.2290, 0.1300], "roughness": 0.85, "metallic": 0.00, "alpha": 1.0},
-   "wallbrick":      {"colour": [1.0000, 1.0000, 1.0000], "roughness": 0.95, "metallic": 0.00, "alpha": 1.0},
-   "wall_off":       {"colour": [0.6600, 0.6500, 0.6200], "roughness": 0.90, "metallic": 0.00, "alpha": 1.0},
-   "stone":          {"colour": [0.4700, 0.4300, 0.3700], "roughness": 0.90, "metallic": 0.00, "alpha": 1.0},
-   "stone_detail":   {"colour": [0.5120, 0.4840, 0.4180], "roughness": 0.85, "metallic": 0.00, "alpha": 1.0},
-   "roof_slate":     {"colour": [0.0580, 0.0640, 0.0740], "roughness": 0.62, "metallic": 0.00, "alpha": 1.0},
-   "roof":           {"colour": [0.3170, 0.2690, 0.2080], "roughness": 0.85, "metallic": 0.00, "alpha": 1.0},
-   "roof_lead":      {"colour": [0.1500, 0.1630, 0.1680], "roughness": 0.55, "metallic": 0.12, "alpha": 1.0},
-   "roof_off":       {"colour": [0.5200, 0.5200, 0.5300], "roughness": 0.90, "metallic": 0.00, "alpha": 1.0},
-   "prop_roof":      {"colour": [0.3600, 0.3300, 0.3000], "roughness": 0.85, "metallic": 0.00, "alpha": 1.0},
-   "timber":         {"colour": [0.2350, 0.1630, 0.1000], "roughness": 0.92, "metallic": 0.00, "alpha": 1.0},
-   "frame":          {"colour": [0.0680, 0.0780, 0.0720], "roughness": 0.55, "metallic": 0.00, "alpha": 1.0},
-   "door":           {"colour": [0.0460, 0.0860, 0.0700], "roughness": 0.50, "metallic": 0.00, "alpha": 1.0},
-   "glass":          {"colour": [0.2747, 0.3968, 0.4452], "roughness": 0.06, "metallic": 0.00, "alpha": 0.26},
-   "metal":          {"colour": [0.0980, 0.1040, 0.1080], "roughness": 0.35, "metallic": 0.80, "alpha": 1.0},
-   "gravel":         {"colour": [0.4740, 0.4150, 0.3230], "roughness": 0.95, "metallic": 0.00, "alpha": 1.0},
-   "earth":          {"colour": [0.2290, 0.1910, 0.1520], "roughness": 0.95, "metallic": 0.00, "alpha": 1.0},
-   "terrain":        {"colour": [1.0000, 1.0000, 1.0000], "roughness": 0.95, "metallic": 0.00, "alpha": 1.0},
-   "surface_pale_gravel_hardstanding": {"colour": [0.5647, 0.4125, 0.2831], "roughness": 0.92, "metallic": 0.00, "alpha": 1.0},
-   "surface_bound_macadam_hardstanding": {"colour": [0.2542, 0.2384, 0.2122], "roughness": 0.88, "metallic": 0.00, "alpha": 1.0},
-   "surface_formal_lawn": {"colour": [0.3900, 0.5000, 0.2400], "roughness": 0.88, "metallic": 0.00, "alpha": 1.0},
-   "surface_planted_beds": {"colour": [0.1800, 0.2200, 0.1000], "roughness": 0.96, "metallic": 0.00, "alpha": 1.0},
-   "surface_service_hardstanding": {"colour": [0.3900, 0.3600, 0.2850], "roughness": 0.90, "metallic": 0.00, "alpha": 1.0},
-   "surface_rough_parkland": {"colour": [0.4300, 0.4900, 0.2700], "roughness": 0.93, "metallic": 0.00, "alpha": 1.0},
-   "hedge":          {"colour": [0.1900, 0.2800, 0.1700], "roughness": 0.95, "metallic": 0.00, "alpha": 1.0},
-   "trunk":          {"colour": [0.2810, 0.2070, 0.1500], "roughness": 0.90, "metallic": 0.00, "alpha": 1.0},
-   "leaf_broadleaf": {"colour": [1.0000, 1.0000, 1.0000], "roughness": 0.95, "metallic": 0.00, "alpha": 1.0},
-   "leaf_veteran":   {"colour": [1.0000, 1.0000, 1.0000], "roughness": 0.95, "metallic": 0.00, "alpha": 1.0},
-   "leaf_poplar":    {"colour": [1.0000, 1.0000, 1.0000], "roughness": 0.95, "metallic": 0.00, "alpha": 1.0},
-   "leaf_cedar":     {"colour": [1.0000, 1.0000, 1.0000], "roughness": 0.95, "metallic": 0.00, "alpha": 1.0},
-   "water":          {"colour": [0.0830, 0.1460, 0.1700], "roughness": 0.08, "metallic": 0.00, "alpha": 1.0},
-   "longwater":      {"colour": [0.0860, 0.1700, 0.1630], "roughness": 0.07, "metallic": 0.00, "alpha": 1.0},
-   "proposed_on":    {"colour": [0.8800, 0.8440, 0.7620], "roughness": 0.85, "metallic": 0.00, "alpha": 1.0},
-   "proposed_off":   {"colour": [0.8300, 0.8300, 0.8100], "roughness": 0.90, "metallic": 0.00, "alpha": 0.45},
-   "area":           {"colour": [0.7920, 0.7400, 0.5600], "roughness": 0.90, "metallic": 0.00, "alpha": 0.34},
-   "marker":         {"colour": [0.0590, 0.0900, 0.1650], "roughness": 0.40, "metallic": 0.00, "alpha": 1.0},
-   "anchor":         {"colour": [0.8000, 0.1200, 0.1000], "roughness": 0.50, "metallic": 0.00, "alpha": 1.0}
+   "wall_brick": {
+    "colour": [
+     0.2705,
+     0.1022,
+     0.0595
+    ],
+    "roughness": 0.9,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "wall_brick_courtyard": {
+    "colour": [
+     0.203087,
+     0.086047,
+     0.05723
+    ],
+    "roughness": 0.9,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "wall_stone": {
+    "colour": [
+     0.512,
+     0.484,
+     0.418
+    ],
+    "roughness": 0.87,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "wall_render": {
+    "colour": [
+     0.585,
+     0.562,
+     0.508
+    ],
+    "roughness": 0.9,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "wallplain": {
+    "colour": [
+     0.428,
+     0.229,
+     0.13
+    ],
+    "roughness": 0.85,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "wallbrick": {
+    "colour": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "roughness": 0.95,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "wall_off": {
+    "colour": [
+     0.66,
+     0.65,
+     0.62
+    ],
+    "roughness": 0.9,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "stone": {
+    "colour": [
+     0.47,
+     0.43,
+     0.37
+    ],
+    "roughness": 0.9,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "stone_detail": {
+    "colour": [
+     0.512,
+     0.484,
+     0.418
+    ],
+    "roughness": 0.85,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "roof_slate": {
+    "colour": [
+     0.058,
+     0.064,
+     0.074
+    ],
+    "roughness": 0.62,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "roof": {
+    "colour": [
+     0.317,
+     0.269,
+     0.208
+    ],
+    "roughness": 0.85,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "roof_lead": {
+    "colour": [
+     0.15,
+     0.163,
+     0.168
+    ],
+    "roughness": 0.55,
+    "metallic": 0.12,
+    "alpha": 1.0
+   },
+   "roof_off": {
+    "colour": [
+     0.52,
+     0.52,
+     0.53
+    ],
+    "roughness": 0.9,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "prop_roof": {
+    "colour": [
+     0.36,
+     0.33,
+     0.3
+    ],
+    "roughness": 0.85,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "timber": {
+    "colour": [
+     0.235,
+     0.163,
+     0.1
+    ],
+    "roughness": 0.92,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "frame": {
+    "colour": [
+     0.068,
+     0.078,
+     0.072
+    ],
+    "roughness": 0.55,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "door": {
+    "colour": [
+     0.046,
+     0.086,
+     0.07
+    ],
+    "roughness": 0.5,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "glass": {
+    "colour": [
+     0.2747,
+     0.3968,
+     0.4452
+    ],
+    "roughness": 0.06,
+    "metallic": 0.0,
+    "alpha": 0.26
+   },
+   "metal": {
+    "colour": [
+     0.098,
+     0.104,
+     0.108
+    ],
+    "roughness": 0.35,
+    "metallic": 0.8,
+    "alpha": 1.0
+   },
+   "gravel": {
+    "colour": [
+     0.474,
+     0.415,
+     0.323
+    ],
+    "roughness": 0.95,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "earth": {
+    "colour": [
+     0.229,
+     0.191,
+     0.152
+    ],
+    "roughness": 0.95,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "terrain": {
+    "colour": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "roughness": 0.95,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "surface_pale_gravel_hardstanding": {
+    "colour": [
+     0.5647,
+     0.4125,
+     0.2831
+    ],
+    "roughness": 0.92,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "surface_bound_macadam_hardstanding": {
+    "colour": [
+     0.2542,
+     0.2384,
+     0.2122
+    ],
+    "roughness": 0.88,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "surface_formal_lawn": {
+    "colour": [
+     0.39,
+     0.5,
+     0.24
+    ],
+    "roughness": 0.88,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "surface_planted_beds": {
+    "colour": [
+     0.18,
+     0.22,
+     0.1
+    ],
+    "roughness": 0.96,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "surface_service_hardstanding": {
+    "colour": [
+     0.39,
+     0.36,
+     0.285
+    ],
+    "roughness": 0.9,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "surface_rough_parkland": {
+    "colour": [
+     0.43,
+     0.49,
+     0.27
+    ],
+    "roughness": 0.93,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "hedge": {
+    "colour": [
+     0.19,
+     0.28,
+     0.17
+    ],
+    "roughness": 0.95,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "trunk": {
+    "colour": [
+     0.281,
+     0.207,
+     0.15
+    ],
+    "roughness": 0.9,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "leaf_broadleaf": {
+    "colour": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "roughness": 0.95,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "leaf_veteran": {
+    "colour": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "roughness": 0.95,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "leaf_poplar": {
+    "colour": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "roughness": 0.95,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "leaf_cedar": {
+    "colour": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "roughness": 0.95,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "water": {
+    "colour": [
+     0.083,
+     0.146,
+     0.17
+    ],
+    "roughness": 0.08,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "longwater": {
+    "colour": [
+     0.086,
+     0.17,
+     0.163
+    ],
+    "roughness": 0.07,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "proposed_on": {
+    "colour": [
+     0.88,
+     0.844,
+     0.762
+    ],
+    "roughness": 0.85,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "proposed_off": {
+    "colour": [
+     0.83,
+     0.83,
+     0.81
+    ],
+    "roughness": 0.9,
+    "metallic": 0.0,
+    "alpha": 0.45
+   },
+   "area": {
+    "colour": [
+     0.792,
+     0.74,
+     0.56
+    ],
+    "roughness": 0.9,
+    "metallic": 0.0,
+    "alpha": 0.34
+   },
+   "marker": {
+    "colour": [
+     0.059,
+     0.09,
+     0.165
+    ],
+    "roughness": 0.4,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "anchor": {
+    "colour": [
+     0.8,
+     0.12,
+     0.1
+    ],
+    "roughness": 0.5,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "metal_pale": {
+    "colour": [
+     0.8632,
+     0.8469,
+     0.807
+    ],
+    "roughness": 0.4,
+    "metallic": 0.1,
+    "alpha": 1.0
+   },
+   "metal_dark": {
+    "colour": [
+     0.0423,
+     0.0452,
+     0.0437
+    ],
+    "roughness": 0.34,
+    "metallic": 0.55,
+    "alpha": 1.0
+   },
+   "stone_pale": {
+    "colour": [
+     0.7157,
+     0.6795,
+     0.6038
+    ],
+    "roughness": 0.62,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "deck_timber": {
+    "colour": [
+     0.147,
+     0.1195,
+     0.0931
+    ],
+    "roughness": 0.72,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "glass_clear": {
+    "colour": [
+     0.008,
+     0.0144,
+     0.0232
+    ],
+    "roughness": 0.03,
+    "metallic": 0.0,
+    "alpha": 0.22
+   },
+   "roof_seam": {
+    "colour": [
+     0.2016,
+     0.2159,
+     0.227
+    ],
+    "roughness": 0.36,
+    "metallic": 0.25,
+    "alpha": 1.0
+   },
+   "surface_public_highway": {
+    "colour": [
+     0.172,
+     0.1755,
+     0.181
+    ],
+    "roughness": 0.82,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "road_marking": {
+    "colour": [
+     0.74,
+     0.735,
+     0.708
+    ],
+    "roughness": 0.72,
+    "metallic": 0.0,
+    "alpha": 1.0
+   }
   },
- "estate-rake": {
-  "_": "F5 Rake candidate derived from estate; registry-level representative colour only until the spatial consumer is integrated.",
-  "_variant": {"name":"Rake","source":"scratch/phase4/wave2/photo-measurements.json gravel_treatment_options","mottle_amplitude_pct":0.03,"description":"Corrected base with ±3% metre-scale value variation at 1.5–2.5 m.","feature_scale_m":[1.5,2.5],"mode":"world-XY value noise"},
-  "wall_brick": {"colour":[0.2705,0.1022,0.0595],"roughness":0.9,"metallic":0,"alpha":1},
-  "wall_stone": {"colour":[0.455,0.428,0.368],"roughness":0.87,"metallic":0,"alpha":1},
-  "wall_render": {"colour":[0.585,0.562,0.508],"roughness":0.9,"metallic":0,"alpha":1},
-  "wallplain": {"colour":[0.428,0.229,0.13],"roughness":0.85,"metallic":0,"alpha":1},
-  "wallbrick": {"colour":[1,1,1],"roughness":0.95,"metallic":0,"alpha":1},
-  "wall_off": {"colour":[0.66,0.65,0.62],"roughness":0.9,"metallic":0,"alpha":1},
-  "stone": {"colour":[0.47,0.43,0.37],"roughness":0.9,"metallic":0,"alpha":1},
-  "stone_detail": {"colour":[0.512,0.484,0.418],"roughness":0.85,"metallic":0,"alpha":1},
-  "roof_slate": {"colour":[0.058,0.064,0.074],"roughness":0.62,"metallic":0,"alpha":1},
-  "roof": {"colour":[0.317,0.269,0.208],"roughness":0.85,"metallic":0,"alpha":1},
-  "roof_lead": {"colour":[0.15,0.163,0.168],"roughness":0.55,"metallic":0.12,"alpha":1},
-  "roof_off": {"colour":[0.52,0.52,0.53],"roughness":0.9,"metallic":0,"alpha":1},
-  "prop_roof": {"colour":[0.36,0.33,0.3],"roughness":0.85,"metallic":0,"alpha":1},
-  "timber": {"colour":[0.235,0.163,0.1],"roughness":0.92,"metallic":0,"alpha":1},
-  "frame": {"colour":[0.068,0.078,0.072],"roughness":0.55,"metallic":0,"alpha":1},
-  "door": {"colour":[0.046,0.086,0.07],"roughness":0.5,"metallic":0,"alpha":1},
-  "glass": {"colour":[0.2747,0.3968,0.4452],"roughness":0.06,"metallic":0,"alpha":0.26},
-  "metal": {"colour":[0.098,0.104,0.108],"roughness":0.35,"metallic":0.8,"alpha":1},
-  "gravel": {"colour":[0.474,0.415,0.323],"roughness":0.95,"metallic":0,"alpha":1},
-  "earth": {"colour":[0.229,0.191,0.152],"roughness":0.95,"metallic":0,"alpha":1},
-  "terrain": {"colour":[1,1,1],"roughness":0.95,"metallic":0,"alpha":1},
-  "surface_pale_gravel_hardstanding": {"colour":[0.5703,0.4166,0.2859],"roughness":0.92,"metallic":0,"alpha":1},
-  "surface_bound_macadam_hardstanding": {"colour":[0.2542,0.2384,0.2122],"roughness":0.88,"metallic":0,"alpha":1},
-  "surface_formal_lawn": {"colour":[0.39,0.5,0.24],"roughness":0.88,"metallic":0,"alpha":1},
-  "surface_planted_beds": {"colour":[0.18,0.22,0.1],"roughness":0.96,"metallic":0,"alpha":1},
-  "surface_service_hardstanding": {"colour":[0.39,0.36,0.285],"roughness":0.9,"metallic":0,"alpha":1},
-  "surface_rough_parkland": {"colour":[0.43,0.49,0.27],"roughness":0.93,"metallic":0,"alpha":1},
-  "hedge": {"colour":[0.19,0.28,0.17],"roughness":0.95,"metallic":0,"alpha":1},
-  "trunk": {"colour":[0.281,0.207,0.15],"roughness":0.9,"metallic":0,"alpha":1},
-  "leaf_broadleaf": {"colour":[1,1,1],"roughness":0.95,"metallic":0,"alpha":1},
-  "leaf_veteran": {"colour":[1,1,1],"roughness":0.95,"metallic":0,"alpha":1},
-  "leaf_poplar": {"colour":[1,1,1],"roughness":0.95,"metallic":0,"alpha":1},
-  "leaf_cedar": {"colour":[1,1,1],"roughness":0.95,"metallic":0,"alpha":1},
-  "water": {"colour":[0.083,0.146,0.17],"roughness":0.08,"metallic":0,"alpha":1},
-  "longwater": {"colour":[0.086,0.17,0.163],"roughness":0.07,"metallic":0,"alpha":1},
-  "proposed_on": {"colour":[0.88,0.844,0.762],"roughness":0.85,"metallic":0,"alpha":1},
-  "proposed_off": {"colour":[0.83,0.83,0.81],"roughness":0.9,"metallic":0,"alpha":0.45},
-  "area": {"colour":[0.792,0.74,0.56],"roughness":0.9,"metallic":0,"alpha":0.34},
-  "marker": {"colour":[0.059,0.09,0.165],"roughness":0.4,"metallic":0,"alpha":1},
-  "anchor": {"colour":[0.8,0.12,0.1],"roughness":0.5,"metallic":0,"alpha":1}
+  "estate-rake": {
+   "_": "F5 Rake candidate derived from estate; registry-level representative colour only until the spatial consumer is integrated.",
+   "_variant": {
+    "name": "Rake",
+    "source": "scratch/phase4/wave2/photo-measurements.json gravel_treatment_options",
+    "mottle_amplitude_pct": 0.03,
+    "description": "Corrected base with \u00b13% metre-scale value variation at 1.5\u20132.5 m.",
+    "feature_scale_m": [
+     1.5,
+     2.5
+    ],
+    "mode": "world-XY value noise"
+   },
+   "wall_brick": {
+    "colour": [
+     0.2705,
+     0.1022,
+     0.0595
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "wall_brick_courtyard": {
+    "colour": [
+     0.203087,
+     0.086047,
+     0.05723
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "wall_stone": {
+    "colour": [
+     0.512,
+     0.484,
+     0.418
+    ],
+    "roughness": 0.87,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "wall_render": {
+    "colour": [
+     0.585,
+     0.562,
+     0.508
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "wallplain": {
+    "colour": [
+     0.428,
+     0.229,
+     0.13
+    ],
+    "roughness": 0.85,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "wallbrick": {
+    "colour": [
+     1,
+     1,
+     1
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "wall_off": {
+    "colour": [
+     0.66,
+     0.65,
+     0.62
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "stone": {
+    "colour": [
+     0.47,
+     0.43,
+     0.37
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "stone_detail": {
+    "colour": [
+     0.512,
+     0.484,
+     0.418
+    ],
+    "roughness": 0.85,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "roof_slate": {
+    "colour": [
+     0.058,
+     0.064,
+     0.074
+    ],
+    "roughness": 0.62,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "roof": {
+    "colour": [
+     0.317,
+     0.269,
+     0.208
+    ],
+    "roughness": 0.85,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "roof_lead": {
+    "colour": [
+     0.15,
+     0.163,
+     0.168
+    ],
+    "roughness": 0.55,
+    "metallic": 0.12,
+    "alpha": 1
+   },
+   "roof_off": {
+    "colour": [
+     0.52,
+     0.52,
+     0.53
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "prop_roof": {
+    "colour": [
+     0.36,
+     0.33,
+     0.3
+    ],
+    "roughness": 0.85,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "timber": {
+    "colour": [
+     0.235,
+     0.163,
+     0.1
+    ],
+    "roughness": 0.92,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "frame": {
+    "colour": [
+     0.068,
+     0.078,
+     0.072
+    ],
+    "roughness": 0.55,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "door": {
+    "colour": [
+     0.046,
+     0.086,
+     0.07
+    ],
+    "roughness": 0.5,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "glass": {
+    "colour": [
+     0.2747,
+     0.3968,
+     0.4452
+    ],
+    "roughness": 0.06,
+    "metallic": 0,
+    "alpha": 0.26
+   },
+   "metal": {
+    "colour": [
+     0.098,
+     0.104,
+     0.108
+    ],
+    "roughness": 0.35,
+    "metallic": 0.8,
+    "alpha": 1
+   },
+   "gravel": {
+    "colour": [
+     0.474,
+     0.415,
+     0.323
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "earth": {
+    "colour": [
+     0.229,
+     0.191,
+     0.152
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "terrain": {
+    "colour": [
+     1,
+     1,
+     1
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "surface_pale_gravel_hardstanding": {
+    "colour": [
+     0.5703,
+     0.4166,
+     0.2859
+    ],
+    "roughness": 0.92,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "surface_bound_macadam_hardstanding": {
+    "colour": [
+     0.2542,
+     0.2384,
+     0.2122
+    ],
+    "roughness": 0.88,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "surface_formal_lawn": {
+    "colour": [
+     0.39,
+     0.5,
+     0.24
+    ],
+    "roughness": 0.88,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "surface_planted_beds": {
+    "colour": [
+     0.18,
+     0.22,
+     0.1
+    ],
+    "roughness": 0.96,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "surface_service_hardstanding": {
+    "colour": [
+     0.39,
+     0.36,
+     0.285
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "surface_rough_parkland": {
+    "colour": [
+     0.43,
+     0.49,
+     0.27
+    ],
+    "roughness": 0.93,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "hedge": {
+    "colour": [
+     0.19,
+     0.28,
+     0.17
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "trunk": {
+    "colour": [
+     0.281,
+     0.207,
+     0.15
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "leaf_broadleaf": {
+    "colour": [
+     1,
+     1,
+     1
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "leaf_veteran": {
+    "colour": [
+     1,
+     1,
+     1
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "leaf_poplar": {
+    "colour": [
+     1,
+     1,
+     1
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "leaf_cedar": {
+    "colour": [
+     1,
+     1,
+     1
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "water": {
+    "colour": [
+     0.083,
+     0.146,
+     0.17
+    ],
+    "roughness": 0.08,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "longwater": {
+    "colour": [
+     0.086,
+     0.17,
+     0.163
+    ],
+    "roughness": 0.07,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "proposed_on": {
+    "colour": [
+     0.88,
+     0.844,
+     0.762
+    ],
+    "roughness": 0.85,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "proposed_off": {
+    "colour": [
+     0.83,
+     0.83,
+     0.81
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 0.45
+   },
+   "area": {
+    "colour": [
+     0.792,
+     0.74,
+     0.56
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 0.34
+   },
+   "marker": {
+    "colour": [
+     0.059,
+     0.09,
+     0.165
+    ],
+    "roughness": 0.4,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "anchor": {
+    "colour": [
+     0.8,
+     0.12,
+     0.1
+    ],
+    "roughness": 0.5,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "metal_pale": {
+    "colour": [
+     0.8287,
+     0.813,
+     0.7747
+    ],
+    "roughness": 0.42,
+    "metallic": 0.1,
+    "alpha": 1.0
+   },
+   "metal_dark": {
+    "colour": [
+     0.0406,
+     0.0434,
+     0.042
+    ],
+    "roughness": 0.36,
+    "metallic": 0.55,
+    "alpha": 1.0
+   },
+   "stone_pale": {
+    "colour": [
+     0.6871,
+     0.6523,
+     0.5796
+    ],
+    "roughness": 0.64,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "deck_timber": {
+    "colour": [
+     0.1411,
+     0.1147,
+     0.0894
+    ],
+    "roughness": 0.74,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "glass_clear": {
+    "colour": [
+     0.0077,
+     0.0138,
+     0.0223
+    ],
+    "roughness": 0.05,
+    "metallic": 0.0,
+    "alpha": 0.22
+   },
+   "roof_seam": {
+    "colour": [
+     0.1935,
+     0.2073,
+     0.2179
+    ],
+    "roughness": 0.38,
+    "metallic": 0.25,
+    "alpha": 1.0
+   },
+   "surface_public_highway": {
+    "colour": [
+     0.172,
+     0.1755,
+     0.181
+    ],
+    "roughness": 0.82,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "road_marking": {
+    "colour": [
+     0.74,
+     0.735,
+     0.708
+    ],
+    "roughness": 0.72,
+    "metallic": 0.0,
+    "alpha": 1.0
+   }
+  },
+  "estate-wash": {
+   "_": "F5 Wash candidate derived from estate; registry-level representative colour only until the spatial consumer is integrated.",
+   "_variant": {
+    "name": "Wash",
+    "source": "scratch/phase4/wave2/photo-measurements.json gravel_treatment_options",
+    "mottle_amplitude_pct": 0.03,
+    "description": "Corrected base with \u00b13% metre-scale baked wash and a restrained house-edge damp band.",
+    "grid_m": 2,
+    "house_edge_band_m": 1.5,
+    "mode": "seeded vertex wash"
+   },
+   "wall_brick": {
+    "colour": [
+     0.2705,
+     0.1022,
+     0.0595
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "wall_brick_courtyard": {
+    "colour": [
+     0.203087,
+     0.086047,
+     0.05723
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "wall_stone": {
+    "colour": [
+     0.512,
+     0.484,
+     0.418
+    ],
+    "roughness": 0.87,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "wall_render": {
+    "colour": [
+     0.585,
+     0.562,
+     0.508
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "wallplain": {
+    "colour": [
+     0.428,
+     0.229,
+     0.13
+    ],
+    "roughness": 0.85,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "wallbrick": {
+    "colour": [
+     1,
+     1,
+     1
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "wall_off": {
+    "colour": [
+     0.66,
+     0.65,
+     0.62
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "stone": {
+    "colour": [
+     0.47,
+     0.43,
+     0.37
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "stone_detail": {
+    "colour": [
+     0.512,
+     0.484,
+     0.418
+    ],
+    "roughness": 0.85,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "roof_slate": {
+    "colour": [
+     0.058,
+     0.064,
+     0.074
+    ],
+    "roughness": 0.62,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "roof": {
+    "colour": [
+     0.317,
+     0.269,
+     0.208
+    ],
+    "roughness": 0.85,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "roof_lead": {
+    "colour": [
+     0.15,
+     0.163,
+     0.168
+    ],
+    "roughness": 0.55,
+    "metallic": 0.12,
+    "alpha": 1
+   },
+   "roof_off": {
+    "colour": [
+     0.52,
+     0.52,
+     0.53
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "prop_roof": {
+    "colour": [
+     0.36,
+     0.33,
+     0.3
+    ],
+    "roughness": 0.85,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "timber": {
+    "colour": [
+     0.235,
+     0.163,
+     0.1
+    ],
+    "roughness": 0.92,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "frame": {
+    "colour": [
+     0.068,
+     0.078,
+     0.072
+    ],
+    "roughness": 0.55,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "door": {
+    "colour": [
+     0.046,
+     0.086,
+     0.07
+    ],
+    "roughness": 0.5,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "glass": {
+    "colour": [
+     0.2747,
+     0.3968,
+     0.4452
+    ],
+    "roughness": 0.06,
+    "metallic": 0,
+    "alpha": 0.26
+   },
+   "metal": {
+    "colour": [
+     0.098,
+     0.104,
+     0.108
+    ],
+    "roughness": 0.35,
+    "metallic": 0.8,
+    "alpha": 1
+   },
+   "gravel": {
+    "colour": [
+     0.474,
+     0.415,
+     0.323
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "earth": {
+    "colour": [
+     0.229,
+     0.191,
+     0.152
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "terrain": {
+    "colour": [
+     1,
+     1,
+     1
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "surface_pale_gravel_hardstanding": {
+    "colour": [
+     0.5591,
+     0.4084,
+     0.2803
+    ],
+    "roughness": 0.94,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "surface_bound_macadam_hardstanding": {
+    "colour": [
+     0.2542,
+     0.2384,
+     0.2122
+    ],
+    "roughness": 0.88,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "surface_formal_lawn": {
+    "colour": [
+     0.39,
+     0.5,
+     0.24
+    ],
+    "roughness": 0.88,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "surface_planted_beds": {
+    "colour": [
+     0.18,
+     0.22,
+     0.1
+    ],
+    "roughness": 0.96,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "surface_service_hardstanding": {
+    "colour": [
+     0.39,
+     0.36,
+     0.285
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "surface_rough_parkland": {
+    "colour": [
+     0.43,
+     0.49,
+     0.27
+    ],
+    "roughness": 0.93,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "hedge": {
+    "colour": [
+     0.19,
+     0.28,
+     0.17
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "trunk": {
+    "colour": [
+     0.281,
+     0.207,
+     0.15
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "leaf_broadleaf": {
+    "colour": [
+     1,
+     1,
+     1
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "leaf_veteran": {
+    "colour": [
+     1,
+     1,
+     1
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "leaf_poplar": {
+    "colour": [
+     1,
+     1,
+     1
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "leaf_cedar": {
+    "colour": [
+     1,
+     1,
+     1
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "water": {
+    "colour": [
+     0.083,
+     0.146,
+     0.17
+    ],
+    "roughness": 0.08,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "longwater": {
+    "colour": [
+     0.086,
+     0.17,
+     0.163
+    ],
+    "roughness": 0.07,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "proposed_on": {
+    "colour": [
+     0.88,
+     0.844,
+     0.762
+    ],
+    "roughness": 0.85,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "proposed_off": {
+    "colour": [
+     0.83,
+     0.83,
+     0.81
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 0.45
+   },
+   "area": {
+    "colour": [
+     0.792,
+     0.74,
+     0.56
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 0.34
+   },
+   "marker": {
+    "colour": [
+     0.059,
+     0.09,
+     0.165
+    ],
+    "roughness": 0.4,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "anchor": {
+    "colour": [
+     0.8,
+     0.12,
+     0.1
+    ],
+    "roughness": 0.5,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "metal_pale": {
+    "colour": [
+     0.915,
+     0.8977,
+     0.8554
+    ],
+    "roughness": 0.36,
+    "metallic": 0.1,
+    "alpha": 1.0
+   },
+   "metal_dark": {
+    "colour": [
+     0.0448,
+     0.0479,
+     0.0463
+    ],
+    "roughness": 0.3,
+    "metallic": 0.55,
+    "alpha": 1.0
+   },
+   "stone_pale": {
+    "colour": [
+     0.7586,
+     0.7203,
+     0.64
+    ],
+    "roughness": 0.58,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "deck_timber": {
+    "colour": [
+     0.1558,
+     0.1267,
+     0.0987
+    ],
+    "roughness": 0.68,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "glass_clear": {
+    "colour": [
+     0.0085,
+     0.0153,
+     0.0246
+    ],
+    "roughness": -0.01,
+    "metallic": 0.0,
+    "alpha": 0.22
+   },
+   "roof_seam": {
+    "colour": [
+     0.2137,
+     0.2289,
+     0.2406
+    ],
+    "roughness": 0.32,
+    "metallic": 0.25,
+    "alpha": 1.0
+   },
+   "surface_public_highway": {
+    "colour": [
+     0.172,
+     0.1755,
+     0.181
+    ],
+    "roughness": 0.82,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "road_marking": {
+    "colour": [
+     0.74,
+     0.735,
+     0.708
+    ],
+    "roughness": 0.72,
+    "metallic": 0.0,
+    "alpha": 1.0
+   }
+  },
+  "estate-wear": {
+   "_": "F5 Wear candidate derived from estate; registry-level representative colour only until the spatial consumer is integrated.",
+   "_variant": {
+    "name": "Wear",
+    "source": "scratch/phase4/wave2/photo-measurements.json gravel_treatment_options",
+    "mottle_amplitude_pct": 0.03,
+    "description": "Wash plus inferred 8% vehicle medial wear and a 0.3\u20130.5 m soft lawn edge; representative flat value stays within \u00b13%.",
+    "vehicle_medial_darkening_pct": 0.08,
+    "medial_width_m": 3,
+    "edge_band_m": [
+     0.3,
+     0.5
+    ],
+    "mode": "wash plus inferred wear"
+   },
+   "wall_brick": {
+    "colour": [
+     0.2705,
+     0.1022,
+     0.0595
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "wall_brick_courtyard": {
+    "colour": [
+     0.203087,
+     0.086047,
+     0.05723
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "wall_stone": {
+    "colour": [
+     0.512,
+     0.484,
+     0.418
+    ],
+    "roughness": 0.87,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "wall_render": {
+    "colour": [
+     0.585,
+     0.562,
+     0.508
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "wallplain": {
+    "colour": [
+     0.428,
+     0.229,
+     0.13
+    ],
+    "roughness": 0.85,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "wallbrick": {
+    "colour": [
+     1,
+     1,
+     1
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "wall_off": {
+    "colour": [
+     0.66,
+     0.65,
+     0.62
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "stone": {
+    "colour": [
+     0.47,
+     0.43,
+     0.37
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "stone_detail": {
+    "colour": [
+     0.512,
+     0.484,
+     0.418
+    ],
+    "roughness": 0.85,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "roof_slate": {
+    "colour": [
+     0.058,
+     0.064,
+     0.074
+    ],
+    "roughness": 0.62,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "roof": {
+    "colour": [
+     0.317,
+     0.269,
+     0.208
+    ],
+    "roughness": 0.85,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "roof_lead": {
+    "colour": [
+     0.15,
+     0.163,
+     0.168
+    ],
+    "roughness": 0.55,
+    "metallic": 0.12,
+    "alpha": 1
+   },
+   "roof_off": {
+    "colour": [
+     0.52,
+     0.52,
+     0.53
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "prop_roof": {
+    "colour": [
+     0.36,
+     0.33,
+     0.3
+    ],
+    "roughness": 0.85,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "timber": {
+    "colour": [
+     0.235,
+     0.163,
+     0.1
+    ],
+    "roughness": 0.92,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "frame": {
+    "colour": [
+     0.068,
+     0.078,
+     0.072
+    ],
+    "roughness": 0.55,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "door": {
+    "colour": [
+     0.046,
+     0.086,
+     0.07
+    ],
+    "roughness": 0.5,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "glass": {
+    "colour": [
+     0.2747,
+     0.3968,
+     0.4452
+    ],
+    "roughness": 0.06,
+    "metallic": 0,
+    "alpha": 0.26
+   },
+   "metal": {
+    "colour": [
+     0.098,
+     0.104,
+     0.108
+    ],
+    "roughness": 0.35,
+    "metallic": 0.8,
+    "alpha": 1
+   },
+   "gravel": {
+    "colour": [
+     0.474,
+     0.415,
+     0.323
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "earth": {
+    "colour": [
+     0.229,
+     0.191,
+     0.152
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "terrain": {
+    "colour": [
+     1,
+     1,
+     1
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "surface_pale_gravel_hardstanding": {
+    "colour": [
+     0.5478,
+     0.4002,
+     0.2747
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "surface_bound_macadam_hardstanding": {
+    "colour": [
+     0.2542,
+     0.2384,
+     0.2122
+    ],
+    "roughness": 0.88,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "surface_formal_lawn": {
+    "colour": [
+     0.39,
+     0.5,
+     0.24
+    ],
+    "roughness": 0.88,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "surface_planted_beds": {
+    "colour": [
+     0.18,
+     0.22,
+     0.1
+    ],
+    "roughness": 0.96,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "surface_service_hardstanding": {
+    "colour": [
+     0.39,
+     0.36,
+     0.285
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "surface_rough_parkland": {
+    "colour": [
+     0.43,
+     0.49,
+     0.27
+    ],
+    "roughness": 0.93,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "hedge": {
+    "colour": [
+     0.19,
+     0.28,
+     0.17
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "trunk": {
+    "colour": [
+     0.281,
+     0.207,
+     0.15
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "leaf_broadleaf": {
+    "colour": [
+     1,
+     1,
+     1
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "leaf_veteran": {
+    "colour": [
+     1,
+     1,
+     1
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "leaf_poplar": {
+    "colour": [
+     1,
+     1,
+     1
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "leaf_cedar": {
+    "colour": [
+     1,
+     1,
+     1
+    ],
+    "roughness": 0.95,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "water": {
+    "colour": [
+     0.083,
+     0.146,
+     0.17
+    ],
+    "roughness": 0.08,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "longwater": {
+    "colour": [
+     0.086,
+     0.17,
+     0.163
+    ],
+    "roughness": 0.07,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "proposed_on": {
+    "colour": [
+     0.88,
+     0.844,
+     0.762
+    ],
+    "roughness": 0.85,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "proposed_off": {
+    "colour": [
+     0.83,
+     0.83,
+     0.81
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 0.45
+   },
+   "area": {
+    "colour": [
+     0.792,
+     0.74,
+     0.56
+    ],
+    "roughness": 0.9,
+    "metallic": 0,
+    "alpha": 0.34
+   },
+   "marker": {
+    "colour": [
+     0.059,
+     0.09,
+     0.165
+    ],
+    "roughness": 0.4,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "anchor": {
+    "colour": [
+     0.8,
+     0.12,
+     0.1
+    ],
+    "roughness": 0.5,
+    "metallic": 0,
+    "alpha": 1
+   },
+   "metal_pale": {
+    "colour": [
+     0.7769,
+     0.7622,
+     0.7263
+    ],
+    "roughness": 0.46,
+    "metallic": 0.1,
+    "alpha": 1.0
+   },
+   "metal_dark": {
+    "colour": [
+     0.0381,
+     0.0407,
+     0.0393
+    ],
+    "roughness": 0.4,
+    "metallic": 0.55,
+    "alpha": 1.0
+   },
+   "stone_pale": {
+    "colour": [
+     0.6441,
+     0.6116,
+     0.5434
+    ],
+    "roughness": 0.68,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "deck_timber": {
+    "colour": [
+     0.1323,
+     0.1075,
+     0.0838
+    ],
+    "roughness": 0.78,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "glass_clear": {
+    "colour": [
+     0.0072,
+     0.013,
+     0.0209
+    ],
+    "roughness": 0.09,
+    "metallic": 0.0,
+    "alpha": 0.22
+   },
+   "roof_seam": {
+    "colour": [
+     0.1814,
+     0.1943,
+     0.2043
+    ],
+    "roughness": 0.42,
+    "metallic": 0.25,
+    "alpha": 1.0
+   },
+   "surface_public_highway": {
+    "colour": [
+     0.172,
+     0.1755,
+     0.181
+    ],
+    "roughness": 0.82,
+    "metallic": 0.0,
+    "alpha": 1.0
+   },
+   "road_marking": {
+    "colour": [
+     0.74,
+     0.735,
+     0.708
+    ],
+    "roughness": 0.72,
+    "metallic": 0.0,
+    "alpha": 1.0
+   }
+  }
  },
- "estate-wash": {
-  "_": "F5 Wash candidate derived from estate; registry-level representative colour only until the spatial consumer is integrated.",
-  "_variant": {"name":"Wash","source":"scratch/phase4/wave2/photo-measurements.json gravel_treatment_options","mottle_amplitude_pct":0.03,"description":"Corrected base with ±3% metre-scale baked wash and a restrained house-edge damp band.","grid_m":2,"house_edge_band_m":1.5,"mode":"seeded vertex wash"},
-  "wall_brick": {"colour":[0.2705,0.1022,0.0595],"roughness":0.9,"metallic":0,"alpha":1},
-  "wall_stone": {"colour":[0.455,0.428,0.368],"roughness":0.87,"metallic":0,"alpha":1},
-  "wall_render": {"colour":[0.585,0.562,0.508],"roughness":0.9,"metallic":0,"alpha":1},
-  "wallplain": {"colour":[0.428,0.229,0.13],"roughness":0.85,"metallic":0,"alpha":1},
-  "wallbrick": {"colour":[1,1,1],"roughness":0.95,"metallic":0,"alpha":1},
-  "wall_off": {"colour":[0.66,0.65,0.62],"roughness":0.9,"metallic":0,"alpha":1},
-  "stone": {"colour":[0.47,0.43,0.37],"roughness":0.9,"metallic":0,"alpha":1},
-  "stone_detail": {"colour":[0.512,0.484,0.418],"roughness":0.85,"metallic":0,"alpha":1},
-  "roof_slate": {"colour":[0.058,0.064,0.074],"roughness":0.62,"metallic":0,"alpha":1},
-  "roof": {"colour":[0.317,0.269,0.208],"roughness":0.85,"metallic":0,"alpha":1},
-  "roof_lead": {"colour":[0.15,0.163,0.168],"roughness":0.55,"metallic":0.12,"alpha":1},
-  "roof_off": {"colour":[0.52,0.52,0.53],"roughness":0.9,"metallic":0,"alpha":1},
-  "prop_roof": {"colour":[0.36,0.33,0.3],"roughness":0.85,"metallic":0,"alpha":1},
-  "timber": {"colour":[0.235,0.163,0.1],"roughness":0.92,"metallic":0,"alpha":1},
-  "frame": {"colour":[0.068,0.078,0.072],"roughness":0.55,"metallic":0,"alpha":1},
-  "door": {"colour":[0.046,0.086,0.07],"roughness":0.5,"metallic":0,"alpha":1},
-  "glass": {"colour":[0.2747,0.3968,0.4452],"roughness":0.06,"metallic":0,"alpha":0.26},
-  "metal": {"colour":[0.098,0.104,0.108],"roughness":0.35,"metallic":0.8,"alpha":1},
-  "gravel": {"colour":[0.474,0.415,0.323],"roughness":0.95,"metallic":0,"alpha":1},
-  "earth": {"colour":[0.229,0.191,0.152],"roughness":0.95,"metallic":0,"alpha":1},
-  "terrain": {"colour":[1,1,1],"roughness":0.95,"metallic":0,"alpha":1},
-  "surface_pale_gravel_hardstanding": {"colour":[0.5591,0.4084,0.2803],"roughness":0.94,"metallic":0,"alpha":1},
-  "surface_bound_macadam_hardstanding": {"colour":[0.2542,0.2384,0.2122],"roughness":0.88,"metallic":0,"alpha":1},
-  "surface_formal_lawn": {"colour":[0.39,0.5,0.24],"roughness":0.88,"metallic":0,"alpha":1},
-  "surface_planted_beds": {"colour":[0.18,0.22,0.1],"roughness":0.96,"metallic":0,"alpha":1},
-  "surface_service_hardstanding": {"colour":[0.39,0.36,0.285],"roughness":0.9,"metallic":0,"alpha":1},
-  "surface_rough_parkland": {"colour":[0.43,0.49,0.27],"roughness":0.93,"metallic":0,"alpha":1},
-  "hedge": {"colour":[0.19,0.28,0.17],"roughness":0.95,"metallic":0,"alpha":1},
-  "trunk": {"colour":[0.281,0.207,0.15],"roughness":0.9,"metallic":0,"alpha":1},
-  "leaf_broadleaf": {"colour":[1,1,1],"roughness":0.95,"metallic":0,"alpha":1},
-  "leaf_veteran": {"colour":[1,1,1],"roughness":0.95,"metallic":0,"alpha":1},
-  "leaf_poplar": {"colour":[1,1,1],"roughness":0.95,"metallic":0,"alpha":1},
-  "leaf_cedar": {"colour":[1,1,1],"roughness":0.95,"metallic":0,"alpha":1},
-  "water": {"colour":[0.083,0.146,0.17],"roughness":0.08,"metallic":0,"alpha":1},
-  "longwater": {"colour":[0.086,0.17,0.163],"roughness":0.07,"metallic":0,"alpha":1},
-  "proposed_on": {"colour":[0.88,0.844,0.762],"roughness":0.85,"metallic":0,"alpha":1},
-  "proposed_off": {"colour":[0.83,0.83,0.81],"roughness":0.9,"metallic":0,"alpha":0.45},
-  "area": {"colour":[0.792,0.74,0.56],"roughness":0.9,"metallic":0,"alpha":0.34},
-  "marker": {"colour":[0.059,0.09,0.165],"roughness":0.4,"metallic":0,"alpha":1},
-  "anchor": {"colour":[0.8,0.12,0.1],"roughness":0.5,"metallic":0,"alpha":1}
- },
- "estate-wear": {
-  "_": "F5 Wear candidate derived from estate; registry-level representative colour only until the spatial consumer is integrated.",
-  "_variant": {"name":"Wear","source":"scratch/phase4/wave2/photo-measurements.json gravel_treatment_options","mottle_amplitude_pct":0.03,"description":"Wash plus inferred 8% vehicle medial wear and a 0.3–0.5 m soft lawn edge; representative flat value stays within ±3%.","vehicle_medial_darkening_pct":0.08,"medial_width_m":3,"edge_band_m":[0.3,0.5],"mode":"wash plus inferred wear"},
-  "wall_brick": {"colour":[0.2705,0.1022,0.0595],"roughness":0.9,"metallic":0,"alpha":1},
-  "wall_stone": {"colour":[0.455,0.428,0.368],"roughness":0.87,"metallic":0,"alpha":1},
-  "wall_render": {"colour":[0.585,0.562,0.508],"roughness":0.9,"metallic":0,"alpha":1},
-  "wallplain": {"colour":[0.428,0.229,0.13],"roughness":0.85,"metallic":0,"alpha":1},
-  "wallbrick": {"colour":[1,1,1],"roughness":0.95,"metallic":0,"alpha":1},
-  "wall_off": {"colour":[0.66,0.65,0.62],"roughness":0.9,"metallic":0,"alpha":1},
-  "stone": {"colour":[0.47,0.43,0.37],"roughness":0.9,"metallic":0,"alpha":1},
-  "stone_detail": {"colour":[0.512,0.484,0.418],"roughness":0.85,"metallic":0,"alpha":1},
-  "roof_slate": {"colour":[0.058,0.064,0.074],"roughness":0.62,"metallic":0,"alpha":1},
-  "roof": {"colour":[0.317,0.269,0.208],"roughness":0.85,"metallic":0,"alpha":1},
-  "roof_lead": {"colour":[0.15,0.163,0.168],"roughness":0.55,"metallic":0.12,"alpha":1},
-  "roof_off": {"colour":[0.52,0.52,0.53],"roughness":0.9,"metallic":0,"alpha":1},
-  "prop_roof": {"colour":[0.36,0.33,0.3],"roughness":0.85,"metallic":0,"alpha":1},
-  "timber": {"colour":[0.235,0.163,0.1],"roughness":0.92,"metallic":0,"alpha":1},
-  "frame": {"colour":[0.068,0.078,0.072],"roughness":0.55,"metallic":0,"alpha":1},
-  "door": {"colour":[0.046,0.086,0.07],"roughness":0.5,"metallic":0,"alpha":1},
-  "glass": {"colour":[0.2747,0.3968,0.4452],"roughness":0.06,"metallic":0,"alpha":0.26},
-  "metal": {"colour":[0.098,0.104,0.108],"roughness":0.35,"metallic":0.8,"alpha":1},
-  "gravel": {"colour":[0.474,0.415,0.323],"roughness":0.95,"metallic":0,"alpha":1},
-  "earth": {"colour":[0.229,0.191,0.152],"roughness":0.95,"metallic":0,"alpha":1},
-  "terrain": {"colour":[1,1,1],"roughness":0.95,"metallic":0,"alpha":1},
- "surface_pale_gravel_hardstanding": {"colour":[0.5478,0.4002,0.2747],"roughness":0.9,"metallic":0,"alpha":1},
-  "surface_bound_macadam_hardstanding": {"colour":[0.2542,0.2384,0.2122],"roughness":0.88,"metallic":0,"alpha":1},
-  "surface_formal_lawn": {"colour":[0.39,0.5,0.24],"roughness":0.88,"metallic":0,"alpha":1},
-  "surface_planted_beds": {"colour":[0.18,0.22,0.1],"roughness":0.96,"metallic":0,"alpha":1},
-  "surface_service_hardstanding": {"colour":[0.39,0.36,0.285],"roughness":0.9,"metallic":0,"alpha":1},
-  "surface_rough_parkland": {"colour":[0.43,0.49,0.27],"roughness":0.93,"metallic":0,"alpha":1},
-  "hedge": {"colour":[0.19,0.28,0.17],"roughness":0.95,"metallic":0,"alpha":1},
-  "trunk": {"colour":[0.281,0.207,0.15],"roughness":0.9,"metallic":0,"alpha":1},
-  "leaf_broadleaf": {"colour":[1,1,1],"roughness":0.95,"metallic":0,"alpha":1},
-  "leaf_veteran": {"colour":[1,1,1],"roughness":0.95,"metallic":0,"alpha":1},
-  "leaf_poplar": {"colour":[1,1,1],"roughness":0.95,"metallic":0,"alpha":1},
-  "leaf_cedar": {"colour":[1,1,1],"roughness":0.95,"metallic":0,"alpha":1},
-  "water": {"colour":[0.083,0.146,0.17],"roughness":0.08,"metallic":0,"alpha":1},
-  "longwater": {"colour":[0.086,0.17,0.163],"roughness":0.07,"metallic":0,"alpha":1},
-  "proposed_on": {"colour":[0.88,0.844,0.762],"roughness":0.85,"metallic":0,"alpha":1},
-  "proposed_off": {"colour":[0.83,0.83,0.81],"roughness":0.9,"metallic":0,"alpha":0.45},
-  "area": {"colour":[0.792,0.74,0.56],"roughness":0.9,"metallic":0,"alpha":0.34},
-  "marker": {"colour":[0.059,0.09,0.165],"roughness":0.4,"metallic":0,"alpha":1},
-  "anchor": {"colour":[0.8,0.12,0.1],"roughness":0.5,"metallic":0,"alpha":1}
- }
- },
-
  "_open": {
   "drawing": "to be authored - see treatment-drawing.json",
   "fabric": "to be authored - see treatment-fabric.json",
   "lighting": "to be authored - see lighting.json",
   "_merge": "python tools/materials_merge.py folds the three back into this file once each is done."
  },
-
  "_known_bad": {
   "wallbrick": "colour is pure white because the slot carries an image texture (scratch/wall_tile.png) as its base colour. Under the drawing and estate treatments it must take a real value, not white.",
   "terrain": "same - white because the baked albedo image carries the colour. The baked image ALSO contains canopy shadow, which the renderer then casts again (STANDARD.md R20).",
   "leaf_*": "white by design: vertex colours drive the tint. Leave them white in every treatment.",
   "roof vs roof_slate": "two slots for one thing - `roof` is the reconstruction roof and is brown, `roof_slate` is the modelled roof and is near-black. They should not be different colours for the same material; resolve when the reconstructions are hand-modelled in Stage 3."
+ },
+ "_notes": {
+  "wall_stone": "THE SANDY DRESSED STONE RETIRES, 29 Aug 2026. wall_stone takes stone_detail's value in every treatment: 0.455,0.428,0.368 -> 0.512,0.484,0.418.\nTHE EVIDENCE, which is stronger than the instruction and is why this is not a preference: STANDARD.md's primary-photograph line, the one that settles the Main House entrance elevation from 'Fawley Court 5.jpg', already reads 'sashes and glazing bars are WHITE (measured #f1e5db in sun) in PALE STONE SURROUNDS'. The record has described those surrounds as pale since 19 August. No provenance exists anywhere in the tools, the assets or the docs for 0.455,0.428,0.368 - it was never measured from anything. So this brings the model into line with evidence already on its own record rather than overriding it. (Checked independently by estate-review-6, 29 Aug.)\nAngus's ruling, on seeing the newly detailed courtyard beside the house: 'these french features are also white. So its the main house that now needs to match the courtyard buildings french features... The sandy colour as far as im aware can go.'\nTWELVE ASSETS LIGHTEN, all of them checked as wanting it: main-house, main-house-north-wing, residence, courts, follies-east-park, meadows-glasshouses, remenham-riverside, remenham-village, a4155-frontage, proposed-types and two courtyard-set assets. One value per treatment to revert.\nDO NOT MERGE THESE TWO SLOTS. wall_stone and stone_detail now carry IDENTICAL COLOURS in all four treatments and they are still genuinely different slots: the roles differ - dressed stone walling against cornices, quoins, copings, plinths and balustrade - and so does tile_m, 2.4 m against 1.2 m. A future tidy-up that collapsed 'two slots with the same value' into one would silently HALVE THE ASHLAR SCALE on twelve assets. The values are equal by ruling; the slots differ by tile scale."
  }
 }

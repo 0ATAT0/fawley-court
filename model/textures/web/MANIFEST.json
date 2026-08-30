@@ -2,9 +2,9 @@
  "_": "Web delivery set for the FABRIC treatment. One file is enough to build a material: take the slot from `slots`, load its three files from this directory, apply tile_m as the world-space size of one repeat in metres.",
  "_colour_space_rule": "albedo is sRGB-ENCODED and must be decoded to linear by the sampler (three.js: texture.colorSpace = THREE.SRGBColorSpace). normal and orm are LINEAR DATA and must not be decoded (THREE.NoColorSpace). Getting this backwards on the data maps is silent: the render still draws, the lighting is simply wrong.",
  "_orm": "glTF convention, occlusion-roughness-metalness in R-G-B. Only G carries data. R is a constant 1.0 and B a constant 0.0 - read the CHANNEL SEMANTICS section of tools/TEXTURES.md before wiring B to anything.",
- "generated": "2026-08-19T12:52:23+00:00",
+ "generated": "2026-08-28T17:23:30+00:00",
  "generator": "tools/build_textures.py",
- "command": "python tools/build_textures.py --size 512 --contact --verify",
+ "command": "python tools/build_textures.py --sets brick-weathered-stock",
  "source": "textures",
  "source_px": 1024,
  "px": 512,
@@ -12,7 +12,28 @@
  "px_present": [
   512
  ],
- "carried_forward": [],
+ "carried_forward": [
+  "ashlar-stone",
+  "bound-resin-gravel",
+  "brick-paviour",
+  "compacted-earth-path",
+  "handmade-red-brick",
+  "lead-roof-flashing",
+  "loose-gravel",
+  "mown-lawn",
+  "mown-lawn-mower-stripe",
+  "oak-weatherboard",
+  "painted-timber-joinery",
+  "patinated-copper",
+  "rough-meadow-grass",
+  "rubble-stone",
+  "smooth-lime-render",
+  "still-water-long-water",
+  "tarmac",
+  "welsh-slate-roof",
+  "woodland-floor",
+  "york-stone-paving"
+ ],
  "wrap": "repeat in both axes; sources tile toroidally, the box downsample preserves that",
  "mip": "power-of-two, no mip chain in the file - generate mipmaps on upload (three.js does this by default) and set anisotropy to the context maximum",
  "tile_m_source": "materials.json slots[<slot>].tile_m",
@@ -23,11 +44,11 @@
   "icc": "none written on any map"
  },
  "totals": {
-  "sets": 20,
-  "files": 60,
-  "bytes": 6151072,
-  "mb": 5.866,
-  "bytes_written_this_run": 6151072,
+  "sets": 21,
+  "files": 63,
+  "bytes": 6391084,
+  "mb": 6.095,
+  "bytes_written_this_run": 240012,
   "largest_set": "loose-gravel",
   "largest_set_bytes": 546602
  },
@@ -46,6 +67,20 @@
    "orm": [
     0.17,
     3.4
+   ]
+  },
+  "brick-weathered-stock": {
+   "albedo": [
+    1.94,
+    3.96
+   ],
+   "normal": [
+    4.65,
+    5.45
+   ],
+   "orm": [
+    1.76,
+    4.37
    ]
   },
   "handmade-red-brick": {
@@ -388,6 +423,84 @@
    "slots": [],
    "bytes": 236998,
    "tile_seam_ratio_worst": 8.59
+  },
+  "brick-weathered-stock": {
+   "files": {
+    "albedo": {
+     "file": "brick-weathered-stock-albedo.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 50272,
+     "colour_space": "srgb",
+     "encoding": "webp lossy q90",
+     "channels": {
+      "R": "base colour red (sRGB-encoded)",
+      "G": "base colour green (sRGB-encoded)",
+      "B": "base colour blue (sRGB-encoded)"
+     },
+     "three_colorspace": "THREE.SRGBColorSpace",
+     "tile_seam_ratio": [
+      1.94,
+      3.96
+     ]
+    },
+    "normal": {
+     "file": "brick-weathered-stock-normal.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 143794,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "tangent X, (x+1)/2",
+      "G": "tangent Y, (y+1)/2  OpenGL +Y up",
+      "B": "tangent Z, (z+1)/2"
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "convention": "OpenGL tangent space, green up",
+     "tile_seam_ratio": [
+      4.65,
+      5.45
+     ]
+    },
+    "orm": {
+     "file": "brick-weathered-stock-orm.webp",
+     "px": [
+      512,
+      512
+     ],
+     "bytes": 45946,
+     "colour_space": "linear",
+     "encoding": "webp lossless",
+     "channels": {
+      "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
+      "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+     },
+     "three_colorspace": "THREE.NoColorSpace",
+     "roughness_range": [
+      0.5529,
+      0.7686
+     ],
+     "tile_seam_ratio": [
+      1.76,
+      4.37
+     ]
+    }
+   },
+   "slots": [
+    {
+     "slot": "wall_brick_courtyard",
+     "tile_m": 3.0,
+     "role": "Courtyard precinct's weathered-stock walling brick"
+    }
+   ],
+   "bytes": 240012,
+   "tile_seam_ratio_worst": 5.45
   },
   "compacted-earth-path": {
    "files": {
@@ -1727,6 +1840,16 @@
    "px": 512,
    "texels_per_m": 256.0
   },
+  "wall_brick_courtyard": {
+   "set": "brick-weathered-stock",
+   "tile_m": 3.0,
+   "role": "Courtyard precinct's weathered-stock walling brick",
+   "albedo": "brick-weathered-stock-albedo.webp",
+   "normal": "brick-weathered-stock-normal.webp",
+   "orm": "brick-weathered-stock-orm.webp",
+   "px": 512,
+   "texels_per_m": 170.7
+  },
   "wall_stone": {
    "set": "ashlar-stone",
    "tile_m": 2.4,
@@ -1897,6 +2020,56 @@
    "px": 512,
    "texels_per_m": 85.3
   },
+  "surface_pale_gravel_hardstanding": {
+   "set": "loose-gravel",
+   "tile_m": 2.5,
+   "role": "Measured compound Main House and western-service hardstanding",
+   "albedo": "loose-gravel-albedo.webp",
+   "normal": "loose-gravel-normal.webp",
+   "orm": "loose-gravel-orm.webp",
+   "px": 512,
+   "texels_per_m": 204.8
+  },
+  "surface_formal_lawn": {
+   "set": "mown-lawn-mower-stripe",
+   "tile_m": 4.0,
+   "role": "Main House formal lawns and shaped lawn island",
+   "albedo": "mown-lawn-mower-stripe-albedo.webp",
+   "normal": "mown-lawn-mower-stripe-normal.webp",
+   "orm": "mown-lawn-mower-stripe-orm.webp",
+   "px": 512,
+   "texels_per_m": 128.0
+  },
+  "surface_planted_beds": {
+   "set": "woodland-floor",
+   "tile_m": 4.0,
+   "role": "Source-supported planted beds and parterre",
+   "albedo": "woodland-floor-albedo.webp",
+   "normal": "woodland-floor-normal.webp",
+   "orm": "woodland-floor-orm.webp",
+   "px": 512,
+   "texels_per_m": 128.0
+  },
+  "surface_service_hardstanding": {
+   "set": "bound-resin-gravel",
+   "tile_m": 2.0,
+   "role": "Separate east-side service court only",
+   "albedo": "bound-resin-gravel-albedo.webp",
+   "normal": "bound-resin-gravel-normal.webp",
+   "orm": "bound-resin-gravel-orm.webp",
+   "px": 512,
+   "texels_per_m": 256.0
+  },
+  "surface_rough_parkland": {
+   "set": "rough-meadow-grass",
+   "tile_m": 4.0,
+   "role": "Rough parkland beyond formal landscape edges",
+   "albedo": "rough-meadow-grass-albedo.webp",
+   "normal": "rough-meadow-grass-normal.webp",
+   "orm": "rough-meadow-grass-orm.webp",
+   "px": 512,
+   "texels_per_m": 128.0
+  },
   "water": {
    "set": "still-water-long-water",
    "tile_m": 12.0,
@@ -1916,31 +2089,59 @@
    "orm": "still-water-long-water-orm.webp",
    "px": 512,
    "texels_per_m": 64.0
+  },
+  "stone_pale": {
+   "set": "ashlar-stone",
+   "tile_m": 1.4,
+   "role": "River Club: pale limestone - plinth, copings, quay wall, sluice dam, swim steps, paving, service pod cladding",
+   "albedo": "ashlar-stone-albedo.webp",
+   "normal": "ashlar-stone-normal.webp",
+   "orm": "ashlar-stone-orm.webp",
+   "px": 512,
+   "texels_per_m": 365.7
+  },
+  "deck_timber": {
+   "set": "oak-weatherboard",
+   "tile_m": 1.2,
+   "role": "River Club: dark oiled deck boarding",
+   "albedo": "oak-weatherboard-albedo.webp",
+   "normal": "oak-weatherboard-normal.webp",
+   "orm": "oak-weatherboard-orm.webp",
+   "px": 512,
+   "texels_per_m": 426.7
+  },
+  "roof_seam": {
+   "set": "lead-roof-flashing",
+   "tile_m": 1.5,
+   "role": "River Club: grey standing-seam aluminium roof",
+   "albedo": "lead-roof-flashing-albedo.webp",
+   "normal": "lead-roof-flashing-normal.webp",
+   "orm": "lead-roof-flashing-orm.webp",
+   "px": 512,
+   "texels_per_m": 341.3
   }
  },
  "untextured_slots": [
   "anchor",
   "area",
   "glass",
+  "glass_clear",
   "hedge",
   "leaf_broadleaf",
   "leaf_cedar",
   "leaf_poplar",
   "leaf_veteran",
   "marker",
+  "metal_dark",
+  "metal_pale",
   "proposed_off",
   "proposed_on",
+  "road_marking",
   "roof_off",
+  "surface_bound_macadam_hardstanding",
+  "surface_public_highway",
   "trunk",
   "wall_off"
  ],
- "sets_not_used_by_any_slot": [
-  "bound-resin-gravel",
-  "brick-paviour",
-  "mown-lawn-mower-stripe",
-  "rough-meadow-grass",
-  "tarmac",
-  "woodland-floor",
-  "york-stone-paving"
- ]
+ "sets_not_used_by_any_slot": []
 }

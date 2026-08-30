@@ -20,6 +20,23 @@
    "orm": "textures/web/handmade-red-brick-orm.webp",
    "roughnessChannel": "g"
   },
+  "wall_brick_courtyard": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.9,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "brick-weathered-stock",
+   "tile_m": 3.0,
+   "albedo": "textures/web/brick-weathered-stock-albedo.webp",
+   "normal": "textures/web/brick-weathered-stock-normal.webp",
+   "orm": "textures/web/brick-weathered-stock-orm.webp",
+   "roughnessChannel": "g"
+  },
   "wall_stone": {
    "colour": [
     1.0,
@@ -359,6 +376,17 @@
    "orm": "textures/web/loose-gravel-orm.webp",
    "roughnessChannel": "g"
   },
+  "surface_bound_macadam_hardstanding": {
+   "colour": [
+    0.2542,
+    0.2384,
+    0.2122
+   ],
+   "metallic": 0.0,
+   "roughness": 0.88,
+   "alpha": 1.0,
+   "textured": false
+  },
   "surface_formal_lawn": {
    "colour": [
     1.0,
@@ -579,6 +607,112 @@
    ],
    "metallic": 0.0,
    "roughness": 0.4,
+   "alpha": 1.0,
+   "textured": false
+  },
+  "metal_pale": {
+   "colour": [
+    0.8632,
+    0.8469,
+    0.807
+   ],
+   "metallic": 0.1,
+   "roughness": 0.4,
+   "alpha": 1.0,
+   "textured": false
+  },
+  "metal_dark": {
+   "colour": [
+    0.0423,
+    0.0452,
+    0.0437
+   ],
+   "metallic": 0.55,
+   "roughness": 0.34,
+   "alpha": 1.0,
+   "textured": false
+  },
+  "stone_pale": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.62,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "ashlar-stone",
+   "tile_m": 1.4,
+   "albedo": "textures/web/ashlar-stone-albedo.webp",
+   "normal": "textures/web/ashlar-stone-normal.webp",
+   "orm": "textures/web/ashlar-stone-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "deck_timber": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.72,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "oak-weatherboard",
+   "tile_m": 1.2,
+   "albedo": "textures/web/oak-weatherboard-albedo.webp",
+   "normal": "textures/web/oak-weatherboard-normal.webp",
+   "orm": "textures/web/oak-weatherboard-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "glass_clear": {
+   "colour": [
+    0.008,
+    0.0144,
+    0.0232
+   ],
+   "metallic": 0.0,
+   "roughness": 0.03,
+   "alpha": 0.22,
+   "textured": false
+  },
+  "roof_seam": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.25,
+   "roughness": 0.36,
+   "alpha": 1.0,
+   "textured": true,
+   "set": "lead-roof-flashing",
+   "tile_m": 1.5,
+   "albedo": "textures/web/lead-roof-flashing-albedo.webp",
+   "normal": "textures/web/lead-roof-flashing-normal.webp",
+   "orm": "textures/web/lead-roof-flashing-orm.webp",
+   "roughnessChannel": "g"
+  },
+  "surface_public_highway": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.8,
+   "alpha": 1.0,
+   "textured": false
+  },
+  "road_marking": {
+   "colour": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "metallic": 0.0,
+   "roughness": 0.8,
    "alpha": 1.0,
    "textured": false
   }

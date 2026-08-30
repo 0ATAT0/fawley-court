@@ -222,7 +222,7 @@
    "type": "PCFSoftShadowMap",
    "bias": -0.000313,
    "_bias_metres": 0.55,
-   "normalBias": 0.9,
+   "normalBias": 1.6,
    "radius": 1.0,
    "camera": {
     "left": -880,
@@ -236,7 +236,8 @@
     0.2148,
     0.061
    ],
-   "_fit": "fitted to a 855 m plan radius about the model's own centre at a 10.4 deg sun; left/right spans the plan, top/bottom spans the plan foreshortened by sin(elevation) plus the 66 m model height."
+   "_fit": "fitted to a 855 m plan radius about the model's own centre at a 10.4 deg sun; left/right spans the plan, top/bottom spans the plan foreshortened by sin(elevation) plus the 66 m model height.",
+   "_normalBias_note": "0.9 -> 1.6, 20 Aug 2026: at a 10.4 deg sun a horizontal roof needs ~texel/tan(elev) = 1.2 m of normal offset; 0.9 left acne mottling on the attic dormers and the north-wing flat roof, reported by eye twice."
   },
   "ao": {
    "_": "GTAOPass. intensity is gtaoPass.blendIntensity; the rest go through gtaoPass.updateGtaoMaterial({...}). radius is in WORLD METRES.",
