@@ -307,6 +307,14 @@ html[data-variants="1"] #variants{display:block}
         <label><input type="checkbox" data-l="ao" checked> Ambient occlusion</label>
       </div>
     </div>
+    <div class="sect" id="smasssect">
+      <h2>South courtyard massing</h2>
+      <div class="lay" id="smasscontrols">
+        <label><input type="radio" name="smass" value="closed" checked> Closed — as built</label>
+        <label><input type="radio" name="smass" value="open"> Open — court through both ends</label>
+        <label><input type="radio" name="smass" value="arches"> Arches — one large passage per end</label>
+      </div>
+    </div>
     <div class="sect">
       <h2>Findings</h2>
       <div class="views"><button id="markbtn" title="press K">Mark a finding (K)</button></div>
@@ -519,6 +527,42 @@ function refreshDemolishedAprons(){
     .filter(id => demoState[id]).map(apronName).filter(Boolean));
 }
 refreshDemolishedAprons();
+
+/* ================= SOUTH COURTYARD MASSING ====================================
+   Angus, 31 Aug: a three-reading VIEWING study of the SOUTH courtyard — CLOSED
+   as built, OPEN right through both end blocks, or ARCHES through those blocks.
+   This deliberately has no scheme, capex or programme state.  The asset emits four
+   underline-only prefixes because three.js strips dots from node names: ca survives
+   CLOSED+ARCHES, c is CLOSED-only, a is ARCHES-only and o is OPEN-only.  As with the
+   shed controls, persistence is one explicit stored choice, not a list of hidden nodes.
+   ============================================================================== */
+const SMASS_KEY = 'fcm.south-courtyard-massing.v1';
+const SMASS_STATES = new Set(['closed', 'open', 'arches']);
+let smassState = 'closed';
+(function loadSouthMassing(){
+  let raw = null; try { raw = localStorage.getItem(SMASS_KEY); } catch(e){}
+  if (SMASS_STATES.has(raw)) smassState = raw;
+  document.querySelectorAll('input[name="smass"]').forEach(r => { r.checked = r.value === smassState; });
+})();
+function saveSouthMassing(){ try { localStorage.setItem(SMASS_KEY, smassState); } catch(e){} }
+function southMassingVisible(name){
+  /* Node names reach this point with dots stripped, but the deliberately underscore-only
+     prefixes survive unchanged.  Scope is structural: only the south asset emits them. */
+  const n = name || '';
+  if (n.startsWith('smass_c_')) return smassState === 'closed';
+  if (n.startsWith('smass_a_')) return smassState === 'arches';
+  if (n.startsWith('smass_o_')) return smassState === 'open';
+  return true;
+}
+function setSouthMassing(state){
+  if (!SMASS_STATES.has(state)) return;
+  smassState = state; saveSouthMassing();
+  document.querySelectorAll('input[name="smass"]').forEach(r => { r.checked = r.value === state; });
+  applyLayers();
+}
+document.getElementById('smasscontrols').addEventListener('change', e => {
+  if (e.target && e.target.name === 'smass') setSouthMassing(e.target.value);
+});
 function setDemolished(eid, off){
   if (!DEMOLISHABLE[eid]) return;
   if (off) demoState[eid] = true; else delete demoState[eid];
@@ -1677,28 +1721,21 @@ function groundAt(root, x, z){
 }
 
 function placeAssets(staticScene, assetScene, spec){
-  /* library: the exporter names each unpositioned copy "asset:<name>" */
+  /* library: most assets have one "asset:<name>" node. South Courtyard's massing
+     study has one node per (material, visibility-group), all placed together. */
   const lib = new Map();
+  const add = (key, node) => { const a = lib.get(key) || []; a.push(node); lib.set(key, a); };
   assetScene.traverse(o => {
     const n = o.name || '';
-    if (n.startsWith('asset:')) lib.set(n.slice(6), o);
-    else if (o.userData && o.userData.asset && !lib.has(o.userData.asset))
-      lib.set(o.userData.asset, o);
+    const marker = n.indexOf('asset:');
+    if (marker >= 0) add(n.slice(marker + 6).replace(/\.\d+$/, ''), o);
+    else if (o.userData && o.userData.asset) add(o.userData.asset, o);
   });
   let placed = 0, needGround = 0, missing = [];
   for (const o of (spec.objects || [])){
     if (o.kind !== 'asset' || !o.asset) continue;      /* reconstructions ship positioned */
-    const src = lib.get(o.asset);
-    if (!src){ missing.push(o.asset); continue; }
-    const inst = src.clone(true);
-    inst.name = o.id;
-    inst.userData = Object.assign({}, src.userData, {
-      layer: o.layer || (o.id.startsWith('prop.') ? 'proposed' : 'building'),
-      element: o.id.replace(/\.\d+$/, ''),
-      asset: o.asset,
-      placement_basis: o.basis || 'unknown',
-    });
-    if (!o.existing) inst.userData.indicative = true;
+    const srcs = lib.get(o.asset);
+    if (!srcs || !srcs.length){ missing.push(o.asset); continue; }
     /* scene.json is Z-up metres; three.js is Y-up. ground is the sampled LIDAR height;
        where the spec has none, drop a ray onto the terrain rather than trust it - a
        missing ground would otherwise seat the building at sea level, forty metres under
@@ -1708,9 +1745,20 @@ function placeAssets(staticScene, assetScene, spec){
       gy = groundAt(staticScene, o.x, -o.y);
       needGround++;
     }
-    inst.position.set(o.x, gy, -o.y);
-    inst.rotation.set(0, THREE.MathUtils.degToRad(o.rot_deg || 0), 0);
-    staticScene.add(inst);
+    srcs.forEach(src => {
+      const inst = src.clone(true);
+      const prefix = (src.name || '').match(/^(smass_(?:ca|c|a|o)_)/);
+      inst.name = (prefix ? prefix[1] : '') + o.id;
+      inst.userData = Object.assign({}, src.userData, {
+        layer: o.layer || (o.id.startsWith('prop.') ? 'proposed' : 'building'),
+        element: o.id.replace(/\.\d+$/, ''), asset: o.asset,
+        placement_basis: o.basis || 'unknown',
+      });
+      if (!o.existing) inst.userData.indicative = true;
+      inst.position.set(o.x, gy, -o.y);
+      inst.rotation.set(0, THREE.MathUtils.degToRad(o.rot_deg || 0), 0);
+      staticScene.add(inst);
+    });
     placed++;
   }
   if (missing.length){
@@ -1888,6 +1936,7 @@ function applyLayers(){
       const bare = (o.name || '').replace(/\./g, '');
       for (const a of demolishedAprons){ if (bare === a || bare.startsWith(a)){ vis = false; break; } }
     }
+    if (vis && !southMassingVisible(o.name)) vis = false;
     o.visible = vis;
   });
   markShadows();
