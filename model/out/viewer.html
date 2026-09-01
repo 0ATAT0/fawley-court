@@ -312,7 +312,6 @@ html[data-variants="1"] #variants{display:block}
       <div class="lay" id="smasscontrols">
         <label><input type="radio" name="smass" value="closed" checked> Closed — as built</label>
         <label><input type="radio" name="smass" value="open"> Open — court through both ends</label>
-        <label><input type="radio" name="smass" value="arches"> Arches — one large passage per end</label>
       </div>
     </div>
     <div class="sect">
@@ -550,7 +549,6 @@ function southMassingVisible(name){
      prefixes survive unchanged.  Scope is structural: only the south asset emits them. */
   const n = name || '';
   if (n.startsWith('smass_c_')) return smassState === 'closed';
-  if (n.startsWith('smass_a_')) return smassState === 'arches';
   if (n.startsWith('smass_o_')) return smassState === 'open';
   return true;
 }
@@ -1793,6 +1791,14 @@ function placeProps(staticScene, propScene, dressing){
     if (!src){ if (key) missing.push(key); else skipped++; continue; }
     const inst = src.clone(true);
     inst.name = o.id || ('prop:' + key);
+    /* A prop in a massing corridor is closed-only fabric (dress_scene tags its id).
+       The flag rides userData because a cloned prop's CHILD meshes keep their library
+       names, so the name-prefix rule alone would never reach them. */
+    const smassPfx = (o.id || '').match(/^smass_(c|o)_/);
+    if (smassPfx){
+      const only = smassPfx[1] === 'c' ? 'closed' : 'open';
+      inst.traverse(ch => { ch.userData = ch.userData || {}; ch.userData.smassOnly = only; });
+    }
     inst.userData = Object.assign({}, src.userData, {
       layer: 'prop',
       element: o.element || o.id || key,
@@ -1937,6 +1943,7 @@ function applyLayers(){
       for (const a of demolishedAprons){ if (bare === a || bare.startsWith(a)){ vis = false; break; } }
     }
     if (vis && !southMassingVisible(o.name)) vis = false;
+    if (vis && o.userData.smassOnly && o.userData.smassOnly !== smassState) vis = false;
     o.visible = vis;
   });
   markShadows();
