@@ -11,7 +11,7 @@
  ],
  "ground_note": "ground is null on every land placement so the viewer seats it on the BUILT GROUND in its own column at load - the highest surface_* surface off a solid layer, or the terrain where there is none. It was the terrain alone until 29 Aug 2026, which sank five of the six entrance-front planters 42 to 82 mm into the court they stand on; R42 measures every placement here through the selector out/viewer.html declares. Where a placement floats, the rule declares the water level it read and the file it read it from.",
  "counts": {
-  "placements": 211,
+  "placements": 214,
   "rules": 25,
   "props_used": 24,
   "props_in_library": 45,
@@ -50,7 +50,7 @@
    "north-court-arcade-borders": 13,
    "north-court-arcade-seating": 0,
    "north-private-terrace-pots": 12,
-   "south-private-terrace-pots": 10,
+   "south-private-terrace-pots": 13,
    "courtyard-first-floor-terrace-pots": 18,
    "service-yard-vehicles": 2,
    "service-yard-bins": 4,
@@ -74,7 +74,7 @@
    "estate-railing-section": 21,
    "event-stage-deck": 1,
    "floating-landing-stage": 3,
-   "large-planter": 48,
+   "large-planter": 51,
    "luxury-saloon": 3,
    "parasol": 3,
    "park-bench": 10,
@@ -92,7 +92,7 @@
    "wheelie-bin": 4
   },
   "by_tier": {
-   "1": 110,
+   "1": 113,
    "2": 101
   }
  },
@@ -3372,8 +3372,8 @@
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
-   "x": -54.177,
-   "y": 85.216,
+   "x": -54.316,
+   "y": 84.794,
    "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
@@ -3389,20 +3389,20 @@
    "name": "Potted standards outside the south courtyard walls",
    "collision_hull": [
     [
-     -53.859,
-     84.585
+     -53.998,
+     84.163
     ],
     [
-     -53.546,
-     85.535
+     -53.685,
+     85.112
     ],
     [
-     -54.496,
-     85.847
+     -54.635,
+     85.425
     ],
     [
-     -54.809,
-     84.897
+     -54.948,
+     84.475
     ]
    ]
   },
@@ -3411,8 +3411,8 @@
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
-   "x": -53.066,
-   "y": 88.593,
+   "x": -53.344,
+   "y": 87.749,
    "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
@@ -3428,20 +3428,20 @@
    "name": "Potted standards outside the south courtyard walls",
    "collision_hull": [
     [
-     -52.748,
-     87.962
+     -53.025,
+     87.118
     ],
     [
-     -52.435,
-     88.912
+     -52.713,
+     88.068
     ],
     [
-     -53.385,
-     89.225
+     -53.663,
+     88.38
     ],
     [
-     -53.698,
-     88.275
+     -53.975,
+     87.43
     ]
    ]
   },
@@ -3450,8 +3450,8 @@
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
-   "x": -51.955,
-   "y": 91.971,
+   "x": -52.372,
+   "y": 90.704,
    "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
@@ -3467,20 +3467,20 @@
    "name": "Potted standards outside the south courtyard walls",
    "collision_hull": [
     [
-     -51.637,
-     91.34
+     -52.053,
+     90.073
     ],
     [
-     -51.324,
-     92.29
+     -51.741,
+     91.023
     ],
     [
-     -52.274,
-     92.602
+     -52.691,
+     91.336
     ],
     [
-     -52.587,
-     91.652
+     -53.003,
+     90.386
     ]
    ]
   },
@@ -3489,8 +3489,8 @@
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
-   "x": -50.844,
-   "y": 95.348,
+   "x": -51.4,
+   "y": 93.66,
    "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
@@ -3506,20 +3506,20 @@
    "name": "Potted standards outside the south courtyard walls",
    "collision_hull": [
     [
-     -50.525,
-     94.717
+     -51.081,
+     93.028
     ],
     [
-     -50.213,
-     95.667
+     -50.769,
+     93.978
     ],
     [
-     -51.163,
-     95.98
+     -51.718,
+     94.291
     ],
     [
-     -51.475,
-     95.03
+     -52.031,
+     93.341
     ]
    ]
   },
@@ -3528,8 +3528,8 @@
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
-   "x": -49.733,
-   "y": 98.726,
+   "x": -50.428,
+   "y": 96.615,
    "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
@@ -3545,20 +3545,20 @@
    "name": "Potted standards outside the south courtyard walls",
    "collision_hull": [
     [
-     -49.414,
-     98.095
+     -50.109,
+     95.984
     ],
     [
-     -49.102,
-     99.045
+     -49.796,
+     96.934
     ],
     [
-     -50.052,
-     99.357
+     -50.746,
+     97.246
     ],
     [
-     -50.364,
-     98.407
+     -51.059,
+     96.296
     ]
    ]
   },
@@ -3567,8 +3567,8 @@
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
-   "x": -48.622,
-   "y": 102.103,
+   "x": -49.455,
+   "y": 99.57,
    "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
@@ -3584,25 +3584,64 @@
    "name": "Potted standards outside the south courtyard walls",
    "collision_hull": [
     [
-     -48.303,
-     101.472
+     -49.137,
+     98.939
     ],
     [
-     -47.991,
-     102.422
+     -48.824,
+     99.889
     ],
     [
-     -48.941,
-     102.734
+     -49.774,
+     100.201
     ],
     [
-     -49.253,
-     101.785
+     -50.087,
+     99.251
     ]
    ]
   },
   {
    "id": "dress.south-private-terrace-pots.0007",
+   "kind": "prop",
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": -48.483,
+   "y": 102.525,
+   "rot_deg": 71.79,
+   "ground": 33.62,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "existing": true,
+   "basis": "dressing.json rule 'south-private-terrace-pots'",
+   "tier": 1,
+   "layer": "prop",
+   "rule": "south-private-terrace-pots",
+   "name": "Potted standards outside the south courtyard walls",
+   "collision_hull": [
+    [
+     -48.164,
+     101.894
+    ],
+    [
+     -47.852,
+     102.844
+    ],
+    [
+     -48.802,
+     103.157
+    ],
+    [
+     -49.114,
+     102.207
+    ]
+   ]
+  },
+  {
+   "id": "dress.south-private-terrace-pots.0008",
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
@@ -3641,51 +3680,12 @@
    ]
   },
   {
-   "id": "dress.south-private-terrace-pots.0008",
-   "kind": "prop",
-   "prop": "large-planter",
-   "asset": "large-planter",
-   "x": -46.4,
-   "y": 108.858,
-   "rot_deg": 71.79,
-   "ground": 33.62,
-   "scale": [
-    1.0,
-    1.0,
-    1.0
-   ],
-   "existing": true,
-   "basis": "dressing.json rule 'south-private-terrace-pots'",
-   "tier": 1,
-   "layer": "prop",
-   "rule": "south-private-terrace-pots",
-   "name": "Potted standards outside the south courtyard walls",
-   "collision_hull": [
-    [
-     -46.081,
-     108.227
-    ],
-    [
-     -45.769,
-     109.177
-    ],
-    [
-     -46.719,
-     109.489
-    ],
-    [
-     -47.031,
-     108.54
-    ]
-   ]
-  },
-  {
    "id": "dress.south-private-terrace-pots.0009",
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
-   "x": -45.289,
-   "y": 112.236,
+   "x": -46.539,
+   "y": 108.436,
    "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
@@ -3701,20 +3701,137 @@
    "name": "Potted standards outside the south courtyard walls",
    "collision_hull": [
     [
-     -44.97,
-     111.604
+     -46.22,
+     107.805
     ],
     [
-     -44.658,
-     112.554
+     -45.908,
+     108.755
     ],
     [
-     -45.607,
-     112.867
+     -46.857,
+     109.067
     ],
     [
-     -45.92,
-     111.917
+     -47.17,
+     108.117
+    ]
+   ]
+  },
+  {
+   "id": "dress.south-private-terrace-pots.0010",
+   "kind": "prop",
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": -45.567,
+   "y": 111.391,
+   "rot_deg": 71.79,
+   "ground": 33.62,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "existing": true,
+   "basis": "dressing.json rule 'south-private-terrace-pots'",
+   "tier": 1,
+   "layer": "prop",
+   "rule": "south-private-terrace-pots",
+   "name": "Potted standards outside the south courtyard walls",
+   "collision_hull": [
+    [
+     -45.248,
+     110.76
+    ],
+    [
+     -44.935,
+     111.71
+    ],
+    [
+     -45.885,
+     112.023
+    ],
+    [
+     -46.198,
+     111.073
+    ]
+   ]
+  },
+  {
+   "id": "dress.south-private-terrace-pots.0011",
+   "kind": "prop",
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": -44.594,
+   "y": 114.347,
+   "rot_deg": 71.79,
+   "ground": 33.62,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "existing": true,
+   "basis": "dressing.json rule 'south-private-terrace-pots'",
+   "tier": 1,
+   "layer": "prop",
+   "rule": "south-private-terrace-pots",
+   "name": "Potted standards outside the south courtyard walls",
+   "collision_hull": [
+    [
+     -44.276,
+     113.715
+    ],
+    [
+     -43.963,
+     114.665
+    ],
+    [
+     -44.913,
+     114.978
+    ],
+    [
+     -45.226,
+     114.028
+    ]
+   ]
+  },
+  {
+   "id": "dress.south-private-terrace-pots.0012",
+   "kind": "prop",
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": -43.622,
+   "y": 117.302,
+   "rot_deg": 71.79,
+   "ground": 33.62,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "existing": true,
+   "basis": "dressing.json rule 'south-private-terrace-pots'",
+   "tier": 1,
+   "layer": "prop",
+   "rule": "south-private-terrace-pots",
+   "name": "Potted standards outside the south courtyard walls",
+   "collision_hull": [
+    [
+     -43.303,
+     116.671
+    ],
+    [
+     -42.991,
+     117.621
+    ],
+    [
+     -43.941,
+     117.933
+    ],
+    [
+     -44.253,
+     116.983
     ]
    ]
   },

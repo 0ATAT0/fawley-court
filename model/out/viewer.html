@@ -444,6 +444,7 @@ const switchGroundReady = fetch('../switch-ground.json').then(r => {
    ================================================================================ */
 const DEMOLISHABLE = {
   'bldg.south-buildings': {
+    defaultOff: true,
     off: 'Demolished — the site reinstated as parkland',
     on:  'Standing — the derelict range as surveyed',
     why: 'The EPR masterplan labels this site "Volume of demolition" and draws it as '
@@ -477,8 +478,8 @@ const DEMOLISHABLE = {
        + 'either way.'
   }
 };
-/* Angus, 28 Aug 2026: "service yard buildings to be off by defaul". So the two sheds
-   start demolished and the south range starts standing, and the state is stored as an
+/* Angus, 28 Aug 2026: "service yard buildings to be off by defaul", and 2 Sep 2026 the south
+   range too. So all three start demolished (defaultOff), and the state is stored as an
    OBJECT of explicit true/false rather than as a list of the ids that are off. A list
    cannot tell "this viewer has never chosen" from "this viewer chose to keep them", so
    with a default-off entry a list would re-hide a shed the user had just restored on
