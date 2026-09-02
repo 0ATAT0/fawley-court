@@ -485,7 +485,8 @@ const DEMOLISHABLE = {
    with a default-off entry a list would re-hide a shed the user had just restored on
    every reload. The key is versioned so one old list-format value is dropped once
    rather than being misread as a set of deliberate choices. */
-const DEMO_KEY = 'fcm.demolished.v2';
+const DEMO_KEY = 'fcm.demolished.v3';   // v3, 2 Sep 2026: drop old saved state once so the new
+                                        // south-buildings default (demolished) takes on refresh
 const demoState = {};
 (function loadDemo(){
   let raw = null;
