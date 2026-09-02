@@ -11,7 +11,7 @@
  ],
  "ground_note": "ground is null on every land placement so the viewer seats it on the BUILT GROUND in its own column at load - the highest surface_* surface off a solid layer, or the terrain where there is none. It was the terrain alone until 29 Aug 2026, which sank five of the six entrance-front planters 42 to 82 mm into the court they stand on; R42 measures every placement here through the selector out/viewer.html declares. Where a placement floats, the rule declares the water level it read and the file it read it from.",
  "counts": {
-  "placements": 213,
+  "placements": 219,
   "rules": 25,
   "props_used": 24,
   "props_in_library": 45,
@@ -43,16 +43,16 @@
    "long-water-head-railing": 21,
    "long-water-head-benches": 7,
    "south-court-box-quarters": 4,
-   "south-court-arcade-borders": 16,
-   "south-court-urn-piers": 4,
+   "south-court-arcade-borders": 15,
+   "south-court-urn-piers": 2,
    "south-court-arcade-seating": 2,
-   "north-court-box-quarters": 2,
-   "north-court-arcade-borders": 11,
-   "north-court-arcade-seating": 1,
-   "north-private-terrace-pots": 10,
-   "north-private-terrace-beds": 10,
-   "courtyard-first-floor-terrace-pots": 20,
-   "service-yard-vehicles": 1,
+   "north-court-box-quarters": 1,
+   "north-court-arcade-borders": 13,
+   "north-court-arcade-seating": 0,
+   "north-private-terrace-pots": 12,
+   "south-private-terrace-pots": 18,
+   "courtyard-first-floor-terrace-pots": 18,
+   "service-yard-vehicles": 2,
    "service-yard-bins": 4,
    "pleasure-garden-benches": 10,
    "river-club-terrace": 17,
@@ -68,13 +68,13 @@
   "by_prop": {
    "cafe-chair": 4,
    "cafe-table": 2,
-   "estate-4x4": 3,
-   "estate-bench": 13,
+   "estate-4x4": 4,
+   "estate-bench": 12,
    "estate-lamp-post": 4,
    "estate-railing-section": 21,
    "event-stage-deck": 1,
    "floating-landing-stage": 3,
-   "large-planter": 38,
+   "large-planter": 56,
    "luxury-saloon": 3,
    "parasol": 3,
    "park-bench": 10,
@@ -87,13 +87,13 @@
    "stanchion-and-rope": 8,
    "sun-lounger": 8,
    "topiary-ball": 5,
-   "trough": 68,
-   "urn": 4,
+   "trough": 58,
+   "urn": 2,
    "wheelie-bin": 4
   },
   "by_tier": {
-   "1": 113,
-   "2": 100
+   "1": 118,
+   "2": 101
   }
  },
  "objects": [
@@ -1422,8 +1422,8 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -26.528,
-   "y": 88.273,
+   "x": -28.249,
+   "y": 83.041,
    "rot_deg": 161.79,
    "ground": 33.62,
    "scale": [
@@ -1439,20 +1439,20 @@
    "name": "Clipped box blocks in the south court quarters",
    "collision_hull": [
     [
-     -25.687,
-     88.27
+     -27.408,
+     83.038
     ],
     [
-     -27.207,
-     88.77
+     -28.928,
+     83.538
     ],
     [
-     -27.369,
-     88.276
+     -29.091,
+     83.044
     ],
     [
-     -25.85,
-     87.776
+     -27.571,
+     82.544
     ]
    ]
   },
@@ -1461,8 +1461,8 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -31.772,
-   "y": 89.998,
+   "x": -33.493,
+   "y": 84.766,
    "rot_deg": 161.79,
    "ground": 33.62,
    "scale": [
@@ -1478,20 +1478,20 @@
    "name": "Clipped box blocks in the south court quarters",
    "collision_hull": [
     [
-     -30.931,
-     89.995
+     -32.652,
+     84.763
     ],
     [
-     -32.45,
-     90.495
+     -34.172,
+     85.263
     ],
     [
-     -32.613,
-     90.001
+     -34.334,
+     84.769
     ],
     [
-     -31.093,
-     89.501
+     -32.814,
+     84.269
     ]
    ]
   },
@@ -1500,8 +1500,8 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -23.153,
-   "y": 98.532,
+   "x": -21.534,
+   "y": 103.455,
    "rot_deg": 161.79,
    "ground": 33.62,
    "scale": [
@@ -1517,20 +1517,20 @@
    "name": "Clipped box blocks in the south court quarters",
    "collision_hull": [
     [
-     -22.312,
-     98.529
+     -20.693,
+     103.452
     ],
     [
-     -23.832,
-     99.029
+     -22.212,
+     103.952
     ],
     [
-     -23.994,
-     98.535
+     -22.375,
+     103.458
     ],
     [
-     -22.475,
-     98.035
+     -20.855,
+     102.958
     ]
    ]
   },
@@ -1539,8 +1539,8 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -28.397,
-   "y": 100.257,
+   "x": -26.777,
+   "y": 105.18,
    "rot_deg": 161.79,
    "ground": 33.62,
    "scale": [
@@ -1556,20 +1556,20 @@
    "name": "Clipped box blocks in the south court quarters",
    "collision_hull": [
     [
-     -27.556,
-     100.254
+     -25.936,
+     105.177
     ],
     [
-     -29.075,
-     100.754
+     -27.456,
+     105.677
     ],
     [
-     -29.238,
-     100.26
+     -27.618,
+     105.183
     ],
     [
-     -27.718,
-     99.76
+     -26.099,
+     104.683
     ]
    ]
   },
@@ -1578,8 +1578,8 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -27.188,
-   "y": 82.3,
+   "x": -30.951,
+   "y": 70.862,
    "rot_deg": 161.79,
    "ground": 33.62,
    "scale": [
@@ -1595,20 +1595,20 @@
    "name": "Planted borders at the south court arcade feet",
    "collision_hull": [
     [
-     -26.347,
-     82.297
+     -30.109,
+     70.859
     ],
     [
-     -27.867,
-     82.797
+     -31.629,
+     71.359
     ],
     [
-     -28.029,
-     82.303
+     -31.792,
+     70.865
     ],
     [
-     -26.509,
-     81.803
+     -30.272,
+     70.365
     ]
    ]
   },
@@ -1617,8 +1617,8 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -30.988,
-   "y": 83.55,
+   "x": -34.75,
+   "y": 72.112,
    "rot_deg": 161.79,
    "ground": 33.62,
    "scale": [
@@ -1634,20 +1634,20 @@
    "name": "Planted borders at the south court arcade feet",
    "collision_hull": [
     [
-     -30.146,
-     83.547
+     -33.909,
+     72.109
     ],
     [
-     -31.666,
-     84.047
+     -35.429,
+     72.609
     ],
     [
-     -31.829,
-     83.553
+     -35.591,
+     72.115
     ],
     [
-     -30.309,
-     83.053
+     -34.072,
+     71.615
     ]
    ]
   },
@@ -1656,8 +1656,8 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -34.787,
-   "y": 84.8,
+   "x": -38.55,
+   "y": 73.362,
    "rot_deg": 161.79,
    "ground": 33.62,
    "scale": [
@@ -1673,20 +1673,20 @@
    "name": "Planted borders at the south court arcade feet",
    "collision_hull": [
     [
-     -33.946,
-     84.797
+     -37.709,
+     73.359
     ],
     [
-     -35.466,
-     85.297
+     -39.229,
+     73.859
     ],
     [
-     -35.628,
-     84.803
+     -39.391,
+     73.365
     ],
     [
-     -34.108,
-     84.303
+     -37.871,
+     72.865
     ]
    ]
   },
@@ -1695,9 +1695,9 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -20.138,
-   "y": 103.73,
-   "rot_deg": 161.79,
+   "x": -29.281,
+   "y": 71.84,
+   "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
     1.0,
@@ -1712,20 +1712,20 @@
    "name": "Planted borders at the south court arcade feet",
    "collision_hull": [
     [
-     -19.297,
-     103.727
+     -29.284,
+     70.999
     ],
     [
-     -20.817,
-     104.227
+     -28.784,
+     72.519
     ],
     [
-     -20.979,
-     103.733
+     -29.278,
+     72.681
     ],
     [
-     -19.459,
-     103.233
+     -29.778,
+     71.162
     ]
    ]
   },
@@ -1734,9 +1734,9 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -23.937,
-   "y": 104.98,
-   "rot_deg": 161.79,
+   "x": -25.211,
+   "y": 84.212,
+   "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
     1.0,
@@ -1751,20 +1751,20 @@
    "name": "Planted borders at the south court arcade feet",
    "collision_hull": [
     [
-     -23.096,
-     104.977
+     -25.214,
+     83.371
     ],
     [
-     -24.616,
-     105.477
+     -24.714,
+     84.891
     ],
     [
-     -24.779,
-     104.983
+     -25.208,
+     85.054
     ],
     [
-     -23.259,
-     104.483
+     -25.708,
+     83.534
     ]
    ]
   },
@@ -1773,9 +1773,9 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -27.737,
-   "y": 106.23,
-   "rot_deg": 161.79,
+   "x": -23.855,
+   "y": 88.336,
+   "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
     1.0,
@@ -1790,20 +1790,20 @@
    "name": "Planted borders at the south court arcade feet",
    "collision_hull": [
     [
-     -26.896,
-     106.227
+     -23.858,
+     87.495
     ],
     [
-     -28.416,
-     106.727
+     -23.358,
+     89.015
     ],
     [
-     -28.578,
-     106.233
+     -23.851,
+     89.178
     ],
     [
-     -27.058,
-     105.733
+     -24.351,
+     87.658
     ]
    ]
   },
@@ -1812,8 +1812,8 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -25.447,
-   "y": 83.496,
+   "x": -22.498,
+   "y": 92.46,
    "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
@@ -1829,20 +1829,20 @@
    "name": "Planted borders at the south court arcade feet",
    "collision_hull": [
     [
-     -25.45,
-     82.655
+     -22.501,
+     91.619
     ],
     [
-     -24.95,
-     84.174
+     -22.001,
+     93.139
     ],
     [
-     -25.444,
-     84.337
+     -22.495,
+     93.302
     ],
     [
-     -25.944,
-     82.817
+     -22.995,
+     91.782
     ]
    ]
   },
@@ -1851,8 +1851,8 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -23.947,
-   "y": 88.055,
+   "x": -21.141,
+   "y": 96.584,
    "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
@@ -1868,20 +1868,20 @@
    "name": "Planted borders at the south court arcade feet",
    "collision_hull": [
     [
-     -23.95,
-     87.214
+     -21.144,
+     95.743
     ],
     [
-     -23.45,
-     88.734
+     -20.644,
+     97.263
     ],
     [
-     -23.944,
-     88.897
+     -21.138,
+     97.426
     ],
     [
-     -24.444,
-     87.377
+     -21.638,
+     95.906
     ]
    ]
   },
@@ -1890,8 +1890,8 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -22.447,
-   "y": 92.615,
+   "x": -19.784,
+   "y": 100.708,
    "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
@@ -1907,20 +1907,20 @@
    "name": "Planted borders at the south court arcade feet",
    "collision_hull": [
     [
-     -22.45,
-     91.774
+     -19.787,
+     99.867
     ],
     [
-     -21.95,
-     93.294
+     -19.287,
+     101.387
     ],
     [
-     -22.444,
-     93.456
+     -19.781,
+     101.55
     ],
     [
-     -22.944,
-     91.936
+     -20.281,
+     100.03
     ]
    ]
   },
@@ -1929,8 +1929,8 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -20.947,
-   "y": 97.175,
+   "x": -39.312,
+   "y": 75.14,
    "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
@@ -1946,20 +1946,20 @@
    "name": "Planted borders at the south court arcade feet",
    "collision_hull": [
     [
-     -20.95,
-     96.333
+     -39.315,
+     74.299
     ],
     [
-     -20.45,
-     97.853
+     -38.815,
+     75.819
     ],
     [
-     -20.944,
-     98.016
+     -39.309,
+     75.981
     ],
     [
-     -21.444,
-     96.496
+     -39.809,
+     74.462
     ]
    ]
   },
@@ -1968,8 +1968,8 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -19.447,
-   "y": 101.734,
+   "x": -35.242,
+   "y": 87.512,
    "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
@@ -1985,20 +1985,20 @@
    "name": "Planted borders at the south court arcade feet",
    "collision_hull": [
     [
-     -19.45,
-     100.893
+     -35.245,
+     86.671
     ],
     [
-     -18.95,
-     102.413
+     -34.745,
+     88.191
     ],
     [
-     -19.444,
-     102.575
+     -35.239,
+     88.354
     ],
     [
-     -19.944,
-     101.056
+     -35.739,
+     86.834
     ]
    ]
   },
@@ -2007,8 +2007,8 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -35.478,
-   "y": 86.796,
+   "x": -33.886,
+   "y": 91.636,
    "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
@@ -2024,20 +2024,20 @@
    "name": "Planted borders at the south court arcade feet",
    "collision_hull": [
     [
-     -35.481,
-     85.955
+     -33.889,
+     90.795
     ],
     [
-     -34.981,
-     87.474
+     -33.389,
+     92.315
     ],
     [
-     -35.475,
-     87.637
+     -33.883,
+     92.478
     ],
     [
-     -35.975,
-     86.117
+     -34.383,
+     90.958
     ]
    ]
   },
@@ -2046,8 +2046,8 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -33.978,
-   "y": 91.355,
+   "x": -32.529,
+   "y": 95.76,
    "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
@@ -2063,20 +2063,20 @@
    "name": "Planted borders at the south court arcade feet",
    "collision_hull": [
     [
-     -33.981,
-     90.514
+     -32.532,
+     94.919
     ],
     [
-     -33.481,
-     92.034
+     -32.032,
+     96.439
     ],
     [
-     -33.975,
-     92.197
+     -32.526,
+     96.602
     ],
     [
-     -34.475,
-     90.677
+     -33.026,
+     95.082
     ]
    ]
   },
@@ -2085,8 +2085,8 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -32.478,
-   "y": 95.915,
+   "x": -31.172,
+   "y": 99.884,
    "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
@@ -2102,20 +2102,20 @@
    "name": "Planted borders at the south court arcade feet",
    "collision_hull": [
     [
-     -32.481,
-     95.074
+     -31.175,
+     99.043
     ],
     [
-     -31.981,
-     96.594
+     -30.675,
+     100.563
     ],
     [
-     -32.475,
-     96.756
+     -31.169,
+     100.726
     ],
     [
-     -32.975,
-     95.236
+     -31.669,
+     99.206
     ]
    ]
   },
@@ -2124,8 +2124,8 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -30.978,
-   "y": 100.475,
+   "x": -29.816,
+   "y": 104.008,
    "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
@@ -2141,59 +2141,20 @@
    "name": "Planted borders at the south court arcade feet",
    "collision_hull": [
     [
-     -30.981,
-     99.633
+     -29.819,
+     103.167
     ],
     [
-     -30.481,
-     101.153
+     -29.319,
+     104.687
     ],
     [
-     -30.975,
-     101.316
+     -29.813,
+     104.85
     ],
     [
-     -31.475,
-     99.796
-    ]
-   ]
-  },
-  {
-   "id": "dress.south-court-arcade-borders.0015",
-   "kind": "prop",
-   "prop": "trough",
-   "asset": "trough",
-   "x": -29.478,
-   "y": 105.034,
-   "rot_deg": 71.79,
-   "ground": 33.62,
-   "scale": [
-    1.0,
-    1.0,
-    1.0
-   ],
-   "existing": true,
-   "basis": "dressing.json rule 'south-court-arcade-borders'",
-   "tier": 1,
-   "layer": "prop",
-   "rule": "south-court-arcade-borders",
-   "name": "Planted borders at the south court arcade feet",
-   "collision_hull": [
-    [
-     -29.481,
-     104.193
-    ],
-    [
-     -28.981,
-     105.713
-    ],
-    [
-     -29.475,
-     105.875
-    ],
-    [
-     -29.975,
-     104.356
+     -30.313,
+     103.33
     ]
    ]
   },
@@ -2202,8 +2163,8 @@
    "kind": "prop",
    "prop": "urn",
    "asset": "urn",
-   "x": -26.82,
-   "y": 83.579,
+   "x": -30.582,
+   "y": 72.141,
    "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
@@ -2219,20 +2180,20 @@
    "name": "Stone urns at the south court terminal piers",
    "collision_hull": [
     [
-     -26.508,
-     82.997
+     -30.271,
+     71.559
     ],
     [
-     -26.223,
-     83.862
+     -29.986,
+     72.425
     ],
     [
-     -27.131,
-     84.161
+     -30.894,
+     72.723
     ],
     [
-     -27.416,
-     83.296
+     -31.179,
+     71.858
     ]
    ]
   },
@@ -2241,8 +2202,8 @@
    "kind": "prop",
    "prop": "urn",
    "asset": "urn",
-   "x": -34.324,
-   "y": 86.048,
+   "x": -38.087,
+   "y": 74.61,
    "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
@@ -2258,98 +2219,20 @@
    "name": "Stone urns at the south court terminal piers",
    "collision_hull": [
     [
-     -34.012,
-     85.466
+     -37.775,
+     74.028
     ],
     [
-     -33.728,
-     86.331
+     -37.49,
+     74.893
     ],
     [
-     -34.636,
-     86.63
+     -38.399,
+     75.192
     ],
     [
-     -34.92,
-     85.764
-    ]
-   ]
-  },
-  {
-   "id": "dress.south-court-urn-piers.0002",
-   "kind": "prop",
-   "prop": "urn",
-   "asset": "urn",
-   "x": -20.601,
-   "y": 102.482,
-   "rot_deg": 71.79,
-   "ground": 33.62,
-   "scale": [
-    1.0,
-    1.0,
-    1.0
-   ],
-   "existing": true,
-   "basis": "dressing.json rule 'south-court-urn-piers'",
-   "tier": 1,
-   "layer": "prop",
-   "rule": "south-court-urn-piers",
-   "name": "Stone urns at the south court terminal piers",
-   "collision_hull": [
-    [
-     -20.289,
-     101.9
-    ],
-    [
-     -20.005,
-     102.766
-    ],
-    [
-     -20.913,
-     103.064
-    ],
-    [
-     -21.197,
-     102.199
-    ]
-   ]
-  },
-  {
-   "id": "dress.south-court-urn-piers.0003",
-   "kind": "prop",
-   "prop": "urn",
-   "asset": "urn",
-   "x": -28.105,
-   "y": 104.951,
-   "rot_deg": 71.79,
-   "ground": 33.62,
-   "scale": [
-    1.0,
-    1.0,
-    1.0
-   ],
-   "existing": true,
-   "basis": "dressing.json rule 'south-court-urn-piers'",
-   "tier": 1,
-   "layer": "prop",
-   "rule": "south-court-urn-piers",
-   "name": "Stone urns at the south court terminal piers",
-   "collision_hull": [
-    [
-     -27.794,
-     104.369
-    ],
-    [
-     -27.509,
-     105.234
-    ],
-    [
-     -28.417,
-     105.533
-    ],
-    [
-     -28.702,
-     104.668
+     -38.683,
+     74.327
     ]
    ]
   },
@@ -2358,8 +2241,8 @@
    "kind": "prop",
    "prop": "estate-bench",
    "asset": "estate-bench",
-   "x": -23.302,
-   "y": 92.896,
+   "x": -23.353,
+   "y": 92.742,
    "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
@@ -2375,20 +2258,20 @@
    "name": "Seating in the south court arcade bays",
    "collision_hull": [
     [
-     -23.264,
-     91.594
+     -23.315,
+     91.44
     ],
     [
-     -22.499,
-     93.922
+     -22.55,
+     93.767
     ],
     [
-     -23.339,
-     94.198
+     -23.39,
+     94.044
     ],
     [
-     -24.105,
-     91.871
+     -24.156,
+     91.716
     ]
    ]
   },
@@ -2397,8 +2280,8 @@
    "kind": "prop",
    "prop": "estate-bench",
    "asset": "estate-bench",
-   "x": -31.623,
-   "y": 95.634,
+   "x": -31.674,
+   "y": 95.479,
    "rot_deg": 71.79,
    "ground": 33.62,
    "scale": [
@@ -2414,20 +2297,20 @@
    "name": "Seating in the south court arcade bays",
    "collision_hull": [
     [
-     -31.586,
-     94.332
+     -31.636,
+     94.177
     ],
     [
-     -30.82,
-     96.659
+     -30.871,
+     96.504
     ],
     [
-     -31.661,
-     96.936
+     -31.712,
+     96.781
     ],
     [
-     -32.426,
-     94.608
+     -32.477,
+     94.454
     ]
    ]
   },
@@ -2436,8 +2319,8 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -11.637,
-   "y": 152.826,
+   "x": -11.796,
+   "y": 148.689,
    "rot_deg": 177.8,
    "ground": 33.55,
    "scale": [
@@ -2453,59 +2336,20 @@
    "name": "Clipped box in the quieter north court",
    "collision_hull": [
     [
-     -10.828,
-     153.055
+     -10.987,
+     148.919
     ],
     [
-     -12.427,
-     153.116
+     -12.586,
+     148.98
     ],
     [
-     -12.447,
-     152.597
+     -12.606,
+     148.46
     ],
     [
-     -10.848,
-     152.535
-    ]
-   ]
-  },
-  {
-   "id": "dress.north-court-box-quarters.0001",
-   "kind": "prop",
-   "prop": "trough",
-   "asset": "trough",
-   "x": -15.77,
-   "y": 157.789,
-   "rot_deg": 177.8,
-   "ground": 33.55,
-   "scale": [
-    1.0,
-    1.0,
-    1.0
-   ],
-   "existing": true,
-   "basis": "dressing.json rule 'north-court-box-quarters'",
-   "tier": 1,
-   "layer": "prop",
-   "rule": "north-court-box-quarters",
-   "name": "Clipped box in the quieter north court",
-   "collision_hull": [
-    [
-     -14.961,
-     158.018
-    ],
-    [
-     -16.56,
-     158.079
-    ],
-    [
-     -16.579,
-     157.56
-    ],
-    [
-     -14.981,
-     157.498
+     -11.007,
+     148.399
     ]
    ]
   },
@@ -2514,8 +2358,8 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -9.909,
-   "y": 149.877,
+   "x": -10.307,
+   "y": 139.535,
    "rot_deg": 177.8,
    "ground": 33.55,
    "scale": [
@@ -2531,20 +2375,20 @@
    "name": "Planted borders at the north court arcade feet",
    "collision_hull": [
     [
-     -9.1,
-     150.106
+     -9.497,
+     139.764
     ],
     [
-     -10.699,
-     150.167
+     -11.096,
+     139.826
     ],
     [
-     -10.719,
-     149.648
+     -11.116,
+     139.306
     ],
     [
-     -9.12,
-     149.586
+     -9.517,
+     139.245
     ]
    ]
   },
@@ -2553,8 +2397,8 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -13.906,
-   "y": 150.03,
+   "x": -14.304,
+   "y": 139.689,
    "rot_deg": 177.8,
    "ground": 33.55,
    "scale": [
@@ -2570,20 +2414,20 @@
    "name": "Planted borders at the north court arcade feet",
    "collision_hull": [
     [
-     -13.097,
-     150.26
+     -13.494,
+     139.918
     ],
     [
-     -14.696,
-     150.321
+     -15.093,
+     139.979
     ],
     [
-     -14.716,
-     149.801
+     -15.113,
+     139.46
     ],
     [
-     -13.117,
-     149.74
+     -13.514,
+     139.398
     ]
    ]
   },
@@ -2592,8 +2436,8 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -17.904,
-   "y": 150.184,
+   "x": -18.301,
+   "y": 139.842,
    "rot_deg": 177.8,
    "ground": 33.55,
    "scale": [
@@ -2609,20 +2453,20 @@
    "name": "Planted borders at the north court arcade feet",
    "collision_hull": [
     [
-     -17.094,
-     150.413
+     -17.492,
+     140.072
     ],
     [
-     -18.693,
-     150.475
+     -19.09,
+     140.133
     ],
     [
-     -18.713,
-     149.955
+     -19.11,
+     139.613
     ],
     [
-     -17.114,
-     149.894
+     -17.511,
+     139.552
     ]
    ]
   },
@@ -2631,86 +2475,8 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -9.504,
-   "y": 160.431,
-   "rot_deg": 177.8,
-   "ground": 33.55,
-   "scale": [
-    1.0,
-    1.0,
-    1.0
-   ],
-   "existing": true,
-   "basis": "dressing.json rule 'north-court-arcade-borders'",
-   "tier": 1,
-   "layer": "prop",
-   "rule": "north-court-arcade-borders",
-   "name": "Planted borders at the north court arcade feet",
-   "collision_hull": [
-    [
-     -8.695,
-     160.66
-    ],
-    [
-     -10.293,
-     160.721
-    ],
-    [
-     -10.313,
-     160.202
-    ],
-    [
-     -8.714,
-     160.14
-    ]
-   ]
-  },
-  {
-   "id": "dress.north-court-arcade-borders.0004",
-   "kind": "prop",
-   "prop": "trough",
-   "asset": "trough",
-   "x": -17.498,
-   "y": 160.738,
-   "rot_deg": 177.8,
-   "ground": 33.55,
-   "scale": [
-    1.0,
-    1.0,
-    1.0
-   ],
-   "existing": true,
-   "basis": "dressing.json rule 'north-court-arcade-borders'",
-   "tier": 1,
-   "layer": "prop",
-   "rule": "north-court-arcade-borders",
-   "name": "Planted borders at the north court arcade feet",
-   "collision_hull": [
-    [
-     -16.689,
-     160.967
-    ],
-    [
-     -18.288,
-     161.028
-    ],
-    [
-     -18.308,
-     160.509
-    ],
-    [
-     -16.709,
-     160.447
-    ]
-   ]
-  },
-  {
-   "id": "dress.north-court-arcade-borders.0005",
-   "kind": "prop",
-   "prop": "trough",
-   "asset": "trough",
-   "x": -8.581,
-   "y": 151.107,
+   "x": -8.965,
+   "y": 141.101,
    "rot_deg": 87.8,
    "ground": 33.55,
    "scale": [
@@ -2726,20 +2492,98 @@
    "name": "Planted borders at the north court arcade feet",
    "collision_hull": [
     [
-     -8.352,
-     150.298
+     -8.736,
+     140.291
     ],
     [
-     -8.291,
-     151.897
+     -8.675,
+     141.89
     ],
     [
-     -8.81,
-     151.916
+     -9.195,
+     141.91
     ],
     [
-     -8.872,
-     150.318
+     -9.256,
+     140.311
+    ]
+   ]
+  },
+  {
+   "id": "dress.north-court-arcade-borders.0004",
+   "kind": "prop",
+   "prop": "trough",
+   "asset": "trough",
+   "x": -8.786,
+   "y": 145.769,
+   "rot_deg": 87.8,
+   "ground": 33.55,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "existing": true,
+   "basis": "dressing.json rule 'north-court-arcade-borders'",
+   "tier": 1,
+   "layer": "prop",
+   "rule": "north-court-arcade-borders",
+   "name": "Planted borders at the north court arcade feet",
+   "collision_hull": [
+    [
+     -8.557,
+     144.959
+    ],
+    [
+     -8.496,
+     146.558
+    ],
+    [
+     -9.015,
+     146.578
+    ],
+    [
+     -9.077,
+     144.979
+    ]
+   ]
+  },
+  {
+   "id": "dress.north-court-arcade-borders.0005",
+   "kind": "prop",
+   "prop": "trough",
+   "asset": "trough",
+   "x": -8.607,
+   "y": 150.437,
+   "rot_deg": 87.8,
+   "ground": 33.55,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "existing": true,
+   "basis": "dressing.json rule 'north-court-arcade-borders'",
+   "tier": 1,
+   "layer": "prop",
+   "rule": "north-court-arcade-borders",
+   "name": "Planted borders at the north court arcade feet",
+   "collision_hull": [
+    [
+     -8.378,
+     149.627
+    ],
+    [
+     -8.316,
+     151.226
+    ],
+    [
+     -8.836,
+     151.246
+    ],
+    [
+     -8.897,
+     149.647
     ]
    ]
   },
@@ -2787,8 +2631,8 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -8.274,
-   "y": 159.102,
+   "x": -8.248,
+   "y": 159.773,
    "rot_deg": 87.8,
    "ground": 33.55,
    "scale": [
@@ -2804,20 +2648,20 @@
    "name": "Planted borders at the north court arcade feet",
    "collision_hull": [
     [
-     -8.045,
-     158.293
+     -8.019,
+     158.964
     ],
     [
-     -7.983,
-     159.892
+     -7.958,
+     160.562
     ],
     [
-     -8.503,
-     159.912
+     -8.477,
+     160.582
     ],
     [
-     -8.564,
-     158.313
+     -8.539,
+     158.983
     ]
    ]
   },
@@ -2826,8 +2670,8 @@
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -19.134,
-   "y": 151.512,
+   "x": -19.518,
+   "y": 141.506,
    "rot_deg": 87.8,
    "ground": 33.55,
    "scale": [
@@ -2843,25 +2687,103 @@
    "name": "Planted borders at the north court arcade feet",
    "collision_hull": [
     [
-     -18.904,
-     150.703
+     -19.289,
+     140.697
     ],
     [
-     -18.843,
-     152.302
+     -19.227,
+     142.296
     ],
     [
-     -19.363,
-     152.322
+     -19.747,
+     142.316
     ],
     [
-     -19.424,
-     150.723
+     -19.809,
+     140.717
     ]
    ]
   },
   {
    "id": "dress.north-court-arcade-borders.0009",
+   "kind": "prop",
+   "prop": "trough",
+   "asset": "trough",
+   "x": -19.339,
+   "y": 146.174,
+   "rot_deg": 87.8,
+   "ground": 33.55,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "existing": true,
+   "basis": "dressing.json rule 'north-court-arcade-borders'",
+   "tier": 1,
+   "layer": "prop",
+   "rule": "north-court-arcade-borders",
+   "name": "Planted borders at the north court arcade feet",
+   "collision_hull": [
+    [
+     -19.11,
+     145.365
+    ],
+    [
+     -19.048,
+     146.964
+    ],
+    [
+     -19.568,
+     146.984
+    ],
+    [
+     -19.629,
+     145.385
+    ]
+   ]
+  },
+  {
+   "id": "dress.north-court-arcade-borders.0010",
+   "kind": "prop",
+   "prop": "trough",
+   "asset": "trough",
+   "x": -19.159,
+   "y": 150.842,
+   "rot_deg": 87.8,
+   "ground": 33.55,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "existing": true,
+   "basis": "dressing.json rule 'north-court-arcade-borders'",
+   "tier": 1,
+   "layer": "prop",
+   "rule": "north-court-arcade-borders",
+   "name": "Planted borders at the north court arcade feet",
+   "collision_hull": [
+    [
+     -18.93,
+     150.033
+    ],
+    [
+     -18.869,
+     151.632
+    ],
+    [
+     -19.388,
+     151.652
+    ],
+    [
+     -19.45,
+     150.053
+    ]
+   ]
+  },
+  {
+   "id": "dress.north-court-arcade-borders.0011",
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
@@ -2886,12 +2808,12 @@
      154.701
     ],
     [
-     -18.69,
-     156.299
+     -18.689,
+     156.3
     ],
     [
      -19.209,
-     156.319
+     156.32
     ],
     [
      -19.271,
@@ -2900,12 +2822,12 @@
    ]
   },
   {
-   "id": "dress.north-court-arcade-borders.0010",
+   "id": "dress.north-court-arcade-borders.0012",
    "kind": "prop",
    "prop": "trough",
    "asset": "trough",
-   "x": -18.826,
-   "y": 159.508,
+   "x": -18.801,
+   "y": 160.178,
    "rot_deg": 87.8,
    "ground": 33.55,
    "scale": [
@@ -2921,59 +2843,20 @@
    "name": "Planted borders at the north court arcade feet",
    "collision_hull": [
     [
-     -18.597,
-     158.698
+     -18.572,
+     159.369
     ],
     [
-     -18.536,
-     160.297
+     -18.51,
+     160.968
     ],
     [
-     -19.056,
-     160.317
+     -19.03,
+     160.988
     ],
     [
-     -19.117,
-     158.718
-    ]
-   ]
-  },
-  {
-   "id": "dress.north-court-arcade-seating.0000",
-   "kind": "prop",
-   "prop": "estate-bench",
-   "asset": "estate-bench",
-   "x": -13.993,
-   "y": 147.776,
-   "rot_deg": 177.8,
-   "ground": 33.55,
-   "scale": [
-    1.0,
-    1.0,
-    1.0
-   ],
-   "existing": true,
-   "basis": "dressing.json rule 'north-court-arcade-seating'",
-   "tier": 1,
-   "layer": "prop",
-   "rule": "north-court-arcade-seating",
-   "name": "A bench in the north court arcade",
-   "collision_hull": [
-    [
-     -12.752,
-     148.171
-    ],
-    [
-     -15.2,
-     148.265
-    ],
-    [
-     -15.234,
-     147.381
-    ],
-    [
-     -12.786,
-     147.287
+     -19.091,
+     159.389
     ]
    ]
   },
@@ -2982,8 +2865,8 @@
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
-   "x": -35.169,
-   "y": 140.454,
+   "x": -34.82,
+   "y": 139.611,
    "rot_deg": 87.8,
    "ground": 33.55,
    "scale": [
@@ -2996,23 +2879,23 @@
    "tier": 1,
    "layer": "prop",
    "rule": "north-private-terrace-pots",
-   "name": "Potted standards on north and Thames private terraces",
+   "name": "Potted standards outside the north courtyard walls",
    "collision_hull": [
     [
-     -34.688,
-     139.935
+     -34.339,
+     139.092
     ],
     [
-     -34.65,
-     140.934
+     -34.301,
+     140.091
     ],
     [
-     -35.649,
-     140.973
+     -35.3,
+     140.13
     ],
     [
-     -35.688,
-     139.973
+     -35.338,
+     139.13
     ]
    ]
   },
@@ -3021,8 +2904,8 @@
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
-   "x": -34.99,
-   "y": 145.117,
+   "x": -34.629,
+   "y": 144.567,
    "rot_deg": 87.8,
    "ground": 33.55,
    "scale": [
@@ -3035,23 +2918,23 @@
    "tier": 1,
    "layer": "prop",
    "rule": "north-private-terrace-pots",
-   "name": "Potted standards on north and Thames private terraces",
+   "name": "Potted standards outside the north courtyard walls",
    "collision_hull": [
     [
-     -34.509,
-     144.598
+     -34.149,
+     144.048
     ],
     [
-     -34.471,
-     145.597
+     -34.11,
+     145.048
     ],
     [
-     -35.47,
-     145.636
+     -35.11,
+     145.086
     ],
     [
-     -35.509,
-     144.637
+     -35.148,
+     144.087
     ]
    ]
   },
@@ -3060,8 +2943,8 @@
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
-   "x": -34.811,
-   "y": 149.78,
+   "x": -34.439,
+   "y": 149.523,
    "rot_deg": 87.8,
    "ground": 33.55,
    "scale": [
@@ -3074,23 +2957,23 @@
    "tier": 1,
    "layer": "prop",
    "rule": "north-private-terrace-pots",
-   "name": "Potted standards on north and Thames private terraces",
+   "name": "Potted standards outside the north courtyard walls",
    "collision_hull": [
     [
-     -34.33,
-     149.261
+     -33.958,
+     149.005
     ],
     [
-     -34.292,
-     150.261
+     -33.92,
+     150.004
     ],
     [
-     -35.291,
-     150.299
+     -34.919,
+     150.042
     ],
     [
-     -35.329,
-     149.3
+     -34.958,
+     149.043
     ]
    ]
   },
@@ -3099,8 +2982,8 @@
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
-   "x": -34.632,
-   "y": 154.443,
+   "x": -34.248,
+   "y": 154.48,
    "rot_deg": 87.8,
    "ground": 33.55,
    "scale": [
@@ -3113,23 +2996,23 @@
    "tier": 1,
    "layer": "prop",
    "rule": "north-private-terrace-pots",
-   "name": "Potted standards on north and Thames private terraces",
+   "name": "Potted standards outside the north courtyard walls",
    "collision_hull": [
     [
-     -34.151,
-     153.925
+     -33.768,
+     153.961
     ],
     [
-     -34.113,
-     154.924
+     -33.729,
+     154.96
     ],
     [
-     -35.112,
-     154.962
+     -34.729,
+     154.998
     ],
     [
-     -35.15,
-     153.963
+     -34.767,
+     153.999
     ]
    ]
   },
@@ -3138,8 +3021,8 @@
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
-   "x": -34.452,
-   "y": 159.107,
+   "x": -34.058,
+   "y": 159.436,
    "rot_deg": 87.8,
    "ground": 33.55,
    "scale": [
@@ -3152,23 +3035,23 @@
    "tier": 1,
    "layer": "prop",
    "rule": "north-private-terrace-pots",
-   "name": "Potted standards on north and Thames private terraces",
+   "name": "Potted standards outside the north courtyard walls",
    "collision_hull": [
     [
-     -33.972,
-     158.588
+     -33.577,
+     158.917
     ],
     [
-     -33.934,
-     159.587
+     -33.539,
+     159.916
     ],
     [
-     -34.933,
-     159.626
+     -34.538,
+     159.955
     ],
     [
-     -34.971,
-     158.626
+     -34.577,
+     158.955
     ]
    ]
   },
@@ -3177,8 +3060,8 @@
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
-   "x": -34.273,
-   "y": 163.77,
+   "x": -33.867,
+   "y": 164.392,
    "rot_deg": 87.8,
    "ground": 33.55,
    "scale": [
@@ -3191,23 +3074,23 @@
    "tier": 1,
    "layer": "prop",
    "rule": "north-private-terrace-pots",
-   "name": "Potted standards on north and Thames private terraces",
+   "name": "Potted standards outside the north courtyard walls",
    "collision_hull": [
     [
-     -33.793,
-     163.251
+     -33.387,
+     163.873
     ],
     [
-     -33.754,
-     164.25
+     -33.349,
+     164.873
     ],
     [
-     -34.754,
-     164.289
+     -34.348,
+     164.911
     ],
     [
-     -34.792,
-     163.289
+     -34.386,
+     163.912
     ]
    ]
   },
@@ -3216,9 +3099,9 @@
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
-   "x": -9.232,
-   "y": 174.029,
-   "rot_deg": 177.8,
+   "x": 9.182,
+   "y": 159.09,
+   "rot_deg": 267.8,
    "ground": 33.55,
    "scale": [
     1.0,
@@ -3230,23 +3113,23 @@
    "tier": 1,
    "layer": "prop",
    "rule": "north-private-terrace-pots",
-   "name": "Potted standards on north and Thames private terraces",
+   "name": "Potted standards outside the north courtyard walls",
    "collision_hull": [
     [
-     -8.713,
-     174.51
+     8.701,
+     159.609
     ],
     [
-     -9.712,
-     174.548
+     8.663,
+     158.61
     ],
     [
-     -9.75,
-     173.549
+     9.662,
+     158.571
     ],
     [
-     -8.751,
-     173.511
+     9.7,
+     159.571
     ]
    ]
   },
@@ -3255,9 +3138,9 @@
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
-   "x": -13.728,
-   "y": 174.202,
-   "rot_deg": 177.8,
+   "x": 9.068,
+   "y": 156.132,
+   "rot_deg": 267.8,
    "ground": 33.55,
    "scale": [
     1.0,
@@ -3269,23 +3152,23 @@
    "tier": 1,
    "layer": "prop",
    "rule": "north-private-terrace-pots",
-   "name": "Potted standards on north and Thames private terraces",
+   "name": "Potted standards outside the north courtyard walls",
    "collision_hull": [
     [
-     -13.21,
-     174.683
+     8.588,
+     156.651
     ],
     [
-     -14.209,
-     174.721
+     8.549,
+     155.652
     ],
     [
-     -14.247,
-     173.722
+     9.548,
+     155.613
     ],
     [
-     -13.248,
-     173.683
+     9.587,
+     156.613
     ]
    ]
   },
@@ -3294,9 +3177,9 @@
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
-   "x": -18.225,
-   "y": 174.375,
-   "rot_deg": 177.8,
+   "x": 8.954,
+   "y": 153.174,
+   "rot_deg": 267.8,
    "ground": 33.55,
    "scale": [
     1.0,
@@ -3308,23 +3191,23 @@
    "tier": 1,
    "layer": "prop",
    "rule": "north-private-terrace-pots",
-   "name": "Potted standards on north and Thames private terraces",
+   "name": "Potted standards outside the north courtyard walls",
    "collision_hull": [
     [
-     -17.706,
-     174.855
+     8.474,
+     153.693
     ],
     [
-     -18.706,
-     174.894
+     8.435,
+     152.694
     ],
     [
-     -18.744,
-     173.895
+     9.435,
+     152.656
     ],
     [
-     -17.745,
-     173.856
+     9.473,
+     153.655
     ]
    ]
   },
@@ -3333,9 +3216,9 @@
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
-   "x": -22.722,
-   "y": 174.548,
-   "rot_deg": 177.8,
+   "x": 8.841,
+   "y": 150.217,
+   "rot_deg": 267.8,
    "ground": 33.55,
    "scale": [
     1.0,
@@ -3347,34 +3230,34 @@
    "tier": 1,
    "layer": "prop",
    "rule": "north-private-terrace-pots",
-   "name": "Potted standards on north and Thames private terraces",
+   "name": "Potted standards outside the north courtyard walls",
    "collision_hull": [
     [
-     -22.203,
-     175.028
+     8.36,
+     150.735
     ],
     [
-     -23.202,
-     175.067
+     8.322,
+     149.736
     ],
     [
-     -23.241,
-     174.067
+     9.321,
+     149.698
     ],
     [
-     -22.241,
-     174.029
+     9.36,
+     150.697
     ]
    ]
   },
   {
-   "id": "dress.north-private-terrace-beds.0000",
+   "id": "dress.north-private-terrace-pots.0010",
    "kind": "prop",
-   "prop": "trough",
-   "asset": "trough",
-   "x": -37.837,
-   "y": 140.556,
-   "rot_deg": 87.8,
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": 8.727,
+   "y": 147.259,
+   "rot_deg": 267.8,
    "ground": 33.55,
    "scale": [
     1.0,
@@ -3382,38 +3265,38 @@
     1.0
    ],
    "existing": true,
-   "basis": "dressing.json rule 'north-private-terrace-beds'",
+   "basis": "dressing.json rule 'north-private-terrace-pots'",
    "tier": 1,
    "layer": "prop",
-   "rule": "north-private-terrace-beds",
-   "name": "Wall beds on north and Thames private terraces",
+   "rule": "north-private-terrace-pots",
+   "name": "Potted standards outside the north courtyard walls",
    "collision_hull": [
     [
-     -37.608,
-     139.747
+     8.247,
+     147.778
     ],
     [
-     -37.546,
-     141.346
+     8.208,
+     146.778
     ],
     [
-     -38.066,
-     141.366
+     9.207,
+     146.74
     ],
     [
-     -38.127,
-     139.767
+     9.246,
+     147.739
     ]
    ]
   },
   {
-   "id": "dress.north-private-terrace-beds.0001",
+   "id": "dress.north-private-terrace-pots.0011",
    "kind": "prop",
-   "prop": "trough",
-   "asset": "trough",
-   "x": -37.658,
-   "y": 145.219,
-   "rot_deg": 87.8,
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": 8.613,
+   "y": 144.301,
+   "rot_deg": 267.8,
    "ground": 33.55,
    "scale": [
     1.0,
@@ -3421,339 +3304,729 @@
     1.0
    ],
    "existing": true,
-   "basis": "dressing.json rule 'north-private-terrace-beds'",
+   "basis": "dressing.json rule 'north-private-terrace-pots'",
    "tier": 1,
    "layer": "prop",
-   "rule": "north-private-terrace-beds",
-   "name": "Wall beds on north and Thames private terraces",
+   "rule": "north-private-terrace-pots",
+   "name": "Potted standards outside the north courtyard walls",
    "collision_hull": [
     [
-     -37.429,
-     144.41
+     8.133,
+     144.82
     ],
     [
-     -37.367,
-     146.009
+     8.095,
+     143.82
     ],
     [
-     -37.887,
-     146.029
+     9.094,
+     143.782
     ],
     [
-     -37.948,
-     144.43
+     9.132,
+     144.781
     ]
    ]
   },
   {
-   "id": "dress.north-private-terrace-beds.0002",
+   "id": "dress.south-private-terrace-pots.0000",
    "kind": "prop",
-   "prop": "trough",
-   "asset": "trough",
-   "x": -37.479,
-   "y": 149.883,
-   "rot_deg": 87.8,
-   "ground": 33.55,
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": -0.864,
+   "y": 87.12,
+   "rot_deg": 251.79,
+   "ground": 33.62,
    "scale": [
     1.0,
     1.0,
     1.0
    ],
    "existing": true,
-   "basis": "dressing.json rule 'north-private-terrace-beds'",
+   "basis": "dressing.json rule 'south-private-terrace-pots'",
    "tier": 1,
    "layer": "prop",
-   "rule": "north-private-terrace-beds",
-   "name": "Wall beds on north and Thames private terraces",
+   "rule": "south-private-terrace-pots",
+   "name": "Potted standards outside the south courtyard walls",
    "collision_hull": [
     [
-     -37.25,
-     149.073
+     -1.183,
+     87.751
     ],
     [
-     -37.188,
-     150.672
+     -1.495,
+     86.801
     ],
     [
-     -37.708,
-     150.692
+     -0.545,
+     86.489
     ],
     [
-     -37.769,
-     149.093
+     -0.233,
+     87.439
     ]
    ]
   },
   {
-   "id": "dress.north-private-terrace-beds.0003",
+   "id": "dress.south-private-terrace-pots.0001",
    "kind": "prop",
-   "prop": "trough",
-   "asset": "trough",
-   "x": -37.3,
-   "y": 154.546,
-   "rot_deg": 87.8,
-   "ground": 33.55,
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": -2.039,
+   "y": 83.548,
+   "rot_deg": 251.79,
+   "ground": 33.62,
    "scale": [
     1.0,
     1.0,
     1.0
    ],
    "existing": true,
-   "basis": "dressing.json rule 'north-private-terrace-beds'",
+   "basis": "dressing.json rule 'south-private-terrace-pots'",
    "tier": 1,
    "layer": "prop",
-   "rule": "north-private-terrace-beds",
-   "name": "Wall beds on north and Thames private terraces",
+   "rule": "south-private-terrace-pots",
+   "name": "Potted standards outside the south courtyard walls",
    "collision_hull": [
     [
-     -37.07,
-     153.737
+     -2.358,
+     84.18
     ],
     [
-     -37.009,
-     155.335
+     -2.67,
+     83.23
     ],
     [
-     -37.529,
-     155.355
+     -1.72,
+     82.917
     ],
     [
-     -37.59,
-     153.757
+     -1.408,
+     83.867
     ]
    ]
   },
   {
-   "id": "dress.north-private-terrace-beds.0004",
+   "id": "dress.south-private-terrace-pots.0002",
    "kind": "prop",
-   "prop": "trough",
-   "asset": "trough",
-   "x": -37.12,
-   "y": 159.209,
-   "rot_deg": 87.8,
-   "ground": 33.55,
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": -3.214,
+   "y": 79.977,
+   "rot_deg": 251.79,
+   "ground": 33.62,
    "scale": [
     1.0,
     1.0,
     1.0
    ],
    "existing": true,
-   "basis": "dressing.json rule 'north-private-terrace-beds'",
+   "basis": "dressing.json rule 'south-private-terrace-pots'",
    "tier": 1,
    "layer": "prop",
-   "rule": "north-private-terrace-beds",
-   "name": "Wall beds on north and Thames private terraces",
+   "rule": "south-private-terrace-pots",
+   "name": "Potted standards outside the south courtyard walls",
    "collision_hull": [
     [
-     -36.891,
-     158.4
+     -3.533,
+     80.608
     ],
     [
-     -36.83,
-     159.999
+     -3.845,
+     79.658
     ],
     [
-     -37.349,
-     160.019
+     -2.895,
+     79.346
     ],
     [
-     -37.411,
-     158.42
+     -2.583,
+     80.296
     ]
    ]
   },
   {
-   "id": "dress.north-private-terrace-beds.0005",
+   "id": "dress.south-private-terrace-pots.0003",
    "kind": "prop",
-   "prop": "trough",
-   "asset": "trough",
-   "x": -36.941,
-   "y": 163.872,
-   "rot_deg": 87.8,
-   "ground": 33.55,
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": -4.389,
+   "y": 76.405,
+   "rot_deg": 251.79,
+   "ground": 33.62,
    "scale": [
     1.0,
     1.0,
     1.0
    ],
    "existing": true,
-   "basis": "dressing.json rule 'north-private-terrace-beds'",
+   "basis": "dressing.json rule 'south-private-terrace-pots'",
    "tier": 1,
    "layer": "prop",
-   "rule": "north-private-terrace-beds",
-   "name": "Wall beds on north and Thames private terraces",
+   "rule": "south-private-terrace-pots",
+   "name": "Potted standards outside the south courtyard walls",
    "collision_hull": [
     [
-     -36.712,
-     163.063
+     -4.708,
+     77.036
     ],
     [
-     -36.651,
-     164.662
+     -5.02,
+     76.086
     ],
     [
-     -37.17,
-     164.682
+     -4.07,
+     75.774
     ],
     [
-     -37.232,
-     163.083
+     -3.758,
+     76.724
     ]
    ]
   },
   {
-   "id": "dress.north-private-terrace-beds.0006",
+   "id": "dress.south-private-terrace-pots.0004",
    "kind": "prop",
-   "prop": "trough",
-   "asset": "trough",
-   "x": -9.129,
-   "y": 176.698,
-   "rot_deg": 177.8,
-   "ground": 33.55,
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": -5.564,
+   "y": 72.834,
+   "rot_deg": 251.79,
+   "ground": 33.62,
    "scale": [
     1.0,
     1.0,
     1.0
    ],
    "existing": true,
-   "basis": "dressing.json rule 'north-private-terrace-beds'",
+   "basis": "dressing.json rule 'south-private-terrace-pots'",
    "tier": 1,
    "layer": "prop",
-   "rule": "north-private-terrace-beds",
-   "name": "Wall beds on north and Thames private terraces",
+   "rule": "south-private-terrace-pots",
+   "name": "Potted standards outside the south courtyard walls",
    "collision_hull": [
     [
-     -8.32,
-     176.927
+     -5.883,
+     73.465
     ],
     [
-     -9.919,
-     176.988
+     -6.195,
+     72.515
     ],
     [
-     -9.939,
-     176.468
+     -5.245,
+     72.202
     ],
     [
-     -8.34,
-     176.407
+     -4.933,
+     73.152
     ]
    ]
   },
   {
-   "id": "dress.north-private-terrace-beds.0007",
+   "id": "dress.south-private-terrace-pots.0005",
    "kind": "prop",
-   "prop": "trough",
-   "asset": "trough",
-   "x": -13.626,
-   "y": 176.87,
-   "rot_deg": 177.8,
-   "ground": 33.55,
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": -6.739,
+   "y": 69.262,
+   "rot_deg": 251.79,
+   "ground": 33.62,
    "scale": [
     1.0,
     1.0,
     1.0
    ],
    "existing": true,
-   "basis": "dressing.json rule 'north-private-terrace-beds'",
+   "basis": "dressing.json rule 'south-private-terrace-pots'",
    "tier": 1,
    "layer": "prop",
-   "rule": "north-private-terrace-beds",
-   "name": "Wall beds on north and Thames private terraces",
+   "rule": "south-private-terrace-pots",
+   "name": "Potted standards outside the south courtyard walls",
    "collision_hull": [
     [
-     -12.817,
-     177.099
+     -7.058,
+     69.893
     ],
     [
-     -14.415,
-     177.161
+     -7.37,
+     68.943
     ],
     [
-     -14.435,
-     176.641
+     -6.42,
+     68.631
     ],
     [
-     -12.836,
-     176.58
+     -6.108,
+     69.581
     ]
    ]
   },
   {
-   "id": "dress.north-private-terrace-beds.0008",
+   "id": "dress.south-private-terrace-pots.0006",
    "kind": "prop",
-   "prop": "trough",
-   "asset": "trough",
-   "x": -18.123,
-   "y": 177.043,
-   "rot_deg": 177.8,
-   "ground": 33.55,
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": -51.292,
+   "y": 73.768,
+   "rot_deg": 86.237,
+   "ground": 33.62,
    "scale": [
     1.0,
     1.0,
     1.0
    ],
    "existing": true,
-   "basis": "dressing.json rule 'north-private-terrace-beds'",
+   "basis": "dressing.json rule 'south-private-terrace-pots'",
    "tier": 1,
    "layer": "prop",
-   "rule": "north-private-terrace-beds",
-   "name": "Wall beds on north and Thames private terraces",
+   "rule": "south-private-terrace-pots",
+   "name": "Potted standards outside the south courtyard walls",
    "collision_hull": [
     [
-     -17.313,
-     177.272
+     -50.826,
+     73.236
     ],
     [
-     -18.912,
-     177.334
+     -50.76,
+     74.234
     ],
     [
-     -18.932,
-     176.814
+     -51.758,
+     74.3
     ],
     [
-     -17.333,
-     176.752
+     -51.824,
+     73.302
     ]
    ]
   },
   {
-   "id": "dress.north-private-terrace-beds.0009",
+   "id": "dress.south-private-terrace-pots.0007",
    "kind": "prop",
-   "prop": "trough",
-   "asset": "trough",
-   "x": -22.619,
-   "y": 177.216,
-   "rot_deg": 177.8,
-   "ground": 33.55,
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": -51.074,
+   "y": 77.084,
+   "rot_deg": 86.237,
+   "ground": 33.62,
    "scale": [
     1.0,
     1.0,
     1.0
    ],
    "existing": true,
-   "basis": "dressing.json rule 'north-private-terrace-beds'",
+   "basis": "dressing.json rule 'south-private-terrace-pots'",
    "tier": 1,
    "layer": "prop",
-   "rule": "north-private-terrace-beds",
-   "name": "Wall beds on north and Thames private terraces",
+   "rule": "south-private-terrace-pots",
+   "name": "Potted standards outside the south courtyard walls",
    "collision_hull": [
     [
-     -21.81,
-     177.445
+     -50.608,
+     76.552
     ],
     [
-     -23.409,
-     177.506
+     -50.542,
+     77.55
     ],
     [
-     -23.429,
-     176.987
+     -51.54,
+     77.615
     ],
     [
-     -21.83,
-     176.925
+     -51.606,
+     76.617
+    ]
+   ]
+  },
+  {
+   "id": "dress.south-private-terrace-pots.0008",
+   "kind": "prop",
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": -50.856,
+   "y": 80.399,
+   "rot_deg": 86.237,
+   "ground": 33.62,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "existing": true,
+   "basis": "dressing.json rule 'south-private-terrace-pots'",
+   "tier": 1,
+   "layer": "prop",
+   "rule": "south-private-terrace-pots",
+   "name": "Potted standards outside the south courtyard walls",
+   "collision_hull": [
+    [
+     -50.39,
+     79.867
+    ],
+    [
+     -50.324,
+     80.865
+    ],
+    [
+     -51.322,
+     80.931
+    ],
+    [
+     -51.388,
+     79.933
+    ]
+   ]
+  },
+  {
+   "id": "dress.south-private-terrace-pots.0009",
+   "kind": "prop",
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": -50.638,
+   "y": 83.715,
+   "rot_deg": 86.237,
+   "ground": 33.62,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "existing": true,
+   "basis": "dressing.json rule 'south-private-terrace-pots'",
+   "tier": 1,
+   "layer": "prop",
+   "rule": "south-private-terrace-pots",
+   "name": "Potted standards outside the south courtyard walls",
+   "collision_hull": [
+    [
+     -50.172,
+     83.183
+    ],
+    [
+     -50.106,
+     84.181
+    ],
+    [
+     -51.104,
+     84.246
+    ],
+    [
+     -51.169,
+     83.249
+    ]
+   ]
+  },
+  {
+   "id": "dress.south-private-terrace-pots.0010",
+   "kind": "prop",
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": -50.42,
+   "y": 87.03,
+   "rot_deg": 86.237,
+   "ground": 33.62,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "existing": true,
+   "basis": "dressing.json rule 'south-private-terrace-pots'",
+   "tier": 1,
+   "layer": "prop",
+   "rule": "south-private-terrace-pots",
+   "name": "Potted standards outside the south courtyard walls",
+   "collision_hull": [
+    [
+     -49.954,
+     86.498
+    ],
+    [
+     -49.888,
+     87.496
+    ],
+    [
+     -50.886,
+     87.562
+    ],
+    [
+     -50.951,
+     86.564
+    ]
+   ]
+  },
+  {
+   "id": "dress.south-private-terrace-pots.0011",
+   "kind": "prop",
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": -50.202,
+   "y": 90.346,
+   "rot_deg": 86.237,
+   "ground": 33.62,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "existing": true,
+   "basis": "dressing.json rule 'south-private-terrace-pots'",
+   "tier": 1,
+   "layer": "prop",
+   "rule": "south-private-terrace-pots",
+   "name": "Potted standards outside the south courtyard walls",
+   "collision_hull": [
+    [
+     -49.735,
+     89.814
+    ],
+    [
+     -49.67,
+     90.812
+    ],
+    [
+     -50.668,
+     90.877
+    ],
+    [
+     -50.733,
+     89.88
+    ]
+   ]
+  },
+  {
+   "id": "dress.south-private-terrace-pots.0012",
+   "kind": "prop",
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": -49.984,
+   "y": 93.661,
+   "rot_deg": 86.237,
+   "ground": 33.62,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "existing": true,
+   "basis": "dressing.json rule 'south-private-terrace-pots'",
+   "tier": 1,
+   "layer": "prop",
+   "rule": "south-private-terrace-pots",
+   "name": "Potted standards outside the south courtyard walls",
+   "collision_hull": [
+    [
+     -49.517,
+     93.13
+    ],
+    [
+     -49.452,
+     94.127
+    ],
+    [
+     -50.45,
+     94.193
+    ],
+    [
+     -50.515,
+     93.195
+    ]
+   ]
+  },
+  {
+   "id": "dress.south-private-terrace-pots.0013",
+   "kind": "prop",
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": -49.765,
+   "y": 96.977,
+   "rot_deg": 86.237,
+   "ground": 33.62,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "existing": true,
+   "basis": "dressing.json rule 'south-private-terrace-pots'",
+   "tier": 1,
+   "layer": "prop",
+   "rule": "south-private-terrace-pots",
+   "name": "Potted standards outside the south courtyard walls",
+   "collision_hull": [
+    [
+     -49.299,
+     96.445
+    ],
+    [
+     -49.234,
+     97.443
+    ],
+    [
+     -50.232,
+     97.509
+    ],
+    [
+     -50.297,
+     96.511
+    ]
+   ]
+  },
+  {
+   "id": "dress.south-private-terrace-pots.0014",
+   "kind": "prop",
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": -49.547,
+   "y": 100.292,
+   "rot_deg": 86.237,
+   "ground": 33.62,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "existing": true,
+   "basis": "dressing.json rule 'south-private-terrace-pots'",
+   "tier": 1,
+   "layer": "prop",
+   "rule": "south-private-terrace-pots",
+   "name": "Potted standards outside the south courtyard walls",
+   "collision_hull": [
+    [
+     -49.081,
+     99.761
+    ],
+    [
+     -49.016,
+     100.758
+    ],
+    [
+     -50.013,
+     100.824
+    ],
+    [
+     -50.079,
+     99.826
+    ]
+   ]
+  },
+  {
+   "id": "dress.south-private-terrace-pots.0015",
+   "kind": "prop",
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": -49.329,
+   "y": 103.608,
+   "rot_deg": 86.237,
+   "ground": 33.62,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "existing": true,
+   "basis": "dressing.json rule 'south-private-terrace-pots'",
+   "tier": 1,
+   "layer": "prop",
+   "rule": "south-private-terrace-pots",
+   "name": "Potted standards outside the south courtyard walls",
+   "collision_hull": [
+    [
+     -48.863,
+     103.076
+    ],
+    [
+     -48.798,
+     104.074
+    ],
+    [
+     -49.795,
+     104.14
+    ],
+    [
+     -49.861,
+     103.142
+    ]
+   ]
+  },
+  {
+   "id": "dress.south-private-terrace-pots.0016",
+   "kind": "prop",
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": -49.111,
+   "y": 106.923,
+   "rot_deg": 86.237,
+   "ground": 33.62,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "existing": true,
+   "basis": "dressing.json rule 'south-private-terrace-pots'",
+   "tier": 1,
+   "layer": "prop",
+   "rule": "south-private-terrace-pots",
+   "name": "Potted standards outside the south courtyard walls",
+   "collision_hull": [
+    [
+     -48.645,
+     106.392
+    ],
+    [
+     -48.579,
+     107.39
+    ],
+    [
+     -49.577,
+     107.455
+    ],
+    [
+     -49.643,
+     106.457
+    ]
+   ]
+  },
+  {
+   "id": "dress.south-private-terrace-pots.0017",
+   "kind": "prop",
+   "prop": "large-planter",
+   "asset": "large-planter",
+   "x": -48.893,
+   "y": 110.239,
+   "rot_deg": 86.237,
+   "ground": 33.62,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "existing": true,
+   "basis": "dressing.json rule 'south-private-terrace-pots'",
+   "tier": 1,
+   "layer": "prop",
+   "rule": "south-private-terrace-pots",
+   "name": "Potted standards outside the south courtyard walls",
+   "collision_hull": [
+    [
+     -48.427,
+     109.707
+    ],
+    [
+     -48.361,
+     110.705
+    ],
+    [
+     -49.359,
+     110.771
+    ],
+    [
+     -49.425,
+     109.773
     ]
    ]
   },
@@ -4230,84 +4503,6 @@
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
-   "x": -12.516,
-   "y": 146.635,
-   "rot_deg": 177.8,
-   "ground": 39.23,
-   "scale": [
-    1.0,
-    1.0,
-    1.0
-   ],
-   "existing": true,
-   "basis": "dressing.json rule 'courtyard-first-floor-terrace-pots'",
-   "tier": 1,
-   "layer": "prop",
-   "rule": "courtyard-first-floor-terrace-pots",
-   "name": "Pots at every first-floor terrace cheek wall",
-   "collision_hull": [
-    [
-     -11.997,
-     147.115
-    ],
-    [
-     -12.996,
-     147.153
-    ],
-    [
-     -13.035,
-     146.154
-    ],
-    [
-     -12.035,
-     146.116
-    ]
-   ]
-  },
-  {
-   "id": "dress.courtyard-first-floor-terrace-pots.0013",
-   "kind": "prop",
-   "prop": "large-planter",
-   "asset": "large-planter",
-   "x": -15.554,
-   "y": 146.751,
-   "rot_deg": 177.8,
-   "ground": 39.23,
-   "scale": [
-    1.0,
-    1.0,
-    1.0
-   ],
-   "existing": true,
-   "basis": "dressing.json rule 'courtyard-first-floor-terrace-pots'",
-   "tier": 1,
-   "layer": "prop",
-   "rule": "courtyard-first-floor-terrace-pots",
-   "name": "Pots at every first-floor terrace cheek wall",
-   "collision_hull": [
-    [
-     -15.035,
-     147.232
-    ],
-    [
-     -16.034,
-     147.27
-    ],
-    [
-     -16.072,
-     146.271
-    ],
-    [
-     -15.073,
-     146.232
-    ]
-   ]
-  },
-  {
-   "id": "dress.courtyard-first-floor-terrace-pots.0014",
-   "kind": "prop",
-   "prop": "large-planter",
-   "asset": "large-planter",
    "x": -11.854,
    "y": 163.863,
    "rot_deg": 177.8,
@@ -4343,7 +4538,7 @@
    ]
   },
   {
-   "id": "dress.courtyard-first-floor-terrace-pots.0015",
+   "id": "dress.courtyard-first-floor-terrace-pots.0013",
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
@@ -4382,7 +4577,7 @@
    ]
   },
   {
-   "id": "dress.courtyard-first-floor-terrace-pots.0016",
+   "id": "dress.courtyard-first-floor-terrace-pots.0014",
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
@@ -4421,7 +4616,7 @@
    ]
   },
   {
-   "id": "dress.courtyard-first-floor-terrace-pots.0017",
+   "id": "dress.courtyard-first-floor-terrace-pots.0015",
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
@@ -4460,7 +4655,7 @@
    ]
   },
   {
-   "id": "dress.courtyard-first-floor-terrace-pots.0018",
+   "id": "dress.courtyard-first-floor-terrace-pots.0016",
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
@@ -4499,7 +4694,7 @@
    ]
   },
   {
-   "id": "dress.courtyard-first-floor-terrace-pots.0019",
+   "id": "dress.courtyard-first-floor-terrace-pots.0017",
    "kind": "prop",
    "prop": "large-planter",
    "asset": "large-planter",
@@ -4539,6 +4734,45 @@
   },
   {
    "id": "dress.service-yard-vehicles.0000",
+   "kind": "prop",
+   "prop": "estate-4x4",
+   "asset": "estate-4x4",
+   "x": -24.147,
+   "y": 176.695,
+   "rot_deg": 154.44,
+   "ground": 33.467,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "existing": true,
+   "basis": "dressing.json rule 'service-yard-vehicles'",
+   "tier": 2,
+   "layer": "prop",
+   "rule": "service-yard-vehicles",
+   "name": "Two service vehicles in the working yard",
+   "collision_hull": [
+    [
+     -21.549,
+     176.566
+    ],
+    [
+     -25.879,
+     178.637
+    ],
+    [
+     -26.746,
+     176.825
+    ],
+    [
+     -22.416,
+     174.754
+    ]
+   ]
+  },
+  {
+   "id": "dress.service-yard-vehicles.0001",
    "kind": "prop",
    "prop": "estate-4x4",
    "asset": "estate-4x4",
