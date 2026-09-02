@@ -310,8 +310,8 @@ html[data-variants="1"] #variants{display:block}
     <div class="sect" id="smasssect">
       <h2>South courtyard massing</h2>
       <div class="lay" id="smasscontrols">
-        <label><input type="radio" name="smass" value="closed" checked> Closed — as built</label>
-        <label><input type="radio" name="smass" value="open"> Open — court through both ends</label>
+        <label><input type="radio" name="smass" value="closed"> Closed — as built</label>
+        <label><input type="radio" name="smass" value="open" checked> Open — court through both ends</label>
       </div>
     </div>
     <div class="sect">
@@ -537,7 +537,7 @@ refreshDemolishedAprons();
    ============================================================================== */
 const SMASS_KEY = 'fcm.south-courtyard-massing.v1';
 const SMASS_STATES = new Set(['closed', 'open', 'arches']);
-let smassState = 'closed';
+let smassState = 'open';   // Angus, 2 Sep 2026: south courtyard defaults to Open (demolished)
 (function loadSouthMassing(){
   let raw = null; try { raw = localStorage.getItem(SMASS_KEY); } catch(e){}
   if (SMASS_STATES.has(raw)) smassState = raw;
