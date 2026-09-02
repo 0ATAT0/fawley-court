@@ -1879,7 +1879,27 @@ async function loadSplit(){
   }
 }
 
-resolvePromotedSplit().then(() => loadSplit()).then(ok => { if (ok) return;
+/* Cache-busting, 2 Sep 2026. The data files are fetched by bare filename, so GitHub Pages'
+   CDN serves a stale static.glb / props-placement.json / scene.json even to a hard refresh
+   until its TTL expires - the team saw an old planter count this way. Stamp every data URL
+   with the deploy timestamp from ../DEPLOY.json (written fresh by deploy_site.py each deploy),
+   so a new deploy is a new URL and the cache cannot hold the old one. Additive and fail-safe:
+   with no manifest (local dev) the URLs stay unversioned. estate-data.js is a <script src>
+   loaded before this runs and is not stamped here - it changes with the registry, rarely. */
+async function stampSplitVersion(){
+  let stamp = '';
+  try {
+    const r = await fetch('../DEPLOY.json', {cache: 'no-store'});
+    if (r.ok) stamp = (await r.json()).synced || '';
+  } catch (e){ /* local dev / no manifest: leave URLs unversioned */ }
+  if (!stamp) return;
+  const q = 'v=' + encodeURIComponent(stamp);
+  for (const k of ['static', 'assets', 'props', 'dressing', 'spec', 'legacy']){
+    if (SPLIT[k]) SPLIT[k] += (SPLIT[k].includes('?') ? '&' : '?') + q;
+  }
+}
+
+resolvePromotedSplit().then(stampSplitVersion).then(() => loadSplit()).then(ok => { if (ok) return;
   loader.load(SPLIT.legacy, accept, undefined, err => {
     console.warn(err); document.getElementById('drop').classList.add('show');
   });
