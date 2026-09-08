@@ -1,0 +1,2 @@
+# Preserve the exact promoted model bytes and their deployment hashes.
+model/** -text
