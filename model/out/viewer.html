@@ -1450,6 +1450,8 @@ function wasdGlide(dt){
 }
 
 const VIEWS = {
+  // Entrance front, aligned with the house's -18.21 degree placement.
+  arrival:[[-125.283,70,-41.015],[2.953,42,1.172]],
   whole:[[-430,470,640],[130,30,-40]],
   house:[[235,95,95],[-5,40,-10]],
   court:[[-30,120,75],[-58,38,-118]],
@@ -1460,7 +1462,7 @@ function setView(name){
   const v = VIEWS[name]; if(!v) return;
   camera.position.set(...v[0]); orbit.target.set(...v[1]); orbit.update();
 }
-setView('whole');
+setView('arrival');
 
 /* ------- load GLB ------- */
 const meshesByElement = {};
