@@ -5,7 +5,7 @@ export function installEstateInterface() {
  const author=new URLSearchParams(location.search).get('author')==='1';
  document.body.classList.add('estate-ui');document.body.classList.toggle('estate-author',author);
  const rail=$('rail'),scroll=$('railscroll'),header=rail.querySelector('header');
- rail.classList.remove('min');document.body.classList.remove('railmin');
+ rail.classList.add('min');document.body.classList.add('railmin');
  header.querySelector('h1').innerHTML='<span class="estate-kicker">HENLEY-ON-THAMES</span>Fawley Court';
  $('modelref').textContent=author?'Estate authoring · measured model':'Hotel conversion & residential proposal';
  // Retain the native totals nodes for their existing update handlers, off screen.
@@ -36,7 +36,7 @@ export function installEstateInterface() {
  const footer=document.createElement('footer');footer.className='estate-footer';
  const u=new URL(location.href);if(author)u.searchParams.delete('author');else u.searchParams.set('author','1');
  footer.innerHTML='<span>FAWLEY COURT · ESTATE STUDY</span>';const link=document.createElement('a');link.href=u.href;link.textContent=author?'Return to investor view':'Open authoring mode';footer.append(link);rail.append(footer);
- const min=$('railmin');min.setAttribute('aria-label','Collapse estate panel');min.addEventListener('click',()=>min.setAttribute('aria-label',rail.classList.contains('min')?'Open estate panel':'Collapse estate panel'));
+ const min=$('railmin');min.textContent='+';min.title='Expand sidebar';min.setAttribute('aria-label','Open estate panel');min.addEventListener('click',()=>min.setAttribute('aria-label',rail.classList.contains('min')?'Open estate panel':'Collapse estate panel'));
  function show(id){
   for(const [key,pane] of Object.entries(panes))pane.hidden=key!==id;
   for(const [key,b] of Object.entries(buttons))b.setAttribute('aria-pressed',String(key===id));

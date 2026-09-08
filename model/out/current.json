@@ -1,9 +1,9 @@
 {
- "generation": 2,
- "run": "20260908T221951-40104-952a49",
- "promoted": "2026-09-08T22:21:38.401049+00:00",
+ "generation": 3,
+ "run": "20260908T223219-29508-24cd79",
+ "promoted": "2026-09-08T22:34:05.809364+00:00",
  "session": "w7:p1B",
- "previous": "20260908T203843-40640-8c6e05",
+ "previous": "20260908T221951-40104-952a49",
  "artefacts": {
   "static.glb": "1dd6605c9e374e8fc9a7a63d5a405625d175bb9a6fb25c8c3285b9f9e4bba9d8",
   "assets.glb": "6a4bd6cf6027c9f98826b76f0cc8a3e1d7c89f0b68ee6e0f3a6636cc3acfb92c",
@@ -26,7 +26,7 @@
   "terrain_albedo_estate.png": "416aeecc179799fdbfebb5f090a22a7ae7c021e0e24f9799372fc334cc283030"
  },
  "stage_keys": {
-  "estate-detail": "5aa05faed51416e29fd835353f60ec77a363e864793c345e39f99e86a2012bbc",
+  "estate-detail": "e6fc30531be8731f60eaeb1abb41e979fd59cc75bcd8fb09822643e58b38d794",
   "props": "b5b1a2ba61d2a1e8f3107cdd25aa9bd53f01c4fa2c1d0fdd45091529deecb048",
   "registry-data": "2bcac67b2fa608d270ef87edb092d855cee16eb82ba0c7fb40ad52f78f819bee",
   "water-mesh": "920003efc297940e9e367073d962bdf63c90c58fcec187749524ec85b88cebd1",
@@ -54,5 +54,5 @@
   "light": "e9872287e759f602961a2573c12de2a0a50dd20f115c61a0c67bb603380ae1f1",
   "instances": "4e194bc6105156b18bd7fac026b257bb87aa45ca4d0797b06e8c344fcd33334e"
  },
- "viewer_bundle": "0b64633576aca4acf3a2cb93ba5c92bcbce54330"
+ "viewer_bundle": "dfcac2e66e568b35ae719d9a4e98a2bf68d54682"
 }
