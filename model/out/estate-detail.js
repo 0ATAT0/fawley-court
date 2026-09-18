@@ -15,9 +15,26 @@ export async function prepareEstateDetail(root,loader,base){
  };
  const gltf=await load('estate-detail.glb',manifest.glb_sha256),library=new Map();gltf.scene.traverse(o=>library.set(key(o.name),o));
  const placements=[];root.traverse(o=>{if(manifest.prop_replacements[o.userData.prop])placements.push(o);});
- for(const [name,spec] of Object.entries(manifest.prop_replacements)){
-  if(placements.filter(o=>o.userData.prop===name).length!==spec.count||!library.has(key(spec.node)))throw Error('Estate prop identity mismatch: '+name);
- }
+ /* COVERAGE, not a count recorded elsewhere (10 Sep 2026, goal g38071c0). This required the
+    number of placed props to equal spec.count, a constant authored into the detail library
+    when it was built. The courtyard size study places both size states' props - one hidden -
+    so large-planter went from 53 to 84 and the whole split load fell back: the model never
+    loaded, in the harness and in a real browser alike, with only a warning to say why.
+
+    Same shape as the positional pins this goal retired: a number recorded at one moment,
+    which every later legitimate change has to argue past. What the check is FOR is that the
+    library covers every prop it claims to replace, and that nothing was dropped. Coverage is
+    asserted here; "nothing dropped" is asserted against the generation's OWN placement
+    record below, which moves with the model instead of standing still against it. */
+ const uncovered=Object.entries(manifest.prop_replacements)
+   .filter(([,spec])=>!library.has(key(spec.node))).map(([name])=>name);
+ if(uncovered.length)throw Error('Estate detail library covers no node for: '+uncovered.join(', '));
+ const placedCounts={};for(const o of placements)placedCounts[o.userData.prop]=(placedCounts[o.userData.prop]||0)+1;
+ const dressing=await json('props-placement.json'),byProp=(dressing.counts||{}).by_prop||{};
+ const short=Object.keys(manifest.prop_replacements)
+   .filter(name=>byProp[name]!==undefined&&(placedCounts[name]||0)!==byProp[name])
+   .map(name=>`${name} ${placedCounts[name]||0}/${byProp[name]}`);
+ if(short.length)throw Error('Estate props placed do not match this generation: '+short.join(', '));
  for(const placed of placements){
   const replacement=clonePlacedDetail(library.get(key(manifest.prop_replacements[placed.userData.prop].node)),placed);
   placed.parent.add(replacement);root.updateMatrixWorld(true);

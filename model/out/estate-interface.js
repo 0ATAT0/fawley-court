@@ -25,13 +25,35 @@ export function installEstateInterface() {
  move('switches',panes.scheme);move('smasssect',panes.scheme);
  $('smasssect').querySelector('h2').textContent='Courtyard design option';
  const massNote=document.createElement('p');massNote.className='estate-hint';massNote.textContent='Changes the courtyard form only; the works budget is unchanged.';$('smasssect').append(massNote);
+ // The size study is surfaced as its own row beside the massing one, NOT through
+ // groupSwitches: that lists the twelve capex switches read from the workbook, and a
+ // thirteenth row there would read as money. Cost does not move with this control.
+ move('csizesect',panes.scheme);
+ $('csizesect').querySelector('h2').textContent='Courtyard size study';
+ // The investor stylesheet lays #smasscontrols out in one column by id; this control is
+ // new and cannot be added there from here, so it takes the same shape explicitly.
+ const sizeControls=$('csizecontrols');sizeControls.style.gridTemplateColumns='1fr';sizeControls.style.gap='10px';
+ for(const label of sizeControls.querySelectorAll('label')){label.style.fontSize='11px';label.style.lineHeight='1.6';}
+ $('csizeareas').classList.add('estate-hint');
  $('resetsw').textContent='Restore base scheme';
  const financialNote=document.createElement('p');financialNote.className='estate-hint';financialNote.textContent='Options use the registered v19 schedule. Historical one-at-a-time IRR deltas are not presented as a current return forecast.';panes.scheme.append(financialNote);
  for(const id of ['modes','themes','laysect','markbtn','demosect'])move(id,technical);
  technical.append($('variants'));if(author)panes.workbench.append(technical);else scroll.append(technical);
  if(!author)$('views').querySelector('[data-v="fly"]').hidden=true;
+ /* The Long Water treatment group belongs to its own element, so it lives on the
+    Selected panel and only appears while the Long Water (or its treated reach) is
+    selected. Standing where it was, a rail-level sibling outside every pane, it
+    rendered at the top of EVERY panel - Angus selected the wedding marquee and read
+    a Long Water control above it (16 Sep 2026). */
+ move('swimcontrols',panes.selection);
  const card=$('card');panes.selection.append(card);
  const empty=document.createElement('p');empty.className='estate-hint';empty.textContent='Select a building in the model to see its registered details.';panes.selection.prepend(empty);
+ /* The Long Water's own element id. The mouth treatment rides the same element, so
+    this one id covers the parkland reach and the treated reach. */
+ const LONG_WATER='water.long-water';
+ let selectedId=null;
+ function syncSelectionControls(){const s=$('swimsect');if(s)s.hidden=selectedId!==LONG_WATER;}
+ syncSelectionControls();
  for(const pane of Object.values(panes))scroll.append(pane);
  const footer=document.createElement('footer');footer.className='estate-footer';
  const u=new URL(location.href);if(author)u.searchParams.delete('author');else u.searchParams.set('author','1');
@@ -64,6 +86,7 @@ export function installEstateInterface() {
  }
  function selection(el,reveal){
   empty.hidden=true;buttons.selection.textContent='Selected';
+  selectedId=el.id;syncSelectionControls();
   const body=$('cBody');
   const summary=document.createElement('div');summary.className='estate-selection-summary';
   if(el.gia_m2||el.area_m2){const area=document.createElement('p');area.className='estate-area';area.textContent=Number(el.gia_m2||el.area_m2).toLocaleString('en-GB')+' m²';const label=document.createElement('span');label.textContent=el.gia_m2?'Registered gross internal area':'Recorded footprint area';area.append(label);summary.append(area);}
@@ -92,7 +115,7 @@ export function installEstateInterface() {
  }
  document.addEventListener('estate:schemes',groupSwitches);
  document.addEventListener('estate:selection',e=>selection(e.detail.element,e.detail.reveal));
- document.addEventListener('estate:selection-cleared',()=>{empty.hidden=false;buttons.selection.textContent='Building';if(document.body.dataset.estatePane==='selection')show('explore');});
- $('cClose').setAttribute('aria-label','Close building details');$('cClose').addEventListener('click',()=>{empty.hidden=false;buttons.selection.textContent='Building';show('explore');});
+ document.addEventListener('estate:selection-cleared',()=>{empty.hidden=false;buttons.selection.textContent='Building';selectedId=null;syncSelectionControls();if(document.body.dataset.estatePane==='selection')show('explore');});
+ $('cClose').setAttribute('aria-label','Close building details');$('cClose').addEventListener('click',()=>{empty.hidden=false;buttons.selection.textContent='Building';selectedId=null;syncSelectionControls();show('explore');});
  groupSwitches();show('explore');
 }

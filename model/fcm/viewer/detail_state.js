@@ -16,14 +16,22 @@ export function clonePlacedDetail(library, placed) {
   replacement.scale.copy(placed.scale);
   const prefix=placed.name.match(/^smass_(c|o)_/);
   const only=placed.userData.smassOnly || (prefix ? (prefix[1]==='c'?'closed':'open') : null);
-  replacement.traverse(ch=>{ if(only) ch.userData.smassOnly=only; });
+  // The size family is carried the same way and for the same reason: a small courtyard's
+  // dressing is prefixed csize_s_ by the writer, and a replacement that lost the flag would
+  // stand in the large position with nothing under it. Prefix table: viewer.html
+  // STATE_PREFIXES, mirroring fcm/data/scene/placement_identity.py.
+  const sizeOnly=placed.userData.sizeOnly || (/^csize_s_/.test(placed.name) ? 'small' : null);
+  replacement.traverse(ch=>{ if(only) ch.userData.smassOnly=only;
+    if(sizeOnly) ch.userData.sizeOnly=sizeOnly; });
   return replacement;
 }
 
-export function auditDetailState(root, massing, switches={}) {
+export function auditDetailState(root, massing, switches={}, size=null) {
   // Exhaustive over the loaded detail meshes, not a camera sample. A hidden
   // supporting terrace must never leave a visible replacement child behind.
-  const result={detailMeshes:0,conditionalMeshes:0,visibleConditional:0,schemeMeshes:0,visibleScheme:0,vertexFoliage:0,errors:[]};
+  // `size` is the courtyard size state; passed null the size family is not audited, so
+  // a caller that predates the family reports exactly what it did before.
+  const result={detailMeshes:0,conditionalMeshes:0,visibleConditional:0,schemeMeshes:0,visibleScheme:0,sizeMeshes:0,visibleSize:0,vertexFoliage:0,errors:[]};
   root.traverse(o=>{
     if(!o.isMesh) return;
     let owner=o;
@@ -34,6 +42,11 @@ export function auditDetailState(root, massing, switches={}) {
       result.conditionalMeshes++;
       if(o.visible) result.visibleConditional++;
       if(o.visible && o.userData.smassOnly!==massing) result.errors.push('unsupported state: '+o.name);
+    }
+    if(o.userData.sizeOnly){
+      result.sizeMeshes++;
+      if(o.visible) result.visibleSize++;
+      if(o.visible && size && o.userData.sizeOnly!==size) result.errors.push('unsupported size: '+o.name);
     }
     const sw=o.userData.schemeSwitch;
     if(sw){

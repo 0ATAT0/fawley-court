@@ -62,6 +62,9 @@ body.railmin #status,body.railmin #prog{left:16px}
 .lay label{display:flex;gap:7px;align-items:center;font-size:13px;color:var(--charcoal);cursor:pointer}
 .lay input{accent-color:var(--navy)}
 
+#csizeareas{margin-top:7px;color:var(--muted);font-size:12px;line-height:1.5}
+#csizeareas b{color:var(--charcoal);font-weight:600}
+
 #totals{padding:12px 14px;background:var(--ground);border:1px solid var(--line);border-radius:8px}
 #totals .big{font:600 22px/1.1 var(--serif);color:var(--navy)}
 #totals .sub{color:var(--muted);font-size:12.5px;margin-top:3px}
@@ -124,6 +127,17 @@ body.railmin #status,body.railmin #prog{left:16px}
 #card .demo button.on{border-color:var(--green);color:#047857;background:#ecfdf5}
 #card .demo button.off{border-color:#fca5a5;color:#b91c1c;background:#fef2f2}
 #card .demo .why{color:var(--muted);font-size:12px;margin-top:7px;line-height:1.45}
+/* The investor-visible twin of .demo: the estate interface strips .demo (demolition is
+   an authoring concern) but keeps .cardcontrol, so a switch or a viewing toggle the
+   investor is meant to use survives into the Selected panel. */
+#card .cardcontrol{margin:2px 0 12px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--ground)}
+#card .cardcontrol .row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+#card .cardcontrol .lbl{font:600 13px var(--sans);color:var(--navy)}
+#card .cardcontrol button{border:1px solid var(--line);background:#fff;border-radius:20px;
+  padding:4px 12px;font:600 12px var(--sans);cursor:pointer;color:var(--navy)}
+#card .cardcontrol button.on{border-color:var(--green);color:#047857;background:#ecfdf5}
+#card .cardcontrol button.off{border-color:#fca5a5;color:#b91c1c;background:#fef2f2}
+#card .cardcontrol .why{color:var(--muted);font-size:12px;margin-top:7px;line-height:1.45}
 #demolist .drow{display:flex;align-items:center;justify-content:space-between;gap:8px;
   font-size:12.5px;color:var(--charcoal);padding:2px 0}
 #demolist button{border:1px solid var(--line);background:#fff;border-radius:20px;
@@ -322,6 +336,21 @@ html[data-variants="1"] #variants{display:block}
         <label><input type="radio" name="smass" value="open" checked> Open — court through both ends</label>
       </div>
     </div>
+    <div class="sect" id="csizesect">
+      <h2>Courtyard size</h2>
+      <div class="lay" id="csizecontrols">
+        <label><input type="radio" name="csize" value="large" checked> As consented (large)</label>
+        <label><input type="radio" name="csize" value="small"> Underwrite areas (small)</label>
+      </div>
+      <div id="csizeareas"></div>
+    </div>
+    <div class="sect" id="swimsect">
+      <h2>Long Water treatment</h2>
+      <div class="lay" id="swimcontrols">
+        <label><input type="radio" name="swim" value="head" checked> Main House end — scheme</label>
+        <label><input type="radio" name="swim" value="mouth"> Thames end — comparison</label>
+      </div>
+    </div>
     <div class="sect">
       <h2>Findings</h2>
       <div class="views"><button id="markbtn" title="press K">Mark a finding (K)</button></div>
@@ -407,7 +436,7 @@ const FCM_POLICY = Object.freeze({
   "forced_visible_layers": ["terrain"],
   "ground_selector": {"version": "fcm:ground-seat-selector v3", "terrain_layer": "terrain", "fallback_name_prefix": "terrain", "solid_layers": ["building", "proposed", "vegetation", "area", "marker"], "surface_material_prefix": "surface_"},
   "shadow_policy": {"cast_layers": ["building", "proposed", "vegetation", "prop", "phase4", "precinct", "offestate", "marker"], "receive_layers": ["building", "proposed", "vegetation", "prop", "phase4", "precinct", "offestate", "terrain", "water", "area", "feature"]},
-  "run_pointer": {"out_split": {"static": "static.glb", "assets": "assets.glb", "spec": "../scene.json", "props": "props.glb", "propsManifest": "props-manifest.json", "dressing": "props-placement.json", "estateData": "estate-data.js", "terrainEstate": "terrain_albedo_estate.webp", "terrainMuseum": "terrain_albedo_museum.webp", "terrainSurvey": "terrain_albedo_survey.webp", "waterNormal": "water_normal.png", "wallTile": "wall_tile.png", "terrainPng": "terrain_albedo_estate.png", "switchGround": "../switch-ground.json", "materials": "../materials.json", "treatmentFlat": "../treatment-flat.json", "treatmentFabric": "../treatment-fabric.json", "lighting": "../lighting.json", "textureManifest": "../textures/web/MANIFEST.json", "webTextureRoot": "../textures/web/", "qaStations": "qa/STATIONS.json"}},
+  "run_pointer": {"out_split": {"static": "static.glb", "assets": "assets.glb", "spec": "../scene.json", "props": "props.glb", "propsManifest": "props-manifest.json", "dressing": "props-placement.json", "estateData": "estate-data.js", "terrainEstate": "terrain_albedo_estate.webp", "terrainMuseum": "terrain_albedo_museum.webp", "terrainSurvey": "terrain_albedo_survey.webp", "waterNormal": "water_normal.png", "wallTile": "wall_tile.png", "terrainPng": "terrain_albedo_estate.png", "switchGround": "../switch-ground.json", "courtyardLayout": "../courtyard-layout.json", "materials": "../materials.json", "treatmentFlat": "../treatment-flat.json", "treatmentFabric": "../treatment-fabric.json", "lighting": "../lighting.json", "textureManifest": "../textures/web/MANIFEST.json", "webTextureRoot": "../textures/web/", "qaStations": "qa/STATIONS.json"}},
   "asset_mats_theme_keys": ["wall_brick", "wall_stone", "wall_render", "roof_slate", "roof_lead", "glass", "frame", "door", "timber", "metal", "stone_detail", "gravel", "paint", "rubber", "fabric", "foliage", "water", "plastic"]
 });
 
@@ -452,6 +481,7 @@ function splitFromRunPointer(pointer){
     terrainSurvey: root+'terrain_albedo_survey.webp', waterNormal: root+'water_normal.png',
     wallTile: root+'wall_tile.png', terrainPng: root+'terrain_albedo_estate.png',
     spec: root+'snapshot/scene.json', switchGround: root+'snapshot/switch-ground.json',
+    courtyardLayout: root+'snapshot/courtyard-layout.json',
     materials: root+'snapshot/materials.json', treatmentFlat: root+'snapshot/treatment-flat.json',
     treatmentFabric: root+'snapshot/treatment-fabric.json', lighting: root+'snapshot/lighting.json',
     textureManifest: root+'snapshot/textures/web/MANIFEST.json',
@@ -564,9 +594,18 @@ const switchGroundReady = fetch(SPLIT.switchGround).then(r => {
    so a station render always shows the building standing. That is stated on the card
    rather than left to be discovered.
    ================================================================================ */
+/* `investor: true` moves an entry's control from `.demo` to `.cardcontrol`. The two are
+   identical in behaviour and read the ONE demoState; the difference is that the estate
+   interface strips `.demo` outside authoring mode, so only `.cardcontrol` reaches the
+   investor view. DEFECT 16 Sep 2026: the four existing-fabric viewing toggles - the
+   south range, the two sheds and the nine lodges - were `.demo`, so an investor selecting
+   a shed read "Demolished" with no control to bring it back. All four carry
+   `investor: true` now; a genuine authoring tool stays `.demo` and stays out of the
+   investor view. */
 const DEMOLISHABLE = {
   'bldg.south-buildings': {
     defaultOff: true,
+    investor: true,
     off: 'Demolished — the site reinstated as parkland',
     on:  'Standing — the derelict range as surveyed',
     why: 'The EPR masterplan labels this site "Volume of demolition" and draws it as '
@@ -583,6 +622,7 @@ const DEMOLISHABLE = {
      be capex budget linked, just a toggle when clicking on them". */
   'bldg.service-outbuildings': {
     defaultOff: true,
+    investor: true,
     off: 'Demolished — as the consent has it',
     on:  'Standing — retained as lodges',
     why: 'The consented roof plan’s own demolition poché covers this shed, and '
@@ -592,12 +632,43 @@ const DEMOLISHABLE = {
   },
   'bldg.workshop-shed': {
     defaultOff: true,
+    investor: true,
     off: 'Demolished — as the consent has it',
     on:  'Standing — retained as lodges',
     why: 'The white-roofed modern shed on the service yard’s north side. The '
        + 'consent’s demolition poché covers it and capex line 26 pays to '
        + 'remove it; our smaller staff option retains it. The works total does not move '
        + 'either way.'
+  },
+  /* 14 Sep 2026. Angus: "Dont worry about costing them, just have them toggleable
+     on and off." These nine indicative woodland lodges are proposed fabric, but carry
+     no capex line and must not become an invented thirteenth scheme switch. This is the
+     established per-element viewing control: it changes what is visible only. */
+  'prop.lodges': {
+    defaultOff: false,
+    investor: true,
+    off: 'Hidden — existing woodland view',
+    on:  'Visible — nine indicative woodland lodges',
+    why: 'Chris King’s 14 September aerial mark-up places nine lodges in the woodland '
+       + 'north-east of the Main House. Angus asked for a view toggle only: they carry no '
+       + 'capex and are not one of the twelve workbook-derived scheme switches, so the '
+       + 'works total and all scheme tallies remain unchanged.'
+  },
+  /* 16 Sep 2026. Angus: a switchable element should carry its own show/hide on its
+     Selected panel. The wedding marquee is proposed fabric but - like the lodges above -
+     is a hired, demountable frame and fabric with no capex line and no permanent base, so
+     it is deliberately NOT a thirteenth scheme switch (the twelve are workbook-derived;
+     a switch with no money behind it would read as money on the Scheme tab). It takes the
+     established per-element viewing control instead, and the works total does not move. */
+  'prop.marquee': {
+    defaultOff: false,
+    off: 'Hidden — no marquee on the lawn',
+    on:  'Visible — temporary wedding marquee',
+    hide: 'Hide', show: 'Show',
+    investor: true,
+    why: 'The marquee is a temporary structure for the weddings trade, with no capex line '
+       + 'and no permanent base, so which you are looking at is a VIEWING question, not a '
+       + 'priced one. This is the same per-element control the woodland lodges use.'
   }
 };
 /* Angus, 28 Aug 2026: "service yard buildings to be off by defaul", and 2 Sep 2026 the south
@@ -685,6 +756,209 @@ function setSouthMassing(state){
 document.getElementById('smasscontrols').addEventListener('change', e => {
   if (e.target && e.target.name === 'smass') setSouthMassing(e.target.value);
 });
+
+/* ================= COURTYARD SIZE ==============================================
+   Angus, 9 Sep 2026: "a toggle that adjusts between two sizes of courtyard buildings",
+   so that "the courtyards are too big" has a second position to show.  A VIEWING study
+   like the massing radio above: no scheme, no capex, no programme state, and the cost
+   table does not move with it.  The existing (large) courtyards are the default and are
+   not modified in any position.
+
+   THE PREFIX TABLE IS MIRRORED, NOT IMPORTED.  fcm/data/scene/placement_identity.py is
+   the source of record for state families and their prefixes; this is its JS mirror, and
+   the two are named here together as paired producer and consumer (the demolished-kerb
+   lesson).  It mirrors that module's _STATE_OF_PREFIX exactly - massing smass_c_ /
+   smass_a_ / smass_o_, size csize_s_ = small - and viewer_size_test.mjs reads both files
+   and fails if the two ever disagree, because two copies of one table where only one is
+   maintained is THE family defect LESSONS.md records.
+   Prefixes are underscore-only because three.js strips dots from glTF node names. */
+const STATE_PREFIXES = Object.freeze({
+  'smass_c_': {family: 'massing', state: 'closed'},
+  'smass_a_': {family: 'massing', state: 'arches'},
+  'smass_o_': {family: 'massing', state: 'open'},
+  'csize_s_': {family: 'size',    state: 'small'},
+  'swim_m_': {family: 'swim', state: 'mouth'},
+});
+/* The complete leading RUN of registered prefixes, and the name with every one removed
+   (placement_identity.strip_prefixes).  A run, not one prefix: an asset may one day emit
+   fabric conditioned on two families at once, and dropping the second silently would
+   show it in every state of that family. */
+function prefixStates(name){
+  const out = {};
+  let rest = String(name || '');
+  for (;;){
+    const hit = Object.keys(STATE_PREFIXES).find(p => rest.startsWith(p));
+    if (!hit) return out;
+    out[STATE_PREFIXES[hit].family] = STATE_PREFIXES[hit].state;
+    rest = rest.slice(hit.length);
+  }
+}
+function stripPrefixes(name){
+  let rest = String(name || '');
+  for (;;){
+    const hit = Object.keys(STATE_PREFIXES).find(p => rest.startsWith(p));
+    if (!hit) return rest;
+    rest = rest.slice(hit.length);
+  }
+}
+function registeredPrefix(name){
+  const n = String(name || '');
+  return n.slice(0, n.length - stripPrefixes(n).length);
+}
+/* The name rule for large-only fabric that carries no element identity of its own, in one
+   place: an UNPREFIXED node under either of these names is large-only by definition, since
+   every small ground and vegetation node is csize_s_ prefixed.  Mirrored from the tuple
+   constant of the same name in fcm/data/scene/placement_identity.py; the test reads both,
+   so a member added there alone fails.  Compared dot-stripped: three.js strips the dots. */
+const LARGE_ONLY_NAME_PREFIXES = Object.freeze(['ground.courtyard.', 'vegetation.courtyard.']);
+/* The default Long Water treatment is intentionally unprefixed, so this narrow name rule
+   is its paired decoder: it keeps the house-end treatment out of the mouth comparison.
+   Mirrored from placement_identity.py and checked with the prefix table below. */
+const SWIM_HEAD_ONLY_NAME_PREFIXES = Object.freeze(['water-long-water.precinct.treatment-head.']);
+
+const CSIZE_KEY = 'fcm.courtyard-size.v1';
+const CSIZE_STATES = new Set(['large', 'small']);
+let csizeState = 'large';          /* the existing courtyards are the default position */
+(function loadCourtyardSize(){
+  let raw = null; try { raw = localStorage.getItem(CSIZE_KEY); } catch(e){}
+  if (CSIZE_STATES.has(raw)) csizeState = raw;
+  document.querySelectorAll('input[name="csize"]').forEach(r => { r.checked = r.value === csizeState; });
+})();
+function saveCourtyardSize(){ try { localStorage.setItem(CSIZE_KEY, csizeState); } catch(e){} }
+
+/* alternative_of is the registry's own relation, written on the four small records only,
+   so no existing record changes.  Built here from whatever estate-data.js holds: with no
+   relation in the registry the map is empty, nothing is large-only, and both positions
+   show the same estate - which is the honest reading of a generation with no small
+   variant baked into it, not a hidden default. */
+const COURTYARD_ALTERNATIVES = {};      /* large element id -> its small alternative */
+E.elements.forEach(el => {
+  const of = el && el.alternative_of;
+  if (typeof of === 'string' && of) COURTYARD_ALTERNATIVES[of] = el.id;
+});
+const LARGE_ONLY = new Set(Object.keys(COURTYARD_ALTERNATIVES));
+
+function sizeVisible(o){
+  /* Four ways a thing can be size-conditional, in the order that decides it:
+     1. its own name carries a registered size prefix (csize_s_ -> small only);
+     2. userData.sizeOnly, carried onto the CHILD meshes of a placed instance and onto
+        detail replacements, because a clone's children keep their library names;
+     3. a prop whose props-manifest size is large;
+     4. its element is large-only (the key set of the alternative_of map), or its bare
+        name is under one of LARGE_ONLY_NAME_PREFIXES - large-only by the name rule, so no
+        existing ground or vegetation node needed metadata and its bytes stay (round-1
+        ruling C2, extended to vegetation.courtyard.* at round 3).
+     Anything else stands in both positions. */
+  const name = o.name || '';
+  const states = prefixStates(name);
+  if (states.size) return states.size === csizeState;
+  const ud = o.userData || {};
+  if (ud.sizeOnly) return ud.sizeOnly === csizeState;
+  if (ud.size === 'large') return csizeState === 'large';
+  const eid = stripPrefixes(ud.element || ud.eid || '');
+  if (eid && LARGE_ONLY.has(eid)) return csizeState === 'large';
+  const flat = name.replace(/\./g, '');
+  if (LARGE_ONLY_NAME_PREFIXES.some(p => flat.startsWith(p.replace(/\./g, ''))))
+    return csizeState === 'large';
+  return true;
+}
+
+function setCourtyardSize(state){
+  if (!CSIZE_STATES.has(state)) return false;
+  csizeState = state; saveCourtyardSize();
+  document.querySelectorAll('input[name="csize"]').forEach(r => { r.checked = r.value === state; });
+  applyLayers();
+  return true;
+}
+document.getElementById('csizecontrols').addEventListener('change', e => {
+  if (e.target && e.target.name === 'csize') setCourtyardSize(e.target.value);
+});
+
+/* ================= LONG WATER TREATMENT ========================================
+   Angus, 14 Sep 2026: the Main House end is the scheme; retain the former Thames-end
+   treatment as a viewing comparison only. This is a state family, not a scheme switch:
+   the capex and programme never read it. The mouth treatment carries swim_m_; the default
+   head node is deliberately unprefixed and narrowly recognised by name, as large courtyard
+   fabric is above. */
+const SWIM_KEY = 'fcm.long-water-treatment.v1';
+const SWIM_STATES = new Set(['head', 'mouth']);
+let swimState = 'head';
+(function loadSwimmingTreatment(){
+  let raw = null; try { raw = localStorage.getItem(SWIM_KEY); } catch(e){}
+  if (SWIM_STATES.has(raw)) swimState = raw;
+  document.querySelectorAll('input[name="swim"]').forEach(r => { r.checked = r.value === swimState; });
+})();
+function saveSwimmingTreatment(){ try { localStorage.setItem(SWIM_KEY, swimState); } catch(e){} }
+function swimVisible(o){
+  const name = o.name || '';
+  const states = prefixStates(name);
+  if (states.swim) return states.swim === swimState;
+  const flat = stripPrefixes(name).replace(/\./g, '');
+  if (SWIM_HEAD_ONLY_NAME_PREFIXES.some(p => flat.startsWith(p.replace(/\./g, ''))))
+    return swimState === 'head';
+  return true;
+}
+function setSwimmingTreatment(state){
+  if (!SWIM_STATES.has(state)) return false;
+  swimState = state; saveSwimmingTreatment();
+  document.querySelectorAll('input[name="swim"]').forEach(r => { r.checked = r.value === state; });
+  applyLayers();
+  return true;
+}
+document.getElementById('swimcontrols').addEventListener('change', e => {
+  if (e.target && e.target.name === 'swim') setSwimmingTreatment(e.target.value);
+});
+
+/* THE TWO FLOOR AREAS, AND WHERE EACH COMES FROM.  A number typed here would be a second
+   definition of an area the model already owns (round-1 ruling M3), so both are read:
+     small - gia_m2 on the small registry records in estate-data.js;
+     large - plan_area_m2 x storeys from the generated courtyard-layout.json record of
+             each large element, which is the floor the model actually draws.
+   The large records' own gia_m2 is the underwrite figure, not the consented massing (it
+   is the same 1,453 / 1,264 the small variants are scheduled to), so the registry alone
+   cannot separate the two positions; where the layout is not served the readout falls
+   back to it AND SAYS SO, rather than quietly printing one number against both. */
+let courtyardLayout = null;
+function layoutRecord(id){
+  const rows = (courtyardLayout && courtyardLayout.elements) || [];
+  return rows.find(r => r && r.id === id) || null;
+}
+function courtyardAreas(){
+  let small = 0, large = 0, smallRecords = 0, largeRecords = 0, fromLayout = 0;
+  for (const [largeId, smallId] of Object.entries(COURTYARD_ALTERNATIVES)){
+    const sm = elements[smallId], lg = elements[largeId];
+    if (sm && Number.isFinite(sm.gia_m2)){ small += sm.gia_m2; smallRecords++; }
+    if (!lg) continue;
+    const rec = layoutRecord(largeId);
+    if (rec && Number.isFinite(rec.plan_area_m2) && Number.isFinite(rec.storeys)){
+      large += rec.plan_area_m2 * rec.storeys; largeRecords++; fromLayout++;
+    } else if (Number.isFinite(lg.gia_m2)){
+      large += lg.gia_m2; largeRecords++;
+    }
+  }
+  return {small, large, smallRecords, largeRecords,
+          largeSource: !largeRecords ? 'no record'
+                     : fromLayout === largeRecords ? 'measured plan × storeys'
+                     : 'registered GIA'};
+}
+function renderCourtyardAreas(){
+  const box = document.getElementById('csizeareas');
+  if (!box) return;
+  const a = courtyardAreas();
+  const m2 = v => Math.round(v).toLocaleString('en-GB') + ' m²';
+  if (!a.largeRecords && !a.smallRecords){
+    box.textContent = 'This generation carries no small courtyard records, so both '
+                    + 'positions show the same estate.';
+    return;
+  }
+  box.innerHTML =
+      'As consented: <b>' + (a.largeRecords ? m2(a.large) : '—')
+    + '</b> of floor (' + a.largeSource + ')<br>'
+    + 'Underwrite areas: <b>' + (a.smallRecords ? m2(a.small) : '—')
+    + '</b> of floor (registered GIA)<br>'
+    + 'The works total is the same in both positions.';
+}
+renderCourtyardAreas();
 function setDemolished(eid, off){
   if (!DEMOLISHABLE[eid]) return;
   if (off) demoState[eid] = true; else delete demoState[eid];
@@ -1896,12 +2170,14 @@ function cacheStaticTransforms(root){
 /* Promoted resource resolution happens before registry/bootstrap above. */
 
 /* PROPS ARE A SEPARATE LIBRARY AND A SEPARATE PLACEMENT FILE, deliberately.
-   scene.json is the layout of things placed by JUDGEMENT - 58 buildings, each one a
-   decision somebody made and can defend. Props are placed by RULE, which STANDARD.md
-   section 3 requires, so their positions are DERIVED: you edit the grammar in
-   dressing.json, never the output. Keeping generated data out of the hand-authored file
-   is what stops scene.json becoming half source and half machine, which is a confusion
-   this project has been criticised for elsewhere.
+   The layout is things placed by JUDGEMENT - each one a decision somebody made and can
+   defend - and each is authored in its own element's record under register/placements/.
+   scene.json is the generated projection of those records, which is what the viewer loads.
+   Props are placed by RULE, which STANDARD.md section 3 requires, so their positions are
+   DERIVED: you edit the grammar in dressing.json, never the output.
+   This comment said scene.json was the hand-authored file until 10 Sep 2026. It was both
+   at once - authored and generated - and that is exactly the "half source and half machine"
+   confusion the next sentence warns about, sitting in the file that warns about it.
    Both are optional. Measured 19 Aug 2026, before any of this existed: 45 props built,
    14,906 triangles, ZERO placed, because there was no mechanism at all - no prop kind in
    the spec, no props in assets.glb, and six of the library's material names missing from
@@ -2006,13 +2282,24 @@ function placeAssets(staticScene, assetScene, spec){
     }
     srcs.forEach(src => {
       const inst = src.clone(true);
-      const prefix = (src.name || '').match(/^(smass_(?:ca|c|a|o)_)/);
-      inst.name = (prefix ? prefix[1] : '') + o.id;
+      /* EVERY registered prefix survives placement, not only the massing one.  Until
+         9 Sep 2026 this matched smass_* alone, so a csize_s_ node would have been placed
+         under a bare id and stood in both size positions (round-1 finding C1).  The name
+         carries the whole prefix run; userData.element is the BARE element id, as
+         placement_identity.strip_prefixes defines it, so every element lookup - cost card,
+         highlight, meshesByElement - keys on one identity per placed building. */
+      const prefix = registeredPrefix(src.name || '');
+      inst.name = prefix + o.id;
       inst.userData = Object.assign({}, src.userData, {
         layer: o.layer || (o.id.startsWith('prop.') ? 'proposed' : 'building'),
-        element: o.id.replace(/\.\d+$/, ''), asset: o.asset,
+        element: stripPrefixes(o.id).replace(/\.\d+$/, ''), asset: o.asset,
         placement_basis: o.basis || 'unknown',
       });
+      /* A clone's CHILD meshes keep their library names, so a name-prefix rule alone
+         would never reach them; the size condition rides userData as smassOnly does. */
+      const sizeOnly = prefixStates(inst.name).size || null;
+      if (sizeOnly) inst.traverse(ch => { ch.userData = ch.userData || {}; ch.userData.sizeOnly = sizeOnly; });
+      inst.userData.sizeOnly = sizeOnly;
       if (!o.existing) inst.userData.indicative = true;
       inst.position.set(o.x, gy, -o.y);
       inst.rotation.set(0, THREE.MathUtils.degToRad(o.rot_deg || 0), 0);
@@ -2028,13 +2315,27 @@ function placeAssets(staticScene, assetScene, spec){
   return {placed, needGround, missing: [...new Set(missing)]};
 }
 
+/* The manifest's per-prop size, as a map from library prop name to size state. Tolerant
+   about shape for the same reason placeProps is: it is read for one optional field. */
+function propSizes(manifest){
+  const out = new Map();
+  const rows = (manifest && (manifest.library || manifest.props)) || [];
+  if (!Array.isArray(rows)) return out;
+  for (const row of rows){
+    const name = row && (row.prop || row.asset || row.node);
+    if (name && typeof row.size === 'string') out.set(String(name).replace(/^asset:/, ''), row.size);
+  }
+  return out;
+}
+
 /* Place the generated props. Deliberately tolerant about field names: the grammar and
    this reader were written by different hands on the same afternoon, and a viewer that
    silently drops every prop because a key is called yaw_deg instead of rot_deg is exactly
    the kind of failure this project keeps finding. Anything it cannot resolve is COUNTED
    AND NAMED in the console rather than skipped quietly. */
-function placeProps(staticScene, propScene, dressing){
+function placeProps(staticScene, propScene, dressing, propSize){
   if (!propScene || !dressing) return {placed: 0, missing: [], skipped: 0};
+  const sizeOf = propSize || new Map();
   const lib = new Map();
   propScene.traverse(o => {
     const n = o.name || '';
@@ -2060,6 +2361,21 @@ function placeProps(staticScene, propScene, dressing){
       const only = smassPfx[1] === 'c' ? 'closed' : 'open';
       inst.traverse(ch => { ch.userData = ch.userData || {}; ch.userData.smassOnly = only; });
     }
+    /* Two independent size facts, both carried onto the child meshes for the same reason
+       as the massing flag.  The dressing writer prefixes csize_s_ on a SMALL prop's id;
+       the props manifest declares which library props are large-courtyard dressing.  With
+       neither (P3 has not run) a prop stands in both positions, which is what a generation
+       with no small variant should show. */
+    const sizeOnly = prefixStates(o.id || '').size || null;
+    /* P3 (9 Sep 2026) measured that no library prop is used by one size state only, so
+       the size rides each PLACEMENT (props-placement.json "size"), with the manifest's
+       per-library-prop map kept as the fallback. */
+    const propSizeState = o.size || sizeOf.get(key) || null;
+    if (sizeOnly || propSizeState) inst.traverse(ch => {
+      ch.userData = ch.userData || {};
+      if (sizeOnly) ch.userData.sizeOnly = sizeOnly;
+      if (propSizeState) ch.userData.size = propSizeState;
+    });
     inst.userData = Object.assign({}, src.userData, {
       layer: 'prop',
       element: o.element || o.id || key,
@@ -2067,6 +2383,7 @@ function placeProps(staticScene, propScene, dressing){
       prop: key,
       rule: o.rule || null,
       smassOnly: smassPfx ? (smassPfx[1] === 'c' ? 'closed' : 'open') : null,
+      sizeOnly, size: propSizeState,
       /* scheme_switch is emitted redundantly by dress_scene.py.  The live rule map
          remains the authority, so a stale derived file cannot keep a prop alive. */
       schemeSwitch: dressingSwitch[o.rule] || o.scheme_switch || null,
@@ -2111,11 +2428,24 @@ async function loadSplit(){
     try {
       const [props, dressing] = await Promise.all([
         get(SPLIT.props), json(SPLIT.dressing)]);
-      propReport = placeProps(stat.scene, props.scene, dressing);
+      /* The props manifest was declared in the run pointer and never read.  It is read
+         here for one field: each library prop's size state, which is what tells the size
+         control that a planter belongs to the large courtyards' dressing.  Optional in
+         exactly the way props.glb is: P3 writes the field, and until it does the manifest
+         carries no size and every prop stands in both positions. */
+      let manifest = null;
+      try { manifest = await json(SPLIT.propsManifest); }
+      catch (me){ console.warn('[fcm] props manifest unavailable (' + String(me && me.message || me) + ')'); }
+      propReport = placeProps(stat.scene, props.scene, dressing, propSizes(manifest));
     } catch (pe){
       propReport.reason = String(pe && pe.message || pe);
       console.log('[fcm] no props placed (' + propReport.reason + ')');
     }
+    /* The generated layout, for the floor area each size position represents and nothing
+       else.  Not fatal: courtyardAreas() falls back to the registry and names its source. */
+    try { courtyardLayout = await json(SPLIT.courtyardLayout); }
+    catch (le){ console.warn('[fcm] courtyard layout unavailable (' + String(le && le.message || le) + ')'); }
+    renderCourtyardAreas();
     let designStudy = null;
     let designModule = null;
     if (new URLSearchParams(location.search).has('study')) {
@@ -2181,7 +2511,8 @@ async function stampSplitVersion(){
   } catch (e){ /* local dev / no manifest: leave URLs unversioned */ }
   if (!stamp) return;
   const q = 'v=' + encodeURIComponent(stamp);
-  for (const k of ['static', 'assets', 'props', 'dressing', 'spec']){
+  for (const k of ['static', 'assets', 'props', 'propsManifest', 'dressing', 'spec',
+                   'courtyardLayout']){
     if (SPLIT[k]) SPLIT[k] += (SPLIT[k].includes('?') ? '&' : '?') + q;
   }
 }
@@ -2231,6 +2562,8 @@ function applyLayers(){
     }
     if (vis && !southMassingVisible(o.name)) vis = false;
     if (vis && o.userData.smassOnly && o.userData.smassOnly !== smassState) vis = false;
+    if (vis && !sizeVisible(o)) vis = false;
+    if (vis && !swimVisible(o)) vis = false;
     o.visible = vis;
   });
   markShadows();
@@ -2852,12 +3185,31 @@ function showCard(el, reveal=true){
   const dem = DEMOLISHABLE[el.id];
   if (dem){
     const off = isDemolished(el.id);
-    html += `<div class="demo"><div class="row">
+    /* A demolition control is an authoring concern and the investor interface strips
+       .demo; a viewing toggle that the investor should use rides .cardcontrol instead. */
+    const cls = dem.investor ? 'cardcontrol' : 'demo';
+    html += `<div class="${cls}"><div class="row">
         <span class="lbl">${off ? dem.off : dem.on}</span>
-        <button id="cDemo" class="${off?'off':'on'}">${off ? 'Rebuild' : 'Demolish'}</button>
+        <button id="cDemo" class="${off?'off':'on'}">${off ? (dem.show||'Rebuild') : (dem.hide||'Demolish')}</button>
       </div><div class="why">${dem.why} The setting is remembered in this browser
       across rebuilds; it is not part of the model files, so station renders always
       show the building standing.</div></div>`;
+  }
+  /* A scheme-switched element gets its show/hide HERE, on its own panel, bound to the
+     one switch state the Scheme tab reads. It runs through __fcm.setSwitch, the same
+     path as the rail, so there is one state and not two. A switch creates only
+     proposed fabric; on existing fabric it is a modification and the building stands
+     either way (bldg.riding-school, water.long-water), so the note says which. */
+  if (el.switch){
+    const spec = schemes[el.switch];
+    const on = !!swState[el.switch];
+    const created = el.class === 'proposed' || el.class === 'proposed-area';
+    html += `<div class="cardcontrol"><div class="row">
+        <span class="lbl">${spec ? spec.label : el.switch}</span>
+        <label class="tog"><input type="checkbox" id="cSwitch" data-sw="${el.switch}"${on?' checked':''}><i></i></label>
+      </div><div class="why">${created
+        ? 'This element is proposed fabric: switching it off removes it from the estate and updates the works cost, exactly as the Scheme tab does.'
+        : 'A scheme modification: the existing fabric stands whether or not the option is included.'}</div></div>`;
   }
   const cost = elementCost(el);
   if (ls.length){
@@ -2885,6 +3237,8 @@ function showCard(el, reveal=true){
   body.innerHTML = html;
   const btn = document.getElementById('cDemo');
   if (btn) btn.addEventListener('click', () => setDemolished(el.id, !isDemolished(el.id)));
+  const swBox = document.getElementById('cSwitch');
+  if (swBox) swBox.addEventListener('change', () => window.__fcm.setSwitch(el.switch, swBox.checked));
   card.classList.add('show');
   document.dispatchEvent(new CustomEvent('estate:selection',{detail:{element:el,reveal}}));
 }
@@ -3249,6 +3603,13 @@ window.__fcm = Object.freeze({
   },
   demolition(){ return {declared: Object.keys(DEMOLISHABLE).sort(), demolished: Object.keys(demoState).sort()}; },
   southMassing(){ return {active: smassState, states: [...SMASS_STATES].sort()}; },
+  /* The size study, on the same terms as setSwitch: the public path a click takes, so a
+     capture or a check cannot set a state the interface itself could not reach. */
+  setCourtyardSize(state){ return setCourtyardSize(state); },
+  courtyardSize(){
+    return {active: csizeState, states: [...CSIZE_STATES].sort(),
+            large_only: [...LARGE_ONLY].sort(), areas_m2: courtyardAreas()};
+  },
   loadStatus(){
     const split = window.__fcmSplit || {};
     const missing_assets = (split.props?.missing || []).slice().sort();
