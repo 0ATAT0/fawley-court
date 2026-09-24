@@ -172,6 +172,20 @@ body.hascard #prog{right:436px}
 #perf.off{display:none}
 #status{position:fixed;left:340px;top:14px;background:var(--card);border:1px solid var(--line);
   border-radius:7px;padding:6px 12px;font-size:12.5px;color:var(--muted);z-index:8}
+/* THE REVIEW SURFACE CAPTION (R5, 20 Sep 2026). ?canvas=1 and ?ground=aerial are local
+   judging aids; a screenshot taken with either must never read as the model. This badge
+   is the one line that says which switches are on. Deliberately loud (reserved red) so it
+   survives a crop or a downscale. */
+#reviewbadge{position:fixed;left:340px;top:50px;z-index:9;display:none;
+  background:#7d1515;color:#fff;border-radius:7px;padding:7px 13px;max-width:min(70vw,720px);
+  font:600 12.5px/1.35 var(--sans);letter-spacing:.02em;box-shadow:0 2px 12px rgba(15,23,42,.28)}
+#reviewbadge.show{display:block}
+#reviewbadge .k{font-weight:700;text-decoration:underline;text-underline-offset:2px}
+/* The estate interface (default UI) shifts #status; the badge follows it so the caption
+   never hides under the rail it belongs beside. Mirrors .estate-ui rules in
+   out/estate-interface.css without editing that file. */
+.estate-ui #reviewbadge{left:365px}
+.estate-ui.railmin #reviewbadge{left:80px}
 #hovertip{position:fixed;pointer-events:none;background:var(--navy);color:#fff;font:500 12px var(--sans);
   padding:4px 9px;border-radius:5px;z-index:20;display:none;white-space:nowrap}
 #hud{position:fixed;left:340px;bottom:34px;display:flex;align-items:flex-end;
@@ -329,6 +343,13 @@ html[data-variants="1"] #variants{display:block}
         <label><input type="checkbox" data-l="ao" checked> Ambient occlusion</label>
       </div>
     </div>
+    <div class="sect" id="optsect">
+      <h2>Residence layout</h2>
+      <div class="lay" id="optlayers">
+        <label><input type="radio" name="reslayout" value="1" checked> 1 &mdash; Riverside</label>
+        <label><input type="radio" name="reslayout" value="2"> 2 &mdash; Meadows cleared</label>
+      </div>
+    </div>
     <div class="sect" id="smasssect">
       <h2>South courtyard massing</h2>
       <div class="lay" id="smasscontrols">
@@ -372,6 +393,7 @@ html[data-variants="1"] #variants{display:block}
 </aside>
 
 <div id="status">Loading model…</div>
+<div id="reviewbadge"></div>
 <div id="perf" title="press P to hide">—</div>
 <div id="card"><div class="head"><h3 id="cTitle"></h3><div class="chips" id="cChips"></div>
   <button class="close" id="cClose">×</button></div><div class="body" id="cBody"></div></div>
@@ -432,13 +454,61 @@ import {OutputPass} from 'three/addons/postprocessing/OutputPass.js';
 import {MeshBVH, acceleratedRaycast} from './vendor/three-mesh-bvh/index.module.js';
 
 const FCM_POLICY = Object.freeze({
-  "layer_defaults": {"building": true, "proposed": true, "area": false, "marker": false, "vegetation": true, "water": true, "offestate": true, "hideoff": true, "phase4": true, "precinct": true, "anchor": false},
+  "layer_defaults": {"building": true, "proposed": true, "area": false, "marker": false, "vegetation": true, "water": true, "offestate": true, "hideoff": true, "phase4": true, "precinct": true, "anchor": false, "review": false, "option-1": true, "option-2": false, "option-both": true},
   "forced_visible_layers": ["terrain"],
   "ground_selector": {"version": "fcm:ground-seat-selector v3", "terrain_layer": "terrain", "fallback_name_prefix": "terrain", "solid_layers": ["building", "proposed", "vegetation", "area", "marker"], "surface_material_prefix": "surface_"},
-  "shadow_policy": {"cast_layers": ["building", "proposed", "vegetation", "prop", "phase4", "precinct", "offestate", "marker"], "receive_layers": ["building", "proposed", "vegetation", "prop", "phase4", "precinct", "offestate", "terrain", "water", "area", "feature"]},
+  "shadow_policy": {"cast_layers": ["building", "proposed", "vegetation", "prop", "phase4", "precinct", "offestate", "marker", "option-1", "option-2", "option-both"], "receive_layers": ["building", "proposed", "vegetation", "prop", "phase4", "precinct", "offestate", "terrain", "water", "area", "feature", "option-1", "option-2", "option-both"]},
   "run_pointer": {"out_split": {"static": "static.glb", "assets": "assets.glb", "spec": "../scene.json", "props": "props.glb", "propsManifest": "props-manifest.json", "dressing": "props-placement.json", "estateData": "estate-data.js", "terrainEstate": "terrain_albedo_estate.webp", "terrainMuseum": "terrain_albedo_museum.webp", "terrainSurvey": "terrain_albedo_survey.webp", "waterNormal": "water_normal.png", "wallTile": "wall_tile.png", "terrainPng": "terrain_albedo_estate.png", "switchGround": "../switch-ground.json", "courtyardLayout": "../courtyard-layout.json", "materials": "../materials.json", "treatmentFlat": "../treatment-flat.json", "treatmentFabric": "../treatment-fabric.json", "lighting": "../lighting.json", "textureManifest": "../textures/web/MANIFEST.json", "webTextureRoot": "../textures/web/", "qaStations": "qa/STATIONS.json"}},
-  "asset_mats_theme_keys": ["wall_brick", "wall_stone", "wall_render", "roof_slate", "roof_lead", "glass", "frame", "door", "timber", "metal", "stone_detail", "gravel", "paint", "rubber", "fabric", "foliage", "water", "plastic"]
+  "asset_mats_theme_keys": ["wall_brick", "wall_stone", "wall_render", "roof_slate", "roof_lead", "glass", "frame", "door", "timber", "metal", "stone_detail", "gravel", "paint", "rubber", "fabric", "foliage", "water", "plastic"],
+  "review_surface": {
+    "canvas_flag": "canvas",
+    "ground_flag": "ground",
+    "ground_aerial_value": "aerial",
+    "aerial_texture": "aerial/terrain_albedo_aerial.webp",
+    "hide_eids": ["prop.residences", "area.resi-roads"],
+    "hide_name_prefixes": ["residence."],
+    "review_layer": "review"
+  },
+  "residence_layouts": {
+    "default": "1",
+    "layers": {"1": "option-1", "2": "option-2"},
+    "shared_layer": "option-both",
+    "hide_old_eids": ["prop.residences", "area.resi-roads"],
+    "hide_old_name_prefixes": ["residence."],
+    "hides": {
+      "1": {"eids": ["prop.staff-village", "prop.staff-village-landscape"], "name_prefixes": ["phase4.staff-village", "context.estate-path-west"]},
+      "2": {"eids": ["bldg.meadows-farm", "bldg.meadows-farm-barn", "prop.staff-village", "prop.staff-village-landscape", "water.south-west-pool"],
+            "name_prefixes": ["prop.gatehouses.3", "prop.gatehouses.4", "gatehouse-ground.prop.gatehouses.3", "gatehouse-ground.prop.gatehouses.4", "phase4.staff-village", "water.south-west-pool", "context.meadows-farm-access"]}
+    }
+  }
 });
+
+/* ================= REVIEW SURFACE SWITCHES (R5, 20 Sep 2026) =====================
+   Two URL switches that turn the judged surface into a blank canvas for placing the
+   twelve residences and their roads by hand. Neither changes a default: with no query
+   string the viewer is byte-for-byte the page it was, because layerState is seeded from
+   FCM_POLICY.layer_defaults and `review` is still false there.
+
+     ?canvas=1        hide every residence object (the prop.residences and area.resi-roads
+                      elements, and the residence.* drives, kerbs, gate piers, screening
+                      hedges and specimen trees the precinct stage emits) and turn the
+                      `review` layer ON, drawing vegetation.residence-felled - the crowns
+                      the residence plots felled, shown as if still standing.
+     ?ground=aerial   swap the terrain albedo for the Esri World Imagery photograph fetched
+                      by fcm/viewer/aerial.py (Esri World Imagery, EPSG:27700 over the model
+                      window, 0.5 m). The image lives at out/aerial/terrain_albedo_aerial.webp
+                      and is THIRD-PARTY imagery: it is gitignored and must not be deployed
+                      to the team site. When the file is absent the normal ground stays and
+                      the readout says so.
+
+   The residence objects are matched by element id (prop.residences, area.resi-roads) and,
+   belt-and-braces, by the node-name prefix the precinct stage emits (residence.*). Names
+   compare dot-stripped because three.js strips dots from glTF node names.
+   ================================================================================ */
+const FCM_QUERY = new URLSearchParams(location.search);
+const CANVAS_MODE = FCM_QUERY.get(FCM_POLICY.review_surface.canvas_flag) === '1';
+const AERIAL_GROUND = FCM_QUERY.get(FCM_POLICY.review_surface.ground_flag)
+  === FCM_POLICY.review_surface.ground_aerial_value;
 
 const OUT_SPLIT = FCM_POLICY.run_pointer.out_split;
 let SPLIT = OUT_SPLIT;
@@ -1233,6 +1303,8 @@ let themeName = 'estate';
 let estateTerrainTex = null;
 let museumTerrainTex = null;
 let surveyTerrainTex = null;   /* the off-world ground texture, 28 Aug 2026 */
+let aerialTerrainTex = null;   /* R5 ?ground=aerial, local only, never deployed */
+let aerialState = AERIAL_GROUND ? 'pending' : 'off';   /* pending | loaded | missing | off */
 
 /* ================= VARIANT HARNESS =================================================
    Two orthogonal axes. A treatment says what the model is MADE OF; a light says how it
@@ -1663,6 +1735,9 @@ function applyTheme(){
 
 function paintScene(T){
   meshLayer.forEach((layer, o) => {
+    /* A layout's ground sheet (the filled Meadows pond) switches with its layout's layer
+       but IS terrain: it takes the terrain's albedo and treatment exactly. */
+    if (o.userData.groundSheet) layer = 'terrain';
     const mats = Array.isArray(o.material) ? o.material : [o.material];
     if (layer === 'terrain'){
       /* Only the terrain sheet itself carries the baked albedo. Phase 4 ground
@@ -1671,14 +1746,18 @@ function paintScene(T){
          wins, colour set white), so every court, drive and lawn rendered
          white-grey whatever the registry said. Found by ray-cast - the court's
          material read colour [1,1,1] - not by looking. */
+      /* ?ground=aerial (R5) stands in for the estate albedo only; the off-world
+         survey-ground and the museum map are separate files and are left alone. */
+      const estateMap = (AERIAL_GROUND && aerialTerrainTex) ? aerialTerrainTex : estateTerrainTex;
       const map = (o.userData.schemeRole === 'survey-ground' && surveyTerrainTex)
         ? surveyTerrainTex
-        : ((T.useMuseumMap && museumTerrainTex) ? museumTerrainTex : estateTerrainTex);
+        : ((T.useMuseumMap && museumTerrainTex) ? museumTerrainTex : estateMap);
       if (map && (o.name.replace(/\./g, '') === 'terrain' || o.userData.schemeRole === 'survey-ground'
+                  || o.userData.groundSheet
                   || /^schemeground/.test(o.name.replace(/[.\-]/g, ''))))
         mats.forEach(m => { m.map = map; m.needsUpdate = true; });
     }
-    if (layer === 'vegetation'){
+    if (layer === 'vegetation' || o.userData.vegLike){
       mats.forEach(m => {
         if (o.userData.isLeaf){
           m.vertexColors = T.leafVC;
@@ -1943,6 +2022,7 @@ function materialSlot(T, base, layer){
 function refreshBaseColors(){
   const T = activeTheme();
   meshLayer.forEach((layer, o) => {
+    if (o.userData.groundSheet) layer = 'terrain';
     const el = elements[o.userData.eid];
     const mats = Array.isArray(o.material) ? o.material : [o.material];
     const assetTint = m => {
@@ -1995,7 +2075,12 @@ function refreshBaseColors(){
         m.envMapIntensity = 1.3; }
       return true;
     };
-    if (layer==='terrain' || layer==='phase4' || layer==='precinct' || layer==='prop'){
+    /* A residence layout's lanes, drives, piers and kerbs are built fabric on the layout's
+       layer: they take the registry colour as the estate's own drives do (Angus, 24 Sep
+       2026: the lanes rendered darker than the main house drive because they kept the
+       GLB's exported colour). Its trees and hedges are drawn as trees, below. */
+    const layoutFabric = String(layer).startsWith('option-') && !o.userData.vegLike;
+    if (layer==='terrain' || layer==='phase4' || layer==='precinct' || layer==='prop' || layoutFabric){
       /* 6 Sep defect: dressing props skipped the registry repaint entirely,
          leaving planter stone at its exported colour while the house changed. */
       /* Phase 4 ground, masonry and vegetation carry semantic material names from the
@@ -2031,7 +2116,7 @@ function refreshBaseColors(){
          GLB shipped, under every treatment. It is still diagram rather than fabric, but a
          white-card model needs annotation that suits a white-card model. */
       mats.forEach(m => assetTint(m));
-    } else if (layer==='vegetation'){
+    } else if (layer==='vegetation' || o.userData.vegLike){
       /* Leaf tint and trunk are driven by the theme's own vertex-colour logic in
          applyTheme(); the hedge is ordinary fabric and belongs to the registry. */
       mats.forEach(m => { if (m.name.split('.')[0] === 'hedge') assetTint(m); });
@@ -2076,6 +2161,11 @@ function accept(gltf){
     if (!o.isMesh) return;
     const meta = nodeMeta(o);
     const layer = classify(meta); meshLayer.set(o, layer);
+    /* A residence layout's trees and hedges live on the layout's layer for switching, but
+       are drawn as trees: the theme's leaf tint and trunk colour apply to them too. */
+    o.userData.groundSheet = !!meta.extras.ground_sheet;
+    o.userData.vegLike = layer === 'vegetation' || (String(layer).startsWith('option-')
+      && /^(vegetation|layout\d(specimen-trees|screening-hedges))/.test((meta.name || '').replace(/\./g, '')));
     applyShadowPolicy(o, layer);
     const ckey = meta.extras.element || meta.name;
     o.material = Array.isArray(o.material) ? o.material.map(m=>cloneFor(ckey,m))
@@ -2095,7 +2185,7 @@ function accept(gltf){
       o.userData.eid = eid;
       (meshesByElement[eid] = meshesByElement[eid]||[]).push(o);
     }
-    if (layer==='vegetation'){
+    if (o.userData.vegLike){
       o.userData.isLeaf = !/trunks/.test(meta.name);
     }
     if (layer==='terrain'){
@@ -2123,11 +2213,30 @@ function accept(gltf){
   loadTerrainTex(SPLIT.terrainEstate, t => { estateTerrainTex = t; });
   loadTerrainTex(SPLIT.terrainMuseum, t => { museumTerrainTex = t; });
   loadTerrainTex(SPLIT.terrainSurvey, t => { surveyTerrainTex = t; });
+  /* R5 ?ground=aerial: the local Esri World Imagery photograph stands in for the estate
+     albedo when the file is present. It is NOT part of any promoted run and lives only
+     under out/aerial/, which is gitignored and excluded from deploy_site.py. If it is
+     absent we keep the model albedo and the readout says so - never a silent fallback. */
+  if (AERIAL_GROUND){
+    texLoader.load(FCM_POLICY.review_surface.aerial_texture, t => {
+      t.colorSpace = THREE.SRGBColorSpace;
+      t.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+      t.flipY = false;
+      t.wrapS = t.wrapT = THREE.ClampToEdgeWrapping;
+      aerialTerrainTex = t; aerialState = 'loaded';
+      updateReviewBadge();
+      applyTheme();
+    }, undefined, () => {
+      aerialState = 'missing';
+      console.warn('[fcm] missing aerial texture ' + FCM_POLICY.review_surface.aerial_texture);
+      updateReviewBadge();
+    });
+  }
   document.getElementById('status').textContent =
     'Click a building, ground work or marker for its capex. Drag to orbit · wheel to zoom.';
   setTimeout(()=>document.getElementById('status').style.display='none', 9000);
   refreshBaseColors();
-  onStateChange(); applyLayers(); renderDemoRail();
+  onStateChange(); applyLayers(); renderDemoRail(); updateReviewBadge();
   /* Pre-compile every shader while the loading state still owns the screen,
      instead of stalling the first rendered frame (20 Aug 2026). */
   if (renderer.compileAsync) renderer.compileAsync(scene, camera).catch(()=>{});
@@ -2419,7 +2528,9 @@ async function loadSplit(){
   try {
     const [stat, assets, spec] = await Promise.all([
       get(SPLIT.static), get(SPLIT.assets), json(SPLIT.spec), switchGroundReady]);
-    const report = placeAssets(stat.scene, assets.scene, spec);
+    const layoutObjects = layoutInstances(stat.scene);
+    const report = placeAssets(stat.scene, assets.scene,
+      Object.assign({}, spec, {objects: (spec.objects || []).concat(layoutObjects)}));
     /* The props library and the generated dressing are BOTH optional and are fetched
        after the model, not with it. A missing props.glb means the library has not been
        packed; a missing props-placement.json means the grammar has not been run. Neither
@@ -2527,6 +2638,71 @@ addEventListener('drop', e => { e.preventDefault();
 
 /* ------- layers ------- */
 const layerState = Object.assign({}, FCM_POLICY.layer_defaults);
+/* R5: ?canvas=1 turns the review layer on. It is the ONLY way `review` is ever true -
+   it is not in the Layers panel, so a human click cannot reach it. */
+if (CANVAS_MODE) layerState[FCM_POLICY.review_surface.review_layer] = true;
+/* The blank-canvas predicate (R5). By element id first - it is exact and survives a
+   rename - then by the node-name prefix the residence precinct stage emits, compared
+   dot-stripped because three.js strips dots from glTF node names. */
+/* THE TWO RESIDENCE LAYOUTS (Angus, 23 Sep 2026). One is shown at a time; the old live
+   twelve are superseded, so their houses, roads and precinct are hidden whenever a layout is
+   shown, which is always. A layout may also clear fabric (layout 2 clears Meadows Farm, its
+   barn and the staff village, fills the pond, and seats gatehouses 3 and 4 elsewhere). */
+const RES_LAYOUTS = FCM_POLICY.residence_layouts;
+/* ?layout=2 opens on layout 2 (for shots and links); anything else opens on the default. */
+let activeLayout = RES_LAYOUTS.layers[FCM_QUERY.get('layout')] ? FCM_QUERY.get('layout') : RES_LAYOUTS.default;
+for (const [key, layer] of Object.entries(RES_LAYOUTS.layers)) layerState[layer] = (key === activeLayout);
+{
+  const radio = document.querySelector(`input[name="reslayout"][value="${activeLayout}"]`);
+  if (radio) radio.checked = true;
+}
+function flatName(o){ return ((nodeMeta(o).name || o.name || '')).replace(/\./g, ''); }
+function isOldResidence(o){
+  const layer = meshLayer.get(o);
+  if (layer && String(layer).startsWith('option-')) return false;
+  if (o.userData.eid && RES_LAYOUTS.hide_old_eids.includes(o.userData.eid)) return true;
+  const flat = flatName(o);
+  return RES_LAYOUTS.hide_old_name_prefixes.some(p => flat.startsWith(p.replace(/\./g, '')));
+}
+function hiddenByLayout(o){
+  const layer = meshLayer.get(o);
+  if (layer && String(layer).startsWith('option-')) return false;
+  const hides = RES_LAYOUTS.hides[activeLayout];
+  if (!hides) return false;
+  if (o.userData.eid && hides.eids.includes(o.userData.eid)) return true;
+  const flat = flatName(o);
+  return hides.name_prefixes.some(p => flat.startsWith(p.replace(/\./g, '')));
+}
+function setLayout(id){
+  activeLayout = id;
+  for (const [key, layer] of Object.entries(RES_LAYOUTS.layers)) layerState[layer] = (key === id);
+  layerState[RES_LAYOUTS.shared_layer] = true;
+  applyLayers();
+}
+/* The anchors a layout's build leaves for its houses and gatehouses become placed assets:
+   the real residence and gatehouse models, seated where the build measured them. */
+function layoutInstances(root){
+  const out = [];
+  root.traverse(o => {
+    const u = o.userData || {};
+    if (!u.instance_asset) return;
+    out.push({kind: 'asset', asset: u.instance_asset, id: u.instance_id, x: u.x, y: u.y,
+              rot_deg: u.rot_deg, ground: u.ground, layer: u.layer, existing: false,
+              basis: 'residence layout'});
+  });
+  return out;
+}
+function isResidenceObject(o){
+  if (!CANVAS_MODE) return false;
+  const surface = FCM_POLICY.review_surface;
+  /* A layout OPTION's markers are named prop.residences.optionX.* and would match the
+     prefixes below, so ?canvas=1 hid the very thing it exists to let Angus compare
+     (20 Sep 2026). An option lives on its own layer; its visibility is the layer's. */
+  if (meshLayer.get(o) && String(meshLayer.get(o)).startsWith('option-')) return false;
+  if (o.userData.eid && surface.hide_eids.includes(o.userData.eid)) return true;
+  const flat = ((nodeMeta(o).name || o.name || '')).replace(/\./g, '');
+  return surface.hide_name_prefixes.some(p => flat.startsWith(p.replace(/\./g, '')));
+}
 function applyLayers(){
   renderBatches.invalidate();
   meshLayer.forEach((layer, o) => {
@@ -2564,15 +2740,44 @@ function applyLayers(){
     if (vis && o.userData.smassOnly && o.userData.smassOnly !== smassState) vis = false;
     if (vis && !sizeVisible(o)) vis = false;
     if (vis && !swimVisible(o)) vis = false;
+    /* R5 blank canvas: residences, their roads and their own planting are hidden by the
+       ?canvas=1 switch; renderBatches.rebuild skips invisible objects, so nothing of them
+       is drawn. */
+    if (isResidenceObject(o)) vis = false;
+    if (vis && (isOldResidence(o) || hiddenByLayout(o))) vis = false;
     o.visible = vis;
   });
   markShadows();
 }
-document.getElementById('layers').addEventListener('change', e => {
+function onLayerChange(e){
   const l = e.target.dataset.l; if(!l) return;
   if (l === 'ao'){ aoOn = e.target.checked; requestRender(); return; }
   layerState[l] = e.target.checked; applyLayers();
+}
+document.getElementById('layers').addEventListener('change', onLayerChange);
+document.getElementById('optlayers').addEventListener('change', e => {
+  if (e.target.name === 'reslayout') setLayout(e.target.value);
 });
+
+/* R5: the caption that stops a blank-canvas or aerial-ground screenshot being mistaken
+   for the model. Shown only while one of the switches is on. */
+function updateReviewBadge(){
+  const host = document.getElementById('reviewbadge');
+  if (!host) return;
+  if (!CANVAS_MODE && !AERIAL_GROUND){ host.classList.remove('show'); host.innerHTML = ''; return; }
+  const lines = [];
+  if (CANVAS_MODE) lines.push('<b>Blank canvas</b> &mdash; the twelve residences, their roads, '
+    + 'hedges, gate piers and specimen planting are hidden; the crowns their plots felled are '
+    + 'drawn (<span class="k">?canvas=1</span>).');
+  if (AERIAL_GROUND) lines.push(aerialState === 'missing'
+    ? '<b>Aerial ground requested</b> &mdash; out/aerial/terrain_albedo_aerial.webp is not '
+      + 'present, so the model albedo is shown (<span class="k">?ground=aerial</span>).'
+    : '<b>Aerial ground' + (aerialState === 'pending' ? ' (loading)' : '') + '</b> &mdash; '
+      + 'Esri World Imagery, a photograph, not the model '
+      + '(<span class="k">?ground=aerial</span>).');
+  host.innerHTML = lines.join('<br>');
+  host.classList.add('show');
+}
 
 /* rail minimise: default is minimised — the working view needs only the
    hide-switched-off toggle. + / – chip expands and collapses; persisted. */
@@ -2633,7 +2838,7 @@ function recolour(){
     const setAll = c => mats.forEach(m => m.color.copy(c));
     const resetC = () => mats.forEach((m,i) => m.color.copy(bases[i]));
     mats.forEach((m,i) => { m.opacity = baseOp[i]; m.transparent = baseOp[i] < 1; });
-    if (!el || layer==='terrain' || layer==='vegetation' || layer==='anchor'){
+    if (!el || layer==='terrain' || layer==='vegetation' || o.userData.vegLike || layer==='anchor'){
       return;
     }
     if (el.class==='off-estate'){ resetC(); return; }

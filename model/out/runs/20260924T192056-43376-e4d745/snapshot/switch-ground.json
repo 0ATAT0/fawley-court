@@ -1,0 +1,228 @@
+{
+ "_": "The physical world when a scheme is off. mesh_bindings is closed-world: every built node or dressing rule that exists because of a scheme is named here. becomes is a design decision, not a viewer instruction.",
+ "_authored": "Authored data, not generated. The 'estate-review package 4' this file once named as its generator does not exist in the tree; the false generated_by was removed on 17 September 2026. A scheme's felled_stems is the one machine-checkable number here: the scheme names its felling predicate and fcm.checks.contract.scheme_felling.felled_stem_findings (wired into R38) derives the count from that predicate and refuses any difference.",
+ "schema_version": 2,
+ "survey": {
+  "terrain": "LIDAR DTM before scheme grading",
+  "albedo": "existing terrain albedo before scheme treatment",
+  "trees": "Felled survey stems are not reinstated: a tree felled for works remains a factual loss in both worlds, not a reversible rendering option."
+ },
+ "schemes": {
+  "Sch_CourtyardPool": {
+   "label": "Courtyard pool house, plant and gym",
+   "mesh_bindings": [
+    "prop.courtyard-pool"
+   ],
+   "dressing_rules": [],
+   "becomes": {
+    "kind": "existing-fabric",
+    "ground": "existing courtyard fabric remains; the pool asset's own paving and plant go",
+    "survey_ground_nodes": [],
+    "felled_stems": 0
+   },
+   "note": "The pool is a proposal inserted into standing courtyard fabric. No terrain grading is baked for it."
+  },
+  "Sch_StaffVillage": {
+   "label": "Staff village, Meadows North, 80 beds",
+   "mesh_bindings": [
+    "prop.staff-village",
+    "phase4.hardstanding.village-approach",
+    "phase4.hardstanding.village-court",
+    "phase4.hardstanding.village-street",
+    "phase4.staff-village.gates",
+    "phase4.staff-village.hedges",
+    "phase4.staff-village.planting.crowns",
+    "phase4.staff-village.planting.trunks",
+    "phase4.staff-village.specimen.crown",
+    "phase4.staff-village.specimen.trunk",
+    "phase4.staff-village.walls"
+   ],
+   "dressing_rules": [
+    "staff-village-parking",
+    "staff-village-square"
+   ],
+   "felling_predicate": "staff-village.trees_felled_indices",
+   "becomes": {
+    "kind": "survey",
+    "ground": "survey terrain and existing albedo; no terrain grading is baked for the village",
+    "survey_ground_nodes": [],
+    "felled_stems": 3
+   },
+   "note": "Three source tree indices are removed by the village footprint. They are not resurrected by a scheme toggle. | felled_stems 3 is staff-village-source.json's square.trees_felled_indices, the index list the build's tree stage reads; the predicate is named here and derived by R38, not hand-counted."
+  },
+  "Sch_Gatehouses": {
+   "label": "Gatehouses and lodge extensions, staff",
+   "mesh_bindings": [
+    "prop.gatehouses"
+   ],
+   "dressing_rules": [],
+   "becomes": {
+    "kind": "survey",
+    "ground": "the already-survey terrain under all five gatehouse placements; no separate serving ground node is emitted",
+    "survey_ground_nodes": [],
+    "felled_stems": 0
+   },
+   "note": "Measured build inventory has no gatehouse hardstanding, kerb, planting or graded-terrain node to bind. Binding shared estate terrain would wrongly hide existing fabric."
+  },
+  "Sch_RiverClub": {
+   "label": "River Club Building, Thames Frontage",
+   "ground_region": {
+    "kind": "river-corridor",
+    "predicate": "weight>0"
+   },
+   "mesh_bindings": [
+    "prop.river-club",
+    "prop.river-club.precinct.leaf_broadleaf",
+    "prop.river-club.precinct.stone_pale",
+    "prop.river-club.precinct.surface_pale_gravel_hardstanding",
+    "prop.river-club.precinct.surface_planted_beds",
+    "water-long-water.precinct.metal_pale",
+    "water-long-water.precinct.stone_pale",
+    "scheme-ground.Sch_RiverClub"
+   ],
+   "dressing_rules": [
+    "river-club-terrace"
+   ],
+   "felling_predicate": "river-club.fells",
+   "becomes": {
+    "kind": "survey",
+    "ground": "survey terrain and existing albedo in the formal River Club corridor; existing Long Water water remains",
+    "survey_ground_nodes": [
+     "survey-ground.Sch_RiverClub"
+    ],
+    "felled_stems": 9
+   },
+   "note": "The 116.75 m formal corridor grade, canal copings, swimming works and Club precinct are scheme works. The eighteenth-century canal is existing fabric. | water-long-water.precinct.metal_dark retired with the mouth sluice on 15 September 2026: with only the head third treated the sluice has nothing to isolate, so the build emits no metal_dark bundle to bind. | felled_stems 9 is the count fcm.model.river_club.precinct.fells returns for the 2,512-stem survey array (indices 94, 102, 110, 154, 155, 221, 257, 1124, 1933; deck 5, weir 1, canal copings 4, allee 2, garden 0, with overlaps). The file carried 8 from generation 10 until 17 September 2026: it was a hand count, never compared to the predicate, and the precinct's felling has moved since. R38 derives the number now."
+  },
+  "Sch_LongWaterSwim": {
+   "label": "Long Water isolated and treated for swimming",
+   "mesh_bindings": [],
+   "dressing_rules": [],
+   "becomes": {
+    "kind": "existing-fabric",
+    "ground": "the existing Long Water and surveyed banks remain; no standalone treatment mesh is currently emitted",
+    "survey_ground_nodes": [],
+    "felled_stems": 0
+   },
+   "note": "This is a modification switch. Any future standalone treatment node must be added to mesh_bindings before it can ship."
+  },
+  "Sch_MainHouseWing": {
+   "label": "Main House dining wing, 127 m2 new build",
+   "mesh_bindings": [
+    "prop.south-wing"
+   ],
+   "dressing_rules": [],
+   "becomes": {
+    "kind": "existing-fabric",
+    "ground": "the existing Main House court and core datum remain; no wing-only ground treatment is emitted",
+    "survey_ground_nodes": [],
+    "felled_stems": 0
+   },
+   "note": "The build has no south-wing-specific hardstanding or grade. The shared Main House ground must not be bound to a wing-only switch."
+  },
+  "Sch_RidingMezzanine": {
+   "label": "Riding School mezzanine, 230 m2",
+   "mesh_bindings": [],
+   "dressing_rules": [],
+   "becomes": {
+    "kind": "existing-fabric",
+    "ground": "standing Riding School and its existing ground remain",
+    "survey_ground_nodes": [],
+    "felled_stems": 0
+   },
+   "note": "The mezzanine modification has no separately emitted geometry."
+  },
+  "Sch_FloatingBar": {
+   "label": "Floating Long Water Bar, 75 m2",
+   "mesh_bindings": [],
+   "dressing_rules": [],
+   "becomes": {
+    "kind": "survey",
+    "ground": "existing Long Water water and surveyed banks remain; the floating-bar element is presently built=false",
+    "survey_ground_nodes": [],
+    "felled_stems": 0
+   },
+   "note": "No bar mesh, approach, mooring or shore treatment is emitted in the measured build. | prop.floating-bar is built=false in the registry (no geometry), so it carries no mesh binding; the scheme is capex-only until it is modelled."
+  },
+  "Sch_DayMeetings": {
+   "label": "Day meetings and private dining sold",
+   "mesh_bindings": [],
+   "dressing_rules": [],
+   "becomes": {
+    "kind": "no-physical-change",
+    "ground": "no physical geometry belongs to a revenue-only offer",
+    "survey_ground_nodes": [],
+    "felled_stems": 0
+   },
+   "note": "Revenue-only scheme."
+  },
+  "Sch_Club": {
+   "label": "Members' club, 250 capped at GBP 750 a month",
+   "mesh_bindings": [],
+   "dressing_rules": [],
+   "becomes": {
+    "kind": "no-physical-change",
+    "ground": "no physical geometry belongs to membership pricing",
+    "survey_ground_nodes": [],
+    "felled_stems": 0
+   },
+   "note": "Revenue-only scheme. This is not a residence-development switch."
+  },
+  "Sch_TennisPadel": {
+   "label": "Tennis and Padel Courts",
+   "mesh_bindings": [
+    "prop.courts"
+   ],
+   "dressing_rules": [],
+   "becomes": {
+    "kind": "survey",
+    "ground": "survey terrain and existing albedo; the courts platform is not yet built",
+    "survey_ground_nodes": [],
+    "felled_stems": 0
+   },
+   "note": "The 33.330 mAOD platform is a recorded design but the current build deliberately leaves the courts on existing terrain."
+  },
+  "Sch_SpaGarden": {
+   "label": "Spa Garden",
+   "ground_region": {
+    "kind": "rotated-rectangle",
+    "centre_bng": [
+     476550,
+     184210
+    ],
+    "size_m": [
+     57.2,
+     78.8
+    ],
+    "rotation_deg": -18.9787
+   },
+   "mesh_bindings": [
+    "prop.spa-garden",
+    "scheme-ground.Sch_SpaGarden",
+    "vegetation.spa-garden.new.broadleaf",
+    "vegetation.spa-garden.new.broadleaf.trunks",
+    "vegetation.spa-garden.new.poplar",
+    "vegetation.spa-garden.new.poplar.trunks",
+    "vegetation.spa-garden.new.cedar",
+    "vegetation.spa-garden.new.cedar.trunks",
+    "vegetation.spa-garden.new.veteran",
+    "vegetation.spa-garden.new.veteran.trunks"
+   ],
+   "dressing_rules": [],
+   "felling_predicate": "spa.felled_lidar_indices",
+   "becomes": {
+    "kind": "survey",
+    "ground": "survey terrain and existing albedo under the spa-garden work",
+    "survey_ground_nodes": [
+     "survey-ground.Sch_SpaGarden",
+     "vegetation.spa-garden.survey.cedar",
+     "vegetation.spa-garden.survey.cedar.trunks",
+     "vegetation.spa-garden.survey.broadleaf",
+     "vegetation.spa-garden.survey.broadleaf.trunks"
+    ],
+    "felled_stems": 20
+   },
+   "note": "The Spa Garden surface is a scheme proposal over the shared core grade; its off-state requires a local survey overlay rather than hiding the estate-wide core. | The survey species nodes are the species the planting actually fells (broadleaf and cedar): tests/test_switches.py derives them from fcm.model.planting.spa and refuses any hand-listed species - the retired poplar and veteran entries - that the planting does not carry. | prop.spa-garden is built again on 15 September 2026 as physical fabric inside the spa precinct asset (spa-precinct-garden): the switch owns the scheme ground, the planting and the garden fabric node. | The ground region is the precinct's three garden zones (entrance side, spa pool side, leisure garden face) carried as one rotated rectangle at the precinct's own rotation -18.9787 deg; the reader fcm/model/scheme_ground.py supports only the rotated-rectangle kind, so the three-zone L is bounded, not traced. | felled_stems 20 is the count fcm.model.planting.spa measures for the precinct footprint (indices 14, 37, 103, 133, 159, 211, 295, 343, 479, 582, 652, 795, 841, 1035, 1195, 1268, 1284, 1805, 2150, 2255; broadleaf and cedar). Stem 1805 was added on 16 Sep 2026: it stood on the tennis court's 0.05 m hardstanding, which the solid and crown tests never met, so the planting now also fells a stem standing on a near-horizontal spa surface."
+  }
+ }
+}
