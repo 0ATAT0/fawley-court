@@ -1,9 +1,9 @@
 {
- "generation": 49,
- "run": "20260924T192056-43376-e4d745",
- "promoted": "2026-09-24T19:25:59.795086+00:00",
- "session": "w1:p2S",
- "previous": "20260924T182521-31548-22ecc7",
+ "generation": 50,
+ "run": "20260925T091610-45004-1a9cd0",
+ "promoted": "2026-09-25T09:19:28.026895+00:00",
+ "session": "w1:p39",
+ "previous": "20260924T192056-43376-e4d745",
  "artefacts": {
   "static.glb": "b6fe4e4a5a690cb0581bf55b76b440546387facd302d71a1e76f483e5f2b6e2e",
   "assets.glb": "be997d94fe314ca26caec8c231a2e97edf609945f77670f63ddc5c5e788a6049",
@@ -26,11 +26,11 @@
   "terrain_albedo_estate.png": "14c12894262cbfea1971a73d7a769581acdee5c7ea07f8e63b4e96ba4dd952d5"
  },
  "stage_keys": {
-  "estate-detail": "5b952be116adaebbe586cde04cf53ca5e087947d289c1693119ac035e49b4bcd",
+  "estate-detail": "1ba07241b6e5d3695d77355b3f8aab2410a2b72da1360f34cb7faebba65283f1",
   "props": "b5b1a2ba61d2a1e8f3107cdd25aa9bd53f01c4fa2c1d0fdd45091529deecb048",
   "registry-data": "6b9fc070b824f5b53f095d32f100f5eabd170c22b00d9ab881c43dcd9d3ddc4a",
   "water-mesh": "efc0620e2354e5cb9ce2738f72750a55b31fccbb453bbb75f693d7403ee6f9ed",
-  "albedo": "eea01452a3ec732c0dafcc7d338861b70f9c193d7314c3e5061127f61c8e1875",
+  "albedo": "360d0023ed5377c7ab4870e5d8a6f479d8779147abee1761867bfb8e89aa7176",
   "props-placement": "8ba78d3258b1a11da3eaa31a302903abb1fd7a9a5ecf841ebb296bec11955ab2",
   "qa-stations": "67232d18982bd13597f0a36ad0eba3ffe0dd091e64a183d523cbfdb9da16e5cf",
   "terrain": "bf728549eddb3655f80b3e71990be9afa7dcbf871a57c76877e36e365e69a68e",
@@ -54,5 +54,5 @@
   "light": "590bd45bdc85c8d162c0828d139bed930d112bf817db631d3e28317c77c42197",
   "instances": "b636fbd245ab63de6b795bcb1b1796cda15bf81fc42f63088482ccc9dbcff93e"
  },
- "viewer_bundle": "8c7a28110faf64edc5b3c5e9c3b961d088fe0e57"
+ "viewer_bundle": "c2d5cc0a5bf78e5975b78e3c94acad961fef9746"
 }

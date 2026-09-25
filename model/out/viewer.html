@@ -138,6 +138,10 @@ body.railmin #status,body.railmin #prog{left:16px}
 #card .cardcontrol button.on{border-color:var(--green);color:#047857;background:#ecfdf5}
 #card .cardcontrol button.off{border-color:#fca5a5;color:#b91c1c;background:#fef2f2}
 #card .cardcontrol .why{color:var(--muted);font-size:12px;margin-top:7px;line-height:1.45}
+/* the layout toggle's two buttons: the live one reads as the state, not as a target */
+#card .laybtns{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+#card .cardcontrol button.laybtn{padding:4px 10px;font:600 11.5px var(--sans)}
+#card .cardcontrol button.laybtn.on{border-color:var(--navy);color:#fff;background:var(--navy);cursor:default}
 #demolist .drow{display:flex;align-items:center;justify-content:space-between;gap:8px;
   font-size:12.5px;color:var(--charcoal);padding:2px 0}
 #demolist button{border:1px solid var(--line);background:#fff;border-radius:20px;
@@ -439,6 +443,11 @@ html[data-variants="1"] #variants{display:block}
 <div id="drop"><div class="box">Browser blocked local file loading.<br><br>
   Drop a split GLB here, or serve the folder:<br>
   <code>python -m http.server</code></div></div>
+
+<!-- The two residence layouts' card records: tracked source under out/, generated from the
+     PINNED layout files by fcm/data/residences/cards.py. A classic script, like
+     estate-data.js, so window.RESIDENCE_LAYOUTS stands before the module runs. -->
+<script src="residence-layouts.js"></script>
 
 <script type="module">
 import * as THREE from 'three';
@@ -2167,7 +2176,12 @@ function accept(gltf){
     o.userData.vegLike = layer === 'vegetation' || (String(layer).startsWith('option-')
       && /^(vegetation|layout\d(specimen-trees|screening-hedges))/.test((meta.name || '').replace(/\./g, '')));
     applyShadowPolicy(o, layer);
-    const ckey = meta.extras.element || meta.name;
+    /* The clone is shared per ELEMENT, which is right for everything the registry owns and
+       wrong for the layout houses: all twelve stand on one element id, so one shared material
+       meant clicking one house lit all twelve (measured in the browser, 25 Sep 2026). A mesh
+       that carries a pick id is its own house, so it gets its own clone; the layout's hedges,
+       lanes and trees carry none and stay on the element's. 26 instances, not 1538. */
+    const ckey = meta.extras.pickId || meta.extras.element || meta.name;
     o.material = Array.isArray(o.material) ? o.material.map(m=>cloneFor(ckey,m))
                                            : cloneFor(ckey, o.material);
     const mats = Array.isArray(o.material) ? o.material : [o.material];
@@ -2184,6 +2198,13 @@ function accept(gltf){
     if (elements[eid]){
       o.userData.eid = eid;
       (meshesByElement[eid] = meshesByElement[eid]||[]).push(o);
+    }
+    /* A layout house or gatehouse: nodeMeta walks up to the placed instance's root, which
+       is where placeAssets put the pick id, so a child mesh finds it too. */
+    const pid = meta.extras.pickId;
+    if (pid && layoutPlot(pid)){
+      o.userData.pickId = pid;
+      (meshesByPick[pid] = meshesByPick[pid]||[]).push(o);
     }
     if (o.userData.vegLike){
       o.userData.isLeaf = !/trunks/.test(meta.name);
@@ -2404,6 +2425,7 @@ function placeAssets(staticScene, assetScene, spec){
         element: stripPrefixes(o.id).replace(/\.\d+$/, ''), asset: o.asset,
         placement_basis: o.basis || 'unknown',
       });
+      if (o.pickId) inst.userData.pickId = o.pickId;
       /* A clone's CHILD meshes keep their library names, so a name-prefix rule alone
          would never reach them; the size condition rides userData as smassOnly does. */
       const sizeOnly = prefixStates(inst.name).size || null;
@@ -2649,6 +2671,35 @@ if (CANVAS_MODE) layerState[FCM_POLICY.review_surface.review_layer] = true;
    shown, which is always. A layout may also clear fabric (layout 2 clears Meadows Farm, its
    barn and the staff village, fills the pond, and seats gatehouses 3 and 4 elsewhere). */
 const RES_LAYOUTS = FCM_POLICY.residence_layouts;
+/* THE LAYOUT HOUSES' CARDS (25 Sep 2026). A layout house has no registry record - the
+   registry knows one element per layout, and the residences' capex binds to it - so the
+   facts a card shows come from their own projection, generated from the pinned layout
+   files. They are deliberately NOT merged into `elements`: the works total, __fcm.costs()
+   and the cost checks enumerate E.elements, and a synthetic record there would move a
+   number this work must leave untouched.
+
+   Pick ids (prop.residence-layout-1.7) share no name with any element id, so one selection
+   key serves both and `meshesFor` is the only place that knows which map a key came from.
+
+   A missing projection is LOUD: the file is declared runtime source, deployed and
+   snapshotted with the viewer, and a viewer that silently stopped naming the residences is
+   the defect this work exists to remove. */
+const RESIDENCE_CARDS = window.RESIDENCE_LAYOUTS || null;
+if (!RESIDENCE_CARDS){
+  const status = document.getElementById('status');
+  status.textContent = 'RESIDENCE CARDS UNAVAILABLE - out/residence-layouts.js did not load; '
+    + 'the layout houses will not name themselves. Run python -B -m fcm.data.residences.cards';
+  status.style.display = 'block'; status.style.background = '#7d1515';
+  console.error('[fcm] ' + status.textContent);
+}
+const layoutPlots = (RESIDENCE_CARDS && RESIDENCE_CARDS.plots) || {};
+const layoutPlot = key => (key && layoutPlots[key]) || null;
+/* Every mesh of a placed layout house or gatehouse, by its pick id - the twin of
+   meshesByElement, which stays keyed on the registry identity. */
+const meshesByPick = {};
+const meshesFor = key => meshesByElement[key] || meshesByPick[key] || null;
+const nameFor = key => (elements[key] && elements[key].name)
+  || (layoutPlot(key) && layoutPlot(key).name) || null;
 /* ?layout=2 opens on layout 2 (for shots and links); anything else opens on the default. */
 let activeLayout = RES_LAYOUTS.layers[FCM_QUERY.get('layout')] ? FCM_QUERY.get('layout') : RES_LAYOUTS.default;
 for (const [key, layer] of Object.entries(RES_LAYOUTS.layers)) layerState[layer] = (key === activeLayout);
@@ -2674,10 +2725,36 @@ function hiddenByLayout(o){
   return hides.name_prefixes.some(p => flat.startsWith(p.replace(/\./g, '')));
 }
 function setLayout(id){
+  if (!RES_LAYOUTS.layers[id]) return;
   activeLayout = id;
   for (const [key, layer] of Object.entries(RES_LAYOUTS.layers)) layerState[layer] = (key === id);
   layerState[RES_LAYOUTS.shared_layer] = true;
   applyLayers();
+  const radio = document.querySelector(`input[name="reslayout"][value="${id}"]`);
+  if (radio) radio.checked = true;      /* the card's toggle and the panel never disagree */
+  followSelectionToLayout(id);
+}
+
+/* A selected house is a house, not a layer: switching layout should keep it selected where
+   the other layout has the same plot, and let it go where it does not (Angus, 24 Sep 2026,
+   asked for the toggle ON the card, which only makes sense if the card survives the switch). */
+function followSelectionToLayout(id){
+  const plot = layoutPlot(selected);
+  if (!plot || plot.layout === id) return;
+  highlight(selected, false);
+  const moved = plot.unit === null ? null
+    : `${(RESIDENCE_CARDS.layouts[id] || {}).element}.${plot.unit}`;
+  const landed = layoutPlot(moved);
+  if (landed){
+    selected = moved;
+    highlight(selected, true);
+    showPlotCard(selected, landed, false);
+    return;
+  }
+  selected = null;
+  document.getElementById('card').classList.remove('show');
+  document.body.classList.remove('hascard');
+  document.dispatchEvent(new Event('estate:selection-cleared'));
 }
 /* The anchors a layout's build leaves for its houses and gatehouses become placed assets:
    the real residence and gatehouse models, seated where the build measured them. */
@@ -2686,9 +2763,12 @@ function layoutInstances(root){
   root.traverse(o => {
     const u = o.userData || {};
     if (!u.instance_asset) return;
+    /* pickId is the instance's OWN id (prop.residence-layout-2.7). placeAssets strips the
+       trailing number off `id` to reach the registry identity, which is right for cost and
+       colour and useless for telling one house from another; the card needs the house. */
     out.push({kind: 'asset', asset: u.instance_asset, id: u.instance_id, x: u.x, y: u.y,
               rot_deg: u.rot_deg, ground: u.ground, layer: u.layer, existing: false,
-              basis: 'residence layout'});
+              basis: 'residence layout', pickId: u.instance_id});
   });
   return out;
 }
@@ -2966,6 +3046,71 @@ addEventListener('keydown', e => {
   if (map[k]) setView(map[k]);
 });
 
+/* ------- the layout houses' card (25 Sep 2026) -------
+   Angus, 24 Sep 2026: "bring this back for the residences ... put a toggle between layout 1
+   and 2 here". The facts are the ones he chose: plot acres, house footprint, trees removed,
+   the road it is served from, and the nearest gatehouse. No capex table: the residences'
+   capex binds to one element per layout, not to a house, and a per-house figure here would
+   be a number the workbook never states.
+
+   The toggle rides .cardcontrol, the class the investor interface keeps, because switching
+   layout is a viewing act an investor is meant to perform. */
+function showPlotCard(key, plot, reveal=true){
+  const card = document.getElementById('card');
+  document.getElementById('cTitle').textContent = plot.name;
+  const layoutName = (RESIDENCE_CARDS.layouts[plot.layout] || {}).name || ('Layout ' + plot.layout);
+  document.getElementById('cChips').innerHTML =
+    `<span class="chip ind">proposed — indicative</span>`
+    + `<span class="chip">layout ${plot.layout} · ${layoutName}</span>`;
+  document.body.classList.add('hascard');
+  let html = layoutToggleHtml();
+  if (plot.kind === 'house'){
+    const rows = [
+      ['plot', plot.acres.toFixed(2) + ' acres'],
+      ['house footprint', Math.round(plot.footprint_m2).toLocaleString() + ' m²'],
+      ['trees removed', String(plot.trees_removed)],
+      ['served from', plot.served_from],
+      ['nearest gatehouse', `${plot.gatehouse.label} · ${plot.gatehouse.distance_m} m`],
+    ];
+    html += '<table>' + rows.map(([k, v]) =>
+      `<tr><td>${k}</td><td>${v}</td></tr>`).join('') + '</table>';
+    html += `<div class="note basis">Measured from the pinned layout ${plot.layout} record;
+      the footprint is the residence asset's own measured plan occupancy. A tree counts as
+      removed only when every stem of its crown goes.</div>`;
+  } else {
+    html += `<div class="note">This layout seats the gatehouse here; the estate's registered
+      position stands in the other layout.</div>`;
+  }
+  document.getElementById('cBody').innerHTML = html;
+  bindLayoutToggle();
+  card.classList.add('show');
+  /* layout_plot tells the investor interface this card is already complete: its facts ARE
+     the card, so they are not folded into a "Works cost breakdown" disclosure and the card
+     does not claim a works allocation it was never given one of. */
+  document.dispatchEvent(new CustomEvent('estate:selection',
+    {detail:{element:{id:key, name:plot.name, class:'proposed', indicative:true,
+                      layout_plot:true}, reveal}}));
+}
+
+function layoutToggleHtml(){
+  const options = Object.keys(RES_LAYOUTS.layers).sort().map(id => {
+    const name = (RESIDENCE_CARDS.layouts[id] || {}).name || ('Layout ' + id);
+    const on = id === activeLayout;
+    return `<button class="laybtn${on ? ' on' : ''}" data-layout="${id}"${on ? ' disabled' : ''}>`
+      + `${id} — ${name}</button>`;
+  }).join('');
+  return `<div class="cardcontrol"><div class="row"><span class="lbl">Residence layout</span>
+      <span class="laybtns">${options}</span></div>
+    <div class="why">The same switch as the Residences panel. The selected house follows to
+      the other layout where it has one, and the card closes where it does not.</div></div>`;
+}
+
+function bindLayoutToggle(){
+  document.querySelectorAll('#cBody .laybtn').forEach(button => {
+    button.addEventListener('click', () => setLayout(button.dataset.layout));
+  });
+}
+
 /* ------- picking + card ------- */
 const ray = new THREE.Raycaster(); const mouse = new THREE.Vector2();
 let selected = null; let hovered = null;
@@ -2974,7 +3119,9 @@ function preparePicking(){
   // Index only substantial, selectable static meshes during loading. Indirect
   // mode preserves triangle indices used by measurement/probe tools and GLBs.
   meshLayer.forEach((layer,o)=>{
-    if(!['building','proposed','area','marker','water'].includes(layer)||!o.userData.eid||o.isSkinnedMesh||o.isInstancedMesh||Array.isArray(o.material))return;
+    const indexable = (['building','proposed','area','marker','water'].includes(layer) && o.userData.eid)
+      || o.userData.pickId;
+    if(!indexable||o.isSkinnedMesh||o.isInstancedMesh||Array.isArray(o.material))return;
     // 0.9.1 indirect BVHs do not preserve material-group hit metadata. Keep
     // multi-material meshes on Three's exact original raycast path.
     const g=o.geometry,triangles=(g.index?.count||g.attributes.position.count)/3;
@@ -2987,6 +3134,9 @@ function pickables(){
   const out=[]; meshLayer.forEach((layer,o) => {
     if (!o.visible) return;
     if (['building','proposed','area','marker','water'].includes(layer) && o.userData.eid) out.push(o);
+    /* The layout houses stand on option-1 / option-2, which no registry layer covers, and
+       they are the one thing in the model that stopped naming itself (Angus, 24 Sep 2026). */
+    else if (o.userData.pickId) out.push(o);
   }); return out;
 }
 function pick(e){
@@ -2998,7 +3148,7 @@ function pick(e){
 }
 function highlight(eid, on){
   requestRender();
-  (meshesByElement[eid]||[]).forEach(o => {
+  (meshesFor(eid)||[]).forEach(o => {
     renderBatches.setHighlighted(o,on);
     const mats = Array.isArray(o.material)? o.material : [o.material];
     mats.forEach(m => {
@@ -3017,7 +3167,8 @@ renderer.domElement.addEventListener('pointerup', e => {
   if (markOn){ markClick(e); return; }
   const o = pick(e);
   if (selected) highlight(selected, false);
-  if (o && o.userData.eid){ selected = o.userData.eid; highlight(selected, true); showCard(elements[selected]); }
+  const key = o && (o.userData.eid || o.userData.pickId);
+  if (key){ selected = key; highlight(selected, true); showSelectedCard(); }
   else { selected=null; document.getElementById('card').classList.remove('show');
     document.body.classList.remove('hascard'); document.dispatchEvent(new Event('estate:selection-cleared')); }
 });
@@ -3025,14 +3176,14 @@ renderer.domElement.addEventListener('pointermove', e => {
   if (e.buttons) { tip.style.display='none'; return; } // camera gestures do not hover-pick
   if (markOn) return;          /* no hover tint while a frame is about to be filed */
   const o = pick(e);
-  const eid = o && o.userData.eid;
+  const eid = o && (o.userData.eid || o.userData.pickId);
   if (eid !== hovered){
     if (hovered && hovered!==selected) highlight(hovered, false);
     hovered = eid;
     if (hovered && hovered!==selected) highlight(hovered, true);
   }
   if (eid){ tip.style.display='block'; tip.style.left=(e.clientX+14)+'px'; tip.style.top=(e.clientY+6)+'px';
-    tip.textContent = elements[eid].name; renderer.domElement.style.cursor='pointer'; }
+    tip.textContent = nameFor(eid) || eid; renderer.domElement.style.cursor='pointer'; }
   else { tip.style.display='none'; renderer.domElement.style.cursor=''; }
 });
 document.getElementById('cClose').addEventListener('click', ()=>{
@@ -3451,7 +3602,17 @@ function showCard(el, reveal=true){
 function onStateChange(){
   updateTotals(); buildSwitchRail(); applyLayers(); recolour();
   if (mode==='prog') buildBars();
-  if (selected) showCard(elements[selected],false);
+  if (selected) showSelectedCard(false);
+}
+
+/* The one place that turns the selection key into a card. A layout house has no registry
+   record, so `showCard(elements[key])` is never reached for one; before this existed, any
+   scheme change with a residence selected passed undefined (out/viewer.html, 24 Sep 2026). */
+function showSelectedCard(reveal=true){
+  if (!selected) return;
+  const plot = layoutPlot(selected);
+  if (plot) showPlotCard(selected, plot, reveal);
+  else if (elements[selected]) showCard(elements[selected], reveal);
 }
 
 const clock = new THREE.Clock();

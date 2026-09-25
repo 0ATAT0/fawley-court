@@ -1,0 +1,1863 @@
+{
+ "_generated": {
+  "generator": "fcm/data/scene/records.py",
+  "inputs": {
+   "register/elements/adj.a4155-nw-1.json": "bfcd670c618997575ca26b139ae1f7f489bbc54e36c86e56e0d7ce5b18fe003b",
+   "register/elements/adj.a4155-nw-2.json": "65402a974c79337c72214d7f5a5ebf1db87fbcf0f3b852d219a354a4fcdfc822",
+   "register/elements/adj.a4155-nw-3.json": "6f77a7059173690ae896f40076632d2d93a62346bbdcd2d8c43e24ecb0eda66b",
+   "register/elements/adj.fawley-court-farm.json": "114b1059d9539a01fc01286f1488baa21087f2c6b9ade133f06c3bcc23c2278a",
+   "register/elements/adj.kitchen-garden-glasshouses.json": "cfe61c48e5a7a6f4cd566fe203c752ad357bc7957dc5cdeaecece80ff6c16976",
+   "register/elements/adj.remenham-1.json": "911521ad2b946ea2bad1f8abf0a4102f08c9ee451d29361731a995fdea28ebfd",
+   "register/elements/adj.remenham-2.json": "fb8ae2c77dbd9497c52a570e2da4540ef4283a35651cb9c86ffa6e2ce741dd65",
+   "register/elements/adj.remenham-3.json": "1734b7d78cb3c7351332e86b4b34dbc592a49c628897e6455e24cf4a0f966f07",
+   "register/elements/adj.remenham-4.json": "e359860c148caca57fea504829b6e52ec53a6a4d06a95d4a2aeec6c0feb7aa6c",
+   "register/elements/adj.remenham-5.json": "8f88769ba4533b5782abd5c154f8acb2c79ddd65c58b40fbce0d1d044e76b567",
+   "register/elements/adj.remenham-6.json": "684c64b01844e9a05e5d2b2a9e3d1541a280a1beb92cfb6e90ca9a72831f3eab",
+   "register/elements/adj.remenham-7.json": "61d7383a8c736e5e6c5f955a36c382d3df1cbea70a622bf1254570e9a1e7ddfc",
+   "register/elements/adj.remenham-8.json": "cc95a3161cad2c7b7a25a415192bab94124c2389a5f8a40ed88625d023f8fc88",
+   "register/elements/adj.remenham-club.json": "2986a684f1902711110180f0dca0d7584ae74e88c356461a1422023f0c326cc8",
+   "register/elements/adj.upper-thames-rc.json": "bdb4ec42c3a730e95bf3076e37c6bc30e5b5047e20cd9302926853d035d2dbd2",
+   "register/elements/area.acoustic-west.json": "08cf2ffbc3c0ac963f3e1d6c7c2e3bad901100e8bdaf437b935c4a03eb053d4e",
+   "register/elements/area.arrival-court.json": "2bdfea01871304aabb1b0c5be0d8dda3a9fd95c014484ba79fdaf9747b06bf67",
+   "register/elements/area.avenue.json": "a7c88d8140c81e0c7c33cf6422bbf00e52de73c9798a6711ed5932868d9d51c3",
+   "register/elements/area.estate-drives.json": "a0aaf32dc180db1daf82b3db1cdbdf20b16b9c84bd4e87d279da6afb0f423a21",
+   "register/elements/area.event-parking.json": "5535595b5a6abcaba5a53250a62bd707070ca2d832d80457ade0a1a3f488c9f6",
+   "register/elements/area.loggia.json": "68ed4d796a3f71cfc4e6851bb7df9e34b92b37d5fbc651100860288d1e67aeda",
+   "register/elements/area.parking.json": "d5d3a029dd03914b3e075c76b9c0841fbbf31d208457bc515c40fb1c740a2a7a",
+   "register/elements/area.parkland.json": "d8ca016d180634def8b4a0ba3741341b137b9def2fdacb42bc233aac27fd4894",
+   "register/elements/area.pleasure-gardens-north.json": "2c7a827c85309eaf0f50951e9425ddd66e2a0d8b15584998645574d97fdbbc38",
+   "register/elements/area.pleasure-gardens-south.json": "f00ecd55cfbfefb7a23952b49e1e41cb868144ef6e579b14b437e0924c39d6af",
+   "register/elements/area.regatta-base.json": "b04e5fe93ce214232f0184f3385d24834bb00f8f363601aae5411b464d882ca7",
+   "register/elements/area.resi-roads.json": "5080fbf381056c66a19589b2777df61e77ad523d4cc552e6e48545d26bddcc23",
+   "register/elements/area.river-frontage.json": "93153bf4d73f0dafb9a3bd7aad399eddf4e6927c70abdccf88d6abd3cabf23da",
+   "register/elements/area.riverside-flood.json": "20ee09de2b8f41816d864d7a8cf93b04845339ad80f1950745c707fb08c534b5",
+   "register/elements/bldg.church-st-anne.json": "6ae81a9e1ffd9e2a9eaa158328734c58fc350435cd4109732f1b13d61ab57e31",
+   "register/elements/bldg.dairy-chapel.json": "1db9f7c43236c42833e392a5b1d3536473a851360cd7eff5143eade4d4089dd7",
+   "register/elements/bldg.follies-east-park.json": "8be0301256356660429fbf881b1f70e988766d24329c2f5c35f8e5151b4652ad",
+   "register/elements/bldg.main-house-north-wing.json": "058e0f8c11c8c0fccf2b7213323d2eba6e55fcf9d8967ac223fa91ced08c7949",
+   "register/elements/bldg.main-house.json": "90f1db7f82a0662fc18f1dbfb223ef16e69b153db0e0b12f4b1d44f8ae6e6b5b",
+   "register/elements/bldg.meadows-farm-barn.json": "83027b4e4edacf5c3279ed4169b1db60be4043a8c77271801d8a2bd17c29d902",
+   "register/elements/bldg.meadows-farm.json": "8ac4bf048228a5e84d694814b0cd1ad464b150651fbbfc7222a37dd475addc1d",
+   "register/elements/bldg.north-lodge.json": "cad998b1a5a9a5e506a6212b2adcd73721349ef77b845793615ae5e371d4dbba",
+   "register/elements/bldg.old-stable-block.json": "1e99ed33ddfc796747a10ee5cd1693f9c2a6f88a54ff8b2e4a3ad0bb2f88d41f",
+   "register/elements/bldg.riding-school.json": "8874647474675a38f6af2b27fac66818a034adfb5d7cacb7369b06b37d47f697",
+   "register/elements/bldg.service-outbuildings.json": "e2903d2b4a1857d6793541b085440f87e3cc1779abc575d391ba7a6d6f4bc28d",
+   "register/elements/bldg.south-buildings.json": "467f64e7f09180cc5a6faa63fc6d5d73eb2ff8797382b32830a3a55caddfa6f7",
+   "register/elements/bldg.south-courtyard-ranges.json": "bbad3db1a16605076fc56939195a92f138b0aaae5c28f6645a4ef0d0209a580d",
+   "register/elements/bldg.water-tower.json": "039f10442da0172ebe4f0239af3a3554b5af46aab534912f0faf81d2f0c6bcc1",
+   "register/elements/bldg.workshop-shed.json": "d428836a6037115be29e6bf8b57b99ab3b8237cf1daf45cf44bfc1102142e2b0",
+   "register/elements/bldg.yard-structure-south.json": "a6fc119dbdf4ba0a50885449a00c7c539e89ca4c06872e7dcaf4316de54c55a0",
+   "register/elements/estate.json": "b6ab0c2e223ddfaa6724c0b672ebef5f7c5aeee89be6c70e0c808ece37a72bfa",
+   "register/elements/prop.courts.json": "5947d25dd4eba295160ae8303ab7fa6eb1b2c895085e6ffcc346700c77b9d7df",
+   "register/elements/prop.courtyard-court-small.json": "bc67c7a263b250f90d587b63419c18b557199f2df1c4d2e3cc52f47549c56092",
+   "register/elements/prop.courtyard-court-south-small.json": "31b1051945f42fcc524819d7a12d10c1ef97b4ba543723f416d534eaff7febd9",
+   "register/elements/prop.courtyard-court-south.json": "2adb38711b0e771790aeb245ff990658ad8e5753deec9b749dda34049b3c395e",
+   "register/elements/prop.courtyard-court.json": "315fe7ee47f49ad2b5b5a25dc79071b500bec477999d1066ae80300c421489a6",
+   "register/elements/prop.courtyard-pool.json": "e1e76c0f2a1b60c8497ccb55a36c411e7ffbde704267c54d6cb3c1e4dcb3706c",
+   "register/elements/prop.covered-walkway.json": "f1532c80ffa34d21d96e8e424a6aea13f4afa86335e2f7526ad4fab35a163fcf",
+   "register/elements/prop.floating-bar.json": "483a59cee39cf20f9ae1af4fcf3e297eeb51b7a5d349334add2afdd4742973d8",
+   "register/elements/prop.gatehouses.json": "7f8732565bc7b4344e7ec867b2f79a9e6562483865d70338f0e4c32d397f8997",
+   "register/elements/prop.lodges.json": "748e73e0db0ff33afe444dc7516284e7b9d09a99d18a89127771f0aa16bc052e",
+   "register/elements/prop.marquee.json": "f4e09bacc9b5f0f0de0b03b0c6c78c2f80e1f38973738e5382a003fdc213d8ba",
+   "register/elements/prop.north-courtyard-small.json": "8628d1f5790e064b7f7873c19cd27c6e60c2c66f642af42adcfabc39923ec7d0",
+   "register/elements/prop.north-courtyard.json": "756f6d294d2c59fd08e6bd9d4a5f44bade9fab758f495a980fbca863a929511b",
+   "register/elements/prop.residences.json": "aec5ac30b1699d313339849e3dccd78060a7e94b00a81d457792eb3180d423bf",
+   "register/elements/prop.river-club.json": "c4b03b4279dffdb1b6f2fafa0aa02d9622eeb886fd07ac62958f38eebdeaaf21",
+   "register/elements/prop.south-courtyard-small.json": "d4696810d07c61b99e93c07cbae2e96d4ec0d161931d5bccfac48bb0b5c0df5f",
+   "register/elements/prop.south-courtyard.json": "e7b8a8f2f01c103942744655d3ed64d60b4710cb7a1d91d5faca0168237d9e4b",
+   "register/elements/prop.south-wing-keys.json": "cdddf0d12190f94193c3ca218ae536a495d26fc2fd5ca4d1c5449bcdc592945f",
+   "register/elements/prop.south-wing.json": "f9d5a25f88f90e65c6319ff5ca52d005e279b227a89f6775de0dd8be06f2dd54",
+   "register/elements/prop.spa-building.json": "f8e9baf006f833f98ff62a3e5bf531894ea29b6c43548b06cfa2e9ffc5cd8f17",
+   "register/elements/prop.spa-garden.json": "eab2dcad1d17a9e32a9d5adf667660f6c6c8dfde839ea182154b9b24369bd2f2",
+   "register/elements/prop.spa-roads.json": "512a05109212fc15a4d4e395dc944abf51f229cdcf6f64bad11ff12b5f5d817f",
+   "register/elements/prop.staff-village-landscape.json": "4cc5bcf8e6cabf787215929b4f992cc6c698fbec05f27f537dc508dfdaade796",
+   "register/elements/prop.staff-village.json": "88464eb9ab27b8f12249b0dc49d7814d95a8f4adfce2b573a629c983f147a3b0",
+   "register/elements/site.energy-centre.json": "fcdf67d42e08edeca9c1bed3a1cb72f68b0c5020a6716aaa75db26d03aa69d93",
+   "register/elements/site.entrance-gates.json": "e15bcd46952fa86f228eea1c3b7c6b1de060f6a6b2f7fc5f855bddd2a45f7a80",
+   "register/elements/site.landing-stages.json": "826ae6a0af08272af63bd20dbd61f423a9078958d519750c83b112279c3228a5",
+   "register/elements/site.sewage-plant.json": "79cadf85a1defc08d4cfd6560b004687a1f18a15cc8c0b84ecafea534946c85b",
+   "register/elements/site.south-lodge.json": "a930c14ce6c83d0261944c6878d8640e7b67c4823d28b8a2d0ed9d707d3a389e",
+   "register/elements/site.substation.json": "22dae4d8f7e16dae4d4a99a3d46f69d2ad74ad2e54d02c274da9d254af6a9873",
+   "register/elements/veg.reclassified-06.json": "3b9d4281aa778d25b48e0f0b4ac4430ee05a9ab52f2c7f1036dbb12a8d5d1069",
+   "register/elements/veg.reclassified-14.json": "ee8a1d9ec9a4d62c169bda541bb422304a13023bacb17854d3814df4fa977dff",
+   "register/elements/veg.reclassified-19.json": "b21a3b91a73a9ebe09e1e05d7bf778c278fed2e7aa67319a7330f636465ae967",
+   "register/elements/veg.reclassified-24.json": "6c6909829ab9eb3c78240bf4a186a4696d9f01d3c16d273dcf87e807f8c7cde3",
+   "register/elements/veg.reclassified-25.json": "1dda1363a602027c120a6ef4f5c4d35b96ca925e508c95d875531426ca6fca79",
+   "register/elements/veg.reclassified-26.json": "dadb76fd33f47dad302cff0d556dfe28ef34b16452543c9ce1e24232768de26e",
+   "register/elements/water.guest-pool.json": "6ff17a12be5def49c6c1bf920901d0e0ae335e2bdde4d2fbf4513daf535560ec",
+   "register/elements/water.long-water.json": "e25ef7e73dcc5f2eafcfe4c30eb4a980053e5171de766e336572b1116f25ef0d",
+   "register/elements/water.north-stream.json": "ca3e0c7674a9626f2e0e7cf63ceb2bf5949eaf7b49637628cbe5aef62c48d061",
+   "register/elements/water.south-stream.json": "e446414b14cfee9bac67c1b3dae7ae3a6304317a68be7af946ef3d42305d703e",
+   "register/elements/water.south-west-pool.json": "05f3b5e120412d5e6f7ef2e1ecc773fd2b9ba263ca5c8dd32dabffb0445f7324",
+   "register/elements/water.thames.json": "00836817a7566b2561a782009b61cfe44748309eb81344e69a05d4640645d7e2",
+   "register/estate-index.json": "d396465e51732353a38038a863a43639310c58586bfe32ed1e3e5281adfb182d",
+   "register/placements/adj.a4155-nw-3.json": "44d0e5e5e042fbb6ea3c517caa34625d788fb0dc1efbf7fef8617932c75a2dae",
+   "register/placements/adj.kitchen-garden-glasshouses.json": "414568dc05c36ececd155630fda9dff6d8e1f54ee3f513aa310b8099e4008b77",
+   "register/placements/adj.remenham-1.json": "95a72b15b715535094163a0646d3b8288d23fb8f6799d9a075df58613ace41b7",
+   "register/placements/adj.remenham-2.json": "5ab4520ea959dc9419bc8ce9699e241cff0ef7629d2fd6bef06d895413a7423f",
+   "register/placements/adj.remenham-3.json": "60b441bb492a4cd6bbf6e3e1137c32dc1b94224e07a907274813f7099fc34cad",
+   "register/placements/adj.remenham-4.json": "a814320b8430564672da61de9354e9a591018d6a7658aed289df1009a5d740cb",
+   "register/placements/adj.remenham-5.json": "5ec38d9c19fd6a9aff26ba4b7f7a94b80d0a180ccedea84cb447f00d1c41f672",
+   "register/placements/adj.remenham-6.json": "b7c80de1aa9ae07189385fdd2404e0bac934ac62be7ebe15e04ebe6d7c1c34e1",
+   "register/placements/adj.remenham-7.json": "8ba92cba8a52f0c7e1b91d2f23e5288c9a2faa52794c82dea5a227e839ef2639",
+   "register/placements/adj.remenham-8.json": "d34ce2015d04aff0c49b28111b1b143f339ef79e323df9beb8ab65f7b11e8594",
+   "register/placements/bldg.church-st-anne.json": "7e979fed77b873e9c6562ea113e2bad97f362c6594dfcec303b443a0f79e0c04",
+   "register/placements/bldg.follies-east-park.json": "48608f602521ac4d1ed5096983a27b5424ed8e2aa6f4e150b9af0ba1e37cd990",
+   "register/placements/bldg.main-house-north-wing.json": "f31c91dc12ea98e0d1b04660d0b36cf65048098680f6af798bebca23348b97d5",
+   "register/placements/bldg.main-house.json": "7cd837c67b3bcc1df817172350f7cddcaa18e0061530048487c707960f4135df",
+   "register/placements/bldg.meadows-farm-barn.json": "fb5afe5ca17f58c9f5fb951efe0e248cbaf6d7c40e6c657d4b9eea70b68baa57",
+   "register/placements/bldg.meadows-farm.json": "f7d785329dc0488cb2039ccbbc3f847308b443e755ce349d4101fbd27de536ec",
+   "register/placements/bldg.north-lodge.json": "b4bf635e4e50945142ba3a96eee3237f7157fb938a590676647ae7289b15a133",
+   "register/placements/bldg.riding-school.json": "068e8dd54402e06d2cbc64543d8dfa68bca4b47d2c8d945f6e0ad99eee9f8df4",
+   "register/placements/bldg.service-outbuildings.json": "81eae7be248a19914594a91a85405ecaa58571928aadfd1bfd2337733b94a1a6",
+   "register/placements/bldg.south-buildings.json": "9fcf15fd29ce73a00400119335adb36dc07545d7aa803a06aaba0e63242f3b23",
+   "register/placements/bldg.workshop-shed.json": "d9cc801eb536f59eb3990fabeec0a4fff83161b95f2e62157b5a49b92b544d89",
+   "register/placements/bldg.yard-structure-south.json": "7cee6b8c4c124c20c3d82d3197616dce0d84ad44ae9aeb1494912aef66c37510",
+   "register/placements/prop.courts.json": "46e92ac9adce33c85b1f2ea5ce5f15a2f93765760399a64c735e837db4480723",
+   "register/placements/prop.covered-walkway.json": "3953215a7a4b5f32309ac3e771f4a8705c64eaec25446c14446ed97bb277a172",
+   "register/placements/prop.gatehouses.json": "e1191066f68e46f2958af1807ef71bbc1fcb04dffde7e8b1f5a3b252b2c7e9f5",
+   "register/placements/prop.lodges.json": "21bf53857a35e4885e9d8e270a29700292f32645c04d20fef350d4455adc6f97",
+   "register/placements/prop.marquee.json": "52307287ee97e63f51dd280602cc1d257cb96aeae83c9b0003125a7b43f949e6",
+   "register/placements/prop.north-courtyard-small.json": "8b05c51303a0f2717698f07a7b0c070a4185143e29c72f08814acdfa8909fa03",
+   "register/placements/prop.north-courtyard.json": "335664a9162ea259fb4000d6b484177e4cad1b89bc146e986738981dba08f27a",
+   "register/placements/prop.residences.json": "80ba8fa05b40671987a909e06b8d3f2de526aa7bc3ad8bc298ccd22378a6a6d3",
+   "register/placements/prop.river-club.json": "3cdadc0bb7472ccf45f220a9d36cdf9894826d9a988ebb81e736b4541e7365f6",
+   "register/placements/prop.south-courtyard-small.json": "9ce953231058faa0d4279f1970a25c317827cd6e4e2e7e4c6b8db80cf1e0910b",
+   "register/placements/prop.south-courtyard.json": "21cb4f606dfafaeb7418ab3e25525870b53c59e61551bbdeaff0400f60285ae5",
+   "register/placements/prop.south-wing-keys.json": "c8c23293b2c5877b506c1bf71b6502620710eaeb720315f2459e50ac5875a348",
+   "register/placements/prop.spa-building.json": "6af8d5d0cd46963a0179ff8447217463226f9e6d1717582a4dd76ade28e7a2d4",
+   "register/placements/prop.spa-garden.json": "aa79b9325bc40fe7d1c5a7c9d331efe3efc528822a5d1c4a091cdd99b5e7bc64",
+   "register/placements/prop.spa-roads.json": "a18d0d946e26c76c808f1776b6f3802d3ebf69a8e3b253099320e051cd713bd1",
+   "register/placements/prop.staff-village.json": "4b6cdabd3b128df6f8514ea2912ef75dbf7780fc31262a5337d1e82420b4072a",
+   "register/placements/site.entrance-gates.json": "836d10a823b0dc47a112a5dfe2f53f3744319cd31f30644d3f236c52e5ca5d62",
+   "register/placements/water.guest-pool.json": "8db94649b1867e221c9aedb29629234683cbd0b16af6357506fdc859fe5fe796",
+   "scene-estate.json": "6ee0c283c26607b4de071b3dcea953e5083256c4b5467bee120475dbf0132c6a"
+  },
+  "body_hash": "4e14042fc96f34052931b6678598be5f93acaa9b48d9f6a2a079a7cba8a337de",
+  "written": "2026-09-24T17:52:13.775598+00:00"
+ },
+ "_": "Generated by fcm/data/scene/records.py from register/placements/, one record per element. THE declarative description of the physical model. Edit through `python -m fcm set ...`, which writes the record and re-derives this file.",
+ "anchor_bng": [
+  476520,
+  184214
+ ],
+ "window_bng": {
+  "e": [
+   476100,
+   477200
+  ],
+  "n": [
+   183200,
+   184900
+  ]
+ },
+ "convention": "X = easting - 476520, Y = northing - 184214, Z = mAOD, rot_deg counter-clockwise about Z",
+ "placement_source": "register/placements/",
+ "tiers": {
+  "1": [
+   "bldg.main-house",
+   "bldg.main-house-north-wing",
+   "prop.north-courtyard",
+   "prop.south-courtyard",
+   "prop.north-courtyard-small",
+   "prop.south-courtyard-small",
+   "prop.covered-walkway",
+   "prop.south-wing-keys",
+   "bldg.south-courtyard-ranges",
+   "bldg.old-stable-block",
+   "bldg.water-tower",
+   "bldg.dairy-chapel",
+   "water.long-water",
+   "area.arrival-court"
+  ],
+  "2": [
+   "bldg.riding-school",
+   "bldg.church-st-anne",
+   "bldg.north-lodge",
+   "bldg.south-buildings",
+   "bldg.service-outbuildings",
+   "bldg.workshop-shed",
+   "bldg.yard-structure-south",
+   "prop.spa-building",
+   "prop.river-club",
+   "prop.gatehouses",
+   "prop.courts",
+   "prop.courtyard-pool",
+   "prop.south-wing",
+   "prop.floating-bar",
+   "water.thames",
+   "prop.staff-village",
+   "prop.staff-village-landscape",
+   "prop.residences",
+   "site.entrance-gates.1",
+   "site.entrance-gates.2"
+  ],
+  "3": [
+   "bldg.follies-east-park"
+  ],
+  "4": [
+   "bldg.meadows-farm",
+   "bldg.meadows-farm-barn"
+  ]
+ },
+ "tier_default": {
+  "adj": 4,
+  "site": 4,
+  "area": 2,
+  "prop": 3,
+  "bldg": 3,
+  "water": 2,
+  "veg": 3,
+  "estate": 3
+ },
+ "render_contract": {
+  "judged_surface": "out/viewer.html in Chrome",
+  "tone_mapping": "ACESFilmic",
+  "exposure": 0.62,
+  "realtime_shadows": true,
+  "terrain_albedo_has_baked_canopy_shadow": false,
+  "_note": "Terrain albedo excludes the baked canopy/building shadow factor. The viewer's shadow map is the only shadow treatment."
+ },
+ "overlay_layers": [
+  "area",
+  "marker",
+  "anchor"
+ ],
+ "hidden": [],
+ "objects": [
+  {
+   "id": "adj.a4155-nw-3",
+   "kind": "asset",
+   "asset": "a4155-nw-3",
+   "x": -262.328,
+   "y": 509.231,
+   "rot_deg": 4.764,
+   "ground": 35.458,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "lidar",
+   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
+   "tier": 4,
+   "layer": "building",
+   "name": "Property west of the A4155 (south)"
+  },
+  {
+   "id": "adj.kitchen-garden-glasshouses",
+   "kind": "asset",
+   "asset": "garden-centre",
+   "x": -93.0,
+   "y": 277.0,
+   "rot_deg": 0.0,
+   "ground": 33.431,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "lidar",
+   "basis_note": "unit 1 surveyed mask, centred at (-93, 277) and seated at 33.431 mAOD",
+   "tier": 4,
+   "layer": "building",
+   "name": "Kitchen-garden glasshouses"
+  },
+  {
+   "id": "adj.remenham-1",
+   "kind": "asset",
+   "asset": "riverside-barns-north",
+   "x": 471.83,
+   "y": 5.34,
+   "rot_deg": 44.77,
+   "ground": 33.43,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "lidar",
+   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
+   "tier": 4,
+   "layer": "building",
+   "name": "Remenham Farm range (east bank)"
+  },
+  {
+   "id": "adj.remenham-2",
+   "kind": "asset",
+   "asset": "riverside-barns-south",
+   "x": 487.25,
+   "y": -24.35,
+   "rot_deg": 36.16,
+   "ground": 33.342,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "lidar",
+   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
+   "tier": 4,
+   "layer": "building",
+   "name": "Remenham Farm barns (east bank)"
+  },
+  {
+   "id": "adj.remenham-3",
+   "kind": "asset",
+   "asset": "remenham-lane-north-west",
+   "x": 511.02,
+   "y": 88.61,
+   "rot_deg": -3.09,
+   "ground": 33.316,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "lidar",
+   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
+   "tier": 4,
+   "layer": "building",
+   "name": "Remenham buildings (east bank)"
+  },
+  {
+   "id": "adj.remenham-4",
+   "kind": "asset",
+   "asset": "remenham-lane-central-cottages",
+   "x": 508.27,
+   "y": 39.79,
+   "rot_deg": -57.93,
+   "ground": 33.062,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "lidar",
+   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
+   "tier": 4,
+   "layer": "building",
+   "name": "Remenham buildings (east bank)"
+  },
+  {
+   "id": "adj.remenham-5",
+   "kind": "asset",
+   "asset": "remenham-lane-east-cottage",
+   "x": 589.88,
+   "y": -30.07,
+   "rot_deg": -45.61,
+   "ground": 33.662,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "lidar",
+   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
+   "tier": 4,
+   "layer": "building",
+   "name": "Remenham buildings (east bank)"
+  },
+  {
+   "id": "adj.remenham-6",
+   "kind": "asset",
+   "asset": "riverside-ancillary",
+   "x": 492.9,
+   "y": -56.93,
+   "rot_deg": -11.96,
+   "ground": 32.785,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "lidar",
+   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
+   "tier": 4,
+   "layer": "building",
+   "name": "Remenham buildings (east bank)"
+  },
+  {
+   "id": "adj.remenham-7",
+   "kind": "asset",
+   "asset": "remenham-parish-hall",
+   "x": 553.43,
+   "y": 106.82,
+   "rot_deg": -9.94,
+   "ground": 33.774,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "lidar",
+   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
+   "tier": 4,
+   "layer": "building",
+   "name": "Remenham buildings (east bank)"
+  },
+  {
+   "id": "adj.remenham-8",
+   "kind": "asset",
+   "asset": "st-nicholas-remenham",
+   "x": 555.6,
+   "y": -48.82,
+   "rot_deg": 34.19,
+   "ground": 32.853,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "lidar",
+   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
+   "tier": 4,
+   "layer": "building",
+   "name": "Remenham buildings (east bank)"
+  },
+  {
+   "id": "bldg.church-st-anne",
+   "kind": "asset",
+   "asset": "spa-precinct-hall",
+   "x": -98.576523,
+   "y": -124.834767,
+   "rot_deg": -18.9787,
+   "ground": 33.56,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "hand-set",
+   "basis_note": "The Concert Hall is the asset's hall element (spa-precinct-hall), placed at the ONE precinct transform shared with the wings, garden, pool, courts and roads: they are one plan split by element, origin J. The LIDAR reconstruction of component 32 (unit 19) is superseded by this asset placement through the buildings stage's asset path (an element whose placement names an asset is imported and its survey unit is not reconstructed), exactly as the composed courtyards absorb their units; there is no second Concert Hall. Capex lines 75-77 colour the hall node as before.",
+   "tier": 2,
+   "layer": "building",
+   "name": "Church of St Anne (Concert Hall)"
+  },
+  {
+   "id": "bldg.follies-east-park",
+   "kind": "asset",
+   "asset": "follies-east-park",
+   "x": 240.301,
+   "y": -196.527,
+   "rot_deg": 53.29,
+   "ground": 31.3,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=246.457 y=-205.0 rot=53.29",
+   "tier": 3,
+   "layer": "building",
+   "name": "East Park Gothic Ruin"
+  },
+  {
+   "id": "bldg.main-house",
+   "kind": "asset",
+   "asset": "main-house",
+   "x": 2.953,
+   "y": -1.172,
+   "rot_deg": -18.21,
+   "ground": 33.249,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "hand-set",
+   "basis_note": "drawn 31.6 x 27.4 m against 30.5 x 27.3 on the 1:200 floor plans; 1.4 m from LIDAR",
+   "tier": 1,
+   "layer": "building",
+   "name": "Fawley Court - Main House"
+  },
+  {
+   "id": "bldg.main-house-north-wing",
+   "kind": "asset",
+   "asset": "main-house-north-wing",
+   "x": -16.427,
+   "y": 33.8295,
+   "rot_deg": -18.21,
+   "ground": 33.237,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-17.241 y=33.216 rot=-15.1",
+   "tier": 1,
+   "layer": "building",
+   "name": "Main House north service wing"
+  },
+  {
+   "id": "bldg.meadows-farm",
+   "kind": "asset",
+   "asset": "meadows-farm",
+   "x": -290.73,
+   "y": -426.87,
+   "rot_deg": -82.97,
+   "ground": 32.973,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "lidar",
+   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
+   "tier": 4,
+   "layer": "building",
+   "name": "Meadows Farm (main range)"
+  },
+  {
+   "id": "bldg.meadows-farm-barn",
+   "kind": "asset",
+   "asset": "meadows-farm-barn",
+   "x": -270.98,
+   "y": -425.09,
+   "rot_deg": -86.09,
+   "ground": 32.854,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "lidar",
+   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
+   "tier": 4,
+   "layer": "building",
+   "name": "Meadows Farm (barn)"
+  },
+  {
+   "id": "bldg.north-lodge",
+   "kind": "asset",
+   "asset": "north-lodge",
+   "x": -220.43,
+   "y": 572.06,
+   "rot_deg": 5.49,
+   "ground": 35.38,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "lidar",
+   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained",
+   "tier": 2,
+   "layer": "building",
+   "name": "North Lodge"
+  },
+  {
+   "id": "bldg.riding-school",
+   "kind": "asset",
+   "asset": "riding-school",
+   "x": -61.804,
+   "y": 98.99,
+   "rot_deg": 71.79,
+   "ground": 33.437,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-61.804 y=98.989 rot=71.79",
+   "tier": 2,
+   "layer": "building",
+   "name": "Riding School"
+  },
+  {
+   "id": "bldg.service-outbuildings",
+   "kind": "asset",
+   "asset": "service-yard-outbuildings",
+   "x": -52.895,
+   "y": 172.703,
+   "rot_deg": 71.23,
+   "ground": 33.579,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-52.895 y=172.703 rot=71.23",
+   "tier": 2,
+   "layer": "building",
+   "name": "Service yard outbuildings (north)"
+  },
+  {
+   "id": "bldg.south-buildings",
+   "kind": "asset",
+   "asset": "south-buildings",
+   "x": -121.98,
+   "y": -59.58,
+   "rot_deg": 105.66,
+   "ground": 33.869,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-123.557 y=-57.327 rot=105.66",
+   "tier": 2,
+   "layer": "building",
+   "name": "South Buildings (derelict service range)"
+  },
+  {
+   "id": "bldg.workshop-shed",
+   "kind": "asset",
+   "asset": "workshop-shed",
+   "x": -23.011,
+   "y": 185.733,
+   "rot_deg": 64.44,
+   "ground": 33.467,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-23.011 y=185.733 rot=64.44",
+   "tier": 2,
+   "layer": "building",
+   "name": "Workshop / timber store shed"
+  },
+  {
+   "id": "bldg.yard-structure-south",
+   "kind": "asset",
+   "asset": "service-yard-range",
+   "x": -52.249,
+   "y": 134.126,
+   "rot_deg": 71.79,
+   "ground": 33.467,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-52.249 y=134.126 rot=71.79",
+   "tier": 2,
+   "layer": "building",
+   "name": "Service yard structure (south)"
+  },
+  {
+   "id": "prop.courts",
+   "kind": "asset",
+   "asset": "spa-precinct-courts",
+   "x": -98.576523,
+   "y": -124.834767,
+   "rot_deg": -18.9787,
+   "ground": 33.56,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "The one tennis court, two padel courts, their fences, lamps and benches are the courts element of the spa precinct asset (spa-precinct-courts), at the precinct's own layout and transform. Identical transform to the precinct's other five elements: one plan, split by element, origin J. The former South Buildings position (-122, -60) is retired; the courts' garden dressing is inside the asset, so the courts.west-garden-edge dressing line and its three rules are removed.",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Tennis & padel courts"
+  },
+  {
+   "id": "prop.covered-walkway",
+   "kind": "asset",
+   "asset": "covered-walkway",
+   "x": -19.1,
+   "y": 50.405,
+   "rot_deg": -80.84,
+   "ground": 33.3,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-19.065 y=50.189 rot=-80.84",
+   "tier": 1,
+   "layer": "proposed",
+   "name": "Covered walkway, house to courtyards"
+  },
+  {
+   "id": "prop.gatehouses.0",
+   "kind": "asset",
+   "asset": "gatehouse",
+   "x": -260.738,
+   "y": 479.073,
+   "rot_deg": -91.534,
+   "ground": 35.086,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "road-register",
+   "basis_note": "wave 4: 3.000 m clear of the CURRENT registered carriageway edge, square to the drive, door to the road (tools/gatehouse_ground.py)",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Gatehouses & lodge extensions"
+  },
+  {
+   "id": "prop.gatehouses.1",
+   "kind": "asset",
+   "asset": "gatehouse",
+   "x": -278.391,
+   "y": 479.546,
+   "rot_deg": 88.466,
+   "ground": 34.561,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "road-register",
+   "basis_note": "wave 4: 3.000 m clear of the CURRENT registered carriageway edge, square to the drive, door to the road (tools/gatehouse_ground.py)",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Gatehouses & lodge extensions"
+  },
+  {
+   "id": "prop.gatehouses.2",
+   "kind": "asset",
+   "asset": "gatehouse",
+   "x": -291.143,
+   "y": -176.518,
+   "rot_deg": 67.078,
+   "ground": 33.289,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "road-register",
+   "basis_note": "wave 4: 3.000 m clear of the CURRENT registered carriageway edge, square to the drive, door to the road (tools/gatehouse_ground.py)",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Gatehouses & lodge extensions"
+  },
+  {
+   "id": "prop.gatehouses.3",
+   "kind": "asset",
+   "asset": "gatehouse",
+   "x": -296.0,
+   "y": -383.0,
+   "rot_deg": -96.0,
+   "ground": 33.48,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-274.877 y=-183.397 rot=-112.922 | 23 Sep 2026: moved by fcm set from x=-284.1 y=-332.5 rot=-106.4",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Gatehouses & lodge extensions"
+  },
+  {
+   "id": "prop.gatehouses.4",
+   "kind": "asset",
+   "asset": "gatehouse",
+   "x": -297.5,
+   "y": -399.0,
+   "rot_deg": -96.0,
+   "ground": 32.494,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "no drawn outline earned trust for this element; LIDAR footprint centroid and PCA axis retained | 23 Sep 2026: moved by fcm set from x=-290.0 y=-352.5 rot=-106.4",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Gatehouses & lodge extensions"
+  },
+  {
+   "id": "prop.lodges.1",
+   "kind": "asset",
+   "asset": "lodge",
+   "x": 66.51,
+   "y": 89.03,
+   "rot_deg": 2.998,
+   "ground": 32.319,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "Derived on a 1 m candidate grid from the measured tree array, Long Water shoreline and registered roads; 10 measured trees within 22 m, nearest trunk clears footprint by 5.54 m, Long Water clears by 145.83 m. The glazed long side faces the nearest Long Water edge. Indicative lodge product; no capex or scheme switch. | 16 Sep 2026: moved by fcm set from x=83.6 y=132.9 rot=2.998 | 16 Sep 2026 Angus: 'still too far from the main house ... keep the distances between them as they are', move lodge_Mesh_3 from viewer (39.01, 37.63, -131.93) to (21.92, 32.94, -88.06); the same local vector (-17.09, -43.87) m (47.1 m towards the house) applied identically to all nine, so every inter-lodge distance is unchanged.",
+   "tier": 3,
+   "layer": "proposed",
+   "name": "Woodland lodge 1"
+  },
+  {
+   "id": "prop.lodges.2",
+   "kind": "asset",
+   "asset": "lodge",
+   "x": 88.51,
+   "y": 70.03,
+   "rot_deg": -6.265,
+   "ground": 32.447,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "Derived on a 1 m candidate grid from the measured tree array, Long Water shoreline and registered roads; 9 measured trees within 22 m, nearest trunk clears footprint by 5.20 m, Long Water clears by 127.41 m. The glazed long side faces the nearest Long Water edge. Indicative lodge product; no capex or scheme switch. | 16 Sep 2026: moved by fcm set from x=105.6 y=113.9 rot=-6.265 | 16 Sep 2026 Angus: 'still too far from the main house ... keep the distances between them as they are', move lodge_Mesh_3 from viewer (39.01, 37.63, -131.93) to (21.92, 32.94, -88.06); the same local vector (-17.09, -43.87) m (47.1 m towards the house) applied identically to all nine, so every inter-lodge distance is unchanged.",
+   "tier": 3,
+   "layer": "proposed",
+   "name": "Woodland lodge 2"
+  },
+  {
+   "id": "prop.lodges.3",
+   "kind": "asset",
+   "asset": "lodge",
+   "x": 24.51,
+   "y": 89.03,
+   "rot_deg": 15.726,
+   "ground": 31.939,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "Derived on a 1 m candidate grid from the measured tree array, Long Water shoreline and registered roads; 6 measured trees within 22 m, nearest trunk clears footprint by 6.09 m, Long Water clears by 153.09 m. The glazed long side faces the nearest Long Water edge. Indicative lodge product; no capex or scheme switch. | 16 Sep 2026: moved by fcm set from x=41.6 y=132.9 rot=15.726 | 16 Sep 2026 Angus: 'still too far from the main house ... keep the distances between them as they are', move lodge_Mesh_3 from viewer (39.01, 37.63, -131.93) to (21.92, 32.94, -88.06); the same local vector (-17.09, -43.87) m (47.1 m towards the house) applied identically to all nine, so every inter-lodge distance is unchanged.",
+   "tier": 3,
+   "layer": "proposed",
+   "name": "Woodland lodge 3"
+  },
+  {
+   "id": "prop.lodges.4",
+   "kind": "asset",
+   "asset": "lodge",
+   "x": 86.51,
+   "y": 105.03,
+   "rot_deg": -4.248,
+   "ground": 32.37,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "Derived on a 1 m candidate grid from the measured tree array, Long Water shoreline and registered roads; 4 measured trees within 22 m, nearest trunk clears footprint by 8.40 m, Long Water clears by 162.08 m. The glazed long side faces the nearest Long Water edge. Indicative lodge product; no capex or scheme switch. | 16 Sep 2026: moved by fcm set from x=103.6 y=148.9 rot=-4.248 | 16 Sep 2026 Angus: 'still too far from the main house ... keep the distances between them as they are', move lodge_Mesh_3 from viewer (39.01, 37.63, -131.93) to (21.92, 32.94, -88.06); the same local vector (-17.09, -43.87) m (47.1 m towards the house) applied identically to all nine, so every inter-lodge distance is unchanged.",
+   "tier": 3,
+   "layer": "proposed",
+   "name": "Woodland lodge 4"
+  },
+  {
+   "id": "prop.lodges.5",
+   "kind": "asset",
+   "asset": "lodge",
+   "x": 85.51,
+   "y": 174.53,
+   "rot_deg": -5.859,
+   "ground": 31.867,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "Derived on a 1 m candidate grid from the measured tree array, Long Water shoreline and registered roads; 4 measured trees within 22 m, nearest trunk clears footprint by 5.54 m, Long Water clears by 214.77 m. The glazed long side faces the nearest Long Water edge. Indicative lodge product; no capex or scheme switch.| 16 Sep 2026 Angus: 'still too far from the main house ... keep the distances between them as they are', move lodge_Mesh_3 from viewer (39.01, 37.63, -131.93) to (21.92, 32.94, -88.06); the same local vector (-17.09, -43.87) m (47.1 m towards the house) applied identically to all nine, so every inter-lodge distance is unchanged. | 24 Sep 2026: moved by fcm set from x=96.51 y=157.03 rot=-5.859 | 24 Sep 2026: moved off the north stream, which now runs continuously through its old footprint to the Long Water (Angus: a solid stream); nearest clear spot on the lodges' side, 9.4 m from the course, 25 m+ from every lodge, 5 m+ from every surveyed trunk. Ground seated on the true DTM maximum under the footprint (31.867); the recorded 32.66 was read with the south-up row rule (fcm/window.py SOUTH_UP_ROW_ORIGIN_N).",
+   "tier": 3,
+   "layer": "proposed",
+   "name": "Woodland lodge 5"
+  },
+  {
+   "id": "prop.lodges.6",
+   "kind": "asset",
+   "asset": "lodge",
+   "x": 37.51,
+   "y": 129.03,
+   "rot_deg": 11.039,
+   "ground": 32.482,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "Derived on a 1 m candidate grid from the measured tree array, Long Water shoreline and registered roads; 3 measured trees within 22 m, nearest trunk clears footprint by 15.12 m, Long Water clears by 189.18 m. The glazed long side faces the nearest Long Water edge. Indicative lodge product; no capex or scheme switch. | 16 Sep 2026: moved by fcm set from x=54.6 y=172.9 rot=11.039 | 16 Sep 2026 Angus: 'still too far from the main house ... keep the distances between them as they are', move lodge_Mesh_3 from viewer (39.01, 37.63, -131.93) to (21.92, 32.94, -88.06); the same local vector (-17.09, -43.87) m (47.1 m towards the house) applied identically to all nine, so every inter-lodge distance is unchanged.",
+   "tier": 3,
+   "layer": "proposed",
+   "name": "Woodland lodge 6"
+  },
+  {
+   "id": "prop.lodges.7",
+   "kind": "asset",
+   "asset": "lodge",
+   "x": 69.51,
+   "y": 132.03,
+   "rot_deg": 1.43,
+   "ground": 32.361,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "Derived on a 1 m candidate grid from the measured tree array, Long Water shoreline and registered roads; 3 measured trees within 22 m, nearest trunk clears footprint by 15.08 m, Long Water clears by 188.69 m. The glazed long side faces the nearest Long Water edge. Indicative lodge product; no capex or scheme switch. | 16 Sep 2026: moved by fcm set from x=86.6 y=175.9 rot=1.43 | 16 Sep 2026 Angus: 'still too far from the main house ... keep the distances between them as they are', move lodge_Mesh_3 from viewer (39.01, 37.63, -131.93) to (21.92, 32.94, -88.06); the same local vector (-17.09, -43.87) m (47.1 m towards the house) applied identically to all nine, so every inter-lodge distance is unchanged.",
+   "tier": 3,
+   "layer": "proposed",
+   "name": "Woodland lodge 7"
+  },
+  {
+   "id": "prop.lodges.8",
+   "kind": "asset",
+   "asset": "lodge",
+   "x": 67.51,
+   "y": 157.03,
+   "rot_deg": 1.793,
+   "ground": 32.301,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "Derived on a 1 m candidate grid from the measured tree array, Long Water shoreline and registered roads; 3 measured trees within 22 m, nearest trunk clears footprint by 12.15 m, Long Water clears by 213.74 m. The glazed long side faces the nearest Long Water edge. Indicative lodge product; no capex or scheme switch. | 16 Sep 2026: moved by fcm set from x=84.6 y=200.9 rot=1.793 | 16 Sep 2026 Angus: 'still too far from the main house ... keep the distances between them as they are', move lodge_Mesh_3 from viewer (39.01, 37.63, -131.93) to (21.92, 32.94, -88.06); the same local vector (-17.09, -43.87) m (47.1 m towards the house) applied identically to all nine, so every inter-lodge distance is unchanged.",
+   "tier": 3,
+   "layer": "proposed",
+   "name": "Woodland lodge 8"
+  },
+  {
+   "id": "prop.lodges.9",
+   "kind": "asset",
+   "asset": "lodge",
+   "x": 42.51,
+   "y": 158.03,
+   "rot_deg": 8.312,
+   "ground": 32.192,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "Derived on a 1 m candidate grid from the measured tree array, Long Water shoreline and registered roads; 3 measured trees within 22 m, nearest trunk clears footprint by 12.00 m, Long Water clears by 216.94 m. The glazed long side faces the nearest Long Water edge. Indicative lodge product; no capex or scheme switch. | 16 Sep 2026: moved by fcm set from x=59.6 y=201.9 rot=8.312 | 16 Sep 2026 Angus: 'still too far from the main house ... keep the distances between them as they are', move lodge_Mesh_3 from viewer (39.01, 37.63, -131.93) to (21.92, 32.94, -88.06); the same local vector (-17.09, -43.87) m (47.1 m towards the house) applied identically to all nine, so every inter-lodge distance is unchanged.",
+   "tier": 3,
+   "layer": "proposed",
+   "name": "Woodland lodge 9"
+  },
+  {
+   "id": "prop.marquee",
+   "kind": "asset",
+   "asset": "wedding-marquee",
+   "x": 57.569,
+   "y": -16.975,
+   "rot_deg": 71.79,
+   "ground": 33.998,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "Angus 15 Sep 2026 viewer pick [57.14, 32.57, 18.36] fixes the temporary wedding marquee at model (57.1, -18.4), on the Main House garden / Long Water side. Its 27.0 m long axis is 71.79 degrees, exactly parallel to the Main House long axis; 3 m came off the spa end on 16 Sep 2026; its 16.1 m short side is parallel to the Long Water. Lined sailcloth, clear-span glazing, timber deck and lantern ridge remain temporary fabric: no slab, plinth, masonry, foundation or capex. | 16 Sep 2026: moved by fcm set from x=57.1 y=-18.4 rot=71.79",
+   "tier": 3,
+   "layer": "proposed",
+   "name": "Wedding marquee (temporary, hired)"
+  },
+  {
+   "id": "prop.north-courtyard",
+   "kind": "asset",
+   "asset": "north-courtyard",
+   "x": -25.852,
+   "y": 151.657,
+   "rot_deg": 87.8,
+   "ground": 33.55,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-25.852 y=151.657 rot=87.8",
+   "tier": 1,
+   "layer": "proposed",
+   "name": "North Courtyard new ranges (consented)"
+  },
+  {
+   "id": "prop.north-courtyard-small",
+   "kind": "asset",
+   "asset": "north-courtyard-small",
+   "x": -2.836,
+   "y": 151.657,
+   "rot_deg": 87.8,
+   "ground": 33.55,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "courtyard-layout.json",
+   "basis_note": "the record's own origin; the asset was built about it",
+   "tier": 1,
+   "layer": "proposed",
+   "name": "North Courtyard at the underwrite's area (small position)"
+  },
+  {
+   "id": "prop.residences.1",
+   "kind": "asset",
+   "asset": "residence",
+   "x": -87.58,
+   "y": -299.07,
+   "rot_deg": -10.227,
+   "ground": 32.613,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "derived",
+   "basis_note": "derived by fcm/model/residences/plots.py from the Savills markers with Angus's design offset of 15 September 2026, which moves the twelve down the river; the plot block is no longer carried here because residences.json is its one definition",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Branded residences (12, Savills zones)"
+  },
+  {
+   "id": "prop.residences.10",
+   "kind": "asset",
+   "asset": "residence",
+   "x": -111.9,
+   "y": -637.87,
+   "rot_deg": 160.946,
+   "ground": 32.701,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "derived",
+   "basis_note": "derived by fcm/model/residences/plots.py from the Savills markers with Angus's design offset of 15 September 2026, which moves the twelve down the river; the plot block is no longer carried here because residences.json is its one definition",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Branded residences (12, Savills zones)"
+  },
+  {
+   "id": "prop.residences.11",
+   "kind": "asset",
+   "asset": "residence",
+   "x": -162.94,
+   "y": -620.24,
+   "rot_deg": 160.946,
+   "ground": 32.696,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "derived",
+   "basis_note": "derived by fcm/model/residences/plots.py from the Savills markers with Angus's design offset of 15 September 2026, which moves the twelve down the river; the plot block is no longer carried here because residences.json is its one definition",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Branded residences (12, Savills zones)"
+  },
+  {
+   "id": "prop.residences.12",
+   "kind": "asset",
+   "asset": "residence",
+   "x": -153.12,
+   "y": -563.86,
+   "rot_deg": -19.054,
+   "ground": 32.736,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "derived",
+   "basis_note": "derived by fcm/model/residences/plots.py from the Savills markers with Angus's design offset of 15 September 2026, which moves the twelve down the river; the plot block is no longer carried here because residences.json is its one definition",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Branded residences (12, Savills zones)"
+  },
+  {
+   "id": "prop.residences.2",
+   "kind": "asset",
+   "asset": "residence",
+   "x": -34.44,
+   "y": -308.65,
+   "rot_deg": -10.227,
+   "ground": 32.205,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "derived",
+   "basis_note": "derived by fcm/model/residences/plots.py from the Savills markers with Angus's design offset of 15 September 2026, which moves the twelve down the river; the plot block is no longer carried here because residences.json is its one definition",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Branded residences (12, Savills zones)"
+  },
+  {
+   "id": "prop.residences.3",
+   "kind": "asset",
+   "asset": "residence",
+   "x": -124.06,
+   "y": -349.9,
+   "rot_deg": 169.773,
+   "ground": 32.879,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "derived",
+   "basis_note": "derived by fcm/model/residences/plots.py from the Savills markers with Angus's design offset of 15 September 2026, which moves the twelve down the river; the plot block is no longer carried here because residences.json is its one definition",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Branded residences (12, Savills zones)"
+  },
+  {
+   "id": "prop.residences.4",
+   "kind": "asset",
+   "asset": "residence",
+   "x": -109.11,
+   "y": -433.15,
+   "rot_deg": -7.252,
+   "ground": 32.707,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "derived",
+   "basis_note": "derived by fcm/model/residences/plots.py from the Savills markers with Angus's design offset of 15 September 2026, which moves the twelve down the river; the plot block is no longer carried here because residences.json is its one definition",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Branded residences (12, Savills zones)"
+  },
+  {
+   "id": "prop.residences.5",
+   "kind": "asset",
+   "asset": "residence",
+   "x": -142.9,
+   "y": -485.81,
+   "rot_deg": 172.748,
+   "ground": 32.889,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "derived",
+   "basis_note": "derived by fcm/model/residences/plots.py from the Savills markers with Angus's design offset of 15 September 2026, which moves the twelve down the river; the plot block is no longer carried here because residences.json is its one definition",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Branded residences (12, Savills zones)"
+  },
+  {
+   "id": "prop.residences.6",
+   "kind": "asset",
+   "asset": "residence",
+   "x": -55.54,
+   "y": -439.97,
+   "rot_deg": -7.252,
+   "ground": 32.285,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "derived",
+   "basis_note": "derived by fcm/model/residences/plots.py from the Savills markers with Angus's design offset of 15 September 2026, which moves the twelve down the river; the plot block is no longer carried here because residences.json is its one definition",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Branded residences (12, Savills zones)"
+  },
+  {
+   "id": "prop.residences.7",
+   "kind": "asset",
+   "asset": "residence",
+   "x": -53.21,
+   "y": -362.68,
+   "rot_deg": 169.773,
+   "ground": 32.228,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "derived",
+   "basis_note": "derived by fcm/model/residences/plots.py from the Savills markers with Angus's design offset of 15 September 2026, which moves the twelve down the river; the plot block is no longer carried here because residences.json is its one definition",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Branded residences (12, Savills zones)"
+  },
+  {
+   "id": "prop.residences.8",
+   "kind": "asset",
+   "asset": "residence",
+   "x": -85.06,
+   "y": -587.37,
+   "rot_deg": -19.054,
+   "ground": 32.301,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "derived",
+   "basis_note": "derived by fcm/model/residences/plots.py from the Savills markers with Angus's design offset of 15 September 2026, which moves the twelve down the river; the plot block is no longer carried here because residences.json is its one definition",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Branded residences (12, Savills zones)"
+  },
+  {
+   "id": "prop.residences.9",
+   "kind": "asset",
+   "asset": "residence",
+   "x": -71.48,
+   "y": -494.9,
+   "rot_deg": 172.748,
+   "ground": 32.389,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "derived",
+   "basis_note": "derived by fcm/model/residences/plots.py from the Savills markers with Angus's design offset of 15 September 2026, which moves the twelve down the river; the plot block is no longer carried here because residences.json is its one definition",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Branded residences (12, Savills zones)"
+  },
+  {
+   "id": "prop.river-club",
+   "kind": "asset",
+   "asset": "river-club",
+   "x": 285.328,
+   "y": -124.397,
+   "rot_deg": 72.739,
+   "ground": 31.4,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "designed",
+   "basis_note": "placement computed by river_club_design.place() from two measured lines: the canal's south-west bank and the designed Thames bank",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "River Club building (396 m2 + veranda)"
+  },
+  {
+   "id": "prop.south-courtyard",
+   "kind": "asset",
+   "asset": "south-courtyard",
+   "x": -14.48,
+   "y": 92.128,
+   "rot_deg": 71.79,
+   "ground": 33.62,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-14.48 y=92.127 rot=71.79",
+   "tier": 1,
+   "layer": "proposed",
+   "name": "South Courtyard new build (consented)"
+  },
+  {
+   "id": "prop.south-courtyard-small",
+   "kind": "asset",
+   "asset": "south-courtyard-small",
+   "x": -21.096,
+   "y": 85.39,
+   "rot_deg": 71.79,
+   "ground": 33.62,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "courtyard-layout.json",
+   "basis_note": "the record's own origin; the asset was built about it",
+   "tier": 1,
+   "layer": "proposed",
+   "name": "South Courtyard at the underwrite's area (small position)"
+  },
+  {
+   "id": "prop.south-wing-keys",
+   "kind": "asset",
+   "asset": "south-wing",
+   "x": -33.4226,
+   "y": -17.8307,
+   "rot_deg": -18.21,
+   "ground": 33.237,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "moved by fcm set from x=-33.71299043650093 y=-16.854389017953274 rot=-21.32",
+   "tier": 1,
+   "layer": "proposed",
+   "name": "Main House south wing - twelve hotel keys (mirror of the north wing)"
+  },
+  {
+   "id": "prop.spa-building",
+   "kind": "asset",
+   "asset": "spa-precinct-wings",
+   "x": -98.576523,
+   "y": -124.834767,
+   "rot_deg": -18.9787,
+   "ground": 33.56,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "Spa precinct (Angus's layout, 15 Sep 2026; the Fable build of 16 Sep 2026), asset origin J. Placed so the precinct's drive line lies on the surveyed drive past the church, measured from load_hardstanding_source's rings between Y -150 and -60 (fit x = 0.344*y - 67.277, heading 71.0 deg, so rot -18.98). The drive is a registered carriageway now (road.spa-drive-strip in roads.json, 4.5 m estate-drive): its centreline lies 11.0 m west of J under this transform. The precinct's six element GLBs (wings, hall, garden, pool, courts, roads) carry the identical transform: they are one plan split by element, origin J. J at (-98.58, -124.83); the surveyed church centroid (-90.6, -123.2) falls under the asset's hall, 4.9 m from the hall centroid, and the drive-to-hall offset is 21.5 m against the survey's 17.7 m (the brief's hall-centroid anchor and its drive proof cannot both hold; the drive is aligned and the offset is reported). Ground is the DTM at J.",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "New spa building (~1,690 m2)"
+  },
+  {
+   "id": "prop.spa-garden",
+   "kind": "asset",
+   "asset": "spa-precinct-garden",
+   "x": -98.576523,
+   "y": -124.834767,
+   "rot_deg": -18.9787,
+   "ground": 33.56,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "The three spa garden zones, the plunge pool, the sauna and the fountain, as physical fabric inside the spa precinct asset (spa-precinct-garden). Identical transform to the precinct's other five elements: one plan, split by element, origin J.",
+   "tier": 3,
+   "layer": "proposed",
+   "name": "Spa garden (~800 m2)"
+  },
+  {
+   "id": "prop.spa-roads",
+   "kind": "asset",
+   "asset": "spa-precinct-roads",
+   "x": -98.576523,
+   "y": -124.834767,
+   "rot_deg": -18.9787,
+   "ground": 33.56,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "The precinct's road element (spa-precinct-roads): the 4.5 m2 flush gravel junction apron at the forecourt threshold only. Identical transform to the precinct's other five elements: one plan, split by element, origin J. The drive, connector and west road are registered carriageways (road.spa-drive-strip, road.spa-connector, road.spa-west-road-inner in roads.json), not asset geometry; the surveyed hardstanding under them is removed by the declared supersession supersede.spa-precinct-roads in fcm/model/roads/network.py.",
+   "tier": 3,
+   "layer": "proposed",
+   "name": "Spa precinct roads"
+  },
+  {
+   "id": "prop.staff-village.0",
+   "kind": "asset",
+   "asset": "village-entrance-range",
+   "x": -260.744,
+   "y": -340.809,
+   "rot_deg": 80.819,
+   "ground": 33.195,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "designed",
+   "basis_note": "Entrance range, carriage arch and bellcote. Set out in the square's own frame by tools/staff_village_layout.py from the measured site in staff-village-source.json; its orientation is the perpendicular to the live residence-spine axis chosen by the measured approach/residence test - the entrance faces the approach and away from the plots - at 80.819 deg. Footprint 300 m2; the six together are 1120 m2 over two storeys, which ties to capex line 147's 2240 m2.",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Staff village, Meadows North (80 beds)"
+  },
+  {
+   "id": "prop.staff-village.1",
+   "kind": "asset",
+   "asset": "village-range-rendered",
+   "x": -245.468,
+   "y": -371.641,
+   "rot_deg": 170.819,
+   "ground": 33.428,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "designed",
+   "basis_note": "West range, rendered, three dormers. Set out in the square's own frame by tools/staff_village_layout.py from the measured site in staff-village-source.json; its orientation is the perpendicular to the live residence-spine axis chosen by the measured approach/residence test - the entrance faces the approach and away from the plots - at 80.819 deg. Footprint 260 m2; the six together are 1120 m2 over two storeys, which ties to capex line 147's 2240 m2.",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Staff village, Meadows North (80 beds)"
+  },
+  {
+   "id": "prop.staff-village.2",
+   "kind": "asset",
+   "asset": "village-house-gabled",
+   "x": -244.191,
+   "y": -313.601,
+   "rot_deg": 80.819,
+   "ground": 32.994,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "designed",
+   "basis_note": "North-east house, gable to the square. Set out in the square's own frame by tools/staff_village_layout.py from the measured site in staff-village-source.json; its orientation is the perpendicular to the live residence-spine axis chosen by the measured approach/residence test - the entrance faces the approach and away from the plots - at 80.819 deg. Footprint 130 m2; the six together are 1120 m2 over two storeys, which ties to capex line 147's 2240 m2.",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Staff village, Meadows North (80 beds)"
+  },
+  {
+   "id": "prop.staff-village.3",
+   "kind": "asset",
+   "asset": "village-house-gabled",
+   "x": -228.396,
+   "y": -316.154,
+   "rot_deg": 80.819,
+   "ground": 32.951,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "designed",
+   "basis_note": "South-east house, gable to the square. Set out in the square's own frame by tools/staff_village_layout.py from the measured site in staff-village-source.json; its orientation is the perpendicular to the live residence-spine axis chosen by the measured approach/residence test - the entrance faces the approach and away from the plots - at 80.819 deg. Footprint 130 m2; the six together are 1120 m2 over two storeys, which ties to capex line 147's 2240 m2.",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Staff village, Meadows North (80 beds)"
+  },
+  {
+   "id": "prop.staff-village.4",
+   "kind": "asset",
+   "asset": "village-range-brick",
+   "x": -222.692,
+   "y": -356.076,
+   "rot_deg": 80.819,
+   "ground": 33.107,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "designed",
+   "basis_note": "South range, brick, two dormers. Set out in the square's own frame by tools/staff_village_layout.py from the measured site in staff-village-source.json; its orientation is the perpendicular to the live residence-spine axis chosen by the measured approach/residence test - the entrance faces the approach and away from the plots - at 80.819 deg. Footprint 200 m2; the six together are 1120 m2 over two storeys, which ties to capex line 147's 2240 m2.",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Staff village, Meadows North (80 beds)"
+  },
+  {
+   "id": "prop.staff-village.5",
+   "kind": "asset",
+   "asset": "village-common",
+   "x": -219.501,
+   "y": -336.332,
+   "rot_deg": 170.819,
+   "ground": 33.091,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "designed",
+   "basis_note": "Common building: laundry, stores and common room. Set out in the square's own frame by tools/staff_village_layout.py from the measured site in staff-village-source.json; its orientation is the perpendicular to the live residence-spine axis chosen by the measured approach/residence test - the entrance faces the approach and away from the plots - at 80.819 deg. Footprint 100 m2; the six together are 1120 m2 over two storeys, which ties to capex line 147's 2240 m2.",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Staff village, Meadows North (80 beds)"
+  },
+  {
+   "id": "site.entrance-gates.1",
+   "kind": "asset",
+   "asset": "gateway",
+   "x": -269.565,
+   "y": 479.309,
+   "rot_deg": 88.466,
+   "ground": 35.086,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "road-register gateway.north-lodge",
+   "tier": 2,
+   "layer": "phase4",
+   "name": "North Lodge gates and railings",
+   "element": "site.entrance-gates"
+  },
+  {
+   "id": "site.entrance-gates.2",
+   "kind": "asset",
+   "asset": "gateway",
+   "x": -283.01,
+   "y": -179.957,
+   "rot_deg": -112.922,
+   "ground": 35.086,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": true,
+   "basis": "road-register gateway.west-entrance",
+   "tier": 2,
+   "layer": "phase4",
+   "name": "South Lodge gates",
+   "element": "site.entrance-gates"
+  },
+  {
+   "id": "water.guest-pool",
+   "kind": "asset",
+   "asset": "spa-precinct-pool",
+   "x": -98.576523,
+   "y": -124.834767,
+   "rot_deg": -18.9787,
+   "ground": 33.56,
+   "scale": [
+    1,
+    1,
+    1
+   ],
+   "existing": false,
+   "basis": "hand-set",
+   "basis_note": "The outdoor 20 x 8 m pool and its stone terrace, as an element of the spa precinct asset (spa-precinct-pool). Chris King's marked guest pool is now the spa's own outdoor pool beside the spa wing, so the element is re-pointed to the asset geometry and the designed water-source polygon at (-36, -62) is withdrawn: one definition of one pool. Identical transform to the precinct's other five elements: one plan, split by element, origin J.",
+   "tier": 2,
+   "layer": "proposed",
+   "name": "Outdoor guest pool"
+  }
+ ],
+ "drives": [],
+ "surfaces": [],
+ "areas": [
+  {
+   "id": "area.arrival-court",
+   "rect": [
+    476480,
+    184212,
+    55,
+    55,
+    0
+   ],
+   "tier": 1,
+   "name": "Arrival court & forecourt",
+   "overlay": true
+  },
+  {
+   "id": "area.parking",
+   "rect": [
+    476420,
+    184260,
+    50,
+    40,
+    0
+   ],
+   "tier": 2,
+   "name": "Formal parking",
+   "overlay": true
+  },
+  {
+   "id": "area.event-parking",
+   "rect": [
+    476350,
+    184340,
+    70,
+    50,
+    0
+   ],
+   "tier": 2,
+   "name": "Event overflow parking (grass)",
+   "overlay": true
+  },
+  {
+   "id": "area.pleasure-gardens-north",
+   "rect": [
+    476560,
+    184330,
+    80,
+    60,
+    0
+   ],
+   "tier": 2,
+   "name": "North Pleasure Gardens",
+   "overlay": true
+  },
+  {
+   "id": "area.pleasure-gardens-south",
+   "rect": [
+    476560,
+    184040,
+    90,
+    70,
+    0
+   ],
+   "tier": 2,
+   "name": "South Pleasure Gardens",
+   "overlay": true
+  },
+  {
+   "id": "area.parkland",
+   "rect": [
+    476330,
+    183980,
+    260,
+    520,
+    0
+   ],
+   "tier": 2,
+   "name": "Capability Brown parkland",
+   "overlay": true
+  },
+  {
+   "id": "area.avenue",
+   "rect": [
+    476350,
+    184120,
+    190,
+    24,
+    -18
+   ],
+   "tier": 2,
+   "name": "Landscape avenue",
+   "overlay": true
+  },
+  {
+   "id": "area.loggia",
+   "rect": [
+    476560,
+    184070,
+    30,
+    12,
+    0
+   ],
+   "tier": 2,
+   "name": "Loggia & pergola",
+   "overlay": true
+  },
+  {
+   "id": "area.regatta-base",
+   "rect": [
+    476760,
+    184290,
+    60,
+    30,
+    -20
+   ],
+   "tier": 2,
+   "name": "Regatta marquee base",
+   "overlay": true
+  },
+  {
+   "id": "area.river-frontage",
+   "rect": [
+    476840,
+    184150,
+    24,
+    320,
+    -12
+   ],
+   "tier": 2,
+   "name": "River wall & bank works",
+   "overlay": true
+  },
+  {
+   "id": "area.riverside-flood",
+   "rect": [
+    476740,
+    183960,
+    120,
+    160,
+    0
+   ],
+   "tier": 2,
+   "name": "Flood mitigation (riverside & Meadows)",
+   "overlay": true
+  },
+  {
+   "id": "area.acoustic-west",
+   "rect": [
+    476190,
+    184400,
+    30,
+    500,
+    8
+   ],
+   "tier": 2,
+   "name": "Acoustic mitigation, A4155 boundary",
+   "overlay": true
+  },
+  {
+   "id": "area.resi-roads",
+   "rect": [
+    476430,
+    183760,
+    420,
+    16,
+    -14
+   ],
+   "tier": 2,
+   "name": "Residential estate road & drives",
+   "overlay": true
+  },
+  {
+   "id": "area.estate-drives",
+   "rect": [
+    476300,
+    184280,
+    380,
+    16,
+    -52
+   ],
+   "tier": 2,
+   "name": "Estate drives & carriageway upgrade",
+   "overlay": true
+  }
+ ],
+ "markers": [
+  {
+   "id": "site.sewage-plant",
+   "en": [
+    476380,
+    184420
+   ],
+   "tier": 4,
+   "name": "Package sewage treatment plant (c.900 PE)",
+   "overlay": true,
+   "indicative": true
+  },
+  {
+   "id": "site.energy-centre",
+   "en": [
+    476420,
+    184320
+   ],
+   "tier": 4,
+   "name": "Energy centre (GSHP/WSHP, thermal store)",
+   "overlay": true,
+   "indicative": true
+  },
+  {
+   "id": "site.substation",
+   "en": [
+    476350,
+    184440
+   ],
+   "tier": 4,
+   "name": "DNO connection & 11kV substations",
+   "overlay": true,
+   "indicative": true
+  },
+  {
+   "id": "site.landing-stages",
+   "en": [
+    476830,
+    184220
+   ],
+   "tier": 4,
+   "name": "Landing stages, pontoons & boathouse",
+   "overlay": true,
+   "indicative": true
+  },
+  {
+   "id": "site.south-lodge",
+   "en": [
+    476245,
+    183960
+   ],
+   "tier": 4,
+   "name": "South Lodge (Grade II)",
+   "overlay": true,
+   "indicative": true
+  },
+  {
+   "id": "site.entrance-gates",
+   "en": [
+    476290,
+    184760
+   ],
+   "tier": 4,
+   "name": "Listed gates, railings & gate piers",
+   "overlay": true,
+   "indicative": true
+  }
+ ]
+}

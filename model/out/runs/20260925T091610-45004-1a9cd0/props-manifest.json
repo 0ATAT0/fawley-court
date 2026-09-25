@@ -1,0 +1,738 @@
+{
+ "_": "one unpositioned copy of each prop, node named asset:<prop>. Placement lives in scene.json and never here.",
+ "props": 45,
+ "triangles": 14906,
+ "bytes": 287848,
+ "materials_used": [
+  "door",
+  "fabric",
+  "foliage",
+  "frame",
+  "glass",
+  "metal",
+  "paint",
+  "plastic",
+  "roof_slate",
+  "rubber",
+  "stone_detail",
+  "timber",
+  "wall_render",
+  "wall_stone",
+  "water"
+ ],
+ "materials_beyond_the_estate_set": [
+  "fabric",
+  "foliage",
+  "paint",
+  "plastic",
+  "rubber",
+  "water"
+ ],
+ "library": [
+  {
+   "prop": "air-source-unit",
+   "node": "asset:air-source-unit",
+   "triangles": 192,
+   "materials": [
+    "frame",
+    "metal",
+    "stone_detail"
+   ],
+   "bbox_m": [
+    1.35,
+    0.62,
+    0.9
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "balustrade-section",
+   "node": "asset:balustrade-section",
+   "triangles": 450,
+   "materials": [
+    "stone_detail",
+    "wall_stone"
+   ],
+   "bbox_m": [
+    2.55,
+    0.3,
+    1.03
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "bollard-light",
+   "node": "asset:bollard-light",
+   "triangles": 368,
+   "materials": [
+    "frame",
+    "glass",
+    "metal",
+    "stone_detail"
+   ],
+   "bbox_m": [
+    0.274,
+    0.274,
+    1.09
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "cafe-chair",
+   "node": "asset:cafe-chair",
+   "triangles": 360,
+   "materials": [
+    "metal",
+    "timber"
+   ],
+   "bbox_m": [
+    0.48,
+    0.48,
+    1.1
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "cafe-table",
+   "node": "asset:cafe-table",
+   "triangles": 324,
+   "materials": [
+    "metal",
+    "timber"
+   ],
+   "bbox_m": [
+    0.818,
+    0.858,
+    0.76
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "court-line-marking-plane",
+   "node": "asset:court-line-marking-plane",
+   "triangles": 136,
+   "materials": [
+    "stone_detail"
+   ],
+   "bbox_m": [
+    12.055,
+    4.0,
+    0.027
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "discreet-entrance-sign",
+   "node": "asset:discreet-entrance-sign",
+   "triangles": 148,
+   "materials": [
+    "door",
+    "foliage",
+    "stone_detail",
+    "wall_stone"
+   ],
+   "bbox_m": [
+    2.105,
+    0.48,
+    1.01
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "estate-4x4",
+   "node": "asset:estate-4x4",
+   "triangles": 440,
+   "materials": [
+    "door",
+    "frame",
+    "glass",
+    "metal",
+    "rubber"
+   ],
+   "bbox_m": [
+    4.8,
+    2.008,
+    1.9
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "estate-bench",
+   "node": "asset:estate-bench",
+   "triangles": 448,
+   "materials": [
+    "frame",
+    "timber"
+   ],
+   "bbox_m": [
+    2.45,
+    0.885,
+    0.93
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "estate-direction-sign",
+   "node": "asset:estate-direction-sign",
+   "triangles": 192,
+   "materials": [
+    "door",
+    "stone_detail",
+    "timber"
+   ],
+   "bbox_m": [
+    1.875,
+    0.108,
+    1.41
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "estate-lamp-post",
+   "node": "asset:estate-lamp-post",
+   "triangles": 450,
+   "materials": [
+    "frame",
+    "glass",
+    "metal",
+    "stone_detail"
+   ],
+   "bbox_m": [
+    1.025,
+    0.459,
+    3.35
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "estate-railing-section",
+   "node": "asset:estate-railing-section",
+   "triangles": 450,
+   "materials": [
+    "metal"
+   ],
+   "bbox_m": [
+    5.019,
+    0.118,
+    1.06
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "ev-charge-post",
+   "node": "asset:ev-charge-post",
+   "triangles": 192,
+   "materials": [
+    "frame",
+    "glass",
+    "metal",
+    "stone_detail"
+   ],
+   "bbox_m": [
+    0.44,
+    0.36,
+    1.5
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "event-stage-deck",
+   "node": "asset:event-stage-deck",
+   "triangles": 280,
+   "materials": [
+    "metal",
+    "roof_slate",
+    "timber"
+   ],
+   "bbox_m": [
+    4.8,
+    2.4,
+    0.34
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "floating-landing-stage",
+   "node": "asset:floating-landing-stage",
+   "triangles": 450,
+   "materials": [
+    "metal",
+    "roof_slate",
+    "timber"
+   ],
+   "bbox_m": [
+    7.5,
+    2.62,
+    0.96
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "iron-gate-leaf",
+   "node": "asset:iron-gate-leaf",
+   "triangles": 450,
+   "materials": [
+    "metal"
+   ],
+   "bbox_m": [
+    3.098,
+    0.197,
+    1.586
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "kerb-section",
+   "node": "asset:kerb-section",
+   "triangles": 100,
+   "materials": [
+    "roof_slate",
+    "stone_detail"
+   ],
+   "bbox_m": [
+    3.0,
+    0.18,
+    0.203
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "large-planter",
+   "node": "asset:large-planter",
+   "triangles": 104,
+   "materials": [
+    "foliage",
+    "wall_stone"
+   ],
+   "bbox_m": [
+    1.0,
+    1.0,
+    1.51
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "low-retaining-wall-section",
+   "node": "asset:low-retaining-wall-section",
+   "triangles": 132,
+   "materials": [
+    "stone_detail",
+    "wall_stone"
+   ],
+   "bbox_m": [
+    3.35,
+    0.4,
+    0.86
+   ],
+   "origin_z_min": -0.0
+  },
+  {
+   "prop": "luxury-saloon",
+   "node": "asset:luxury-saloon",
+   "triangles": 436,
+   "materials": [
+    "frame",
+    "glass",
+    "metal",
+    "paint",
+    "rubber"
+   ],
+   "bbox_m": [
+    5.0,
+    1.908,
+    1.45
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "minibus",
+   "node": "asset:minibus",
+   "triangles": 448,
+   "materials": [
+    "frame",
+    "glass",
+    "metal",
+    "rubber",
+    "wall_render"
+   ],
+   "bbox_m": [
+    7.0,
+    2.108,
+    2.6
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "padel-court-enclosure",
+   "node": "asset:padel-court-enclosure",
+   "triangles": 442,
+   "materials": [
+    "glass",
+    "metal"
+   ],
+   "bbox_m": [
+    20.088,
+    10.088,
+    3.039
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "parasol",
+   "node": "asset:parasol",
+   "triangles": 276,
+   "materials": [
+    "fabric",
+    "stone_detail",
+    "timber"
+   ],
+   "bbox_m": [
+    2.494,
+    2.494,
+    2.625
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "park-bench",
+   "node": "asset:park-bench",
+   "triangles": 448,
+   "materials": [
+    "metal",
+    "timber"
+   ],
+   "bbox_m": [
+    2.1,
+    0.885,
+    0.93
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "plant-enclosure",
+   "node": "asset:plant-enclosure",
+   "triangles": 450,
+   "materials": [
+    "roof_slate",
+    "stone_detail",
+    "timber"
+   ],
+   "bbox_m": [
+    2.25,
+    1.248,
+    1.5
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "post-and-rail-fence-section",
+   "node": "asset:post-and-rail-fence-section",
+   "triangles": 450,
+   "materials": [
+    "timber"
+   ],
+   "bbox_m": [
+    5.148,
+    0.148,
+    1.24
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "punt",
+   "node": "asset:punt",
+   "triangles": 380,
+   "materials": [
+    "timber"
+   ],
+   "bbox_m": [
+    6.527,
+    1.42,
+    3.024
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "refuse-store",
+   "node": "asset:refuse-store",
+   "triangles": 450,
+   "materials": [
+    "roof_slate",
+    "timber"
+   ],
+   "bbox_m": [
+    3.15,
+    1.648,
+    1.54
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "rowing-eight",
+   "node": "asset:rowing-eight",
+   "triangles": 418,
+   "materials": [
+    "paint",
+    "rubber",
+    "timber",
+    "water"
+   ],
+   "bbox_m": [
+    18.455,
+    5.38,
+    0.634
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "single-scull",
+   "node": "asset:single-scull",
+   "triangles": 432,
+   "materials": [
+    "paint",
+    "timber",
+    "water"
+   ],
+   "bbox_m": [
+    9.074,
+    4.69,
+    0.634
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "small-launch",
+   "node": "asset:small-launch",
+   "triangles": 424,
+   "materials": [
+    "fabric",
+    "glass",
+    "paint",
+    "timber",
+    "water"
+   ],
+   "bbox_m": [
+    7.758,
+    1.84,
+    1.25
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "small-marquee",
+   "node": "asset:small-marquee",
+   "triangles": 450,
+   "materials": [
+    "fabric",
+    "metal"
+   ],
+   "bbox_m": [
+    5.3,
+    3.798,
+    2.589
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "small-van",
+   "node": "asset:small-van",
+   "triangles": 430,
+   "materials": [
+    "frame",
+    "glass",
+    "metal",
+    "rubber",
+    "wall_render"
+   ],
+   "bbox_m": [
+    5.4,
+    2.008,
+    2.2
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "stanchion-and-rope",
+   "node": "asset:stanchion-and-rope",
+   "triangles": 348,
+   "materials": [
+    "fabric",
+    "metal"
+   ],
+   "bbox_m": [
+    1.262,
+    0.438,
+    1.09
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "stone-gate-pier",
+   "node": "asset:stone-gate-pier",
+   "triangles": 132,
+   "materials": [
+    "stone_detail",
+    "wall_stone"
+   ],
+   "bbox_m": [
+    0.832,
+    0.832,
+    1.6
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "stone-steps-section",
+   "node": "asset:stone-steps-section",
+   "triangles": 176,
+   "materials": [
+    "stone_detail"
+   ],
+   "bbox_m": [
+    2.2,
+    1.5,
+    0.5
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "sun-lounger",
+   "node": "asset:sun-lounger",
+   "triangles": 360,
+   "materials": [
+    "fabric",
+    "metal",
+    "timber"
+   ],
+   "bbox_m": [
+    1.9,
+    0.62,
+    0.49
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "tennis-net-and-posts",
+   "node": "asset:tennis-net-and-posts",
+   "triangles": 264,
+   "materials": [
+    "fabric",
+    "metal"
+   ],
+   "bbox_m": [
+    12.088,
+    0.088,
+    1.1
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "timber-field-gate",
+   "node": "asset:timber-field-gate",
+   "triangles": 450,
+   "materials": [
+    "timber"
+   ],
+   "bbox_m": [
+    4.398,
+    0.198,
+    1.44
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "topiary-ball",
+   "node": "asset:topiary-ball",
+   "triangles": 184,
+   "materials": [
+    "foliage",
+    "timber",
+    "wall_stone"
+   ],
+   "bbox_m": [
+    1.04,
+    1.04,
+    1.64
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "topiary-cone",
+   "node": "asset:topiary-cone",
+   "triangles": 160,
+   "materials": [
+    "foliage",
+    "wall_stone"
+   ],
+   "bbox_m": [
+    0.911,
+    0.956,
+    1.85
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "trough",
+   "node": "asset:trough",
+   "triangles": 200,
+   "materials": [
+    "foliage",
+    "wall_stone"
+   ],
+   "bbox_m": [
+    1.6,
+    0.52,
+    1.03
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "urn",
+   "node": "asset:urn",
+   "triangles": 396,
+   "materials": [
+    "foliage",
+    "stone_detail",
+    "wall_stone"
+   ],
+   "bbox_m": [
+    0.911,
+    0.956,
+    1.51
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "wall-lantern",
+   "node": "asset:wall-lantern",
+   "triangles": 296,
+   "materials": [
+    "frame",
+    "glass",
+    "metal"
+   ],
+   "bbox_m": [
+    0.602,
+    0.367,
+    0.8
+   ],
+   "origin_z_min": 0.0
+  },
+  {
+   "prop": "wheelie-bin",
+   "node": "asset:wheelie-bin",
+   "triangles": 340,
+   "materials": [
+    "metal",
+    "plastic",
+    "rubber"
+   ],
+   "bbox_m": [
+    0.73,
+    0.69,
+    1.2
+   ],
+   "origin_z_min": 0.0
+  }
+ ]
+}

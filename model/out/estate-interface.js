@@ -106,9 +106,11 @@ export function installEstateInterface() {
   };
   if(uses[el.id]){const p=document.createElement('p');p.textContent=uses[el.id];summary.append(p);}
   body.prepend(summary);
-  const table=body.querySelector('table');if(table){const d=document.createElement('details');d.className='estate-disclosure';d.innerHTML='<summary>Works cost breakdown</summary>';table.before(d);d.append(table);}
-  const notes=[...body.querySelectorAll('.note,.qtr')];if(notes.length||el.gia_note){const d=document.createElement('details');d.className='estate-disclosure';d.innerHTML='<summary>Design basis & programme</summary>';if(el.gia_note){const p=document.createElement('p');p.textContent=el.gia_note;d.append(p);}d.append(...notes);body.append(d);}
-  if(!body.querySelector('.cost')){const p=document.createElement('p');p.className='estate-hint';p.textContent='No direct works allocation on this element. See the basis for any costs carried elsewhere.';body.append(p);}
+  // A residence layout's card carries its OWN facts table (plot, footprint, trees,
+  // lane, gatehouse) and no capex: it is the card, not a cost breakdown to fold away.
+  const table=el.layout_plot?null:body.querySelector('table');if(table){const d=document.createElement('details');d.className='estate-disclosure';d.innerHTML='<summary>Works cost breakdown</summary>';table.before(d);d.append(table);}
+  const notes=el.layout_plot?[]:[...body.querySelectorAll('.note,.qtr')];if(notes.length||el.gia_note){const d=document.createElement('details');d.className='estate-disclosure';d.innerHTML='<summary>Design basis & programme</summary>';if(el.gia_note){const p=document.createElement('p');p.textContent=el.gia_note;d.append(p);}d.append(...notes);body.append(d);}
+  if(!body.querySelector('.cost')&&!el.layout_plot){const p=document.createElement('p');p.className='estate-hint';p.textContent='No direct works allocation on this element. See the basis for any costs carried elsewhere.';body.append(p);}
   if(!author)body.querySelector('.demo')?.remove();
   if(el.switch){const chip=$('cChips').querySelector('.swon,.swoff');if(chip)chip.textContent=(E.schemes.find(s=>s.switch===el.switch)?.label||'Scheme option')+' · '+(window.__fcm.switches()[el.switch]?'included':'excluded');}
   if(reveal){show('selection');rail.classList.remove('min');document.body.classList.remove('railmin');}
