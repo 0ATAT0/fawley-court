@@ -8,6 +8,8 @@ body.estate-ui{--navy:#293e33;--charcoal:#354238;--ground:#efede4;--card:#faf8f1
 .estate-ui #totals .big{font:normal 29px/1.15 var(--serif);letter-spacing:-.025em}
 .estate-ui #totals .sub{font:11px/1.6 var(--sans);margin-top:7px}
 .estate-ui #totals .tie{font:10px/1.5 var(--sans);margin-top:4px}
+.estate-ui .estate-pane #totals{margin:0 0 20px;padding:14px 0 16px}
+.estate-ui #totals .irr{font:10px/1.5 var(--sans);margin-top:3px}
 .estate-ui .estate-tabs{display:flex;flex-shrink:0;margin:0 24px;border-bottom:1px solid var(--line);gap:23px}
 .estate-ui .estate-tabs button{padding:14px 0 12px;border:0;border-bottom:2px solid transparent;background:none;font:12px var(--sans);color:#727b6e;cursor:pointer}
 .estate-ui .estate-tabs button[aria-pressed=true]{color:#293e33;border-bottom-color:#293e33;font-weight:650}

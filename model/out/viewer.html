@@ -70,6 +70,8 @@ body.railmin #status,body.railmin #prog{left:16px}
 #totals .sub{color:var(--muted);font-size:12.5px;margin-top:3px}
 #totals .tie{font-size:11.5px;margin-top:6px;color:var(--green)}
 #totals .tie.off{color:#b45309}
+#totals .irr{font-size:11.5px;margin-top:4px}
+#totals .irr .approx{color:#b45309}
 
 .sw{border-top:1px solid var(--line);padding:9px 0}
 .sw:first-of-type{border-top:0}
@@ -299,13 +301,14 @@ html[data-variants="1"] #variants{display:block}
   <button id="railmin" title="Minimise sidebar">–</button>
   <header>
     <h1>Fawley Court<br>Estate Model</h1>
-    <p id="modelref">v19 capex schedule · EA LIDAR Apr 2023</p>
+    <p id="modelref">capex schedule · EA LIDAR Apr 2023</p>
   </header>
   <div id="railscroll">
     <div class="sect" id="totals">
       <div class="big" id="tWorks">£—</div>
       <div class="sub" id="tSplit"></div>
       <div class="tie" id="tTie"></div>
+      <div class="irr" id="tIrr"></div>
     </div>
     <div class="sect">
       <h2>Theme</h2>
@@ -643,7 +646,11 @@ let meshSwitch = {}, dressingSwitch = {};
 function installSwitchGround(doc){
   switchGround = doc || {schemes:{}}; meshSwitch = {}; dressingSwitch = {};
   Object.entries(switchGround.schemes || {}).forEach(([sw, row]) => {
-    (row.mesh_bindings || []).forEach(name => { meshSwitch[name] = sw; });
+    /* three.js removes dots from glTF node names, so a binding is also keyed without them:
+       keyed only with dots, the River Club's stone edging (a feature-layer node, whose
+       build extras nodeMeta does not carry) never matched and lay on the lawn with the
+       club switched off (28 Sep 2026). */
+    (row.mesh_bindings || []).forEach(name => { meshSwitch[name] = sw; meshSwitch[name.replace(/\./g, '')] = sw; });
     (row.dressing_rules || []).forEach(rule => { dressingSwitch[rule] = sw; });
   });
 }
@@ -718,36 +725,11 @@ const DEMOLISHABLE = {
        + 'consent’s demolition poché covers it and capex line 26 pays to '
        + 'remove it; our smaller staff option retains it. The works total does not move '
        + 'either way.'
-  },
-  /* These nine indicative woodland lodges are proposed fabric, but carry
-     no capex line and must not become an invented thirteenth scheme switch. This is the
-     established per-element viewing control: it changes what is visible only. */
-  'prop.lodges': {
-    defaultOff: false,
-    investor: true,
-    off: 'Hidden — existing woodland view',
-    on:  'Visible — nine indicative woodland lodges',
-    why: 'An aerial mark-up places nine lodges in the woodland '
-       + 'north-east of the Main House. This is a view toggle only: they carry no '
-       + 'capex and are not one of the twelve workbook-derived scheme switches, so the '
-       + 'works total and all scheme tallies remain unchanged.'
-  },
-  /* A switchable element should carry its own show/hide on its
-     Selected panel. The wedding marquee is proposed fabric but - like the lodges above -
-     is a hired, demountable frame and fabric with no capex line and no permanent base, so
-     it is deliberately NOT a thirteenth scheme switch (the twelve are workbook-derived;
-     a switch with no money behind it would read as money on the Scheme tab). It takes the
-     established per-element viewing control instead, and the works total does not move. */
-  'prop.marquee': {
-    defaultOff: false,
-    off: 'Hidden — no marquee on the lawn',
-    on:  'Visible — temporary wedding marquee',
-    hide: 'Hide', show: 'Show',
-    investor: true,
-    why: 'The marquee is a temporary structure for the weddings trade, with no capex line '
-       + 'and no permanent base, so which you are looking at is a VIEWING question, not a '
-       + 'priced one. This is the same per-element control the woodland lodges use.'
   }
+  /* The woodland lodges and the wedding marquee were costless per-element viewing toggles
+     here until the model priced both as scheme switches (Sch_Lodges, Sch_Marquee, v92). A
+     second, costless control on the same fabric would disagree with the switch, so they are
+     governed by their switches alone. */
 };
 /* The service yard buildings are off by default, and the south
    range too. So all three start demolished (defaultOff), and the state is stored as an
@@ -1122,6 +1104,25 @@ function updateTotals(){
     const d = works - E.book_summary.works_total; tie.className='tie off';
     tie.textContent = (d>=0?'+':'−')+fmtK(Math.abs(d))+' vs the model\'s switch states';
   }
+  document.getElementById('tIrr').innerHTML = returnReadout();
+}
+/* The return beside the live budget. Each option's effect is the model's own measurement
+   of switching that option alone from the base (meta.switch_effects). One option off its
+   default is that measurement exactly; two or more are summed and marked approximate,
+   because the model's returns do not add across options. */
+const pct = v => (v*100).toFixed(2)+'%';
+const signedPp = v => (v>0?'+':v<0?'−':'')+Math.abs(v).toFixed(2)+'pp';
+function returnReadout(){
+  const measured = E.schemes.filter(s => s.effect && !s.retired);
+  if (!measured.length) return '';
+  const differs = measured.filter(s => swState[s.switch] !== !!s.state);
+  let base = measured[0].effect.base.irr_default, upside = measured[0].effect.upside.irr_default;
+  differs.forEach(s => { base += s.effect.base.irr_change_pp/100; upside += s.effect.upside.irr_change_pp/100; });
+  const figures = `Levered IRR ${pct(base)} base · ${pct(upside)} upside`;
+  if (!differs.length) return figures+', as the model has it';
+  if (differs.length === 1) return figures+', measured in the model';
+  return `<span class="approx">≈ ${figures} - approximate: ${differs.length} options differ from the base, `
+       + `each measured alone, and their effects do not add</span>`;
 }
 
 /* ------- switch rail ------- */
@@ -1132,20 +1133,22 @@ function switchCapex(s){
 }
 function buildSwitchRail(){
   swWrap.innerHTML='';
-  E.schemes.forEach(s => {
-    const d = (E.switch_irr_deltas?.deltas||{})[s.switch];
+  /* A retired scheme is off the model's switch register; it stays in E.schemes only to keep
+     its geometry off until its element is deleted, and is not an option anyone can take.
+     A hidden one is in the register but not under consideration: held off, no toggle. */
+  E.schemes.filter(s => !s.retired && !s.hidden).forEach(s => {
     const cap = switchCapex(s);
     const div = document.createElement('div'); div.className='sw';
-    const revOnly = !s.capex_lines.length;
-    let detail = revOnly ? 'revenue only' : ('moves <b>'+fmtK(cap)+'</b> of works');
-    if (d && d.pp !== null && d.pp !== undefined){
-      const cls = d.pp>=0?'up':'down';
-      detail += ` · flip <span class="pp ${cls}">${d.pp>0?'+':''}${d.pp.toFixed(2)}pp</span>`;
+    let detail = s.capex_lines.length ? ('moves <b>'+fmtK(cap)+'</b> of works') : 'no capex line of its own';
+    const e = s.effect && s.effect.base;
+    if (e && e.irr_change_pp !== null && e.irr_change_pp !== undefined){
+      const cls = e.irr_change_pp>=0?'up':'down';
+      detail += ` · <span class="pp ${cls}">${signedPp(e.irr_change_pp)}</span> base IRR if switched ${e.toggled_to?'on':'off'}`;
     }
     div.innerHTML = `<div class="row1"><label class="tog"><input type="checkbox" data-sw="${s.switch}"
       ${swState[s.switch]?'checked':''}><i></i></label>
       <div class="name">${s.label}</div></div><div class="detail">${detail}</div>`;
-    div.title = (d? d.basis+'. ' : '') + s.what_it_moves;
+    div.title = (E.meta.switch_effects ? E.meta.switch_effects.basis+' ' : '') + s.what_it_moves;
     swWrap.appendChild(div);
   });
   swWrap.querySelectorAll('input[data-sw]').forEach(inp => inp.addEventListener('change', () => {
@@ -3555,7 +3558,7 @@ function showCard(el, reveal=true){
      path as the rail, so there is one state and not two. A switch creates only
      proposed fabric; on existing fabric it is a modification and the building stands
      either way (bldg.riding-school, water.long-water), so the note says which. */
-  if (el.switch){
+  if (el.switch && !(schemes[el.switch] && (schemes[el.switch].retired || schemes[el.switch].hidden))){
     const spec = schemes[el.switch];
     const on = !!swState[el.switch];
     const created = el.class === 'proposed' || el.class === 'proposed-area';

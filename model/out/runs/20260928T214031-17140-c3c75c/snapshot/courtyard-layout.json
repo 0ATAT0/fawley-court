@@ -3,12 +3,12 @@
   "generator": "fcm/model/courtyard/layout.py",
   "inputs": {
    "courtyard-source.json": "0fe56e320c3f719145150cc22019e8dfc452e8d306708adae431b75b605edde0",
-   "estate.json": "2f85989341c6f1563414c0adc9aaa17ac2f5beeb0f51285dd017ac9a09e3a3c4",
+   "estate.json": "6c8671a596fb2d47cf7bf7abcc7003c0111d39067be107e96926bce780c80025",
    "footprints.json": "3c2335938bafedd00b6dd71d400bfe5314e93372f85c0d99469a1d5a41b29f84",
-   "scene.json": "d73458579eefd59e4e68eb3fb1f1aadc2944e67d421f10eb9832888c4bad8b44"
+   "scene.json": "a6ee7c8edce0c825884d85e04b5cc3db879f97789b63b5cab91797fdce094c5f"
   },
-  "body_hash": "f475ac26b6c3dd60178de5a76a42389806fc925bfad4366878e4e30d58c06a01",
-  "written": "2026-09-28T14:56:32.053757+00:00"
+  "body_hash": "b1ffe969cd525cc070bdef5c55dbf0b3aed354861b654de7bbf793e84956687f",
+  "written": "2026-09-28T20:38:34.728782+00:00"
  },
  "_": "THE COURTYARD LAYOUT. One record per building. The asset builds, the placements, the ground and the linter all read this file; nothing re-derives a footprint.",
  "produced_by": "fcm/model/courtyard/layout.py --write",
@@ -788,7 +788,7 @@
    "ground_mAOD": 33.3,
    "contains": [],
    "length_m": 15.88,
-   "note": "Capex line 86 describes a 180 m route from the Mackenzie Wing past the Dairy Range to the Riding School; the scheme uses a subtle connector instead, and the divergence is deliberate."
+   "note": "The old schedule described a 180 m route from the Mackenzie Wing past the Dairy Range to the Riding School; the scheme uses a subtle connector instead, and v92's capex line 132 carries the walkway at nil."
   }
  ]
 }

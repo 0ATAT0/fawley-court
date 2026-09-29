@@ -8,8 +8,6 @@ export function installEstateInterface() {
  rail.classList.add('min');document.body.classList.add('railmin');
  header.querySelector('h1').innerHTML='<span class="estate-kicker">HENLEY-ON-THAMES</span>Fawley Court';
  $('modelref').textContent=author?'Estate authoring · measured model':'Hotel conversion & residential proposal';
- // Retain the native totals nodes for their existing update handlers, off screen.
- $('totals').hidden=true;
  const nav=document.createElement('nav');nav.className='estate-tabs';nav.setAttribute('aria-label','Estate information');rail.insertBefore(nav,scroll);
  const panes={},buttons={};
  for(const [id,label] of [['explore','Estate'],['scheme','Scheme'],['selection','Building'],...(author?[['workbench','Authoring']]:[])]){
@@ -21,12 +19,14 @@ export function installEstateInterface() {
  const intro=document.createElement('div');intro.className='estate-intro';
  intro.innerHTML='<p class="estate-kicker">THE PROPOSAL</p><h2>A house, its parkland.<br>A new chapter.</h2><p>A hotel conversion of Fawley Court, with courtyard accommodation, a new spa, river facilities and branded residences.</p><div class="estate-programme"><div><strong>Hotel</strong><span>Historic fabric & new accommodation</span></div><div><strong>Residences</strong><span>Twelve proposed private homes</span></div></div><p class="estate-hint">Select a building in the model to explore its use, area and investment.</p>';
  panes.explore.append(intro);move('views',panes.explore);
- const schemeIntro=document.createElement('div');schemeIntro.className='estate-intro';schemeIntro.innerHTML='<p class="estate-kicker">SHAPE THE SCHEME</p><h2>Consider the options.</h2><p>Explore the scope of the hotel and its amenities. Each decision updates the scope and its associated works costs.</p><p class="estate-hint">The twelve residences form part of the base scheme. Revenue-only options do not change works cost.</p>';panes.scheme.append(schemeIntro);
+ const schemeIntro=document.createElement('div');schemeIntro.className='estate-intro';schemeIntro.innerHTML='<p class="estate-kicker">SHAPE THE SCHEME</p><h2>Consider the options.</h2><p>Explore the scope of the hotel and its amenities. Each decision updates the scope and its associated works costs.</p><p class="estate-hint">The twelve residences form part of the base scheme.</p>';panes.scheme.append(schemeIntro);
+ // The live budget: the works total of every option switched on, and the return beside it.
+ panes.scheme.append($('totals'));
  move('switches',panes.scheme);move('smasssect',panes.scheme);
  $('smasssect').querySelector('h2').textContent='Courtyard design option';
  const massNote=document.createElement('p');massNote.className='estate-hint';massNote.textContent='Changes the courtyard form only; the works budget is unchanged.';$('smasssect').append(massNote);
  // The size study is surfaced as its own row beside the massing one, NOT through
- // groupSwitches: that lists the twelve capex switches read from the workbook, and a
+ // groupSwitches: that lists the capex switches read from the workbook, and a
  // thirteenth row there would read as money. Cost does not move with this control.
  move('csizesect',panes.scheme);
  $('csizesect').querySelector('h2').textContent='Courtyard size study';
@@ -36,7 +36,7 @@ export function installEstateInterface() {
  for(const label of sizeControls.querySelectorAll('label')){label.style.fontSize='11px';label.style.lineHeight='1.6';}
  $('csizeareas').classList.add('estate-hint');
  $('resetsw').textContent='Restore base scheme';
- const financialNote=document.createElement('p');financialNote.className='estate-hint';financialNote.textContent='Options use the registered v19 schedule. Historical one-at-a-time IRR deltas are not presented as a current return forecast.';panes.scheme.append(financialNote);
+ const financialNote=document.createElement('p');financialNote.className='estate-hint';financialNote.textContent='Costs are the financial model\'s itemised schedule, loaded with prelims, fees and contingency as the model loads them. Each option\'s return effect is the model\'s own measurement of that option alone; with more than one option changed, the combined return is approximate.';panes.scheme.append(financialNote);
  for(const id of ['modes','themes','laysect','markbtn','demosect'])move(id,technical);
  technical.append($('variants'));if(author)panes.workbench.append(technical);else scroll.append(technical);
  if(!author)$('views').querySelector('[data-v="fly"]').hidden=true;
@@ -66,8 +66,13 @@ export function installEstateInterface() {
  }
  function groupSwitches(){
   const wrap=$('switches');
-  const groups=[['Hotel & hospitality',['Sch_MainHouseWing','Sch_RidingMezzanine','Sch_DayMeetings','Sch_Club']],['Leisure & landscape',['Sch_RiverClub','Sch_LongWaterSwim','Sch_TennisPadel','Sch_SpaGarden','Sch_CourtyardPool','Sch_FloatingBar']],['Staff & operations',['Sch_StaffVillage','Sch_Gatehouses']]];
+  const groups=[['Hotel & hospitality',['Sch_MirrorWing','Sch_Lodges','Sch_Marquee']],['Leisure & landscape',['Sch_RiverClub','Sch_LongWaterSwim','Sch_TennisPadel','Sch_SpaGarden']],['Staff & operations',['Sch_Gatehouses']]];
   const rows=[...wrap.querySelectorAll('.sw')];
+  // Any option the model carries that no group names still shows, in a group of its own:
+  // a switch left out of these lists must never drop silently out of the panel.
+  const named=new Set(groups.flatMap(([,ids])=>ids));
+  const rest=rows.map(r=>r.querySelector('input').dataset.sw).filter(id=>!named.has(id));
+  if(rest.length)groups.push(['Other options',rest]);
   wrap.replaceChildren();
   for(const [title,ids] of groups){
    const group=document.createElement('section');group.className='estate-switch-group';const h=document.createElement('h3');h.textContent=title;group.append(h);
@@ -75,14 +80,14 @@ export function installEstateInterface() {
     const row=rows.find(r=>r.querySelector('input').dataset.sw===id);if(!row)continue;
     const spec=E.schemes.find(s=>s.switch===id),input=row.querySelector('input');input.setAttribute('aria-label',spec.label);
     row.removeAttribute('title');
-    // Keep the native capex figure, remove only its obsolete IRR suffix.
-    const detail=row.querySelector('.detail');detail.innerHTML=detail.innerHTML.split(' · flip ')[0].replace('moves <b>','<b>').replace('</b> of works','</b> works scope');
+    // The capex figure and the model's own measured return effect for this option alone.
+    const detail=row.querySelector('.detail');detail.innerHTML=detail.innerHTML.replace('moves <b>','<b>').replace('</b> of works','</b> works scope');
     const note=document.createElement('details');note.className='estate-switch-note';const summary=document.createElement('summary');summary.textContent='Scope & assumptions';const p=document.createElement('p');p.textContent=spec.what_it_moves;note.append(summary,p);row.append(note);group.append(row);
    }
    wrap.append(group);
   }
-  const on=E.schemes.filter(s=>wrap.querySelector('input[data-sw="'+s.switch+'"]')?.checked).length;
-  schemeIntro.querySelector('.estate-kicker').textContent=`CURRENT SCHEME · ${on} OF ${E.schemes.length} OPTIONS INCLUDED`;
+  const offered=[...wrap.querySelectorAll('input[data-sw]')],on=offered.filter(i=>i.checked).length;
+  schemeIntro.querySelector('.estate-kicker').textContent=`CURRENT SCHEME · ${on} OF ${offered.length} OPTIONS INCLUDED`;
  }
  function selection(el,reveal){
   empty.hidden=true;buttons.selection.textContent='Selected';

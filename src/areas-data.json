@@ -1,9 +1,9 @@
 {
  "meta": {
-  "source": "Model/Fawley Court - Financial Model v93.xlsx, Capex tab",
+  "source": "The underwrite model's Capex tab (v93)",
   "model_sha": "cab974f71837841d74be4d4720b0f579d08d047dc2b481ed8684db1f885483b5",
-  "figures": "Fawley Court - Financial Model v93.xlsx",
-  "measured": "2026-09-28",
+  "figures": "The measured figure record for Fawley Court - Financial Model v93",
+  "measured": "2026-09-29",
   "n_lines": 209,
   "note": "Each area joins the capital-cost schedule to the imagery and to what the place earns. Loaded cost applies the limb's own prelims, fees and contingency to that area's net. The images are indicative and nothing here is designed or consented.",
   "covered": 119706424.21,
