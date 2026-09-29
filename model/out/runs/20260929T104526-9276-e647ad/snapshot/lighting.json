@@ -1,9 +1,9 @@
 {
- "_": "THE LIGHTING REGISTRY. Three named directions, orthogonal to the three material treatments in materials.json (?variants=1&treatment=estate&light=raking). Every sun is a real solar position for Fawley Court - 51.55 N, -0.90 E, British National Grid SU 76520 84214 - computed with the NOAA solar position algorithm. Values are named and scaled for out/viewer.html as it stands; tools/LIGHTING.md lists the handful of things the viewer must gain before all of them can be applied.",
+ "_": "THE LIGHTING REGISTRY. Three named directions, orthogonal to the three material treatments in materials.json (?variants=1&treatment=estate&light=raking). Every sun is a real solar position for Fawley Court - 51.55 N, -0.90 E, British National Grid SU 76520 84214 - computed with the NOAA solar position algorithm. Values are named and scaled for the viewer as it stands; the lighting notes list the handful of things the viewer must gain before all of them can be applied.",
  "_units": {
   "colour": "linear RGB 0-1, the same convention as materials.json. colour_hex beside it is the sRGB hex to hand to THREE.Color.set(), which is what the viewer already does.",
   "sun.direction": "unit vector in THREE.JS scene coordinates (+x east, +y up, -z north), pointing FROM the scene TOWARD the sun. sun.position = direction * distance.",
-  "sun.skyAzimuthParam": "the second argument to the viewer's own setSun(elevDeg, azimDeg). It is NOT a compass bearing: setFromSphericalCoords makes it 180 - true azimuth. See tools/LIGHTING.md.",
+  "sun.skyAzimuthParam": "the second argument to the viewer's own setSun(elevDeg, azimDeg). It is NOT a compass bearing: setFromSphericalCoords makes it 180 - true azimuth.",
   "azimuth_deg": "true solar azimuth, degrees clockwise from grid north.",
   "elevation_deg": "true solar elevation above the horizon, refraction-corrected.",
   "fog": "THREE.Fog, linear: factor = clamp((depth - near)/(far - near), 0, 1). Metres.",
@@ -12,7 +12,7 @@
   "intensity": "three.js light intensity, unitless, as the viewer already uses it."
  },
  "_model_extents": {
-  "_source": "measured in Blender from out/fawley-estate.blend with the overlay and off-estate objects hidden, which is the viewer's default beauty layer set",
+  "_source": "measured in Blender from the estate model file with the overlay and off-estate objects hidden, which is the viewer's default beauty layer set",
   "blender_min": [
    -423.5,
    -616.4,

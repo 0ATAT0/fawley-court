@@ -189,7 +189,7 @@ body.hascard #prog{right:436px}
 #reviewbadge .k{font-weight:700;text-decoration:underline;text-underline-offset:2px}
 /* The estate interface (default UI) shifts #status; the badge follows it so the caption
    never hides under the rail it belongs beside. Mirrors .estate-ui rules in
-   out/estate-interface.css without editing that file. */
+   the interface stylesheet without editing that file. */
 .estate-ui #reviewbadge{left:365px}
 .estate-ui.railmin #reviewbadge{left:80px}
 #hovertip{position:fixed;pointer-events:none;background:var(--navy);color:#fff;font:500 12px var(--sans);
@@ -221,7 +221,7 @@ html[data-variants="1"] #variants{display:block}
   font:500 10.5px var(--sans);color:var(--muted);word-break:break-all}
 /* ---- THE INTERPRETER: mark mode ----------------------------------------------
    Every rule here is inert until a human presses K. Nothing draws into the scene and
-   nothing is shown by default: STANDARD.md R01 exists because the survey anchor was
+   nothing is shown by default: detailing standard rule R01 exists because the survey anchor was
    once forced visible in every render anyone looked at, and a marking tool that tinted
    what it hit, or left a chrome ring in the frame, would be that same defect twice. */
 #markring{position:fixed;inset:0;border:3px solid #b91c1c;pointer-events:none;z-index:26;display:none}
@@ -448,7 +448,7 @@ html[data-variants="1"] #variants{display:block}
   <code>python -m http.server</code></div></div>
 
 <!-- The two residence layouts' card records: tracked source under out/, generated from the
-     PINNED layout files by fcm/data/residences/cards.py. A classic script, like
+     PINNED layout files by the residence card builder. A classic script, like
      estate-data.js, so window.RESIDENCE_LAYOUTS stands before the module runs. -->
 <script src="residence-layouts.js"></script>
 
@@ -507,8 +507,8 @@ const FCM_POLICY = Object.freeze({
                       `review` layer ON, drawing vegetation.residence-felled - the crowns
                       the residence plots felled, shown as if still standing.
      ?ground=aerial   swap the terrain albedo for the Esri World Imagery photograph fetched
-                      by fcm/viewer/aerial.py (Esri World Imagery, EPSG:27700 over the model
-                      window, 0.5 m). The image lives at out/aerial/terrain_albedo_aerial.webp
+                      by the aerial fetch step (Esri World Imagery, EPSG:27700 over the model
+                      window, 0.5 m). The image lives in a local aerial folder
                       and is THIRD-PARTY imagery: it is gitignored and must not be deployed
                       to the team site. When the file is absent the normal ground stays and
                       the readout says so.
@@ -676,7 +676,7 @@ const switchGroundReady = fetch(SPLIT.switchGround).then(r => {
 
    The state lives in this browser, which is what "remembered across rebuilds" needs:
    a rebuild rewrites estate-data.js and the GLBs and never touches localStorage. It
-   does NOT travel to another browser and it is NOT seen by tools/shoot_viewer.mjs,
+   does NOT travel to another browser and it is NOT seen by the headless station renderer,
    so a station render always shows the building standing. That is stated on the card
    rather than left to be discovered.
    ================================================================================ */
@@ -767,7 +767,7 @@ let demolishedAprons = new Set();
 function apronName(eid){
   const i = eid.indexOf('.');
   if (i < 0) return null;
-  /* THREE.JS STRIPS DOTS FROM glTF NODE NAMES - ARCHITECTURE.md records it, and the first
+  /* THREE.JS STRIPS DOTS FROM glTF NODE NAMES - the architecture notes record it, and the first
      version of this function was written without it, so it compared
      "ground.courtyard.apron.service-outbuildings" against a mesh three.js had already
      renamed "groundcourtyardapronservice-outbuildings" and silently matched nothing.
@@ -824,13 +824,13 @@ document.getElementById('smasscontrols').addEventListener('change', e => {
    table does not move with it.  The existing (large) courtyards are the default and are
    not modified in any position.
 
-   THE PREFIX TABLE IS MIRRORED, NOT IMPORTED.  fcm/data/scene/placement_identity.py is
+   THE PREFIX TABLE IS MIRRORED, NOT IMPORTED.  the placement-identity module is
    the source of record for state families and their prefixes; this is its JS mirror, and
    the two are named here together as paired producer and consumer (the demolished-kerb
    lesson).  It mirrors that module's _STATE_OF_PREFIX exactly - massing smass_c_ /
-   smass_a_ / smass_o_, size csize_s_ = small - and viewer_size_test.mjs reads both files
+   smass_a_ / smass_o_, size csize_s_ = small - and a size test reads both files
    and fails if the two ever disagree, because two copies of one table where only one is
-   maintained is THE family defect LESSONS.md records.
+   maintained is THE family defect the lessons log records.
    Prefixes are underscore-only because three.js strips dots from glTF node names. */
 const STATE_PREFIXES = Object.freeze({
   'smass_c_': {family: 'massing', state: 'closed'},
@@ -868,12 +868,12 @@ function registeredPrefix(name){
 /* The name rule for large-only fabric that carries no element identity of its own, in one
    place: an UNPREFIXED node under either of these names is large-only by definition, since
    every small ground and vegetation node is csize_s_ prefixed.  Mirrored from the tuple
-   constant of the same name in fcm/data/scene/placement_identity.py; the test reads both,
+   constant of the same name in the placement-identity module; the test reads both,
    so a member added there alone fails.  Compared dot-stripped: three.js strips the dots. */
 const LARGE_ONLY_NAME_PREFIXES = Object.freeze(['ground.courtyard.', 'vegetation.courtyard.']);
 /* The default Long Water treatment is intentionally unprefixed, so this narrow name rule
    is its paired decoder: it keeps the house-end treatment out of the mouth comparison.
-   Mirrored from placement_identity.py and checked with the prefix table below. */
+   Mirrored from the placement-identity module and checked with the prefix table below. */
 const SWIM_HEAD_ONLY_NAME_PREFIXES = Object.freeze(['water-long-water.precinct.treatment-head.']);
 
 const CSIZE_KEY = 'fcm.courtyard-size.v1';
@@ -1284,7 +1284,7 @@ const THEMES = {
       roof_slate:'#4a4a50', roof_lead:'#7d8388', glass:'#22313d', frame:'#e8e2d4',
       door:'#3a4436', timber:'#7a6248', metal:'#5a5f63', stone_detail:'#cfc4ab',
       gravel:'#7a6b54',
-      /* THE SIX NAMES THE PROP LIBRARY ADDS. Measured 19 Aug 2026: out/props.glb carries
+      /* THE SIX NAMES THE PROP LIBRARY ADDS. Measured 19 Aug 2026: the prop library carries
          fifteen material names and six of them - paint, rubber, fabric, foliage, water,
          plastic - appeared nowhere in this table. The viewer maps a material ONTO THE
          TREATMENT BY NAME, so a prop carrying one of these matched nothing and rendered
@@ -2238,7 +2238,7 @@ function accept(gltf){
   loadTerrainTex(SPLIT.terrainSurvey, t => { surveyTerrainTex = t; });
   /* R5 ?ground=aerial: the local Esri World Imagery photograph stands in for the estate
      albedo when the file is present. It is NOT part of any promoted run and lives only
-     under out/aerial/, which is gitignored and excluded from deploy_site.py. If it is
+     in a local folder that is never committed or deployed. If it is
      absent we keep the model albedo and the readout says so - never a silent fallback. */
   if (AERIAL_GROUND){
     texLoader.load(FCM_POLICY.review_surface.aerial_texture, t => {
@@ -2303,10 +2303,10 @@ function cacheStaticTransforms(root){
 
 /* PROPS ARE A SEPARATE LIBRARY AND A SEPARATE PLACEMENT FILE, deliberately.
    The layout is things placed by JUDGEMENT - each one a decision somebody made and can
-   defend - and each is authored in its own element's record under register/placements/.
+   defend - and each is authored in its own element's record in the placement records.
    scene.json is the generated projection of those records, which is what the viewer loads.
-   Props are placed by RULE, which STANDARD.md section 3 requires, so their positions are
-   DERIVED: you edit the grammar in dressing.json, never the output.
+   Props are placed by RULE, which the detailing standard, section 3 requires, so their positions are
+   DERIVED: you edit the dressing rules, never the output.
    This comment used to say scene.json was the hand-authored file. It was both
    at once - authored and generated - and that is exactly the "half source and half machine"
    confusion the next sentence warns about, sitting in the file that warns about it.
@@ -2324,7 +2324,7 @@ function cacheStaticTransforms(root){
    paving was seated on the terrain UNDER that paving. Five of the six entrance-front
    planters stood 42 to 82 mm below the court they are on, median 58.5 mm, because
    phase4_hardstanding seats the court at built terrain + 0.040 m plus a crown of up to
-   0.045 m near a drive medial. Regenerating out/props-placement.json does not touch it:
+   0.045 m near a drive medial. Regenerating the prop placement file does not touch it:
    the file carries ground: null on every land placement precisely so that the viewer
    decides, and the viewer was deciding wrongly.
 
@@ -2347,7 +2347,7 @@ function cacheStaticTransforms(root){
 
    HIGHEST hit, not first: a prop stands on whatever is on top in its own column.
 
-   R42 in tools/fcm_check.py pins the declared policy and measures every land placement
+   Rule R42 pins the declared policy and measures every land placement
    against this selector, so if the convention is ever narrowed again the rule fires. */
 const _groundRay = new THREE.Raycaster();
 const _down = new THREE.Vector3(0, -1, 0);
@@ -2517,7 +2517,7 @@ function placeProps(staticScene, propScene, dressing, propSize){
       rule: o.rule || null,
       smassOnly: smassPfx ? (smassPfx[1] === 'c' ? 'closed' : 'open') : null,
       sizeOnly, size: propSizeState,
-      /* scheme_switch is emitted redundantly by dress_scene.py.  The live rule map
+      /* scheme_switch is emitted redundantly by the dressing step.  The live rule map
          remains the authority, so a stale derived file cannot keep a prop alive. */
       schemeSwitch: dressingSwitch[o.rule] || o.scheme_switch || null,
       schemeRole: 'scheme-work',
@@ -2633,7 +2633,7 @@ async function loadSplit(){
 /* Cache-busting, 2 Sep 2026. The data files are fetched by bare filename, so GitHub Pages'
    CDN serves a stale static.glb / props-placement.json / scene.json even to a hard refresh
    until its TTL expires - the team saw an old planter count this way. Stamp every data URL
-   with the deploy timestamp from ../DEPLOY.json (written fresh by deploy_site.py each deploy),
+   with the deploy timestamp from ../DEPLOY.json (written fresh by each deploy),
    so a new deploy is a new URL and the cache cannot hold the old one. Additive and fail-safe:
    with no manifest (local dev) the URLs stay unversioned. estate-data.js is a <script src>
    loaded before this runs and is not stamped here - it changes with the registry, rarely. */
@@ -2689,8 +2689,8 @@ const RES_LAYOUTS = FCM_POLICY.residence_layouts;
 const RESIDENCE_CARDS = window.RESIDENCE_LAYOUTS || null;
 if (!RESIDENCE_CARDS){
   const status = document.getElementById('status');
-  status.textContent = 'RESIDENCE CARDS UNAVAILABLE - out/residence-layouts.js did not load; '
-    + 'the layout houses will not name themselves. Run python -B -m fcm.data.residences.cards';
+  status.textContent = 'RESIDENCE CARDS UNAVAILABLE - the residence layouts did not load; '
+    + 'the layout houses will not name themselves.';
   status.style.display = 'block'; status.style.background = '#7d1515';
   console.error('[fcm] ' + status.textContent);
 }
@@ -2807,7 +2807,7 @@ function applyLayers(){
        around it need to go as well - both sheds had been switched off once and their gravel
        aprons were still lying there in the yard. The apron carries no element id of its
        own (it is ground infrastructure, like terrain.skirt), so it is matched by the name
-       tools/courtyard_ground.py gives it: "ground.courtyard.apron." + the element id less
+       the courtyard ground builder gives it: "ground.courtyard.apron." + the element id less
        its bldg./prop. prefix. Producer and consumer are named here together on purpose. */
     /* ...and the KERB that edges it. The apron surface hid with its building
        and its kerb did not, because the kerb mesh is named "<surface>.kerbs" and this tested
@@ -2852,7 +2852,7 @@ function updateReviewBadge(){
     + 'hedges, gate piers and specimen planting are hidden; the crowns their plots felled are '
     + 'drawn (<span class="k">?canvas=1</span>).');
   if (AERIAL_GROUND) lines.push(aerialState === 'missing'
-    ? '<b>Aerial ground requested</b> &mdash; out/aerial/terrain_albedo_aerial.webp is not '
+    ? '<b>Aerial ground requested</b> &mdash; the aerial image is not '
       + 'present, so the model albedo is shown (<span class="k">?ground=aerial</span>).'
     : '<b>Aerial ground' + (aerialState === 'pending' ? ' (loading)' : '') + '</b> &mdash; '
       + 'Esri World Imagery, a photograph, not the model '
@@ -3208,14 +3208,14 @@ document.getElementById('cClose').addEventListener('click', ()=>{
    camera pose that reproduces the view and the frame as it stood - never prose somebody
    else has to guess at. A finding with no object under the pixel is an ordinary case, not
    an error: "the whole west approach is dull" is exactly the kind of judgement no rule in
-   fcm_check.py will ever reach.
+   the checks will ever reach.
 
    OFF by default. While it is off nothing in this block runs, nothing is added to the
-   scene and no material is touched, so the render is the render without it. STANDARD.md
+   scene and no material is touched, so the render is the render without it. detailing standard rule
    R01 - the survey anchor forced visible in every render anyone ever looked at - is the
    reason that is worth stating rather than assuming.
 
-   The ray-cast is tools/pick_pixel.mjs's, not a second one: every visible mesh in the
+   The ray-cast is the pixel picker's, not a second one: every visible mesh in the
    scene, not the pickable subset the capex card uses, because terrain, hedges and trees
    carry no element id and they are precisely what was misread.
 */
@@ -3223,7 +3223,7 @@ let markOn = false;             /* THE DEFAULT. R01. */
 let markPending = null;         /* the snapshot waiting for a note: pose, look, frame */
 let markSeverity = 'WARN';
 let markFiled = 0, markLast = null, markSaved = null;
-const MARK_ENDPOINT = '/__fcm/finding';   /* served by tools/mark_server.mjs only */
+const MARK_ENDPOINT = '/__fcm/finding';   /* served by the local mark server only */
 
 const _mround = (v, n) => +v.toFixed(n);
 const _mesc = s => String(s).replace(/[<>&]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]));
@@ -3242,7 +3242,7 @@ function markDescribe(h){
   const o = h.object;
   const m = Array.isArray(o.material) ? o.material[0] : o.material;
   const meta = nodeMeta(o);
-  /* userData.eid is set by accept() only where the name resolves in estate.json; the
+  /* userData.eid is set by accept() only where the name resolves in the element registry; the
      placement's own userData.element survives for everything else, and the node name is
      the last resort. All three are recorded rather than collapsed, because the whole
      value of this tool is that the identification can be checked afterwards. */
@@ -3477,7 +3477,7 @@ async function markFile(){
        finding at the moment it was typed is the one thing this tool must never do. */
     stat.className = 'stat bad';
     stat.textContent = 'NOT filed: ' + err.message
-      + ' — this page needs the write endpoint: python tools/fcm.py mark';
+      + ' — this page needs the local mark server';
     console.warn('[fcm] finding NOT filed, kept in the box:', err, rec);
     return {ok: false, error: String(err.message || err)};
   }
@@ -3609,7 +3609,7 @@ function onStateChange(){
 
 /* The one place that turns the selection key into a card. A layout house has no registry
    record, so `showCard(elements[key])` is never reached for one; before this existed, any
-   scheme change with a residence selected passed undefined (out/viewer.html, 24 Sep 2026). */
+   scheme change with a residence selected passed undefined (24 Sep 2026). */
 function showSelectedCard(reveal=true){
   if (!selected) return;
   const plot = layoutPlot(selected);
@@ -3776,7 +3776,7 @@ window.__benchLive = async function(frames = 120, warmup = 30){
     dpr: renderer.getPixelRatio(), size: [renderer.domElement.width, renderer.domElement.height]};
 };
 
-/* ------- headless capture hook (driven by tools/shoot_viewer.mjs) -------
+/* ------- headless capture hook (driven by the headless station renderer) -------
    Review shots have to come out of THIS renderer - ACES tone mapping, PCF
    soft shadows, the GTAO pass - because a render from anywhere else is a
    different picture and reviewing it proves nothing. The harness needs four

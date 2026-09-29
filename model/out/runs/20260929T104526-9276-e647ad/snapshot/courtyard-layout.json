@@ -1,23 +1,5 @@
 {
- "_generated": {
-  "generator": "fcm/model/courtyard/layout.py",
-  "inputs": {
-   "courtyard-source.json": "0fe56e320c3f719145150cc22019e8dfc452e8d306708adae431b75b605edde0",
-   "estate.json": "6c8671a596fb2d47cf7bf7abcc7003c0111d39067be107e96926bce780c80025",
-   "footprints.json": "3c2335938bafedd00b6dd71d400bfe5314e93372f85c0d99469a1d5a41b29f84",
-   "scene.json": "a6ee7c8edce0c825884d85e04b5cc3db879f97789b63b5cab91797fdce094c5f"
-  },
-  "body_hash": "b1ffe969cd525cc070bdef5c55dbf0b3aed354861b654de7bbf793e84956687f",
-  "written": "2026-09-28T20:38:34.728782+00:00"
- },
  "_": "THE COURTYARD LAYOUT. One record per building. The asset builds, the placements, the ground and the linter all read this file; nothing re-derives a footprint.",
- "produced_by": "fcm/model/courtyard/layout.py --write",
- "reads": [
-  "courtyard-source.json",
-  "scene.json",
-  "footprints.json",
-  "estate.json"
- ],
  "coordinate_system": {
   "model_local": "X = easting - 476520; Y = northing - 184214; Z = mAOD",
   "rotation": "wall_angle_deg is counter-clockwise about Z, matching scene.json",
@@ -26,7 +8,7 @@
  "rulings": {
   "angles": "the south group is on the Main House grid at 71.79 deg exactly; the north courtyard keeps its own measured angle",
   "assets": "five: south courtyard incl chapel and hangar, north courtyard incl tower, service yard range, riding house, the two sheds",
-  "architecture": "assets/kit/courtyard_style.py holds every dimension"
+  "architecture": "the courtyard style kit holds every dimension"
  },
  "elements": [
   {
@@ -502,7 +484,7 @@
     "bldg.dairy-chapel",
     "bldg.south-courtyard-ranges"
    ],
-   "note": "The small position of the size study: the SURVEYED retained building (footprints.json component 9, 491.5 m2) regularised onto the Main House grid, plus one new range of five bays returning east from its north end. The court sits in the crook of the L, one arcade depth clear of both ranges. The existing record is untouched and stands in the large position.",
+   "note": "The small position of the size study: the SURVEYED retained building (footprint component 9, 491.5 m2) regularised onto the Main House grid, plus one new range of five bays returning east from its north end. The court sits in the crook of the L, one arcade depth clear of both ranges. The existing record is untouched and stands in the large position.",
    "retained_ring_local_m": [
     [
      -20.612,

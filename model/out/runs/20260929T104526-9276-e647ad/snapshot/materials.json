@@ -17,7 +17,7 @@
   "raking": "Low sun, late in the day. Long shadows, warm key against a cool sky fill. Shows landform, roof pitch and depth of modelling - the light a detailer judges by.",
   "bright": "High sun, clear day. Short crisp shadows, strong contrast, saturated greens. The estate at its most legible."
  },
- "_slot_note": "role says what the slot is FOR. texture names a set in textures/ for the fabric treatment; null means the slot is untextured in every treatment (vertex-coloured foliage, overlay, ghosted massing). tile_m is the physical size of one texture repeat in metres - a brick course must read at the right size or the building looks like a doll's house. RECORD: the brick TILE defect is estate-wide and is NOT fixed here. handmade-red-brick carries 40 courses and is stretched over 2.0 m, giving a 50 mm course where a real brick with its bed joint is 75 mm; make_textures.py declares that material as 4 x 3 m. Every other brick building is drawn about a third too small. The decision stands not to change it now.",
+ "_slot_note": "role says what the slot is FOR. texture names a set in textures/ for the fabric treatment; null means the slot is untextured in every treatment (vertex-coloured foliage, overlay, ghosted massing). tile_m is the physical size of one texture repeat in metres - a brick course must read at the right size or the building looks like a doll's house. RECORD: the brick TILE defect is estate-wide and is NOT fixed here. handmade-red-brick carries 40 courses and is stretched over 2.0 m, giving a 50 mm course where a real brick with its bed joint is 75 mm; the texture build declares that material as 4 x 3 m. Every other brick building is drawn about a third too small. The decision stands not to change it now.",
  "slots": {
   "anchor": {
    "role": "OVERLAY. Survey anchor at SU 76520 84214.",
@@ -236,7 +236,7 @@
   },
   "wall_brick_courtyard": {
    "role": "Retired; registered, bound by nothing, and must stay that way",
-   "_retired": "This was the courtyard precinct's own weathered-stock brick, and it stood for one evening. It was reversed: the courtyard buildings and service yard should match the main house's brick, stone and portico colour, not carry a separate texture. The precinct draws wall_brick now, and the only references left to this slot are its own registration - this file, the two treatment files, and the note in assets/kit/courtyard_style.py. IT IS KEPT RATHER THAN DELETED because deleting a registered slot is a change the treatments and courtyard_style's own 'every material is a registry slot' check all read, and because the decision to leave it registered and unused is itself on the record in COURTYARD.md. DO NOT BIND IT: a future session that finds an unused brick slot and puts it to work would quietly reintroduce the second brick that had just been removed, and nobody would catch it in a render because a weathered stock at a 3.0 m tile looks like a brick. Flagged by estate-review-6, 29 Aug 2026, on the same argument as the do-not-merge note on wall_stone and stone_detail.",
+   "_retired": "This was the courtyard precinct's own weathered-stock brick, and it stood for one evening. It was reversed: the courtyard buildings and service yard should match the main house's brick, stone and portico colour, not carry a separate texture. The precinct draws wall_brick now, and the only references left to this slot are its own registration - this file, the two treatment files, and the note in the courtyard style kit. IT IS KEPT RATHER THAN DELETED because deleting a registered slot is a change the treatments and courtyard_style's own 'every material is a registry slot' check all read, and because the decision to leave it registered and unused is itself on the courtyard design record. DO NOT BIND IT: a future session that finds an unused brick slot and puts it to work would quietly reintroduce the second brick that had just been removed, and nobody would catch it in a render because a weathered stock at a 3.0 m tile looks like a brick. Flagged by estate-review-6, 29 Aug 2026, on the same argument as the do-not-merge note on wall_stone and stone_detail.",
    "texture": "brick-weathered-stock",
    "tile_m": 3.0
   },
@@ -252,7 +252,7 @@
   },
   "wall_stone": {
    "role": "Dressed stone walling",
-   "_retired_sandy": "THE SANDY VALUE IS RETIRED, and this slot now carries stone_detail's pale colour in every treatment. Reason: the courtyard rebuild used the white for its French features, that white is closer to the Main House than the sandy some of the house's own features carried, and the task was to bring the HOUSE to the courtyard's white. Measured, and it is why the change bites here rather than in an asset: dressed stone by surface area is 11,600 m2 sandy against 1,473 pale on the Main House and 2,689 against 122 on its north wing, but 813 against 6,086 on the south courtyard and 3,305 against 6,427 on the north. The courtyard was already pale; the house was not. One colour changes 14,289 m2 of house and wing without touching a single asset. STANDARD.md's own primary-photograph line has described those surrounds as PALE since 19 August and no provenance exists anywhere for the sandy value. THE CHANGE WAS RECORDED AS DONE AND NEVER APPLIED - COURTYARD.md said 'in all four treatments' while the number had not moved since the first commit. DO NOT MERGE THIS SLOT WITH stone_detail: they now hold the same colour and differ by tile scale, 2.4 m against 1.2 m, and collapsing them would halve the ashlar on twelve assets.",
+   "_retired_sandy": "THE SANDY VALUE IS RETIRED, and this slot now carries stone_detail's pale colour in every treatment. Reason: the courtyard rebuild used the white for its French features, that white is closer to the Main House than the sandy some of the house's own features carried, and the task was to bring the HOUSE to the courtyard's white. Measured, and it is why the change bites here rather than in an asset: dressed stone by surface area is 11,600 m2 sandy against 1,473 pale on the Main House and 2,689 against 122 on its north wing, but 813 against 6,086 on the south courtyard and 3,305 against 6,427 on the north. The courtyard was already pale; the house was not. One colour changes 14,289 m2 of house and wing without touching a single asset. the detailing standard's own primary-photograph line has described those surrounds as PALE since 19 August and no provenance exists anywhere for the sandy value. THE CHANGE WAS RECORDED AS DONE AND NEVER APPLIED - the courtyard design record said 'in all four treatments' while the number had not moved since the first commit. DO NOT MERGE THIS SLOT WITH stone_detail: they now hold the same colour and differ by tile scale, 2.4 m against 1.2 m, and collapsing them would halve the ashlar on twelve assets.",
    "texture": "ashlar-stone",
    "tile_m": 2.4
   },
@@ -275,7 +275,7 @@
  "treatments": {
   "estate": {
    "_": "The baseline. Values are the modal definition of each name as it stands in the GLB today, collapsed to one per slot. This is the current look made consistent, not yet the current look made good - the design pass is separate.",
-   "_baseline_from": "out/fawley-estate.glb, 19 Aug, modal value per name across 164 materials",
+   "_baseline_from": "the estate model export, 19 Aug, modal value per name across 164 materials",
    "wall_brick": {
     "colour": [
      0.2705,
@@ -771,7 +771,7 @@
    "_": "F5 Rake candidate derived from estate; registry-level representative colour only until the spatial consumer is integrated.",
    "_variant": {
     "name": "Rake",
-    "source": "scratch/phase4/wave2/photo-measurements.json gravel_treatment_options",
+    "source": "the site photograph measurements, gravel treatment options",
     "mottle_amplitude_pct": 0.03,
     "description": "Corrected base with ±3% metre-scale value variation at 1.5–2.5 m.",
     "feature_scale_m": [
@@ -1275,7 +1275,7 @@
    "_": "F5 Wash candidate derived from estate; registry-level representative colour only until the spatial consumer is integrated.",
    "_variant": {
     "name": "Wash",
-    "source": "scratch/phase4/wave2/photo-measurements.json gravel_treatment_options",
+    "source": "the site photograph measurements, gravel treatment options",
     "mottle_amplitude_pct": 0.03,
     "description": "Corrected base with ±3% metre-scale baked wash and a restrained house-edge damp band.",
     "grid_m": 2,
@@ -1777,7 +1777,7 @@
    "_": "F5 Wear candidate derived from estate; registry-level representative colour only until the spatial consumer is integrated.",
    "_variant": {
     "name": "Wear",
-    "source": "scratch/phase4/wave2/photo-measurements.json gravel_treatment_options",
+    "source": "the site photograph measurements, gravel treatment options",
     "mottle_amplitude_pct": 0.03,
     "description": "Wash plus inferred 8% vehicle medial wear and a 0.3–0.5 m soft lawn edge; representative flat value stays within ±3%.",
     "vehicle_medial_darkening_pct": 0.08,
@@ -2281,18 +2281,18 @@
   }
  },
  "_open": {
-  "drawing": "to be authored - see treatment-drawing.json",
+  "drawing": "to be authored",
   "fabric": "to be authored - see treatment-fabric.json",
   "lighting": "to be authored - see lighting.json",
-  "_merge": "python tools/materials_merge.py folds the three back into this file once each is done."
+  "_merge": "a merge step folds the three back into this file once each is done."
  },
  "_known_bad": {
-  "wallbrick": "colour is pure white because the slot carries an image texture (scratch/wall_tile.png) as its base colour. Under the drawing and estate treatments it must take a real value, not white.",
-  "terrain": "same - white because the baked albedo image carries the colour. The baked image ALSO contains canopy shadow, which the renderer then casts again (STANDARD.md R20).",
+  "wallbrick": "colour is pure white because the slot carries an image texture (the baked wall tile) as its base colour. Under the drawing and estate treatments it must take a real value, not white.",
+  "terrain": "same - white because the baked albedo image carries the colour. The baked image ALSO contains canopy shadow, which the renderer then casts again (detailing standard rule R20).",
   "leaf_*": "white by design: vertex colours drive the tint. Leave them white in every treatment.",
   "roof vs roof_slate": "two slots for one thing - `roof` is the reconstruction roof and is brown, `roof_slate` is the modelled roof and is near-black. They should not be different colours for the same material; resolve when the reconstructions are hand-modelled in Stage 3."
  },
  "_notes": {
-  "wall_stone": "THE SANDY DRESSED STONE RETIRES. wall_stone takes stone_detail's value in every treatment: 0.455,0.428,0.368 -> 0.512,0.484,0.418.\nTHE EVIDENCE, which is stronger than the instruction and is why this is not a preference: STANDARD.md's primary-photograph line, the one that settles the Main House entrance elevation from 'Fawley Court 5.jpg', already reads 'sashes and glazing bars are WHITE (measured #f1e5db in sun) in PALE STONE SURROUNDS'. The record has described those surrounds as pale since 19 August. No provenance exists anywhere in the tools, the assets or the docs for 0.455,0.428,0.368 - it was never measured from anything. So this brings the model into line with evidence already on its own record rather than overriding it. (Checked independently by estate-review-6, 29 Aug.)\nOn seeing the newly detailed courtyard beside the house: the courtyard buildings' French features are white, so the main house now needs to match them, and the sandy colour can go.\nTWELVE ASSETS LIGHTEN, all of them checked as wanting it: main-house, main-house-north-wing, residence, courts, follies-east-park, meadows-glasshouses, remenham-riverside, remenham-village, a4155-frontage, proposed-types and two courtyard-set assets. One value per treatment to revert.\nDO NOT MERGE THESE TWO SLOTS. wall_stone and stone_detail now carry IDENTICAL COLOURS in all four treatments and they are still genuinely different slots: the roles differ - dressed stone walling against cornices, quoins, copings, plinths and balustrade - and so does tile_m, 2.4 m against 1.2 m. A future tidy-up that collapsed 'two slots with the same value' into one would silently HALVE THE ASHLAR SCALE on twelve assets. The values are equal by design; the slots differ by tile scale."
+  "wall_stone": "THE SANDY DRESSED STONE RETIRES. wall_stone takes stone_detail's value in every treatment: 0.455,0.428,0.368 -> 0.512,0.484,0.418.\nTHE EVIDENCE, which is stronger than the instruction and is why this is not a preference: the detailing standard's primary-photograph line, the one that settles the Main House entrance elevation from 'Fawley Court 5.jpg', already reads 'sashes and glazing bars are WHITE (measured #f1e5db in sun) in PALE STONE SURROUNDS'. The record has described those surrounds as pale since 19 August. No provenance exists anywhere in the tools, the assets or the docs for 0.455,0.428,0.368 - it was never measured from anything. So this brings the model into line with evidence already on its own record rather than overriding it. (Checked independently by estate-review-6, 29 Aug.)\nOn seeing the newly detailed courtyard beside the house: the courtyard buildings' French features are white, so the main house now needs to match them, and the sandy colour can go.\nTWELVE ASSETS LIGHTEN, all of them checked as wanting it: main-house, main-house-north-wing, residence, courts, follies-east-park, meadows-glasshouses, remenham-riverside, remenham-village, a4155-frontage, proposed-types and two courtyard-set assets. One value per treatment to revert.\nDO NOT MERGE THESE TWO SLOTS. wall_stone and stone_detail now carry IDENTICAL COLOURS in all four treatments and they are still genuinely different slots: the roles differ - dressed stone walling against cornices, quoins, copings, plinths and balustrade - and so does tile_m, 2.4 m against 1.2 m. A future tidy-up that collapsed 'two slots with the same value' into one would silently HALVE THE ASHLAR SCALE on twelve assets. The values are equal by design; the slots differ by tile scale."
  }
 }

@@ -1,10 +1,8 @@
 {
  "_": "Web delivery set for the FABRIC treatment. One file is enough to build a material: take the slot from `slots`, load its three files from this directory, apply tile_m as the world-space size of one repeat in metres.",
  "_colour_space_rule": "albedo is sRGB-ENCODED and must be decoded to linear by the sampler (three.js: texture.colorSpace = THREE.SRGBColorSpace). normal and orm are LINEAR DATA and must not be decoded (THREE.NoColorSpace). Getting this backwards on the data maps is silent: the render still draws, the lighting is simply wrong.",
- "_orm": "glTF convention, occlusion-roughness-metalness in R-G-B. Only G carries data. R is a constant 1.0 and B a constant 0.0 - read the CHANNEL SEMANTICS section of tools/TEXTURES.md before wiring B to anything.",
+ "_orm": "glTF convention, occlusion-roughness-metalness in R-G-B. Only G carries data. R is a constant 1.0 and B a constant 0.0 - read the CHANNEL SEMANTICS section of the texture notes before wiring B to anything.",
  "generated": "2026-08-28T17:23:30+00:00",
- "generator": "tools/build_textures.py",
- "command": "python tools/build_textures.py --sets brick-weathered-stock",
  "source": "textures",
  "source_px": 1024,
  "px": 512,
@@ -52,7 +50,7 @@
   "largest_set": "loose-gravel",
   "largest_set_bytes": 546602
  },
- "_texel_density": "texels_per_m = px / tile_m. The station lens (35 mm on a 36 mm sensor at 1600x1000) resolves about 1556/d pixels per metre at d metres, so the nearest QA station at 41 m resolves 38 px/m. Every slot here is above that; see tools/TEXTURES.md for the resolution evidence.",
+ "_texel_density": "texels_per_m = px / tile_m. The station lens (35 mm on a 36 mm sensor at 1600x1000) resolves about 1556/d pixels per metre at d metres, so the nearest QA station at 41 m resolves 38 px/m. Every slot here is above that; see the texture notes for the resolution evidence.",
  "_tile_seams": "tile_seam_ratio is how hard the wrap boundary is, [across x, across y], in units of the map's own interior variation. About 1 means the tile joins invisibly. The sets listed in source_seam_defects arrive from the generator with a hard join and will show a repeating line; this is a SOURCE defect that the conversion faithfully preserves, not a conversion artefact.",
  "source_seam_defects": {
   "brick-paviour": {
@@ -252,7 +250,7 @@
      "channels": {
       "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
       "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
-      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see the texture notes."
      },
      "three_colorspace": "THREE.NoColorSpace",
      "roughness_range": [
@@ -335,7 +333,7 @@
      "channels": {
       "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
       "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
-      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see the texture notes."
      },
      "three_colorspace": "THREE.NoColorSpace",
      "roughness_range": [
@@ -407,7 +405,7 @@
      "channels": {
       "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
       "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
-      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see the texture notes."
      },
      "three_colorspace": "THREE.NoColorSpace",
      "roughness_range": [
@@ -479,7 +477,7 @@
      "channels": {
       "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
       "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
-      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see the texture notes."
      },
      "three_colorspace": "THREE.NoColorSpace",
      "roughness_range": [
@@ -557,7 +555,7 @@
      "channels": {
       "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
       "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
-      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see the texture notes."
      },
      "three_colorspace": "THREE.NoColorSpace",
      "roughness_range": [
@@ -635,7 +633,7 @@
      "channels": {
       "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
       "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
-      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see the texture notes."
      },
      "three_colorspace": "THREE.NoColorSpace",
      "roughness_range": [
@@ -723,7 +721,7 @@
      "channels": {
       "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
       "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
-      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see the texture notes."
      },
      "three_colorspace": "THREE.NoColorSpace",
      "roughness_range": [
@@ -801,7 +799,7 @@
      "channels": {
       "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
       "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
-      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see the texture notes."
      },
      "three_colorspace": "THREE.NoColorSpace",
      "roughness_range": [
@@ -879,7 +877,7 @@
      "channels": {
       "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
       "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
-      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see the texture notes."
      },
      "three_colorspace": "THREE.NoColorSpace",
      "roughness_range": [
@@ -957,7 +955,7 @@
      "channels": {
       "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
       "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
-      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see the texture notes."
      },
      "three_colorspace": "THREE.NoColorSpace",
      "roughness_range": [
@@ -1029,7 +1027,7 @@
      "channels": {
       "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
       "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
-      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see the texture notes."
      },
      "three_colorspace": "THREE.NoColorSpace",
      "roughness_range": [
@@ -1107,7 +1105,7 @@
      "channels": {
       "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
       "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
-      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see the texture notes."
      },
      "three_colorspace": "THREE.NoColorSpace",
      "roughness_range": [
@@ -1190,7 +1188,7 @@
      "channels": {
       "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
       "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
-      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see the texture notes."
      },
      "three_colorspace": "THREE.NoColorSpace",
      "roughness_range": [
@@ -1268,7 +1266,7 @@
      "channels": {
       "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
       "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
-      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see the texture notes."
      },
      "three_colorspace": "THREE.NoColorSpace",
      "roughness_range": [
@@ -1340,7 +1338,7 @@
      "channels": {
       "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
       "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
-      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see the texture notes."
      },
      "three_colorspace": "THREE.NoColorSpace",
      "roughness_range": [
@@ -1418,7 +1416,7 @@
      "channels": {
       "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
       "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
-      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see the texture notes."
      },
      "three_colorspace": "THREE.NoColorSpace",
      "roughness_range": [
@@ -1496,7 +1494,7 @@
      "channels": {
       "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
       "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
-      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see the texture notes."
      },
      "three_colorspace": "THREE.NoColorSpace",
      "roughness_range": [
@@ -1579,7 +1577,7 @@
      "channels": {
       "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
       "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
-      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see the texture notes."
      },
      "three_colorspace": "THREE.NoColorSpace",
      "roughness_range": [
@@ -1651,7 +1649,7 @@
      "channels": {
       "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
       "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
-      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see the texture notes."
      },
      "three_colorspace": "THREE.NoColorSpace",
      "roughness_range": [
@@ -1739,7 +1737,7 @@
      "channels": {
       "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
       "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
-      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see the texture notes."
      },
      "three_colorspace": "THREE.NoColorSpace",
      "roughness_range": [
@@ -1811,7 +1809,7 @@
      "channels": {
       "R": "occlusion - CONSTANT 1.0 (255). The source library has no AO map.",
       "G": "roughness - the data. Linear, 0 = mirror, 1 = fully rough.",
-      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see TEXTURES.md."
+      "B": "metalness - CONSTANT 0.0 (0). No per-texel metalness exists; per-slot metallic comes from materials.json, see the texture notes."
      },
      "three_colorspace": "THREE.NoColorSpace",
      "roughness_range": [

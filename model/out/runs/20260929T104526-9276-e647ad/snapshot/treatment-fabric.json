@@ -1,5 +1,5 @@
 {
- "_": "DERIVED by tools/materials_merge.py from materials.json + the texture manifest. Do not hand-edit: change the slot's `texture` or `tile_m` in materials.json and re-run.",
+ "_": "DERIVED from materials.json + the texture manifest. Do not hand-edit: change the slot's `texture` or `tile_m` in materials.json and re-run.",
  "_intent": "Built. Full physically-based materials from the 20-set library, projected triplanar so they land on the 183 of 244 mesh primitives that carry no UVs.",
  "_orm": "R=occlusion(unused, 255), G=roughness, B=metalness(pinned 0). Per-slot metallic is the scalar in this file, never the map.",
  "fabric": {

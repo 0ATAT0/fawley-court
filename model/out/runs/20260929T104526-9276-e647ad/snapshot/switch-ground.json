@@ -1,6 +1,6 @@
 {
  "_": "The physical world when a scheme is off. mesh_bindings is closed-world: every built node or dressing rule that exists because of a scheme is named here. becomes is a design decision, not a viewer instruction.",
- "_authored": "Authored data, not generated. The 'estate-review package 4' this file once named as its generator does not exist in the tree; the false generated_by was removed on 17 September 2026. A scheme's felled_stems is the one machine-checkable number here: the scheme names its felling predicate and fcm.checks.contract.scheme_felling.felled_stem_findings (wired into R38) derives the count from that predicate and refuses any difference.",
+ "_authored": "Authored data, not generated. The 'estate-review package 4' this file once named as its generator does not exist in the tree; the false generated_by was removed on 17 September 2026. A scheme's felled_stems is the one machine-checkable number here: the scheme names its felling predicate and rule R38 derives the count from that predicate and refuses any difference.",
  "schema_version": 2,
  "survey": {
   "terrain": "LIDAR DTM before scheme grading",
@@ -48,7 +48,7 @@
     "survey_ground_nodes": [],
     "felled_stems": 3
    },
-   "note": "Three source tree indices are removed by the village footprint. They are not resurrected by a scheme toggle. | felled_stems 3 is staff-village-source.json's square.trees_felled_indices, the index list the build's tree stage reads; the predicate is named here and derived by R38, not hand-counted."
+   "note": "Three source tree indices are removed by the village footprint. They are not resurrected by a scheme toggle. | felled_stems 3 is the village record's felled-tree index list, the index list the build's tree stage reads; the predicate is named here and derived by R38, not hand-counted."
   },
   "Sch_Gatehouses": {
    "label": "Gatehouses and lodge extensions, staff",
@@ -90,7 +90,7 @@
     ],
     "felled_stems": 9
    },
-   "note": "The 116.75 m formal corridor grade and Club precinct are scheme works; the Long Water's copings, threshold and swim steps are the swimming switch's (28 Sep 2026). The coping stems stay in this switch's felling predicate, which fells for the precinct as one design. The eighteenth-century canal is existing fabric. | water-long-water.precinct.metal_dark retired with the mouth sluice on 15 September 2026: with only the head third treated the sluice has nothing to isolate, so the build emits no metal_dark bundle to bind. | felled_stems 9 is the count fcm.model.river_club.precinct.fells returns for the 2,512-stem survey array (indices 94, 102, 110, 154, 155, 221, 257, 1124, 1933; deck 5, weir 1, canal copings 4, allee 2, garden 0, with overlaps). The file carried 8 from generation 10 until 17 September 2026: it was a hand count, never compared to the predicate, and the precinct's felling has moved since. R38 derives the number now."
+   "note": "The 116.75 m formal corridor grade and Club precinct are scheme works; the Long Water's copings, threshold and swim steps are the swimming switch's (28 Sep 2026). The coping stems stay in this switch's felling predicate, which fells for the precinct as one design. The eighteenth-century canal is existing fabric. | water-long-water.precinct.metal_dark retired with the mouth sluice on 15 September 2026: with only the head third treated the sluice has nothing to isolate, so the build emits no metal_dark bundle to bind. | felled_stems 9 is the count the River Club precinct's felling rule returns for the 2,512-stem survey array (indices 94, 102, 110, 154, 155, 221, 257, 1124, 1933; deck 5, weir 1, canal copings 4, allee 2, garden 0, with overlaps). The file carried 8 from generation 10 until 17 September 2026: it was a hand count, never compared to the predicate, and the precinct's felling has moved since. R38 derives the number now."
   },
   "Sch_LongWaterSwim": {
    "label": "Long Water isolated and treated for swimming",
@@ -124,7 +124,7 @@
     ],
     "felled_stems": 2
    },
-   "note": "Measured against inputs/estate_intermediate.npz: the wing's footprint (assets/south-wing/south-wing-extent.json, turned and placed by its own placement) holds one surveyed stem (index 2144, 4.06 m) and a second stands 4 m off its wall (index 1716), inside the same 5.0 m working band the lodges fell to. No other survey unit, building or hardstanding, falls inside it. fcm.model.planting.mirror_wing is the one predicate; the trees stage draws both stems, from their own draws, into the survey node the viewer shows while the switch is off.",
+   "note": "Measured against the LIDAR survey: the wing's footprint (the wing asset's measured extent, turned and placed by its own placement) holds one surveyed stem (index 2144, 4.06 m) and a second stands 4 m off its wall (index 1716), inside the same 5.0 m working band the lodges fell to. No other survey unit, building or hardstanding, falls inside it. The mirror wing's felling rule is the one predicate; the trees stage draws both stems, from their own draws, into the survey node the viewer shows while the switch is off.",
    "felling_predicate": "mirror-wing.felled_lidar_indices"
   },
   "Sch_Lodges": {
@@ -142,7 +142,7 @@
     ],
     "felled_stems": 12
    },
-   "note": "Measured against inputs/estate_intermediate.npz through fcm.model.planting.lodges, the one predicate: the nine hand-set lodges fell twelve surveyed stems standing inside a footprint or within 5.0 m of one. The trees stage redraws those stems, from a stream of their own, into the survey node the viewer shows while the switch is off, so the lodges' woodland is whole in the base. No access-road or service-connection geometry is modelled for the lodges (v92 capex line 208 costs an access the estate model does not yet draw); the switch controls the nine lodge buildings and their fellings only.",
+   "note": "Measured against the LIDAR survey through the lodge planting rule, the one predicate: the nine hand-set lodges fell twelve surveyed stems standing inside a footprint or within 5.0 m of one. The trees stage redraws those stems, from a stream of their own, into the survey node the viewer shows while the switch is off, so the lodges' woodland is whole in the base. No access-road or service-connection geometry is modelled for the lodges (v92 capex line 208 costs an access the estate model does not yet draw); the switch controls the nine lodge buildings and their fellings only.",
    "felling_predicate": "lodges.felled_lidar_indices"
   },
   "Sch_Marquee": {
@@ -157,7 +157,7 @@
     "survey_ground_nodes": [],
     "felled_stems": 0
    },
-   "note": "Measured against inputs/estate_intermediate.npz and the wedding-marquee asset's own bounding box (about 13.6 x 8.05 m half-extents about its placement, x -13.58..13.55 / z -8.05..8.05 in assets/wedding-marquee/wedding-marquee.glb): the nearest surveyed trunk is 18.4 m from the placement, clear of the footprint, so switching this on fells no stem. The marquee is a temporary hired structure with no permanent base."
+   "note": "Measured against the LIDAR survey and the wedding-marquee asset's own bounding box (about 13.6 x 8.05 m half-extents about its placement, x -13.58..13.55 / z -8.05..8.05 in the marquee asset): the nearest surveyed trunk is 18.4 m from the placement, clear of the footprint, so switching this on fells no stem. The marquee is a temporary hired structure with no permanent base."
   },
   "Sch_MainHouseWing": {
    "label": "Main House dining wing, 127 m2 new build",
@@ -251,7 +251,7 @@
     ],
     "felled_stems": 20
    },
-   "note": "The Spa Garden surface is a scheme proposal over the shared core grade; its off-state requires a local survey overlay rather than hiding the estate-wide core. | The survey species nodes are the species the planting actually fells (broadleaf and cedar): tests/test_switches.py derives them from fcm.model.planting.spa and refuses any hand-listed species - the retired poplar and veteran entries - that the planting does not carry. | prop.spa-garden is built again on 15 September 2026 as physical fabric inside the spa precinct asset (spa-precinct-garden): the switch owns the scheme ground, the planting and the garden fabric node. | The ground region is the precinct's three garden zones (entrance side, spa pool side, leisure garden face) carried as one rotated rectangle at the precinct's own rotation -18.9787 deg; the reader fcm/model/scheme_ground.py supports only the rotated-rectangle kind, so the three-zone L is bounded, not traced. | felled_stems 20 is the count fcm.model.planting.spa measures for the precinct footprint (indices 14, 37, 103, 133, 159, 211, 295, 343, 479, 582, 652, 795, 841, 1035, 1195, 1268, 1284, 1805, 2150, 2255; broadleaf and cedar). Stem 1805 was added on 16 Sep 2026: it stood on the tennis court's 0.05 m hardstanding, which the solid and crown tests never met, so the planting now also fells a stem standing on a near-horizontal spa surface."
+   "note": "The Spa Garden surface is a scheme proposal over the shared core grade; its off-state requires a local survey overlay rather than hiding the estate-wide core. | The survey species nodes are the species the planting actually fells (broadleaf and cedar): a test derives them from the spa planting rule and refuses any hand-listed species - the retired poplar and veteran entries - that the planting does not carry. | prop.spa-garden is built again on 15 September 2026 as physical fabric inside the spa precinct asset (spa-precinct-garden): the switch owns the scheme ground, the planting and the garden fabric node. | The ground region is the precinct's three garden zones (entrance side, spa pool side, leisure garden face) carried as one rotated rectangle at the precinct's own rotation -18.9787 deg; the scheme-ground reader supports only the rotated-rectangle kind, so the three-zone L is bounded, not traced. | felled_stems 20 is the count the spa planting rule measures for the precinct footprint (indices 14, 37, 103, 133, 159, 211, 295, 343, 479, 582, 652, 795, 841, 1035, 1195, 1268, 1284, 1805, 2150, 2255; broadleaf and cedar). Stem 1805 was added on 16 Sep 2026: it stood on the tennis court's 0.05 m hardstanding, which the solid and crown tests never met, so the planting now also fells a stem standing on a near-horizontal spa surface."
   }
  }
 }
