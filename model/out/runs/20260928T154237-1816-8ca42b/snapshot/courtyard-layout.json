@@ -1,0 +1,794 @@
+{
+ "_generated": {
+  "generator": "fcm/model/courtyard/layout.py",
+  "inputs": {
+   "courtyard-source.json": "0fe56e320c3f719145150cc22019e8dfc452e8d306708adae431b75b605edde0",
+   "estate.json": "2f85989341c6f1563414c0adc9aaa17ac2f5beeb0f51285dd017ac9a09e3a3c4",
+   "footprints.json": "3c2335938bafedd00b6dd71d400bfe5314e93372f85c0d99469a1d5a41b29f84",
+   "scene.json": "d73458579eefd59e4e68eb3fb1f1aadc2944e67d421f10eb9832888c4bad8b44"
+  },
+  "body_hash": "f475ac26b6c3dd60178de5a76a42389806fc925bfad4366878e4e30d58c06a01",
+  "written": "2026-09-28T14:56:32.053757+00:00"
+ },
+ "_": "THE COURTYARD LAYOUT. One record per building. The asset builds, the placements, the ground and the linter all read this file; nothing re-derives a footprint.",
+ "produced_by": "fcm/model/courtyard/layout.py --write",
+ "reads": [
+  "courtyard-source.json",
+  "scene.json",
+  "footprints.json",
+  "estate.json"
+ ],
+ "coordinate_system": {
+  "model_local": "X = easting - 476520; Y = northing - 184214; Z = mAOD",
+  "rotation": "wall_angle_deg is counter-clockwise about Z, matching scene.json",
+  "outline": "a closed rectilinear ring in model-local metres, on the record's own wall grid; courts_local_m are the enclosed voids"
+ },
+ "rulings": {
+  "angles": "the south group is on the Main House grid at 71.79 deg exactly; the north courtyard keeps its own measured angle",
+  "assets": "five: south courtyard incl chapel and hangar, north courtyard incl tower, service yard range, riding house, the two sheds",
+  "architecture": "assets/kit/courtyard_style.py holds every dimension"
+ },
+ "elements": [
+  {
+   "id": "bldg.riding-school",
+   "asset": "riding-house",
+   "name": "Riding House",
+   "role": "retained",
+   "wall_angle_deg": 71.79,
+   "origin_local_m": [
+    -60.015,
+    105.58
+   ],
+   "outline_local_m": [
+    [
+     -59.496,
+     78.358
+    ],
+    [
+     -74.695,
+     83.358
+    ],
+    [
+     -63.445,
+     117.555
+    ],
+    [
+     -61.545,
+     116.93
+    ],
+    [
+     -60.92,
+     118.829
+    ],
+    [
+     -51.421,
+     115.704
+    ],
+    [
+     -52.046,
+     113.805
+    ],
+    [
+     -50.146,
+     113.18
+    ],
+    [
+     -55.146,
+     97.981
+    ],
+    [
+     -53.246,
+     97.356
+    ],
+    [
+     -54.496,
+     93.556
+    ],
+    [
+     -56.396,
+     94.181
+    ],
+    [
+     -57.646,
+     90.382
+    ],
+    [
+     -55.746,
+     89.757
+    ],
+    [
+     -56.996,
+     85.957
+    ],
+    [
+     -58.896,
+     86.582
+    ],
+    [
+     -60.146,
+     82.782
+    ],
+    [
+     -58.246,
+     82.157
+    ]
+   ],
+   "courts_local_m": [],
+   "plan_area_m2": 548.0,
+   "storeys": 1,
+   "keys": 0,
+   "ground_mAOD": 33.437,
+   "contains": [],
+   "note": "Grade II. Kept as the existing asset and re-placed; the asset measures 548 m2 against this record's outline."
+  },
+  {
+   "id": "prop.south-courtyard",
+   "asset": "south-courtyard",
+   "name": "South Courtyard, with the hangar and the chapel",
+   "role": "new-build-over-retained",
+   "wall_angle_deg": 71.79,
+   "origin_local_m": [
+    -14.48,
+    92.128
+   ],
+   "outline_local_m": [
+    [
+     -39.412,
+     77.142
+    ],
+    [
+     -40.662,
+     73.342
+    ],
+    [
+     -50.161,
+     76.467
+    ],
+    [
+     -49.536,
+     78.367
+    ],
+    [
+     -51.436,
+     78.992
+    ],
+    [
+     -37.061,
+     122.689
+    ],
+    [
+     -2.864,
+     111.439
+    ],
+    [
+     -7.864,
+     96.24
+    ],
+    [
+     -5.964,
+     95.615
+    ],
+    [
+     -8.464,
+     88.015
+    ],
+    [
+     -10.364,
+     88.64
+    ],
+    [
+     -17.239,
+     67.742
+    ],
+    [
+     -15.339,
+     67.117
+    ],
+    [
+     -16.589,
+     63.318
+    ],
+    [
+     -18.489,
+     63.943
+    ],
+    [
+     -20.364,
+     58.243
+    ],
+    [
+     -31.763,
+     61.993
+    ],
+    [
+     -28.013,
+     73.392
+    ]
+   ],
+   "courts_local_m": [
+    [
+     [
+      -36.912,
+      84.741
+     ],
+     [
+      -25.513,
+      80.991
+     ],
+     [
+      -18.013,
+      103.789
+     ],
+     [
+      -29.412,
+      107.539
+     ]
+    ]
+   ],
+   "plan_area_m2": 1508.0,
+   "storeys": 2,
+   "keys": 23,
+   "ground_mAOD": 33.62,
+   "contains": [
+    "bldg.dairy-chapel",
+    "bldg.south-courtyard-ranges"
+   ],
+   "note": "The drawings put the chapel and the courtyard in ONE building and leave the riding house detached - the reverse of the first proposal, and the scheme takes the drawings' side. The chapel is its south end, from about y=80 down."
+  },
+  {
+   "id": "prop.north-courtyard",
+   "asset": "north-courtyard",
+   "name": "North Courtyard, with the Water Tower",
+   "role": "new-build-over-retained",
+   "wall_angle_deg": 87.8,
+   "origin_local_m": [
+    -25.852,
+    151.657
+   ],
+   "outline_local_m": [
+    [
+     1.594,
+     136.707
+    ],
+    [
+     -8.399,
+     137.091
+    ],
+    [
+     -7.477,
+     161.073
+    ],
+    [
+     -19.469,
+     161.534
+    ],
+    [
+     -20.39,
+     137.551
+    ],
+    [
+     -32.381,
+     138.012
+    ],
+    [
+     -31.306,
+     165.991
+    ],
+    [
+     -25.311,
+     165.761
+    ],
+    [
+     -25.004,
+     173.755
+    ],
+    [
+     -17.009,
+     173.448
+    ],
+    [
+     -17.086,
+     171.449
+    ],
+    [
+     0.9,
+     170.758
+    ],
+    [
+     0.977,
+     172.757
+    ],
+    [
+     4.974,
+     172.603
+    ],
+    [
+     4.744,
+     166.608
+    ],
+    [
+     6.743,
+     166.531
+    ],
+    [
+     6.589,
+     162.534
+    ],
+    [
+     4.59,
+     162.611
+    ],
+    [
+     4.514,
+     160.612
+    ],
+    [
+     2.515,
+     160.689
+    ],
+    [
+     1.824,
+     142.702
+    ],
+    [
+     3.823,
+     142.625
+    ],
+    [
+     3.669,
+     138.628
+    ],
+    [
+     1.671,
+     138.705
+    ]
+   ],
+   "courts_local_m": [],
+   "plan_area_m2": 892.0,
+   "storeys": 2,
+   "keys": 20,
+   "ground_mAOD": 33.55,
+   "contains": [
+    "bldg.water-tower",
+    "bldg.old-stable-block"
+   ],
+   "note": "One U-shaped building opening SOUTH toward the south courtyard, as the EPR draws it. The three drawn ranges stand 1-3 m apart and are closed into one outline. The tower stands on the court's centreline at its head, 0.5 m west."
+  },
+  {
+   "id": "bldg.yard-structure-south",
+   "asset": "service-yard-range",
+   "name": "Service yard range",
+   "role": "retained",
+   "wall_angle_deg": 71.79,
+   "origin_local_m": [
+    -52.249,
+    134.126
+   ],
+   "outline_local_m": [
+    [
+     -42.384,
+     144.912
+    ],
+    [
+     -44.284,
+     145.537
+    ],
+    [
+     -52.409,
+     120.84
+    ],
+    [
+     -60.008,
+     123.34
+    ],
+    [
+     -50.633,
+     151.837
+    ],
+    [
+     -46.834,
+     150.587
+    ],
+    [
+     -46.209,
+     152.487
+    ],
+    [
+     -40.509,
+     150.612
+    ]
+   ],
+   "courts_local_m": [],
+   "plan_area_m2": 260.0,
+   "storeys": 1,
+   "keys": 0,
+   "ground_mAOD": 33.467,
+   "contains": [],
+   "note": "NOT demolished. The consent's own poche covers 588 m2 in two clusters, both north of here, and the proposed sheet draws a 251 m2 building on this exact footprint to 0.2 m. The registry's note calling it removed is wrong."
+  },
+  {
+   "id": "prop.south-courtyard-small",
+   "asset": "south-courtyard-small",
+   "name": "South Courtyard at the underwrite's area, with the chapel",
+   "role": "new-build-over-retained",
+   "wall_angle_deg": 71.79,
+   "origin_local_m": [
+    -21.096,
+    85.39
+   ],
+   "outline_local_m": [
+    [
+     -28.057,
+     62.973
+    ],
+    [
+     -24.815,
+     72.829
+    ],
+    [
+     -33.007,
+     75.524
+    ],
+    [
+     -27.812,
+     91.316
+    ],
+    [
+     -44.464,
+     96.794
+    ],
+    [
+     -40.089,
+     110.093
+    ],
+    [
+     -35.193,
+     108.483
+    ],
+    [
+     -37.693,
+     100.883
+    ],
+    [
+     -20.436,
+     95.206
+    ],
+    [
+     -17.936,
+     102.805
+    ],
+    [
+     -1.217,
+     97.305
+    ],
+    [
+     -5.493,
+     84.307
+    ],
+    [
+     -12.075,
+     86.473
+    ],
+    [
+     -20.612,
+     60.524
+    ]
+   ],
+   "courts_local_m": [
+    [
+     [
+      -17.936,
+      102.805
+     ],
+     [
+      -35.193,
+      108.483
+     ],
+     [
+      -37.693,
+      100.883
+     ],
+     [
+      -20.436,
+      95.206
+     ]
+    ]
+   ],
+   "plan_area_m2": 780.4,
+   "storeys": 2,
+   "keys": 23,
+   "ground_mAOD": 33.62,
+   "contains": [
+    "bldg.dairy-chapel",
+    "bldg.south-courtyard-ranges"
+   ],
+   "note": "The small position of the size study: the SURVEYED retained building (footprints.json component 9, 491.5 m2) regularised onto the Main House grid, plus one new range of five bays returning east from its north end. The court sits in the crook of the L, one arcade depth clear of both ranges. The existing record is untouched and stands in the large position.",
+   "retained_ring_local_m": [
+    [
+     -20.612,
+     60.524
+    ],
+    [
+     -28.057,
+     62.973
+    ],
+    [
+     -24.815,
+     72.829
+    ],
+    [
+     -33.007,
+     75.524
+    ],
+    [
+     -27.812,
+     91.316
+    ],
+    [
+     -44.464,
+     96.794
+    ],
+    [
+     -40.089,
+     110.093
+    ],
+    [
+     -35.193,
+     108.483
+    ],
+    [
+     -37.693,
+     100.883
+    ],
+    [
+     -20.436,
+     95.206
+    ],
+    [
+     -22.212,
+     89.807
+    ],
+    [
+     -12.075,
+     86.473
+    ]
+   ],
+   "court_detail_ends_m": [
+    [
+     -19.186,
+     99.006
+    ],
+    [
+     -36.443,
+     104.683
+    ]
+   ]
+  },
+  {
+   "id": "prop.north-courtyard-small",
+   "asset": "north-courtyard-small",
+   "name": "North Courtyard at the underwrite's area, with the Water Tower",
+   "role": "new-build-over-retained",
+   "wall_angle_deg": 87.8,
+   "origin_local_m": [
+    -2.836,
+    151.657
+   ],
+   "outline_local_m": [
+    [
+     -8.399,
+     137.091
+    ],
+    [
+     -7.477,
+     161.073
+    ],
+    [
+     -19.469,
+     161.534
+    ],
+    [
+     -31.46,
+     161.994
+    ],
+    [
+     -31.306,
+     165.991
+    ],
+    [
+     -25.311,
+     165.761
+    ],
+    [
+     -25.004,
+     173.755
+    ],
+    [
+     -17.009,
+     173.448
+    ],
+    [
+     -17.086,
+     171.449
+    ],
+    [
+     0.9,
+     170.758
+    ],
+    [
+     0.977,
+     172.757
+    ],
+    [
+     4.974,
+     172.603
+    ],
+    [
+     4.744,
+     166.608
+    ],
+    [
+     6.743,
+     166.531
+    ],
+    [
+     6.589,
+     162.534
+    ],
+    [
+     4.59,
+     162.611
+    ],
+    [
+     4.514,
+     160.612
+    ],
+    [
+     2.515,
+     160.689
+    ],
+    [
+     1.824,
+     142.702
+    ],
+    [
+     3.823,
+     142.625
+    ],
+    [
+     3.669,
+     138.628
+    ],
+    [
+     1.671,
+     138.705
+    ],
+    [
+     1.594,
+     136.707
+    ]
+   ],
+   "courts_local_m": [],
+   "plan_area_m2": 604.0,
+   "storeys": 2,
+   "keys": 20,
+   "ground_mAOD": 33.55,
+   "contains": [
+    "bldg.water-tower",
+    "bldg.old-stable-block"
+   ],
+   "note": "The small position of the size study: the existing north U with its WEST arm removed; the east arm stays with its private terraces. The head range keeps its full length. The court is derived by the asset, as the U's is.",
+   "plan": "L"
+  },
+  {
+   "id": "bldg.service-outbuildings",
+   "asset": "service-yard-sheds",
+   "name": "Service yard outbuildings",
+   "role": "switchable",
+   "wall_angle_deg": 71.23,
+   "origin_local_m": [
+    -52.895,
+    172.703
+   ],
+   "outline_local_m": [
+    [
+     -44.617,
+     161.411
+    ],
+    [
+     -66.339,
+     168.795
+    ],
+    [
+     -61.172,
+     183.995
+    ],
+    [
+     -39.45,
+     176.611
+    ]
+   ],
+   "courts_local_m": [],
+   "plan_area_m2": 368.3,
+   "storeys": 1,
+   "keys": 0,
+   "ground_mAOD": 33.579,
+   "contains": [],
+   "note": ""
+  },
+  {
+   "id": "bldg.workshop-shed",
+   "asset": "service-yard-sheds",
+   "name": "Workshop / timber store shed",
+   "role": "switchable",
+   "wall_angle_deg": 64.44,
+   "origin_local_m": [
+    -23.011,
+    185.733
+   ],
+   "outline_local_m": [
+    [
+     -15.156,
+     176.479
+    ],
+    [
+     -35.145,
+     186.039
+    ],
+    [
+     -30.865,
+     194.988
+    ],
+    [
+     -10.876,
+     185.428
+    ]
+   ],
+   "courts_local_m": [],
+   "plan_area_m2": 219.8,
+   "storeys": 1,
+   "keys": 0,
+   "ground_mAOD": 33.467,
+   "contains": [],
+   "note": ""
+  },
+  {
+   "id": "prop.covered-walkway",
+   "asset": "covered-walkway",
+   "name": "Covered walkway, North Wing to the chapel",
+   "role": "connector",
+   "serves": "bldg.main-house-north-wing",
+   "wall_angle_deg": -80.84,
+   "origin_local_m": [
+    -19.1,
+    50.405
+   ],
+   "outline_local_m": [
+    [
+     -18.784,
+     58.498
+    ],
+    [
+     -16.256,
+     42.822
+    ],
+    [
+     -19.416,
+     42.313
+    ],
+    [
+     -21.944,
+     57.988
+    ]
+   ],
+   "courts_local_m": [],
+   "plan_area_m2": 50.8,
+   "storeys": 1,
+   "keys": 0,
+   "ground_mAOD": 33.3,
+   "contains": [],
+   "length_m": 15.88,
+   "note": "Capex line 86 describes a 180 m route from the Mackenzie Wing past the Dairy Range to the Riding School; the scheme uses a subtle connector instead, and the divergence is deliberate."
+  }
+ ]
+}

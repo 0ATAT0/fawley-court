@@ -1,0 +1,51 @@
+body.estate-ui{--navy:#293e33;--charcoal:#354238;--ground:#efede4;--card:#faf8f1;--muted:#727b6e;--line:#d9dccf;--green:#5c735a;--serif:Georgia,'Times New Roman',serif;--sans:'Segoe UI',sans-serif}
+.estate-ui #rail{top:18px;left:18px;bottom:18px;width:326px;background:var(--card);border:1px solid #d5d9cc;box-shadow:0 8px 35px #172a1714;border-radius:2px}
+.estate-ui #rail header{padding:25px 24px 19px;border:0}
+.estate-ui #rail h1{font:normal 33px/1.15 var(--serif);letter-spacing:-.04em}
+.estate-ui .estate-kicker{display:block;font:600 9px/1.6 var(--sans);letter-spacing:.15em;color:#718069;margin:0 0 10px}
+.estate-ui #modelref{font:11px/1.5 var(--sans);color:#727b6e;margin:10px 0 0}
+.estate-ui #totals{flex-shrink:0;margin:0 24px;padding:15px 0 17px;background:none;border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:0}
+.estate-ui #totals .big{font:normal 29px/1.15 var(--serif);letter-spacing:-.025em}
+.estate-ui #totals .sub{font:11px/1.6 var(--sans);margin-top:7px}
+.estate-ui #totals .tie{font:10px/1.5 var(--sans);margin-top:4px}
+.estate-ui .estate-tabs{display:flex;flex-shrink:0;margin:0 24px;border-bottom:1px solid var(--line);gap:23px}
+.estate-ui .estate-tabs button{padding:14px 0 12px;border:0;border-bottom:2px solid transparent;background:none;font:12px var(--sans);color:#727b6e;cursor:pointer}
+.estate-ui .estate-tabs button[aria-pressed=true]{color:#293e33;border-bottom-color:#293e33;font-weight:650}
+.estate-ui #railscroll{padding:24px;overscroll-behavior:contain}
+.estate-ui [hidden]{display:none!important}
+.estate-ui .estate-intro h2{font:normal 27px/1.22 var(--serif);letter-spacing:-.03em;margin:0 0 16px}
+.estate-ui .estate-intro p,.estate-ui .estate-selection-summary>p{font:12px/1.75 var(--sans);color:#65715f}
+.estate-ui .estate-intro .estate-kicker{font-size:9px;margin-bottom:12px}
+.estate-ui .estate-programme{margin:20px 0;border-top:1px solid var(--line)}
+.estate-ui .estate-programme>div{padding:13px 0;border-bottom:1px solid var(--line)}
+.estate-ui .estate-programme strong{display:block;font:18px var(--serif);margin-bottom:5px}.estate-ui .estate-programme span{font:11px/1.5 var(--sans);color:var(--muted)}
+.estate-ui .estate-hint{font:11px/1.65 var(--sans)!important;color:#737b6e!important}
+.estate-ui .sect h2{font:600 9px/1.5 var(--sans);text-transform:uppercase;letter-spacing:.13em;margin:24px 0 12px;color:#718069}
+.estate-ui #views{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.estate-ui #views button{border:0;border-bottom:1px solid var(--line);border-radius:0;background:none;padding:11px 0;text-align:left;font:15px var(--serif)}
+.estate-ui #views button::after{content:'↗';float:right;font:13px var(--sans);color:#7c8a71}
+.estate-ui .estate-disclosure{border-top:1px solid var(--line);margin-top:19px;padding:13px 0;font:11px/1.75 var(--sans);color:#687361}
+.estate-ui summary{cursor:pointer;line-height:1.6}.estate-ui .estate-disclosure summary{font-weight:600}.estate-ui details p{margin:12px 0}
+.estate-ui .estate-switch-group{margin:24px 0}.estate-ui .estate-switch-group h3{font:20px var(--serif);margin:0 0 8px}
+.estate-ui #switches .sw{padding:14px 0;border-bottom:1px solid var(--line)}
+.estate-ui #switches .row1{align-items:flex-start;gap:12px}.estate-ui #switches .name{font:12px/1.55 var(--sans)}
+.estate-ui #switches .detail{font:11px/1.5 var(--sans);margin:6px 0 0 44px;color:#62705c}
+.estate-ui .estate-switch-note{margin:7px 0 0 44px;font:10px/1.65 var(--sans);color:#747d6e}
+.estate-ui .tog i,.estate-ui .tog i::after{transition:none}.estate-ui .tog{margin-top:2px;flex-shrink:0}
+.estate-ui .reset{font-size:11px;padding:11px 0;color:#4d6347}
+.estate-ui #smasscontrols,.estate-ui #layers{grid-template-columns:1fr;gap:10px}.estate-ui #smasscontrols label,.estate-ui #layers label{font-size:11px;line-height:1.6}
+.estate-ui .estate-footer{flex-shrink:0;padding:13px 24px 17px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}
+.estate-ui .estate-footer span{font:7px var(--sans);letter-spacing:.11em;color:#7b8572}.estate-ui .estate-footer a{font:10px var(--sans);color:#62735a;text-decoration:none}
+.estate-ui #card{position:static;width:auto;max-height:none;background:none;border:0;border-radius:0;box-shadow:none;animation:none;overflow:visible;margin:0}
+.estate-ui #card .head{position:relative;padding:0 22px 18px 0;border-bottom:1px solid var(--line)}
+.estate-ui #card .head h3{font:normal 26px/1.2 var(--serif);letter-spacing:-.025em}.estate-ui #card .close{top:-5px;right:-5px}
+.estate-ui #card .body{padding:17px 0}.estate-ui #card .cost{font:normal 28px var(--serif)}.estate-ui #card .costsub{font:10px/1.6 var(--sans)}
+.estate-ui #card .chip{font-size:9px;border-radius:2px;line-height:1.5}.estate-ui #card .note{font:11px/1.7 var(--sans);margin:10px 0;padding:0;background:none;border:0}
+.estate-ui #card table{font-size:10px;table-layout:fixed;width:100%}.estate-ui #card table th:first-child{width:20px}.estate-ui #card table th:last-child{width:48px}.estate-ui #card td{overflow-wrap:anywhere}
+.estate-ui .estate-selection-summary .estate-area{font:26px var(--serif);color:var(--navy);margin:0 0 18px}.estate-ui .estate-area span{display:block;font:10px var(--sans);margin-top:5px;color:var(--muted)}
+.estate-ui #variants{position:static;display:block;width:auto;background:none;border:0;box-shadow:none;padding:16px 0}.estate-ui #variants .row{flex-wrap:wrap}.estate-ui #vcoords{display:none}
+.estate-ui #perf,.estate-ui #design-review,.estate-ui #places-review{display:none!important}.estate-ui.estate-author #perf{display:block!important}
+.estate-ui #rail.min{width:44px;height:44px;bottom:auto}.estate-ui #rail.min .estate-tabs,.estate-ui #rail.min .estate-footer,.estate-ui #rail.min #totals{display:none}
+.estate-ui #railmin{border:0;background:none;right:6px;top:6px}.estate-ui #hud,.estate-ui #status{left:365px}.estate-ui.railmin #hud,.estate-ui.railmin #status{left:80px}
+.estate-ui button:focus-visible,.estate-ui a:focus-visible,.estate-ui summary:focus-visible,.estate-ui input:focus-visible{outline:2px solid #947744;outline-offset:3px}
+@media(max-width:720px){.estate-ui #rail{left:10px;top:10px;bottom:10px;width:min(310px,calc(100vw - 64px))}.estate-ui #rail header{padding:20px 18px 15px}.estate-ui #railscroll{padding:20px 18px}.estate-ui #totals,.estate-ui .estate-tabs{margin-left:18px;margin-right:18px}.estate-ui .estate-tabs{gap:18px}.estate-ui .estate-footer{padding:12px 18px}.estate-ui #hud{left:auto;right:12px}.estate-ui #status{display:none}.estate-ui #rail h1{font-size:29px}.estate-ui .estate-footer span{display:none}}

@@ -1,0 +1,1052 @@
+[
+ {
+  "station": "01-main-house-west-front",
+  "element": "bldg.main-house",
+  "status": "OK",
+  "bearing": 270,
+  "height_deg": 10,
+  "distance_m": 194.6,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 37.5,
+  "file": "01-main-house-west-front.png",
+  "rendered": false,
+  "camera": [
+   -188.5,
+   -1.2,
+   75.9
+  ],
+  "aim": [
+   3.0,
+   -1.2,
+   41.1
+  ]
+ },
+ {
+  "station": "02-main-house-garden-front",
+  "element": "bldg.main-house",
+  "status": "OK",
+  "bearing": 90,
+  "height_deg": 12,
+  "distance_m": 198.4,
+  "raised_m": 15,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 5,
+  "subject_radius_m": 37.5,
+  "file": "02-main-house-garden-front.png",
+  "rendered": false,
+  "camera": [
+   193.1,
+   -1.2,
+   97.6
+  ],
+  "aim": [
+   3.0,
+   -1.2,
+   41.1
+  ]
+ },
+ {
+  "station": "03-main-house-aerial",
+  "element": "bldg.main-house",
+  "status": "OK",
+  "bearing": 225,
+  "height_deg": 38,
+  "distance_m": 259.9,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 37.5,
+  "file": "03-main-house-aerial.png",
+  "rendered": false,
+  "camera": [
+   -141.5,
+   -145.6,
+   201.8
+  ],
+  "aim": [
+   3.0,
+   -1.2,
+   41.1
+  ]
+ },
+ {
+  "station": "04-north-courtyard",
+  "element": "prop.north-courtyard",
+  "status": "OK",
+  "bearing": 200,
+  "height_deg": 25,
+  "distance_m": 182.4,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 32.2,
+  "file": "04-north-courtyard.png",
+  "rendered": false,
+  "camera": [
+   -68.2,
+   1.3,
+   120.7
+  ],
+  "aim": [
+   -11.8,
+   156.3,
+   42.8
+  ]
+ },
+ {
+  "station": "05-south-courtyard",
+  "element": "prop.south-courtyard",
+  "status": "OK",
+  "bearing": 20,
+  "height_deg": 25,
+  "distance_m": 260.7,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 46.0,
+  "file": "05-south-courtyard.png",
+  "rendered": false,
+  "camera": [
+   55.6,
+   311.0,
+   150.7
+  ],
+  "aim": [
+   -25.1,
+   89.3,
+   39.9
+  ]
+ },
+ {
+  "station": "06-riding-school",
+  "element": "bldg.riding-school",
+  "status": "OK",
+  "bearing": 160,
+  "height_deg": 14,
+  "distance_m": 130.3,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 25.1,
+  "file": "06-riding-school.png",
+  "rendered": false,
+  "camera": [
+   -18.5,
+   -19.5,
+   69.5
+  ],
+  "aim": [
+   -61.7,
+   99.2,
+   37.5
+  ]
+ },
+ {
+  "station": "07-church-st-anne",
+  "element": "bldg.church-st-anne",
+  "status": "OK",
+  "bearing": 240,
+  "height_deg": 12,
+  "distance_m": 124.5,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 24.0,
+  "file": "07-church-st-anne.png",
+  "rendered": false,
+  "camera": [
+   -190.4,
+   -187.5,
+   64.9
+  ],
+  "aim": [
+   -85.0,
+   -126.7,
+   38.5
+  ]
+ },
+ {
+  "station": "11-spa-building",
+  "element": "prop.spa-building",
+  "status": "OK",
+  "bearing": 210,
+  "height_deg": 16,
+  "distance_m": 357.5,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 63.2,
+  "file": "11-spa-building.png",
+  "rendered": false,
+  "camera": [
+   -263.7,
+   -420.8,
+   136.1
+  ],
+  "aim": [
+   -91.9,
+   -123.2,
+   37.2
+  ]
+ },
+ {
+  "station": "12-river-club",
+  "element": "prop.river-club",
+  "status": "OK",
+  "bearing": 80,
+  "height_deg": 10,
+  "distance_m": 288.9,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 51.1,
+  "file": "12-river-club.png",
+  "rendered": false,
+  "camera": [
+   549.8,
+   -69.7,
+   83.9
+  ],
+  "aim": [
+   269.7,
+   -119.1,
+   33.4
+  ]
+ },
+ {
+  "station": "13-residences",
+  "element": "prop.residences",
+  "status": "OK",
+  "bearing": 200,
+  "height_deg": 18,
+  "distance_m": 2066.9,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 298.9,
+  "file": "13-residences.png",
+  "rendered": false,
+  "camera": [
+   -875.2,
+   -2326.5,
+   677.8
+  ],
+  "aim": [
+   -203.0,
+   -479.6,
+   38.4
+  ]
+ },
+ {
+  "station": "14-staff-village",
+  "element": "prop.staff-village",
+  "status": "OK",
+  "bearing": 350,
+  "height_deg": 24,
+  "distance_m": 232.2,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 46.2,
+  "file": "14-staff-village.png",
+  "rendered": false,
+  "camera": [
+   -277.7,
+   -133.9,
+   133.3
+  ],
+  "aim": [
+   -240.9,
+   -342.5,
+   38.3
+  ]
+ },
+ {
+  "station": "15-gatehouses",
+  "element": "prop.gatehouses",
+  "status": "OK",
+  "bearing": 200,
+  "height_deg": 12,
+  "distance_m": 3108.3,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 449.6,
+  "file": "15-gatehouses.png",
+  "rendered": false,
+  "camera": [
+   -1318.9,
+   -2817.2,
+   684.0
+  ],
+  "aim": [
+   -279.0,
+   39.7,
+   37.3
+  ]
+ },
+ {
+  "station": "16-north-lodge",
+  "element": "bldg.north-lodge",
+  "status": "OK",
+  "bearing": 210,
+  "height_deg": 10,
+  "distance_m": 40.9,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 7.9,
+  "file": "16-north-lodge.png",
+  "rendered": false,
+  "camera": [
+   -240.5,
+   536.9,
+   46.8
+  ],
+  "aim": [
+   -220.4,
+   571.7,
+   39.3
+  ]
+ },
+ {
+  "station": "17-south-buildings",
+  "element": "bldg.south-buildings",
+  "status": "OK",
+  "bearing": 210,
+  "height_deg": 15,
+  "distance_m": 165.7,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 29.3,
+  "file": "17-south-buildings.png",
+  "rendered": false,
+  "camera": [
+   -199.7,
+   -187.6,
+   78.5
+  ],
+  "aim": [
+   -119.7,
+   -49.0,
+   35.5
+  ]
+ },
+ {
+  "station": "18-service-outbuildings",
+  "element": "bldg.service-outbuildings",
+  "status": "OK",
+  "bearing": 200,
+  "height_deg": 15,
+  "distance_m": 105.1,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 18.6,
+  "file": "18-service-outbuildings.png",
+  "rendered": false,
+  "camera": [
+   -87.6,
+   77.4,
+   63.8
+  ],
+  "aim": [
+   -52.9,
+   172.7,
+   36.3
+  ]
+ },
+ {
+  "station": "19-long-water",
+  "element": "water.long-water",
+  "status": "OK",
+  "bearing": 250,
+  "height_deg": 14,
+  "distance_m": 713.5,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 126.1,
+  "file": "19-long-water.png",
+  "rendered": false,
+  "camera": [
+   -456.0,
+   -300.6,
+   203.9
+  ],
+  "aim": [
+   194.5,
+   -63.9,
+   31.1
+  ]
+ },
+ {
+  "station": "20-whole-estate",
+  "element": "*",
+  "status": "OK",
+  "bearing": 215,
+  "height_deg": 30,
+  "distance_m": 3974.9,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 1021.4,
+  "file": "20-whole-estate.png",
+  "rendered": false,
+  "camera": [
+   -1843.2,
+   -2982.8,
+   2039.7
+  ],
+  "aim": [
+   130.0,
+   -164.9,
+   48.3
+  ]
+ },
+ {
+  "station": "21-google-earth-match",
+  "element": "bldg.main-house",
+  "status": "OK",
+  "bearing": 270,
+  "height_deg": 30,
+  "distance_m": 343.7,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 37.5,
+  "file": "21-google-earth-match.png",
+  "rendered": false,
+  "camera": [
+   -294.2,
+   -1.2,
+   213.7
+  ],
+  "aim": [
+   3.0,
+   -1.2,
+   41.1
+  ]
+ },
+ {
+  "station": "22-house-canal-axis",
+  "element": "bldg.main-house",
+  "status": "OK",
+  "bearing": 0,
+  "height_deg": 90,
+  "distance_m": 531.4,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 37.5,
+  "file": "22-house-canal-axis.png",
+  "rendered": false,
+  "camera": [
+   3.0,
+   -1.2,
+   572.4
+  ],
+  "aim": [
+   3.0,
+   -1.2,
+   41.1
+  ]
+ },
+ {
+  "station": "23-house-plan-tight",
+  "element": "bldg.main-house",
+  "status": "OK",
+  "bearing": 0,
+  "height_deg": 90,
+  "distance_m": 189.3,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 37.5,
+  "file": "23-house-plan-tight.png",
+  "rendered": false,
+  "camera": [
+   3.0,
+   -1.2,
+   230.3
+  ],
+  "aim": [
+   3.0,
+   -1.2,
+   41.1
+  ]
+ },
+ {
+  "station": "24-staff-village-square",
+  "element": "prop.staff-village",
+  "status": "OK",
+  "bearing": 5,
+  "height_deg": 7,
+  "distance_m": 173.4,
+  "raised_m": 22,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 6,
+  "subject_radius_m": 46.2,
+  "file": "24-staff-village-square.png",
+  "rendered": false,
+  "camera": [
+   -226.3,
+   -175.3,
+   81.5
+  ],
+  "aim": [
+   -240.9,
+   -342.5,
+   38.3
+  ]
+ },
+ {
+  "station": "25-staff-village-plan",
+  "element": "prop.staff-village",
+  "status": "OK",
+  "bearing": 0,
+  "height_deg": 90,
+  "distance_m": 218.5,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 46.2,
+  "file": "25-staff-village-plan.png",
+  "rendered": false,
+  "camera": [
+   -240.9,
+   -342.5,
+   256.8
+  ],
+  "aim": [
+   -240.9,
+   -342.5,
+   38.3
+  ]
+ },
+ {
+  "station": "26-residence-garden",
+  "element": "prop.residences.7",
+  "status": "OK",
+  "bearing": 86,
+  "height_deg": 8,
+  "distance_m": 110.8,
+  "raised_m": 10,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 4,
+  "subject_radius_m": 33.2,
+  "file": "26-residence-garden.png",
+  "rendered": false,
+  "camera": [
+   58.7,
+   -355.7,
+   63.1
+  ],
+  "aim": [
+   -48.8,
+   -363.2,
+   37.2
+  ]
+ },
+ {
+  "station": "27-residence-arrival",
+  "element": "prop.residences.7",
+  "status": "OK",
+  "bearing": 266,
+  "height_deg": 9,
+  "distance_m": 110.1,
+  "raised_m": 6,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 3,
+  "subject_radius_m": 33.2,
+  "file": "27-residence-arrival.png",
+  "rendered": false,
+  "camera": [
+   -156.0,
+   -370.7,
+   61.0
+  ],
+  "aim": [
+   -48.8,
+   -363.2,
+   37.2
+  ]
+ },
+ {
+  "station": "28-residence-plot-plan",
+  "element": "prop.residences.7",
+  "status": "OK",
+  "bearing": 0,
+  "height_deg": 90,
+  "distance_m": 246.9,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 33.2,
+  "file": "28-residence-plot-plan.png",
+  "rendered": false,
+  "camera": [
+   -48.8,
+   -363.2,
+   284.1
+  ],
+  "aim": [
+   -48.8,
+   -363.2,
+   37.2
+  ]
+ },
+ {
+  "station": "29-residences-lane",
+  "element": "prop.residences.6",
+  "status": "OK",
+  "bearing": 250,
+  "height_deg": 20,
+  "distance_m": 623.4,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 32.0,
+  "file": "29-residences-lane.png",
+  "rendered": false,
+  "camera": [
+   -610.2,
+   -639.9,
+   251.1
+  ],
+  "aim": [
+   -60.0,
+   -439.6,
+   37.3
+  ]
+ },
+ {
+  "station": "30-lane-from-the-north",
+  "element": "prop.residences.3",
+  "status": "OK",
+  "bearing": 350,
+  "height_deg": 14,
+  "distance_m": 442.4,
+  "raised_m": 40,
+  "pull": 1.25,
+  "swing_deg": 0,
+  "attempts": 16,
+  "subject_radius_m": 33.2,
+  "file": "30-lane-from-the-north.png",
+  "rendered": false,
+  "camera": [
+   -192.2,
+   61.2,
+   182.8
+  ],
+  "aim": [
+   -119.6,
+   -350.5,
+   37.9
+  ]
+ },
+ {
+  "station": "31-river-club-quay",
+  "element": "prop.river-club",
+  "status": "OK",
+  "bearing": 107,
+  "height_deg": 3,
+  "distance_m": 66.2,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 51.1,
+  "file": "31-river-club-quay.png",
+  "rendered": false,
+  "camera": [
+   332.9,
+   -138.4,
+   37.2
+  ],
+  "aim": [
+   269.7,
+   -119.1,
+   33.4
+  ]
+ },
+ {
+  "station": "32-river-club-sluice",
+  "element": "prop.river-club",
+  "status": "OK",
+  "bearing": 20,
+  "height_deg": 10,
+  "distance_m": 79.5,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 51.1,
+  "file": "32-river-club-sluice.png",
+  "rendered": false,
+  "camera": [
+   296.5,
+   -45.6,
+   47.6
+  ],
+  "aim": [
+   269.7,
+   -119.1,
+   33.4
+  ]
+ },
+ {
+  "station": "33-long-water-axis",
+  "element": "prop.river-club",
+  "status": "OK",
+  "bearing": 107,
+  "height_deg": 5,
+  "distance_m": 186.9,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 51.1,
+  "file": "33-long-water-axis.png",
+  "rendered": false,
+  "camera": [
+   447.8,
+   -173.5,
+   50.1
+  ],
+  "aim": [
+   269.7,
+   -119.1,
+   33.4
+  ]
+ },
+ {
+  "station": "34-river-club-aerial",
+  "element": "prop.river-club",
+  "status": "OK",
+  "bearing": 250,
+  "height_deg": 40,
+  "distance_m": 289.1,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 51.1,
+  "file": "34-river-club-aerial.png",
+  "rendered": false,
+  "camera": [
+   61.8,
+   -194.8,
+   219.4
+  ],
+  "aim": [
+   269.7,
+   -119.1,
+   33.4
+  ]
+ },
+ {
+  "station": "35-river-club-terrace",
+  "element": "prop.river-club",
+  "status": "OK",
+  "bearing": 200,
+  "height_deg": 6,
+  "distance_m": 89.9,
+  "raised_m": 10,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 4,
+  "subject_radius_m": 51.1,
+  "file": "35-river-club-terrace.png",
+  "rendered": false,
+  "camera": [
+   239.7,
+   -201.6,
+   53.0
+  ],
+  "aim": [
+   269.7,
+   -119.1,
+   33.4
+  ]
+ },
+ {
+  "station": "36-sluice-plan",
+  "element": "prop.river-club",
+  "status": "OK",
+  "bearing": 0,
+  "height_deg": 90,
+  "distance_m": 122.6,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 51.1,
+  "file": "36-sluice-plan.png",
+  "rendered": false,
+  "camera": [
+   269.7,
+   -119.1,
+   156.0
+  ],
+  "aim": [
+   269.7,
+   -119.1,
+   33.4
+  ]
+ },
+ {
+  "station": "37-a4155-carriageway",
+  "element": "phase4.roads.a4155",
+  "status": "OK",
+  "bearing": 90,
+  "height_deg": 3,
+  "distance_m": 30.0,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 30.0,
+  "file": "37-a4155-carriageway.png",
+  "rendered": false,
+  "camera": [
+   -312.2,
+   39.0,
+   35.9
+  ],
+  "aim": [
+   -342.2,
+   39.0,
+   35.7
+  ]
+ },
+ {
+  "station": "38-a4155-hedges",
+  "element": "phase4.roads.a4155",
+  "status": "OK",
+  "bearing": 200,
+  "height_deg": 6,
+  "distance_m": 25.9,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 26.0,
+  "file": "38-a4155-hedges.png",
+  "rendered": false,
+  "camera": [
+   -322.6,
+   -312.4,
+   36.0
+  ],
+  "aim": [
+   -313.8,
+   -288.1,
+   34.7
+  ]
+ },
+ {
+  "station": "39-north-drive-surface",
+  "element": "phase4.roads.north-drive",
+  "status": "OK",
+  "bearing": 120,
+  "height_deg": 4,
+  "distance_m": 29.9,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 30.0,
+  "file": "39-north-drive-surface.png",
+  "rendered": false,
+  "camera": [
+   -172.9,
+   233.9,
+   35.3
+  ],
+  "aim": [
+   -198.8,
+   248.9,
+   34.5
+  ]
+ },
+ {
+  "station": "40-north-drive-lodge",
+  "element": "phase4.roads.north-drive",
+  "status": "OK",
+  "bearing": 200,
+  "height_deg": 9,
+  "distance_m": 59.8,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 60.0,
+  "file": "40-north-drive-lodge.png",
+  "rendered": false,
+  "camera": [
+   -301.8,
+   434.3,
+   45.1
+  ],
+  "aim": [
+   -281.5,
+   490.0,
+   37.1
+  ]
+ },
+ {
+  "station": "41-south-lodge-junction",
+  "element": "phase4.roads.south-lodge-link",
+  "status": "OK",
+  "bearing": 60,
+  "height_deg": 8,
+  "distance_m": 44.8,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 45.0,
+  "file": "41-south-lodge-junction.png",
+  "rendered": false,
+  "camera": [
+   -249.9,
+   -172.6,
+   39.8
+  ],
+  "aim": [
+   -288.5,
+   -194.9,
+   34.9
+  ]
+ },
+ {
+  "station": "42-rem-riverside-barns",
+  "element": "adj.remenham-1",
+  "status": "OK",
+  "bearing": 270,
+  "height_deg": 8,
+  "distance_m": 53.5,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 37.8,
+  "file": "42-rem-riverside-barns.png",
+  "rendered": false,
+  "camera": [
+   422.4,
+   -1.7,
+   43.2
+  ],
+  "aim": [
+   475.3,
+   -1.7,
+   35.5
+  ]
+ },
+ {
+  "station": "43-rem-st-nicholas",
+  "element": "adj.remenham-8",
+  "status": "OK",
+  "bearing": 180,
+  "height_deg": 5,
+  "distance_m": 56.6,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 15.5,
+  "file": "43-rem-st-nicholas.png",
+  "rendered": false,
+  "camera": [
+   556.4,
+   -106.4,
+   42.8
+  ],
+  "aim": [
+   556.4,
+   -50.0,
+   37.3
+  ]
+ },
+ {
+  "station": "44-rem-context-aerial",
+  "element": "*",
+  "status": "OK",
+  "bearing": 245,
+  "height_deg": 34,
+  "distance_m": 239.2,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 240.0,
+  "file": "44-rem-context-aerial.png",
+  "rendered": false,
+  "camera": [
+   334.7,
+   -69.1,
+   167.2
+  ],
+  "aim": [
+   515.0,
+   15.0,
+   34.4
+  ]
+ },
+ {
+  "station": "45-rem-longwater-gate",
+  "element": "feature.remenham-river-fence",
+  "status": "OK",
+  "bearing": 90,
+  "height_deg": 3,
+  "distance_m": 42.0,
+  "raised_m": 0,
+  "pull": 1.0,
+  "swing_deg": 0,
+  "attempts": 1,
+  "subject_radius_m": 42.0,
+  "file": "45-rem-longwater-gate.png",
+  "rendered": false,
+  "camera": [
+   425.6,
+   -117.7,
+   34.8
+  ],
+  "aim": [
+   383.7,
+   -117.7,
+   33.9
+  ]
+ }
+]

@@ -1,0 +1,647 @@
+{
+ "meta": {
+  "source": "Model/Fawley Court - Financial Model v93.xlsx, Capex tab",
+  "model_sha": "cab974f71837841d74be4d4720b0f579d08d047dc2b481ed8684db1f885483b5",
+  "figures": "Fawley Court - Financial Model v93.xlsx",
+  "measured": "2026-09-28",
+  "n_lines": 209,
+  "note": "Each area joins the capital-cost schedule to the imagery and to what the place earns. Loaded cost applies the limb's own prelims, fees and contingency to that area's net. The images are indicative and nothing here is designed or consented.",
+  "covered": 119706424.21,
+  "works_total": 150796080.3694,
+  "uncovered": 31089656.16
+ },
+ "loading": {
+  "hotel": 1.26238,
+  "resi": 1.133415
+ },
+ "areas": [
+  {
+   "key": "hall",
+   "label": "The Main House",
+   "zones": [
+    "1a. Basement",
+    "1b. Ground and First",
+    "1c. Second",
+    "1d. South Wing"
+   ],
+   "limb": "hotel",
+   "net": 24444074.0,
+   "loaded": 30857716.41,
+   "share_of_works": 0.20463,
+   "n_lines": 62,
+   "n_live": 44,
+   "start_q": 4,
+   "end_q": 10,
+   "elements": {
+    "Fit-out": 13800475.0,
+    "Shell & structure": 5202359.0,
+    "MEP": 3732840.0,
+    "FF&E": 1429600.0,
+    "Externals": 278800.0
+   },
+   "top_lines": [
+    {
+     "n": 60,
+     "desc": "Guestroom fit-out",
+     "qty": 12.0,
+     "unit": "key",
+     "rate": 450000.0,
+     "net": 5400000.0,
+     "source": "Align",
+     "risk": null
+    },
+    {
+     "n": 48,
+     "desc": "Second-floor guestroom fit-out",
+     "qty": 8.0,
+     "unit": "key",
+     "rate": 450000.0,
+     "net": 3600000.0,
+     "source": "Align",
+     "risk": null
+    },
+    {
+     "n": 59,
+     "desc": "Shell and structure",
+     "qty": 1030.0,
+     "unit": "m2",
+     "rate": 3380.0,
+     "net": 3481400.0,
+     "source": "Align",
+     "risk": null
+    },
+    {
+     "n": 22,
+     "desc": "Hotel MEP adaptations",
+     "qty": 1697.0,
+     "unit": "m2",
+     "rate": 725.0,
+     "net": 1230325.0,
+     "source": "Greenway",
+     "risk": null
+    },
+    {
+     "n": 6,
+     "desc": "Hotel MEP adaptations",
+     "qty": 1448.0,
+     "unit": "m2",
+     "rate": 725.0,
+     "net": 1049800.0,
+     "source": "Greenway",
+     "risk": null
+    },
+    {
+     "n": 14,
+     "desc": "Basement amenity fit-out",
+     "qty": 320.0,
+     "unit": "m2",
+     "rate": 3125.0,
+     "net": 1000000.0,
+     "source": "Align",
+     "risk": null
+    }
+   ],
+   "images": [
+    {
+     "full": "img/cgi/hall-1.jpg",
+     "thumb": "img/cgi/hall-1-t.jpg",
+     "w": 1536,
+     "h": 1024,
+     "bytes": 293107,
+     "src": "ChatGPT Image Aug 18, 2026, 08_14_23 PM.png"
+    },
+    {
+     "full": "img/cgi/hall-2.jpg",
+     "thumb": "img/cgi/hall-2-t.jpg",
+     "w": 1536,
+     "h": 1024,
+     "bytes": 251696,
+     "src": "ChatGPT Image Aug 18, 2026, 08_24_05 PM.png"
+    },
+    {
+     "full": "img/cgi/hall-3.jpg",
+     "thumb": "img/cgi/hall-3-t.jpg",
+     "w": 1536,
+     "h": 1024,
+     "bytes": 344551,
+     "src": "ChatGPT Image Aug 18, 2026, 08_33_05 PM.png"
+    },
+    {
+     "full": "img/cgi/hall-4.jpg",
+     "thumb": "img/cgi/hall-4-t.jpg",
+     "w": 1536,
+     "h": 1024,
+     "bytes": 279134,
+     "src": "ChatGPT Image Aug 18, 2026, 08_36_34 PM.png"
+    }
+   ],
+   "what": "The Grade I house. Seventeen of the hotel's keys, the destination dining room, the bar and the afternoon-tea room, and the rooms an exclusive-use buyout is bought for.",
+   "works": "A soft and FF&E strip-out throughout, structural alteration for the key plan, a second service lift, envelope and roof repair, and comfort cooling retrofitted through listed fabric on the first and second floors, which the ground floor already has.",
+   "earns": "Seventeen keys, the Main House restaurant at one sitting of 49 covers, the bar, and afternoon tea. The house is also what the fifteen exclusive-use buyouts are sold on.",
+   "watch": "The measured survey does not exist. The Main House area basis varies from 1,815 m² to 4,162 m² across four documents in the data room."
+  },
+  {
+   "key": "courtyard",
+   "label": "The Courtyards",
+   "zones": [
+    "2. North Courtyard",
+    "3. South Courtyard"
+   ],
+   "limb": "hotel",
+   "net": 25045818.0,
+   "loaded": 31617346.16,
+   "share_of_works": 0.20967,
+   "n_lines": 25,
+   "n_live": 18,
+   "start_q": 1,
+   "end_q": 10,
+   "elements": {
+    "Fit-out": 14411617.0,
+    "Shell & structure": 5141706.0,
+    "MEP": 3343495.0,
+    "FF&E": 1661000.0,
+    "Externals": 488000.0
+   },
+   "top_lines": [
+    {
+     "n": 65,
+     "desc": "Guestrooms, all-in",
+     "qty": 20.0,
+     "unit": "key",
+     "rate": 500000.0,
+     "net": 10000000.0,
+     "source": "Align",
+     "risk": null
+    },
+    {
+     "n": 76,
+     "desc": "New-build shell",
+     "qty": 799.0,
+     "unit": "m2",
+     "rate": 2700.0,
+     "net": 2157300.0,
+     "source": "Align",
+     "risk": null
+    },
+    {
+     "n": 78,
+     "desc": "New-build fit-out",
+     "qty": 799.0,
+     "unit": "m2",
+     "rate": 2487.0,
+     "net": 1987113.0,
+     "source": "Align",
+     "risk": null
+    },
+    {
+     "n": 73,
+     "desc": "Retained-fabric shell",
+     "qty": 654.0,
+     "unit": "m2",
+     "rate": 3014.0,
+     "net": 1971156.0,
+     "source": "Align",
+     "risk": null
+    },
+    {
+     "n": 75,
+     "desc": "Retained-fabric fit-out",
+     "qty": 654.0,
+     "unit": "m2",
+     "rate": 2776.0,
+     "net": 1815504.0,
+     "source": "Align",
+     "risk": null
+    },
+    {
+     "n": 86,
+     "desc": "Guestroom FF&E, 23 keys, including Art",
+     "qty": 23.0,
+     "unit": "key",
+     "rate": 67000.0,
+     "net": 1541000.0,
+     "source": "Align",
+     "risk": null
+    }
+   ],
+   "images": [
+    {
+     "full": "img/cgi/courtyard-1.jpg",
+     "thumb": "img/cgi/courtyard-1-t.jpg",
+     "w": 1536,
+     "h": 1024,
+     "bytes": 373541,
+     "src": "ChatGPT Image Aug 18, 2026, 07_45_44 PM.png"
+    },
+    {
+     "full": "img/cgi/courtyard-2.jpg",
+     "thumb": "img/cgi/courtyard-2-t.jpg",
+     "w": 1446,
+     "h": 964,
+     "bytes": 295386,
+     "src": "ChatGPT Image Aug 18, 2026, 08_37_49 PM.png"
+    }
+   ],
+   "what": "The stables and courtyard ranges. Forty-three of the hotel's keys, the arrival court and the all-day room.",
+   "works": "Conversion of the ranges to guest accommodation at a composite rate, new-build infill where the plan requires it, and the courtyard surfaces, services and arrival sequence.",
+   "earns": "Forty-three keys — the larger part of the rooms business, and the reason the scheme reaches its count without turning the principal rooms of the house into bedrooms.",
+   "watch": "The consented courtyard bedroom count is fifteen, not forty-three. 23/07590/LBC consents offices, staff accommodation and storage in these ranges."
+  },
+  {
+   "key": "riding",
+   "label": "The Riding School",
+   "zones": [
+    "4. Riding School"
+   ],
+   "limb": "hotel",
+   "net": 4151810.0,
+   "loaded": 5241162.97,
+   "share_of_works": 0.03476,
+   "n_lines": 15,
+   "n_live": 14,
+   "start_q": 3,
+   "end_q": 7,
+   "elements": {
+    "Shell & structure": 1393010.0,
+    "FF&E": 1191900.0,
+    "Fit-out": 970950.0,
+    "MEP": 595950.0
+   },
+   "top_lines": [
+    {
+     "n": 102,
+     "desc": "Dining and event FF&E",
+     "qty": 411.0,
+     "unit": "m2",
+     "rate": 2900.0,
+     "net": 1191900.0,
+     "source": "Align",
+     "risk": null
+    },
+    {
+     "n": 98,
+     "desc": "Restaurant MEP",
+     "qty": 411.0,
+     "unit": "m2",
+     "rate": 1450.0,
+     "net": 595950.0,
+     "source": "Greenway",
+     "risk": null
+    },
+    {
+     "n": 99,
+     "desc": "Dining and event fit-out",
+     "qty": 411.0,
+     "unit": "m2",
+     "rate": 1450.0,
+     "net": 595950.0,
+     "source": "Align",
+     "risk": null
+    },
+    {
+     "n": 90,
+     "desc": "Roof structure repairs",
+     "qty": 555.0,
+     "unit": "m2",
+     "rate": 520.0,
+     "net": 288600.0,
+     "source": "John Simpson",
+     "risk": null
+    },
+    {
+     "n": 94,
+     "desc": "Heritage windows and doors",
+     "qty": 18.0,
+     "unit": "no",
+     "rate": 14500.0,
+     "net": 261000.0,
+     "source": "John Simpson",
+     "risk": null
+    },
+    {
+     "n": 100,
+     "desc": "Finishing and show kitchen at the apsidal east",
+     "qty": 55.0,
+     "unit": "m2",
+     "rate": 4200.0,
+     "net": 231000.0,
+     "source": "EPR",
+     "risk": null
+    }
+   ],
+   "images": [
+    {
+     "full": "img/cgi/riding-1.jpg",
+     "thumb": "img/cgi/riding-1-t.jpg",
+     "w": 1536,
+     "h": 1024,
+     "bytes": 463236,
+     "src": "ChatGPT Image Aug 18, 2026, 08_42_54 PM.png"
+    },
+    {
+     "full": "img/cgi/riding-2.jpg",
+     "thumb": "img/cgi/riding-2-t.jpg",
+     "w": 1446,
+     "h": 964,
+     "bytes": 296857,
+     "src": "courtyard or riding.png"
+    }
+   ],
+   "what": "The Riding House. The estate's only large covered volume, restored as a single two-storey space.",
+   "works": "A restored volume with services rather than a fitted restaurant: the inserted floor stays out, which is both the consented position and the cheaper one.",
+   "earns": "The events business — fifteen exclusive-use buyouts and fifteen corporate events a year — and the courtyards' all-day room. It is the room that makes the food and beverage margin defensible.",
+   "watch": "The consented scheme removes the mezzanine to restore the single volume, endorsed by Historic England. Building it back would cut against the consent as well as the cost."
+  },
+  {
+   "key": "spa",
+   "label": "The Spa",
+   "zones": [
+    "6. Spa"
+   ],
+   "limb": "hotel",
+   "net": 8000000.0,
+   "loaded": 10099042.05,
+   "share_of_works": 0.06697,
+   "n_lines": 10,
+   "n_live": 1,
+   "start_q": 8,
+   "end_q": 10,
+   "elements": {
+    "FF&E": 8000000.0
+   },
+   "top_lines": [
+    {
+     "n": 119,
+     "desc": "Building, all-in",
+     "qty": 1.0,
+     "unit": "item",
+     "rate": 8000000.0,
+     "net": 8000000.0,
+     "source": "Align",
+     "risk": null
+    }
+   ],
+   "images": [
+    {
+     "full": "img/cgi/spa-1.jpg",
+     "thumb": "img/cgi/spa-1-t.jpg",
+     "w": 1419,
+     "h": 946,
+     "bytes": 266143,
+     "src": "ChatGPT Image Aug 18, 2026, 05_33_59 PM.png"
+    },
+    {
+     "full": "img/cgi/spa-2.jpg",
+     "thumb": "img/cgi/spa-2-t.jpg",
+     "w": 1446,
+     "h": 964,
+     "bytes": 271434,
+     "src": "ChatGPT Image Aug 18, 2026, 05_36_29 PM.png"
+    },
+    {
+     "full": "img/cgi/spa-3.jpg",
+     "thumb": "img/cgi/spa-3-t.jpg",
+     "w": 1446,
+     "h": 964,
+     "bytes": 245881,
+     "src": "ChatGPT Image Aug 18, 2026, 05_37_44 PM.png"
+    },
+    {
+     "full": "img/cgi/spa-4.jpg",
+     "thumb": "img/cgi/spa-4-t.jpg",
+     "w": 1263,
+     "h": 842,
+     "bytes": 226566,
+     "src": "Gemini_Generated_Image_5z747m5z747m5z74 (1).jpg"
+    }
+   ],
+   "what": "The wellness programme: about 2,000 m² across a new building beside the Concert Hall, the church itself as a dry room, and the garden.",
+   "works": "A new pool hall, thermal suite and treatment rooms built beside the listed church rather than inside it, with the church restored as a dry room — relaxation, movement studio and reception — and an outdoor garden with vitality pool, cold plunge and sauna.",
+   "earns": "Twelve treatment rooms and the day-pass programme. With the courts and the garden it is also the whole physical case for a capped membership.",
+   "watch": "No application exists for anything on this site, and the Concert Hall is the Grade II listed Church of St Anne. Both Six Senses and Rocco Forte put the spa inside it."
+  },
+  {
+   "key": "riverclub",
+   "label": "The River Club",
+   "zones": [
+    "10. River Club & Long Water"
+   ],
+   "limb": "hotel",
+   "net": 3879750.0,
+   "loaded": 4897719.8,
+   "share_of_works": 0.03248,
+   "n_lines": 12,
+   "n_live": 10,
+   "start_q": 2,
+   "end_q": 10,
+   "elements": {
+    "Shell & structure": 902880.0,
+    "Fit-out": 831600.0,
+    "MEP": 641520.0,
+    "Infrastructure": 523750.0,
+    "Externals": 500000.0,
+    "FF&E": 480000.0
+   },
+   "top_lines": [
+    {
+     "n": 176,
+     "desc": "Shell and raised deck",
+     "qty": 400.0,
+     "unit": "m2",
+     "rate": 2257.2,
+     "net": 902880.0,
+     "source": "Align",
+     "risk": null
+    },
+    {
+     "n": 178,
+     "desc": "Fit-out",
+     "qty": 400.0,
+     "unit": "m2",
+     "rate": 2079.0,
+     "net": 831600.0,
+     "source": "Align",
+     "risk": null
+    },
+    {
+     "n": 177,
+     "desc": "MEP and kitchen services",
+     "qty": 400.0,
+     "unit": "m2",
+     "rate": 1603.8,
+     "net": 641520.0,
+     "source": "Align",
+     "risk": null
+    },
+    {
+     "n": 179,
+     "desc": "FF&E",
+     "qty": 400.0,
+     "unit": "m2",
+     "rate": 1200.0,
+     "net": 480000.0,
+     "source": "Align",
+     "risk": null
+    },
+    {
+     "n": 174,
+     "desc": "Landing stages and boathouse repairs",
+     "qty": 1.0,
+     "unit": "item",
+     "rate": 300000.0,
+     "net": 300000.0,
+     "source": "Align",
+     "risk": null
+    },
+    {
+     "n": 180,
+     "desc": "Long Water swimming-water works",
+     "qty": 1.0,
+     "unit": "item",
+     "rate": 200000.0,
+     "net": 200000.0,
+     "source": "Align",
+     "risk": null
+    }
+   ],
+   "images": [
+    {
+     "full": "img/cgi/riverclub-1.jpg",
+     "thumb": "img/cgi/riverclub-1-t.jpg",
+     "w": 1410,
+     "h": 940,
+     "bytes": 352841,
+     "src": "ChatGPT Image Aug 18, 2026, 06_08_50 PM.png"
+    },
+    {
+     "full": "img/cgi/riverclub-2.jpg",
+     "thumb": "img/cgi/riverclub-2-t.jpg",
+     "w": 1410,
+     "h": 940,
+     "bytes": 311934,
+     "src": "ChatGPT Image Aug 18, 2026, 07_39_51 PM.png"
+    }
+   ],
+   "what": "The Thames frontage: a permanent River Club building, the landing stages, and the Long Water isolated and treated for swimming.",
+   "works": "A 400 m² building raised above flood level with its own kitchen and fit-out, landing stages and boathouse repair, bank protection, and the sluice and treatment that make the Long Water swimmable.",
+   "earns": "Its own food and beverage outlet at riverside prices, and the Regatta programme. Switching the whole limb off costs about a point of return.",
+   "watch": "The Long Water cannot be swum unless it is isolated. Thames water at this reach failed bathing standards in almost half of 27 tests before the last Regatta."
+  },
+  {
+   "key": "residences",
+   "label": "The Residences",
+   "zones": [
+    "13. Residential infrastructure",
+    "14. Residences build",
+    "15. Residential statutory"
+   ],
+   "limb": "resi",
+   "net": 32638923.26,
+   "loaded": 36993436.82,
+   "share_of_works": 0.24532,
+   "n_lines": 9,
+   "n_live": 8,
+   "start_q": 3,
+   "end_q": 9,
+   "elements": {
+    "Shell & structure": 21450000.0,
+    "Fit-out": 4800000.0,
+    "Externals": 3140000.0,
+    "Statutory": 2432923.26,
+    "Infrastructure": 816000.0
+   },
+   "top_lines": [
+    {
+     "n": 199,
+     "desc": "Shell and structure - 12 units x 5,500 sqft",
+     "qty": 66000.0,
+     "unit": "sqft",
+     "rate": 325.0,
+     "net": 21450000.0,
+     "source": "Savills",
+     "risk": null
+    },
+    {
+     "n": 201,
+     "desc": "Fit-out - furnished to hotel standard",
+     "qty": 12.0,
+     "unit": "unit",
+     "rate": 400000.0,
+     "net": 4800000.0,
+     "source": "Align",
+     "risk": null
+    },
+    {
+     "n": 200,
+     "desc": "Curtilage externals - gardens, drives, boundaries within plots",
+     "qty": 66000.0,
+     "unit": "sqft",
+     "rate": 33.0,
+     "net": 2178000.0,
+     "source": "Align",
+     "risk": null
+    },
+    {
+     "n": 202,
+     "desc": "Community Infrastructure Levy - residences (Class C3)",
+     "qty": 6122.0,
+     "unit": "m2",
+     "rate": 261.83,
+     "net": 1602923.26,
+     "source": "Buckinghamshire Council",
+     "risk": null
+    },
+    {
+     "n": 186,
+     "desc": "Residential affordable-housing allowance",
+     "qty": 1.0,
+     "unit": "item",
+     "rate": 830000.0,
+     "net": 830000.0,
+     "source": "Align",
+     "risk": null
+    },
+    {
+     "n": 196,
+     "desc": "Plot service connections - power, water, foul, telecoms (12 plots)",
+     "qty": 12.0,
+     "unit": "plot",
+     "rate": 68000.0,
+     "net": 816000.0,
+     "source": "Savills",
+     "risk": null
+    }
+   ],
+   "images": [
+    {
+     "full": "img/cgi/residences-1.jpg",
+     "thumb": "img/cgi/residences-1-t.jpg",
+     "w": 1536,
+     "h": 1024,
+     "bytes": 494434,
+     "src": "ChatGPT Image Aug 18, 2026, 08_14_59 PM.png"
+    },
+    {
+     "full": "img/cgi/residences-2.jpg",
+     "thumb": "img/cgi/residences-2-t.jpg",
+     "w": 1476,
+     "h": 984,
+     "bytes": 317677,
+     "src": "ChatGPT Image Aug 18, 2026, 08_21_49 PM.png"
+    },
+    {
+     "full": "img/cgi/residences-3.jpg",
+     "thumb": "img/cgi/residences-3-t.jpg",
+     "w": 1536,
+     "h": 1024,
+     "bytes": 383145,
+     "src": "ChatGPT Image Aug 18, 2026, 08_32_53 PM.png"
+    }
+   ],
+   "what": "Twelve houses on the Savills-advised plots, sold rather than operated.",
+   "works": "Estate road and services to twelve plots, the houses themselves, the landscape framework and the statutory provision. The figures on this page are the itemised residential lines alone. The limb also carries a share of the estate infrastructure the houses use, which is why chapter 05 shows the residential budget at £42.51m and £3.54m a unit against the £36.99m and £3.08m here.",
+   "earns": "Sale proceeds across a single tranche at an absorption of 3.75 a year, not rental income. Both Six Senses and Rocco Forte assume a branded rental pool instead.",
+   "watch": "No residential application has ever been made on this estate. Planning is at pre-application, and twelve units sits above the affordable-housing threshold."
+  }
+ ]
+}
