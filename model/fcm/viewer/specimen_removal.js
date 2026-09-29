@@ -1,5 +1,5 @@
 /* Remove one named source specimen in the places preview. World Y is height.
- * Defect: source specimen 148 retained at the reviewed trunk.
+ * Defect: source specimen 148 was retained at the trunk chosen for removal.
  * Exact connected-component removal; never use a broad terrain/tree cut box. */
 export function components(geometry,THREE,matrix){
  const p=geometry.attributes.position,index=geometry.index,parent=new Map(),keys=[];

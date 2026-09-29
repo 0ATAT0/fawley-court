@@ -5,7 +5,7 @@
   "figures": "The measured figure record for Fawley Court - Financial Model v93",
   "measured": "2026-09-29",
   "n_lines": 209,
-  "note": "Each area joins the capital-cost schedule to the imagery and to what the place earns. Loaded cost applies the limb's own prelims, fees and contingency to that area's net. The images are indicative and nothing here is designed or consented.",
+  "note": "Each area joins the capital-cost schedule to the imagery and to what the place earns. Loaded cost applies the prelims, fees and contingency of the hotel or the residences, as the area falls, to that area's net. The images are indicative and nothing here is designed or consented.",
   "covered": 119706424.21,
   "works_total": 150796080.3694,
   "uncovered": 31089656.16
@@ -524,7 +524,7 @@
    ],
    "what": "The Thames frontage: a permanent River Club building, the landing stages, and the Long Water isolated and treated for swimming.",
    "works": "A 400 m² building raised above flood level with its own kitchen and fit-out, landing stages and boathouse repair, bank protection, and the sluice and treatment that make the Long Water swimmable.",
-   "earns": "Its own food and beverage outlet at riverside prices, and the Regatta programme. Switching the whole limb off costs about a point of return.",
+   "earns": "Its own food and beverage outlet at riverside prices, and the Regatta programme. Switched off, it raises the return by about 0.4 of a point.",
    "watch": "The Long Water cannot be swum unless it is isolated. Thames water at this reach failed bathing standards in almost half of 27 tests before the last Regatta."
   },
   {
@@ -639,7 +639,7 @@
     }
    ],
    "what": "Twelve houses on the Savills-advised plots, sold rather than operated.",
-   "works": "Estate road and services to twelve plots, the houses themselves, the landscape framework and the statutory provision. The figures on this page are the itemised residential lines alone. The limb also carries a share of the estate infrastructure the houses use, which is why chapter 05 shows the residential budget at £42.51m and £3.54m a unit against the £36.99m and £3.08m here.",
+   "works": "Estate road and services to twelve plots, the houses themselves, the landscape framework and the statutory provision. The figures on this page are the itemised residential lines alone. The residences also carry a share of the estate infrastructure the houses use, which is why chapter 05 shows the residential budget at £42.51m and £3.54m a unit against the £36.99m and £3.08m here.",
    "earns": "Sale proceeds across a single tranche at an absorption of 3.75 a year, not rental income. Both Six Senses and Rocco Forte assume a branded rental pool instead.",
    "watch": "No residential application has ever been made on this estate. Planning is at pre-application, and twelve units sits above the affordable-housing threshold."
   }
