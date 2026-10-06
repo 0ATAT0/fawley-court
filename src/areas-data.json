@@ -1,9 +1,9 @@
 {
  "meta": {
-  "source": "The underwrite model's Capex tab (v93)",
-  "model_sha": "cab974f71837841d74be4d4720b0f579d08d047dc2b481ed8684db1f885483b5",
-  "figures": "The measured figure record for Fawley Court - Financial Model v93",
-  "measured": "2026-09-29",
+  "source": "The underwrite model's Capex tab (v107)",
+  "model_sha": "8d7ee44c5653c53f9fa2c6d4f1959a040300e30ae068655e462e0030e978d583",
+  "figures": "The measured figure record for Fawley Court - Financial Model v107",
+  "measured": "2026-10-06",
   "n_lines": 209,
   "note": "Each area joins the capital-cost schedule to the imagery and to what the place earns. Loaded cost applies the prelims, fees and contingency of the hotel or the residences, as the area falls, to that area's net. The images are indicative and nothing here is designed or consented.",
   "covered": 119706424.21,
@@ -531,9 +531,9 @@
    "key": "residences",
    "label": "The Residences",
    "zones": [
-    "13. Residential infrastructure",
-    "14. Residences build",
-    "15. Residential statutory"
+    "14. Residential infrastructure",
+    "15. Residences build",
+    "16. Residential statutory"
    ],
    "limb": "resi",
    "net": 32638923.26,

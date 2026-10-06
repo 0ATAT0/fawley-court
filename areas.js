@@ -95,7 +95,7 @@
 
   function numbers(a) {
     const per = areaUnit(a);
-    const cells = [[money(a.loaded), "Loaded cost"], [money(a.net), "Net works"], [pct(a.share_of_works), "Of total works"]];
+    const cells = [[money(a.loaded), "With fees and contingency"], [money(a.net), "Net works"], [pct(a.share_of_works), "Of total works"]];
     if (per) cells.push([money(a.loaded / per[0]), `Per ${per[1]} · ${per[0]} ${per[1]}${per[0] === 1 ? "" : "s"}`]);
     else cells.push([`${a.n_live} live`, `${a.n_lines} schedule lines`]);
     return `<div class="area-numbers">${cells.map(([v, l]) => `<div><span class="v">${v}</span><span class="l">${l}</span></div>`).join("")}</div>`;
@@ -124,7 +124,7 @@
 
   function hub() {
     const p = pack.meta;
-    return `<section class="area-grid st" style="--i:1">${pack.areas.map(a => `<article class="area-card"><button data-area="${a.key}"><span class="im"><img src="${esc(a.images[0].thumb)}" alt="${esc(a.label)} CGI" loading="lazy" width="${a.images[0].w}" height="${a.images[0].h}"></span><h2>${esc(a.label)}</h2><p class="d">${esc(a.what)}</p><p class="f">${money(a.loaded)} loaded · ${a.images.length} CGI view${a.images.length === 1 ? "" : "s"} <span aria-hidden="true">›</span></p></button></article>`).join("")}</section>`;
+    return `<section class="area-grid st" style="--i:1">${pack.areas.map(a => `<article class="area-card"><button data-area="${a.key}"><span class="im"><img src="${esc(a.images[0].thumb)}" alt="${esc(a.label)} CGI" loading="lazy" width="${a.images[0].w}" height="${a.images[0].h}"></span><h2>${esc(a.label)}</h2><p class="d">${esc(a.what)}</p><p class="f">${money(a.loaded)} with fees and contingency · ${a.images.length} CGI view${a.images.length === 1 ? "" : "s"} <span aria-hidden="true">›</span></p></button></article>`).join("")}</section>`;
   }
 
   function warm() {
