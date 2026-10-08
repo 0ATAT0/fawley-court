@@ -1,9 +1,9 @@
 {
  "meta": {
-  "source": "The underwrite model's Capex tab (v107)",
-  "model_sha": "8d7ee44c5653c53f9fa2c6d4f1959a040300e30ae068655e462e0030e978d583",
-  "figures": "The measured figure record for Fawley Court - Financial Model v107",
-  "measured": "2026-10-06",
+  "source": "The underwrite model's Capex tab (v110)",
+  "model_sha": "418c199b240792e74780e212bedb77870e8a47a0eae4eed0b179bb6b44f50f80",
+  "figures": "The measured figure record for Fawley Court - Financial Model v110",
+  "measured": "2026-10-08",
   "n_lines": 209,
   "note": "Each area joins the capital-cost schedule to the imagery and to what the place earns. Loaded cost applies the prelims, fees and contingency of the hotel or the residences, as the area falls, to that area's net. The images are indicative and nothing here is designed or consented.",
   "covered": 119706424.21,
