@@ -1,4 +1,4 @@
-const CACHE = 'fawley-court-f25efac0aa7d';
+const CACHE = 'fawley-court-362c1e42e040';
 
 // Shell: everything needed to open the portal and read every chapter
 // offline. Full-size photography is warmed by the page after load, not on
@@ -37,14 +37,24 @@ self.addEventListener('activate', e => {
   );
 });
 
-// The page itself: network-first, so an updated build lands immediately and the
-// cache is the offline fallback. Every other same-origin GET: cache-first with a
-// background refresh, the refresh held open with waitUntil so the write lands
-// before the worker is allowed to sleep. Cross-origin: untouched.
+// Pages - the portal itself and the estate model's viewer, which the portal frames -
+// are network-first, so an updated build lands immediately and the cache is the
+// offline fallback. Each is stored under its own address: the portal under './',
+// the viewer under its own. Until 12 October 2026 every navigation counted as the
+// portal, so opening the estate model stored the viewer as the portal's offline copy.
+// Every other same-origin GET: cache-first with a background refresh, the refresh
+// held open with waitUntil so the write lands before the worker is allowed to sleep.
+// The cache's name is a hash of everything published, the estate model included,
+// so a new build of either replaces this cache on the reader's next visit.
+// Cross-origin: untouched.
+const SCOPE = new URL(self.registration.scope).pathname;
+
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
   if (url.origin !== location.origin || e.request.method !== 'GET') return;
-  const isPage = e.request.mode === 'navigate' || url.pathname.endsWith('/index.html');
+  const isPortal = url.pathname === SCOPE || url.pathname === SCOPE + 'index.html';
+  const isPage = isPortal || e.request.mode === 'navigate';
+  const key = isPortal ? './' : url.origin + url.pathname + url.search;
 
   e.respondWith((async () => {
     const cache = await caches.open(CACHE);
@@ -52,10 +62,12 @@ self.addEventListener('fetch', e => {
     if (isPage) {
       try {
         const res = await fetch(e.request);
-        if (res && res.ok) e.waitUntil(cache.put('./', res.clone()));
+        if (res && res.ok) e.waitUntil(cache.put(key, res.clone()));
         return res;
       } catch {
-        return (await cache.match('./')) || (await cache.match('./index.html')) || Response.error();
+        return (await cache.match(key))
+          || (isPortal && await cache.match('./index.html'))
+          || Response.error();
       }
     }
 
